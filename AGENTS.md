@@ -1,4 +1,4 @@
-# squados-skills — instruções do repositório
+# squados-plugins — instruções do repositório
 
 Leia este arquivo e `CLAUDE.md` como um par, se o segundo existir. Consulte também
 `README.md` e `CONTRIBUTING.md`. Antes de trabalhar em outro repositório, leia o par
@@ -6,9 +6,10 @@ de instruções dele; não transfira regras de implementação do Desktop automa
 
 ## Finalidade e limites
 
-Este é o repositório público do catálogo curado de skills do SquadOS Studio e dos
-pacotes próprios mantidos pelo SquadOS. Não é o código do aplicativo nem um espelho
-de todos os repositórios de skills de terceiros.
+Este é o repositório público de plugins do SquadOS Studio: o catálogo curado de
+skills, os pacotes próprios mantidos pelo SquadOS e os templates open-source.
+Os templates estão em planejamento; não reutilize `gallery.json` para indexá-los.
+Não é o código do aplicativo nem um espelho de todos os repositórios de skills de terceiros.
 
 - `gallery.json`: índice que o Studio consulta para mostrar a vitrine de agentes no RH.
 - `skills/<nome>/`: conteúdo das skills próprias; o pacote pode incluir arquivos de apoio.
@@ -39,7 +40,7 @@ As referências de implementação são:
 - `resources/hermes/skills.py`: busca, download, verificação e proposta para revisão.
 - `src/renderer/src/features/skills/GalleryBrowser.tsx`: vitrine, origens e mais resultados.
 
-O Desktop lê `https://raw.githubusercontent.com/squados/squados-skills/main/gallery.json`.
+O Desktop lê `https://raw.githubusercontent.com/squados/squados-plugins/main/gallery.json`.
 Não usa este checkout local automaticamente. O serviço não mantém cache próprio;
 faz a requisição sem credenciais, recusa redirecionamentos, usa timeout de 15 segundos
 e rejeita um corpo acima de 1.000.000 bytes. O índice exige `version: 1`. Uma versão

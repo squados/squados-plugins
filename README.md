@@ -1,9 +1,10 @@
-# squados-skills
+# squados-plugins
 
-Vitrine de agentes prontos do SquadOS Studio: um índice curado (`gallery.json`) de skills
-que a pessoa contrata com um clique no RH. O repositório guarda o índice e, quando for o
-caso, skills nossas em `skills/<nome>/SKILL.md`. As skills de outros repositórios ficam
-onde estão e são baixadas só na hora da contratação.
+Acervo público de plugins do SquadOS Studio: skills e templates open-source.
+As skills têm um índice curado (`gallery.json`) para contratação pelo RH e pacotes
+próprios em `skills/<nome>/SKILL.md`. Os templates demonstrativos estão em planejamento;
+seus pacotes e índice serão separados dos de skills. As skills de outros repositórios
+ficam onde estão e são baixadas só na hora da contratação.
 
 ## Skills próprias de trabalho
 
@@ -22,7 +23,7 @@ localmente; instalação e uso real no Studio têm evidências próprias. Consul
 O Studio baixa `gallery.json` da branch `main`, sem cache:
 
 ```
-https://raw.githubusercontent.com/squados/squados-skills/main/gallery.json
+https://raw.githubusercontent.com/squados/squados-plugins/main/gallery.json
 ```
 
 O arquivo tem teto de 1 MB e começa com `"version": 1`. Versão diferente de 1 faz a vitrine
