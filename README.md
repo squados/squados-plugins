@@ -1,9 +1,11 @@
 # squados-plugins
 
-Acervo público de plugins do SquadOS Studio: skills e templates open-source.
+Acervo público de plugins do SquadOS Studio: skills, templates e demonstrações,
+com licenças próprias identificadas em cada pacote.
 As skills têm um índice curado (`gallery.json`) para contratação pelo RH e pacotes
-próprios em `skills/<nome>/SKILL.md`. Os templates demonstrativos estão em planejamento;
-seus pacotes e índice serão separados dos de skills. As skills de outros repositórios
+próprios em `skills/<nome>/SKILL.md`. Os templates de websites e aplicações estão em
+planejamento; os três [jogos demonstrativos](games/README.md) têm pacotes próprios
+em `games/`, separados do índice de skills. As skills de outros repositórios
 ficam onde estão e são baixadas só na hora da contratação.
 
 ## Skills próprias de trabalho
@@ -107,7 +109,9 @@ outro item do acervo passa nos critérios); ela volta ao índice quando houver u
 
 ## Contribuir
 
-Veja [CONTRIBUTING.md](CONTRIBUTING.md). Licença: [MIT](LICENSE).
+Veja [CONTRIBUTING.md](CONTRIBUTING.md). Licença do conteúdo próprio da raiz:
+[MIT](LICENSE). Pacotes de terceiros preservam seus termos; consulte os avisos
+e as [exceções dos jogos](games/README.md#licenças-e-publicação).
 
 ## Skill de edição de vídeo
 

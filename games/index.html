@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Jogos · SquadOS Studio</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #101510; color: #f0f2e9; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #d0ef8e; outline-offset: 6px; }
+    .shell { max-width: 1440px; margin: auto; padding: 32px clamp(22px, 5vw, 76px); }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .brand { font-weight: 730; font-size: 18px; letter-spacing: -.5px; display: flex; align-items: center; gap: 10px; }
+    .brand::before { content: ''; width: 13px; height: 13px; border-radius: 3px; background: #d0ef8e; box-shadow: 5px -5px 0 #6b8751; margin-right: 5px; }
+    .brand span { color: #899783; font-weight: 450; }
+    .language { display: flex; gap: 4px; border: 1px solid #35402f; border-radius: 30px; padding: 4px; }
+    .language button { border: 0; background: transparent; color: #aeb9a7; border-radius: 24px; padding: 7px 12px; cursor: pointer; font: inherit; font-size: 12px; font-weight: 650; }
+    .language button[aria-pressed="true"] { background: #d0ef8e; color: #15200d; }
+    .intro { padding: clamp(56px, 8vw, 104px) 0 52px; max-width: 760px; }
+    .eyebrow { color: #b1c99c; text-transform: uppercase; font-size: 11px; letter-spacing: 2.2px; font-weight: 650; margin: 0 0 22px; }
+    h1 { font-size: clamp(42px, 6vw, 76px); line-height: 1.04; font-weight: 600; letter-spacing: -.055em; margin: 0 0 24px; }
+    .intro p:last-child { max-width: 540px; color: #b0baaa; line-height: 1.7; font-size: 17px; margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .game { text-decoration: none; display: block; border: 1px solid #35402f; border-radius: 16px; background: #182016; overflow: hidden; transition: border-color 160ms, transform 160ms; }
+    .game:hover { border-color: #9bbd70; transform: translateY(-4px); }
+    .picture { position: relative; background: #242f20; aspect-ratio: 16 / 10; overflow: hidden; }
+    .picture img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .number { position: absolute; top: 15px; left: 15px; font-size: 11px; font-variant-numeric: tabular-nums; background: #101510d9; border: 1px solid #e7efd433; padding: 6px 9px; border-radius: 20px; }
+    .content { padding: 25px; }
+    .genre { color: #adbe9f; font-size: 11px; letter-spacing: 1.3px; text-transform: uppercase; margin: 0 0 12px; }
+    h2 { font-size: 27px; font-weight: 600; letter-spacing: -.7px; margin: 0 0 12px; }
+    .description { color: #b0baaa; font-size: 14px; line-height: 1.65; margin: 0 0 28px; min-height: 70px; }
+    .play { display: flex; align-items: center; justify-content: space-between; color: #d0ef8e; font-size: 14px; font-weight: 650; }
+    .play span:last-child { font-size: 20px; }
+    footer { display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid #35402f; margin: 60px 0 4px; padding-top: 22px; font-size: 12px; line-height: 1.7; color: #8c9b84; }
+    footer p { margin: 0; }
+    footer a { text-underline-offset: 4px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; max-width: 620px; } .picture { aspect-ratio: 16 / 9; } .description { min-height: 0; } .intro { padding-bottom: 36px; } }
+    @media (max-width: 450px) { .brand span { display: none; } footer { flex-direction: column; gap: 12px; } }
+    @media (prefers-reduced-motion: reduce) { .game { transition: none; } .game:hover { transform: none; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="brand">SquadOS <span>Studio / Games</span></div>
+      <div class="language" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="pt-BR" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+    <section class="intro">
+      <p class="eyebrow" data-copy="eyebrow">Três mundos para explorar</p>
+      <h1 data-copy="headline">Uma ideia começa<br>com um play.</h1>
+      <p data-copy="intro">Construa uma cidade, pilote no futuro ou desafie seus reflexos. Entre, jogue e imagine o que você quer criar.</p>
+    </section>
+    <section class="grid" aria-label="Jogos / Games">
+      <a class="game" href="./3d-city/">
+        <div class="picture"><img src="./3d-city/preview.png" alt="" width="1280" height="800"><span class="number">01</span></div>
+        <div class="content">
+          <p class="genre" data-copy="cityGenre">Construção · Simulação 3D</p>
+          <h2>3D City</h2>
+          <p class="description" data-copy="cityDescription">Uma cidade viva nas suas mãos. Construa bairros, conecte ruas e acompanhe o crescimento.</p>
+          <div class="play"><span data-copy="cityPlay">Explorar a cidade</span><span aria-hidden="true">↗</span></div>
+        </div>
+      </a>
+      <a class="game" href="./hexgl/">
+        <div class="picture"><img src="./hexgl/preview.png" alt="" width="1280" height="800"><span class="number">02</span></div>
+        <div class="content">
+          <p class="genre" data-copy="raceGenre">Corrida · Ficção científica</p>
+          <h2>HexGL</h2>
+          <p class="description" data-copy="raceDescription">Uma nave, uma pista suspensa e muita velocidade. Acelere entre as curvas de uma metrópole futurista.</p>
+          <div class="play"><span data-copy="racePlay">Entrar na pista</span><span aria-hidden="true">↗</span></div>
+        </div>
+      </a>
+      <a class="game" href="./clumsy-bird/">
+        <div class="picture"><img src="./clumsy-bird/preview.png" alt="" width="1280" height="800"><span class="number">03</span></div>
+        <div class="content">
+          <p class="genre" data-copy="birdGenre">Arcade · Reflexos</p>
+          <h2>Clumsy Bird</h2>
+          <p class="description" data-copy="birdDescription">Um toque para voar. Encontre o ritmo, passe pelos obstáculos e tente superar sua melhor pontuação.</p>
+          <div class="play"><span data-copy="birdPlay">Abrir as asas</span><span aria-hidden="true">↗</span></div>
+        </div>
+      </a>
+    </section>
+    <footer>
+      <p data-copy="footer">Demonstrações adaptadas de projetos independentes. Créditos preservados.</p>
+      <a href="./README.md" data-copy="credits">Sobre os jogos e licenças</a>
+    </footer>
+  </main>
+  <script>
+    const copy = {
+      'pt-BR': {
+        title: 'Jogos · SquadOS Studio', eyebrow: 'Três mundos para explorar', headline: 'Uma ideia começa\ncom um play.',
+        intro: 'Construa uma cidade, pilote no futuro ou desafie seus reflexos. Entre, jogue e imagine o que você quer criar.',
+        cityGenre: 'Construção · Simulação 3D', cityDescription: 'Uma cidade viva nas suas mãos. Construa bairros, conecte ruas e acompanhe o crescimento.', cityPlay: 'Explorar a cidade',
+        raceGenre: 'Corrida · Ficção científica', raceDescription: 'Uma nave, uma pista suspensa e muita velocidade. Acelere entre as curvas de uma metrópole futurista.', racePlay: 'Entrar na pista',
+        birdGenre: 'Arcade · Reflexos', birdDescription: 'Um toque para voar. Encontre o ritmo, passe pelos obstáculos e tente superar sua melhor pontuação.', birdPlay: 'Abrir as asas',
+        footer: 'Demonstrações adaptadas de projetos independentes. Créditos preservados.', credits: 'Sobre os jogos e licenças'
+      },
+      en: {
+        title: 'Games · SquadOS Studio', eyebrow: 'Three worlds to explore', headline: 'An idea starts\nwith play.',
+        intro: 'Build a city, race into the future, or challenge your reflexes. Jump in, play, and imagine what you want to create.',
+        cityGenre: 'Building · 3D simulation', cityDescription: 'A living city in your hands. Build neighbourhoods, connect roads, and watch it grow.', cityPlay: 'Explore the city',
+        raceGenre: 'Racing · Science fiction', raceDescription: 'One ship, a sky-high track, and pure speed. Accelerate through a futuristic metropolis.', racePlay: 'Enter the race',
+        birdGenre: 'Arcade · Reflexes', birdDescription: 'Tap to fly. Find your rhythm, clear the obstacles, and try to beat your best score.', birdPlay: 'Take flight',
+        footer: 'Demos adapted from independent projects. Original credits preserved.', credits: 'About the games and licences'
+      }
+    };
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+      document.title = copy[language].title;
+      document.querySelectorAll('[data-copy]').forEach(element => {
+        element.textContent = copy[language][element.dataset.copy];
+        if (element.tagName === 'H1') element.style.whiteSpace = 'pre-line';
+      });
+      document.querySelectorAll('[data-lang]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === language)));
+      document.querySelectorAll('.game').forEach(link => {
+        const target = new URL(link.href);
+        target.searchParams.set('lang', language);
+        link.href = target.href;
+      });
+    }
+    document.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+    setLanguage(navigator.language.toLowerCase().startsWith('pt') ? 'pt-BR' : 'en');
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "squados-game-demos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Demonstrações estáticas de jogos para o SquadOS Studio.",
+  "scripts": {
+    "start": "http-server . -a 127.0.0.1 -p 4387 -c-1"
+  },
+  "devDependencies": {
+    "http-server": "14.1.1"
+  }
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Construa e explore uma cidade 3D. Demo jogável de 3d.city, de lo-th.">
+<title>3D.CITY · Cidade Jardim</title>
+<link rel="icon" href="./favicon.ico">
+<link rel="stylesheet" href="./index.css">
+<link rel="stylesheet" href="./demo.css">
+</head>
+<body>
+<div id="container"></div>
+<div id="hub"></div>
+<aside class="demo-bar" aria-label="Demo">
+<strong>3D.CITY <span>· Cidade Jardim</span></strong>
+<button id="demo-help" type="button" aria-expanded="true" aria-controls="demo-instructions">Controles</button>
+<button id="demo-reset" type="button">Reiniciar</button>
+<button id="demo-language" type="button" aria-label="English">EN</button>
+</aside>
+<div class="demo-instructions" id="demo-instructions">
+<p id="demo-line1">Selecione uma ferramenta abaixo e clique no terreno para construir.</p>
+<p id="demo-line2">Arraste: girar · Botão direito: mover · Roda: zoom · WASD / setas: mover</p>
+<p id="demo-line3">Uma cidade inicial, pronta para crescer. Reiniciar restaura esta cidade.</p>
+<a href="./UPSTREAM.md" target="_blank" rel="noopener">lo-th / 3d.city · GPLv3 + termos Micropolis</a>
+</div>
+<p id="demo-error" role="alert" hidden></p>
+<script type="module" src="./demo.js"></script>
+</body>
+</html>

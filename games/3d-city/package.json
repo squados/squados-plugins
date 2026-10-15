@@ -1,0 +1,31 @@
+{
+  "name": "squados-demo-3d-city",
+  "version": "1.0.0",
+  "description": "JavaScript city builder game",
+  "repository": "lo-th/3d.city",
+  "type": "module",
+  "scripts": {
+    "build": "npm run main && npm run city",
+    "main": "rollup -c utils/rollup.config.main.js",
+    "city": "rollup -c utils/rollup.config.city.js",
+    "demo:generate": "node scripts/generate-demo.mjs"
+  },
+  "keywords": [
+    "3d.city",
+    "city",
+    "builder"
+  ],
+  "author": "lo-th",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/lo-th/3d.city/issues"
+  },
+  "homepage": "https://lo-th.github.io/3d.city/",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^1.0.0",
+    "magic-string": "^0.30.0",
+    "rollup": "^4.6.0"
+  },
+  "private": true
+}

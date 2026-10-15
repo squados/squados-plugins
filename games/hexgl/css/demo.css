@@ -1,0 +1,35 @@
+:root { color-scheme: dark; font-family: Arial, sans-serif; background: #102b42; color: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; overflow: hidden; }
+[hidden] { display: none !important; }
+#race, #main, #overlay { position: absolute; inset: 0; }
+#main canvas, #overlay canvas { display: block; width: 100%; height: 100%; }
+#overlay { pointer-events: none; }
+.topbar { position: absolute; top: 20px; left: 24px; z-index: 3; }
+.wordmark { font: 40px/.95 BebasNeueRegular, sans-serif; letter-spacing: .04em; text-shadow: 0 2px 12px #001927; }
+.wordmark span { display: block; margin-top: 7px; font: 10px Arial, sans-serif; letter-spacing: .3em; }
+nav { display: flex; gap: 6px; margin-top: 18px; }
+button { border: 1px solid #ffffff50; border-radius: 3px; background: #092c42d9; color: white; padding: 10px 13px; font: 12px Arial, sans-serif; cursor: pointer; touch-action: none; }
+button:hover, button:focus-visible { background: #08799c; border-color: white; }
+button:disabled { opacity: .45; cursor: wait; }
+kbd { font: inherit; display: inline-block; min-width: 18px; text-align: center; }
+#loading { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #10354c; text-align: center; padding: 24px; }
+h1 { font: 60px/1 BebasNeueRegular, sans-serif; margin: 14px 0; letter-spacing: .02em; }
+.eyebrow { font-size: 10px; letter-spacing: .28em; color: #8cdbee; }
+#loading-detail { font-size: 14px; color: #d0e4eb; }
+.progress { width: min(300px, 80vw); height: 3px; background: #ffffff30; margin: 16px 0; }
+#progressbar { height: 100%; width: 0; background: #80e3fb; transition: width .15s; }
+#instructions { position: absolute; bottom: 38px; left: 24px; display: flex; flex-direction: column; gap: 6px; font-size: 11px; text-shadow: 0 1px 5px #002030; padding: 10px 12px; background: #092c42a8; border-left: 2px solid #70d9f7; }
+#race-goal { color: #c8e6ef; }
+footer { position: absolute; left: 24px; bottom: 13px; font-size: 10px; z-index: 2; }
+footer a { color: #e0f4fa; text-decoration: none; text-shadow: 0 1px 4px #002030; }
+footer a:hover { text-decoration: underline; }
+.result { position: absolute; z-index: 4; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #082c42df; text-align: center; padding: 24px; }
+#result-time { font: 48px BebasNeueRegular, sans-serif; margin: 8px 0; }
+#result-laps { font-size: 13px; color: #c0e6ee; line-height: 1.8; }
+#race-again { background: #13a7c7; margin-top: 15px; font-size: 15px; padding: 14px 24px; }
+#touch-controls { display: none; position: absolute; bottom: 46px; left: 20px; right: 20px; gap: 12px; }
+#touch-controls button { width: 58px; height: 58px; font-size: 25px; user-select: none; -webkit-user-select: none; }
+#accelerate { margin-left: auto; }
+@media (pointer: coarse) { #touch-controls { display: flex; } #instructions { bottom: 120px; left: 20px; max-width: calc(100vw - 40px); } #keyboard-help { display: none; } }
+@media (max-width: 640px) { .topbar { top: 14px; left: 14px; right: 14px; } .wordmark { font-size: 30px; } .wordmark span { font-size: 8px; } nav { gap: 4px; } button { padding: 9px; font-size: 10px; } #instructions { left: 14px; right: 14px; font-size: 10px; } footer { left: 14px; font-size: 9px; } h1 { font-size: 44px; } }

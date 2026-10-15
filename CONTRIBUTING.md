@@ -1,6 +1,10 @@
 # Como contribuir
 
-Há dois tipos de pull request.
+As contribuições de skills seguem os dois formatos abaixo. Jogos demonstrativos
+ficam separados em `games/` e preservam fontes, recursos, licenças e autoria de
+suas bases; consulte o [README dos jogos](games/README.md) antes de alterá-los.
+Um jogo não deve ser acrescentado a `gallery.json`. A licença MIT da raiz não
+substitui licenças por arquivo nem autoriza material com restrição comercial.
 
 ## 1. Acrescentar um item ao índice
 

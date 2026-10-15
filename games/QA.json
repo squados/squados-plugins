@@ -1,0 +1,94 @@
+{
+  "checkedAt": "2026-10-15T23:03:06.226Z",
+  "base": "http://127.0.0.1:4386/games/",
+  "browser": "153.0.8010.12",
+  "checks": [
+    "index: three decoded real previews, relative game URLs, PT/EN switch",
+    "index: 390px layout has no horizontal overflow",
+    {
+      "game": "3d-city",
+      "readyMs": 3328,
+      "state": {
+        "title": "3D.CITY · Cidade Jardim",
+        "canvases": 1,
+        "width": 1280,
+        "scrollWidth": 1280
+      },
+      "nestedPath": true
+    },
+    {
+      "game": "hexgl",
+      "readyMs": 887,
+      "state": {
+        "title": "HexGL · Cityscape",
+        "canvases": 2,
+        "width": 1280,
+        "scrollWidth": 1280
+      },
+      "nestedPath": true
+    },
+    {
+      "game": "clumsy-bird",
+      "readyMs": 659,
+      "state": {
+        "title": "Clumsy Bird",
+        "canvases": 1,
+        "width": 1280,
+        "scrollWidth": 1280
+      },
+      "nestedPath": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "badResponses": [],
+  "external": [],
+  "escapedGamePaths": [],
+  "completedHdrCancellations": [
+    {
+      "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap2.hdr",
+      "message": "net::ERR_ABORTED",
+      "pageUrl": "http://127.0.0.1:4386/games/3d-city/",
+      "stage": "3d-city",
+      "at": "2026-10-15T23:03:06.902Z",
+      "read": {
+        "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap2.hdr",
+        "status": 200,
+        "expected": 1411630,
+        "bytes": 1411630,
+        "done": true
+      }
+    },
+    {
+      "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap.hdr",
+      "message": "net::ERR_ABORTED",
+      "pageUrl": "http://127.0.0.1:4386/games/3d-city/",
+      "stage": "3d-city",
+      "at": "2026-10-15T23:03:06.938Z",
+      "read": {
+        "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap.hdr",
+        "status": 200,
+        "expected": 5376993,
+        "bytes": 5376993,
+        "done": true
+      }
+    }
+  ],
+  "hdrReads": [
+    {
+      "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap.hdr",
+      "status": 200,
+      "expected": 5376993,
+      "bytes": 5376993,
+      "done": true
+    },
+    {
+      "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap2.hdr",
+      "status": 200,
+      "expected": 1411630,
+      "bytes": 1411630,
+      "done": true
+    }
+  ],
+  "pass": true
+}

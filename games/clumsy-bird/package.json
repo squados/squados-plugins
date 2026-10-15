@@ -1,0 +1,12 @@
+{
+  "name": "squados-demo-clumsy-bird",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Demo estática adaptada de Clumsy Bird, de Ellison Leão, com melonJS 4.",
+  "license": "GPL-3.0-only",
+  "author": "Ellison Leão",
+  "repository": { "type": "git", "url": "https://github.com/squados/squados-plugins.git", "directory": "games/clumsy-bird" },
+  "scripts": {
+    "check": "node --check js/game.js && node --check js/entities/entities.js && node --check js/entities/HUD.js && node --check js/screens/play.js && node --check js/screens/gameover.js"
+  }
+}

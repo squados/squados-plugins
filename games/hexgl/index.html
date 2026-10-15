@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="HexGL: corrida futurista em Cityscape. Acelere, faça as curvas e complete três voltas.">
+  <title>HexGL · Cityscape</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/demo.css">
+</head>
+<body>
+  <main id="race" aria-label="HexGL — Cityscape">
+    <div id="main"></div>
+    <div id="overlay" aria-hidden="true"></div>
+  </main>
+  <header class="topbar">
+    <div class="wordmark">HEXGL <span>CITYSCAPE</span></div>
+    <nav aria-label="Controles da corrida">
+      <button id="sound" type="button" aria-pressed="false" disabled>Som: desligado</button>
+      <button id="restart" type="button" disabled>Reiniciar <kbd>R</kbd></button>
+      <button id="language" type="button" lang="en" aria-label="Switch to English">EN</button>
+    </nav>
+  </header>
+  <div id="loading" role="status">
+    <p class="eyebrow">HEXGL / CITYSCAPE</p>
+    <h1 id="loading-title">Preparando a pista</h1>
+    <p id="loading-detail">Carregando nave, pista e sons…</p>
+    <div class="progress"><div id="progressbar"></div></div>
+    <button id="reload" type="button" hidden>Recarregar</button>
+  </div>
+  <aside id="instructions">
+    <span id="keyboard-help"><kbd>↑</kbd> Acelerar · <kbd>←</kbd><kbd>→</kbd> Direção · <kbd>A</kbd><kbd>D</kbd> Freios laterais</span>
+    <span id="race-goal">Complete 3 voltas. <kbd>R</kbd> reinicia.</span>
+  </aside>
+  <div id="touch-controls" aria-label="Controles de toque">
+    <button type="button" data-key="left" aria-label="Esquerda">←</button>
+    <button type="button" data-key="right" aria-label="Direita">→</button>
+    <button type="button" data-key="forward" id="accelerate" aria-label="Acelerar">↑</button>
+  </div>
+  <section id="result" class="result" aria-labelledby="result-title" hidden>
+    <p class="eyebrow" id="result-track">CITYSCAPE / 3 VOLTAS</p>
+    <h1 id="result-title">Corrida concluída</h1>
+    <p id="result-time"></p>
+    <p id="result-laps"></p>
+    <button id="race-again" type="button">Correr novamente</button>
+  </section>
+  <footer><a href="UPSTREAM.md" id="credits">HexGL por BKcore · créditos e licenças</a></footer>
+  <script src="libs/Three.dev.js"></script>
+  <script src="libs/hexgl-compat.js"></script>
+  <script src="libs/ShaderExtras.js"></script>
+  <script src="libs/postprocessing/EffectComposer.js"></script>
+  <script src="libs/postprocessing/RenderPass.js"></script>
+  <script src="libs/postprocessing/BloomPass.js"></script>
+  <script src="libs/postprocessing/ShaderPass.js"></script>
+  <script src="libs/postprocessing/MaskPass.js"></script>
+  <script src="bkcore.coffee/controllers/TouchController.js"></script>
+  <script src="bkcore.coffee/controllers/OrientationController.js"></script>
+  <script src="bkcore.coffee/controllers/GamepadController.js"></script>
+  <script src="bkcore.coffee/Timer.js"></script>
+  <script src="bkcore.coffee/ImageData.js"></script>
+  <script src="bkcore.coffee/Utils.js"></script>
+  <script src="bkcore/threejs/RenderManager.js"></script>
+  <script src="bkcore/threejs/Shaders.js"></script>
+  <script src="bkcore/threejs/Particles.js"></script>
+  <script src="bkcore/threejs/Loader.js"></script>
+  <script src="bkcore/Audio.js"></script>
+  <script src="bkcore/hexgl/HUD.js"></script>
+  <script src="bkcore/hexgl/RaceData.js"></script>
+  <script src="bkcore/hexgl/ShipControls.js"></script>
+  <script src="bkcore/hexgl/ShipEffects.js"></script>
+  <script src="bkcore/hexgl/CameraChase.js"></script>
+  <script src="bkcore/hexgl/Gameplay.js"></script>
+  <script src="bkcore/hexgl/tracks/Cityscape.js"></script>
+  <script src="bkcore/hexgl/HexGL.js"></script>
+  <script src="launch.js"></script>
+</body>
+</html>

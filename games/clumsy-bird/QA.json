@@ -1,0 +1,240 @@
+{
+  "url": "http://127.0.0.1:4390/games/clumsy-bird/",
+  "date": "2026-10-15T22:51:50.31Z",
+  "checks": [
+    {
+      "name": "Cena direta e segura por 3,5 s",
+      "initial": {
+        "play": true,
+        "over": false,
+        "start": false,
+        "steps": 0,
+        "muted": false,
+        "bird": {
+          "x": 60,
+          "y": 200,
+          "collided": false,
+          "gravity": 0.2
+        },
+        "hud": 1
+      },
+      "idle": {
+        "play": true,
+        "over": false,
+        "start": false,
+        "steps": 0,
+        "muted": false,
+        "bird": {
+          "x": 60,
+          "y": 200,
+          "collided": false,
+          "gravity": 0.2
+        },
+        "hud": 1
+      }
+    },
+    {
+      "name": "Primeiro Espaço curto inicia e faz bater asas",
+      "flight": {
+        "play": true,
+        "over": false,
+        "start": true,
+        "steps": 0,
+        "muted": false,
+        "bird": {
+          "x": 60,
+          "y": 130.2,
+          "collided": false,
+          "gravity": 1.2
+        },
+        "pipe": {
+          "x": 880,
+          "y": 477
+        },
+        "hud": 1
+      }
+    },
+    {
+      "name": "Queda colide com chão e mostra fim de jogo",
+      "state": {
+        "play": false,
+        "over": true,
+        "start": false,
+        "steps": 0,
+        "muted": false,
+        "hud": 0
+      }
+    },
+    {
+      "name": "Reinício pelo botão zera rodada e mantém só um HUD",
+      "state": {
+        "play": true,
+        "over": false,
+        "start": false,
+        "steps": 0,
+        "muted": false,
+        "bird": {
+          "x": 60,
+          "y": 200,
+          "collided": false,
+          "gravity": 0.2
+        },
+        "hud": 1
+      }
+    },
+    {
+      "name": "Som alterna sem iniciar o voo"
+    },
+    {
+      "name": "Primeiro clique curto inicia voo"
+    },
+    {
+      "name": "Voo por vão e pontuação com teclado real",
+      "state": {
+        "play": true,
+        "over": false,
+        "start": true,
+        "steps": 2,
+        "muted": false,
+        "bird": {
+          "x": 60,
+          "y": 348.9999999999999,
+          "collided": false,
+          "gravity": 4.000000000000001
+        },
+        "pipe": {
+          "x": 85,
+          "y": 456
+        },
+        "hud": 1
+      },
+      "flapCount": 8,
+      "collision": null
+    },
+    {
+      "name": "Colisão com cano encerra rodada"
+    },
+    {
+      "name": "Espaço reinicia sem voltar ao menu"
+    },
+    {
+      "name": "Interface inglesa com ?lang=en"
+    },
+    {
+      "name": "Toque real e canvas ajustado em 390×844",
+      "layout": {
+        "scroll": false,
+        "canvas": {
+          "x": 0,
+          "y": 292,
+          "width": 390,
+          "height": 260
+        }
+      },
+      "state": {
+        "play": true,
+        "over": false,
+        "start": true,
+        "steps": 0,
+        "muted": false,
+        "bird": {
+          "x": 60,
+          "y": 130.2,
+          "collided": false,
+          "gravity": 1.2
+        },
+        "pipe": {
+          "x": 880,
+          "y": 495
+        },
+        "hud": 1
+      }
+    }
+  ],
+  "console": [],
+  "pageErrors": [],
+  "requestsFailed": [],
+  "badResponses": [],
+  "externalRequests": [],
+  "passed": true,
+  "audioRegression": {
+    "date": "2026-10-15T22:55:35.692Z",
+    "checks": [
+      {
+        "name": "Voo iniciado com som silenciado",
+        "state": {
+          "start": true,
+          "muted": true,
+          "globalMuted": true,
+          "playing": true,
+          "activeSounds": [
+            {
+              "id": 1346112133102,
+              "loop": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "Reativar áudio no primeiro voo silenciado inicia música",
+        "state": {
+          "start": true,
+          "muted": false,
+          "globalMuted": false,
+          "playing": true,
+          "activeSounds": [
+            {
+              "id": 1346112133102,
+              "loop": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "Duas alternâncias adicionais mantêm um único loop e o mesmo sound ID",
+        "state": {
+          "start": true,
+          "muted": false,
+          "globalMuted": false,
+          "playing": true,
+          "activeSounds": [
+            {
+              "id": 1346112133102,
+              "loop": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "Fim da rodada interrompe música",
+        "state": {
+          "start": false,
+          "muted": false,
+          "globalMuted": false,
+          "playing": false,
+          "activeSounds": []
+        }
+      },
+      {
+        "name": "Nova rodada sem mute inicia um único loop",
+        "state": {
+          "start": true,
+          "muted": false,
+          "globalMuted": false,
+          "playing": true,
+          "activeSounds": [
+            {
+              "id": 1729069903336,
+              "loop": true
+            }
+          ]
+        }
+      }
+    ],
+    "console": [],
+    "pageErrors": [],
+    "badResponses": [],
+    "requestsFailed": [],
+    "passed": true
+  }
+}

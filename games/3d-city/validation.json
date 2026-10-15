@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-10-15T22:54:21.953Z",
+  "baseUrl": "http://127.0.0.1:4388/games/3d-city/",
+  "checks": [
+    "query ?lang=en applies English instructions",
+    "Pause stops worker RUN ticks",
+    "PT/EN toggle changes instructions",
+    "Residential selected in native toolbar; real canvas click creates zone and deducts 100 funds",
+    "Real wheel, orbit drag and ArrowRight events exercised without runtime errors",
+    "Restart restores original empty tile and 35000 funds; single native load without duplicate PLAYMAP"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "warnings": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "externalRequests": [],
+  "coldLoad": {
+    "readyMs": 2761.800000011921,
+    "ticks": 27,
+    "resources": 42,
+    "transferredBytes": 29586535
+  },
+  "initial": {
+    "ticks": 28,
+    "funds": 35000,
+    "population": 37920
+  },
+  "construction": {
+    "click": {
+      "tell": "MAPCLICK",
+      "x": 13,
+      "y": 32
+    },
+    "build": {
+      "tell": "BUILD",
+      "x": 13,
+      "y": 32
+    },
+    "after": {
+      "tile": 244,
+      "funds": 34900,
+      "ticks": 32
+    },
+    "beforeTile": 0
+  },
+  "restart": {
+    "funds": 35000,
+    "tile": 0,
+    "sent": [
+      "INIT",
+      "LOADGAME",
+      "MAKELOADGAME",
+      "TOOL"
+    ]
+  },
+  "passed": true
+}

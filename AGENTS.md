@@ -8,11 +8,13 @@ de instruções dele; não transfira regras de implementação do Desktop automa
 
 Este é o repositório público de plugins do SquadOS Studio: o catálogo curado de
 skills, os pacotes próprios mantidos pelo SquadOS e os templates open-source.
-Os templates estão em planejamento; não reutilize `gallery.json` para indexá-los.
+Websites e aplicações estão em planejamento; os jogos demonstrativos têm pacotes
+em `games/`. Não reutilize `gallery.json` para indexar templates ou jogos.
 Não é o código do aplicativo nem um espelho de todos os repositórios de skills de terceiros.
 
 - `gallery.json`: índice que o Studio consulta para mostrar a vitrine de agentes no RH.
 - `skills/<nome>/`: conteúdo das skills próprias; o pacote pode incluir arquivos de apoio.
+- `games/`: jogos estáticos independentes, índice local, documentação e licenças próprias.
 - `README.md`: funcionamento, formato, curadoria e exceções de distribuição.
 - `CONTRIBUTING.md`: orientação para contribuir com o índice e os pacotes.
 - `LICENSE`: licença deste repositório; não substitui as licenças de conteúdo externo.
