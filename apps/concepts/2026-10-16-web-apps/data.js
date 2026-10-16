@@ -1,8 +1,8 @@
 window.NumaData = {
   screens: [
-    {id:'crm',name:'CRM',section:'Comercial',title:'Um bom negócio começa com uma conversa.',description:'Seu pipeline, contatos e próximos passos em um só lugar.',icon:'briefcase',reference:'Attio',nav:['Visão geral','Pipeline','Contatos','Atividades','Relatórios']},
+    {id:'crm',name:'CRM',section:'Comercial',title:'Um bom negócio começa com uma conversa.',description:'Seu pipeline, contatos e próximos passos em um só lugar.',icon:'briefcase',reference:'Attio',nav:['Pipeline','Contatos','Empresas','Atividades','Relatórios']},
     {id:'gestao',name:'Sistema de gestão',section:'Gestão',title:'Uma visão clara de toda a operação.',description:'Finanças, pedidos e o pulso do seu negócio.',icon:'grid',reference:'Pennylane + ERPNext',nav:['Visão geral','Financeiro','Vendas','Estoque','Relatórios']},
-    {id:'pessoas',name:'RH e pessoas',section:'Pessoas',title:'Gente bem cuidada. Time que cresce.',description:'Pessoas, jornadas e momentos que importam.',icon:'users',reference:'Humaans',nav:['Visão geral','Pessoas','Ausências','Onboarding','Desenvolvimento']},
+    {id:'pessoas',name:'RH e pessoas',section:'Pessoas',title:'Gente bem cuidada. Time que cresce.',description:'Pessoas, jornadas e momentos que importam.',icon:'users',reference:'Humaans',nav:['Pessoas','Visão geral','Ausências','Onboarding','Desenvolvimento']},
     {id:'ia',name:'Aplicação de IA',section:'Assistente',title:'Espaço para pensar e criar.',description:'Da conversa ao primeiro rascunho, sem perder o contexto.',icon:'spark',reference:'Claude Artifacts',nav:['Assistente','Biblioteca','Documentos','Favoritos']},
     {id:'membros',name:'Área de membros',section:'Academy',title:'Seu próximo passo começa aqui.',description:'Aprenda algo novo. Coloque uma boa ideia em prática.',icon:'book',reference:'Kajabi',nav:['Meu aprendizado','Meus cursos','Explorar','Meus certificados']},
     {id:'comunidade',name:'Comunidade',section:'Comunidade',title:'Boas ideias crescem juntas.',description:'Um lugar para compartilhar o que você está construindo.',icon:'message',reference:'Circle',nav:['Feed','Espaços','Eventos','Membros','Conteúdos salvos']},

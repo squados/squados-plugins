@@ -2,12 +2,30 @@
   "purpose": "Spike visual, não pacote de template",
   "images": [
     {
-      "file": "assets/course-covers.png",
-      "width": 2172,
-      "height": 724,
-      "bytes": 2260399,
-      "sha256": "8944c62d20312af43b505d4bf7483534275a18d46955aae6acfd13d37b33d0f7",
-      "origin": "SquadOS — ImageGen nativo",
+      "file": "assets/lesson-design.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1772607,
+      "sha256": "f65dcbc2f48b41cfae2d2cd5c33bfd9a65e5a11ac504d8f71116afd82cd6fad9",
+      "origin": "SquadOS — ImageGen nativo; Bia, embaixadora virtual",
+      "license": "Apache-2.0"
+    },
+    {
+      "file": "assets/lesson-ai.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1838782,
+      "sha256": "7880dc8a1d522a38a0d0adc440772d9108b0205b8267d682484272da5b1ff018",
+      "origin": "SquadOS — ImageGen nativo; Bia, embaixadora virtual",
+      "license": "Apache-2.0"
+    },
+    {
+      "file": "assets/lesson-strategy.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1963198,
+      "sha256": "c7de25a7b3e1a876913cafca1302e1acd6cb059e1e8bb91f5582c6371a6faa14",
+      "origin": "SquadOS — ImageGen nativo; Bia, embaixadora virtual",
       "license": "Apache-2.0"
     },
     {
@@ -31,8 +49,10 @@
     }
   ],
   "provenance": {
-    "assets/course-covers.png": "ImageGen nativo nesta produção; art-prompts.json",
     "assets/avatars.png": "Arte própria existente em sites/website-digital-marketing/public/art/avatars.png; cinco rostos fictícios",
-    "assets/body.woff2": "Fonte local de sites/website-digital-marketing/public/fonts/body.woff2"
+    "assets/body.woff2": "Fonte local de sites/website-digital-marketing/public/fonts/body.woff2",
+    "assets/lesson-design.png": "ImageGen nativo nesta revisão; frame de aula com Bia, usando retrato próprio como referência de identidade; art-prompts.json",
+    "assets/lesson-ai.png": "ImageGen nativo nesta revisão; frame de aula com Bia, usando retrato próprio como referência de identidade; art-prompts.json",
+    "assets/lesson-strategy.png": "ImageGen nativo nesta revisão; frame de aula com Bia, usando retrato próprio como referência de identidade; art-prompts.json"
   }
 }

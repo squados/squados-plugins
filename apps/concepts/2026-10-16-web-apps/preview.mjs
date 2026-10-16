@@ -7,9 +7,9 @@ import { fileURLToPath } from 'node:url';
 const root = dirname(fileURLToPath(import.meta.url));
 const allowed = new Map([
   ['/index.html', 'text/html; charset=utf-8'], ['/style.css', 'text/css; charset=utf-8'],
-  ['/app.js', 'text/javascript; charset=utf-8'], ['/data.js', 'text/javascript; charset=utf-8'],
+  ['/directions.css', 'text/css; charset=utf-8'], ['/app.js', 'text/javascript; charset=utf-8'], ['/data.js', 'text/javascript; charset=utf-8'],
   ['/assets/body.woff2', 'font/woff2'], ['/assets/avatars.png', 'image/png'],
-  ['/assets/course-covers.png', 'image/png']
+  ['/assets/lesson-design.png', 'image/png'], ['/assets/lesson-ai.png', 'image/png'], ['/assets/lesson-strategy.png', 'image/png']
 ]);
 const server = createServer(async (request, response) => {
   if (!['GET', 'HEAD'].includes(request.method)) { response.writeHead(405); response.end(); return; }
@@ -22,5 +22,8 @@ const server = createServer(async (request, response) => {
     response.end(request.method === 'HEAD' ? undefined : content);
   } catch { response.writeHead(404); response.end(); }
 });
-server.listen(0, '127.0.0.1', () => console.log('Numa spike: http://127.0.0.1:' + server.address().port));
+const portArg = process.argv.find(arg => arg.startsWith('--port='));
+const port = portArg ? Number(portArg.slice(7)) : 0;
+if (!Number.isInteger(port) || port < 0 || port > 65535) throw new Error('Porta inválida');
+server.listen(port, '127.0.0.1', () => console.log('Numa spike: http://127.0.0.1:' + server.address().port));
 for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => server.close(() => process.exit(0)));
