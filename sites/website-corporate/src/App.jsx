@@ -136,10 +136,8 @@ function ContactForm() {
     const form = event.currentTarget;
     const data = new FormData(form);
     const nextErrors = {};
-    const email = String(data.get("email") || "").trim();
     if (!String(data.get("name") || "").trim()) nextErrors.name = "Informe seu nome.";
-    if (!form.elements.namedItem("email").validity.valid || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = "Informe um email corporativo válido.";
-    else if (/^(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|uol|bol|protonmail|proton)\./i.test(email.split("@")[1])) nextErrors.email = "Use o email da sua empresa.";
+    if (!form.elements.namedItem("email").validity.valid) nextErrors.email = "Informe um email válido.";
     if (!String(data.get("challenge") || "").trim()) nextErrors.challenge = "Conte brevemente o desafio da sua empresa.";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) form.elements.namedItem(Object.keys(nextErrors)[0])?.focus();else setSubmitted(true);
@@ -167,10 +165,10 @@ function ContactForm() {
       </div>
       </div>
     <div className="field">
-      <label htmlFor="email">Email corporativo <span>(obrigatório)</span>
+      <label htmlFor="email">Email <span>(obrigatório)</span>
       </label>
       <input id="email" name="email" type="email" autoComplete="email" required aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : "email-hint"} />
-      <p className="field-hint" id="email-hint">Use seu endereço de trabalho, como nome@empresa.com.br.</p>{errors.email && <p className="form-error" id="email-error" role="alert">{errors.email}</p>}</div>
+      <p className="field-hint" id="email-hint">Informe um endereço válido, como nome@exemplo.com.</p>{errors.email && <p className="form-error" id="email-error" role="alert">{errors.email}</p>}</div>
     <div className="field">
       <label htmlFor="challenge">Qual é o seu desafio? <span>(obrigatório)</span>
       </label>

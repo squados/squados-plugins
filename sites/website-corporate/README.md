@@ -26,8 +26,8 @@ subpasta. Não é necessário configurar variáveis de ambiente.
   e diagrama. Teclado: setas, Home e End dentro do seletor.
 - Casos demonstrativos filtráveis por setor, com detalhes expansíveis nativos.
 - Perguntas frequentes expansíveis por mouse, toque ou teclado.
-- Contato local: nome, email corporativo e desafio obrigatórios; empresa opcional.
-  Há validação de formato e dos principais domínios de email pessoal. A confirmação
+- Contato local: nome, email válido e desafio obrigatórios; empresa opcional.
+  O navegador valida a sintaxe do email. A confirmação
   recebe foco também ao enviar por Enter. Nenhum dado é enviado ou salvo em storage.
   Retornar ao formulário limpa os campos e leva o foco ao nome.
 
