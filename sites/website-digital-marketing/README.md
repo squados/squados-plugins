@@ -40,16 +40,16 @@ Substitua os assets abaixo por arquivos de mesmo nome ou atualize os caminhos em
 
 | Arquivo | Uso |
 | --- | --- |
-| `public/art/instructor.png` | Retrato fictício central no hero e na seção da instrutora |
+| `public/art/instructor.png` | Bia sorridente e confiante no hero, mini-aula e apresentação |
 | `public/art/avatars.png` | Faixa de cinco rostos fictícios na prova social |
 | `public/art/course.png` | Composição de materiais didáticos da formação |
 | `public/fonts/display.woff2` | Newsreader variável, assinatura e detalhe de um projeto |
 | `public/fonts/body.woff2` | DM Sans variável, títulos, corpo e controles |
 
-As fontes usam `font-display: swap` e fallback Arial/Georgia apropriado ao uso. Imagens e fontes são locais. As três artes nativas existentes foram preservadas; a nova composição usa HTML/CSS real. Consulte os avisos de assets/fontes fornecidos com o pacote; a licença Apache da base não substitui licenças de terceiros.
+As fontes usam `font-display: swap` e fallback Arial/Georgia apropriado ao uso. Imagens e fontes são locais. O retrato da Bia foi criado no ImageGen nativo com sua referência canônica da ibe.IA. Avatares e materiais didáticos foram preservados; a composição usa HTML/CSS real. Prompts e referência por SHA estão em art-prompts.json. O caderno e o painel da formação ocupam áreas distintas de uma grade responsiva, sem encobrir títulos ou módulos. Consulte os avisos de assets/fontes fornecidos com o pacote; a licença Apache da base não substitui licenças de terceiros.
 
 ## Limites da demonstração
 
-Trama, Nora Vasconcelos, retratos, avaliações, projetos, mentoria/comunidade, módulos, durações, planos e valores são demonstrativos. Não representam uma formação disponível, alunos, depoimentos ou resultados reais. As imagens foram geradas por IA. Não há matrícula, autenticação, backend, chat, compra, cobrança ou envio de e-mail.
+Bia é a embaixadora de IA da ibe.IA, apresentada aqui com retrato gerado por IA e sem biografia ou depoimento real. Trama, avatares de alunos, avaliações, projetos, mentoria/comunidade, módulos, durações, planos e valores são demonstrativos. Não representam uma formação disponível, alunos, depoimentos ou resultados reais. As imagens foram geradas por IA. Não há matrícula, autenticação, backend, chat, compra, cobrança ou envio de e-mail.
 
 Antes de usar para uma formação real, substitua o conteúdo fictício, faça revisão de oferta e direitos de imagem e conecte o formulário ao serviço escolhido, com os avisos e a política de privacidade correspondentes. A integração com o serviço deve ser testada separadamente da experiência local deste template.

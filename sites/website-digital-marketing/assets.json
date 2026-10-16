@@ -27,11 +27,12 @@
       "file": "public/art/instructor.png",
       "width": 1586,
       "height": 992,
-      "bytes": 1624111,
-      "sha256": "a937a62d4cce740b91b70d70001356c07e692ec06c5e3ab6e2293562223cc45a",
+      "bytes": 1715345,
+      "sha256": "993a0647d4202075b12374faa894587ba2d756492b510c78f44c96d4477da423",
       "origin": "SquadOS — ImageGen nativo",
       "license": "Apache-2.0",
-      "promptId": "trama-portrait"
+      "promptId": "trama-bia-portrait",
+      "identity": "Bia — embaixadora de IA da ibe.IA"
     }
   ],
   "fonts": [
@@ -55,5 +56,5 @@
     }
   ],
   "prompts": "art-prompts.json",
-  "note": "Três artes existentes de ImageGen nativo preservadas. Interfaces, composições de projetos e diagramas novos são HTML/CSS/SVG próprios. DM Sans nos títulos/corpo; Newsreader em assinatura e detalhe de projeto. Instrutora, rostos e avaliações fictícios."
+  "note": "Retrato da Bia gerado no ImageGen nativo a partir de sua referência canônica, com sorriso confiante. Avatares fictícios e materiais didáticos nativos preservados. Interfaces e projetos são HTML/CSS/SVG próprios. DM Sans nos títulos/corpo; Newsreader em assinatura e detalhe de projeto. Formação e avaliações demonstrativas."
 }
