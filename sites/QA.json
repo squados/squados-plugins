@@ -5,7 +5,7 @@
   "environment": {
     "system": "Windows / PowerShell 7",
     "browser": "Chromium: initial headless verification; revised Trama verified in background in-app browser",
-    "screenshots": "Originais 1440x1000/390x844; Trama revisada capturada em1425x990 (conteúdo de viewport1440x1000), JPEG do navegador convertido para PNG sem alterar a composição",
+    "screenshots": "Previews iniciais 1440x1000. Trama atual: captura real 1407x875 do viewport padrão 1422x884, JPEG do navegador convertido para PNG sem alterar a composição; celular em390x844.",
     "additionalTaskWidths": [
       360,
       768,
@@ -18,7 +18,7 @@
     {
       "id": "website-digital-marketing",
       "brand": "Trama",
-      "sourceRevision": "8d2b0c00902465ba1f462fe26d8fcd3cb060fec2",
+      "sourceRevision": "3650fb794e7c748245d3a1800eb740ec33c3de43",
       "independentBuild": true,
       "interactionsVerified": [
         "Hero sem cabeçalho, títulos sem serifa, retrato focal e prova social após CTAs",
@@ -75,24 +75,26 @@
         "hermesExecution": false,
         "url": "http://127.0.0.1:57313/website-digital-marketing/_adaptation/index.html",
         "browser": "Chromium in-app browser, background",
-        "runtimeErrors": []
+        "runtimeErrors": [],
+        "sourceRevision": "8d2b0c00902465ba1f462fe26d8fcd3cb060fec2",
+        "scopeNote": "Prova histórica da revisão dark. A correção visual da Bia preserva a lógica e não repetiu a adaptação."
       },
       "nativeReader": {
         "id": "website-digital-marketing",
         "files": 21,
         "entry": "src/App.jsx",
         "preview": {
-          "width": 1425,
-          "height": 990
+          "width": 1407,
+          "height": 875
         },
         "metadata": "creationTemplateSchema",
         "resolved": true
       },
       "preview": {
         "file": "preview.png",
-        "width": 1425,
-        "height": 990,
-        "sha256": "93d3de2000a76c913899833ea7df1ce28ec475755338b6875342c2fb67fdefc6"
+        "width": 1407,
+        "height": 875,
+        "sha256": "aee4b408272df998379e3a49f1ebe687497bb17482ab7a0ec74c3fafe638e3bc"
       },
       "resources": {
         "nativeRasterArt": 3,
@@ -105,6 +107,24 @@
         "verificationDirectory": ".claude/plans/trama-dark",
         "checksPassed": 34,
         "resolvedHarnessAttempts": 4
+      },
+      "visualCorrection": {
+        "request": "Desobstruir o painel da formação e substituir o retrato por Bia sorridente e confiante; restante aprovado.",
+        "sourceRevision": "3650fb794e7c748245d3a1800eb740ec33c3de43",
+        "verificationDirectory": ".claude/plans/trama-bia",
+        "browserChecks": 5,
+        "viewports": [
+          1422,
+          390
+        ],
+        "bookAndNoteCoverContent": false,
+        "horizontalOverflow": false,
+        "miniLessonOpened": true,
+        "escapeClosesAndRestoresFocus": true,
+        "runtimeErrors": 0,
+        "fullInteractionSuiteRepeated": false,
+        "independentReviewThisRevision": false,
+        "otherThreePackagesPreservedBySha256": true
       }
     },
     {
@@ -345,7 +365,16 @@
   "artwork": {
     "nativeImageGenAssets": 7,
     "orbe": "CSS/SVG próprios",
-    "fonts": "WOFF2 locais; OFL-1.1 integral"
+    "fonts": "WOFF2 locais; OFL-1.1 integral",
+    "latestRevision": {
+      "asset": "website-digital-marketing/public/art/instructor.png",
+      "subject": "Bia, embaixadora de IA da ibe.IA",
+      "mode": "native-imagegen",
+      "calls": 2,
+      "identityReference": "acervo canônico ibe.IA / avatar-bia/bia-v2/bia-3.png",
+      "expression": "sorridente e confiante",
+      "prompts": "website-digital-marketing/art-prompts.json"
+    }
   },
   "localEvidence": {
     "directory": ".claude/plans/landing-concepts/ (ignorado pelo Git)",
@@ -380,6 +409,17 @@
       "hero-desktop.jpg",
       "hero-mobile.jpg",
       "curriculum-desktop.jpg"
+    ],
+    "tramaBiaDirectory": ".claude/plans/trama-bia (ignorado pelo Git)",
+    "tramaBiaFiles": [
+      "browser-results.json",
+      "native-contract.json",
+      "preservation.json",
+      "http.json",
+      "hero-desktop.jpg",
+      "hero-mobile.jpg",
+      "overview-desktop.jpg",
+      "overview-mobile.jpg"
     ]
   },
   "boundaries": {
@@ -396,16 +436,17 @@
     "A adaptação foi feita numa cópia de cada pacote por edição de código, build e verificação HTTP; não foi uma execução pelo Hermes.",
     "Os recursos e fontes são locais. Os formulários não enviam nem persistem dados pessoais.",
     "A base original foi comparada por SHA-256 antes/depois; o schema e o leitor CreationTemplates usados são os reais do Desktop.",
-    "A revisão geral inicial está em reviewHistory. A revisão dark atual da Trama foi conferida pelo autor e verificada no navegador, sem nova revisão independente."
+    "A revisão geral inicial está em reviewHistory. A revisão dark atual da Trama foi conferida pelo autor e verificada no navegador, sem nova revisão independente.",
+    "Correção posterior: Bia com referência canônica no ImageGen nativo; caderno e bilhete em áreas reservadas, sem cobrir o painel. Build, conferência visual1422/390, mini-aula/Escape e contrato nativo repetidos. Demais fluxos e adaptação mantêm a evidência histórica, sem alegação de nova suite completa."
   ],
   "finalReview": {
     "approved": true,
-    "scope": "Revised Trama; other three packages preserved by SHA-256",
-    "method": "Implementing author self-review, item-by-item source checklist, browser UI and native reader",
+    "scope": "Bia e composição da Trama; outros três pacotes preservados por SHA-256",
+    "method": "Revisão do autor, build de produção, navegador desktop/mobile e leitor nativo",
     "independentReviewThisRevision": false,
-    "sourceRevision": "8d2b0c00902465ba1f462fe26d8fcd3cb060fec2",
+    "sourceRevision": "3650fb794e7c748245d3a1800eb740ec33c3de43",
     "openFindings": 0,
-    "priorIndependentReview": "reviewHistory[0]"
+    "priorFunctionalVerification": "8d2b0c00902465ba1f462fe26d8fcd3cb060fec2"
   },
   "reviewHistory": [
     {
@@ -437,6 +478,16 @@
         "scope": "Busca Orbe 1440/390, Enter/Space; resumo Trama 390/360, referência longa/texto normal, fechamento e Tab útil"
       },
       "afterFixIntegration": "Builds afetados atualizados no cache; subpastas, capturas e cópias adaptadas verificadas; leitor nativo 4/4 após isolar instalações"
+    },
+    {
+      "stage": "trama-dark-before-bia-correction",
+      "approved": true,
+      "scope": "Revised Trama; other three packages preserved by SHA-256",
+      "method": "Implementing author self-review, item-by-item source checklist, browser UI and native reader",
+      "independentReviewThisRevision": false,
+      "sourceRevision": "8d2b0c00902465ba1f462fe26d8fcd3cb060fec2",
+      "openFindings": 0,
+      "priorIndependentReview": "reviewHistory[0]"
     }
   ]
 }
