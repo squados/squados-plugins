@@ -1,7 +1,7 @@
 # Biblioteca de especialistas do SquadOS Studio
 
-Data: 16/10/2026. Estado: segunda curadoria, com decisões expressas incorporadas
-ao mapa e consolidações adicionais propostas. Pacotes e catálogos ainda não migrados.
+Data: 16/10/2026. Estado: desenho aprovado; execução autorizada pelo usuário com os nomes finais
+Flavio e Maslow. Migração em andamento, ainda sem publicação.
 
 ## Objetivo e destino
 
@@ -87,11 +87,11 @@ são conjuntos de instruções, não a quantidade de pacotes finais. Não se imp
 | `skills/krug` | Krug - Especialista em UX | Jornadas; clareza; fricção; usabilidade; checkout/conversão; engajamento e gamificação. |
 | `skills/warren` | Warren - CFO | Planejamento; caixa; contas; demonstrações; conciliação; variações; valuation; modelos; preços; investimentos; operações de pagamento. |
 | `skills/zuck` | Zuck - O Marketeiro | Estratégia de marketing; copy; conteúdo; redes; SEO; tráfego; mensuração e ideação de campanhas. |
-| `skills/sales` | Vendas e Negociação — nome próprio em discussão | Inteligência comercial e mercado; prospecção; qualificação; propostas; negociação; fechamento; treinamento de vendas; e-commerce; catálogo; relacionamento e sucesso do cliente. |
+| `skills/flavio` | Flavio - Vendas e Negociação | Inteligência comercial e mercado; prospecção; qualificação; propostas; negociação; fechamento; treinamento de vendas; e-commerce; catálogo; relacionamento e sucesso do cliente. |
 | `skills/gutenberg` | Gutenberg - Documentos e Dados | DOCX; PDF/OCR/formulários; XLSX/fórmulas; PPTX/templates; tratamento/análise de dados; redação e comunicação de trabalho. |
 | `skills/linus` | Linus - Engenheiro de Software | Código; arquitetura; GitHub; MCP; banco/Supabase; segurança; navegador/testes; APIs; infraestrutura/publicação; IA/modelos. |
 | `skills/drucker` | Drucker - Gestor de Operações | Projetos; produto; prioridades; qualidade; fornecedores/compras; estoque/logística; contratos e obrigações; panorama do dia. |
-| `skills/people` | Especialista em Pessoas | Recrutamento; seleção; integração; treinamento; feedback; desenvolvimento. |
+| `skills/maslow` | Maslow - Especialista em Pessoas | Recrutamento; seleção; integração; treinamento; feedback; desenvolvimento. |
 | `skills/darwin` | Darwin - Pesquisador | Fontes/citações; artigos; arXiv; Reddit; RSS; mapas; verificação de informação pública; escrita científica. |
 | `skills/figma` | Assistente Figma | Arquivos; criação e edição; componentes; bibliotecas; Plugin API; implementação a partir de Figma. |
 | `skills/notion` | Assistente Notion | Páginas; bases; captura de conhecimento; reuniões; pesquisa; planos e implementação. |
@@ -102,8 +102,8 @@ são conjuntos de instruções, não a quantidade de pacotes finais. Não se imp
 | `skills/telephony` | Assistente de Telefonia | Integração técnica existente de números, mensagens e chamadas; referências por provedor. |
 | `skills/handoff` | Handoff | Passagem verificável de contexto para continuar em nova sessão. |
 
-As junções adicionais desta revisão são escolhas propostas pelo agente, não nomes
-ou agrupamentos já aprovados individualmente pelo usuário. Em especial:
+A composição abaixo incorpora as correções e a autorização final do usuário.
+As fronteiras de responsabilidade são:
 
 - Zuck fica restrito a marketing. Vendas e Negociação é um especialista próprio;
   sua composição absorve as capacidades comerciais retiradas de Zuck. Contratos
@@ -130,18 +130,12 @@ Não reduzir além disso por simples contagem: juntar Handoff, arquivos técnico
 integrações a um “faz tudo” tornaria o nome menos útil. A separação por aplicação
 prevalece sobre minimizar o total de entradas.
 
-### Nomes ainda em discussão
+### Nomes finais aprovados
 
-Gutenberg, Linus, Drucker e Darwin foram aprovados pelo usuário. Carnegie foi
-rejeitado por dificuldade de pronúncia. Restam estas sugestões editoriais:
-
-| Responsabilidade | Sugestão |
-|---|---|
-| Especialista em Pessoas | Elton (recomendado), Mayo, Maslow, Simon ou Dale |
-| Vendas e Negociação | Zig (recomendado) ou Chris |
-
-O agrupamento técnico Áudio, Voz e Transcrição usa título descritivo; um nome
-próprio não é necessário para preservar a separação pedida nesta revisão.
+Flavio - Vendas e Negociação e Maslow - Especialista em Pessoas foram definidos
+pelo usuário, com autorização “prossiga”. Gutenberg, Linus, Drucker e Darwin já
+estavam aprovados. Os demais nomes seguem a tabela acima. Áudio, Voz e Transcrição
+conserva título descritivo, sem necessidade de mais uma decisão de nome.
 
 ## Fronteiras para tarefas que atravessam especialistas
 

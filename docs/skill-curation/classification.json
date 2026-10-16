@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "status": "Segunda curadoria: decisões registradas; composição adicional proposta; pacotes e catálogos ainda não alterados.",
+  "status": "Composição aprovada; migração autorizada e em execução; publicação remota não realizada.",
   "destination": "squados-plugins/skills",
   "method": "Revisão editorial estática do inventário anterior, com propagação de cortes e consolidação por responsabilidade. Não certifica execução.",
   "counts": {
@@ -339,9 +339,9 @@
       "package": "skills/zuck"
     },
     {
-      "id": "sales",
-      "title": "Vendas e Negociação",
-      "basis": "Especialista comercial solicitado pelo usuário; nome próprio ainda em discussão.",
+      "id": "flavio",
+      "title": "Flavio - Vendas e Negociação",
+      "basis": "Nome e especialista comercial aprovados pelo usuário.",
       "modes": [
         "Inteligência comercial e mercado",
         "Prospecção e qualificação",
@@ -352,7 +352,7 @@
         "Relacionamento e sucesso do cliente"
       ],
       "summary": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
-      "boundary": "Zuck cuida de marketing e campanhas; Drucker de contratos e obrigações; Warren dos cálculos financeiros. Zig é sugestão de nome, ainda não aprovada.",
+      "boundary": "Zuck cuida de marketing e campanhas; Drucker de contratos e obrigações; Warren dos cálculos financeiros. Nome definido pelo usuário: Flavio.",
       "source_ids": [
         "S402",
         "S407",
@@ -366,7 +366,7 @@
         "S107"
       ],
       "source_count": 10,
-      "package": "skills/sales"
+      "package": "skills/flavio"
     },
     {
       "id": "gutenberg",
@@ -490,9 +490,9 @@
       "package": "skills/drucker"
     },
     {
-      "id": "people",
-      "title": "Especialista em Pessoas",
-      "basis": "Junção adicional proposta nesta revisão.",
+      "id": "maslow",
+      "title": "Maslow - Especialista em Pessoas",
+      "basis": "Nome e composição aprovados pelo usuário.",
       "modes": [
         "Recrutamento e seleção",
         "Integração e capacitação",
@@ -507,7 +507,7 @@
         "S433"
       ],
       "source_count": 3,
-      "package": "skills/people"
+      "package": "skills/maslow"
     },
     {
       "id": "darwin",
@@ -1399,7 +1399,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Propostas comerciais",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -1533,7 +1533,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Sucesso do cliente",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -1734,7 +1734,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Concorrência em ecommerce",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -2442,7 +2442,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Pesquisa de mercado",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -2664,7 +2664,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Negociação",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -2931,7 +2931,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Desenvolvimento de pessoas",
       "disposition": "specialist",
-      "target": "people",
+      "target": "maslow",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Contratação, aprendizagem e desenvolvimento de pessoas.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -3132,7 +3132,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Catálogo de produtos",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -3198,7 +3198,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Prospecção",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -3352,7 +3352,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Recrutamento",
       "disposition": "specialist",
-      "target": "people",
+      "target": "maslow",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Contratação, aprendizagem e desenvolvimento de pessoas.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -3484,7 +3484,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Treinamento de vendas",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -4086,7 +4086,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Treinamentos",
       "disposition": "specialist",
-      "target": "people",
+      "target": "maslow",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Contratação, aprendizagem e desenvolvimento de pessoas.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -4196,7 +4196,7 @@
       "original_label": "Manter como skill",
       "original_destination": "Voz do cliente",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "Requer materiais/contexto do negócio; usar skill de arquivo/conector conforme o entregável. Manter o pacote de referências.",
@@ -8063,7 +8063,7 @@
       "original_label": "Adaptar antes de aproveitar",
       "original_destination": "Monitoramento no Studio",
       "disposition": "specialist",
-      "target": "sales",
+      "target": "flavio",
       "authority": "Consolidação proposta conforme orientação do usuário",
       "reason": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
       "adaptation": "O perfil do Studio desativa cronjob; ligar ao fluxo já existente de Rotinas, sem criar agendador paralelo.",

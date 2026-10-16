@@ -1,6 +1,6 @@
 # Segunda curadoria da biblioteca de skills
 
-Segunda curadoria: decisões registradas; composição adicional proposta; pacotes e catálogos ainda não alterados.
+Composição aprovada; migração autorizada e em execução; publicação remota não realizada.
 
 O destino é `squados-plugins/skills`. As fontes pessoais foram evidência da primeira avaliação; não são destino de instalação, exclusão ou publicação.
 
@@ -23,11 +23,11 @@ Cobertura: **408 conjuntos de instruções, 448 IDs originais, 20 especialistas 
 | `skills/krug` | Krug - Especialista em UX | Auditoria de jornadas; Clareza e fricção; Testes de usabilidade; Conversão e checkout; Engajamento e gamificação | 4 |
 | `skills/warren` | Warren - CFO | Planejamento e caixa; Contas a pagar e receber; Demonstrações e conciliação; Análise de variações; Valuation e modelos financeiros; Preços e investimentos; Operações de pagamento | 13 |
 | `skills/zuck` | Zuck - O Marketeiro | Estratégia de marketing; Conteúdo e copywriting; Redes sociais e carrosséis; SEO; Tráfego e mensuração; Ideação de campanhas | 8 |
-| `skills/sales` | Vendas e Negociação | Inteligência comercial e mercado; Prospecção e qualificação; Propostas comerciais; Negociação e fechamento; Treinamento de vendas; E-commerce e catálogo comercial; Relacionamento e sucesso do cliente | 10 |
+| `skills/flavio` | Flavio - Vendas e Negociação | Inteligência comercial e mercado; Prospecção e qualificação; Propostas comerciais; Negociação e fechamento; Treinamento de vendas; E-commerce e catálogo comercial; Relacionamento e sucesso do cliente | 10 |
 | `skills/gutenberg` | Gutenberg - Documentos e Dados | Word e documentos; PDF, OCR e formulários; Planilhas e fórmulas; PowerPoint e templates; Análise e tratamento de dados; Redação e comunicação de trabalho | 17 |
 | `skills/linus` | Linus - Engenheiro de Software | Código e arquitetura; GitHub e revisão; Desenvolvimento e operação MCP; Banco e Supabase; Segurança; Navegador e testes; APIs e diagnóstico; Infraestrutura e publicação; IA e modelos | 35 |
 | `skills/drucker` | Drucker - Gestor de Operações | Projetos e execução; Produto e prioridades; Qualidade; Compras e fornecedores; Estoque e logística; Contratos e obrigações; Panorama do dia | 8 |
-| `skills/people` | Especialista em Pessoas | Recrutamento e seleção; Integração e capacitação; Treinamento; Feedback e desenvolvimento | 3 |
+| `skills/maslow` | Maslow - Especialista em Pessoas | Recrutamento e seleção; Integração e capacitação; Treinamento; Feedback e desenvolvimento | 3 |
 | `skills/darwin` | Darwin - Pesquisador | Pesquisa com fontes e citações; Artigos e arXiv; Reddit e RSS; Pesquisa geográfica; Verificação de informação pública; Escrita científica | 7 |
 | `skills/figma` | Assistente Figma | Leitura de arquivos; Criação e edição; Componentes e bibliotecas; Plugin API; Implementação a partir do Figma | 8 |
 | `skills/notion` | Assistente Notion | Páginas e bases; Captura de conhecimento; Reuniões; Pesquisa; Planos e implementação | 8 |
@@ -149,7 +149,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S104 | claude-design | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S105 | codebase-inspection | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S106 | codex | Juntar | Remover da biblioteca: Fora da biblioteca | Aplicar o corte à mesma capacidade/família, inclusive a variantes não agrupadas pelo texto: Delegação de programação por CLI. |
-| S107 | competitor-news-monitor | Adaptar antes de aproveitar | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S107 | competitor-news-monitor | Adaptar antes de aproveitar | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
 | S108 | computer-use | Adaptar antes de aproveitar | Instruções da plataforma: prepare-computer/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S109 | design-md | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S110 | document-to-action-items | Promover a prompt | Promover a prompt: Extrair ações de documentos | Pedido reutilizável no catálogo de prompts. O especialista fornece o método ou mecanismo; o prompt só descreve a entrega. |
@@ -407,39 +407,39 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S399 | referencias-externas | Instruções da plataforma | Instruções da plataforma: Documentação do mantenedor — templates e referências | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S400 | business-writer | Manter como skill | Reunir em especialista: Gutenberg - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
 | S401 | cfo | Manter como skill | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
-| S402 | commercial-proposals | Manter como skill | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S402 | commercial-proposals | Manter como skill | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
 | S403 | content-creator | Manter como skill | Reunir em especialista: Zuck - O Marketeiro | Marketing, conteúdo, copy, redes sociais, SEO, tráfego e mensuração de campanhas. |
 | S404 | contract-assistant | Manter como skill | Reunir em especialista: Drucker - Gestor de Operações | Organiza o trabalho e os processos operacionais da empresa. |
 | S405 | copywriter | Manter como skill | Reunir em especialista: Zuck - O Marketeiro | Marketing, conteúdo, copy, redes sociais, SEO, tráfego e mensuração de campanhas. |
 | S406 | creative-designer | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
-| S407 | customer-success | Manter como skill | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S407 | customer-success | Manter como skill | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
 | S408 | data-specialist | Manter como skill | Reunir em especialista: Gutenberg - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
-| S409 | ecommerce-competitors | Manter como skill | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S409 | ecommerce-competitors | Manter como skill | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
 | S410 | ecommerce-conversion | Manter como skill | Reunir em especialista: Krug - Especialista em UX | Melhora como as pessoas entendem e usam um produto. |
 | S411 | editor-de-videos | Manter como skill | Reunir em especialista: Tarantino - Editor de Vídeos | Cria e edita vídeos e motion, preservando o motor do editor existente. |
 | S412 | executive-assistant | Promover a prompt | Promover a prompt: Preparar reuniões e prioridades | Pedido reutilizável no catálogo de prompts. O especialista fornece o método ou mecanismo; o prompt só descreve a entrega. |
 | S413 | financial-assistant | Manter como skill | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
 | S414 | inventory | Manter como skill | Reunir em especialista: Drucker - Gestor de Operações | Organiza o trabalho e os processos operacionais da empresa. |
 | S415 | logistics | Manter como skill | Reunir em especialista: Drucker - Gestor de Operações | Organiza o trabalho e os processos operacionais da empresa. |
-| S416 | market-researcher | Manter como skill | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S416 | market-researcher | Manter como skill | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
 | S417 | marketing-strategist | Manter como skill | Reunir em especialista: Zuck - O Marketeiro | Marketing, conteúdo, copy, redes sociais, SEO, tráfego e mensuração de campanhas. |
 | S418 | marketing-traffic | Manter como skill | Reunir em especialista: Zuck - O Marketeiro | Marketing, conteúdo, copy, redes sociais, SEO, tráfego e mensuração de campanhas. |
-| S419 | negotiation | Manter como skill | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
-| S420 | people-development | Manter como skill | Reunir em especialista: Especialista em Pessoas | Contratação, aprendizagem e desenvolvimento de pessoas. |
+| S419 | negotiation | Manter como skill | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S420 | people-development | Manter como skill | Reunir em especialista: Maslow - Especialista em Pessoas | Contratação, aprendizagem e desenvolvimento de pessoas. |
 | S421 | presentation-specialist | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S422 | procurement | Manter como skill | Reunir em especialista: Drucker - Gestor de Operações | Organiza o trabalho e os processos operacionais da empresa. |
-| S423 | product-catalog | Manter como skill | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S423 | product-catalog | Manter como skill | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
 | S424 | product-specialist | Manter como skill | Reunir em especialista: Drucker - Gestor de Operações | Organiza o trabalho e os processos operacionais da empresa. |
 | S425 | project-manager | Manter como skill | Reunir em especialista: Drucker - Gestor de Operações | Organiza o trabalho e os processos operacionais da empresa. |
-| S426 | prospecting | Manter como skill | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S426 | prospecting | Manter como skill | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
 | S427 | quality-specialist | Manter como skill | Reunir em especialista: Drucker - Gestor de Operações | Organiza o trabalho e os processos operacionais da empresa. |
-| S428 | recruitment | Manter como skill | Reunir em especialista: Especialista em Pessoas | Contratação, aprendizagem e desenvolvimento de pessoas. |
-| S429 | sales-coach | Manter como skill | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S428 | recruitment | Manter como skill | Reunir em especialista: Maslow - Especialista em Pessoas | Contratação, aprendizagem e desenvolvimento de pessoas. |
+| S429 | sales-coach | Manter como skill | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
 | S430 | seo-specialist | Juntar | Reunir em especialista: Zuck - O Marketeiro | Marketing, conteúdo, copy, redes sociais, SEO, tráfego e mensuração de campanhas. |
 | S431 | skill-manager | Instruções da plataforma | Instruções da plataforma: skill-manager/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S432 | spreadsheet-specialist | Juntar | Reunir em especialista: Gutenberg - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
-| S433 | training-specialist | Manter como skill | Reunir em especialista: Especialista em Pessoas | Contratação, aprendizagem e desenvolvimento de pessoas. |
-| S434 | voice-of-customer | Manter como skill | Reunir em especialista: Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
+| S433 | training-specialist | Manter como skill | Reunir em especialista: Maslow - Especialista em Pessoas | Contratação, aprendizagem e desenvolvimento de pessoas. |
+| S434 | voice-of-customer | Manter como skill | Reunir em especialista: Flavio - Vendas e Negociação | Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento. |
 | S435 | brainstorming | Instruções da plataforma | Instruções da plataforma: planning/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S436 | dispatching-parallel-agents | Instruções da plataforma | Instruções da plataforma: Orientação geral do Studio — integração existente | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S437 | executing-plans | Instruções da plataforma | Instruções da plataforma: planning/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
