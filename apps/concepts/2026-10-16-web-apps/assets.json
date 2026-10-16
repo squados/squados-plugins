@@ -1,0 +1,38 @@
+{
+  "purpose": "Spike visual, não pacote de template",
+  "images": [
+    {
+      "file": "assets/course-covers.png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2260399,
+      "sha256": "8944c62d20312af43b505d4bf7483534275a18d46955aae6acfd13d37b33d0f7",
+      "origin": "SquadOS — ImageGen nativo",
+      "license": "Apache-2.0"
+    },
+    {
+      "file": "assets/avatars.png",
+      "width": 2079,
+      "height": 756,
+      "bytes": 1882879,
+      "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52",
+      "origin": "SquadOS — ImageGen nativo",
+      "license": "Apache-2.0"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "assets/body.woff2",
+      "family": "DM Sans",
+      "bytes": 36932,
+      "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543",
+      "license": "OFL-1.1",
+      "notice": "assets/DM-Sans-OFL.txt"
+    }
+  ],
+  "provenance": {
+    "assets/course-covers.png": "ImageGen nativo nesta produção; art-prompts.json",
+    "assets/avatars.png": "Arte própria existente em sites/website-digital-marketing/public/art/avatars.png; cinco rostos fictícios",
+    "assets/body.woff2": "Fonte local de sites/website-digital-marketing/public/fonts/body.woff2"
+  }
+}

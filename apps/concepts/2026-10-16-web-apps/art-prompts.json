@@ -1,0 +1,11 @@
+{
+  "mode": "native-imagegen",
+  "date": "2026-10-16",
+  "assets": [
+    {
+      "id": "numa-course-covers",
+      "target": "assets/course-covers.png",
+      "prompt": "Create an original high-end editorial photographic artwork for three course cover thumbnails. A panoramic 3:1 horizontal triptych with EXACTLY THREE EQUAL SQUARE PANELS side by side, edge to edge, no gutter. Left square: a beautifully composed cobalt-blue and soft lavender creative design still life with physical paper arches, a small chrome sphere and folded ivory paper on a blue table, striking warm directional studio light, refined tactile surfaces. Middle square: an elegant warm apricot and terracotta still life, translucent glass geometric prisms and a peach sphere on sculptural steps, visually suggesting creative intelligence and new ideas, soft evening studio light. Right square: sage-green and soft olive architectural still life of a small abstract model, crisp wooden blocks and a pale translucent arch, thoughtful balanced composition suggesting business strategy, sunlit studio lighting. All three should feel like a cohesive creative academy art direction, real photographed material texture, sculptural and elegant, minimal objects with wonderful shadows, beautiful harmonious colors, not glossy stock art. Exactly three distinct full square scenes, not tiny objects floating in empty space. No people, no words, no typography, no icons, no logos, no watermark. The entire artwork is ONLY the three photographs; real course titles will be separate HTML. Wide landscape 3:1."
+    }
+  ]
+}
