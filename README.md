@@ -8,6 +8,18 @@ planejamento; os três [jogos demonstrativos](games/README.md) têm pacotes pró
 em `games/`, separados do índice de skills. As skills de outros repositórios
 ficam onde estão e são baixadas só na hora da contratação.
 
+## Prompts de trabalho / Work prompts
+
+O [acervo de prompts](prompts/README.md) contém pedidos enxutos em português e
+inglês para a galeria da entrada Trabalhar. Cada pedido consulta o contexto
+existente, entrevista sobre as lacunas e define a entrega. Selecionar apenas
+cola o texto na barra; o envio continua sendo uma ação da pessoa.
+
+The [prompt collection](prompts/README.md#english) contains concise Portuguese
+and English requests for the Work gallery. Each request consults existing
+context, interviews the person about gaps, and defines the deliverable. Selecting
+one only pastes its text into the message bar; the person still submits it.
+
 ## Skills próprias de trabalho
 
 Os [33 especialistas por departamento](docs/skills-de-trabalho-pacotes.md) e a
