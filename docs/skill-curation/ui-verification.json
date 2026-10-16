@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "environment": "jsdom; sem abrir navegador ou aplicativo",
+  "initial_rows": 408,
+  "expert_cards": 12,
+  "final_filters": {
+    "remove": 173,
+    "specialist": 179,
+    "prompt": 14,
+    "internal": 42
+  },
+  "expert_filters": "12 passaram",
+  "previous_category_filters": {
+    "keep": 163,
+    "prompt": 15,
+    "merge": 98,
+    "internal": 39,
+    "adapt": 40,
+    "low": 14,
+    "incompatible": 39
+  },
+  "id_and_alias_search": "passou; com e sem prefixo S",
+  "cursor_results": 26,
+  "cursor_retained": 0,
+  "notion_results": 8,
+  "mcp_unified_results": 3,
+  "compound_filters": "passaram",
+  "empty_state": "passou",
+  "clear_filters": "passou",
+  "script_errors": [],
+  "visual_browser_render": "não realizado; revisão documental"
+}
