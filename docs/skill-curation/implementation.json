@@ -84,7 +84,17 @@
   ],
   "integration": {
     "branch": "main",
-    "commits": "local; inspect Git history",
-    "remote_publication": false
+    "plugins_implementation": "b456f3d",
+    "desktop_integration": "a7f0a316",
+    "desktop_native_trust": "25671db1",
+    "remote_publication": false,
+    "post_integration": {
+      "head_packages": 20,
+      "head_files": 566,
+      "head_tree_digests_match": true,
+      "desktop_head_mirror_matches": true,
+      "installed_scaffold_templates": 3,
+      "focused_content_tests_passed": 5
+    }
   }
 }

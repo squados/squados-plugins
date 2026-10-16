@@ -38,3 +38,11 @@ apresentados como sucesso autenticado de todos os modos.
 O conteúdo está implementado localmente. A URL remota, caches anteriores e
 instalações pessoais não foram alterados. Push/publicação são etapas separadas.
 Detalhes estruturados em [implementation.json](implementation.json).
+
+## Integração em main
+
+Biblioteca em b456f3d; integração Desktop em a7f0a316; registro restrito de confiança
+nativa em 25671db1. Conferência após commits leu o arquivo Git HEAD: vinte pacotes,
+566 arquivos, todos os hashes editoriais correspondentes e espelho Desktop idêntico.
+O scaffold MCP instalado localizou seus três templates sem usar o checkout de origem.
+Cinco testes focados de conteúdo passaram após integração. Nenhum push foi realizado.
