@@ -1,0 +1,22 @@
+{
+  "incorporated": [
+    {
+      "id": "S280",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-shop.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S280",
+      "name": "shop",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "11cebb959f2f4d1edbb145178194d6cc33aeb3389678de08697d5da8ec6d6358"
+    }
+  ]
+}

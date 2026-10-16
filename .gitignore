@@ -1,4 +1,5 @@
 node_modules/
+.scratch/
 .venv/
 __pycache__/
 *.pyc

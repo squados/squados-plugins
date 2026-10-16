@@ -2,7 +2,7 @@
 
 ## Português
 
-O [catálogo](catalog.json) reúne 136 pedidos iniciais em 14 categorias, com título,
+O [catálogo](catalog.json) reúne 147 pedidos (136 iniciais e 11 da curadoria) em 14 categorias, com título,
 descrição e texto completo em português e inglês. São prompts editáveis: o Studio
 os apresenta na home de nova conversa, na entrada **Trabalhar**. Escolher um card
 cola o texto na barra de mensagem, preservando o rascunho e sem enviar o pedido.
@@ -35,6 +35,8 @@ No checkout do Desktop, use `npm run prompts:sync` para sincronizar a cópia
 incluída. A validação e os testes pertencem ao consumidor; este repositório não
 tem um runner de testes na raiz.
 
+Os 14 objetivos promovidos na curadoria de 16/10/2026 têm [mapa explícito](../docs/skill-curation/migration-map.json): três reutilizam pedidos existentes e 11 são redações próprias MIT do SquadOS. `sourcePath` preserva o nome histórico para rastreio; não é caminho de instalação de uma skill. Handoff permanece skill.
+
 ### Origem
 
 Adaptações editoriais próprias baseadas nos objetivos e processos do
@@ -47,7 +49,7 @@ copyright 2026 Claude Office Skills Contributors.
 
 ## English
 
-The [catalog](catalog.json) contains 136 initial requests in 14 categories, with
+The [catalog](catalog.json) contains 147 requests (136 initial and 11 from curation) in 14 categories, with
 titles, descriptions, and full prompt text in Portuguese and English. These are
 editable prompts: Studio presents them on the new conversation home under
 **Work**. Selecting a card pastes its text into the message bar, preserving the
@@ -80,6 +82,8 @@ shipped copy. Editing this checkout does not publish the catalog.
 From the Desktop checkout, run `npm run prompts:sync` to synchronize the shipped
 copy. Validation and tests belong to the consuming application; this repository
 has no root test runner.
+
+The 14 promoted goals have an [explicit map](../docs/skill-curation/migration-map.json): three reuse existing requests and 11 are original SquadOS MIT editorial work. `sourcePath` preserves the historical name for traceability, not an installable path. Handoff remains a skill.
 
 ### Attribution
 

@@ -1,0 +1,118 @@
+{
+  "incorporated": [
+    {
+      "id": "S098",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-arxiv.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S118",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-arxiv.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S127",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-arxiv.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S268",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-arxiv.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S271",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-arxiv.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S269",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-arxiv.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S279",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-arxiv.txt"
+      ],
+      "changes": "Guia e referências MIT adaptados; templates de conferências com componentes de terceiros e fontes obrigatórios ausentes não redistribuídos. Template article.tex autoral fornecido; formato oficial é preparado no projeto conforme licença."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S098",
+      "name": "arxiv",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "9b41877bcb64166dc2355a43aedd3198c3e5214af67f09e1d1b717a989d92f72"
+    },
+    {
+      "id": "S118",
+      "name": "grounded-citations",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "19fba3a4ceedf768af6851e094b268a66b62af750d4d0689c5d62d5d50c032b6"
+    },
+    {
+      "id": "S127",
+      "name": "maps",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "775ef9f79be9cd147bc81e0c4a4ef952230a04736a6082f44dbac78554ef89ab"
+    },
+    {
+      "id": "S268",
+      "name": "reddit-reading",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "bda3f43049f2e688d483c575dffe33dabd8e0287563e3e6950efe1ed306d4765"
+    },
+    {
+      "id": "S269",
+      "name": "research-paper-writing",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "ad6b059c628f8dbac24a4603e62185927352f8b42fe183ff50265976165469b1"
+    },
+    {
+      "id": "S271",
+      "name": "rss-feeds",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "bdd3a7c1005cb7f1a5266b31fb464fc50d6c7b3389ad888a1e4341467be82ff8"
+    },
+    {
+      "id": "S279",
+      "name": "sherlock",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "2438794f4699d7f3758b8c82dfd2f8509196f7968aeb670cb0eecedf656564f1"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "incorporated": [
+    {
+      "source": "squados/squados-plugins/skills/commercial-proposals",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/customer-success",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/ecommerce-competitors",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/market-researcher",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/negotiation",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/product-catalog",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/prospecting",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/sales-coach",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/voice-of-customer",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S402",
+      "name": "commercial-proposals",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "c325530a832b1471d2a2c40089dad455514f159bf0efee8f6cb0ff7580187d8d"
+    },
+    {
+      "id": "S407",
+      "name": "customer-success",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "b5d0efdd4bfeac4d268734a3e9502ca4f3f8c6aad04f6e94f6f6beca06196a3c"
+    },
+    {
+      "id": "S409",
+      "name": "ecommerce-competitors",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "5b014adb39e488e1f4ac4854381cda13ab14cf9f99b36401cf7ded313f60e77b"
+    },
+    {
+      "id": "S416",
+      "name": "market-researcher",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "e9ed1ee25809c5093d9a209c928325bd34a390d0f707c904c745ed95b94e1f6a"
+    },
+    {
+      "id": "S419",
+      "name": "negotiation",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "7bcbf468cd356b277b9d923b16b232b379f2df53b53a7f33d67a2cf4f92645f4"
+    },
+    {
+      "id": "S423",
+      "name": "product-catalog",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "70b74b62a57cc720b7e9433f4d77d3aa0c9d1539266bca7a8a482cf8fd8f6e31"
+    },
+    {
+      "id": "S426",
+      "name": "prospecting",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "ad285cceb1daa21bc6c42b779c3abd1ee90b95716edcc5d8b88f016220a610fc"
+    },
+    {
+      "id": "S429",
+      "name": "sales-coach",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "f71a1de5fb71a6fab9b8a72da2e72eba8ae10c50297baa4f8f0e8974483db83a"
+    },
+    {
+      "id": "S434",
+      "name": "voice-of-customer",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "dc84b6b3a6bcc726167ed8494368bfd960e95a39ee7a52e7ce3a22c460d62c04"
+    },
+    {
+      "id": "S107",
+      "name": "competitor-news-monitor",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "d8fd2a3a26ff45455709595132a092825a48f6c9dd3bcc98b06c1a43eaa7fcca"
+    }
+  ]
+}

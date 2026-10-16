@@ -1,0 +1,517 @@
+{
+  "source": "ui-ux-pro-max/typography.csv",
+  "count": 73,
+  "pairings": [
+    {
+      "name": "Classic Elegant",
+      "heading": "Playfair Display",
+      "body": "Inter",
+      "mood": "elegant, luxury, sophisticated, timeless, premium, editorial",
+      "bestFor": "Luxury brands, fashion, spa, beauty, editorial, magazines, high-end e-commerce"
+    },
+    {
+      "name": "Modern Professional",
+      "heading": "Poppins",
+      "body": "Open Sans",
+      "mood": "modern, professional, clean, corporate, friendly, approachable",
+      "bestFor": "SaaS, corporate sites, business apps, startups, professional services"
+    },
+    {
+      "name": "Tech Startup",
+      "heading": "Space Grotesk",
+      "body": "DM Sans",
+      "mood": "tech, startup, modern, innovative, bold, futuristic",
+      "bestFor": "Tech companies, startups, SaaS, developer tools, AI products"
+    },
+    {
+      "name": "Editorial Classic",
+      "heading": "Cormorant Garamond",
+      "body": "Libre Baskerville",
+      "mood": "editorial, classic, literary, traditional, refined, bookish",
+      "bestFor": "Publishing, blogs, news sites, literary magazines, book covers"
+    },
+    {
+      "name": "Minimal Swiss",
+      "heading": "Inter",
+      "body": "Inter",
+      "mood": "minimal, clean, swiss, functional, neutral, professional",
+      "bestFor": "Dashboards, admin panels, documentation, enterprise apps, design systems"
+    },
+    {
+      "name": "Playful Creative",
+      "heading": "Fredoka",
+      "body": "Nunito",
+      "mood": "playful, friendly, fun, creative, warm, approachable",
+      "bestFor": "Children's apps, educational, gaming, creative tools, entertainment"
+    },
+    {
+      "name": "Bold Statement",
+      "heading": "Bebas Neue",
+      "body": "Source Sans 3",
+      "mood": "bold, impactful, strong, dramatic, modern, headlines",
+      "bestFor": "Marketing sites, portfolios, agencies, event pages, sports"
+    },
+    {
+      "name": "Wellness Calm",
+      "heading": "Lora",
+      "body": "Raleway",
+      "mood": "calm, wellness, health, relaxing, natural, organic",
+      "bestFor": "Health apps, wellness, spa, meditation, yoga, organic brands"
+    },
+    {
+      "name": "Developer Mono",
+      "heading": "JetBrains Mono",
+      "body": "IBM Plex Sans",
+      "mood": "code, developer, technical, precise, functional, hacker",
+      "bestFor": "Developer tools, documentation, code editors, tech blogs, CLI apps"
+    },
+    {
+      "name": "Retro Vintage",
+      "heading": "Abril Fatface",
+      "body": "Merriweather",
+      "mood": "retro, vintage, nostalgic, dramatic, decorative, bold",
+      "bestFor": "Vintage brands, breweries, restaurants, creative portfolios, posters"
+    },
+    {
+      "name": "Geometric Modern",
+      "heading": "Outfit",
+      "body": "Work Sans",
+      "mood": "geometric, modern, clean, balanced, contemporary, versatile",
+      "bestFor": "General purpose, portfolios, agencies, modern brands, landing pages"
+    },
+    {
+      "name": "Luxury Serif",
+      "heading": "Cormorant",
+      "body": "Montserrat",
+      "mood": "luxury, high-end, fashion, elegant, refined, premium",
+      "bestFor": "Fashion brands, luxury e-commerce, jewelry, high-end services"
+    },
+    {
+      "name": "Friendly SaaS",
+      "heading": "Plus Jakarta Sans",
+      "body": "Plus Jakarta Sans",
+      "mood": "friendly, modern, saas, clean, approachable, professional",
+      "bestFor": "SaaS products, web apps, dashboards, B2B, productivity tools"
+    },
+    {
+      "name": "News Editorial",
+      "heading": "Newsreader",
+      "body": "Roboto",
+      "mood": "news, editorial, journalism, trustworthy, readable, informative",
+      "bestFor": "News sites, blogs, magazines, journalism, content-heavy sites"
+    },
+    {
+      "name": "Handwritten Charm",
+      "heading": "Caveat",
+      "body": "Quicksand",
+      "mood": "handwritten, personal, friendly, casual, warm, charming",
+      "bestFor": "Personal blogs, invitations, creative portfolios, lifestyle brands"
+    },
+    {
+      "name": "Corporate Trust",
+      "heading": "Lexend",
+      "body": "Source Sans 3",
+      "mood": "corporate, trustworthy, accessible, readable, professional, clean",
+      "bestFor": "Enterprise, government, healthcare, finance, accessibility-focused"
+    },
+    {
+      "name": "Brutalist Raw",
+      "heading": "Space Mono",
+      "body": "Space Mono",
+      "mood": "brutalist, raw, technical, monospace, minimal, stark",
+      "bestFor": "Brutalist designs, developer portfolios, experimental, tech art"
+    },
+    {
+      "name": "Fashion Forward",
+      "heading": "Syne",
+      "body": "Manrope",
+      "mood": "fashion, avant-garde, creative, bold, artistic, edgy",
+      "bestFor": "Fashion brands, creative agencies, art galleries, design studios"
+    },
+    {
+      "name": "Soft Rounded",
+      "heading": "Varela Round",
+      "body": "Nunito Sans",
+      "mood": "soft, rounded, friendly, approachable, warm, gentle",
+      "bestFor": "Children's products, pet apps, friendly brands, wellness, soft UI"
+    },
+    {
+      "name": "Premium Sans",
+      "heading": "Satoshi",
+      "body": "General Sans",
+      "mood": "premium, modern, clean, sophisticated, versatile, balanced",
+      "bestFor": "Premium brands, modern agencies, SaaS, portfolios, startups"
+    },
+    {
+      "name": "Vietnamese Friendly",
+      "heading": "Be Vietnam Pro",
+      "body": "Noto Sans",
+      "mood": "vietnamese, international, readable, clean, multilingual, accessible",
+      "bestFor": "Vietnamese sites, multilingual apps, international products"
+    },
+    {
+      "name": "Japanese Elegant",
+      "heading": "Noto Serif JP",
+      "body": "Noto Sans JP",
+      "mood": "japanese, elegant, traditional, modern, multilingual, readable",
+      "bestFor": "Japanese sites, Japanese restaurants, cultural sites, anime/manga"
+    },
+    {
+      "name": "Korean Modern",
+      "heading": "Noto Sans KR",
+      "body": "Noto Sans KR",
+      "mood": "korean, modern, clean, professional, multilingual, readable",
+      "bestFor": "Korean sites, K-beauty, K-pop, Korean businesses, multilingual"
+    },
+    {
+      "name": "Chinese Traditional",
+      "heading": "Noto Serif TC",
+      "body": "Noto Sans TC",
+      "mood": "chinese, traditional, elegant, cultural, multilingual, readable",
+      "bestFor": "Traditional Chinese sites, cultural content, Taiwan/Hong Kong markets"
+    },
+    {
+      "name": "Chinese Simplified",
+      "heading": "Noto Sans SC",
+      "body": "Noto Sans SC",
+      "mood": "chinese, simplified, modern, professional, multilingual, readable",
+      "bestFor": "Simplified Chinese sites, mainland China market, business apps"
+    },
+    {
+      "name": "Arabic Elegant",
+      "heading": "Noto Naskh Arabic",
+      "body": "Noto Sans Arabic",
+      "mood": "arabic, elegant, traditional, cultural, RTL, readable",
+      "bestFor": "Arabic sites, Middle East market, Islamic content, bilingual sites"
+    },
+    {
+      "name": "Thai Modern",
+      "heading": "Noto Sans Thai",
+      "body": "Noto Sans Thai",
+      "mood": "thai, modern, readable, clean, multilingual, accessible",
+      "bestFor": "Thai sites, Southeast Asia, tourism, Thai restaurants"
+    },
+    {
+      "name": "Hebrew Modern",
+      "heading": "Noto Sans Hebrew",
+      "body": "Noto Sans Hebrew",
+      "mood": "hebrew, modern, RTL, clean, professional, readable",
+      "bestFor": "Hebrew sites, Israeli market, Jewish content, bilingual sites"
+    },
+    {
+      "name": "Legal Professional",
+      "heading": "EB Garamond",
+      "body": "Lato",
+      "mood": "legal, professional, traditional, trustworthy, formal, authoritative",
+      "bestFor": "Law firms, legal services, contracts, formal documents, government"
+    },
+    {
+      "name": "Medical Clean",
+      "heading": "Figtree",
+      "body": "Noto Sans",
+      "mood": "medical, clean, accessible, professional, healthcare, trustworthy",
+      "bestFor": "Healthcare, medical clinics, pharma, health apps, accessibility"
+    },
+    {
+      "name": "Financial Trust",
+      "heading": "IBM Plex Sans",
+      "body": "IBM Plex Sans",
+      "mood": "financial, trustworthy, professional, corporate, banking, serious",
+      "bestFor": "Banks, finance, insurance, investment, fintech, enterprise"
+    },
+    {
+      "name": "Real Estate Luxury",
+      "heading": "Cinzel",
+      "body": "Josefin Sans",
+      "mood": "real estate, luxury, elegant, sophisticated, property, premium",
+      "bestFor": "Real estate, luxury properties, architecture, interior design"
+    },
+    {
+      "name": "Restaurant Menu",
+      "heading": "Playfair Display SC",
+      "body": "Karla",
+      "mood": "restaurant, menu, culinary, elegant, foodie, hospitality",
+      "bestFor": "Restaurants, cafes, food blogs, culinary, hospitality"
+    },
+    {
+      "name": "Art Deco",
+      "heading": "Poiret One",
+      "body": "Didact Gothic",
+      "mood": "art deco, vintage, 1920s, elegant, decorative, gatsby",
+      "bestFor": "Vintage events, art deco themes, luxury hotels, classic cocktails"
+    },
+    {
+      "name": "Magazine Style",
+      "heading": "Libre Bodoni",
+      "body": "Public Sans",
+      "mood": "magazine, editorial, publishing, refined, journalism, print",
+      "bestFor": "Magazines, online publications, editorial content, journalism"
+    },
+    {
+      "name": "Crypto/Web3",
+      "heading": "Orbitron",
+      "body": "Exo 2",
+      "mood": "crypto, web3, futuristic, tech, blockchain, digital",
+      "bestFor": "Crypto platforms, NFT, blockchain, web3, futuristic tech"
+    },
+    {
+      "name": "Gaming Bold",
+      "heading": "Russo One",
+      "body": "Chakra Petch",
+      "mood": "gaming, bold, action, esports, competitive, energetic",
+      "bestFor": "Gaming, esports, action games, competitive sports, entertainment"
+    },
+    {
+      "name": "Indie/Craft",
+      "heading": "Amatic SC",
+      "body": "Cabin",
+      "mood": "indie, craft, handmade, artisan, organic, creative",
+      "bestFor": "Craft brands, indie products, artisan, handmade, organic products"
+    },
+    {
+      "name": "Startup Bold",
+      "heading": "Clash Display",
+      "body": "Satoshi",
+      "mood": "startup, bold, modern, innovative, confident, dynamic",
+      "bestFor": "Startups, pitch decks, product launches, bold brands"
+    },
+    {
+      "name": "E-commerce Clean",
+      "heading": "Rubik",
+      "body": "Nunito Sans",
+      "mood": "ecommerce, clean, shopping, product, retail, conversion",
+      "bestFor": "E-commerce, online stores, product pages, retail, shopping"
+    },
+    {
+      "name": "Academic/Research",
+      "heading": "Crimson Pro",
+      "body": "Atkinson Hyperlegible",
+      "mood": "academic, research, scholarly, accessible, readable, educational",
+      "bestFor": "Universities, research papers, academic journals, educational"
+    },
+    {
+      "name": "Dashboard Data",
+      "heading": "Fira Code",
+      "body": "Fira Sans",
+      "mood": "dashboard, data, analytics, code, technical, precise",
+      "bestFor": "Dashboards, analytics, data visualization, admin panels"
+    },
+    {
+      "name": "Music/Entertainment",
+      "heading": "Righteous",
+      "body": "Poppins",
+      "mood": "music, entertainment, fun, energetic, bold, performance",
+      "bestFor": "Music platforms, entertainment, events, festivals, performers"
+    },
+    {
+      "name": "Minimalist Portfolio",
+      "heading": "Archivo",
+      "body": "Space Grotesk",
+      "mood": "minimal, portfolio, designer, creative, clean, artistic",
+      "bestFor": "Design portfolios, creative professionals, minimalist brands"
+    },
+    {
+      "name": "Kids/Education",
+      "heading": "Baloo 2",
+      "body": "Comic Neue",
+      "mood": "kids, education, playful, friendly, colorful, learning",
+      "bestFor": "Children's apps, educational games, kid-friendly content"
+    },
+    {
+      "name": "Wedding/Romance",
+      "heading": "Great Vibes",
+      "body": "Cormorant Infant",
+      "mood": "wedding, romance, elegant, script, invitation, feminine",
+      "bestFor": "Wedding sites, invitations, romantic brands, bridal"
+    },
+    {
+      "name": "Science/Tech",
+      "heading": "Exo",
+      "body": "Roboto Mono",
+      "mood": "science, technology, research, data, futuristic, precise",
+      "bestFor": "Science, research, tech documentation, data-heavy sites"
+    },
+    {
+      "name": "Accessibility First",
+      "heading": "Atkinson Hyperlegible",
+      "body": "Atkinson Hyperlegible",
+      "mood": "accessible, readable, inclusive, WCAG, dyslexia-friendly, clear",
+      "bestFor": "Accessibility-critical sites, government, healthcare, inclusive design"
+    },
+    {
+      "name": "Sports/Fitness",
+      "heading": "Barlow Condensed",
+      "body": "Barlow",
+      "mood": "sports, fitness, athletic, energetic, condensed, action",
+      "bestFor": "Sports, fitness, gyms, athletic brands, competition"
+    },
+    {
+      "name": "Luxury Minimalist",
+      "heading": "Bodoni Moda",
+      "body": "Jost",
+      "mood": "luxury, minimalist, high-end, sophisticated, refined, premium",
+      "bestFor": "Luxury minimalist brands, high-end fashion, premium products"
+    },
+    {
+      "name": "Tech/HUD Mono",
+      "heading": "Share Tech Mono",
+      "body": "Fira Code",
+      "mood": "tech, futuristic, hud, sci-fi, data, monospaced, precise",
+      "bestFor": "Sci-fi interfaces, developer tools, cybersecurity, dashboards"
+    },
+    {
+      "name": "Pixel Retro",
+      "heading": "Press Start 2P",
+      "body": "VT323",
+      "mood": "pixel, retro, gaming, 8-bit, nostalgic, arcade",
+      "bestFor": "Pixel art games, retro websites, creative portfolios"
+    },
+    {
+      "name": "Neubrutalist Bold",
+      "heading": "Lexend Mega",
+      "body": "Public Sans",
+      "mood": "bold, neubrutalist, loud, strong, geometric, quirky",
+      "bestFor": "Neubrutalist designs, Gen Z brands, bold marketing"
+    },
+    {
+      "name": "Academic/Archival",
+      "heading": "EB Garamond",
+      "body": "Crimson Text",
+      "mood": "academic, old-school, university, research, serious, traditional",
+      "bestFor": "University sites, archives, research papers, history"
+    },
+    {
+      "name": "Spatial Clear",
+      "heading": "Inter",
+      "body": "Inter",
+      "mood": "spatial, legible, glass, system, clean, neutral",
+      "bestFor": "Spatial computing, AR/VR, glassmorphism interfaces"
+    },
+    {
+      "name": "Kinetic Motion",
+      "heading": "Syncopate",
+      "body": "Space Mono",
+      "mood": "kinetic, motion, futuristic, speed, wide, tech",
+      "bestFor": "Music festivals, automotive, high-energy brands"
+    },
+    {
+      "name": "Gen Z Brutal",
+      "heading": "Anton",
+      "body": "Epilogue",
+      "mood": "brutal, loud, shouty, meme, internet, bold",
+      "bestFor": "Gen Z marketing, streetwear, viral campaigns"
+    },
+    {
+      "name": "Minimalist Monochrome Editorial",
+      "heading": "Playfair Display",
+      "body": "Source Serif 4",
+      "mood": "monochrome, editorial, austere, typographic, pocket manifesto, luxury, high contrast, brutalist mobile",
+      "bestFor": "Luxury fashion mobile apps, editorial publications, digital exhibitions, portfolio apps, high-contrast e-reader aesthetics"
+    },
+    {
+      "name": "Modern Dark Cinema (Inter System)",
+      "heading": "Inter",
+      "body": "Inter",
+      "mood": "dark, cinematic, technical, precision, clean, premium, developer, professional, high-end utility",
+      "bestFor": "Developer tools, fintech/trading, AI dashboards, streaming platforms, high-end productivity apps"
+    },
+    {
+      "name": "SaaS Mobile Boutique (Calistoga + Inter)",
+      "heading": "Calistoga",
+      "body": "Inter",
+      "mood": "saas, boutique, electric, warm, editorial, bold, premium, fintech, business, dual font, human warmth",
+      "bestFor": "B2B SaaS mobile, fintech apps, analytics dashboards, marketing tools, operations platforms"
+    },
+    {
+      "name": "Terminal CLI Monospace",
+      "heading": "JetBrains Mono",
+      "body": "JetBrains Mono",
+      "mood": "terminal, cli, hacker, monospace, matrix, developer, retro-future, command line, precision, OLED",
+      "bestFor": "Developer tools, Web3/blockchain apps, hacker aesthetic, sci-fi games, ARG, security tools, geek-culture portfolios"
+    },
+    {
+      "name": "Kinetic Brutalism (Space Grotesk)",
+      "heading": "Space Grotesk",
+      "body": "Space Grotesk",
+      "mood": "kinetic, brutalist, aggressive, uppercase, oversized, display, motion, street, bold, high-energy, zine",
+      "bestFor": "Music/culture apps, sports platforms, brand flagship mobile, performance dashboards, underground product drops"
+    },
+    {
+      "name": "Flat Design Mobile (System Bold)",
+      "heading": "Inter",
+      "body": "Inter",
+      "mood": "flat, clean, system, bold, geometric, cross-platform, icon, poster, minimal, functional, responsive",
+      "bestFor": "Cross-platform apps, dashboards, system UI, onboarding, marketing pages, informational apps, icon-heavy interfaces"
+    },
+    {
+      "name": "Material You MD3 (Roboto System)",
+      "heading": "Roboto",
+      "body": "Roboto",
+      "mood": "material design 3, md3, android, google, tonal, friendly, rounded, accessible, adaptive",
+      "bestFor": "Android apps, cross-platform tools, productivity software, data-heavy B2B dashboards, enterprise mobile"
+    },
+    {
+      "name": "Neo Brutalism Mobile (Space Grotesk Heavy)",
+      "heading": "Space Grotesk",
+      "body": "Space Grotesk",
+      "mood": "neo brutalism, pop art, loud, bold, heavy, stickers, mechanical, high contrast, cream, gen-z",
+      "bestFor": "Creative tools, Gen-Z marketing, e-commerce for youth culture, content portfolios, collage-style apps"
+    },
+    {
+      "name": "Bold Typography Mobile (Inter-Tight Poster)",
+      "heading": "Inter",
+      "body": "Playfair Display",
+      "mood": "bold typography, editorial, poster, near-black, vermillion, luxury, type-as-hero, manifesto, high-contrast",
+      "bestFor": "Creative brand flagships, reading platforms, event apps, flash pages, luxury mobile experiences"
+    },
+    {
+      "name": "Academia Mobile (Cormorant + Crimson + Cinzel)",
+      "heading": "Cormorant Garamond",
+      "body": "Crimson Pro",
+      "mood": "academia, library, mahogany, parchment, brass, scholarly, prestige, antique, victorian, leather",
+      "bestFor": "Knowledge management apps, scholarly reading tools, personal brand portfolios, RPG games, cultural community platforms"
+    },
+    {
+      "name": "Cyberpunk Mobile (Orbitron + JetBrains Mono)",
+      "heading": "Orbitron",
+      "body": "JetBrains Mono",
+      "mood": "cyberpunk, neon, glitch, hud, sci-fi, dark, matrix green, magenta, chamfered, tactical",
+      "bestFor": "Gaming companion apps, fintech/crypto, data visualization, dark brand apps, cyberpunk narrative games"
+    },
+    {
+      "name": "Web3 Bitcoin DeFi (Space Grotesk + Inter + Mono)",
+      "heading": "Space Grotesk",
+      "body": "Inter",
+      "mood": "web3, bitcoin, defi, digital gold, fintech, crypto, trustless, luminescent, precision, dark",
+      "bestFor": "DeFi protocols and wallets, NFT platforms, metaverse social apps, high-tech brand landing pages"
+    },
+    {
+      "name": "Claymorphism Mobile (Nunito + DM Sans)",
+      "heading": "Nunito",
+      "body": "DM Sans",
+      "mood": "claymorphism, clay, rounded, playful, candy, bubbly, soft, 3d, children, education, tactile, spring, nunito, dm sans",
+      "bestFor": "Children education apps, teen social, brand mascot apps, creative tools, fintech gamification"
+    },
+    {
+      "name": "Enterprise SaaS Mobile (Plus Jakarta Sans)",
+      "heading": "Plus Jakarta Sans",
+      "body": "Plus Jakarta Sans",
+      "mood": "enterprise, saas, b2b, professional, indigo, modern, approachable, legible, ios dynamic type, android scaling",
+      "bestFor": "B2B SaaS apps, productivity tools, government and finance mobile apps, admin dashboards, enterprise onboarding"
+    },
+    {
+      "name": "Sketch Hand-Drawn Mobile (Kalam + Patrick Hand)",
+      "heading": "Kalam",
+      "body": "Patrick Hand",
+      "mood": "sketch, hand-drawn, handwriting, human, imperfect, organic, paper, kalam, patrick hand, education, journal, creative",
+      "bestFor": "Journaling apps, prototype tools, children's picturebook apps, creative platforms, gamified puzzle apps"
+    },
+    {
+      "name": "Neumorphism Mobile (Plus Jakarta Sans + System)",
+      "heading": "Plus Jakarta Sans",
+      "body": "Plus Jakarta Sans",
+      "mood": "neumorphism, soft ui, monochromatic, cool grey, minimal, physical, depth, ceramic, system font, utility",
+      "bestFor": "Smart home controls, minimal tools, aesthetic dashboards, health monitors, brand showcase pages"
+    }
+  ]
+}

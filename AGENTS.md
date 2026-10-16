@@ -27,11 +27,11 @@ origens: `squados`, `hermes` e `github`. Skills externas permanecem em suas orig
 não devem ser copiadas para cá apenas para compor a vitrine. Informe a origem real,
 preserve autoria e licença, e não apresente código de terceiros como próprio.
 
-Em 12/10/2026, o índice contém 14 itens em seis áreas, todos de origem `hermes`.
-Referências à Anthropic no README descrevem fontes permitidas e candidatos excluídos;
-não representam skills Anthropic publicadas no índice. Confira o JSON antes de
-reutilizar essa contagem. Tornar o catálogo exclusivo de skills próprias é uma mudança
-de produto e de curadoria; não remova origens ou itens como uma limpeza documental.
+A composição aprovada em 16/10/2026 contém vinte especialistas próprios,
+com modos internos. Confira `docs/skills-de-trabalho-catalogo.md` e a curadoria
+completa em `docs/skill-curation/`. Prompts simples vão para `prompts/`;
+instruções da plataforma ficam nos guias condicionais do Desktop. Fontes Cursor
+e cortes aprovados não podem voltar por importação de variantes ou caches.
 
 ## Integração com o Desktop
 
@@ -46,10 +46,9 @@ As referências de implementação são:
 - `src/renderer/src/features/skills/GalleryBrowser.tsx`: vitrine, origens e mais resultados.
 
 O Desktop lê `https://raw.githubusercontent.com/squados/squados-plugins/main/gallery.json`.
-Não usa este checkout local automaticamente. O serviço não mantém cache próprio;
-faz a requisição sem credenciais, recusa redirecionamentos, usa timeout de 15 segundos
-e rejeita um corpo acima de 1.000.000 bytes. O índice exige `version: 1`. Uma versão
-incompatível torna a vitrine indisponível; itens inválidos são descartados individualmente.
+Não usa este checkout local automaticamente. O consumidor usa seed e cache editorial; consulta sem credenciais, recusa
+redirecionamentos e limita tamanho/tempo. O catálogo atual usa version: 2; o parser
+conserva v1 histórico. Confira o contrato atual antes de mudar versão ou requisitos.
 
 O índice lista opções, sem instalar suas skills. Ao contratar, o adaptador resolve a
 origem, verifica conteúdo com o guard do Hermes e prepara uma proposta nativa para a
@@ -70,7 +69,7 @@ Confirme sempre o schema atual do Desktop antes de editar o índice:
 - `squados`: `{ "type": "squados", "path": "skills/<nome>" }`.
 - `hermes`: caminho em `skills/...` ou `optional-skills/...` do acervo empacotado.
 - `github`: identificador `<dono>/<repo>/<caminho>` somente de `openai/skills`,
-  `anthropics/skills`, `huggingface/skills` ou `NVIDIA/skills`.
+  `anthropics/skills`, `anthropics/knowledge-work-plugins` ou `openai/plugins`.
 
 A lista de fontes permitidas não garante licença adequada, compatibilidade ou qualidade
 de cada pacote. Leia a skill inteira e seus recursos antes de incluí-la. Não altere
@@ -94,11 +93,9 @@ preparação. Confira também os limites e validações nativos do Hermes.
 O adaptador e seu teste de integração são a referência para essas regras. Não remova
 avisos legais para contornar restrições de empacotamento.
 
-Um pacote pode existir neste repositório sem estar apto à galeria. É o caso de
-`skills/editar-video`: versão de desenvolvimento 0.1.0, com binários e estrutura própria,
-Python 3.11–3.12, Node 22+, FFmpeg e dependências adicionais. Mantenha-o fora do índice
-até que sua compatibilidade seja demonstrada. Leia o README e as referências de
-instalação do pacote antes de executá-lo. Existência local não significa publicação.
+Tarantino substitui o editor anterior: motor em scripts/editor, texto dentro dos
+limites, fontes/modelos preparados pelo manifesto verificado e locks preservados.
+Não reintroduza binários embutidos nem remova avisos legais para caber no bundle.
 
 Não assuma que uma dependência mencionada por uma skill está instalada. O Desktop
 atual possui bibliotecas Python de documentos instaladas sob demanda; confirme seu
@@ -115,8 +112,9 @@ O `.gitignore` não remove segredos já rastreados nem protege contra `git add -
 confira o diff antes de cada commit. Se uma chave for publicada, revogue-a e
 substitua-a; apagar o arquivo em um novo commit não apaga o histórico.
 
-Este repositório não possui um runner de testes ou CI próprio na raiz. Não invente
-comandos `npm test` aqui. Pacotes independentes têm seus próprios checks.
+Não há runner npm na raiz. Use `python scripts/verify-skills.py`,
+`python -m unittest discover -s tests` e `node --test tests/chrome-webstore.test.mjs`.
+Pacotes independentes e o consumidor Desktop têm seus próprios checks.
 
 Para o catálogo, valide JSON, campos, traduções, unicidade, referências de área,
 caminhos e licenças. Compare com `../squados-desktop/docs/squados-skills/gallery.json`:

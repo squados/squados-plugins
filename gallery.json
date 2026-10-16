@@ -1,6 +1,20 @@
 {
-  "version": 1,
+  "version": 2,
   "areas": [
+    {
+      "id": "design",
+      "title": {
+        "pt-BR": "Design e experiência",
+        "en": "Design and experience"
+      }
+    },
+    {
+      "id": "media",
+      "title": {
+        "pt-BR": "Vídeo e áudio",
+        "en": "Video and audio"
+      }
+    },
     {
       "id": "finance",
       "title": {
@@ -23,10 +37,17 @@
       }
     },
     {
-      "id": "people",
+      "id": "documents",
       "title": {
-        "pt-BR": "Pessoas",
-        "en": "People"
+        "pt-BR": "Documentos e dados",
+        "en": "Documents and data"
+      }
+    },
+    {
+      "id": "engineering",
+      "title": {
+        "pt-BR": "Desenvolvimento",
+        "en": "Engineering"
       }
     },
     {
@@ -37,6 +58,13 @@
       }
     },
     {
+      "id": "people",
+      "title": {
+        "pt-BR": "Pessoas",
+        "en": "People"
+      }
+    },
+    {
       "id": "research",
       "title": {
         "pt-BR": "Pesquisa",
@@ -44,840 +72,1562 @@
       }
     },
     {
-      "id": "customer-success",
+      "id": "applications",
       "title": {
-        "pt-BR": "Customer Success",
-        "en": "Customer Success"
-      }
-    },
-    {
-      "id": "procurement-inventory",
-      "title": {
-        "pt-BR": "Compras e Estoque",
-        "en": "Procurement and Inventory"
-      }
-    },
-    {
-      "id": "ecommerce",
-      "title": {
-        "pt-BR": "Ecommerce",
-        "en": "Ecommerce"
-      }
-    },
-    {
-      "id": "administration",
-      "title": {
-        "pt-BR": "Administrativo e Diretoria",
-        "en": "Administration and Leadership"
-      }
-    },
-    {
-      "id": "projects",
-      "title": {
-        "pt-BR": "Projetos",
-        "en": "Projects"
-      }
-    },
-    {
-      "id": "product",
-      "title": {
-        "pt-BR": "Produto e Inovação",
-        "en": "Product and Innovation"
-      }
-    },
-    {
-      "id": "logistics",
-      "title": {
-        "pt-BR": "Logística",
-        "en": "Logistics"
-      }
-    },
-    {
-      "id": "legal",
-      "title": {
-        "pt-BR": "Jurídico e Contratos",
-        "en": "Legal and Contracts"
-      }
-    },
-    {
-      "id": "quality",
-      "title": {
-        "pt-BR": "Qualidade",
-        "en": "Quality"
+        "pt-BR": "Aplicações",
+        "en": "Applications"
       }
     }
   ],
   "items": [
     {
-      "id": "three-statement-model",
+      "id": "michelangelo",
+      "area": "design",
+      "title": {
+        "pt-BR": "Michelangelo - Designer",
+        "en": "Michelangelo - Designer"
+      },
+      "description": {
+        "pt-BR": "Toda a direção e produção visual; parte da skill Michelangelo existente.",
+        "en": "Designer with task-specific methods and resources."
+      },
+      "source": {
+        "type": "squados",
+        "path": "skills/michelangelo"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Michelangelo - Designer",
+            "en": "Michelangelo - Designer"
+          },
+          "summary": {
+            "pt-BR": "Toda a direção e produção visual; parte da skill Michelangelo existente.",
+            "en": "Designer with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Toda a direção e produção visual; parte da skill Michelangelo existente.\n\nModos: Identidade e marcas; Interfaces web e mobile; Design por imagem; Peças gráficas e ilustração; Infográficos e diagramas; Apresentações e narrativa visual; SVG, ícones e animação; Canvases visuais.\n\nKrug cuida da experiência; Gutenberg cuida de documentos e dados; Tarantino cria e edita vídeo. Operar o Figma cabe ao Assistente Figma.",
+            "en": "Designer. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Redesenhe esta página com a identidade da minha marca.",
+                "en": "Redesign this page using my brand identity."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Crie uma família de peças visuais para esta campanha.",
+                "en": "Create a family of visual assets for this campaign."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Transforme estes dados em um infográfico claro.",
+                "en": "Turn these data into a clear infographic."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/claude-design.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["design"],
+          "outputs": ["files"]
+        },
+        "reviewedRevision": "sha256-lf:f45384a57c2b26367e8750e94f8bf18f1a7566270e4f5fb0e3bc1a20a6a15d13",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/michelangelo/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": [
+            {
+              "pt-BR": "Ferramentas e provedores variam por modo; confira disponibilidade, dependências e conexões antes de executar.",
+              "en": "Tools and providers vary by mode; check availability, dependencies and connections before execution."
+            }
+          ]
+        }
+      },
+      "featured": true
+    },
+    {
+      "id": "tarantino",
+      "area": "media",
+      "title": {
+        "pt-BR": "Tarantino - Editor de Vídeos",
+        "en": "Tarantino - Video Editor"
+      },
+      "description": {
+        "pt-BR": "Cria e edita vídeos e motion, preservando o motor do editor existente.",
+        "en": "Video Editor with task-specific methods and resources."
+      },
+      "source": {
+        "type": "squados",
+        "path": "skills/tarantino"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Tarantino - Editor de Vídeos",
+            "en": "Tarantino - Video Editor"
+          },
+          "summary": {
+            "pt-BR": "Cria e edita vídeos e motion, preservando o motor do editor existente.",
+            "en": "Video Editor with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Cria e edita vídeos e motion, preservando o motor do editor existente.\n\nModos: Criação de vídeos; Roteiro e decupagem; Montagem e cortes; Motion e efeitos; Legendas no vídeo; Renderização e exportação.\n\nTranscrição, Whisper, síntese de voz e áudio como entregas independentes ficam no especialista de Áudio, Voz e Transcrição. O tratamento de áudio e as legendas necessários à edição do vídeo permanecem no fluxo do editor.",
+            "en": "Video Editor. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Edite este vídeo preservando a fala e melhorando o ritmo.",
+                "en": "Edit this video while preserving speech and improving pacing."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Crie um vídeo de cenas com tipografia animada para este roteiro.",
+                "en": "Create a scene-based video with animated typography for this script."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Revise as legendas, efeitos e exportação deste projeto.",
+                "en": "Review captions, effects and export for this project."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/content-creation.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["media"],
+          "outputs": ["files"]
+        },
+        "reviewedRevision": "sha256-lf:62ec3437ce09261e6db149229ee612a9a125e701eee41dde8f8e0e77163cc96d",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/tarantino/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": [
+            {
+              "pt-BR": "Python 3.11–3.12, Node 22+, FFmpeg e preparação pelos locks; recursos obtidos e verificados pelo manifesto.",
+              "en": "Python 3.11–3.12, Node 22+, FFmpeg and locked setup; resources fetched and verified using the manifest."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "audio",
+      "area": "media",
+      "title": {
+        "pt-BR": "Áudio, Voz e Transcrição",
+        "en": "Audio, Voice and Transcription"
+      },
+      "description": {
+        "pt-BR": "Reúne transcrição, Whisper, fala e áudio em uma capacidade independente de edição de vídeos.",
+        "en": "Audio, Voice and Transcription with task-specific methods and resources."
+      },
+      "source": {
+        "type": "squados",
+        "path": "skills/audio"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Áudio, Voz e Transcrição",
+            "en": "Audio, Voice and Transcription"
+          },
+          "summary": {
+            "pt-BR": "Reúne transcrição, Whisper, fala e áudio em uma capacidade independente de edição de vídeos.",
+            "en": "Audio, Voice and Transcription with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Reúne transcrição, Whisper, fala e áudio em uma capacidade independente de edição de vídeos.\n\nModos: Transcrição e Whisper; Síntese de voz; Áudio e música; Transcrições de vídeos.\n\nSpeech e transcribe continuam juntos. Tarantino pode usar os resultados quando editar um vídeo, sem absorver este especialista.",
+            "en": "Audio, Voice and Transcription. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Transcreva este áudio com timestamps.",
+                "en": "Transcribe this audio with timestamps."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Prepare uma narração a partir deste texto.",
+                "en": "Prepare narration from this text."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Obtenha e confira a transcrição deste vídeo.",
+                "en": "Retrieve and check the transcript of this video."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/internal-comms.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["media"],
+          "outputs": ["files"]
+        },
+        "reviewedRevision": "sha256-lf:e1a9815b880759487f9851c0444ea75f15699cac6e9ddf4a68862d6d21474e68",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/audio/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": [
+            {
+              "pt-BR": "Ferramentas e provedores variam por modo; confira disponibilidade, dependências e conexões antes de executar.",
+              "en": "Tools and providers vary by mode; check availability, dependencies and connections before execution."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "krug",
+      "area": "design",
+      "title": {
+        "pt-BR": "Krug - Especialista em UX",
+        "en": "Krug - UX Specialist"
+      },
+      "description": {
+        "pt-BR": "Melhora como as pessoas entendem e usam um produto.",
+        "en": "UX Specialist with task-specific methods and resources."
+      },
+      "source": {
+        "type": "squados",
+        "path": "skills/krug"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Krug - Especialista em UX",
+            "en": "Krug - UX Specialist"
+          },
+          "summary": {
+            "pt-BR": "Melhora como as pessoas entendem e usam um produto.",
+            "en": "UX Specialist with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Melhora como as pessoas entendem e usam um produto.\n\nModos: Auditoria de jornadas; Clareza e fricção; Testes de usabilidade; Conversão e checkout; Engajamento e gamificação.\n\nParte de dont-make-me-think; usa Michelangelo quando a solução precisa de produção visual.",
+            "en": "UX Specialist. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Encontre os principais atritos desta jornada.",
+                "en": "Find the main friction points in this journey."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Simplifique este checkout sem remover funcionalidades.",
+                "en": "Simplify this checkout while preserving functionality."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Planeje um teste de usabilidade para este fluxo.",
+                "en": "Plan a usability test for this flow."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/popular-web-designs.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["design"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:7df49b5eba5a9b83c3471d01676271160dad76864a1a2965f0b2bfe052ce0130",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/krug/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": []
+        }
+      }
+    },
+    {
+      "id": "warren",
       "area": "finance",
       "title": {
-        "pt-BR": "Modelo financeiro integrado",
-        "en": "Integrated financial model"
+        "pt-BR": "Warren - CFO",
+        "en": "Warren - CFO"
       },
       "description": {
-        "pt-BR": "Planilha com resultado, balanço e fluxo de caixa ligados entre si",
-        "en": "Spreadsheet linking income statement, balance sheet and cash flow"
+        "pt-BR": "Finanças da empresa, modelagem e análise financeira.",
+        "en": "CFO with task-specific methods and resources."
       },
       "source": {
-        "type": "hermes",
-        "path": "optional-skills/finance/3-statement-model"
-      }
+        "type": "squados",
+        "path": "skills/warren"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Warren - CFO",
+            "en": "Warren - CFO"
+          },
+          "summary": {
+            "pt-BR": "Finanças da empresa, modelagem e análise financeira.",
+            "en": "CFO with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Finanças da empresa, modelagem e análise financeira.\n\nModos: Planejamento e caixa; Contas a pagar e receber; Demonstrações e conciliação; Análise de variações; Valuation e modelos financeiros; Preços e investimentos; Operações de pagamento.\n\nGutenberg fornece o mecanismo das planilhas; referências financeiras e verificações ficam aqui.",
+            "en": "CFO. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Analise nosso caixa e explique os cenários.",
+                "en": "Analyze our cash flow and explain the scenarios."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Concilie estes movimentos e destaque divergências.",
+                "en": "Reconcile these transactions and highlight differences."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Monte um modelo financeiro com premissas auditáveis.",
+                "en": "Build a financial model with auditable assumptions."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/excel-author.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["finance"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:21dd80b2f9a5c082bf484c7efdf3f175d90b69b3af8abc67eb6c39431cc8f8e9",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/warren/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": [
+            {
+              "pt-BR": "Ferramentas e provedores variam por modo; confira disponibilidade, dependências e conexões antes de executar.",
+              "en": "Tools and providers vary by mode; check availability, dependencies and connections before execution."
+            }
+          ]
+        }
+      },
+      "featured": true
     },
     {
-      "id": "comps-analysis",
-      "area": "finance",
-      "title": {
-        "pt-BR": "Análise de empresas comparáveis",
-        "en": "Comparable companies analysis"
-      },
-      "description": {
-        "pt-BR": "Planilha de valuation comparando empresas do mesmo setor",
-        "en": "Valuation spreadsheet comparing companies in the same sector"
-      },
-      "source": {
-        "type": "hermes",
-        "path": "optional-skills/finance/comps-analysis"
-      }
-    },
-    {
-      "id": "excel-author",
-      "area": "finance",
-      "featured": true,
-      "title": {
-        "pt-BR": "Planilhas financeiras auditáveis",
-        "en": "Auditable financial spreadsheets"
-      },
-      "description": {
-        "pt-BR": "Planilhas com fórmulas vivas, entradas destacadas e conferência fácil",
-        "en": "Spreadsheets with live formulas, highlighted inputs and easy review"
-      },
-      "source": {
-        "type": "hermes",
-        "path": "optional-skills/finance/excel-author"
-      }
-    },
-    {
-      "id": "lbo-model",
-      "area": "finance",
-      "title": {
-        "pt-BR": "Compra alavancada",
-        "en": "Leveraged buyout"
-      },
-      "description": {
-        "pt-BR": "Planilha de compra alavancada com retorno do investimento (TIR e múltiplo)",
-        "en": "Leveraged buyout spreadsheet with investment returns (IRR and multiple)"
-      },
-      "source": {
-        "type": "hermes",
-        "path": "optional-skills/finance/lbo-model"
-      }
-    },
-    {
-      "id": "claude-design",
-      "area": "marketing",
-      "featured": true,
-      "title": {
-        "pt-BR": "Design de páginas e apresentações",
-        "en": "Page and deck design"
-      },
-      "description": {
-        "pt-BR": "Cria páginas, apresentações e protótipos em HTML, com variações para comparar",
-        "en": "Creates pages, decks and prototypes in HTML, with variants to compare"
-      },
-      "source": {
-        "type": "hermes",
-        "path": "skills/creative/claude-design"
-      }
-    },
-    {
-      "id": "popular-web-designs",
+      "id": "zuck",
       "area": "marketing",
       "title": {
-        "pt-BR": "Estilos de sites conhecidos",
-        "en": "Well-known website styles"
+        "pt-BR": "Zuck - O Marketeiro",
+        "en": "Zuck - Marketing Specialist"
       },
       "description": {
-        "pt-BR": "Catálogo de 54 identidades visuais de sites famosos para usar como ponto de partida",
-        "en": "Catalogue of 54 visual identities from well-known sites to use as a starting point"
+        "pt-BR": "Marketing, conteúdo, copy, redes sociais, SEO, tráfego e mensuração de campanhas.",
+        "en": "Marketing Specialist with task-specific methods and resources."
       },
       "source": {
-        "type": "hermes",
-        "path": "skills/creative/popular-web-designs"
-      }
+        "type": "squados",
+        "path": "skills/zuck"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Zuck - O Marketeiro",
+            "en": "Zuck - Marketing Specialist"
+          },
+          "summary": {
+            "pt-BR": "Marketing, conteúdo, copy, redes sociais, SEO, tráfego e mensuração de campanhas.",
+            "en": "Marketing Specialist with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Marketing, conteúdo, copy, redes sociais, SEO, tráfego e mensuração de campanhas.\n\nModos: Estratégia de marketing; Conteúdo e copywriting; Redes sociais e carrosséis; SEO; Tráfego e mensuração; Ideação de campanhas.\n\nE-commerce, pesquisa de mercado, propostas, prospecção, negociação, vendas e relacionamento ficam no especialista comercial. Michelangelo produz a arte.",
+            "en": "Marketing Specialist. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Planeje conteúdo e copy para esta campanha.",
+                "en": "Plan content and copy for this campaign."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Analise o desempenho deste tráfego e proponha testes.",
+                "en": "Analyze this ad traffic performance and propose tests."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Audite o SEO destas páginas.",
+                "en": "Audit the SEO of these pages."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/content-creation.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["marketing"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:037978e252ad3fa4d72a19734825527199d670c348e5eb446a32410fc7e65f69",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/zuck/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": []
+        }
+      },
+      "featured": true
     },
     {
-      "id": "sketch",
-      "area": "marketing",
-      "title": {
-        "pt-BR": "Esboços de tela",
-        "en": "Screen sketches"
-      },
-      "description": {
-        "pt-BR": "Faz de 2 a 3 versões rápidas de uma tela para você comparar",
-        "en": "Makes 2 to 3 quick versions of a screen for you to compare"
-      },
-      "source": {
-        "type": "hermes",
-        "path": "optional-skills/creative/sketch"
-      }
-    },
-    {
-      "id": "reddit-reading",
-      "area": "marketing",
-      "title": {
-        "pt-BR": "Leitura do Reddit",
-        "en": "Reading Reddit"
-      },
-      "description": {
-        "pt-BR": "Lê comunidades, buscas e discussões do Reddit, sem conta",
-        "en": "Reads Reddit communities, searches and threads, no account needed"
-      },
-      "source": {
-        "type": "hermes",
-        "path": "optional-skills/social-media/reddit-reading"
-      }
-    },
-    {
-      "id": "competitor-news",
+      "id": "flavio",
       "area": "sales",
-      "featured": true,
       "title": {
-        "pt-BR": "Notícias dos concorrentes",
-        "en": "Competitor news"
+        "pt-BR": "Flavio - Vendas e Negociação",
+        "en": "Flavio - Sales and Negotiation"
       },
       "description": {
-        "pt-BR": "Acompanha empresas que você escolher e resume só as novidades que importam, com fontes",
-        "en": "Follows the companies you choose and summarizes only the news that matters, with sources"
+        "pt-BR": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
+        "en": "Sales and Negotiation with task-specific methods and resources."
       },
       "source": {
-        "type": "hermes",
-        "path": "skills/research/competitor-news-monitor"
+        "type": "squados",
+        "path": "skills/flavio"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Flavio - Vendas e Negociação",
+            "en": "Flavio - Sales and Negotiation"
+          },
+          "summary": {
+            "pt-BR": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.",
+            "en": "Sales and Negotiation with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Reúne as capacidades comerciais retiradas de Zuck: vendas, negociação, prospecção, propostas, mercado, e-commerce e relacionamento.\n\nModos: Inteligência comercial e mercado; Prospecção e qualificação; Propostas comerciais; Negociação e fechamento; Treinamento de vendas; E-commerce e catálogo comercial; Relacionamento e sucesso do cliente.\n\nZuck cuida de marketing e campanhas; Drucker de contratos e obrigações; Warren dos cálculos financeiros. Nome definido pelo usuário: Flavio.",
+            "en": "Sales and Negotiation. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Prepare uma proposta comercial com escopo e condições claros.",
+                "en": "Prepare a sales proposal with clear scope and terms."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Ajude-me a negociar esta oportunidade.",
+                "en": "Help me negotiate this opportunity."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Pesquise estas contas e prepare uma abordagem de prospecção.",
+                "en": "Research these accounts and prepare an outreach approach."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/call-prep.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["sales"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:c87bfd6ca4656e660a8acf99583988509e0faf0fbe6bfe126972f0ccf97463bf",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/flavio/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": []
+        }
       }
     },
     {
-      "id": "price-monitor",
-      "area": "sales",
+      "id": "gutenberg",
+      "area": "documents",
       "title": {
-        "pt-BR": "Acompanhamento de preços",
-        "en": "Price tracking"
+        "pt-BR": "Gutenberg - Documentos e Dados",
+        "en": "Gutenberg - Documents and Data"
       },
       "description": {
-        "pt-BR": "Vigia o preço de produtos, passagens e anúncios e avisa quando chegar ao valor desejado",
-        "en": "Watches prices of products, flights and listings and alerts you at your target"
+        "pt-BR": "Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato.",
+        "en": "Documents and Data with task-specific methods and resources."
       },
       "source": {
-        "type": "hermes",
-        "path": "skills/productivity/product-price-monitor"
+        "type": "squados",
+        "path": "skills/gutenberg"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Gutenberg - Documentos e Dados",
+            "en": "Gutenberg - Documents and Data"
+          },
+          "summary": {
+            "pt-BR": "Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato.",
+            "en": "Documents and Data with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato.\n\nModos: Word e documentos; PDF, OCR e formulários; Planilhas e fórmulas; PowerPoint e templates; Análise e tratamento de dados; Redação e comunicação de trabalho.\n\nNão reduz docx a um prompt. Motores e recursos de cada formato permanecem completos, carregados por tarefa.",
+            "en": "Documents and Data. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Edite este Word preservando estilos e comentários.",
+                "en": "Edit this Word document while preserving styles and comments."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Analise esta planilha e confira as fórmulas.",
+                "en": "Analyze this workbook and check its formulas."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Crie uma apresentação e um PDF com estes dados.",
+                "en": "Create a presentation and a PDF from these data."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/internal-comms.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["documents"],
+          "outputs": ["files"]
+        },
+        "reviewedRevision": "sha256-lf:73d88aacaa8cc02155147475eb2685ff3c1e4343f18fb378ae939610cfa330cd",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/gutenberg/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": [
+            {
+              "pt-BR": "Bibliotecas Python do formato; OCR, renderização e recálculo exigem ferramentas adicionais quando usados.",
+              "en": "Format-specific Python libraries; OCR, rendering and recalculation require additional tools when used."
+            }
+          ]
+        }
+      },
+      "featured": true
+    },
+    {
+      "id": "linus",
+      "area": "engineering",
+      "title": {
+        "pt-BR": "Linus - Engenheiro de Software",
+        "en": "Linus - Software Engineer"
+      },
+      "description": {
+        "pt-BR": "Reúne desenvolvimento, ferramentas de programação e operação técnica.",
+        "en": "Software Engineer with task-specific methods and resources."
+      },
+      "source": {
+        "type": "squados",
+        "path": "skills/linus"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Linus - Engenheiro de Software",
+            "en": "Linus - Software Engineer"
+          },
+          "summary": {
+            "pt-BR": "Reúne desenvolvimento, ferramentas de programação e operação técnica.",
+            "en": "Software Engineer with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Reúne desenvolvimento, ferramentas de programação e operação técnica.\n\nModos: Código e arquitetura; GitHub e revisão; Desenvolvimento e operação MCP; Banco e Supabase; Segurança; Navegador e testes; APIs e diagnóstico; Infraestrutura e publicação; IA e modelos.\n\nmcp-builder, FastMCP e mcporter são um modo MCP; Playwright e Playwright interativo são um modo de navegador. Procedimentos de trabalho são internos ao Studio.",
+            "en": "Software Engineer. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Investigue e corrija este erro no projeto.",
+                "en": "Investigate and fix this project error."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Desenvolva e teste esta integração MCP.",
+                "en": "Develop and test this MCP integration."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Revise este fluxo Supabase e valide no navegador.",
+                "en": "Review this Supabase flow and validate it in the browser."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/frontend-design.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["engineering"],
+          "outputs": ["files"]
+        },
+        "reviewedRevision": "sha256-lf:c6e225a0f1d876f3df2402ed7a61065eeba4ed6f4ae891d96c1858153bd93cfa",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/linus/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": [
+            {
+              "pt-BR": "Ferramentas e provedores variam por modo; confira disponibilidade, dependências e conexões antes de executar.",
+              "en": "Tools and providers vary by mode; check availability, dependencies and connections before execution."
+            }
+          ]
+        }
+      },
+      "featured": true
+    },
+    {
+      "id": "drucker",
+      "area": "operations",
+      "title": {
+        "pt-BR": "Drucker - Gestor de Operações",
+        "en": "Drucker - Operations Manager"
+      },
+      "description": {
+        "pt-BR": "Organiza o trabalho e os processos operacionais da empresa.",
+        "en": "Operations Manager with task-specific methods and resources."
+      },
+      "source": {
+        "type": "squados",
+        "path": "skills/drucker"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Drucker - Gestor de Operações",
+            "en": "Drucker - Operations Manager"
+          },
+          "summary": {
+            "pt-BR": "Organiza o trabalho e os processos operacionais da empresa.",
+            "en": "Operations Manager with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Organiza o trabalho e os processos operacionais da empresa.\n\nModos: Projetos e execução; Produto e prioridades; Qualidade; Compras e fornecedores; Estoque e logística; Contratos e obrigações; Panorama do dia.\n\nContratos e acompanhamento de obrigações ficam aqui; negociações comerciais e propostas ficam no especialista de Vendas e Negociação.",
+            "en": "Operations Manager. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Organize este projeto com dependências e responsáveis.",
+                "en": "Organize this project with dependencies and owners."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Revise nosso fluxo de estoque e compras.",
+                "en": "Review our inventory and procurement workflow."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Prepare o panorama do dia com fontes e prioridades.",
+                "en": "Prepare a daily overview with sources and priorities."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/theme-factory.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["operations"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:171edf74f2f09b5a75a27467bfc645b264e1beb06e6ac7fc185910dfa31541ea",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/drucker/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": []
+        }
       }
     },
     {
-      "id": "simple-english",
+      "id": "maslow",
       "area": "people",
       "title": {
-        "pt-BR": "Texto simples e direto",
-        "en": "Plain, direct writing"
+        "pt-BR": "Maslow - Especialista em Pessoas",
+        "en": "Maslow - People Specialist"
       },
       "description": {
-        "pt-BR": "Reescreve textos em frases curtas e claras, sem ambiguidade",
-        "en": "Rewrites text in short, clear sentences with no ambiguity"
+        "pt-BR": "Contratação, aprendizagem e desenvolvimento de pessoas.",
+        "en": "People Specialist with task-specific methods and resources."
       },
       "source": {
-        "type": "hermes",
-        "path": "optional-skills/creative/simple-english"
+        "type": "squados",
+        "path": "skills/maslow"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Maslow - Especialista em Pessoas",
+            "en": "Maslow - People Specialist"
+          },
+          "summary": {
+            "pt-BR": "Contratação, aprendizagem e desenvolvimento de pessoas.",
+            "en": "People Specialist with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Contratação, aprendizagem e desenvolvimento de pessoas.\n\nModos: Recrutamento e seleção; Integração e capacitação; Treinamento; Feedback e desenvolvimento.\n\nInglês simples, geração de flashcards e outros cortes não retornam como modos.",
+            "en": "People Specialist. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Prepare um processo seletivo baseado nos requisitos da vaga.",
+                "en": "Prepare a hiring process based on the job requirements."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Monte um plano de onboarding para esta função.",
+                "en": "Build an onboarding plan for this role."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Ajude-me a preparar este feedback de desenvolvimento.",
+                "en": "Help me prepare this development feedback."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/internal-comms.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["people"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:e5ae4528fb492073f39a55063858a809bc480f0b7fc11a8a5ceef57160cbe3f5",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/maslow/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": []
+        }
       }
     },
     {
-      "id": "llm-wiki",
-      "area": "operations",
-      "featured": true,
-      "title": {
-        "pt-BR": "Base de conhecimento",
-        "en": "Knowledge base"
-      },
-      "description": {
-        "pt-BR": "Monta e consulta uma base de notas ligadas entre si sobre o que a equipe sabe",
-        "en": "Builds and queries a base of linked notes about what the team knows"
-      },
-      "source": {
-        "type": "hermes",
-        "path": "skills/research/llm-wiki"
-      }
-    },
-    {
-      "id": "arxiv",
+      "id": "darwin",
       "area": "research",
       "title": {
-        "pt-BR": "Artigos científicos (arXiv)",
-        "en": "Scientific papers (arXiv)"
+        "pt-BR": "Darwin - Pesquisador",
+        "en": "Darwin - Researcher"
       },
       "description": {
-        "pt-BR": "Busca artigos por assunto, autor ou categoria, sem conta",
-        "en": "Searches papers by topic, author or category, no account needed"
-      },
-      "source": {
-        "type": "hermes",
-        "path": "skills/research/arxiv"
-      }
-    },
-    {
-      "id": "rss-feeds",
-      "area": "research",
-      "title": {
-        "pt-BR": "Leitura de feeds",
-        "en": "Reading feeds"
-      },
-      "description": {
-        "pt-BR": "Lê feeds de notícias e blogs e descobre o feed escondido atrás de uma página",
-        "en": "Reads news and blog feeds and finds the feed behind a page"
-      },
-      "source": {
-        "type": "hermes",
-        "path": "optional-skills/research/rss-feeds"
-      }
-    },
-    {
-      "id": "recruitment",
-      "area": "people",
-      "title": {
-        "pt-BR": "Especialista em Processo Seletivo",
-        "en": "Recruitment Specialist"
-      },
-      "description": {
-        "pt-BR": "Prepara vagas, entrevistas e análises de candidatos.",
-        "en": "Prepares roles, interviews and evidence reviews for hiring teams."
+        "pt-BR": "Método de investigação e fontes especializadas para perguntas de pesquisa.",
+        "en": "Researcher with task-specific methods and resources."
       },
       "source": {
         "type": "squados",
-        "path": "skills/recruitment"
+        "path": "skills/darwin"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Darwin - Pesquisador",
+            "en": "Darwin - Researcher"
+          },
+          "summary": {
+            "pt-BR": "Método de investigação e fontes especializadas para perguntas de pesquisa.",
+            "en": "Researcher with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Método de investigação e fontes especializadas para perguntas de pesquisa.\n\nModos: Pesquisa com fontes e citações; Artigos e arXiv; Reddit e RSS; Pesquisa geográfica; Verificação de informação pública; Escrita científica.\n\nVendas conduz a pesquisa comercial de mercado; Warren a financeira. Instruções para operar a pesquisa do Studio permanecem internas.",
+            "en": "Researcher. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Pesquise este assunto e compare as evidências.",
+                "en": "Research this topic and compare the evidence."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Encontre artigos relevantes e explique os limites dos estudos.",
+                "en": "Find relevant papers and explain study limitations."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Sintetize estes feeds com fontes verificáveis.",
+                "en": "Synthesize these feeds with verifiable sources."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/arxiv.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["research"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:f7b2a235f98744dda7eddb826b26ee3d10fea8c9372f9f919fe38c5f469a4e91",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/darwin/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": []
+        }
       }
     },
     {
-      "id": "training-specialist",
-      "area": "people",
+      "id": "figma",
+      "area": "applications",
       "title": {
-        "pt-BR": "Especialista em Treinamentos",
-        "en": "Training Specialist"
+        "pt-BR": "Assistente Figma",
+        "en": "Figma Assistant"
       },
       "description": {
-        "pt-BR": "Cria treinamentos para tarefas do trabalho.",
-        "en": "Creates practical training for workplace tasks."
+        "pt-BR": "Opera o Figma e reúne seus próprios modos em uma skill da aplicação.",
+        "en": "Figma Assistant with task-specific methods and resources."
       },
       "source": {
         "type": "squados",
-        "path": "skills/training-specialist"
+        "path": "skills/figma"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Assistente Figma",
+            "en": "Figma Assistant"
+          },
+          "summary": {
+            "pt-BR": "Opera o Figma e reúne seus próprios modos em uma skill da aplicação.",
+            "en": "Figma Assistant with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Opera o Figma e reúne seus próprios modos em uma skill da aplicação.\n\nModos: Leitura de arquivos; Criação e edição; Componentes e bibliotecas; Plugin API; Implementação a partir do Figma.\n\nMichelangelo conduz direção visual; o Assistente Figma executa operações específicas no Figma.",
+            "en": "Figma Assistant. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Leia este arquivo Figma e explique seus componentes.",
+                "en": "Read this Figma file and explain its components."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Implemente esta tela a partir do design conectado.",
+                "en": "Implement this screen from the connected design."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Revise variantes e consistência desta biblioteca.",
+                "en": "Review variants and consistency in this library."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/sketch.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["applications"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:38b68756a94a629c498e8b08a651526939f4a21a8f1ee833128666c2abea34fd",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/figma/LICENSE"
+        },
+        "compatibility": {
+          "status": "requires-connection",
+          "requirements": [
+            {
+              "pt-BR": "Conexão autorizada e ferramentas da aplicação disponíveis na sessão.",
+              "en": "An authorized connection and application tools available in the session."
+            }
+          ]
+        }
       }
     },
     {
-      "id": "people-development",
-      "area": "people",
+      "id": "notion",
+      "area": "applications",
       "title": {
-        "pt-BR": "Especialista em Desenvolvimento de Pessoas",
-        "en": "People Development Specialist"
+        "pt-BR": "Assistente Notion",
+        "en": "Notion Assistant"
       },
       "description": {
-        "pt-BR": "Prepara onboarding, feedback e planos de desenvolvimento.",
-        "en": "Supports onboarding, feedback and development plans."
+        "pt-BR": "Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação.",
+        "en": "Notion Assistant with task-specific methods and resources."
       },
       "source": {
         "type": "squados",
-        "path": "skills/people-development"
+        "path": "skills/notion"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Assistente Notion",
+            "en": "Notion Assistant"
+          },
+          "summary": {
+            "pt-BR": "Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação.",
+            "en": "Notion Assistant with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação.\n\nModos: Páginas e bases; Captura de conhecimento; Reuniões; Pesquisa; Planos e implementação.\n\nSomente Notion. A conexão disponível determina as ferramentas e permissões.",
+            "en": "Notion Assistant. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Organize estas notas em páginas do Notion.",
+                "en": "Organize these notes into Notion pages."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Transforme esta reunião em decisões e ações na base indicada.",
+                "en": "Turn this meeting into decisions and actions in the specified database."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Pesquise as páginas conectadas e proponha um plano.",
+                "en": "Research the connected pages and propose a plan."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/notion-meeting-intelligence.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["applications"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:592e66a0436fb734a98d258921a1361d7ff0cf15641b06a16c8c5dc15259ac94",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/notion/LICENSE"
+        },
+        "compatibility": {
+          "status": "requires-connection",
+          "requirements": [
+            {
+              "pt-BR": "Conexão autorizada e ferramentas da aplicação disponíveis na sessão.",
+              "en": "An authorized connection and application tools available in the session."
+            }
+          ]
+        }
       }
     },
     {
-      "id": "copywriter",
-      "area": "marketing",
+      "id": "google-workspace",
+      "area": "applications",
       "title": {
-        "pt-BR": "Copywriter",
-        "en": "Copywriter"
+        "pt-BR": "Assistente Google Workspace",
+        "en": "Google Workspace Assistant"
       },
       "description": {
-        "pt-BR": "Escreve e revisa textos de marketing.",
-        "en": "Writes and revises marketing copy."
+        "pt-BR": "Opera a suíte Google Workspace, com referências por serviço e operação.",
+        "en": "Google Workspace Assistant with task-specific methods and resources."
       },
       "source": {
         "type": "squados",
-        "path": "skills/copywriter"
+        "path": "skills/google-workspace"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Assistente Google Workspace",
+            "en": "Google Workspace Assistant"
+          },
+          "summary": {
+            "pt-BR": "Opera a suíte Google Workspace, com referências por serviço e operação.",
+            "en": "Google Workspace Assistant with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Opera a suíte Google Workspace, com referências por serviço e operação.\n\nModos: Email e agenda; Drive; Docs, Sheets e Slides.\n\nSomente a suíte Google; não reúne aplicações de outros fornecedores.",
+            "en": "Google Workspace Assistant. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Encontre estes arquivos no Drive e sintetize seu conteúdo.",
+                "en": "Find these Drive files and synthesize their content."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Organize minha agenda com base nos compromissos autorizados.",
+                "en": "Organize my calendar using authorized commitments."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Revise este documento e a planilha do Workspace.",
+                "en": "Review this Workspace document and spreadsheet."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/internal-comms.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["applications"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:841babf59bb27bb6811353537c2f3896592822d336c49a352b8b7fcd9bbd73f1",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/google-workspace/LICENSE"
+        },
+        "compatibility": {
+          "status": "requires-connection",
+          "requirements": [
+            {
+              "pt-BR": "Conexão autorizada e ferramentas da aplicação disponíveis na sessão.",
+              "en": "An authorized connection and application tools available in the session."
+            }
+          ]
+        }
       }
     },
     {
-      "id": "marketing-strategist",
-      "area": "marketing",
+      "id": "obsidian",
+      "area": "applications",
       "title": {
-        "pt-BR": "Estrategista de Marketing",
-        "en": "Marketing Strategist"
+        "pt-BR": "Assistente Obsidian",
+        "en": "Obsidian Assistant"
       },
       "description": {
-        "pt-BR": "Define posicionamento e campanhas de marketing.",
-        "en": "Develops positioning, priorities and marketing campaigns."
+        "pt-BR": "Opera o Obsidian preservando notas, links e estrutura do vault.",
+        "en": "Obsidian Assistant with task-specific methods and resources."
       },
       "source": {
         "type": "squados",
-        "path": "skills/marketing-strategist"
+        "path": "skills/obsidian"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Assistente Obsidian",
+            "en": "Obsidian Assistant"
+          },
+          "summary": {
+            "pt-BR": "Opera o Obsidian preservando notas, links e estrutura do vault.",
+            "en": "Obsidian Assistant with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Opera o Obsidian preservando notas, links e estrutura do vault.\n\nModos: Vaults e notas; Busca e links; Organização.\n\nSomente Obsidian; o vault é escolhido pelo usuário.",
+            "en": "Obsidian Assistant. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Organize estas notas no vault indicado.",
+                "en": "Organize these notes in the specified vault."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Encontre links ausentes e notas relacionadas.",
+                "en": "Find missing links and related notes."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Crie um mapa de conteúdo preservando os arquivos.",
+                "en": "Create a content map while preserving the files."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/llm-wiki.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["applications"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:494124584de873e276342373eef4ddfdeaa25646dfaf67e37e037574b20735aa",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/obsidian/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": [
+            {
+              "pt-BR": "Acesso ao vault autorizado; CLI Obsidian opcional conforme o modo.",
+              "en": "Access to the authorized vault; optional Obsidian CLI depending on the mode."
+            }
+          ]
+        }
       }
     },
     {
-      "id": "content-creator",
-      "area": "marketing",
+      "id": "shop",
+      "area": "applications",
       "title": {
-        "pt-BR": "Criador de Conteúdo",
-        "en": "Content Creator"
+        "pt-BR": "Assistente Shop",
+        "en": "Shop Assistant"
       },
       "description": {
-        "pt-BR": "Cria conteúdo e organiza a produção editorial.",
-        "en": "Plans and develops content for the audience and channel."
+        "pt-BR": "Opera o Shop para busca de produtos e acompanhamento de compras.",
+        "en": "Shop Assistant with task-specific methods and resources."
       },
       "source": {
         "type": "squados",
-        "path": "skills/content-creator"
+        "path": "skills/shop"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Assistente Shop",
+            "en": "Shop Assistant"
+          },
+          "summary": {
+            "pt-BR": "Opera o Shop para busca de produtos e acompanhamento de compras.",
+            "en": "Shop Assistant with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Opera o Shop para busca de produtos e acompanhamento de compras.\n\nModos: Catálogo; Compras; Pedidos e devoluções.\n\nShop e Shopify são aplicações diferentes e mantêm skills independentes.",
+            "en": "Shop Assistant. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Pesquise produtos no Shop com estes critérios.",
+                "en": "Search Shop products using these criteria."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Compare as opções e os termos disponíveis.",
+                "en": "Compare the available options and terms."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Confira variantes e disponibilidade sem concluir a compra.",
+                "en": "Check variants and availability without placing an order."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/call-prep.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["applications"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:933d9e62744173fc4e7ba96eadee3e73aea5422224cc88a3e55994a57951ed4e",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/shop/LICENSE"
+        },
+        "compatibility": {
+          "status": "requires-connection",
+          "requirements": [
+            {
+              "pt-BR": "Conexão autorizada e ferramentas da aplicação disponíveis na sessão.",
+              "en": "An authorized connection and application tools available in the session."
+            }
+          ]
+        }
       }
     },
     {
-      "id": "market-researcher",
-      "area": "marketing",
+      "id": "shopify",
+      "area": "applications",
       "title": {
-        "pt-BR": "Pesquisador de Mercado",
-        "en": "Market Researcher"
+        "pt-BR": "Assistente Shopify",
+        "en": "Shopify Assistant"
       },
       "description": {
-        "pt-BR": "Investiga clientes e mercados para orientar decisões.",
-        "en": "Researches customers, needs and market opportunities."
+        "pt-BR": "Opera a loja Shopify e seus dados autorizados.",
+        "en": "Shopify Assistant with task-specific methods and resources."
       },
       "source": {
         "type": "squados",
-        "path": "skills/market-researcher"
+        "path": "skills/shopify"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Assistente Shopify",
+            "en": "Shopify Assistant"
+          },
+          "summary": {
+            "pt-BR": "Opera a loja Shopify e seus dados autorizados.",
+            "en": "Shopify Assistant with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Opera a loja Shopify e seus dados autorizados.\n\nModos: Produtos e catálogo; Pedidos e clientes; Estoque e metafields.\n\nSomente Shopify; não absorve o aplicativo Shop.",
+            "en": "Shopify Assistant. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Consulte os produtos desta loja Shopify.",
+                "en": "Inspect products in this Shopify store."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Confira o contexto deste pedido na conta autorizada.",
+                "en": "Check this order context in the authorized account."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Prepare a alteração de catálogo e valide antes de salvar.",
+                "en": "Prepare the catalog change and validate it before saving."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/call-prep.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["applications"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:921fa0225ce84a3058dc26cfc801c6b406f1eb17f7e7018ea9a50b49a0353042",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/shopify/LICENSE"
+        },
+        "compatibility": {
+          "status": "requires-connection",
+          "requirements": [
+            {
+              "pt-BR": "Conexão autorizada e ferramentas da aplicação disponíveis na sessão.",
+              "en": "An authorized connection and application tools available in the session."
+            }
+          ]
+        }
       }
     },
     {
-      "id": "seo-specialist",
-      "area": "marketing",
+      "id": "telephony",
+      "area": "applications",
       "title": {
-        "pt-BR": "Especialista em SEO",
-        "en": "SEO Specialist"
+        "pt-BR": "Assistente de Telefonia",
+        "en": "Telephony Assistant"
       },
       "description": {
-        "pt-BR": "Melhora páginas e investiga visibilidade orgânica.",
-        "en": "Reviews search intent, content and search visibility."
+        "pt-BR": "Opera a integração de telefonia existente com referências para os provedores disponíveis.",
+        "en": "Telephony Assistant with task-specific methods and resources."
       },
       "source": {
         "type": "squados",
-        "path": "skills/seo-specialist"
+        "path": "skills/telephony"
+      },
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Assistente de Telefonia",
+            "en": "Telephony Assistant"
+          },
+          "summary": {
+            "pt-BR": "Opera a integração de telefonia existente com referências para os provedores disponíveis.",
+            "en": "Telephony Assistant with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Opera a integração de telefonia existente com referências para os provedores disponíveis.\n\nModos: Números e SMS/MMS; Chamadas; Diagnóstico de provedores.\n\nPreserva a capacidade técnica telephony; não incorpora outros aplicativos de trabalho.",
+            "en": "Telephony Assistant. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Verifique os recursos da conexão de telefonia.",
+                "en": "Check capabilities of the telephony connection."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Prepare o roteiro e os dados desta chamada.",
+                "en": "Prepare the script and data for this call."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Analise o resultado da chamada com base no registro disponível.",
+                "en": "Analyze the call outcome using the available record."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/internal-comms.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["applications"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:82500389d1e24602f44f893888e834d93adfef81317dff367ecefa62c9f3638f",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/telephony/LICENSE"
+        },
+        "compatibility": {
+          "status": "requires-connection",
+          "requirements": [
+            {
+              "pt-BR": "Conexão autorizada e ferramentas da aplicação disponíveis na sessão.",
+              "en": "An authorized connection and application tools available in the session."
+            }
+          ]
+        }
       }
     },
     {
-      "id": "creative-designer",
-      "area": "marketing",
-      "title": {
-        "pt-BR": "Designer de Criativos",
-        "en": "Creative Designer"
-      },
-      "description": {
-        "pt-BR": "Cria e adapta peças visuais comerciais.",
-        "en": "Develops visual direction for static ads and carousels."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/creative-designer"
-      }
-    },
-    {
-      "id": "marketing-traffic",
-      "area": "marketing",
-      "title": {
-        "pt-BR": "Analista de Marketing e Tráfego",
-        "en": "Marketing and Traffic Analyst"
-      },
-      "description": {
-        "pt-BR": "Analisa campanhas e orienta investimentos de marketing.",
-        "en": "Analyzes campaigns and funnels with grounded test proposals."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/marketing-traffic"
-      }
-    },
-    {
-      "id": "commercial-proposals",
-      "area": "sales",
-      "title": {
-        "pt-BR": "Agente de Propostas Comerciais",
-        "en": "Commercial Proposals Specialist"
-      },
-      "description": {
-        "pt-BR": "Prepara propostas comerciais com escopo e condições claras.",
-        "en": "Prepares proposals with scope, deliverables and conditions."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/commercial-proposals"
-      }
-    },
-    {
-      "id": "sales-coach",
-      "area": "sales",
-      "title": {
-        "pt-BR": "Treinador de Vendedores",
-        "en": "Sales Coach"
-      },
-      "description": {
-        "pt-BR": "Treina vendas com simulação e revisão de conversas.",
-        "en": "Provides sales practice, simulations and observed feedback."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/sales-coach"
-      }
-    },
-    {
-      "id": "prospecting",
-      "area": "sales",
-      "title": {
-        "pt-BR": "Especialista em Prospecção",
-        "en": "Prospecting Specialist"
-      },
-      "description": {
-        "pt-BR": "Pesquisa clientes e prepara abordagens comerciais.",
-        "en": "Researches accounts, qualification and outreach preparation."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/prospecting"
-      }
-    },
-    {
-      "id": "negotiation",
-      "area": "sales",
-      "title": {
-        "pt-BR": "Especialista em Negociação",
-        "en": "Negotiation Specialist"
-      },
-      "description": {
-        "pt-BR": "Prepara negociações com alternativas e limites claros.",
-        "en": "Prepares alternatives, limits and negotiation scenarios."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/negotiation"
-      }
-    },
-    {
-      "id": "customer-success",
-      "area": "customer-success",
-      "title": {
-        "pt-BR": "Especialista em CS",
-        "en": "Customer Success Specialist"
-      },
-      "description": {
-        "pt-BR": "Planeja resultados dos clientes e analisa retenção.",
-        "en": "Supports internal adoption, outcomes and retention planning."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/customer-success"
-      }
-    },
-    {
-      "id": "voice-of-customer",
-      "area": "customer-success",
-      "title": {
-        "pt-BR": "Analista de Voz do Cliente",
-        "en": "Voice of Customer Analyst"
-      },
-      "description": {
-        "pt-BR": "Analisa entrevistas e feedbacks para apoiar decisões.",
-        "en": "Synthesizes feedback and customer evidence for internal decisions."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/voice-of-customer"
-      }
-    },
-    {
-      "id": "cfo",
-      "area": "finance",
-      "title": {
-        "pt-BR": "CFO - Chefe de Finanças",
-        "en": "CFO - Chief Financial Officer"
-      },
-      "description": {
-        "pt-BR": "Analisa caixa, orçamento e cenários para decisões.",
-        "en": "Analyzes cash, budgets and financial scenarios."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/cfo"
-      }
-    },
-    {
-      "id": "financial-assistant",
-      "area": "finance",
-      "title": {
-        "pt-BR": "Assistente Financeiro",
-        "en": "Financial Assistant"
-      },
-      "description": {
-        "pt-BR": "Organiza contas e confere saldos, vencimentos e conciliação.",
-        "en": "Organizes payables, receivables and reconciliations."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/financial-assistant"
-      }
-    },
-    {
-      "id": "procurement",
-      "area": "procurement-inventory",
-      "title": {
-        "pt-BR": "Especialista em Compras",
-        "en": "Procurement Specialist"
-      },
-      "description": {
-        "pt-BR": "Compara fornecedores e compras com custo e condições claras.",
-        "en": "Compares suppliers, terms and total acquisition cost."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/procurement"
-      }
-    },
-    {
-      "id": "inventory",
-      "area": "procurement-inventory",
-      "title": {
-        "pt-BR": "Analista de Estoque",
-        "en": "Inventory Analyst"
-      },
-      "description": {
-        "pt-BR": "Analisa saldos, cobertura e reposição de estoque.",
-        "en": "Analyzes stock, availability and replenishment."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/inventory"
-      }
-    },
-    {
-      "id": "ecommerce-competitors",
-      "area": "ecommerce",
-      "title": {
-        "pt-BR": "Pesquisador de Concorrentes",
-        "en": "Ecommerce Competitor Researcher"
-      },
-      "description": {
-        "pt-BR": "Compara concorrentes, produtos e ofertas de ecommerce.",
-        "en": "Compares products, prices, shipping and positioning."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/ecommerce-competitors"
-      }
-    },
-    {
-      "id": "product-catalog",
-      "area": "ecommerce",
-      "title": {
-        "pt-BR": "Especialista em Catálogo de Produtos",
-        "en": "Product Catalog Specialist"
-      },
-      "description": {
-        "pt-BR": "Organiza cadastros e melhora conteúdo de produtos.",
-        "en": "Creates product titles, descriptions, attributes and categories."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/product-catalog"
-      }
-    },
-    {
-      "id": "ecommerce-conversion",
-      "area": "ecommerce",
-      "title": {
-        "pt-BR": "Especialista em Conversão de Ecommerce",
-        "en": "Ecommerce Conversion Specialist"
-      },
-      "description": {
-        "pt-BR": "Analisa a jornada de compra e propõe melhorias e testes.",
-        "en": "Analyzes purchase journeys and proposes conversion tests."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/ecommerce-conversion"
-      }
-    },
-    {
-      "id": "data-specialist",
+      "id": "handoff",
       "area": "operations",
       "title": {
-        "pt-BR": "Especialista em Dados",
-        "en": "Data Specialist"
+        "pt-BR": "Handoff",
+        "en": "Session Handoff"
       },
       "description": {
-        "pt-BR": "Analisa dados de negócios com conclusões conferíveis.",
-        "en": "Analyzes data and creates charts and decision reports."
+        "pt-BR": "Prepara uma passagem de contexto verificável para continuar o trabalho em outra sessão.",
+        "en": "Session Handoff with task-specific methods and resources."
       },
       "source": {
         "type": "squados",
-        "path": "skills/data-specialist"
-      }
-    },
-    {
-      "id": "presentation-specialist",
-      "area": "operations",
-      "title": {
-        "pt-BR": "Especialista em Apresentações",
-        "en": "Presentation Specialist"
+        "path": "skills/handoff"
       },
-      "description": {
-        "pt-BR": "Cria apresentações HTML bonitas e utilizáveis.",
-        "en": "Creates HTML presentations with clear narratives and visuals."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/presentation-specialist"
-      }
-    },
-    {
-      "id": "spreadsheet-specialist",
-      "area": "operations",
-      "title": {
-        "pt-BR": "Especialista em Planilhas",
-        "en": "Spreadsheet Specialist"
-      },
-      "description": {
-        "pt-BR": "Cria e edita planilhas com cálculos conferíveis.",
-        "en": "Creates and reviews usable spreadsheets and formulas."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/spreadsheet-specialist"
-      }
-    },
-    {
-      "id": "executive-assistant",
-      "area": "administration",
-      "title": {
-        "pt-BR": "Assistente Executivo",
-        "en": "Executive Assistant"
-      },
-      "description": {
-        "pt-BR": "Prepara reuniões, sínteses e prioridades de trabalho.",
-        "en": "Organizes meetings, decisions, priorities and follow-ups."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/executive-assistant"
-      }
-    },
-    {
-      "id": "business-writer",
-      "area": "administration",
-      "title": {
-        "pt-BR": "Redator de Negócios",
-        "en": "Business Writer"
-      },
-      "description": {
-        "pt-BR": "Escreve e revisa comunicações e documentos de negócios.",
-        "en": "Writes clear business communications and documents."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/business-writer"
-      }
-    },
-    {
-      "id": "project-manager",
-      "area": "projects",
-      "title": {
-        "pt-BR": "Gerente de Projetos",
-        "en": "Project Manager"
-      },
-      "description": {
-        "pt-BR": "Planeja e acompanha projetos de negócios.",
-        "en": "Plans dependencies, schedules and project follow-up."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/project-manager"
-      }
-    },
-    {
-      "id": "product-specialist",
-      "area": "product",
-      "title": {
-        "pt-BR": "Especialista em Produto",
-        "en": "Product Specialist"
-      },
-      "description": {
-        "pt-BR": "Orienta decisões de produto com evidências e requisitos.",
-        "en": "Supports discovery, prioritization and product specifications."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/product-specialist"
-      }
-    },
-    {
-      "id": "logistics",
-      "area": "logistics",
-      "title": {
-        "pt-BR": "Analista de Logística",
-        "en": "Logistics Analyst"
-      },
-      "description": {
-        "pt-BR": "Analisa custos, capacidade e entregas logísticas.",
-        "en": "Analyzes delivery times, freight and logistics performance."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/logistics"
-      }
-    },
-    {
-      "id": "contract-assistant",
-      "area": "legal",
-      "title": {
-        "pt-BR": "Assistente de Contratos",
-        "en": "Contract Assistant"
-      },
-      "description": {
-        "pt-BR": "Explica, compara e prepara contratos e obrigações.",
-        "en": "Compares contract versions and prepares obligations for review."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/contract-assistant"
-      }
-    },
-    {
-      "id": "quality-specialist",
-      "area": "quality",
-      "title": {
-        "pt-BR": "Especialista em Qualidade",
-        "en": "Quality Specialist"
-      },
-      "description": {
-        "pt-BR": "Investiga falhas e verifica ações de qualidade.",
-        "en": "Investigates nonconformities and verifies corrective actions."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/quality-specialist"
-      }
-    },
-    {
-      "id": "skill-manager",
-      "area": "operations",
-      "title": {
-        "pt-BR": "Criadora de Skills de Trabalho",
-        "en": "Work Skill Manager"
-      },
-      "description": {
-        "pt-BR": "Cria, pesquisa e melhora skills para o trabalho.",
-        "en": "Researches, creates and improves workplace skills."
-      },
-      "source": {
-        "type": "squados",
-        "path": "skills/skill-manager"
+      "editorial": {
+        "presentation": {
+          "title": {
+            "pt-BR": "Handoff",
+            "en": "Session Handoff"
+          },
+          "summary": {
+            "pt-BR": "Prepara uma passagem de contexto verificável para continuar o trabalho em outra sessão.",
+            "en": "Session Handoff with task-specific methods and resources."
+          },
+          "overview": {
+            "pt-BR": "Prepara uma passagem de contexto verificável para continuar o trabalho em outra sessão.\n\nModos: Continuação em nova sessão.\n\nRegistra objetivo, decisões, arquivos, estado, verificações e próximo passo; não instala um loop de execução.",
+            "en": "Session Handoff. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
+          },
+          "examples": [
+            {
+              "id": "example-1",
+              "prompt": {
+                "pt-BR": "Prepare um handoff desta tarefa para continuar em outra sessão.",
+                "en": "Prepare a handoff of this task for another session."
+              }
+            },
+            {
+              "id": "example-2",
+              "prompt": {
+                "pt-BR": "Registre decisões, arquivos e próximos passos para retomada.",
+                "en": "Record decisions, files and next steps for resumption."
+              }
+            },
+            {
+              "id": "example-3",
+              "prompt": {
+                "pt-BR": "Revise este handoff e identifique o que falta para continuar.",
+                "en": "Review this handoff and identify what is missing to continue."
+              }
+            }
+          ],
+          "image": {
+            "path": "assets/internal-comms.webp",
+            "alt": {
+              "pt-BR": "Ilustração editorial com dados fictícios; não representa prova de execução.",
+              "en": "Editorial illustration with fictional data; not evidence of execution."
+            }
+          },
+          "publisher": "SquadOS",
+          "roles": ["operations"],
+          "outputs": ["work-results"]
+        },
+        "reviewedRevision": "sha256-lf:b58a7461d550ed12f51989aab959b731b3ac5883ecc7a6b818047c8620109da5",
+        "license": {
+          "label": "MIT; componentes com avisos próprios",
+          "url": "https://github.com/squados/squados-plugins/blob/main/skills/handoff/LICENSE"
+        },
+        "compatibility": {
+          "status": "ready",
+          "requirements": []
+        }
       }
     }
   ]

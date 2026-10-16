@@ -1,10 +1,10 @@
 # Segunda curadoria da biblioteca de skills
 
-Composição aprovada; migração autorizada e em execução; publicação remota não realizada.
+Biblioteca implementada e verificada localmente; sem publicação remota ou alterações de instalações pessoais.
 
 O destino é `squados-plugins/skills`. As fontes pessoais foram evidência da primeira avaliação; não são destino de instalação, exclusão ou publicação.
 
-Cobertura: **408 conjuntos de instruções, 448 IDs originais, 20 especialistas propostos**.
+Cobertura: **408 conjuntos de instruções, 448 IDs originais, 20 especialistas implementados**.
 
 | Destino | Conjuntos de instruções |
 |---|---:|
@@ -13,7 +13,7 @@ Cobertura: **408 conjuntos de instruções, 448 IDs originais, 20 especialistas 
 | Instruções da plataforma | 42 |
 | Remover da biblioteca | 173 |
 
-## Biblioteca proposta
+## Biblioteca implementada
 
 | Pacote | Especialista | Modos | Fontes |
 |---|---|---|---:|
@@ -454,3 +454,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S446 | verification-before-completion | Instruções da plataforma | Instruções da plataforma: development/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S447 | writing-plans | Instruções da plataforma | Instruções da plataforma: planning/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S448 | writing-skills | Instruções da plataforma | Instruções da plataforma: skill-creation/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
+
+## Implementação e verificação
+
+Consulte [aceite](acceptance.md), [mapa de prompts/instruções](migration-map.json) e [estado de entrega](../skills-de-trabalho-status.md). Fontes foram incorporadas conforme licença e utilidade; as apenas consultadas não foram redistribuídas. Os IDs históricos abaixo continuam auditáveis.

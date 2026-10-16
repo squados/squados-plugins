@@ -1,0 +1,22 @@
+{
+  "incorporated": [
+    {
+      "id": "S131",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-obsidian.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S131",
+      "name": "obsidian",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "7aea4e8f89f94ab2876d79898d10a5d4cdab31390c53f72ad6934b071179f826"
+    }
+  ]
+}

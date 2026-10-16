@@ -1,0 +1,57 @@
+{
+  "incorporated": [
+    {
+      "source": "squados/squados-plugins/skills/ecommerce-conversion",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "id": "S157",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-adversarial-ux-test.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "source": "Bases dont-make-me-think e gamification fornecidas pelo autor",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Métodos de jornada incorporados; nomes, autorização e caminhos adaptados ao Studio."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S410",
+      "name": "ecommerce-conversion",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "b13e1071a63f2aa06da94311da1fc03569c93d8feb83bee7efc1b458d5e5af6f"
+    },
+    {
+      "id": "S027",
+      "name": "gamification",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "8c7e33a85b9bced893e869774bf2a866fa03eee1c6a5ccc1770703682951fd38"
+    },
+    {
+      "id": "S157",
+      "name": "adversarial-ux-test",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "d687ee7727174fd58acbe638038b207f7fb86ea27603a34cb3b0f1b0889b0dd7"
+    },
+    {
+      "id": "S025",
+      "name": "dont-make-me-think",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "0440fd5ad3b807777b26b6846282daa53fabb4fd9e49c8f28c975fb0c382a6b6"
+    }
+  ]
+}

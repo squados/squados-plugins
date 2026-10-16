@@ -1,0 +1,212 @@
+{
+  "incorporated": [
+    {
+      "source": "squados/squados-plugins/skills/cfo",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/financial-assistant",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "id": "S154",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-3-statement-model.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S182",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-3-statement-model.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S186",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-3-statement-model.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S227",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-3-statement-model.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S235",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-3-statement-model.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S199",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-3-statement-model.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S394",
+      "source": "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/finance/skills/reconciliation/SKILL.md",
+      "revision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "license": "Apache-2.0",
+      "notices": [
+        "references/LICENSE-reconciliation.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S395",
+      "source": "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/finance/skills/variance-analysis/SKILL.md",
+      "revision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "license": "Apache-2.0",
+      "notices": [
+        "references/LICENSE-reconciliation.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S290",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-3-statement-model.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S291",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-3-statement-model.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S137",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-3-statement-model.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S401",
+      "name": "cfo",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "b118672fb5ee5dacc34bd1d096e79bd42fdea1bfe3bcd481af9618ab0688ce7c"
+    },
+    {
+      "id": "S413",
+      "name": "financial-assistant",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "9d5db5bf805162c4c3e8bbc4e5c220cfc11d4c868b24352ef51374f527dad83b"
+    },
+    {
+      "id": "S290",
+      "name": "stocks",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "6321095d5501cdd22a90e17ccae09efccbf9ad3d435961272bdd7c5947f73c64"
+    },
+    {
+      "id": "S291",
+      "name": "stripe-link-cli",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "4b84f2be0a8ed6e72751f4c6ff04c6145ed632855986371621bd731fae9397af"
+    },
+    {
+      "id": "S154",
+      "name": "3-statement-model",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "2022e0ec2ef095489fb74cf191b5d02167abf84f20a60847abaea1b98f8eca7c"
+    },
+    {
+      "id": "S182",
+      "name": "comps-analysis",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "dcc2e6a91c584253daa1633db00b6cdd1595ba385ef4339296595f2318aee2c6"
+    },
+    {
+      "id": "S186",
+      "name": "dcf-model",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "bd6f6c023da4b0e86b1ca717c35a91285a34ca49f418865b75f0fd49f29bcf8f"
+    },
+    {
+      "id": "S199",
+      "name": "excel-author",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "f0228fe29411fc841dde1b93fe26965fade3431f396517027b610d4cf4a57988"
+    },
+    {
+      "id": "S227",
+      "name": "lbo-model",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "76fb6630ce41257d5982085fd9dc3a225af841c6976dea802556f4a001341e5f"
+    },
+    {
+      "id": "S235",
+      "name": "merger-model",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "1e2893e53bd591934416914e1e1158cd339834c9a99eab2040e2d6be1a7eac73"
+    },
+    {
+      "id": "S394",
+      "name": "reconciliation",
+      "source": "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/finance/skills/reconciliation/SKILL.md",
+      "instruction_sha256": "aa17e90539f4d4d84130c910c7f527236bfaa71977c4c03493c8e8e515ddeea6"
+    },
+    {
+      "id": "S395",
+      "name": "variance-analysis",
+      "source": "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/finance/skills/variance-analysis/SKILL.md",
+      "instruction_sha256": "467db7de3fb118550d013409254e2d4a9f87385a661e154655bf3431919b0ba1"
+    },
+    {
+      "id": "S137",
+      "name": "product-price-monitor",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "b87bf2102fed13d2c7c64759fa153f24f5e43a0afcf6f8ec5e13def92a6642ef"
+    }
+  ]
+}

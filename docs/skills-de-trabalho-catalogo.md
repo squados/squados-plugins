@@ -1,57 +1,51 @@
-# Catálogo aprovado de skills de trabalho
+# Biblioteca de especialistas do SquadOS Studio
 
-Escolha aprovada em 12/10/2026: 33 skills em 14 departamentos/áreas. A skill-manager já implementada orienta sua pesquisa, criação e melhoria; não entra nessa contagem.
+Composição aprovada e implementada em 16/10/2026: **20 pacotes** com modos sob
+demanda. Flavio cuida de vendas e negociação; Maslow, de pessoas. Cada entrada
+carrega só o método necessário. Assistentes permanecem separados por aplicação.
 
-## Finalidade
+| Especialista | Modos |
+|---|---|
+| [Michelangelo - Designer](../skills/michelangelo/SKILL.md) | Identidade e marcas; Interfaces web e mobile; Design por imagem; Peças gráficas e ilustração; Infográficos e diagramas; Apresentações e narrativa visual; SVG, ícones e animação; Canvases visuais |
+| [Tarantino - Editor de Vídeos](../skills/tarantino/SKILL.md) | Criação de vídeos; Roteiro e decupagem; Montagem e cortes; Motion e efeitos; Legendas no vídeo; Renderização e exportação |
+| [Áudio, Voz e Transcrição](../skills/audio/SKILL.md) | Transcrição e Whisper; Síntese de voz; Áudio e música; Transcrições de vídeos |
+| [Krug - Especialista em UX](../skills/krug/SKILL.md) | Auditoria de jornadas; Clareza e fricção; Testes de usabilidade; Conversão e checkout; Engajamento e gamificação |
+| [Warren - CFO](../skills/warren/SKILL.md) | Planejamento e caixa; Contas a pagar e receber; Demonstrações e conciliação; Análise de variações; Valuation e modelos financeiros; Preços e investimentos; Operações de pagamento |
+| [Zuck - O Marketeiro](../skills/zuck/SKILL.md) | Estratégia de marketing; Conteúdo e copywriting; Redes sociais e carrosséis; SEO; Tráfego e mensuração; Ideação de campanhas |
+| [Flavio - Vendas e Negociação](../skills/flavio/SKILL.md) | Inteligência comercial e mercado; Prospecção e qualificação; Propostas comerciais; Negociação e fechamento; Treinamento de vendas; E-commerce e catálogo comercial; Relacionamento e sucesso do cliente |
+| [Gutenberg - Documentos e Dados](../skills/gutenberg/SKILL.md) | Word e documentos; PDF, OCR e formulários; Planilhas e fórmulas; PowerPoint e templates; Análise e tratamento de dados; Redação e comunicação de trabalho |
+| [Linus - Engenheiro de Software](../skills/linus/SKILL.md) | Código e arquitetura; GitHub e revisão; Desenvolvimento e operação MCP; Banco e Supabase; Segurança; Navegador e testes; APIs e diagnóstico; Infraestrutura e publicação; IA e modelos |
+| [Drucker - Gestor de Operações](../skills/drucker/SKILL.md) | Projetos e execução; Produto e prioridades; Qualidade; Compras e fornecedores; Estoque e logística; Contratos e obrigações; Panorama do dia |
+| [Maslow - Especialista em Pessoas](../skills/maslow/SKILL.md) | Recrutamento e seleção; Integração e capacitação; Treinamento; Feedback e desenvolvimento |
+| [Darwin - Pesquisador](../skills/darwin/SKILL.md) | Pesquisa com fontes e citações; Artigos e arXiv; Reddit e RSS; Pesquisa geográfica; Verificação de informação pública; Escrita científica |
+| [Assistente Figma](../skills/figma/SKILL.md) | Leitura de arquivos; Criação e edição; Componentes e bibliotecas; Plugin API; Implementação a partir do Figma |
+| [Assistente Notion](../skills/notion/SKILL.md) | Páginas e bases; Captura de conhecimento; Reuniões; Pesquisa; Planos e implementação |
+| [Assistente Google Workspace](../skills/google-workspace/SKILL.md) | Email e agenda; Drive; Docs, Sheets e Slides |
+| [Assistente Obsidian](../skills/obsidian/SKILL.md) | Vaults e notas; Busca e links; Organização |
+| [Assistente Shop](../skills/shop/SKILL.md) | Catálogo; Compras; Pedidos e devoluções |
+| [Assistente Shopify](../skills/shopify/SKILL.md) | Produtos e catálogo; Pedidos e clientes; Estoque e metafields |
+| [Assistente de Telefonia](../skills/telephony/SKILL.md) | Números e SMS/MMS; Chamadas; Diagnóstico de provedores |
+| [Handoff](../skills/handoff/SKILL.md) | Continuação em nova sessão |
 
-Skills de uso interno, para apoiar colaboradores, gestores e líderes nos trabalhos da empresa. O catálogo define os especialistas escolhidos. Escopos detalhados, métodos, formatos de entrega e ferramentas serão pesquisados individualmente.
+Figma é independente de Michelangelo. Transcrição e voz ficam em Áudio; Tarantino
+cria e edita vídeos. Zuck concentra marketing, conteúdo, copy, redes, SEO e tráfego;
+mercado comercial, propostas e relacionamento ficam em Flavio. Gutenberg inclui
+análise de dados e motores de arquivos; Linus reúne MCP/mcporter, Supabase e Playwright.
 
-## Lista aprovada
+Os 35 pacotes próprios anteriores foram substituídos por estes destinos. Os cortes
+por baixo valor, incompatibilidade, origem Cursor e IDs explícitos estão no
+[relatório completo](skill-curation/report.md). Os IDs históricos continuam
+pesquisáveis na [classificação navegável](skill-curation/classification.html).
 
-| Departamento | Skill | Direção de trabalho para a pesquisa |
-|---|---|---|
-| RH | Especialista em Processo Seletivo | Vagas, critérios, entrevistas e análise de informações do processo |
-| RH | Especialista em Treinamentos | Programas, aulas, materiais, exercícios e avaliações de aprendizagem |
-| RH | Especialista em Desenvolvimento de Pessoas | Onboarding, feedback, planos de desenvolvimento e apoio aos gestores |
-| Marketing | Copywriter | Emails, páginas de vendas, anúncios, carrosséis e outros textos de marketing |
-| Marketing | Estrategista de Marketing | Posicionamento, campanhas, canais, planejamento e lançamentos |
-| Marketing | Criador de Conteúdo | Temas, formatos, calendário e produção de conteúdo |
-| Marketing | Pesquisador de Mercado | Clientes, necessidades, ofertas e oportunidades |
-| Marketing | Especialista em SEO | Intenção de busca, pautas e melhoria de páginas |
-| Marketing | Designer de Criativos | Direção visual e produção de peças estáticas e carrosséis |
-| Marketing | Analista de Marketing e Tráfego | Análise de campanhas, tráfego e funil, hipóteses e propostas de testes |
-| Comercial | Agente de Propostas Comerciais | Estruturação de escopo, condições e entregas de propostas |
-| Comercial | Treinador de Vendedores | Simulações, prática de abordagem, objeções e revisão de conversas |
-| Comercial | Especialista em Prospecção | Pesquisa de contas, qualificação e preparação de abordagens |
-| Comercial | Especialista em Negociação | Preparação, cenários, argumentos e simulações |
-| Customer Success | Especialista em CS | Apoio interno a planos de adoção, resultados, retenção e relacionamento |
-| Customer Success | Analista de Voz do Cliente | Síntese de feedbacks, entrevistas e motivos de cancelamento para decisões internas |
-| Financeiro | CFO - Chefe de Finanças | Análise, planejamento financeiro, caixa, orçamento e cenários |
-| Financeiro | Assistente Financeiro | Organização de contas a pagar/receber, conferências e preparação de cobranças |
-| Compras e Estoque | Especialista em Compras | Comparação de fornecedores, propostas, condições e custo total |
-| Compras e Estoque | Analista de Estoque | Giro, cobertura, rupturas, excessos e planejamento de reposição |
-| Ecommerce | Pesquisador de Concorrentes | Comparação de produtos, preços, fretes, prazos e posicionamento |
-| Ecommerce | Especialista em Catálogo de Produtos | Títulos, descrições, atributos e organização de categorias |
-| Ecommerce | Especialista em Conversão de Ecommerce | Análise de páginas e jornada de compra, hipóteses e plano de testes |
-| Operações | Especialista em Dados | Análises, indicadores, gráficos e relatórios para decisão |
-| Operações | Especialista em Apresentações | Apresentações em HTML, pitches e comunicação visual de conteúdo e números |
-| Operações | Especialista em Planilhas | Criação e revisão de arquivos, fórmulas e modelos utilizáveis |
-| Administrativo e Diretoria | Assistente Executivo | Reuniões, sínteses, atas, prioridades e acompanhamentos |
-| Administrativo e Diretoria | Redator de Negócios | Comunicados, briefings, memorandos e documentos profissionais |
-| Projetos | Gerente de Projetos | Planos de execução, cronogramas, dependências, riscos e andamento |
-| Produto e Inovação | Especialista em Produto | Pesquisa de problemas de clientes, priorização e especificação de melhorias |
-| Logística | Analista de Logística | Análise de entregas, prazos, fretes, devoluções e fornecedores logísticos |
-| Jurídico e Contratos | Assistente de Contratos | Comparação de versões, resumo de obrigações e preparação para revisão |
-| Qualidade | Especialista em Qualidade | Não conformidades, causas, planos de ação e critérios de verificação |
+O catálogo [gallery.json](../gallery.json) e seu espelho no Desktop contêm somente
+os vinte pacotes. A apresentação v2 inclui exemplos, requisitos e capas editoriais
+próprias reaproveitadas; a capa ilustra a categoria, sem provar execução.
+Cada pacote registra conteúdo incorporado, licenças e fontes apenas consultadas
+em references/provenance.json. Fontes consultadas não significam código copiado.
 
-As direções de trabalho orientam a pesquisa; não comprovam capacidade de execução no Studio. A pesquisa deverá esclarecer as fronteiras de especialistas próximos, preservando os nomes e a seleção aprovados. Uma proposta de consolidação ou mudança de catálogo deve ser discutida com o usuário.
+Os 14 objetivos simples foram mapeados para prompts: três pedidos existentes e
+11 novos, totalizando 147. As 42 fontes de operação da plataforma foram revistas
+nos guias condicionais existentes e documentos do mantenedor, fora das skills
+selecionáveis. Consulte [o mapa de destinos](skill-curation/migration-map.json).
 
-## Padrão de criação aprovado
-
-Usar a [skill-manager](../skills/skill-manager/SKILL.md) e as decisões em [estado e continuação](skills-de-trabalho-status.md): execução flexível, intenção identificada automaticamente, progressive disclosure, concisão, scripts com benefício concreto, instalação acessível de dependências ausentes e melhoria da versão utilizada com aceitação da pessoa.
-
-## Implementação e uso
-
-A seleção acima foi preservada. As 33 pesquisas foram consolidadas antes da autoria; o usuário autorizou a conclusão contínua de todos os pacotes para testar e melhorar depois. Links dos pacotes estão em [especialistas implementados](skills-de-trabalho-pacotes.md), com evidências e limites em [estado de entrega](skills-de-trabalho-status.md).
-
-Pesquisa, pacote verificável, proposta revisável, aprovação/instalação, execução real e publicação são etapas diferentes. Este arquivo registra a escolha; os documentos de estado registram as entregas atuais.
+Verificação e limites: [estado de entrega](skills-de-trabalho-status.md).

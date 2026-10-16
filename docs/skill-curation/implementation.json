@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-16",
+  "verified_at_utc": "2026-10-16T18:57:20.995223+00:00",
+  "scope": "Local library and coordinated Desktop source; no personal profile changes or remote publication.",
+  "composition": {
+    "packages": 20,
+    "files": 566,
+    "retained_sources": 179,
+    "removed_sources": 173,
+    "prompt_goals": 14,
+    "internal_sources": 42,
+    "prompts": 147
+  },
+  "native": {
+    "guard": "passed",
+    "staging": 20,
+    "approval_in_test_profile": 20,
+    "installation_in_test_profile": 20,
+    "installed_files_compared": 566,
+    "mismatches": 0,
+    "transport": "Local checkout replaces GitHub transport only; native bundle validation, guard, approval and installation execute normally."
+  },
+  "tests": {
+    "gutenberg": {
+      "passed": 82,
+      "skipped": 1,
+      "skip_reason": "LibreOffice not installed",
+      "current_helper_files_compared_to_tested_copy": 35
+    },
+    "michelangelo": {
+      "passed": 31,
+      "headless_browser": true
+    },
+    "tarantino": {
+      "python": 39,
+      "node": 11,
+      "locked_setup": true,
+      "sample_duration_seconds": 2,
+      "preview_and_master": true,
+      "audio_and_video_streams": true,
+      "frame_inspected": true,
+      "browser_qa_layout_issues": 0,
+      "editorial_approval": false
+    },
+    "public_helpers_and_contract": {
+      "python": 14,
+      "node": 3
+    },
+    "desktop_focused": {
+      "files": 9,
+      "passed": 107,
+      "skipped": 0
+    },
+    "catalog_validator": true,
+    "catalog_tests": 2,
+    "prompt_sync_test": 1,
+    "typecheck": true,
+    "report_filters": "passed"
+  },
+  "review": {
+    "independent": true,
+    "initial_critical": 1,
+    "initial_important_groups": 4,
+    "initial_minor": 1,
+    "fix_pass_applied": true,
+    "important_findings_remaining": 0,
+    "independent_second_review": false,
+    "details": "review.md"
+  },
+  "general_gate": {
+    "passed": false,
+    "reason": "One existing Biome format error outside this task footprint",
+    "path": "squados-desktop/docs/superpowers/verification/2026-10-16-home-templates/post-integration.json"
+  },
+  "not_exercised": [
+    "Authenticated external accounts/connectors",
+    "OCR",
+    "DOCX/PPTX visual rendering",
+    "LibreOffice recalculation",
+    "Scientific LaTeX compilation",
+    "Transcription/model inference",
+    "Listening/editorial approval of real video",
+    "Remote publication"
+  ],
+  "integration": {
+    "branch": "main",
+    "commits": "local; inspect Git history",
+    "remote_publication": false
+  }
+}

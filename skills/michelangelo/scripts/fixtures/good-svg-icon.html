@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  body { margin: 0; font-family: system-ui; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; }
+  .brand { font-size: 18px; color: #111; }
+  .menu { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+          background: #f0f0f0; border: none; border-radius: 8px; transition: background .2s; }
+  main { max-width: 640px; margin: 24px auto 0; padding: 24px; }
+  h1 { font-size: 40px; line-height: 1.15; margin: 24px 0; color: #111; }
+  p { font-size: 16px; line-height: 1.6; margin: 16px 0; color: #222; }
+</style></head><body>
+  <header>
+    <span class="brand">Acme</span>
+    <button class="menu" aria-label="Menu">
+      <!-- ícone hambúrguer: 3 barras a 6px de distância (gap ~4px entre rects) -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </header>
+  <main>
+    <h1>Bem-vindo</h1>
+    <p>Este é um parágrafo de conteúdo com bastante respiro e contraste adequado para leitura confortável.</p>
+  </main>
+</body></html>

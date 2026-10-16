@@ -1,0 +1,357 @@
+{
+  "prompts": {
+    "S390": {
+      "prompt": "content-writer",
+      "treatment": "Pedido existente cobre criação com pesquisa e adaptação ao canal."
+    },
+    "S128": {
+      "prompt": "meeting-notes",
+      "treatment": "Pedido existente inclui decisões, responsáveis e próximos passos de reunião."
+    },
+    "S287": {
+      "prompt": "social-publisher",
+      "treatment": "Pedido existente cobre calendário editorial e planejamento de publicações."
+    },
+    "S389": {
+      "prompt": "call-prep",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S187": {
+      "prompt": "decision-questionnaire",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S312": {
+      "prompt": "define-goal",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S110": {
+      "prompt": "document-to-action-items",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S113": {
+      "prompt": "email-inbox-triage",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S412": {
+      "prompt": "daily-priorities",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S029": {
+      "prompt": "expressive-interface",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S031": {
+      "prompt": "premium-visual-direction",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S122": {
+      "prompt": "humanize-writing",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S243": {
+      "prompt": "one-three-one",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    },
+    "S148": {
+      "prompt": "weekly-review-planning",
+      "treatment": "Adaptação editorial própria do objetivo; sem instalação ou pacote de skill."
+    }
+  },
+  "internal": [
+    {
+      "id": "S195",
+      "name": "dynamic-workflow",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/planning/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S207",
+      "name": "grill-me",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/planning/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S435",
+      "name": "brainstorming",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/planning/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S437",
+      "name": "executing-plans",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/planning/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S447",
+      "name": "writing-plans",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/planning/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S062",
+      "name": "review-agent",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S139",
+      "name": "requesting-code-review",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S141",
+      "name": "simplify-code",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S147",
+      "name": "test-driven-development",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S293",
+      "name": "subagent-driven-development",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S438",
+      "name": "finishing-a-development-branch",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S439",
+      "name": "receiving-code-review",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S440",
+      "name": "requesting-code-review",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S441",
+      "name": "subagent-driven-development",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S443",
+      "name": "test-driven-development",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S444",
+      "name": "using-git-worktrees",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S446",
+      "name": "verification-before-completion",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S144",
+      "name": "spike",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/diagnosis/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S145",
+      "name": "systematic-debugging",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/diagnosis/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S442",
+      "name": "systematic-debugging",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/diagnosis/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S013",
+      "name": "skill-creator",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-creation/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S050",
+      "name": "skill-creator",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-creation/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S064",
+      "name": "skill-creator",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-creation/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S120",
+      "name": "hermes-agent-skill-authoring",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-creation/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S345",
+      "name": "skill-creator",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-creation/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S448",
+      "name": "writing-skills",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-creation/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S026",
+      "name": "find-skills",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-manager/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S119",
+      "name": "hermes-agent",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-manager/guide.md",
+      "treatment": "Contrato nativo preservado como dependência Hermes; guia explica descoberta sem cartão público."
+    },
+    {
+      "id": "S152",
+      "name": "skill-search",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-manager/guide.md",
+      "treatment": "Contrato nativo preservado como dependência Hermes; guia explica descoberta sem cartão público."
+    },
+    {
+      "id": "S431",
+      "name": "skill-manager",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/skill-manager/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S108",
+      "name": "computer-use",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/prepare-computer/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S340",
+      "name": "screenshot",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/prepare-computer/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S263",
+      "name": "publish-site",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/publish-website/guide.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S101",
+      "name": "blocked-page-recovery",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/diagnosis/references/research-and-recovery.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S194",
+      "name": "duckduckgo-search",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/diagnosis/references/research-and-recovery.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S275",
+      "name": "searxng-search",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/diagnosis/references/research-and-recovery.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S436",
+      "name": "dispatching-parallel-agents",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/references/collaboration.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S445",
+      "name": "using-superpowers",
+      "repository": "squados-desktop",
+      "path": "resources/instructions/development/references/collaboration.md",
+      "treatment": "Consulta pertinente por tarefa preservada; rejeitada ativação obrigatória antes de toda resposta."
+    },
+    {
+      "id": "S396",
+      "name": "hermes-update",
+      "repository": "squados-desktop",
+      "path": "docs/maintainers/library-procedures.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S397",
+      "name": "squados-studio-publish",
+      "repository": "squados-desktop",
+      "path": "docs/maintainers/library-procedures.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S398",
+      "name": "squados-studio-templates",
+      "repository": "squados-desktop",
+      "path": "docs/maintainers/library-procedures.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    },
+    {
+      "id": "S399",
+      "name": "referencias-externas",
+      "repository": "squados-desktop",
+      "path": "docs/maintainers/library-procedures.md",
+      "treatment": "Método revisto e incorporado às instruções condicionais existentes; sem cerimônias ou ferramentas obrigatórias de outro harness."
+    }
+  ],
+  "prompt_count": 147
+}

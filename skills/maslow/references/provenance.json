@@ -1,0 +1,51 @@
+{
+  "incorporated": [
+    {
+      "source": "squados/squados-plugins/skills/people-development",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/recruitment",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/training-specialist",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S420",
+      "name": "people-development",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "8ebb33abd8d145e410a20cb553fdc7a2920cbf2ca13401b2404c6473b0547d5f"
+    },
+    {
+      "id": "S428",
+      "name": "recruitment",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "7ceaa89d77774e07f2f22f9832bcad0e9b8ace62214f866abb635f264eb53c41"
+    },
+    {
+      "id": "S433",
+      "name": "training-specialist",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "9a70f2113ebf0f6560d7e5017790918cddbaf62940719aaed5414ba0628b61c3"
+    }
+  ]
+}

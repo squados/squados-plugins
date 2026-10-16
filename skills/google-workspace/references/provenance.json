@@ -1,0 +1,28 @@
+{
+  "incorporated": [
+    {
+      "id": "S117",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-google-workspace.txt"
+      ],
+      "changes": "Referências de consulta/brief preservadas; cliente de OAuth com credenciais em arquivo omitido. Entrada e modos próprios usam conexão segura do Studio."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S117",
+      "name": "google-workspace",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "4ab062fe5131d123a6c4f1297e58c7f75b8d517fd282b68547da7ebfabb2a0b9"
+    },
+    {
+      "id": "S028",
+      "name": "google-workspace",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "f53b2d8c9bcb43365c8cb4118d24a47b0a018b7ca173aa47e680e8bc02ed869d"
+    }
+  ]
+}

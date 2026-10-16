@@ -1,0 +1,175 @@
+{
+  "incorporated": [
+    {
+      "source": "squados/squados-plugins/skills/business-writer",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/data-specialist",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/spreadsheet-specialist",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "id": "S111",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-docx.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S134",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-docx.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S136",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-docx.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S149",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-docx.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S400",
+      "name": "business-writer",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "48b470b86b70c82b21dd16a498dd2a0ca323298b9403712acca8ff35a533c216"
+    },
+    {
+      "id": "S408",
+      "name": "data-specialist",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "7574cdaa13f472172e913bada8dcde9f99971d027248c281aea6d987e5e59424"
+    },
+    {
+      "id": "S111",
+      "name": "docx",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "9678b14d5e7841d588b969f6a4696cd46bcc46c3e4ac1479edc7656a051aa5ff"
+    },
+    {
+      "id": "S134",
+      "name": "pdf",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "c16b9c159a3a0b49353bfcd10c498b02aef3d319207b1019aa7dc8db129d06ab"
+    },
+    {
+      "id": "S136",
+      "name": "powerpoint",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "b71d29d9809c4464d7f8d10afabf4f22f6a26c647cf7aacb6f9faf196ebe82f2"
+    },
+    {
+      "id": "S149",
+      "name": "xlsx",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "b302d7ac997843a757ab3c11513ea012889ebdae32f842edb44faa9a4485f19b"
+    },
+    {
+      "id": "S007",
+      "name": "doc-coauthoring",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/doc-coauthoring/SKILL.md",
+      "instruction_sha256": "2e47d78846faeea4a56e9809c52700087a15a2155a3f293a3efbaded81398ef4"
+    },
+    {
+      "id": "S008",
+      "name": "docx",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/docx/SKILL.md",
+      "instruction_sha256": "8017469ea95fb7d28225c62daf8e2f3492a7b516fc64c18c28977cbf8980b7fe"
+    },
+    {
+      "id": "S024",
+      "name": "docx",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "912cb15683a476a285033f9a40c5099248f9c6a06d581b106b95796f9d33d118"
+    },
+    {
+      "id": "S010",
+      "name": "internal-comms",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/internal-comms/SKILL.md",
+      "instruction_sha256": "067b7587a344a928fc6534ef66b1bcd591fc7c26d207ea7ca3334aeb678d6475"
+    },
+    {
+      "id": "S043",
+      "name": "pdf",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "9f78b8359fbd4943ad260a7a1e436e5a96503406d6c34e99f69223d647d85b9c"
+    },
+    {
+      "id": "S335",
+      "name": "pdf",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/pdf/SKILL.md",
+      "instruction_sha256": "d108cf2b36355ab37eb5962933f4d09785ec002f3105c506129320209306b9d2"
+    },
+    {
+      "id": "S012",
+      "name": "pptx",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/pptx/SKILL.md",
+      "instruction_sha256": "a7ff03e2c85b636f55232a6b1555f5dd90216b7a1a359ab289d8364e6acbc6a0"
+    },
+    {
+      "id": "S044",
+      "name": "pptx",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "d8bf85f2ef187ce78cf1afa0eab0566d8760df158ea99815b84ac8bc813f04ab"
+    },
+    {
+      "id": "S259",
+      "name": "pptx-author",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "800c8ab3e98db2ddd4d05eb44efd2000e9c232ec75a39747cea1aa3140135895"
+    },
+    {
+      "id": "S432",
+      "name": "spreadsheet-specialist",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "885c488fc2945933dd3ffcde33b609bcdd837efa79480a711d3a2b175aeb5f6c"
+    },
+    {
+      "id": "S057",
+      "name": "xlsx",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "6712b39718fe815054abca9c3ee72f989613e6f771c8a5c58f30a65a6c905622"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "incorporated": [],
+  "consulted": [
+    {
+      "id": "S295",
+      "name": "telephony",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "41ec6380adce44ffe76259a6642412b121ca1de0fd5381acc6d501f1f4334d12"
+    }
+  ]
+}

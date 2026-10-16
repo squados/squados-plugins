@@ -1,0 +1,375 @@
+{
+  "incorporated": [
+    {
+      "id": "S116",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S201",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S232",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S188",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S138",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S270",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S215",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S216",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S196",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S209",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S253",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S292",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-github.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S344",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/sentry/SKILL.md",
+      "revision": "49f948faa9258a0c61caceaf225e179651397431",
+      "license": "Apache-2.0",
+      "notices": [
+        "references/LICENSE-sentry.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S011",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/SKILL.md",
+      "revision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "license": "Apache-2.0",
+      "notices": [
+        "references/LICENSE-mcp-builder.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S336",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/playwright/SKILL.md",
+      "revision": "49f948faa9258a0c61caceaf225e179651397431",
+      "license": "Apache-2.0",
+      "notices": [
+        "references/LICENSE-playwright.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    },
+    {
+      "id": "S045",
+      "source": "Acervo do autor / publish-chrome-webstore",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ],
+      "changes": "Cliente de upload preservado; credenciais apenas do runtime, endpoint OAuth restrito e dry-run offline sem mutações."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S180",
+      "name": "code-wiki",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "5d3e5b93dfd188483f45e75f00a7d4f16d044681f41c36b785aae900c7397576"
+    },
+    {
+      "id": "S105",
+      "name": "codebase-inspection",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "d62554263461919dff7d77c3c0c284c2190c894f312a84d7a770a030dab642dc"
+    },
+    {
+      "id": "S188",
+      "name": "docker-management",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "6425a2cf3f682f4b6812522dcb7ceaea7dab9ba0fbf159fb900280edc5f69e50"
+    },
+    {
+      "id": "S196",
+      "name": "evaluating-llms-harness",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "9a021e8e64fdc2f76f734d6e4ec99eda4624971720b5f52a90e6938ebeb5f3fc"
+    },
+    {
+      "id": "S201",
+      "name": "fastmcp",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "f4072408b8b5e4bf170deae0db48534ea838f45200f86c8735f595331180cc08"
+    },
+    {
+      "id": "S209",
+      "name": "guidance",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "e6549204b864a934df9b13613c7437fe5f110acef8ea3f09b748d319d2da461a"
+    },
+    {
+      "id": "S215",
+      "name": "huggingface-hub",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "68ee2e5ae17e0f2968f8550534f3fce1c7eae461b95cbe1dbc34b8d487665bc5"
+    },
+    {
+      "id": "S216",
+      "name": "huggingface-tokenizers",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "79ca48477b7b72a9d5b59e472c89bec4399048ba2f5e9cc3698ed6e6facc5b0c"
+    },
+    {
+      "id": "S011",
+      "name": "mcp-builder",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/SKILL.md",
+      "instruction_sha256": "0f4592dcb53cf2b5d6b7febee6b4152018b565551a1c29e3c612f57b218ab295"
+    },
+    {
+      "id": "S232",
+      "name": "mcporter",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "39be15caad8f01f0e32ace926807876c772796d04e128739b250a442f5772305"
+    },
+    {
+      "id": "S253",
+      "name": "pinecone",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "7947f49681dd4107f2795a6e33e9ea36a187e65bc3addf5a24be094b1efee2e3"
+    },
+    {
+      "id": "S138",
+      "name": "python-debugpy",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "cb1b8b0795a56fa0fd79f80f3363f1ad79d404a6757d6cf547971cf89f21155e"
+    },
+    {
+      "id": "S270",
+      "name": "rest-graphql-debug",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "18228139612c555dbb4a53b74039dadb53cb1163507dd9325a4fcfa3326e475d"
+    },
+    {
+      "id": "S344",
+      "name": "sentry",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/sentry/SKILL.md",
+      "instruction_sha256": "508c6f5c100586c81a34397d30f00f4b8771b66d698a7ac1836998df925dd007"
+    },
+    {
+      "id": "S292",
+      "name": "stripe-projects",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "e290eb0073ea3ce364e62019bbf257571b58caacc029543999e96071b98e222e"
+    },
+    {
+      "id": "S051",
+      "name": "supabase",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "3b1ea64c9c6f2f83e6674cad65e6d36bd42c46d36edfa5ab4c972c18e0647ce3"
+    },
+    {
+      "id": "S016",
+      "name": "webapp-testing",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/webapp-testing/SKILL.md",
+      "instruction_sha256": "51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2"
+    },
+    {
+      "id": "S158",
+      "name": "agent-merge-conflict-arbiter",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "f8b1a0cf2392a1da0d3890e1ebc6429b1edb83a8f076e104b8f7c8cb7465d1be"
+    },
+    {
+      "id": "S020",
+      "name": "deploy-vercel",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "dca1ec68d722b47220188a389ae38a66f03a62914d1f5b239e9ea1b5ff1c6247"
+    },
+    {
+      "id": "S321",
+      "name": "gh-address-comments",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/gh-address-comments/SKILL.md",
+      "instruction_sha256": "77389eefd3fb6584210668ca8e43f4b8de87e7722ddd953474bc9e24cdfaaedd"
+    },
+    {
+      "id": "S322",
+      "name": "gh-fix-ci",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/gh-fix-ci/SKILL.md",
+      "instruction_sha256": "7b326b4a2f0f5f85122144628ec02077e48841e0e0e82efce88b3415bcfb7c26"
+    },
+    {
+      "id": "S116",
+      "name": "github",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "9d70e7c842fe7db75b5a50526552a69862f5bcfc1e59aa93785241649a09d5a3"
+    },
+    {
+      "id": "S060",
+      "name": "openai-docs",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "aa6829e21df2223167c85d2e49b6337a7345c84c1033f1ec10182c7882b36d45"
+    },
+    {
+      "id": "S333",
+      "name": "openai-docs",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/openai-docs/SKILL.md",
+      "instruction_sha256": "057d24b4f36dab38299857777e4c0ca5bcce65d8cf89d917c174c1a0ae23d9f8"
+    },
+    {
+      "id": "S334",
+      "name": "openai-docs",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.system/openai-docs/SKILL.md",
+      "instruction_sha256": "669a42ccf3323fe0ceda6e466730bcb05dddf1e0c220d6523ea504909fc49165"
+    },
+    {
+      "id": "S341",
+      "name": "security-best-practices",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/security-best-practices/SKILL.md",
+      "instruction_sha256": "7b3dae1ffc5434d890f3c65c8f552af52d0307fab3b35dec13013c9ca3844c4f"
+    },
+    {
+      "id": "S342",
+      "name": "security-ownership-map",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/security-ownership-map/SKILL.md",
+      "instruction_sha256": "f06c1a59247569326702c945f397af163ea96cf2ecfdf2dde280605bf89a3ec8"
+    },
+    {
+      "id": "S048",
+      "name": "security-review",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "ed388c4521e457e2081e4110ea851995242d1f322cace309273e5b5f0bbe2538"
+    },
+    {
+      "id": "S343",
+      "name": "security-threat-model",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/security-threat-model/SKILL.md",
+      "instruction_sha256": "1283c0dd62a8104d9edda4583569b5d8510b4ddaa45120687c999250fd96bad2"
+    },
+    {
+      "id": "S052",
+      "name": "supabase-postgres-best-practices",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "e271a850b25f65247000411b14fd389002e904dc64db717bbf7f7ccde4dcd6c2"
+    },
+    {
+      "id": "S349",
+      "name": "vercel-deploy",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/vercel-deploy/SKILL.md",
+      "instruction_sha256": "f4a6cbfbb378a320fae179a79f727a881d19677e9b3db96ed49d2dc02a74fa46"
+    },
+    {
+      "id": "S351",
+      "name": "yeet",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/yeet/SKILL.md",
+      "instruction_sha256": "4829d4909081e1abf91507fb581e6f566ce7064001892414f32191895b08a595"
+    },
+    {
+      "id": "S336",
+      "name": "playwright",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/playwright/SKILL.md",
+      "instruction_sha256": "0ffaabcc8e0990627c4725f18bf1c7955534a796c1c199e872909de2013ce6a8"
+    },
+    {
+      "id": "S337",
+      "name": "playwright-interactive",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/playwright-interactive/SKILL.md",
+      "instruction_sha256": "f6c1155d923e6ae3ccc12abfef2266f119f8e9546df2ddeee1f5eb369845a0a1"
+    },
+    {
+      "id": "S045",
+      "name": "publish-chrome-webstore",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "c8d16e47492160c721062f9faa9c3b5366b624b83f198c08a9d556f770f69e48"
+    }
+  ]
+}

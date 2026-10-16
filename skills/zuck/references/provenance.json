@@ -1,0 +1,99 @@
+{
+  "incorporated": [
+    {
+      "source": "squados/squados-plugins/skills/content-creator",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/copywriter",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/marketing-strategist",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/marketing-traffic",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/seo-specialist",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S019",
+      "name": "carrossel-instagram",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "9cd5baaba0b04586a3f068f0d08b7fa15d5d5da56b7cc7bced98f13fc9f4cc20"
+    },
+    {
+      "id": "S403",
+      "name": "content-creator",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "044812d04112b8f22208b8e699ce38a798f43e74d0953532d6dd6ed45ef60931"
+    },
+    {
+      "id": "S405",
+      "name": "copywriter",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "7fe6ead2a8d9d4e929a9943822291a2a1c9b76072e4276255f91b6d2ed9206ce"
+    },
+    {
+      "id": "S184",
+      "name": "creative-ideation",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "b0b2a36387ecdf363550a341ee6941fe4fae0443564d730c0121a6a66114f36c"
+    },
+    {
+      "id": "S417",
+      "name": "marketing-strategist",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "f55773c52253eec64bb6d18878a189f2aef8c49df9039e06d5f02949215eff36"
+    },
+    {
+      "id": "S418",
+      "name": "marketing-traffic",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "34589ddc48fa8dabd6c1ee8c0ad2988b566b2d056a26ff445189faca19614921"
+    },
+    {
+      "id": "S049",
+      "name": "seo-audit",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "c9a012e2e8f9b4e26a005c92c693670452b1fbfa6765de2748c630fe60f28194"
+    },
+    {
+      "id": "S430",
+      "name": "seo-specialist",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "fcc3e737d99a82d503f968667fd432e672b20b48c6c466a4d5fab7b88ace6e27"
+    }
+  ]
+}

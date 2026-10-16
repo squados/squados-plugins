@@ -1,0 +1,327 @@
+{
+  "incorporated": [
+    {
+      "source": "squados/squados-plugins/skills/creative-designer",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/presentation-specialist",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "id": "S041",
+      "source": "Skill Michelangelo existente fornecida pelo autor",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Detector e métodos preservados; extração editorial e testes de desenvolvimento não fazem parte do pacote de execução; caminhos, runtime e entrega adaptados ao Studio."
+    },
+    {
+      "id": "S256",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-Hermes.txt"
+      ],
+      "changes": "Helpers preservados e organizados por operação; instruções de uso adaptadas."
+    },
+    {
+      "id": "S233",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-Hermes.txt"
+      ],
+      "changes": "Helpers preservados e organizados por operação; instruções de uso adaptadas."
+    },
+    {
+      "id": "S181",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-Hermes.txt"
+      ],
+      "changes": "Clientes de execução/diagnóstico e workflows de imagem preservados; provisionamento de servidor fica nos procedimentos de plataforma."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S017",
+      "name": "brandkit",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "da29c9b6b14a0626ddf93b4dbe7d0385865c08c5fcdc12995dcc1c7e89e3c8cf"
+    },
+    {
+      "id": "S181",
+      "name": "comfyui",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "1013a06bf6accc0cbcb43a7dbb6e31130ed7e692b4db454877ccb38fbe66815e"
+    },
+    {
+      "id": "S406",
+      "name": "creative-designer",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "78c42a80a2f23f30f4712e34a14d2eb39ae80927e430e81bfcb09bbc4703547a"
+    },
+    {
+      "id": "S190",
+      "name": "draw-your-font",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "4af4d74f055d789b4b8a1bf770f0e9633e709dfeef64a5b77e2097d9ffca6ea2"
+    },
+    {
+      "id": "S233",
+      "name": "meme-generation",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "bd43e558ebca6d31d87a0eba0bacd39e0f02f750596ede59b1a10fe0f967a669"
+    },
+    {
+      "id": "S066",
+      "name": "motion-react",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "b5eec37b8f7acc3bfb008660267b030ecca8d7dec70431db74d20353e02d377b"
+    },
+    {
+      "id": "S256",
+      "name": "pixel-art",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "eae06833ec560c7061e5c168a83fb564832c58f14c13c836c585fa013fd07aed"
+    },
+    {
+      "id": "S421",
+      "name": "presentation-specialist",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "5a61de3ff6af894f25af0ae819184065efea7b7097453cce50f5afd969cf9d31"
+    },
+    {
+      "id": "S014",
+      "name": "slack-gif-creator",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/slack-gif-creator/SKILL.md",
+      "instruction_sha256": "2efca615ce55a3edd8fc05c779068a8085816617991987e446606403cd3abb22"
+    },
+    {
+      "id": "S289",
+      "name": "stable-diffusion",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "fe828c165dec3dc7c59ccfd74a9279f8740a2f50dc87c9a2179ccf144de8b3cb"
+    },
+    {
+      "id": "S053",
+      "name": "svg",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "8402640461c5d677dc38d3e9d334d5c30eb4e7c8c4e8664656cb23f35cd1d448"
+    },
+    {
+      "id": "S297",
+      "name": "tldraw-offline",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "a3c4ce28121ef2c76dc853ae91a69658cd66e07c62c6e4caf033a7c52568af27"
+    },
+    {
+      "id": "S301",
+      "name": "unreal-mcp",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "0313d8761479a8b8a458b83bb6c563f63294245096139dfe52045691ef2aa610"
+    },
+    {
+      "id": "S161",
+      "name": "anatomy",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "c682d42079f2927ecc3eddc02e852437d31f7a2871b423474646bf5cefaf7079"
+    },
+    {
+      "id": "S097",
+      "name": "architecture-diagram",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "0e7e2736aafe052e409c2ad27863d51ef3007c116711e584033787ccb5d99d3f"
+    },
+    {
+      "id": "S167",
+      "name": "auteur",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "51988bc97cf00b15fcde05294f71c71402a4ef3dd469325711523517d13e98a8"
+    },
+    {
+      "id": "S169",
+      "name": "baoyu-article-illustrator",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "a35f48b18cc561511af570c0ddcc50e270de02951bc99892ef298c86365927fc"
+    },
+    {
+      "id": "S170",
+      "name": "baoyu-comic",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "f90f4d8eb7f05563dcdfca928a2691cfb4f061bafb369d3ffb06bd49f80f9565"
+    },
+    {
+      "id": "S100",
+      "name": "baoyu-infographic",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "2922677ca6d3c75646cc7bc455ea4f5f6314fc148060ca84d679d624bfdc52ee"
+    },
+    {
+      "id": "S004",
+      "name": "canvas-design",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/canvas-design/SKILL.md",
+      "instruction_sha256": "a1f288079624402f30682753c1d43920b6664785698d21d3e7aa197450a6448b"
+    },
+    {
+      "id": "S104",
+      "name": "claude-design",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "1582b0d49e48bdf937b2f555098484e0979cdfa285c6cc9fa329ba8e416d347a"
+    },
+    {
+      "id": "S183",
+      "name": "concept-diagrams",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "ae9bea1de66fb6e10a03520356458f7b3abf10fee5bd74d056f9ffce408bd558"
+    },
+    {
+      "id": "S109",
+      "name": "design-md",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "7ed56bba40ffc9573fa51b33b2424f37fb5f774e9ecb7e76e737797afd0b62ae"
+    },
+    {
+      "id": "S021",
+      "name": "design-taste-frontend",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "600bcaa7c71ae52c56a28e10271e2040646dc0ed40f6b40a5a53185308a0e167"
+    },
+    {
+      "id": "S198",
+      "name": "excalidraw",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "cb0558445251fc1087a99dd85b445b83565a98aef6d3e0874641000f7e89e253"
+    },
+    {
+      "id": "S009",
+      "name": "frontend-design",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design/SKILL.md",
+      "instruction_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+    },
+    {
+      "id": "S035",
+      "name": "image-to-code",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "04b73d6f3d8e6940247a84be9985c751e36872857482bea52f4cbb9fe9f5b81e"
+    },
+    {
+      "id": "S059",
+      "name": "imagegen",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "681ddb4ad6d06a2acc78a3535b583f8d0c1ea800ecda3d56370d3310fd2cd4ba"
+    },
+    {
+      "id": "S036",
+      "name": "imagegen-frontend-mobile",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "986262d2dca3cc58be1bca43707a7584902dc76098c477d4fc10091ffa3b755d"
+    },
+    {
+      "id": "S037",
+      "name": "imagegen-frontend-web",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "f78567d00697d8d295a361d49f5577fc16d31cb7a0e3908e0582e7db1cad7de0"
+    },
+    {
+      "id": "S038",
+      "name": "impeccable",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "218e365a32404830938f4e4af41ae9b28b744fa0f6578e87407a2f23f5ffb984"
+    },
+    {
+      "id": "S093",
+      "name": "impeccable",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "24d0a8a328b5c44665c357b05c3b937c3950130f6c9f0d059adfeee836459b17"
+    },
+    {
+      "id": "S219",
+      "name": "impeccable",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "c4dae781ecd9c850f514c9327eea6fa7aff2136c87be47454861ac3ce921164d"
+    },
+    {
+      "id": "S223",
+      "name": "ip-as-logo",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "70089da302baaadf9f6f9e250970e656acc0a58f746ce1a1b550eb32db41b931"
+    },
+    {
+      "id": "S135",
+      "name": "popular-web-designs",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "cd89bdb86008bb30b35d9bdd30e06587f75ee54055c54e1a79afb20418264b3d"
+    },
+    {
+      "id": "S260",
+      "name": "pr-lens",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "b11e1eba1f74fd91d8b7c4d4462dde741b1883332c7059fcded88c986a1f19b5"
+    },
+    {
+      "id": "S046",
+      "name": "redesign-existing-projects",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "899fd1b9483816b857f7d06970f11fd95cae97f16b631ee54a004951d245e87b"
+    },
+    {
+      "id": "S285",
+      "name": "sketch",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "c9472691dbd91b31710d9ace3d05a81a5cedcf524a1707f8b3e410b27ed0a243"
+    },
+    {
+      "id": "S054",
+      "name": "svg-icon",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "cf0e85a5a06481029446e5a00c94a712c1e690479b58bb8869982f6cf62d907e"
+    },
+    {
+      "id": "S294",
+      "name": "system-atlas",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "981aaa2f4eb7610cda7e528413891d3c227966d69241ada4587648d05c7f4fab"
+    },
+    {
+      "id": "S015",
+      "name": "theme-factory",
+      "source": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/theme-factory/SKILL.md",
+      "instruction_sha256": "c35893e221e28895c52143cc11bf30e41a44817796b39d4b15727dadc9796552"
+    },
+    {
+      "id": "S324",
+      "name": "imagegen",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.system/imagegen/SKILL.md",
+      "instruction_sha256": "826d05b806d51fa81cd650f1c0854b0a1f7fbccd1b152c588ded1797a2e7218f"
+    },
+    {
+      "id": "S041",
+      "name": "michelangelo",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "367a87d6cdd3f3859733c809d669124bd83432b473e764d093be06f1c8255526"
+    },
+    {
+      "id": "S056",
+      "name": "web-artifacts-builder",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "81c5002c6643b0de7b8710b00e7a9038daa6fb9b68d59870ee6adb12da8d10f8"
+    }
+  ]
+}

@@ -1,108 +1,57 @@
-# Skills de trabalho — estado e continuação
+# Estado da biblioteca — 16/10/2026
 
-Atualizado em 13/10/2026. Este documento é o ponto de retomada após compactação ou em uma nova sessão. Registra decisões, entregas e próximos passos; a lista definitiva está no catálogo aprovado.
+Implementada localmente nos dois repositórios, sem push/publicação. Biblioteca com
+20 pacotes; prompts com 147 pedidos; instruções internas em progressive disclosure.
+O relatório histórico cobre 408 conjuntos, 448 IDs e 498 exemplares originais.
 
-## Objetivo e sequência acordada
+## Evidência observada
 
-Criar um catálogo público de skills próprias do SquadOS para o cotidiano de negócios, utilizável pelo Desktop/Studio com Hermes.
+- Vinte pacotes válidos no contrato de distribuição e índice/espelho reconciliados.
+- Preparação, guard, aprovação e instalação dos vinte bundles pelo Hermes real
+  em um perfil isolado dentro do repo. Somente o transporte GitHub usou o checkout
+  local; nenhum perfil pessoal foi alterado. Não é download da versão publicada.
+- Gutenberg: 29 testes DOCX, 11 XLSX, 21 PPTX e 21 PDF passaram com os helpers
+  distribuídos. Um teste de recálculo foi pulado porque LibreOffice não existe
+  no ambiente. Renderização visual de Word/PowerPoint e OCR não foram comprovados.
+- Michelangelo: 31 testes do detector, incluindo Chromium headless, passaram.
+- Tarantino: preparação real pelos locks e manifesto, 39 testes Python e 11 Node
+  passaram. Amostra sintética compilou e gerou preview/master MP4 com vídeo e áudio
+  de 2 segundos. Um frame foi inspecionado. Transcrição, inferência, escuta e revisão
+  editorial de material real não foram exercitadas. A entrega de cada vídeo exige
+  suas próprias conferências.
+- Preparador de recursos: sete regressões passaram. Cliente Chrome Web Store:
+  três regressões passaram, incluindo dry-run offline sem mutações e restrição
+  do endpoint de troca de credenciais. Upload externo não executado.
+- Desktop: 107 testes focados passaram, cobrindo galeria, integração nativa,
+  procedimentos e prompts, sem skips nesse lote. Validador editorial v2 passou.
 
-1. **Implementado e verificado localmente:** criar a skill que orienta criação, pesquisa, avaliação e melhoria das outras.
-2. **Concluído:** catálogo aprovado e registrado: 33 skills em 14 áreas, de uso interno.
-3. **Pesquisa documental consolidada:** 33 sínteses, cada uma com três dossiês de apoio. Métodos, skills similares, materiais e vídeos encontrados têm acesso e limites discriminados; isso não é leitura integral de toda fonte ou prova de execução.
-4. **Autoria e verificação local concluídas:** os 33 especialistas e a skill-manager estão implementados na main, com referências sob demanda. Verificação estrutural, guard e 34 propostas nativas revisáveis em perfil isolado; avaliações de pedidos sintéticos e revisão independente documentadas.
-5. **Índice local preparado:** 48 itens em 15 áreas, preservando 14 itens Hermes e acrescentando 34 próprios. Push/publicação, espelho do Desktop e testes reais da pessoa continuam separados e pendentes.
+## Limites e distribuição
 
-O usuário pediu a sequência acima. As 50 necessidades levantadas não significam 50 skills nem um ranking estatístico. As 33 rodadas estão registradas e consolidadas, cada uma em três frentes paralelas autorizadas: duas de skills existentes e uma de métodos profissionais e materiais recentes. O usuário autorizou modo yolo para concluir todos os pacotes e testar/melhorar depois. Os 33 especialistas foram criados; distribuição online e uso real continuam pendentes.
+Conexões autenticadas Figma/Notion/Google/Shop/Shopify/telefonia e provedores de
+geração variam por ambiente e não foram acionados. As instruções conferem
+ferramentas, permissões, dependências e schemas reais na execução. Presença do
+pacote não garante conta, modelo ou ferramenta instalada.
 
-## Decisões aprovadas sobre o padrão
+Tarantino distribui motor, contratos, locks e avisos legais completos em texto;
+fontes e modelos são preparados por SHA-256. Os modelos vêm da versão exata do
+SDK instalado. Recursos binários não são embutidos nem codificados para contornar
+limites. Gutenberg usa motores nativos Hermes e bibliotecas do fluxo sob demanda.
 
-- Combinar skill-creator e writing-skills com adaptação ao nosso produto.
-- Skills flexíveis: identificar intenção e escolher a abordagem automaticamente; a pessoa não precisa memorizar modos.
-- Progressive disclosure: núcleo conciso e referências detalhadas carregadas conforme o pedido.
-- Cada trecho deve acrescentar conhecimento útil, orientar decisões ou prevenir erros reais. Evitar repetição e conselhos genéricos.
-- Perguntar pelo que altera materialmente a entrega e aproveitar o contexto existente.
-- Scripts quando trouxerem benefício concreto ou economia de trabalho/tokens; preservar julgamento e criatividade.
-- Dependência ausente: explicar o benefício e oferecer instalação simples, executada pelo agente quando autorizada. Comunicação adequada a pessoas não desenvolvedoras.
-- Melhoria pelo uso: oferecer adaptar a própria versão da skill quando houver preferência recorrente ou atrito concreto; aplicar quando a pessoa aceitar ou pedir a alteração diretamente.
-- Preferências de uma equipe não viram automaticamente padrões do pacote público.
-- Avaliação proporcional, com entregas e comportamento observáveis; não montar infraestrutura sem necessidade.
-- Pesquisa orientada prioritariamente pelas principais skills existentes: descobrir em diretórios, ler fontes originais e recursos pertinentes, comparar componentes e justificar o que aproveitar, adaptar ou descartar. Métodos profissionais ajudam a julgar e preencher lacunas. Popularidade não comprova eficácia; forks não são evidências independentes.
-- Trabalhar na main, preservar WIP e fazer commits cirúrgicos. Publicação prevista para o final, ainda não realizada.
+A fonte exata squados/squados-plugins foi registrada no conjunto trusted nativo
+da integração; findings dangerous continuam bloqueados, assim como a política
+community de outros repositórios. Não houve edição do guard upstream.
 
-## O que já foi entregue
+O Desktop inclui o novo seed; catálogos já publicados, caches e instalações pessoais
+existentes não foram migrados no computador. A publicação remota é uma etapa separada.
+Não há prova de uso autenticado de todas as capacidades por um agente.
 
-| Entrega | Arquivo | Estado |
-|---|---|---|
-| Levantamento de 50 necessidades e agrupamentos iniciais | [Pesquisa de necessidades](research/2026-10-12-necessidades-de-trabalho.md) | Referência histórica de pesquisa; seleção atual no catálogo aprovado |
-| Pesquisa geral de autoria | [Boas práticas](research/2026-10-12-boas-praticas-de-skills.md) | 18 práticas e 15 fontes; aprovadas com os ajustes acima |
-| Desenho da Criadora | [Desenho](superpowers/specs/2026-10-12-criadora-de-skills-design.md) | Aprovado e implementado |
-| Plano do passo zero | [Plano](superpowers/plans/2026-10-12-criadora-de-skills.md) | Executado nativamente, com avaliações e revisão independentes |
-| Pacote atual | [skill-manager](../skills/skill-manager/SKILL.md) | Três Markdown, sem scripts e sem dependências próprias |
-| Catálogo escolhido | [33 skills por departamento](skills-de-trabalho-catalogo.md) | Seleção preservada e todos os pacotes escritos |
-| Pacotes por departamento | [33 especialistas + manager](skills-de-trabalho-pacotes.md) | Links para todos os pacotes atuais |
-| Conclusão contínua | [Plano do lote](superpowers/plans/2026-10-12-work-skills-completion.md) | Autorização yolo; autoria, avaliação e integração locais |
-| Verificação integrada | [Evidências e limites](research/2026-10-12-work-skills-integration-validation.md) | Formato, pedidos, HTML, guard, propostas nativas e parser real |
-| Metodologia comparativa | [Atualização e validação](research/2026-10-12-skill-manager-research-validation.md) | skill-manager atualizada; revisão independente com caso sintético e checks locais |
-| Pesquisa de Copywriter | [Síntese e dossiês](research/2026-10-12-copywriter.md) | Treze SKILL.md principais, doze fontes profissionais e sete vídeos identificados; acesso e lacunas discriminados |
-| Pesquisa de Estrategista de Marketing | [Síntese e dossiês](research/2026-10-12-marketing-strategist.md) | Doze SKILL.md principais, nove fontes profissionais e quatro vídeos identificados; decisões, divergências e limites registrados |
-| Pesquisa de Criador de Conteúdo | [Síntese e dossiês](research/2026-10-12-content-creator.md) | Dez SKILL.md principais distintos, nove fontes profissionais (sete novas) e quatro conteúdos de vídeo/webinar identificados; sobreposição contada uma vez |
-| Pesquisa de Pesquisador de Mercado | [Síntese e dossiês](research/2026-10-12-market-researcher.md) | Dez SKILL.md principais, oito fontes profissionais e dois conteúdos de vídeo/podcast; transcrição recente parcial, lacunas de IBGE explícitas |
-| Pesquisa de Especialista em SEO | [Síntese e dossiês](research/2026-10-12-seo-specialist.md) | Treze SKILL.md principais, dez fontes oficiais na frente metodológica e conferências recentes; recursos retirados e limites de coleta registrados |
-| Pesquisa de Designer de Criativos | [Síntese e dossiês](research/2026-10-12-creative-designer.md) | Dez SKILL.md principais de sete origens; nove fontes profissionais consultadas e dois tutoriais Adobe 2026 com transcrições; produção e specs Meta não demonstradas |
-| Pesquisa de Analista de Marketing e Tráfego | [Síntese e dossiês](research/2026-10-12-marketing-traffic.md) | 21 SKILL.md principais de nove origens, doze fontes primárias na frente metodológica e três materiais audiovisuais identificados; licença condicionada e erros estatísticos discriminados |
-| Pesquisa de Especialista em Dados | [Síntese e dossiês](research/2026-10-12-data-specialist.md) | 23 SKILL.md principais de oito origens, doze fontes substantivas e duas entrevistas 2025 com transcrições; gabaritos conferidos, limitações de scripts/licença/render explícitas |
-| Pesquisa de Especialista em Apresentações | [Síntese e dossiês](research/2026-10-12-presentation-specialist.md) | Dezesseis SKILL.md principais de quatorze origens, doze fontes decisivas e duas transcrições 2025 (uma reutilizada); HTML, narrativa e limites de exportação/portabilidade registrados |
-| Pesquisa de Especialista em Planilhas | [Síntese e dossiês](research/2026-10-12-spreadsheet-specialist.md) | Treze SKILL.md principais (doze públicos e um local), quinze fontes documentais e duas páginas de webinars; tipos, preservação, recálculo e gabaritos discriminados |
-| Pesquisa de Agente de Propostas Comerciais | [Síntese e dossiês](research/2026-10-12-commercial-proposals.md) | 22 SKILL.md distintos (vinte principais e dois auxiliares) de doze repositórios; métodos, vídeos identificados e casos fictícios; limites de prova/escopo/condições registrados |
-| Pesquisa de Treinador de Vendedores | [Síntese e dossiês](research/2026-10-12-sales-coach.md) | Nove arquivos principais de nove origens, nove fontes profissionais e quatro transcrições de clipes 2026; prática, feedback e limites de métricas documentados |
-| Pesquisa de Especialista em Prospecção | [Síntese e dossiês](research/2026-10-12-prospecting.md) | Dezoito SKILL principais de nove famílias, dez registros metodológicos e três vídeos identificados; adequação/intenção, fontes e cadências discriminadas |
-| Pesquisa de Especialista em Negociação | [Síntese e dossiês](research/2026-10-12-negotiation.md) | Dez SKILL distintos (oito principais e dois auxiliares) de oito origens; dez fontes decisivas, dois eventos recentes e três casos autorais; alternativas, limites e pacotes documentados |
-| Pesquisa de Especialista em CS | [Síntese e dossiês](research/2026-10-12-customer-success.md) | Vinte SKILL distintos em oito repositórios e sete famílias; métodos, trechos de duas transcrições 2025 e três casos autorais; adoção, resultados, saúde e retenção discriminados |
-| Pesquisa de Analista de Voz do Cliente | [Síntese e dossiês](research/2026-10-12-voice-of-customer.md) | Doze SKILL completos de nove linhagens, dez registros metodológicos e quatro materiais audiovisuais identificados; notas, temas, instrumentos e bases documentados |
-| Pesquisa de CFO - Chefe de Finanças | [Síntese e dossiês](research/2026-10-12-cfo.md) | Doze SKILL completos incluindo variantes/ports, um prompt FP&A separado, onze registros metodológicos e transcrição parcial; premissas, reconciliação e cenários documentados |
-| Pesquisa de Assistente Financeiro | [Síntese e dossiês](research/2026-10-12-financial-assistant.md) | Dezenove textos SKILL distintos após deduplicação (quinze métodos locais e quatro loaders), sete registros metodológicos e três casos autorais; títulos, residual, estados e conciliação documentados |
-| Pesquisa de Especialista em Compras | [Síntese e dossiês](research/2026-10-12-procurement.md) | 23 SKILL completos de onze famílias em doze repositórios; nove registros metodológicos e três casos autorais; equivalência, elegibilidade, custo total e caixa documentados |
-| Pesquisa de Analista de Estoque | [Síntese e dossiês](research/2026-10-12-inventory.md) | Treze SKILL completos de doze origens, onze registros metodológicos e três casos autorais; saldo, disponibilidade, demanda, reposição e excessos documentados |
-| Pesquisa de Pesquisador de Concorrentes | [Síntese e dossiês](research/2026-10-12-ecommerce-competitors.md) | Dezoito SKILL de domínio de seis famílias e um stub de dependência, sete registros metodológicos e três casos autorais; ofertas comparáveis, evidências e posicionamento documentados |
-| Pesquisa de Especialista em Catálogo de Produtos | [Síntese e dossiês](research/2026-10-12-product-catalog.md) | Treze SKILL de método de sete famílias e um conector, treze registros metodológicos e três casos autorais; conteúdo, identidade, atributos e variantes documentados |
-| Pesquisa de Especialista em Conversão de Ecommerce | [Síntese e dossiês](research/2026-10-12-ecommerce-conversion.md) | Treze SKILL completos de seis famílias editoriais, doze registros metodológicos contando conferências da coordenação e três casos autorais; jornada, funil e experimentos documentados |
-| Pesquisa de Assistente Executivo | [Síntese e dossiês](research/2026-10-12-executive-assistant.md) | Treze SKILL principais e um auxiliar de onze famílias, oito registros metodológicos contando conferência da coordenação e três casos autorais; reuniões, prioridades, estados e acompanhamento documentados |
-| Pesquisa de Redator de Negócios | [Síntese e dossiês](research/2026-10-12-business-writer.md) | Seis SKILL completos de seis famílias, treze registros metodológicos contando páginas conferidas pela coordenação e três casos autorais; redação, concisão e preservação de sentido documentadas |
-| Pesquisa de Gerente de Projetos | [Síntese e dossiês](research/2026-10-12-project-manager.md) | Dezesseis SKILL distintos de onze famílias, dezoito URLs metodológicas contando conferências da coordenação e três casos autorais; planejamento, capacidade, status e mudança documentados |
-| Pesquisa de Especialista em Produto | [Síntese e dossiês](research/2026-10-12-product-specialist.md) | 28 SKILL distintos de cinco famílias, dezenove registros textuais incluindo resumo conferido pela coordenação, três páginas audiovisuais e três casos autorais; decisões, evidência, requisitos e resultados documentados |
-| Pesquisa de Analista de Logística | [Síntese e dossiês](research/2026-10-12-logistics.md) | 24 SKILL distintos de seis famílias, treze URLs profissionais entre as frentes, três materiais audiovisuais e três casos autorais; frete, capacidade, operações, entrega e reversa documentados |
-| Pesquisa de Assistente de Contratos | [Síntese e dossiês](research/2026-10-12-contract-assistant.md) | Quinze SKILL completos em dez repositórios, dezenove registros entre métodos e conferências da coordenação, com acesso discriminado, e três casos autorais; revisão, redação, versões e obrigações documentadas |
-| Pesquisa de Especialista em Qualidade | [Síntese e dossiês](research/2026-10-12-quality-specialist.md) | Dezessete SKILL distintos de oito famílias, dezesseis registros na base metodológica incluindo conferência da coordenação e três casos autorais; requisito, evidência, causa, ação e eficácia documentados |
-| Pesquisa de Especialista em Processo Seletivo | [Síntese e dossiês](research/2026-10-12-recruitment.md) | Quinze entradas completas de nove famílias incluindo contraponto suplementar, quinze referências centrais e três casos autorais; vaga, critérios, evidência, instrumentos e métricas documentados |
-| Pesquisa de Especialista em Treinamentos | [Síntese e dossiês](research/2026-10-12-training-specialist.md) | Doze SKILL completos de oito famílias, dezoito registros centrais com acesso discriminado e três casos autorais; necessidades, materiais, prática, capacidade e avaliação documentados |
-| Pesquisa de Especialista em Desenvolvimento de Pessoas | [Síntese e dossiês](research/2026-10-12-people-development.md) | Dezoito SKILL completos distintos de nove famílias, dez referências centrais e quatro entradas de mídia com acesso discriminado; onboarding, feedback, apoio, PDI e três casos autorais documentados |
-| Desenho do primeiro pacote | [Copywriter](superpowers/specs/2026-10-12-copywriter-design.md) | Desenho aprovado e implementado localmente: núcleo e três referências por formato, casos e critérios |
-| Plano do primeiro pacote | [Execução de Copywriter](superpowers/plans/2026-10-12-copywriter.md) | Execução nativa aprovada; três tarefas locais realizadas, com seis casos e um novo após ajuste |
-| Pacote Copywriter | [Skill](../skills/copywriter/SKILL.md) e [evidência](research/2026-10-12-copywriter-validation.md) | Quatro Markdown, núcleo 43 linhas, descrição atual reduzida ao limite nativo de 60 caracteres; controle A/D, A–F, correção/G, revisão independente e validador; ainda sem instalação/publicação |
-| Avaliações e limites | [Evidências](research/2026-10-12-criadora-de-skills-validation.md) | Cinco casos com/sem a nova skill, mais um caso novo; revisão independente sem achados |
+Detalhes de aceite: [acceptance.md](skill-curation/acceptance.md).
 
-O pacote foi criado como `create-work-skills` no commit `a2a92b2` e depois renomeado para `skill-manager` no commit `891709f`. As instruções mantiveram o conteúdo; nome/pasta foram atualizados. Os documentos históricos de desenho, plano e avaliação ainda usam o nome de criação. **O caminho atual para utilização é `skills/skill-manager/SKILL.md`; não recriar a pasta antiga.**
+A revisão final removeu os clientes legados de telefonia/Google que salvavam segredos
+em arquivo. Essas integrações usam conexão segura disponível, sem novo armazenamento
+de credenciais. O template científico é autoral; formatos de conferência são preparados
+no projeto com seus termos. Quatorze regressões Python públicas e três Node passaram;
+o contrato também confere caminhos em comandos, SHAs de origem e árvore editorial.
 
-Validação: metadados, UTF-8, links, limites de arquivos/tamanho e revisão do conteúdo. No Windows, o validador existente foi executado com `python -X utf8`. As respostas observadas reforçaram ofertas de instalação e adaptação; revisão e pesquisa já eram satisfatórias no controle. O controle também consultou outra skill de autoria, portanto não representa um modelo sem orientação.
-
-**Prova atual do lote:** guard e proposta/preview Hermes conferidos nos 34 pacotes em perfil isolado e provedor de arquivos locais. Índice deste repo preparado e validado contra parser real; espelho do Desktop permanece com 14 itens. **Ainda sem prova:** ativação implícita pelo Studio, carregamento mínimo por pedido isolado, estabilidade estatística, economia medida de tokens, aprovação/instalação no perfil da pessoa, download público e uso real autenticado. Nenhum push ou publicação foi executado nesta conversa.
-
-## Catálogo aprovado e próxima fase
-
-A lista atual está em [Catálogo aprovado](skills-de-trabalho-catalogo.md): 33 skills em 14 departamentos/áreas, para uso interno. O agrupamento em Operações mantém Dados, Apresentações e Planilhas. Customer Success apoia internamente a equipe com análise, planejamento e materiais. Os nomes e a seleção foram preservados; fronteiras e ferramentas estão nas pesquisas e nos pacotes.
-
-O arquivo [Candidatas por departamento](skills-de-trabalho-candidatas.md) preserva a origem dos agrupamentos já ajustados à escolha. Os levantamentos iniciais continuam como histórico, não como listas de produção.
-
-As 33 rodadas estão registradas nas sínteses acima, com três dossiês cada. A pesquisa precedeu a autoria. A criação restante foi autorizada continuamente, executada em três frentes com pastas disjuntas e coordenação para RH; desenhos e contribuições registrados antes de cada pacote. O roteiro de [Pesquisa](../skills/skill-manager/references/research.md) reconhece a intenção comparativa automaticamente; nenhum modo precisa ser memorizado. Lacunas de vídeos, conteúdos fechados e eficácia real continuam explícitas.
-
-Os 32 pacotes novos receberam 32 pedidos sintéticos e duas variações adicionais em avaliadores independentes da autoria, agrupados em três contextos. Copywriter mantém sete pedidos anteriores e dois controles. Todos os 34 passaram no quick_validate e guard nativo; 34 propostas reais preparadas em perfil isolado com referências intactas. A descrição foi reduzida a até 60 caracteres após falha de criação nativa revelar esse limite. A apresentação HTML de amostra foi conferida em Chromium real oculto, desktop/mobile e navegação.
-
-Próxima fase solicitada: testar os pacotes no fluxo de trabalho da pessoa e aprimorar conforme uso. Publicação online e reconciliação do espelho/gates do Desktop ainda não ocorreram. Não declarar os pacotes instalados ou integralmente funcionais no Studio a partir de validação local. A [verificação integrada](research/2026-10-12-work-skills-integration-validation.md) discrimina cobertura e limites.
-
-Durante a segunda e a terceira rodadas, foram apresentadas duas perguntas opcionais: ritmo de revisão (seguir marcos ou revisar cada dossiê) e uso de até 50 créditos vidIQ para transcrições. Sem resposta até a trigésima terceira rodada; as pesquisas seguiram gratuitamente em sequência, com registro de marcos. Nenhuma chamada paga vidIQ foi feita; transcrições pagas dependem da resposta. A ausência de resposta não autoriza consumo de créditos.
-
-Setor e porte das empresas ainda podem orientar os exemplos e a profundidade; o escopo de uso interno está fechado. Mudanças de nome, consolidação ou expansão do catálogo precisam de decisão do usuário.
-
-## Como retomar
-
-Leia este arquivo, as instruções globais e o par AGENTS.md/CLAUDE.md quando existir. Confira o estado atual do Git e os caminhos antes de editar. Para a próxima etapa, consulte os pacotes atuais e a verificação integrada. Não recrie os 33 especialistas nem recomece as pesquisas já registradas. Melhorias seguem feedback concreto da pessoa; distribuição exige conferir o contrato atual e reconciliar o espelho do Desktop. Atualize este documento ao fechar cada marco; preserve aqui as escolhas de catálogo quando aprovadas e links para os novos dossiês.
+O gate geral continua bloqueado por uma falha Biome de outra entrega, detalhada no
+aceite. Typecheck e os checks dos arquivos desta entrega passaram.

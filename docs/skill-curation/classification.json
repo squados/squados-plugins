@@ -1,8 +1,8 @@
 {
   "date": "2026-10-16",
-  "status": "Composição aprovada; migração autorizada e em execução; publicação remota não realizada.",
+  "status": "Biblioteca implementada e verificada localmente; sem publicação remota ou alterações de instalações pessoais.",
   "destination": "squados-plugins/skills",
-  "method": "Revisão editorial estática do inventário anterior, com propagação de cortes e consolidação por responsabilidade. Não certifica execução.",
+  "method": "Curadoria integral com cortes propagados, pacotes consolidados, recursos preservados, fontes/licenças revisadas e verificação nativa em perfil isolado. Limites de execução registrados em acceptance.md.",
   "counts": {
     "instructions": 408,
     "original_ids": 448,

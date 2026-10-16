@@ -1,0 +1,117 @@
+{
+  "incorporated": [
+    {
+      "source": "squados/squados-plugins/skills/contract-assistant",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/inventory",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/logistics",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/procurement",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/product-specialist",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/project-manager",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    },
+    {
+      "source": "squados/squados-plugins/skills/quality-specialist",
+      "revision": "60e0402",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-SquadOS.txt"
+      ],
+      "changes": "Consolidado como método interno; entrada e caminhos relativos adaptados."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S404",
+      "name": "contract-assistant",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "6026f7abb7f7239ef905830bf4c6764f56a58024af4a1565bca3e06143b1d10d"
+    },
+    {
+      "id": "S414",
+      "name": "inventory",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "68fb788bbe81cc6d2418de7bd3e74cdc8a5c5820b3bf766163efdb415a9b4a34"
+    },
+    {
+      "id": "S415",
+      "name": "logistics",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "f7dee362dd0ba87cc9e8f5a1806ea177a26b962e520c6a47a8615314b145d282"
+    },
+    {
+      "id": "S422",
+      "name": "procurement",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "f3877deedbdf1bf42bcbc787fe176b2f9c8b73ee90f0444f013c3be8eb830fe0"
+    },
+    {
+      "id": "S424",
+      "name": "product-specialist",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "a704f02086ed011a5ab18df0ef0a00a5b28e3ac2b1def7ca2553426deffe5357"
+    },
+    {
+      "id": "S425",
+      "name": "project-manager",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "c856364d475ef8c463b4d238514be1c1ab11a18c81984736c96bba0a230f70a5"
+    },
+    {
+      "id": "S427",
+      "name": "quality-specialist",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "ffa7b75c7441c9b0265a4aa4dee25ee9ae1701615c87326456fa84ef306af7bb"
+    },
+    {
+      "id": "S042",
+      "name": "morning",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "a7c4dbcb745799736991b027cceae39aae4880cc00ff43871ae5e87b38023bdd"
+    }
+  ]
+}

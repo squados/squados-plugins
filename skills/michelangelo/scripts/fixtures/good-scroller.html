@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  body { margin: 0; font-family: system-ui; }
+  main { padding: 24px; }
+  h1 { font-size: 40px; line-height: 1.15; margin: 0 0 24px; color: #111; }
+  /* Um scroller BOM estiliza a barra — barra nativa do SO é falta de acabamento
+     (regra native-scrollbar, checks/scroll.mjs). scrollbar-width/color cobrem o padrão. */
+  .scroller { overflow-x: auto; display: flex; gap: 16px; scrollbar-width: thin; scrollbar-color: rgba(17,17,17,0.4) transparent; }
+  .card { flex: 0 0 400px; height: 200px; background: #e5e7eb; border-radius: 12px; }
+</style></head><body>
+  <main>
+    <h1>Carrossel</h1>
+    <!-- faixa rolável: conteúdo somado (5x400 + gaps) excede a viewport de propósito -->
+    <div class="scroller">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+  </main>
+</body></html>

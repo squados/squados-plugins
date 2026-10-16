@@ -1,0 +1,64 @@
+{
+  "incorporated": [
+    {
+      "id": "S130",
+      "source": "https://github.com/NousResearch/hermes-agent/tree/71d34bad1045610252eda02ee79549436896e784",
+      "revision": "71d34bad1045610252eda02ee79549436896e784",
+      "license": "MIT",
+      "notices": [
+        "references/LICENSE-notion.txt"
+      ],
+      "changes": "Entrada convertida em referência de modo; scripts e links relativos adaptados ao pacote consolidado."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S130",
+      "name": "notion",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "e5aaf194f2688223890cb2eb6cf5ce866e6390082f1dff845c9e37a25fe0bfee"
+    },
+    {
+      "id": "S329",
+      "name": "notion-knowledge-capture",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/notion-knowledge-capture/SKILL.md",
+      "instruction_sha256": "b49383b229bc766190ea22bb58502cfcf7e08449f5fce55a104eef1e54e27f00"
+    },
+    {
+      "id": "S330",
+      "name": "notion-meeting-intelligence",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/notion-meeting-intelligence/SKILL.md",
+      "instruction_sha256": "bad61faccbbe0f2cab53bcfbc4cb22f847ba8593ef14c2e37fea5b9b03346332"
+    },
+    {
+      "id": "S391",
+      "name": "notion-meeting-intelligence",
+      "source": "https://github.com/openai/plugins/blob/0722921d5542fc593105c27bd52630babd8b8c2a/plugins/notion/skills/notion-meeting-intelligence/SKILL.md",
+      "instruction_sha256": "1a8647c46cdfab399a1e0199924e0aecb83034e9a1b0957db211a045145b7771"
+    },
+    {
+      "id": "S331",
+      "name": "notion-research-documentation",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/notion-research-documentation/SKILL.md",
+      "instruction_sha256": "e88a46da978cf6f088a788fa92ee736df699a355a72f41f14bdc258bf3ef57e7"
+    },
+    {
+      "id": "S392",
+      "name": "notion-research-documentation",
+      "source": "https://github.com/openai/plugins/blob/0722921d5542fc593105c27bd52630babd8b8c2a/plugins/notion/skills/notion-research-documentation/SKILL.md",
+      "instruction_sha256": "8ca523535915c1b9016202fa24d120545c60caea5c5545d74bfdec195f0a039a"
+    },
+    {
+      "id": "S332",
+      "name": "notion-spec-to-implementation",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/notion-spec-to-implementation/SKILL.md",
+      "instruction_sha256": "6e22c4c6df441e849fa6b4b825371b579c9bb4896f97bedca5f8536020427a81"
+    },
+    {
+      "id": "S393",
+      "name": "notion-spec-to-implementation",
+      "source": "https://github.com/openai/plugins/blob/0722921d5542fc593105c27bd52630babd8b8c2a/plugins/notion/skills/notion-spec-to-implementation/SKILL.md",
+      "instruction_sha256": "43b304aaff38fbd4fd5d81efcefb2fd92f5450649eba8b02a2371edb4599cf3f"
+    }
+  ]
+}

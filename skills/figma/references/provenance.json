@@ -1,0 +1,54 @@
+{
+  "incorporated": [],
+  "consulted": [
+    {
+      "id": "S313",
+      "name": "figma",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/figma/SKILL.md",
+      "instruction_sha256": "5b11f7c8d0ce4c047b401323e7b8fe6559bd3162a3397bf5248634a5444609d5"
+    },
+    {
+      "id": "S314",
+      "name": "figma-code-connect-components",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/figma-code-connect-components/SKILL.md",
+      "instruction_sha256": "0f19edad8aed28063a3517c419fbcbef5421d024f189fd02a17fae25093ec69d"
+    },
+    {
+      "id": "S315",
+      "name": "figma-create-design-system-rules",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/figma-create-design-system-rules/SKILL.md",
+      "instruction_sha256": "1f4d7e16ba5325a80da32e2e6bde0ea850ba9287f35f4675d51d55d2f0dc6e2a"
+    },
+    {
+      "id": "S316",
+      "name": "figma-create-new-file",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/figma-create-new-file/SKILL.md",
+      "instruction_sha256": "23f429203bd57f186905b2523d4ff8bdf10d3b85b39fc7eed4786097d81f1adc"
+    },
+    {
+      "id": "S317",
+      "name": "figma-generate-design",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/figma-generate-design/SKILL.md",
+      "instruction_sha256": "45d2b97103bdeb31cb2744fca2c79bcefb659c88faca626bea30ec2f9342dcc9"
+    },
+    {
+      "id": "S318",
+      "name": "figma-generate-library",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/figma-generate-library/SKILL.md",
+      "instruction_sha256": "7f42103c59fc181d7081404a56545f321c458d97f5ee7f7a0ab2af75ea69a85f"
+    },
+    {
+      "id": "S319",
+      "name": "figma-implement-design",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/figma-implement-design/SKILL.md",
+      "instruction_sha256": "63f3d12d444547bbf68c10a12982b1f42e0f6e26fc074324564a13184d4b15ad"
+    },
+    {
+      "id": "S320",
+      "name": "figma-use",
+      "source": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/figma-use/SKILL.md",
+      "instruction_sha256": "afa9c4ae068a18b93e4914b2d224180ace113db7713dd66f4df397f16ba9c4b4"
+    }
+  ],
+  "consultation_note": "Os oito materiais Figma têm Developer Terms próprios. Não foram copiados; referências de operação são redação própria com documentação oficial e schemas disponíveis."
+}

@@ -1,0 +1,29 @@
+{
+  "incorporated": [
+    {
+      "id": "S411",
+      "source": "squados/squados-plugins/skills/editor-de-videos",
+      "revision": "60e0402",
+      "license": "MIT; dependências com licenças próprias",
+      "notices": [
+        "scripts/editor/LICENSE",
+        "scripts/editor/THIRD-PARTY-NOTICES.md"
+      ],
+      "changes": "Motor e contratos preservados; instaladores de outros perfis omitidos; binários preparados pelo manifesto original; avisos legais integrais agregados."
+    }
+  ],
+  "consulted": [
+    {
+      "id": "S411",
+      "name": "editor-de-videos",
+      "source": "Acervo do autor / SquadOS",
+      "instruction_sha256": "0e77c0df8c9a2ee65b5e5a55e6161c791d0f9af925f7880bcad9799d4820b5aa"
+    },
+    {
+      "id": "S217",
+      "name": "hyperframes",
+      "source": "Hermes@71d34bad1045610252eda02ee79549436896e784",
+      "instruction_sha256": "65f32ac7049ce5cf2fd6f70290597f13a17817e093dbc6d2c3bc020355693728"
+    }
+  ]
+}

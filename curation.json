@@ -1,0 +1,850 @@
+{
+  "date": "2026-10-16",
+  "candidates": [
+    {
+      "id": "three-statement-model",
+      "source": {
+        "type": "hermes",
+        "path": "optional-skills/finance/3-statement-model"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      }
+    },
+    {
+      "id": "comps-analysis",
+      "source": {
+        "type": "hermes",
+        "path": "optional-skills/finance/comps-analysis"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      }
+    },
+    {
+      "id": "excel-author",
+      "source": {
+        "type": "hermes",
+        "path": "optional-skills/finance/excel-author"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "hermes/optional-skills/finance/excel-author/SKILL.md",
+        "resources/hermes/profile.json"
+      ]
+    },
+    {
+      "id": "lbo-model",
+      "source": {
+        "type": "hermes",
+        "path": "optional-skills/finance/lbo-model"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      }
+    },
+    {
+      "id": "claude-design",
+      "source": {
+        "type": "hermes",
+        "path": "skills/creative/claude-design"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": ["hermes/skills/creative/claude-design/SKILL.md", "resources/hermes/profile.json"]
+    },
+    {
+      "id": "popular-web-designs",
+      "source": {
+        "type": "hermes",
+        "path": "skills/creative/popular-web-designs"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "hermes/skills/creative/popular-web-designs/SKILL.md",
+        "resources/hermes/profile.json"
+      ]
+    },
+    {
+      "id": "sketch",
+      "source": {
+        "type": "hermes",
+        "path": "optional-skills/creative/sketch"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "hermes/optional-skills/creative/sketch/SKILL.md",
+        "resources/hermes/profile.json"
+      ]
+    },
+    {
+      "id": "reddit-reading",
+      "source": {
+        "type": "hermes",
+        "path": "optional-skills/social-media/reddit-reading"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "hermes/optional-skills/social-media/reddit-reading/SKILL.md",
+        "resources/hermes/profile.json"
+      ]
+    },
+    {
+      "id": "competitor-news",
+      "source": {
+        "type": "hermes",
+        "path": "skills/research/competitor-news-monitor"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      }
+    },
+    {
+      "id": "price-monitor",
+      "source": {
+        "type": "hermes",
+        "path": "skills/productivity/product-price-monitor"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      }
+    },
+    {
+      "id": "simple-english",
+      "source": {
+        "type": "hermes",
+        "path": "optional-skills/creative/simple-english"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "hermes/optional-skills/creative/simple-english/SKILL.md",
+        "resources/hermes/profile.json"
+      ]
+    },
+    {
+      "id": "llm-wiki",
+      "source": {
+        "type": "hermes",
+        "path": "skills/research/llm-wiki"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": ["hermes/skills/research/llm-wiki/SKILL.md", "resources/hermes/profile.json"]
+    },
+    {
+      "id": "arxiv",
+      "source": {
+        "type": "hermes",
+        "path": "skills/research/arxiv"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": ["hermes/skills/research/arxiv/SKILL.md", "resources/hermes/profile.json"]
+    },
+    {
+      "id": "rss-feeds",
+      "source": {
+        "type": "hermes",
+        "path": "optional-skills/research/rss-feeds"
+      },
+      "reviewedRevision": "71d34bad1045610252eda02ee79549436896e784",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "hermes/optional-skills/research/rss-feeds/SKILL.md",
+        "resources/hermes/profile.json"
+      ]
+    },
+    {
+      "id": "internal-comms",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/skills/skills/internal-comms"
+      },
+      "reviewedRevision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "anthropics/skills/skills/internal-comms/SKILL.md",
+        "resources/hermes/plugins/studio_bridge/gallery_packages.py"
+      ]
+    },
+    {
+      "id": "brand-guidelines",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/skills/skills/brand-guidelines"
+      },
+      "reviewedRevision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "anthropics/skills/skills/brand-guidelines/SKILL.md",
+        "resources/hermes/plugins/studio_bridge/gallery_packages.py"
+      ]
+    },
+    {
+      "id": "frontend-design",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/skills/skills/frontend-design"
+      },
+      "reviewedRevision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "anthropics/skills/skills/frontend-design/SKILL.md",
+        "resources/hermes/plugins/studio_bridge/gallery_packages.py"
+      ]
+    },
+    {
+      "id": "theme-factory",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/skills/skills/theme-factory"
+      },
+      "reviewedRevision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "anthropics/skills/skills/theme-factory/SKILL.md",
+        "resources/hermes/plugins/studio_bridge/gallery_packages.py"
+      ]
+    },
+    {
+      "id": "variance-analysis",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/finance/skills/variance-analysis"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "anthropics/knowledge-work-plugins/finance/skills/variance-analysis/SKILL.md",
+        "resources/hermes/plugins/studio_bridge/gallery_packages.py"
+      ]
+    },
+    {
+      "id": "reconciliation",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/finance/skills/reconciliation"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "anthropics/knowledge-work-plugins/finance/skills/reconciliation/SKILL.md",
+        "resources/hermes/plugins/studio_bridge/gallery_packages.py"
+      ]
+    },
+    {
+      "id": "content-creation",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/marketing/skills/content-creation"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "anthropics/knowledge-work-plugins/marketing/skills/content-creation/SKILL.md",
+        "resources/hermes/plugins/studio_bridge/gallery_packages.py"
+      ]
+    },
+    {
+      "id": "call-prep",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/sales/skills/call-prep"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "anthropics/knowledge-work-plugins/sales/skills/call-prep/SKILL.md",
+        "resources/hermes/plugins/studio_bridge/gallery_packages.py"
+      ]
+    },
+    {
+      "id": "notion-knowledge-capture",
+      "source": {
+        "type": "github",
+        "identifier": "openai/plugins/plugins/notion/skills/notion-knowledge-capture"
+      },
+      "reviewedRevision": "0722921d5542fc593105c27bd52630babd8b8c2a",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "openai/plugins/plugins/notion/skills/notion-knowledge-capture/SKILL.md",
+        "src/main/services/mcp/connection-editor.ts"
+      ]
+    },
+    {
+      "id": "notion-meeting-intelligence",
+      "source": {
+        "type": "github",
+        "identifier": "openai/plugins/plugins/notion/skills/notion-meeting-intelligence"
+      },
+      "reviewedRevision": "0722921d5542fc593105c27bd52630babd8b8c2a",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "openai/plugins/plugins/notion/skills/notion-meeting-intelligence/SKILL.md",
+        "src/main/services/mcp/connection-editor.ts"
+      ]
+    },
+    {
+      "id": "notion-research-documentation",
+      "source": {
+        "type": "github",
+        "identifier": "openai/plugins/plugins/notion/skills/notion-research-documentation"
+      },
+      "reviewedRevision": "0722921d5542fc593105c27bd52630babd8b8c2a",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "openai/plugins/plugins/notion/skills/notion-research-documentation/SKILL.md",
+        "src/main/services/mcp/connection-editor.ts"
+      ]
+    },
+    {
+      "id": "notion-spec-to-implementation",
+      "source": {
+        "type": "github",
+        "identifier": "openai/plugins/plugins/notion/skills/notion-spec-to-implementation"
+      },
+      "reviewedRevision": "0722921d5542fc593105c27bd52630babd8b8c2a",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "openai/plugins/plugins/notion/skills/notion-spec-to-implementation/SKILL.md",
+        "src/main/services/mcp/connection-editor.ts"
+      ]
+    },
+    {
+      "id": "doc-coauthoring",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/skills/skills/doc-coauthoring"
+      },
+      "reviewedRevision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/doc-coauthoring/SKILL.md"
+      ]
+    },
+    {
+      "id": "canvas-design",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/skills/skills/canvas-design"
+      },
+      "reviewedRevision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/canvas-design/SKILL.md"
+      ]
+    },
+    {
+      "id": "skill-creator",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/skills/skills/skill-creator"
+      },
+      "reviewedRevision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/skill-creator/SKILL.md"
+      ]
+    },
+    {
+      "id": "financial-statements",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/finance/skills/financial-statements"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/finance/skills/financial-statements/SKILL.md"
+      ]
+    },
+    {
+      "id": "explore-data",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/data/skills/explore-data"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/data/skills/explore-data/SKILL.md"
+      ]
+    },
+    {
+      "id": "validate-data",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/data/skills/validate-data"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/data/skills/validate-data/SKILL.md"
+      ]
+    },
+    {
+      "id": "brand-review",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/marketing/skills/brand-review"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/marketing/skills/brand-review/SKILL.md"
+      ]
+    },
+    {
+      "id": "campaign-plan",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/marketing/skills/campaign-plan"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/marketing/skills/campaign-plan/SKILL.md"
+      ]
+    },
+    {
+      "id": "competitive-brief",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/marketing/skills/competitive-brief"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/marketing/skills/competitive-brief/SKILL.md"
+      ]
+    },
+    {
+      "id": "kb-article",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/customer-support/skills/kb-article"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/customer-support/skills/kb-article/SKILL.md"
+      ]
+    },
+    {
+      "id": "data-visualization",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/data/skills/data-visualization"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/data/skills/data-visualization/SKILL.md"
+      ]
+    },
+    {
+      "id": "statistical-analysis",
+      "source": {
+        "type": "github",
+        "identifier": "anthropics/knowledge-work-plugins/data/skills/statistical-analysis"
+      },
+      "reviewedRevision": "f652327d4e953d7957d99e735c3c7f9964e9d2e5",
+      "status": "unsupported",
+      "reason": {
+        "pt-BR": "Substituído pela biblioteca consolidada em 16/10/2026; ver o mapa completo de curadoria.",
+        "en": "Replaced by the consolidated library on 2026-10-16; see the full curation map."
+      },
+      "evidence": [
+        "https://github.com/anthropics/knowledge-work-plugins/blob/f652327d4e953d7957d99e735c3c7f9964e9d2e5/data/skills/statistical-analysis/SKILL.md"
+      ]
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/michelangelo"
+      },
+      "reviewedRevision": "sha256-lf:f45384a57c2b26367e8750e94f8bf18f1a7566270e4f5fb0e3bc1a20a6a15d13",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/tarantino"
+      },
+      "reviewedRevision": "sha256-lf:62ec3437ce09261e6db149229ee612a9a125e701eee41dde8f8e0e77163cc96d",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/audio"
+      },
+      "reviewedRevision": "sha256-lf:e1a9815b880759487f9851c0444ea75f15699cac6e9ddf4a68862d6d21474e68",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/krug"
+      },
+      "reviewedRevision": "sha256-lf:7df49b5eba5a9b83c3471d01676271160dad76864a1a2965f0b2bfe052ce0130",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/warren"
+      },
+      "reviewedRevision": "sha256-lf:21dd80b2f9a5c082bf484c7efdf3f175d90b69b3af8abc67eb6c39431cc8f8e9",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/zuck"
+      },
+      "reviewedRevision": "sha256-lf:037978e252ad3fa4d72a19734825527199d670c348e5eb446a32410fc7e65f69",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/flavio"
+      },
+      "reviewedRevision": "sha256-lf:c87bfd6ca4656e660a8acf99583988509e0faf0fbe6bfe126972f0ccf97463bf",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/gutenberg"
+      },
+      "reviewedRevision": "sha256-lf:73d88aacaa8cc02155147475eb2685ff3c1e4343f18fb378ae939610cfa330cd",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/linus"
+      },
+      "reviewedRevision": "sha256-lf:c6e225a0f1d876f3df2402ed7a61065eeba4ed6f4ae891d96c1858153bd93cfa",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/drucker"
+      },
+      "reviewedRevision": "sha256-lf:171edf74f2f09b5a75a27467bfc645b264e1beb06e6ac7fc185910dfa31541ea",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/maslow"
+      },
+      "reviewedRevision": "sha256-lf:e5ae4528fb492073f39a55063858a809bc480f0b7fc11a8a5ceef57160cbe3f5",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/darwin"
+      },
+      "reviewedRevision": "sha256-lf:f7b2a235f98744dda7eddb826b26ee3d10fea8c9372f9f919fe38c5f469a4e91",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/figma"
+      },
+      "reviewedRevision": "sha256-lf:38b68756a94a629c498e8b08a651526939f4a21a8f1ee833128666c2abea34fd",
+      "status": "requires-connection",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/notion"
+      },
+      "reviewedRevision": "sha256-lf:592e66a0436fb734a98d258921a1361d7ff0cf15641b06a16c8c5dc15259ac94",
+      "status": "requires-connection",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/google-workspace"
+      },
+      "reviewedRevision": "sha256-lf:841babf59bb27bb6811353537c2f3896592822d336c49a352b8b7fcd9bbd73f1",
+      "status": "requires-connection",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/obsidian"
+      },
+      "reviewedRevision": "sha256-lf:494124584de873e276342373eef4ddfdeaa25646dfaf67e37e037574b20735aa",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/shop"
+      },
+      "reviewedRevision": "sha256-lf:933d9e62744173fc4e7ba96eadee3e73aea5422224cc88a3e55994a57951ed4e",
+      "status": "requires-connection",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/shopify"
+      },
+      "reviewedRevision": "sha256-lf:921fa0225ce84a3058dc26cfc801c6b406f1eb17f7e7018ea9a50b49a0353042",
+      "status": "requires-connection",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/telephony"
+      },
+      "reviewedRevision": "sha256-lf:82500389d1e24602f44f893888e834d93adfef81317dff367ecefa62c9f3638f",
+      "status": "requires-connection",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    },
+    {
+      "source": {
+        "type": "squados",
+        "path": "skills/handoff"
+      },
+      "reviewedRevision": "sha256-lf:b58a7461d550ed12f51989aab959b731b3ac5883ecc7a6b818047c8620109da5",
+      "status": "ready",
+      "reason": {
+        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
+        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+      }
+    }
+  ]
+}

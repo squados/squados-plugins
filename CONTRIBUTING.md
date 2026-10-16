@@ -26,13 +26,13 @@ installation is needed.
 Edite `gallery.json` e acrescente um item (formato no [README](README.md)) apontando para:
 
 - uma skill deste repositório (`"type": "squados"`);
-- uma skill de `openai/skills`, `anthropics/skills`, `huggingface/skills` ou `NVIDIA/skills` (`"type": "github"`). Outro repositório não entra: o Studio descarta o item;
+- uma skill de `openai/skills`, `anthropics/skills`, `anthropics/knowledge-work-plugins` ou `openai/plugins` (`"type": "github"`). Outro repositório não entra: o Studio descarta o item;
 - uma skill do acervo do Hermes que o Studio já empacota (`"type": "hermes"`).
 
 Antes de abrir o pull request:
 
 - `title` e `description` em `pt-BR` e `en`, uma linha cada, na palavra que a pessoa usa no trabalho;
-- abra a skill e confirme que ela não pede conta, chave nem instalação extra;
+- abra o pacote inteiro, confirme licença e declare conexões/dependências reais; não inclua credenciais;
 - confirme que todo arquivo além de `SKILL.md` está em `references/`, `templates/`, `scripts/` ou `assets/`, sem binário. Arquivos `LICENSE*`, `LICENCE*`, `NOTICE*` ou `COPYING*` na raiz são preservados em `references/` pelo adaptador do Studio, desde que não haja colisão com um arquivo já existente.
 
 ## 2. Acrescentar uma skill nossa
@@ -42,7 +42,9 @@ Crie `skills/<nome>/SKILL.md`:
 - `name` igual ao nome da pasta (minúsculas, números e hífen);
 - `description` de uma linha;
 - `license` no frontmatter;
-- somente texto, sem conta nem chave; arquivos de apoio só em `references/`, `templates/`, `scripts/` ou `assets/`.
+- somente texto no bundle; credenciais ficam fora do pacote; arquivos de apoio só em `references/`, `templates/`, `scripts/` ou `assets/`.
+
+Evite criar outro cartão quando um modo de especialista existente resolver. Procedimentos internos não são skills selecionáveis. Rode `python scripts/verify-skills.py` e os checks afetados; preserve o limite de vinte destinos salvo decisão explícita de produto.
 
 Depois acrescente o item correspondente em `gallery.json`, com `"source": { "type": "squados", "path": "skills/<nome>" }`.
 
