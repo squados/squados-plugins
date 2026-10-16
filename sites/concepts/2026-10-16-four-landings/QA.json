@@ -20,5 +20,18 @@
       "horizontalOverflow": false
     }
   ],
-  "pass": true
+  "pass": true,
+  "galleryChecksScope": "Entrega inicial: browser em 1440px e 390px. Revisão somente de imagem/texto, sem nova rodada de browser.",
+  "revision": {
+    "date": "2026-10-16",
+    "scope": "Revisão estática da Trama; demais conceitos aprovados",
+    "checks": [
+      "4 PNGs com assinatura, dimensões, bytes e SHA-256 conferidos",
+      "Nortea, Orbe e Pipa idênticos ao commit aprovado 30aa4a5",
+      "4 artigos, links locais existentes e status consistente entre galeria e manifests",
+      "Inspeção visual da saída nativa: foco na mulher, cabeçalho removido e avaliações demonstrativas abaixo dos botões"
+    ],
+    "pass": true,
+    "finalTemplatesImplemented": false
+  }
 }

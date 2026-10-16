@@ -1,6 +1,6 @@
 # Quatro aberturas para validação — 16/10/2026
 
-**Estado: conceitos visuais, aguardando validação do usuário.** As páginas finais
+**Estado: Nortea, Orbe e Pipa aprovadas; Trama revisada, aguardando validação.** As páginas finais
 e suas interações ainda não foram implementadas. O usuário autorizou os quatro
 templates e pediu validar primeiro aqui no chat, usando ImageGen nativo.
 
@@ -12,13 +12,13 @@ Essas imagens são propostas de composição, não capturas de páginas funciona
 
 | Template futuro | Marca fictícia proposta | Referência escolhida | Conceito |
 | --- | --- | --- | --- |
-| `website-digital-marketing` | **Trama**, escola de negócios digitais | [Flux Academy](https://www.flux-academy.com/courses/web-design-masterclass) | Fundo ameixa/carvão, creme/coral, instrutora fictícia e colagem de materiais próprios |
+| `website-digital-marketing` | **Trama**, escola de negócios digitais | [Flux Academy](https://www.flux-academy.com/courses/web-design-masterclass) | Fundo ameixa/carvão, creme/coral, foco na instrutora fictícia, sem cabeçalho e com prova social demonstrativa |
 | `website-corporate` | **Nortea**, consultoria de operações | [BCG](https://www.bcg.com/) | Composição editorial, marfim e verde-petróleo, fotografias e relatórios próprios, animação discreta |
 | `website-futuristic` | **Orbe**, workspace de inteligência | [Reflect](https://reflect.app/) | Azul-noite, arcos luminosos 2D e painel de produto frontal, sem modelos 3D complexos |
 | `website-playful` | **Pipa**, escola criativa | [Headspace](https://www.headspace.com/) | Creme, amarelo/coral/menta, personagens ilustrados próprios, mascote-pipa e movimentos suaves |
 
 As referências visuais foram escolhidas pelo usuário. Os nomes, conteúdo e arte
-acima são propostas desta etapa, ainda sujeitos à validação. Os personagens e
+acima são próprios desta etapa; apenas a revisão da Trama ainda aguarda validação. Os personagens e
 fotografias das propostas são sintéticos; não representam professores/clientes
 reais nem resultados de empresas reais.
 
@@ -27,7 +27,9 @@ reais nem resultados de empresas reais.
 ### Trama
 
 Promessa: **Crie um negócio digital com método.** A one-page terá abertura,
-transformação/método, programa, instrutora, oferta e FAQ. A navegação usará âncoras;
+transformação/método, programa, instrutora, oferta e FAQ. Sem cabeçalho, com
+retrato em fundo limpo e faixa de avatares/estrelas abaixo dos botões, identificada
+como “Avaliações demonstrativas”. Os botões usarão âncoras quando apropriado;
 selecionar um módulo trocará sua prévia; “Ver uma aula” abrirá uma demonstração
 local; inscrição terá formulário e confirmação local, sem compra ou envio real.
 
@@ -59,13 +61,17 @@ escopo previsto após validação, não funcionalidades comprovadas por estas im
 
 Quatro chamadas separadas ao **ImageGen nativo**, uma para cada hero. Não foi usado
 CLI, API externa ou engine local. Os prompts completos estão em [prompts.json](prompts.json).
+Após o feedback, uma quinta chamada nativa editou somente a Trama, preservando
+instrutora, paleta e tipografia. Os três conceitos aprovados mantêm os mesmos bytes.
 As saídas foram copiadas do diretório padrão do ImageGen, sem modificar seus bytes.
 Hashes e dimensões estão em [assets.json](assets.json).
 
 A [verificação da galeria](QA.json) passou: quatro PNGs 1586×992 íntegros,
 imagens decodificadas, links locais existentes, primeiro acesso por teclado e
 ausência de overflow horizontal em 1440px e 390px. A galeria foi renderizada e
-inspecionada; esse resultado não valida interações dos templates finais.
+inspecionada na entrega inicial. Após a revisão, foram conferidos os quatro hashes,
+dimensões, links, status e preservação dos três PNGs aprovados, sem repetir o browser
+para uma troca de imagem/texto. Esse resultado não valida interações dos templates finais.
 
 - [Trama](trama-hero.png)
 - [Nortea](nortea-hero.png)

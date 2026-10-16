@@ -2,7 +2,19 @@
   "createdAt": "2026-10-16",
   "mode": "native-imagegen",
   "purpose": "Aberturas para validação visual antes da implementação",
-  "status": "generated-awaiting-user-validation",
+  "status": "awaiting-trama-validation",
+  "approvals": { "nortea": "approved", "orbe": "approved", "pipa": "approved", "trama": "revised-awaiting-validation" },
+  "revisions": [
+    {
+      "id": "trama",
+      "date": "2026-10-16",
+      "mode": "native-imagegen-edit",
+      "input": "trama-hero.png (original do commit 30aa4a5)",
+      "request": "Mais foco na mulher, menos objetos, remover cabeçalho e incluir uma faixa de prova social abaixo dos botões.",
+      "status": "generated-awaiting-validation",
+      "prompt": "Edit Image 1, the existing TRAMA infoproduct landing-page hero concept, with ONLY these requested composition changes. Keep the same invented Brazilian woman, recognizable face, short dark hair, black blazer, chin-on-hand pose, confident thoughtful expression, natural skin and correct anatomy. Keep the deep plum-charcoal background, warm ivory headline, coral CTA, premium editorial typography and centered composition. Keep a single horizontal 16:10 website opening section, full bleed, no browser chrome.\n\n1. Make the WOMAN the clear photographic focal point, with her head and shoulders large in the upper half. Remove the surrounding collage props: the giant workbook, photographs, loose paper notes, laptop, mug, books, plant and pencil holder. Replace these with quiet, spacious dark-plum studio background, subtle warm lighting and a gentle fade behind the text. Her portrait should occupy a meaningful part of the canvas; clean, cinematic and human, not a small floating cutout. Preserve her face and overall photographic style.\n2. Remove the ENTIRE header/navigation from the top: the logo, navigation links and top-right button. Use that reclaimed space for the uncluttered portrait. This is an infoproduct sales page with no header.\n3. Preserve the exact large headline, centered below the portrait without covering the face: \"Crie um negócio digital com método.\" Preserve the supporting copy: \"Da primeira ideia ao lançamento, com direção e prática.\" Preserve the coral main button \"Conhecer a formação\" and secondary link \"Ver uma aula →\".\n4. Immediately BELOW the button/link row add a classic compact social-proof row: five small overlapping circular adult portrait avatars, five tiny warm-gold stars, and the readable words \"Quem aprende, recomenda.\" A nearby smaller visible label must say \"Avaliações demonstrativas\". These are fictional example reviews for an open-source template, no numeric results, no invented real client brands. Align avatars, stars and copy in one balanced compact horizontal strip. Keep plenty of breathing room and fit the full strip within the canvas.\nOnly one beautiful focused hero, with clear hierarchy: woman, headline, support, CTA, social proof. Preserve the strong original visual direction while greatly simplifying the photograph."
+    }
+  ],
   "prompts": [
     {
       "id": "trama",
