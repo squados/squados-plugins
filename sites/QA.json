@@ -1,0 +1,363 @@
+{
+  "date": "2026-10-16",
+  "state": "local-integration-verified-final-review-pending",
+  "scope": "Quatro pacotes independentes, galeria HTTP local e contrato candidato do Desktop",
+  "environment": {
+    "system": "Windows / PowerShell 7",
+    "browser": "Chromium headless / Playwright core",
+    "screenshots": "1440x1000 e 390x844, reduced motion",
+    "additionalTaskWidths": [
+      360,
+      768,
+      1024,
+      1920
+    ]
+  },
+  "templates": [
+    {
+      "id": "website-digital-marketing",
+      "brand": "Trama",
+      "sourceRevision": "6e9b08a1940d05c210522f26f1aa889c2aeb5935",
+      "independentBuild": true,
+      "interactionsVerified": [
+        "Hero sem cabeçalho, retrato focal e prova social demonstrativa após CTAs",
+        "Programa de quatro módulos por clique e teclado",
+        "Mini-aula com três etapas e escolhas que mudam o resumo",
+        "Inscrição inválida/válida por Enter, confirmação, foco e reset",
+        "Dialog, Escape, backdrop, contenção/restauração de foco, FAQ"
+      ],
+      "packageReview": {
+        "specification": "approved",
+        "quality": "approved"
+      },
+      "integration": {
+        "id": "website-digital-marketing",
+        "entry": true,
+        "subpath": true,
+        "anchors": true,
+        "localAssets": true,
+        "externalRequests": 0,
+        "viewports": [
+          {
+            "width": 1440,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 390,
+            "horizontalOverflow": false
+          }
+        ],
+        "preview": "preview.png"
+      },
+      "adaptation": {
+        "id": "website-digital-marketing",
+        "request": "Aprenda a desenhar e lançar sua primeira oficina online.",
+        "file": "src/App.jsx",
+        "build": true,
+        "originalUnchanged": true,
+        "changedFiles": [
+          "src/App.jsx"
+        ],
+        "hermesExecution": false,
+        "runtimeVerified": true,
+        "runtimeErrors": []
+      },
+      "nativeReader": {
+        "id": "website-digital-marketing",
+        "files": 21,
+        "entry": "src/App.jsx",
+        "preview": {
+          "width": 1440,
+          "height": 1000
+        },
+        "metadata": "creationTemplateSchema",
+        "resolved": true
+      },
+      "preview": {
+        "file": "preview.png",
+        "width": 1440,
+        "height": 1000,
+        "sha256": "cf771e04a0e83d2c84d1b7e4ce5fbee39962a9ded5e0d9b87a4dd8e2a142d8d5"
+      },
+      "resources": {
+        "nativeRasterArt": 3,
+        "localFonts": 2,
+        "sha256Verified": true
+      }
+    },
+    {
+      "id": "website-corporate",
+      "brand": "Nortea",
+      "sourceRevision": "73b18804a234d805c4608a6c8e5745cfa1bb23fe",
+      "independentBuild": true,
+      "interactionsVerified": [
+        "Três serviços com conteúdo e diagrama correspondentes",
+        "Filtros de setor e detalhes de casos por teclado",
+        "Contato requerido, formato de email e endereços válidos de qualquer provedor",
+        "Confirmação por Enter com foco, reset, sem rede/storage",
+        "Menu mobile, Escape, âncoras, FAQ"
+      ],
+      "packageReview": {
+        "specification": "approved",
+        "quality": "approved"
+      },
+      "integration": {
+        "id": "website-corporate",
+        "entry": true,
+        "subpath": true,
+        "anchors": true,
+        "localAssets": true,
+        "externalRequests": 0,
+        "viewports": [
+          {
+            "width": 1440,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 390,
+            "horizontalOverflow": false
+          }
+        ],
+        "preview": "preview.png"
+      },
+      "adaptation": {
+        "id": "website-corporate",
+        "request": "Processos mais claros para uma rede de clínicas em crescimento.",
+        "file": "src/App.jsx",
+        "build": true,
+        "originalUnchanged": true,
+        "changedFiles": [
+          "src/App.jsx"
+        ],
+        "hermesExecution": false,
+        "runtimeVerified": true,
+        "runtimeErrors": []
+      },
+      "nativeReader": {
+        "id": "website-corporate",
+        "files": 19,
+        "entry": "src/App.jsx",
+        "preview": {
+          "width": 1440,
+          "height": 1000
+        },
+        "metadata": "creationTemplateSchema",
+        "resolved": true
+      },
+      "preview": {
+        "file": "preview.png",
+        "width": 1440,
+        "height": 1000,
+        "sha256": "99059e10d78698db0a493444f09466999631adebbe1261263a0dfe81570b9fdb"
+      },
+      "resources": {
+        "nativeRasterArt": 1,
+        "localFonts": 2,
+        "sha256Verified": true
+      }
+    },
+    {
+      "id": "website-futuristic",
+      "brand": "Orbe",
+      "sourceRevision": "ea64a7959f14229f2d66e681fef5d24e19b5300f",
+      "independentBuild": true,
+      "interactionsVerified": [
+        "Três modos mudam listas, mapa e detalhes",
+        "Busca, resultado vazio, limpar e adicionar ideia por Enter",
+        "Nós selecionáveis por teclado e detalhes",
+        "Planos mensais/anuais com valores e total anual",
+        "Formulário, confirmação por Enter, foco, dialog, Escape e FAQ"
+      ],
+      "packageReview": {
+        "specification": "approved",
+        "quality": "approved"
+      },
+      "integration": {
+        "id": "website-futuristic",
+        "entry": true,
+        "subpath": true,
+        "anchors": true,
+        "localAssets": true,
+        "externalRequests": 0,
+        "viewports": [
+          {
+            "width": 1440,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 390,
+            "horizontalOverflow": false
+          }
+        ],
+        "preview": "preview.png"
+      },
+      "adaptation": {
+        "id": "website-futuristic",
+        "request": "Organize sua pesquisa de produto e conecte descobertas em um só lugar.",
+        "file": "src/App.jsx",
+        "build": true,
+        "originalUnchanged": true,
+        "changedFiles": [
+          "src/App.jsx"
+        ],
+        "hermesExecution": false,
+        "runtimeVerified": true,
+        "runtimeErrors": []
+      },
+      "nativeReader": {
+        "id": "website-futuristic",
+        "files": 16,
+        "entry": "src/App.jsx",
+        "preview": {
+          "width": 1440,
+          "height": 1000
+        },
+        "metadata": "creationTemplateSchema",
+        "resolved": true
+      },
+      "preview": {
+        "file": "preview.png",
+        "width": 1440,
+        "height": 1000,
+        "sha256": "f48a716307c929bf5660281487ccf75ab5831196d2185930e4b16a80f98e9218"
+      },
+      "resources": {
+        "nativeRasterArt": 0,
+        "localFonts": 1,
+        "sha256Verified": true
+      }
+    },
+    {
+      "id": "website-playful",
+      "brand": "Pipa",
+      "sourceRevision": "378f0ee16135ce3639d38bbd25987623b27e4da3",
+      "independentBuild": true,
+      "interactionsVerified": [
+        "Três seletores mudam arte, atividade e texto",
+        "Desenho por pointer, cores, limpeza e alternativa por teclado",
+        "Escrita com validação, composição, edição e reset",
+        "Composição de recortes, formas, cores, organização e reset",
+        "Inscrição local, validação, confirmação, dialog, Escape, foco e FAQ"
+      ],
+      "packageReview": {
+        "specification": "approved",
+        "quality": "approved"
+      },
+      "integration": {
+        "id": "website-playful",
+        "entry": true,
+        "subpath": true,
+        "anchors": true,
+        "localAssets": true,
+        "externalRequests": 0,
+        "viewports": [
+          {
+            "width": 1440,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 390,
+            "horizontalOverflow": false
+          }
+        ],
+        "preview": "preview.png"
+      },
+      "adaptation": {
+        "id": "website-playful",
+        "request": "Oficinas de desenho, escrita e invenção para uma biblioteca de bairro.",
+        "file": "src/App.jsx",
+        "build": true,
+        "originalUnchanged": true,
+        "changedFiles": [
+          "src/App.jsx"
+        ],
+        "hermesExecution": false,
+        "runtimeVerified": true,
+        "runtimeErrors": []
+      },
+      "nativeReader": {
+        "id": "website-playful",
+        "files": 21,
+        "entry": "src/App.jsx",
+        "preview": {
+          "width": 1440,
+          "height": 1000
+        },
+        "metadata": "creationTemplateSchema",
+        "resolved": true
+      },
+      "preview": {
+        "file": "preview.png",
+        "width": 1440,
+        "height": 1000,
+        "sha256": "daa521b8e414a85e0aa8f442560d49dd3c603e0a12218cf76eba9b85fa52a958"
+      },
+      "resources": {
+        "nativeRasterArt": 3,
+        "localFonts": 2,
+        "sha256Verified": true
+      }
+    }
+  ],
+  "gallery": {
+    "links": 4,
+    "images": 4,
+    "mobileOverflow": false,
+    "imageAspectRatioVerified": true,
+    "finalCapture": "gallery.png"
+  },
+  "previewServer": {
+    "documents": true,
+    "head": true,
+    "missing404": true,
+    "post405": true,
+    "traversalRejected": true
+  },
+  "base": {
+    "source": "squados-desktop/resources/creation-templates/web-landing-page",
+    "revision": "dc74e664637eb8b4b757e35023f71ff73d1d2b27",
+    "filesUnchanged": 10,
+    "completePackageCopiedBeforeEditing": true,
+    "dependenciesPreserved": true,
+    "apacheLicensePreserved": true
+  },
+  "artwork": {
+    "nativeImageGenAssets": 7,
+    "orbe": "CSS/SVG próprios",
+    "fonts": "WOFF2 locais; OFL-1.1 integral"
+  },
+  "localEvidence": {
+    "directory": ".claude/plans/landing-concepts/ (ignorado pelo Git)",
+    "task2": ".scratch/task-2/ (ignorado pelo Git)",
+    "reports": [
+      "task-1-report.md",
+      "task-1-review.md",
+      "task-1-fix-1-review.md",
+      "task-2-report.md",
+      "task-2-review.md",
+      "task-2-fix-1-review.md",
+      "task-3-report.md",
+      "task-3-review.md",
+      "task-4-report.md",
+      "task-4-review.md"
+    ],
+    "integration": "integration-results.json",
+    "nativeContract": "native-contract-results.json",
+    "adaptations": "adaptation-results.json"
+  },
+  "boundaries": {
+    "physicalDevicesTested": false,
+    "firefoxSafariTested": false,
+    "hermesRequestExecuted": false,
+    "desktopEmbeddedCatalogChanged": false,
+    "pushed": false,
+    "deployed": false,
+    "backendAuthenticationPayments": false
+  },
+  "notes": [
+    "As provas de pacote incluem RED antes e GREEN após implementação, com correções focais posteriores registradas.",
+    "A adaptação foi feita numa cópia de cada pacote por edição de código, build e verificação HTTP; não foi uma execução pelo Hermes.",
+    "Os recursos e fontes são locais. Os formulários não enviam nem persistem dados pessoais.",
+    "A base original foi comparada por SHA-256 antes/depois; o schema e o leitor CreationTemplates usados são os reais do Desktop."
+  ]
+}

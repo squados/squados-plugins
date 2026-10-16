@@ -1,8 +1,8 @@
 # Quatro aberturas para validação — 16/10/2026
 
-**Estado: Nortea, Orbe e Pipa aprovadas; Trama revisada, aguardando validação.** As páginas finais
-e suas interações ainda não foram implementadas. O usuário autorizou os quatro
-templates e pediu validar primeiro aqui no chat, usando ImageGen nativo.
+**Estado: quatro conceitos aprovados pelo usuário em 16/10/2026.** A aprovação
+da Trama revisada encerrou este checkpoint. As imagens nesta pasta preservam a
+fase visual; implementação e evidências estão no [acervo de websites](../../README.md).
 
 Abra [index.html](index.html) diretamente no navegador, sem servidor. Cada imagem
 é uma seção de abertura, em formato horizontal; clique para inspecionar a original.
@@ -18,7 +18,7 @@ Essas imagens são propostas de composição, não capturas de páginas funciona
 | `website-playful` | **Pipa**, escola criativa | [Headspace](https://www.headspace.com/) | Creme, amarelo/coral/menta, personagens ilustrados próprios, mascote-pipa e movimentos suaves |
 
 As referências visuais foram escolhidas pelo usuário. Os nomes, conteúdo e arte
-acima são próprios desta etapa; apenas a revisão da Trama ainda aguarda validação. Os personagens e
+acima são próprios desta etapa e foram aprovados. Os personagens e
 fotografias das propostas são sintéticos; não representam professores/clientes
 reais nem resultados de empresas reais.
 

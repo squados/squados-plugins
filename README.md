@@ -3,8 +3,9 @@
 Acervo público de plugins do SquadOS Studio: skills, templates e demonstrações,
 com licenças próprias identificadas em cada pacote.
 As skills têm um índice curado (`gallery.json`) para contratação pelo RH e pacotes
-próprios em `skills/<nome>/SKILL.md`. Os templates de websites e aplicações estão em
-planejamento; os três [jogos demonstrativos](games/README.md) têm pacotes próprios
+próprios em `skills/<nome>/SKILL.md`. Os quatro [templates de websites](sites/README.md)
+têm pacotes independentes em `sites/`; aplicações web seguem em planejamento.
+Os três [jogos demonstrativos](games/README.md) têm pacotes próprios
 em `games/`, separados do índice de skills. As skills de outros repositórios
 ficam onde estão e são baixadas só na hora da contratação.
 

@@ -1,7 +1,7 @@
 {
   "mode": "native-imagegen",
   "generatedAt": "2026-10-16",
-  "status": "awaiting-trama-validation",
+  "status": "approved",
   "images": [
     {
       "id": "trama",
@@ -10,7 +10,7 @@
       "height": 992,
       "bytes": 1748795,
       "sha256": "5f4801aedab284e8015513ad2bfbdb62c6e956f89ee58499ba8c37e5b5c90fa5",
-      "status": "revised-awaiting-validation"
+      "status": "approved"
     },
     {
       "id": "nortea",

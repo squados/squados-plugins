@@ -1,0 +1,70 @@
+[
+  {
+    "id": "website-digital-marketing",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Negócio digital · Trama",
+      "en": "Digital business · Trama"
+    },
+    "description": {
+      "pt-BR": "Landing page de formação com retrato editorial, programa interativo, mini-aula e inscrição demonstrativa.",
+      "en": "Training landing page with an editorial portrait, interactive curriculum, sample lesson and demo enrollment."
+    },
+    "preview": "preview.png",
+    "entry": "src/App.jsx",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, imagens, dados demonstrativos e contato conforme o pedido, preservando os componentes e interações úteis. Instale com npm ci e o lockfile incluído, execute npm run build e confira a cópia em desktop e celular. Formulários são demonstrações locais: só conecte integrações reais quando solicitado e configurado. Preserve LICENSE, NOTICE e as licenças das fontes. Não altere o template original nem publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica própria web-landing-page (Apache-2.0); composição, conteúdo e arte nativa próprios. Fontes Google Fonts (OFL-1.1). Referências visuais e proveniência em README.md e assets.json."
+  },
+  {
+    "id": "website-corporate",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Corporativo · Nortea",
+      "en": "Corporate · Nortea"
+    },
+    "description": {
+      "pt-BR": "Consultoria com estética editorial sóbria, serviços selecionáveis, casos filtráveis e contato demonstrativo.",
+      "en": "Consultancy with restrained editorial design, selectable services, filterable cases and a demo contact form."
+    },
+    "preview": "preview.png",
+    "entry": "src/App.jsx",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, imagens, dados demonstrativos e contato conforme o pedido, preservando os componentes e interações úteis. Instale com npm ci e o lockfile incluído, execute npm run build e confira a cópia em desktop e celular. Formulários são demonstrações locais: só conecte integrações reais quando solicitado e configurado. Preserve LICENSE, NOTICE e as licenças das fontes. Não altere o template original nem publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica própria web-landing-page (Apache-2.0); composição, conteúdo e arte nativa próprios. Fontes Google Fonts (OFL-1.1). Referências visuais e proveniência em README.md e assets.json."
+  },
+  {
+    "id": "website-futuristic",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Futurista · Orbe",
+      "en": "Futuristic · Orbe"
+    },
+    "description": {
+      "pt-BR": "Workspace de inteligência com halo 2D, painel interativo de ideias, conexões e planos demonstrativos.",
+      "en": "Intelligent workspace with a 2D light halo, interactive ideas and connections panel, and demo plans."
+    },
+    "preview": "preview.png",
+    "entry": "src/App.jsx",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, imagens, dados demonstrativos e contato conforme o pedido, preservando os componentes e interações úteis. Instale com npm ci e o lockfile incluído, execute npm run build e confira a cópia em desktop e celular. Formulários são demonstrações locais: só conecte integrações reais quando solicitado e configurado. Preserve LICENSE, NOTICE e as licenças das fontes. Não altere o template original nem publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica própria web-landing-page (Apache-2.0); composição, conteúdo, halo e diagramas CSS/SVG próprios. DM Sans (OFL-1.1). Referência visual e proveniência em README.md e assets.json."
+  },
+  {
+    "id": "website-playful",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Divertido · Pipa",
+      "en": "Playful · Pipa"
+    },
+    "description": {
+      "pt-BR": "Escola criativa com personagens próprios, três cenas e mini-experiências de desenho, escrita e invenção.",
+      "en": "Creative school with original characters, three scenes and mini experiences for drawing, writing and inventing."
+    },
+    "preview": "preview.png",
+    "entry": "src/App.jsx",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, imagens, dados demonstrativos e contato conforme o pedido, preservando os componentes e interações úteis. Instale com npm ci e o lockfile incluído, execute npm run build e confira a cópia em desktop e celular. Formulários são demonstrações locais: só conecte integrações reais quando solicitado e configurado. Preserve LICENSE, NOTICE e as licenças das fontes. Não altere o template original nem publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica própria web-landing-page (Apache-2.0); composição, conteúdo e arte nativa próprios. Fontes Google Fonts (OFL-1.1). Referências visuais e proveniência em README.md e assets.json."
+  }
+]

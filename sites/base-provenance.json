@@ -1,0 +1,93 @@
+{
+  "source": "squados-desktop/resources/creation-templates/web-landing-page",
+  "revision": "dc74e664637eb8b4b757e35023f71ff73d1d2b27",
+  "license": "Apache-2.0",
+  "completePackageCopiedBeforeEditing": true,
+  "sourceFilesBefore": [
+    {
+      "path": "index.html",
+      "sha256": "2a97fb2a35e58f63af926f13a1bf852e8516898f01c24c6572337e8ac0babf41"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "2ac9d7107881fa48db25763cbbb3d1e718f104a8f5254d5b76b30ee61d8a4930"
+    },
+    {
+      "path": "package.json",
+      "sha256": "23414d2dc99e5c44353524ee2d610d920c368b52ae0904f741cfef574fc5d296"
+    },
+    {
+      "path": "preview.png",
+      "sha256": "5eba956d7a3088cea67dbdcd1bd3326a1f4e0a743e9e39963720ae0984ecc569"
+    },
+    {
+      "path": "README.md",
+      "sha256": "35efde042015a58da3083a749d6b3df51523c2e9017c6a3f86ea1a17e76246c5"
+    },
+    {
+      "path": "vite.config.js",
+      "sha256": "49a4e77a2eccb97fffdaf3f41b202dc3d9c3964ceb3ba429c694f0e1753053d5"
+    },
+    {
+      "path": "src/App.jsx",
+      "sha256": "a2406a09cb9b1f73242edd0a57e295d7f70924e5d3278e35f2dfb9fbda82e8be"
+    },
+    {
+      "path": "src/main.jsx",
+      "sha256": "baba45a06d1d8c7abf3c99e3fe6df624c8fe8c041147e5b9b66293b0fad5781d"
+    },
+    {
+      "path": "src/style.css",
+      "sha256": "9ac38d59bc4fec4387780638601f4baaf6e1986fef859d02a7b0a1573b86d4c2"
+    }
+  ],
+  "sourcePreservationVerified": true,
+  "sourceFilesAfter": [
+    {
+      "path": "index.html",
+      "sha256": "2a97fb2a35e58f63af926f13a1bf852e8516898f01c24c6572337e8ac0babf41"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "2ac9d7107881fa48db25763cbbb3d1e718f104a8f5254d5b76b30ee61d8a4930"
+    },
+    {
+      "path": "package.json",
+      "sha256": "23414d2dc99e5c44353524ee2d610d920c368b52ae0904f741cfef574fc5d296"
+    },
+    {
+      "path": "preview.png",
+      "sha256": "5eba956d7a3088cea67dbdcd1bd3326a1f4e0a743e9e39963720ae0984ecc569"
+    },
+    {
+      "path": "README.md",
+      "sha256": "35efde042015a58da3083a749d6b3df51523c2e9017c6a3f86ea1a17e76246c5"
+    },
+    {
+      "path": "src/App.jsx",
+      "sha256": "a2406a09cb9b1f73242edd0a57e295d7f70924e5d3278e35f2dfb9fbda82e8be"
+    },
+    {
+      "path": "src/main.jsx",
+      "sha256": "baba45a06d1d8c7abf3c99e3fe6df624c8fe8c041147e5b9b66293b0fad5781d"
+    },
+    {
+      "path": "src/style.css",
+      "sha256": "9ac38d59bc4fec4387780638601f4baaf6e1986fef859d02a7b0a1573b86d4c2"
+    },
+    {
+      "path": "vite.config.js",
+      "sha256": "49a4e77a2eccb97fffdaf3f41b202dc3d9c3964ceb3ba429c694f0e1753053d5"
+    }
+  ],
+  "candidateDependenciesPreserved": true,
+  "candidateLicensePreserved": true
+}

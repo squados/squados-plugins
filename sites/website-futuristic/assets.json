@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "artworkMode": "native-imagegen",
+  "artworkMode": "code-native-svg-css",
   "runtimeExternalRequests": false,
   "images": [],
   "fonts": [

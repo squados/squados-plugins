@@ -2,7 +2,7 @@
 
 Base técnica: pacote completo `web-landing-page` do SquadOS Studio, sob Apache-2.0.
 O arquivo LICENSE preserva a licença da base e deste template. Composição, textos,
-componentes e arte criada no ImageGen nativo pertencem à produção deste acervo;
+componentes e arte em SVG/CSS próprios pertencem à produção deste acervo;
 marcas, pessoas, situações, avaliações e dados são demonstrativos.
 
 Fontes locais derivadas de Google Fonts: DM Sans, sob SIL Open Font License 1.1.
