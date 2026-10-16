@@ -7,8 +7,8 @@
       "en": "Digital business · Trama"
     },
     "description": {
-      "pt-BR": "Landing page de formação com retrato editorial, programa interativo, mini-aula e inscrição demonstrativa.",
-      "en": "Training landing page with an editorial portrait, interactive curriculum, sample lesson and demo enrollment."
+      "pt-BR": "Landing page de formação toda dark, com currículo expansível, cards, três projetos, mini-aula e planos demonstrativos.",
+      "en": "Dark course landing page with an expandable curriculum, feature cards, three projects, a sample lesson and demo plans."
     },
     "preview": "preview.png",
     "entry": "src/App.jsx",

@@ -6,14 +6,16 @@ preview renderizado, README, licenças e instruções de adaptação.
 
 | Pacote | Marca | Direção | Referência visual aprovada |
 | --- | --- | --- | --- |
-| [website-digital-marketing](website-digital-marketing/README.md) | Trama | Infoproduto, retrato e programa | [Flux Academy](https://www.flux-academy.com/courses/web-design-masterclass) |
+| [website-digital-marketing](website-digital-marketing/README.md) | Trama | Infoproduto dark, currículo e cards | [Flux Academy](https://www.flux-academy.com/courses/web-design-masterclass) |
 | [website-corporate](website-corporate/README.md) | Nortea | Consultoria editorial sóbria | [BCG](https://www.bcg.com/) |
 | [website-futuristic](website-futuristic/README.md) | Orbe | Produto escuro, luz e diagramas 2D | [Reflect](https://reflect.app/) |
 | [website-playful](website-playful/README.md) | Pipa | Escola criativa ilustrada | [Headspace](https://www.headspace.com/) |
 
 As referências orientam o estilo; não fornecem código, marcas, textos ou assets
 a estes pacotes. Trama não tem cabeçalho: retrato limpo, título e botões com faixa
-de avaliações demonstrativas abaixo. Nortea usa movimento discreto; Orbe usa
+de avaliações demonstrativas abaixo. A revisão da Trama mantém toda a página
+escura, com títulos sem serifa, cards, currículo expansível, projetos e oferta em
+planos. Nortea usa movimento discreto; Orbe usa
 CSS/SVG em vez de modelos 3D; Pipa tem personagens originais em arte plana.
 
 ## Executar e explorar

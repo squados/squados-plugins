@@ -55,5 +55,5 @@
     }
   ],
   "prompts": "art-prompts.json",
-  "note": "Arte separada, sem UI rasterizada. Na Orbe o halo, diagramas e painel são SVG/CSS/HTML próprios. Fotografias, personagens e avaliações são fictícios."
+  "note": "Três artes existentes de ImageGen nativo preservadas. Interfaces, composições de projetos e diagramas novos são HTML/CSS/SVG próprios. DM Sans nos títulos/corpo; Newsreader em assinatura e detalhe de projeto. Instrutora, rostos e avaliações fictícios."
 }
