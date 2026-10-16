@@ -1,0 +1,155 @@
+[
+  {
+    "id": "app-crm",
+    "kind": "web",
+    "name": {
+      "pt-BR": "CRM · Vínculo",
+      "en": "CRM · Vínculo"
+    },
+    "description": {
+      "pt-BR": "CRM compacto com pipeline kanban, contatos e oportunidades.",
+      "en": "Compact CRM with a kanban pipeline, contacts and deals."
+    },
+    "preview": "preview.png",
+    "entry": "src/app.js",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json."
+  },
+  {
+    "id": "app-management",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Sistema de gestão · Balanço",
+      "en": "Management · Balanço"
+    },
+    "description": {
+      "pt-BR": "Gestão com fluxo de caixa, conta e lançamentos financeiros.",
+      "en": "Management dashboard with cash flow, account balance and transactions."
+    },
+    "preview": "preview.png",
+    "entry": "src/app.js",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json."
+  },
+  {
+    "id": "app-people",
+    "kind": "web",
+    "name": {
+      "pt-BR": "RH e pessoas · Pulso",
+      "en": "People management · Pulso"
+    },
+    "description": {
+      "pt-BR": "Diretório de pessoas, calendário e jornadas do time.",
+      "en": "People directory, team calendar and onboarding journeys."
+    },
+    "preview": "preview.png",
+    "entry": "src/app.js",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json."
+  },
+  {
+    "id": "app-ai-chat",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Chat de IA · Lume",
+      "en": "AI chat · Lume"
+    },
+    "description": {
+      "pt-BR": "Chat em modo escuro com histórico, sugestões e respostas demonstrativas.",
+      "en": "Dark chat with conversation history, suggestions and demo replies."
+    },
+    "preview": "preview.png",
+    "entry": "src/app.js",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json."
+  },
+  {
+    "id": "app-members",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Área de membros · Forma",
+      "en": "Member academy · Forma"
+    },
+    "description": {
+      "pt-BR": "Academia com frames de aulas, play central e progresso local.",
+      "en": "Academy with lesson frames, central play controls and local progress."
+    },
+    "preview": "preview.png",
+    "entry": "src/app.js",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json."
+  },
+  {
+    "id": "app-community",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Comunidade · Pátio",
+      "en": "Community · Pátio"
+    },
+    "description": {
+      "pt-BR": "Feed com publicações, comentários, espaços e encontros.",
+      "en": "Community feed with posts, comments, spaces and events."
+    },
+    "preview": "preview.png",
+    "entry": "src/app.js",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json."
+  },
+  {
+    "id": "app-quiz",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Quiz interativo · Prisma",
+      "en": "Interactive quiz · Prisma"
+    },
+    "description": {
+      "pt-BR": "Cinco perguntas, perfil criativo e navegação imersiva.",
+      "en": "Five questions, a creative profile and an immersive flow."
+    },
+    "preview": "preview.png",
+    "entry": "src/app.js",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json."
+  },
+  {
+    "id": "app-calculator",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Calculadora interativa · Escopo",
+      "en": "Interactive calculator · Escopo"
+    },
+    "description": {
+      "pt-BR": "Estimativa de projeto com ajustes de escopo e comparação de cenários.",
+      "en": "Project estimates with scope controls and scenario comparison."
+    },
+    "preview": "preview.png",
+    "entry": "src/app.js",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json."
+  },
+  {
+    "id": "app-conversion-tracker",
+    "kind": "web",
+    "name": {
+      "pt-BR": "Rastreador de conversões · Sinal",
+      "en": "Conversion tracker · Sinal"
+    },
+    "description": {
+      "pt-BR": "Atribuição com métricas, canais, campanhas e funil de conversão.",
+      "en": "Attribution metrics, channels, campaigns and conversion funnel."
+    },
+    "preview": "preview.png",
+    "entry": "src/app.js",
+    "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+    "license": "Apache-2.0; fonts: OFL-1.1",
+    "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json."
+  }
+]

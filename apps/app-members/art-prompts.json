@@ -1,0 +1,23 @@
+{
+  "mode": "native-imagegen",
+  "date": "2026-10-16",
+  "reference": "sites/website-digital-marketing/public/art/instructor.png (origem no repositório squados-plugins)",
+  "referenceRole": "Identidade da Bia, embaixadora virtual; rosto e expressão como referência, novos cenários de aulas.",
+  "assets": [
+    {
+      "id": "lesson-design",
+      "target": "src/assets/lesson-design.png",
+      "prompt": "Use case: photorealistic-natural. Create a widescreen 16:9 paused frame from a beautifully produced online design lesson. Input image is an IDENTITY REFERENCE for Bia, a fictional AI brand ambassador. Preserve her exact face, light freckles, hazel green eyes and wavy copper brown hair. Bia appears at the RIGHT third, waist-up in a simple dark blouse, a warm confident smile, caught naturally mid-explanation with one hand gesturing. The LEFT two thirds is a clean large dark navy presentation board with a vivid orange circle, ivory rectangular typography-layout blocks and thin lavender guide lines demonstrating VISUAL HIERARCHY. It must clearly look like a human teaching a lesson with a meaningful teaching slide beside her, not a generic room. Professional flattering soft cinematic studio light, crisp eyes and skin texture, tasteful navy/amber creative academy palette. Landscape 16:9 wide photographic class footage. No player controls, no play icon (these will be real HTML), no logos, no watermarks, no subtitles, no random tiny illegible text. One complete scene, no collage."
+    },
+    {
+      "id": "lesson-ai",
+      "target": "src/assets/lesson-ai.png",
+      "prompt": "Use case: photorealistic-natural. Create a widescreen 16:9 realistic frame from a premium online class teaching creative uses of AI. Input image is only an IDENTITY REFERENCE for Bia, a fictional AI brand ambassador; preserve same recognizable face, hazel green eyes, light freckles and copper brown wavy hair. She sits at LEFT third behind a minimal desk, cheerful confident friendly smile mid-teaching, wearing an ivory blouse with a small lapel microphone, gesturing toward a large display to RIGHT showing three simplified visual prompt cards, a small generated abstract landscape thumbnail and arrows connecting an idea to an image. Restrained lilac/smoky blue studio background, premium educational filmmaking, beautiful soft face light, scene clearly teaching AI workflow. Wide waist-up camera angle, modern but believable studio. The monitor is a teaching prop, no browser UI or actual vendor branding. No controls/play icon, no words/text except simple abstract slide blocks, no watermarks. One complete photographic video still, not a collage, 16:9 landscape."
+    },
+    {
+      "id": "lesson-strategy",
+      "target": "src/assets/lesson-strategy.png",
+      "prompt": "Use case: photorealistic-natural. Create a widescreen 16:9 paused frame of a premium online business strategy lesson. Input image is IDENTITY REFERENCE for Bia, fictional AI brand ambassador. Preserve recognizable face, freckles, hazel green eyes and copper brown wavy hair. Bia stands on the RIGHT half, three quarter waist-up, natural confident welcoming smile, wearing a muted sage green blouse. She is demonstrating a strategy map on a large ivory board to her LEFT: three neat columns of peach and pale green sticky notes, a simple black marker arrow connecting a circle to three goals, a few meaningful visual blocks with plenty of negative space. She's holding a marker and pointing to a sticky note mid-explanation. Warm cream and forest green studio, beautiful natural soft lighting, high-end authentic masterclass recording with human and teaching content filling the frame, no generic environment photograph. No play icon/controls, no vendor logos, no watermark, no written phrases. A single full landscape 16:9 photographic still."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "images": [
+    {
+      "file": "src/assets/avatars.png",
+      "width": 2079,
+      "height": 756,
+      "bytes": 1882879,
+      "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52",
+      "origin": "SquadOS — ImageGen nativo",
+      "license": "Apache-2.0"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "src/assets/body.woff2",
+      "family": "DM Sans",
+      "bytes": 36932,
+      "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543",
+      "license": "OFL-1.1",
+      "notice": "src/assets/DM-Sans-OFL.txt"
+    }
+  ],
+  "origin": "SquadOS — código e arte próprios do spike aprovado."
+}

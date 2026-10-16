@@ -1,0 +1,2 @@
+// Cálculo local de referência para a demonstração.
+export function calculateEstimate(c){const hours=Math.ceil(({Website:24,Aplicativo:48,Marca:16}[c.type]+c.pages*3+(c.content?12:0)+(c.prototype?8:0)+(c.support?6:0))*({Essencial:.85,Completo:1,Avançado:1.35}[c.complexity]));const total=hours*c.rate*({'Flexível':1,'30 dias':1.1,'15 dias':1.25}[c.deadline]);return {hours,total:Math.round(total),design:Math.round(total*.35),development:Math.round(total*.5),review:Math.round(total)-Math.round(total*.35)-Math.round(total*.5)};}

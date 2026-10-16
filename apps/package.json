@@ -1,0 +1,11 @@
+{
+  "name": "squados-web-app-templates",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node preview.mjs",
+    "test": "node --test app-ai-chat/src/model.test.js app-management/src/transactions.test.js app-calculator/src/estimate.test.js"
+  }
+}
