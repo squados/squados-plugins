@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-16",
+  "artworkMode": "native-imagegen",
+  "runtimeExternalRequests": false,
+  "images": [
+    {
+      "file": "public/art/editorial.png",
+      "width": 2128,
+      "height": 739,
+      "bytes": 2772953,
+      "sha256": "822250f0d305d34496f0bdb77e94d6bd28a18d09420819bb2ed32c696ee1b791",
+      "origin": "SquadOS — ImageGen nativo",
+      "license": "Apache-2.0",
+      "promptId": "nortea-editorial"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "public/fonts/body.woff2",
+      "bytes": 36932,
+      "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543",
+      "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+      "cssSource": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..1000&display=swap",
+      "license": "OFL-1.1",
+      "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt"
+    },
+    {
+      "file": "public/fonts/display.woff2",
+      "bytes": 58084,
+      "sha256": "62981321d9a3cc7a61a73792729043703fd6112da86e8ec848bb57f088578757",
+      "source": "https://fonts.gstatic.com/s/newsreader/v26/cY9VfjOCX1hbuyalUrK49dLac06G1ZGsZBtoBAbNJYQ.woff2",
+      "cssSource": "https://fonts.googleapis.com/css2?family=Newsreader:wght@200..800&display=swap",
+      "license": "OFL-1.1",
+      "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/OFL.txt"
+    }
+  ],
+  "prompts": "art-prompts.json",
+  "note": "Arte separada, sem UI rasterizada. Na Orbe o halo, diagramas e painel são SVG/CSS/HTML próprios. Fotografias, personagens e avaliações são fictícios."
+}

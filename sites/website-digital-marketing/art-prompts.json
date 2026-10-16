@@ -1,0 +1,22 @@
+{
+  "mode": "native-imagegen",
+  "date": "2026-10-16",
+  "assets": [
+    {
+      "id": "trama-portrait",
+      "target": "website-digital-marketing/public/art/instructor.png",
+      "input": "trama-hero.png",
+      "prompt": "Use Image 1 ONLY as the subject and photographic style reference. Create an ORIGINAL WEBSITE ART ASSET, NOT a website mockup. Portrait of the SAME fictional Brazilian female instructor, same face, short dark wavy hair, black blazer and shirt, confident thoughtful expression, chin resting naturally on her hand, correct hand anatomy. Large head and shoulders centered, head entirely within frame with modest top margin, torso fades softly toward the bottom into deep plum-charcoal #17121c. Clean spacious dark-plum studio backdrop, subtle warm light and natural skin. Match the cinematic editorial photographic style and face of the approved reference. Nothing surrounding her, no objects. Landscape 16:10 crop with usable empty space at sides. NO WORDS, no headline, no UI, no buttons, no navigation, no logos, no avatars, no stars, no watermark. This is solely the portrait artwork that will sit behind real HTML text."
+    },
+    {
+      "id": "trama-avatars",
+      "target": "website-digital-marketing/public/art/avatars.png",
+      "prompt": "Create a standalone website social-proof ART ASSET, not a website mockup. Exactly five separate circular professional headshot portraits of five different fictional Brazilian adult students, diverse genders and skin tones, ages 25–45, friendly natural faces, neutral studio clothes, realistic editorial photography, correct facial anatomy. Place FIVE perfectly round portraits in ONE tight horizontal row, slightly overlapping in the usual testimonial-avatar style, thin warm-ivory borders, faces all centered and unclipped. Deep plum-charcoal #17121c background. Wide horizontal composition tightly framing this row, no huge empty margins. No text, no stars, no numbers, no UI, no logos, no watermark. Only five clean small avatar portraits."
+    },
+    {
+      "id": "trama-course",
+      "target": "website-digital-marketing/public/art/course.png",
+      "prompt": "Create one original cinematic editorial photograph, a standalone course WEBSITE ART ASSET, not a website design. A beautiful tactile physical digital-business course study kit on a dark plum desk: one coral clothbound workbook with a simple original geometric interweaving-line symbol, a few warm ivory worksheets with clean abstract diagrams and no readable words, a black pen and subtle lilac paper sheet. View at a natural 45 degree angle, light from upper left, gentle authentic shadows, premium creative-school atmosphere, dark plum-charcoal #17121c backdrop. Few carefully composed objects with generous empty space, warm coral #ff805f and cream palette. Landscape 4:3. NO readable text, no fake interfaces, no headline, no website navigation, no logo from another brand, no watermark. The kit itself is the full artwork."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "mode": "native-imagegen",
+  "date": "2026-10-16",
+  "purpose": "Artes separadas para quatro one-pages aprovadas; não são capturas de páginas",
+  "assets": [
+    {
+      "id": "trama-portrait",
+      "target": "website-digital-marketing/public/art/instructor.png",
+      "input": "trama-hero.png",
+      "prompt": "Use Image 1 ONLY as the subject and photographic style reference. Create an ORIGINAL WEBSITE ART ASSET, NOT a website mockup. Portrait of the SAME fictional Brazilian female instructor, same face, short dark wavy hair, black blazer and shirt, confident thoughtful expression, chin resting naturally on her hand, correct hand anatomy. Large head and shoulders centered, head entirely within frame with modest top margin, torso fades softly toward the bottom into deep plum-charcoal #17121c. Clean spacious dark-plum studio backdrop, subtle warm light and natural skin. Match the cinematic editorial photographic style and face of the approved reference. Nothing surrounding her, no objects. Landscape 16:10 crop with usable empty space at sides. NO WORDS, no headline, no UI, no buttons, no navigation, no logos, no avatars, no stars, no watermark. This is solely the portrait artwork that will sit behind real HTML text."
+    },
+    {
+      "id": "nortea-editorial",
+      "target": "website-corporate/public/art/editorial.png",
+      "input": "nortea-hero.png",
+      "prompt": "Use Image 1 as a style/composition reference for ONLY its photographic/editorial row. Generate ONLY original standalone website artwork, not a website or screen. A very wide panoramic editorial contact sheet with five adjacent vertical panels separated by narrow warm-ivory #f7f5ee gutters: left sunlit refined Brazilian office architecture with plant; second a tactile sage-green strategy report with an original thin compass diagram; center largest panel a diverse Brazilian team of four collaborating around papers and a laptop, natural correct anatomy, candid professional; fourth an aerial logistics/industrial warehouse at golden hour; fifth ivory research report with original petrol-green contour-line diagram. The five panels are roughly equal width except center slightly wider; softly varied top edges, all flat and on the same plane, aligned bottom edge. Photography premium and realistic, warm light, muted sage, stone, deep petrol. No large text, no readable writing on reports or walls, no logos, no website heading, no navigation, no CTA, no UI. Make the images themselves fill almost the whole canvas. Very wide landscape artwork to be used as an editorial photo strip."
+    },
+    {
+      "id": "pipa-draw",
+      "target": "website-playful/public/art/draw.png",
+      "input": "pipa-hero.png",
+      "prompt": "Use Image 1 ONLY as the reference for its original characters, palette and flat illustration style. Create ONLY an original standalone panoramic website ILLUSTRATION, not a website mockup. All UI will be real HTML elsewhere. Preserve the friendly blue rounded character, happy coral-and-yellow diamond kite mascot with navy face and looping tail, and mint-green character. Warm cream #fff8ec paper background. Full beautiful wide lower-half scene: on left blue character drawing a large coral flower on paper at a wooden table with crayons, center kite mascot floating and smiling with curved tail, on right mint character creating paper cutouts at its table. Large organic sunny-yellow hill behind left, pale-mint hill right, simple green plants at far edges. Rich but calm and welcoming editorial flat 2D artwork for a creative school, lightly grainy print textures, ink-navy outlines, no 3D. Characters and scene should fill the wide horizontal canvas with a little air above. Landscape around 2:1. NO LETTERS OR TEXT ANYWHERE, no headline, no logo, no buttons, no activity selector, no navigation, no watermark. Solely original artwork to be placed below HTML content."
+    },
+    {
+      "id": "trama-avatars",
+      "target": "website-digital-marketing/public/art/avatars.png",
+      "prompt": "Create a standalone website social-proof ART ASSET, not a website mockup. Exactly five separate circular professional headshot portraits of five different fictional Brazilian adult students, diverse genders and skin tones, ages 25–45, friendly natural faces, neutral studio clothes, realistic editorial photography, correct facial anatomy. Place FIVE perfectly round portraits in ONE tight horizontal row, slightly overlapping in the usual testimonial-avatar style, thin warm-ivory borders, faces all centered and unclipped. Deep plum-charcoal #17121c background. Wide horizontal composition tightly framing this row, no huge empty margins. No text, no stars, no numbers, no UI, no logos, no watermark. Only five clean small avatar portraits."
+    },
+    {
+      "id": "trama-course",
+      "target": "website-digital-marketing/public/art/course.png",
+      "prompt": "Create one original cinematic editorial photograph, a standalone course WEBSITE ART ASSET, not a website design. A beautiful tactile physical digital-business course study kit on a dark plum desk: one coral clothbound workbook with a simple original geometric interweaving-line symbol, a few warm ivory worksheets with clean abstract diagrams and no readable words, a black pen and subtle lilac paper sheet. View at a natural 45 degree angle, light from upper left, gentle authentic shadows, premium creative-school atmosphere, dark plum-charcoal #17121c backdrop. Few carefully composed objects with generous empty space, warm coral #ff805f and cream palette. Landscape 4:3. NO readable text, no fake interfaces, no headline, no website navigation, no logo from another brand, no watermark. The kit itself is the full artwork."
+    },
+    {
+      "id": "pipa-write",
+      "target": "website-playful/public/art/write.png",
+      "input": "draw.png",
+      "prompt": "Edit Image 1, the original Pipa illustration art asset. Keep exactly the SAME friendly blue rounded character at left, happy coral-and-yellow kite mascot at center, mint-green character at right, warm cream paper, yellow and mint hills, plants, soft grain and flat ink-navy illustration style. Change the activity to CREATIVE WRITING: blue character now holds a pencil and writes/draws a flowing abstract line in an open notebook at the left table; mint character arranges blank coral/yellow paper letters as abstract squiggles on its table; kite mascot carries a small warm ivory envelope while smiling. Keep all characters' recognizable identities and balanced wide composition. No readable letters or words anywhere, no text, no UI, no buttons, no watermark. This is ONLY standalone panoramic artwork, landscape around 2:1, not a page or screen."
+    },
+    {
+      "id": "pipa-invent",
+      "target": "website-playful/public/art/invent.png",
+      "input": "draw.png",
+      "prompt": "Edit Image 1, the original Pipa illustration art asset. Preserve exactly the SAME blue rounded character at left, happy coral/yellow diamond kite mascot at center, mint character at right, warm cream/yellow/mint palette, plant borders, ink-navy faces and lightly grainy FLAT 2D illustration style. Change the activities to INVENTING: the blue character constructs a whimsical tiny cardboard rocket with coral/yellow geometric cutouts at its wooden table; the mint character balances a playful mobile of colored paper shapes and string; the kite mascot floats joyfully between them, slightly turning with its looping tail. Expressions curious and warm. All characters recognizable and large, same balanced panoramic composition. No readable letters, no words, no UI, no buttons, no logo, no watermark, no 3D rendering. Solely original standalone website artwork, landscape around 2:1."
+    }
+  ]
+}

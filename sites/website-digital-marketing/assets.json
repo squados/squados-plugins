@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-16",
+  "artworkMode": "native-imagegen",
+  "runtimeExternalRequests": false,
+  "images": [
+    {
+      "file": "public/art/avatars.png",
+      "width": 2079,
+      "height": 756,
+      "bytes": 1882879,
+      "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52",
+      "origin": "SquadOS — ImageGen nativo",
+      "license": "Apache-2.0",
+      "promptId": "trama-avatars"
+    },
+    {
+      "file": "public/art/course.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2225267,
+      "sha256": "93ed2a4f1d4312ba79b41cb8b0550d418a11e9c79b143503c25ec9b95c845e36",
+      "origin": "SquadOS — ImageGen nativo",
+      "license": "Apache-2.0",
+      "promptId": "trama-course"
+    },
+    {
+      "file": "public/art/instructor.png",
+      "width": 1586,
+      "height": 992,
+      "bytes": 1624111,
+      "sha256": "a937a62d4cce740b91b70d70001356c07e692ec06c5e3ab6e2293562223cc45a",
+      "origin": "SquadOS — ImageGen nativo",
+      "license": "Apache-2.0",
+      "promptId": "trama-portrait"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "public/fonts/body.woff2",
+      "bytes": 36932,
+      "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543",
+      "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+      "cssSource": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..1000&display=swap",
+      "license": "OFL-1.1",
+      "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt"
+    },
+    {
+      "file": "public/fonts/display.woff2",
+      "bytes": 58084,
+      "sha256": "62981321d9a3cc7a61a73792729043703fd6112da86e8ec848bb57f088578757",
+      "source": "https://fonts.gstatic.com/s/newsreader/v26/cY9VfjOCX1hbuyalUrK49dLac06G1ZGsZBtoBAbNJYQ.woff2",
+      "cssSource": "https://fonts.googleapis.com/css2?family=Newsreader:wght@200..800&display=swap",
+      "license": "OFL-1.1",
+      "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/OFL.txt"
+    }
+  ],
+  "prompts": "art-prompts.json",
+  "note": "Arte separada, sem UI rasterizada. Na Orbe o halo, diagramas e painel são SVG/CSS/HTML próprios. Fotografias, personagens e avaliações são fictícios."
+}

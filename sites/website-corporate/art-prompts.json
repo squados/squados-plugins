@@ -1,0 +1,12 @@
+{
+  "mode": "native-imagegen",
+  "date": "2026-10-16",
+  "assets": [
+    {
+      "id": "nortea-editorial",
+      "target": "website-corporate/public/art/editorial.png",
+      "input": "nortea-hero.png",
+      "prompt": "Use Image 1 as a style/composition reference for ONLY its photographic/editorial row. Generate ONLY original standalone website artwork, not a website or screen. A very wide panoramic editorial contact sheet with five adjacent vertical panels separated by narrow warm-ivory #f7f5ee gutters: left sunlit refined Brazilian office architecture with plant; second a tactile sage-green strategy report with an original thin compass diagram; center largest panel a diverse Brazilian team of four collaborating around papers and a laptop, natural correct anatomy, candid professional; fourth an aerial logistics/industrial warehouse at golden hour; fifth ivory research report with original petrol-green contour-line diagram. The five panels are roughly equal width except center slightly wider; softly varied top edges, all flat and on the same plane, aligned bottom edge. Photography premium and realistic, warm light, muted sage, stone, deep petrol. No large text, no readable writing on reports or walls, no logos, no website heading, no navigation, no CTA, no UI. Make the images themselves fill almost the whole canvas. Very wide landscape artwork to be used as an editorial photo strip."
+    }
+  ]
+}

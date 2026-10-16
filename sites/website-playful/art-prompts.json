@@ -1,0 +1,24 @@
+{
+  "mode": "native-imagegen",
+  "date": "2026-10-16",
+  "assets": [
+    {
+      "id": "pipa-draw",
+      "target": "website-playful/public/art/draw.png",
+      "input": "pipa-hero.png",
+      "prompt": "Use Image 1 ONLY as the reference for its original characters, palette and flat illustration style. Create ONLY an original standalone panoramic website ILLUSTRATION, not a website mockup. All UI will be real HTML elsewhere. Preserve the friendly blue rounded character, happy coral-and-yellow diamond kite mascot with navy face and looping tail, and mint-green character. Warm cream #fff8ec paper background. Full beautiful wide lower-half scene: on left blue character drawing a large coral flower on paper at a wooden table with crayons, center kite mascot floating and smiling with curved tail, on right mint character creating paper cutouts at its table. Large organic sunny-yellow hill behind left, pale-mint hill right, simple green plants at far edges. Rich but calm and welcoming editorial flat 2D artwork for a creative school, lightly grainy print textures, ink-navy outlines, no 3D. Characters and scene should fill the wide horizontal canvas with a little air above. Landscape around 2:1. NO LETTERS OR TEXT ANYWHERE, no headline, no logo, no buttons, no activity selector, no navigation, no watermark. Solely original artwork to be placed below HTML content."
+    },
+    {
+      "id": "pipa-write",
+      "target": "website-playful/public/art/write.png",
+      "input": "draw.png",
+      "prompt": "Edit Image 1, the original Pipa illustration art asset. Keep exactly the SAME friendly blue rounded character at left, happy coral-and-yellow kite mascot at center, mint-green character at right, warm cream paper, yellow and mint hills, plants, soft grain and flat ink-navy illustration style. Change the activity to CREATIVE WRITING: blue character now holds a pencil and writes/draws a flowing abstract line in an open notebook at the left table; mint character arranges blank coral/yellow paper letters as abstract squiggles on its table; kite mascot carries a small warm ivory envelope while smiling. Keep all characters' recognizable identities and balanced wide composition. No readable letters or words anywhere, no text, no UI, no buttons, no watermark. This is ONLY standalone panoramic artwork, landscape around 2:1, not a page or screen."
+    },
+    {
+      "id": "pipa-invent",
+      "target": "website-playful/public/art/invent.png",
+      "input": "draw.png",
+      "prompt": "Edit Image 1, the original Pipa illustration art asset. Preserve exactly the SAME blue rounded character at left, happy coral/yellow diamond kite mascot at center, mint character at right, warm cream/yellow/mint palette, plant borders, ink-navy faces and lightly grainy FLAT 2D illustration style. Change the activities to INVENTING: the blue character constructs a whimsical tiny cardboard rocket with coral/yellow geometric cutouts at its wooden table; the mint character balances a playful mobile of colored paper shapes and string; the kite mascot floats joyfully between them, slightly turning with its looping tail. Expressions curious and warm. All characters recognizable and large, same balanced panoramic composition. No readable letters, no words, no UI, no buttons, no logo, no watermark, no 3D rendering. Solely original standalone website artwork, landscape around 2:1."
+    }
+  ]
+}
