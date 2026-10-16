@@ -11,3 +11,11 @@ Last Update: 2014/03/06
 Standards: HTML5, CSS3
 Components: MelonJS, jQuery
 Software: VIM, Photoshop
+
+/* SQUADOS ADAPTATION */
+
+Game: Arcade 2D / 2D Arcade
+Identity, vector art and interface: SquadOS, 2026-10-15
+License of the adaptation and data/art/*.svg: GPL-3.0-only
+Original game mechanics: Ellison Leão (credits above preserved)
+Engine: melonJS 4.0.0, MIT (see LICENSE-melonJS.txt)

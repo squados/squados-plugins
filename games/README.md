@@ -6,14 +6,16 @@ prévia real. O [índice visual](index.html) abre cada demonstração diretament
 
 | Jogo | Demonstração | Origem e documentação |
 | --- | --- | --- |
-| [3D City](3d-city/) | Construção e simulação de uma cidade 3D já preparada | [lo-th/3d.city](https://github.com/lo-th/3d.city) · [README](3d-city/README.md) |
-| [HexGL](hexgl/) | Corrida futurista 3D, com pista e controles locais | [BKcore/HexGL](https://github.com/BKcore/HexGL) · [README](hexgl/README.md) |
-| [Clumsy Bird](clumsy-bird/) | Voo, obstáculos e pontuação; primeiro toque começa a partida | [ellisonleao/clumsy-bird](https://github.com/ellisonleao/clumsy-bird) · [README](clumsy-bird/README.md) |
+| [Simulador de Cidades](3d-city/) | Gestão urbana 3D, com identidade verde/mineral e cidade preparada | [lo-th/3d.city](https://github.com/lo-th/3d.city) · [README](3d-city/README.md) |
+| [Corrida Espacial](hexgl/) | Corrida 3D com ambientação orbital e interface própria | [BKcore/HexGL](https://github.com/BKcore/HexGL) · [README](hexgl/README.md) |
+| [Arcade 2D](clumsy-bird/) | Robô voador, cenário vetorial e portais de energia originais | [ellisonleao/clumsy-bird](https://github.com/ellisonleao/clumsy-bird) · [README](clumsy-bird/README.md) |
 
-Os nomes e a autoria dos projetos originais são preservados. As adaptações do
-SquadOS simplificam a entrada e os controles de demonstração. Não há autenticação,
+Os nomes públicos são do SquadOS; os projetos que serviram de base conservam
+autoria e créditos na documentação de cada pacote. As adaptações incluem identidade
+visual, cenário/interface próprios e entrada direta. Não há autenticação,
 backend, ranking remoto ou serviço externo obrigatório. A interface nova oferece
-PT-BR e inglês; os jogos mantêm sua apresentação e mecânicas próprias.
+PT-BR e inglês. Engines e mecânicas aproveitados continuam identificados como
+derivados; a identidade nova não altera as licenças herdadas.
 
 ## Execução local
 
@@ -34,7 +36,7 @@ funcionam de forma equivalente abrindo `index.html` por `file://`.
 Para servir o acervo inteiro, o diretório também pode ficar sob `/games/`. As
 pastas dos jogos usam caminhos relativos. Copiar um jogo exige levar a pasta
 inteira, inclusive fontes e avisos legais. Leia o README específico antes de
-alterar seus arquivos; o 3D City tem seu próprio processo de build.
+alterar seus arquivos; o Simulador de Cidades tem seu próprio processo de build.
 
 ## Licenças e publicação
 
@@ -44,9 +46,9 @@ snapshots e as modificações estão documentados nos registros de cada pacote.
 
 | Pacote | Termos encontrados no snapshot utilizado | Consequência para esta entrega |
 | --- | --- | --- |
-| 3D City | Metadados MIT, mas `LICENSE`/`COPYING` incluem GPLv3 e termos adicionais do Micropolis | Preservar o conjunto, seus créditos e fontes; não rotular tudo como MIT |
-| HexGL | MIT geral, com cabeçalhos **CC BY-NC 3.0** em arquivos centrais; áudio com licença CC BY 3.0 | A versão local está preparada para demonstração. A autorização para distribuição/uso comercial precisa ser resolvida antes de publicar neste contexto |
-| Clumsy Bird | `LICENSE.md` GPLv3; indicação MIT do package antigo é inconsistente | Preservar GPLv3, autoria, fontes e licenças das dependências |
+| Simulador de Cidades / base 3d.city | Metadados MIT, mas `LICENSE`/`COPYING` incluem GPLv3 e termos adicionais do Micropolis | Preservar o conjunto, seus créditos e fontes; não rotular tudo como MIT |
+| Corrida Espacial / base HexGL | MIT geral, com cabeçalhos **CC BY-NC 3.0** em arquivos centrais; áudio com licença CC BY 3.0 | A autorização para distribuição/uso comercial precisa ser resolvida antes de publicar neste contexto |
+| Arcade 2D / base Clumsy Bird | `LICENSE.md` GPLv3; indicação MIT do package antigo é inconsistente | Preservar GPLv3, autoria, fontes e licenças das dependências |
 
 O HexGL contém exceções não comerciais expressas por arquivo e, portanto, o pacote
 incluído não deve ser apresentado como integralmente open-source ou liberado para
@@ -71,8 +73,9 @@ licenças aplicáveis, além de resolver a restrição do HexGL.
 ## Verificação
 
 As evidências por jogo ficam em seus READMEs e arquivos de verificação. Os previews
-são capturas do jogo real. A [verificação integrada](QA.md) do índice e dos caminhos
-sob `/games/` passou com a ressalva documentada de eventos de cancelamento de HDR
-no Chromium após consumo completo dos arquivos. Desempenho em navegador headless
+são capturas das identidades atuais no jogo real. A [verificação integrada](QA.md)
+do índice e dos caminhos sob `/games/` passou. O relatório documenta também eventos
+intermitentes de cancelamento no Chromium após consumo completo de HDR/WASM,
+com comprovação dos bytes e decodificação. Desempenho em navegador headless
 não representa FPS em aparelhos dos usuários; compatibilidade com Safari, Firefox
 e aparelhos físicos exige verificação própria.

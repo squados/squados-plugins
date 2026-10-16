@@ -1,6 +1,6 @@
 {
-  "url": "http://127.0.0.1:4390/games/clumsy-bird/",
-  "date": "2026-10-15T22:51:50.31Z",
+  "url": "http://127.0.0.1:4387/clumsy-bird/",
+  "date": "2026-10-16T00:54:09.741Z",
   "checks": [
     {
       "name": "Cena direta e segura por 3,5 s",
@@ -34,6 +34,41 @@
       }
     },
     {
+      "name": "Arcade 2D, navegação ao índice e SVGs próprios carregados pela engine",
+      "art": [
+        {
+          "name": "bg",
+          "src": "http://127.0.0.1:4387/clumsy-bird/data/art/skyline.svg",
+          "width": 900,
+          "height": 600
+        },
+        {
+          "name": "clumsy",
+          "src": "http://127.0.0.1:4387/clumsy-bird/data/art/robot.svg",
+          "width": 255,
+          "height": 60
+        },
+        {
+          "name": "pipe",
+          "src": "http://127.0.0.1:4387/clumsy-bird/data/art/portal.svg",
+          "width": 148,
+          "height": 1664
+        },
+        {
+          "name": "ground",
+          "src": "http://127.0.0.1:4387/clumsy-bird/data/art/runway.svg",
+          "width": 900,
+          "height": 96
+        },
+        {
+          "name": "hit",
+          "src": "http://127.0.0.1:4387/clumsy-bird/data/art/marker.svg",
+          "width": 148,
+          "height": 60
+        }
+      ]
+    },
+    {
       "name": "Primeiro Espaço curto inicia e faz bater asas",
       "flight": {
         "play": true,
@@ -49,7 +84,7 @@
         },
         "pipe": {
           "x": 880,
-          "y": 477
+          "y": 429
         },
         "hud": 1
       }
@@ -98,17 +133,17 @@
         "muted": false,
         "bird": {
           "x": 60,
-          "y": 348.9999999999999,
+          "y": 216.79999999999995,
           "collided": false,
-          "gravity": 4.000000000000001
+          "gravity": 2.6
         },
         "pipe": {
-          "x": 85,
-          "y": 456
+          "x": 55,
+          "y": 339
         },
         "hud": 1
       },
-      "flapCount": 8,
+      "flapCount": 9,
       "collision": null
     },
     {
@@ -145,7 +180,7 @@
         },
         "pipe": {
           "x": 880,
-          "y": 495
+          "y": 341
         },
         "hud": 1
       }
@@ -158,7 +193,7 @@
   "externalRequests": [],
   "passed": true,
   "audioRegression": {
-    "date": "2026-10-15T22:55:35.692Z",
+    "date": "2026-10-16T00:54:09.886Z",
     "checks": [
       {
         "name": "Voo iniciado com som silenciado",
@@ -169,7 +204,7 @@
           "playing": true,
           "activeSounds": [
             {
-              "id": 1346112133102,
+              "id": 1505853075509,
               "loop": true
             }
           ]
@@ -184,7 +219,7 @@
           "playing": true,
           "activeSounds": [
             {
-              "id": 1346112133102,
+              "id": 1505853075509,
               "loop": true
             }
           ]
@@ -199,7 +234,7 @@
           "playing": true,
           "activeSounds": [
             {
-              "id": 1346112133102,
+              "id": 1505853075509,
               "loop": true
             }
           ]
@@ -224,7 +259,7 @@
           "playing": true,
           "activeSounds": [
             {
-              "id": 1729069903336,
+              "id": 739242029465,
               "loop": true
             }
           ]
@@ -236,5 +271,30 @@
     "badResponses": [],
     "requestsFailed": [],
     "passed": true
+  },
+  "uiRegression": {
+    "errors": [],
+    "checks": [
+      "Focused sound button: Space and Enter toggle mute without flight",
+      "Short M presses and held M with two real repeat events toggle once per command",
+      "Canvas click restores keyboard focus and starts flight",
+      "Focused restart button starts safe new round with Space",
+      {
+        "landscapeRetry": {
+          "width": 568,
+          "height": 320
+        },
+        "clickable": true
+      },
+      {
+        "landscapeRetry": {
+          "width": 844,
+          "height": 390
+        },
+        "clickable": true
+      },
+      "Return to index preserves explicit English choice"
+    ],
+    "pass": true
   }
 }

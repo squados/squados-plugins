@@ -1,60 +1,45 @@
-/* Clumsy Bird. Alterado pelo SquadOS em 2026-10-15. GPLv3; consulte UPSTREAM.md. */
+/* Clumsy Bird. HUD alterado pelo SquadOS em 2026-10-15. GPLv3; consulte UPSTREAM.md. */
 game.HUD = game.HUD || {};
 
 game.HUD.Container = me.Container.extend({
-    init: function() {
+    init: function () {
         this._super(me.Container, 'init');
-        // Cada rodada tem seu próprio placar; não acumular HUDs no reinício.
         this.isPersistent = false;
-
-        // non collidable
         this.collidable = false;
-
-        // make sure our object is always draw first
         this.z = Infinity;
-
-        // give a name
         this.name = "HUD";
-
-        // add our child score object at the top left corner
         this.addChild(new game.HUD.ScoreItem(5, 5));
     }
 });
 
-
 game.HUD.ScoreItem = me.Renderable.extend({
-    init: function(x, y) {
+    init: function (x, y) {
         this._super(me.Renderable, "init", [x, y, 10, 10]);
-
-        // local copy of the global score
-        this.stepsFont = new me.Font('gamefont', 80, '#000', 'center');
-
-        // make sure we use screen coordinates
         this.floating = true;
+        this.alwaysUpdate = true;
+        this.steps = -1;
     },
-
-    draw: function (renderer) {
-        if (game.data.start && me.state.isCurrent(me.state.PLAY))
-            this.stepsFont.draw(renderer, game.data.steps, me.game.viewport.width/2, 10);
-    }
-
+    update: function () {
+        if (this.steps !== game.data.steps) {
+            this.steps = game.data.steps;
+            document.getElementById("score-value").textContent = String(this.steps);
+        }
+        return false;
+    },
+    draw: function () {}
 });
 
 var BackgroundLayer = me.ImageLayer.extend({
-    init: function(image, z, speed) {
-        var settings = {};
-        settings.name = image;
-        settings.width = 900;
-        settings.height = 600;
-        settings.image = image;
-        settings.z = z;
-        settings.ratio = 1;
-        // call parent constructor
-        this._super(me.ImageLayer, 'init', [0, 0, settings]);
+    init: function (image, z) {
+        this._super(me.ImageLayer, 'init', [0, 0, {
+            name: image, width: 900, height: 600, image: image, z: z, ratio: 1
+        }]);
     },
-
-    update: function() {
-        if (me.input.isKeyPressed('mute')) {
+    update: function () {
+        // Consome o lock nativo mesmo quando há um toque curto na fila.
+        var mutePressed = me.input.isKeyPressed("mute");
+        if (game.data.muteQueued || mutePressed) {
+            game.data.muteQueued = false;
             game.toggleSound();
         }
         return true;

@@ -10,24 +10,26 @@
   var result = null;
   var copy = {
     'pt-BR': {
+      title: 'Corrida Espacial', back: '← Jogos', speed: 'Velocidade', shield: 'Escudo', lap: 'Volta', time: 'Tempo', telemetry: 'Instrumentos da nave', dashboard: 'Estado da nave', touch: 'Controles de toque',
       loading: 'Preparando a pista', detail: 'Carregando nave, pista e sons…',
       soundOn: 'Som: ligado', soundOff: 'Som: desligado', restart: 'Reiniciar',
       help: '<kbd>↑</kbd> Acelerar · <kbd>←</kbd><kbd>→</kbd> Direção · <kbd>A</kbd><kbd>D</kbd> Freios laterais',
-      goal: 'Complete 3 voltas. <kbd>R</kbd> reinicia.', credits: 'HexGL por BKcore · créditos e licenças',
+      goal: 'Complete 3 voltas na estação orbital. <kbd>R</kbd> reinicia.', credits: 'Derivado de HexGL por BKcore · créditos',
       finish: 'Corrida concluída', destroyed: 'Nave destruída', again: 'Correr novamente',
-      track: 'CITYSCAPE / 3 VOLTAS', laps: 'Voltas', elapsed: 'Tempo', reload: 'Recarregar',
+      track: 'ORBITAL 01 / 3 VOLTAS', laps: 'Voltas', elapsed: 'Tempo', reload: 'Recarregar',
       unsupported: 'WebGL indisponível', unsupportedDetail: 'Ative a aceleração gráfica do navegador para jogar.',
       error: 'Não foi possível carregar a pista', errorDetail: 'Verifique a conexão e recarregue a página.',
       messages: { 'Get ready': 'Prepare-se', 'Go': 'Vai!', 'Final lap': 'Última volta', 'Finish': 'Chegada', 'Destroyed': 'Nave destruída' },
       left: 'Esquerda', right: 'Direita', accelerate: 'Acelerar', controls: 'Controles da corrida'
     },
     en: {
+      title: 'Space Racing', back: '← Games', speed: 'Speed', shield: 'Shield', lap: 'Lap', time: 'Time', telemetry: 'Ship instruments', dashboard: 'Ship status', touch: 'Touch controls',
       loading: 'Preparing the track', detail: 'Loading ship, track and sounds…',
       soundOn: 'Sound: on', soundOff: 'Sound: off', restart: 'Restart',
       help: '<kbd>↑</kbd> Accelerate · <kbd>←</kbd><kbd>→</kbd> Steer · <kbd>A</kbd><kbd>D</kbd> Air brakes',
-      goal: 'Complete 3 laps. <kbd>R</kbd> restarts.', credits: 'HexGL by BKcore · credits and licenses',
+      goal: 'Complete 3 laps around the orbital station. <kbd>R</kbd> restarts.', credits: 'Based on HexGL by BKcore · credits',
       finish: 'Race complete', destroyed: 'Ship destroyed', again: 'Race again',
-      track: 'CITYSCAPE / 3 LAPS', laps: 'Laps', elapsed: 'Time', reload: 'Reload',
+      track: 'ORBITAL 01 / 3 LAPS', laps: 'Laps', elapsed: 'Time', reload: 'Reload',
       unsupported: 'WebGL unavailable', unsupportedDetail: 'Enable browser graphics acceleration to race.',
       error: 'The track could not load', errorDetail: 'Check your connection and reload the page.',
       messages: {}, left: 'Left', right: 'Right', accelerate: 'Accelerate', controls: 'Race controls'
@@ -40,6 +42,15 @@
   function renderCopy() {
     var t = copy[lang];
     document.documentElement.lang = lang;
+    document.title = t.title + ' · SquadOS';
+    ['game-name', 'loading-name', 'result-brand'].forEach(function (id) { $(id).textContent = t.title; });
+    $('race').setAttribute('aria-label', t.title);
+    $('back-index').textContent = t.back;
+    $('back-index').setAttribute('href', '../?lang=' + lang);
+    ['speed', 'shield', 'lap', 'time'].forEach(function (name) { $(name + '-label').textContent = t[name]; });
+    $('telemetry').setAttribute('aria-label', t.telemetry);
+    $('dashboard').setAttribute('aria-label', t.dashboard);
+    $('touch-controls').setAttribute('aria-label', t.touch);
     $('loading-title').textContent = t.loading;
     $('loading-detail').textContent = t.detail;
     $('sound').textContent = soundEnabled ? t.soundOn : t.soundOff;
@@ -131,6 +142,7 @@
     game.load({
       onLoad: function () {
         game.init();
+        SpaceRacing.apply(game);
         var display = game.hud.display;
         game.hud.display = function (message, duration) { display.call(this, copy[lang].messages[message] || message, duration); };
         game.start();

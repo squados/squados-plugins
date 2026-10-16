@@ -1,7 +1,7 @@
 {
-  "name": "squados-demo-3d-city",
+  "name": "squados-demo-city-simulator",
   "version": "1.0.0",
-  "description": "JavaScript city builder game",
+  "description": "Simulador de Cidades / City Simulator — adaptação SquadOS de lo-th/3d.city",
   "repository": "lo-th/3d.city",
   "type": "module",
   "scripts": {

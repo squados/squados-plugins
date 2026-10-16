@@ -2,6 +2,7 @@
 
 import { Base } from './Base.js';
 import { AppState } from '../AppState.js'
+import { t } from './Copy.js';
 
 import { Hub_Build } from './hub/Hub_Build.js'
 import { Hub_Top } from './hub/Hub_Top.js'
@@ -58,15 +59,15 @@ export class Hub {
 
         this.loadTitle = document.createElement('div');
         this.loadTitle.className = 'loading-title';
-        this.loadTitle.textContent = '3D.CITY';
+        this.loadTitle.textContent = t('name');
 
         this.loadSub = document.createElement('div');
         this.loadSub.className = 'loading-subtitle';
-        this.loadSub.textContent = 'City Builder';
+        this.loadSub.textContent = 'SquadOS · ' + t('city');
 
         this.text = document.createElement('div');
         this.text.className = 'loading-status';
-        this.text.textContent = 'Loading…';
+        this.text.textContent = t('loading');
 
         this.loader = document.createElement('div');
         this.loader.className = 'loading-spinner';
@@ -89,6 +90,10 @@ export class Hub {
         this.hub.appendChild( this.full );
         bottomBar.appendChild( this.fps )
         bottomBar.appendChild( this.version )
+        document.addEventListener('city-language-change',()=>{
+            if(this.loadTitle)this.loadTitle.textContent=t('name');
+            if(this.loadSub)this.loadSub.textContent='SquadOS · '+t('city');
+        });
         
     }
 
@@ -100,7 +105,11 @@ export class Hub {
 
     message( s ) {
 
-        if( this.text ) this.text.textContent = s;
+        const keys={
+            'Loading Lut ...':'loadingTexture','Loading envmap ...':'loadingEnvironment',
+            'Loading texture ...':'loadingTexture','Loading images ...':'loadingImages','Loading 3d models ...':'loadingModels'
+        };
+        if( this.text ) this.text.textContent = keys[s] ? t(keys[s]) : s;
 
     }
 
@@ -155,14 +164,16 @@ export class Hub {
 
         if( b ){
             if(!this.isGen) {
-                this.full.style.background = 'none' 
+                this.full.style.background = AppState.main.demoSave ? '#e6ece5' : 'none';
                 this.full.style.opacity = '1';
                 // Guard: only append when not already in the DOM (intro may still be fading)
                 
                 if (this.full.parentNode !== this.hub) this.hub.appendChild( this.full );
-                if(this.loadTitle){this.full.removeChild(this.loadTitle);this.loadTitle = null;}
-                if(this.loadSub){this.full.removeChild(this.loadSub);this.loadSub= null;}
-                this.text.textContent = 'Generating map…'
+                if(!AppState.main.demoSave){
+                    if(this.loadTitle){this.full.removeChild(this.loadTitle);this.loadTitle = null;}
+                    if(this.loadSub){this.full.removeChild(this.loadSub);this.loadSub= null;}
+                }
+                this.text.textContent = t('loadingMap');
                 this.isGen = true
             }
         } else {

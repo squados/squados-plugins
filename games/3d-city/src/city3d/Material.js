@@ -191,9 +191,10 @@ export class Material {
 
 		 // max num layer
 		let option = AppState.isBestMaterial ? { roughness:0.5, metalness:0.5 } : {}
+		if (AppState.main.demoSave && AppState.isBestMaterial) option = { roughness:0.95, metalness:0 };
 		let Type = AppState.isBestMaterial ? THREE.MeshStandardNodeMaterial : THREE.MeshBasicNodeMaterial;
 
-		const baseMat = new Type({ color:0xffffff,  ...option });
+		const baseMat = new Type({ color:AppState.main.demoSave ? 0x75a565 : 0xffffff,  ...option });
 		baseMat.map = baseTexture;
 		if(AppState.withHeight) baseMat.vertexColors = true
 

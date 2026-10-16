@@ -17,6 +17,7 @@ game.PlayScreen = me.ScreenObject.extend({
         game.data.newHiScore = false;
         document.getElementById("status").textContent = game.text.ready;
         document.getElementById("restart").hidden = true;
+        document.getElementById("result").hidden = true;
 
         me.game.world.addChild(new BackgroundLayer("bg", 1));
         this.ground1 = me.pool.pull("ground", 0, me.game.viewport.height - 96);

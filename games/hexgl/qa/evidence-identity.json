@@ -1,0 +1,264 @@
+{
+  "initial": {
+    "speed": 0,
+    "position": {
+      "x": -2268,
+      "y": 386.9000244140625,
+      "z": -886
+    },
+    "quaternion": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "falling": false,
+    "destroyed": false,
+    "lap": 1,
+    "laps": [],
+    "result": -1,
+    "step": 4
+  },
+  "identity": {
+    "stars": 1400,
+    "sky": [
+      "space-dome",
+      "orbital-stars",
+      "orbital-planet",
+      "orbital-rings",
+      "orbital-moon"
+    ],
+    "shipMaterial": true,
+    "originalHUDVisible": false
+  },
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3090 (0x00002204) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "accelerating": {
+    "speed": 2.8915662650602423,
+    "position": {
+      "x": -2268,
+      "y": 386.9000244140625,
+      "z": -675.5176391601562
+    },
+    "quaternion": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "falling": false,
+    "destroyed": false,
+    "lap": 1,
+    "laps": [],
+    "result": -1,
+    "step": 4
+  },
+  "left": {
+    "speed": 3.374578313260194,
+    "position": {
+      "x": -2252.16748046875,
+      "y": 386.9000244140625,
+      "z": -601.9503784179688
+    },
+    "quaternion": {
+      "x": 0,
+      "y": 0.2211717510160594,
+      "z": 0,
+      "w": 0.9752348725063568
+    },
+    "falling": false,
+    "destroyed": false,
+    "lap": 1,
+    "laps": [],
+    "result": -1,
+    "step": 4
+  },
+  "right": {
+    "speed": 2.9349976376318607,
+    "position": {
+      "x": -2231.974609375,
+      "y": 386.9006042480469,
+      "z": -492.9107360839844
+    },
+    "quaternion": {
+      "x": 0,
+      "y": -0.019287577282430107,
+      "z": 0,
+      "w": 0.9998139773790794
+    },
+    "falling": false,
+    "destroyed": false,
+    "lap": 1,
+    "laps": [],
+    "result": -1,
+    "step": 4
+  },
+  "sound": {
+    "enabled": "true",
+    "state": "running"
+  },
+  "restart": {
+    "speed": 0,
+    "position": {
+      "x": -2268,
+      "y": 387,
+      "z": -886
+    },
+    "quaternion": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "falling": false,
+    "destroyed": false,
+    "lap": 1,
+    "laps": [],
+    "result": -1,
+    "step": 0
+  },
+  "restartDuringFall": {
+    "speed": 0,
+    "position": {
+      "x": -2268,
+      "y": 386.9000244140625,
+      "z": -886
+    },
+    "quaternion": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "falling": false,
+    "destroyed": false,
+    "lap": 1,
+    "laps": [],
+    "result": -1,
+    "step": 2
+  },
+  "destroyed": {
+    "speed": 0,
+    "position": {
+      "x": -2268,
+      "y": -3853.0999755859375,
+      "z": -886
+    },
+    "quaternion": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "falling": true,
+    "destroyed": true,
+    "lap": 1,
+    "laps": [],
+    "result": 2,
+    "step": 100,
+    "title": "Nave destruída"
+  },
+  "afterDestroyedRestart": {
+    "speed": 0,
+    "position": {
+      "x": -2268,
+      "y": 386.9000244140625,
+      "z": -886
+    },
+    "quaternion": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "falling": false,
+    "destroyed": false,
+    "lap": 1,
+    "laps": [],
+    "result": -1,
+    "step": 4
+  },
+  "finished": {
+    "speed": 0,
+    "position": {
+      "x": -2268,
+      "y": 386.9000244140625,
+      "z": -886
+    },
+    "quaternion": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "falling": false,
+    "destroyed": true,
+    "lap": 3,
+    "laps": [
+      151,
+      284,
+      283
+    ],
+    "result": 1,
+    "step": 100,
+    "title": "Corrida concluída",
+    "time": "Tempo 00:00.718"
+  },
+  "afterFinishRestart": {
+    "speed": 0,
+    "position": {
+      "x": -2268,
+      "y": 387,
+      "z": -886
+    },
+    "quaternion": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "falling": false,
+    "destroyed": false,
+    "lap": 1,
+    "laps": [],
+    "result": -1,
+    "step": 0
+  },
+  "resultEnglish": {
+    "title": "Race complete",
+    "brand": "Space Racing",
+    "time": "Time 00:00.751"
+  },
+  "resize": {
+    "viewport": [
+      390,
+      844
+    ],
+    "canvases": [
+      [
+        390,
+        844
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "overflow": false
+  },
+  "shaderDiagnostics": [],
+  "touch": {
+    "speed": 1.0821686746844326,
+    "forward": false,
+    "lang": "en",
+    "overflow": false
+  },
+  "network": {
+    "requestCount": 162,
+    "errors": [],
+    "warnings": [],
+    "failed": [],
+    "httpErrors": [],
+    "external": []
+  },
+  "status": "PASS"
+}

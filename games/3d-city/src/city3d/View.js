@@ -691,6 +691,8 @@ export class View {
 			this.scene.backgroundIntensity = AppState.backgroundIntensity;
 			this.scene.environmentIntensity = AppState.environmentIntensity;
 
+            if (AppState.main.demoSave) this.scene.background = new THREE.Color(0xd6e2d9);
+
         }
 
 

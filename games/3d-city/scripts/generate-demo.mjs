@@ -64,7 +64,7 @@ game.simulation.disasterManager.disastersEnabled = false;
 game.speed = 2;
 game.saveGame(JSON.stringify(layers),true);
 const save = JSON.parse(lastSave);
-save.name = 'Cidade Jardim';
+save.name = 'Nova Aurora';
 save.demo = {seed:32132, origin:'lo-th/3d.city native map, tools and zone placement'};
 await writeFile(new URL('../assets/demo-city.json',import.meta.url),JSON.stringify(save));
 console.log(JSON.stringify({width:save.width,height:save.height,buildings:layers.reduce((n,l)=>n+(l[0]?.length||0)+(l[2]?.length||0),0),bytes:JSON.stringify(save).length}));

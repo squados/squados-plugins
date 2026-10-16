@@ -1,270 +1,134 @@
+// Interface própria sobre ferramentas e velocidades nativas de 3d.city.
 import { Base } from '../Base.js';
-import { AppState } from '../../AppState.js'
-
-//------------------------------------------------------//
-//                HUB BUILD INTERFACE                   //
-//------------------------------------------------------//
-
+import { AppState } from '../../AppState.js';
+import { t } from '../Copy.js';
+import { icon } from '../UrbanIcons.js';
 
 export class Hub_Build {
-
-	constructor( parent ) {
-
-        const target = parent.hub
-
-		const self = this
-
-        this.currentToolName = 0;
-
-		this.img0 = document.createElement("img");
-        this.img0.src = "./assets/img/build_0.png";
-        this.img0.style.cssText ='position:absolute; margin:0px; padding:0px; top:0px; left:0px; pointer-events:none; display:none;';
-
-        this.img1 = document.createElement("img");
-        this.img1.src = "./assets/img/build_1.png";
-        this.img1.style.cssText ='position:absolute; margin:0px; padding:0px; top:0px; left:0px; pointer-events:none; display:none;';
-
-		this.content = document.createElement('div');
-        this.content.style.cssText ='position:absolute; bottom:0px; left:0; width:100%; height:200px; pointer-events:none;  background:none;' + ' transform: scale(0.66); transform-origin: bottom;';
-        target.appendChild( this.content );
-
-        this.inner = document.createElement('div');
-        this.inner.style.cssText ='position:absolute; bottom:0px; left:50%; margin-left:-548px; border:4px solid var(--c-border); border-radius:20px 20px 0 0; width:1096px; height:176px; pointer-events:none; background:var(--c-surface-alt); box-sizing: content-box; box-shadow: var(--shadow-hub);';
-        this.content.appendChild( this.inner );
-
-        this.innerb = document.createElement('div');
-        this.innerb.style.cssText ='position:absolute; top:12px; padding:3px 3px; left:14px; width:1072px; height:118px; pointer-events:none; display:flex; align-items:center; ';
-
-        this.inner.appendChild(this.img0);
-        this.inner.appendChild(this.img1);
-        this.inner.appendChild(this.innerb);
-
-        const b0 = this.addBottomButton(this.inner, 407, 'BUILD')
-        const b1 = this.addBottomButton(this.inner, 550, 'SERVICE')
-        b0.addEventListener('click',  (e)=>{ e.preventDefault(); self.switchMenu(0); }, false);
-        b1.addEventListener('click',  (e)=>{ e.preventDefault(); self.switchMenu(1); }, false);
-
-
-        for(let i = 0; i<10; i++) this.addToolButton(this.innerb, i)
-
-
-        this.speedSelect = 'rgba(74,158,220,0.6)'//'linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0.8))';
-        this.speedButton = []
-        for(let i = 0; i<5; i++) this.speedButton[i] = this.addSpeedButton(this.inner, 774, i);
-
-        this.toolOver = document.createElement('div');
-        this.toolOver.style.cssText ="position:absolute; top:20px; width:100px; height:100px; border:3px solid #ffffff; pointer-events:none; border-radius:6px; display:none; ";
-		this.inner.appendChild(this.toolOver)
-
-		this.toolSelect = document.createElement('div');
-        this.toolSelect.style.cssText ="position:absolute; top:20px; width:100px; height:100px; border:6px solid #ffffff; pointer-events:none; border-radius:6px; display:none;";
-		this.inner.appendChild(this.toolSelect)
-
-		this.toolInfo = this.addBottomButton(this.inner, 12, '')//document.createElement('div');
-		this.toolInfo.style.width = '385px'
-        this.toolInfo.style.bottom = '0px'
-
-        this.addRCI()
-
-        this.switchMenu(0)
-
-        // Rótulos também permitem identificar os controles sem depender do sprite.
-        this.innerb.querySelectorAll('div').forEach((button, index) => {
-            button.setAttribute('role', 'button');
-            button.tabIndex = 0;
-            button.addEventListener('keydown', event => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    self.selectId(index);
-                }
-            });
+    constructor(parent) {
+        this.currentToolName=0;
+        this.menu=0;
+        this.content=document.createElement('section');
+        this.content.className='city-build';
+        parent.hub.appendChild(this.content);
+        this.header=document.createElement('div');
+        this.header.className='city-build-header';
+        this.content.appendChild(this.header);
+        const tabs=document.createElement('div');
+        tabs.className='city-build-tabs';
+        this.header.appendChild(tabs);
+        this.tabs=['build','services'].map((key,index)=>{
+            const button=document.createElement('button');
+            button.type='button'; button.dataset.tab=key;
+            button.addEventListener('click',()=>this.switchMenu(index));
+            tabs.appendChild(button); return button;
         });
-
-	}
-
-    addRCI(){
-
-        this.rci = []
-        let r 
-
-        for(let i = 0; i<3; i++){
-            r = document.createElement('div');
-            r.style.cssText ="position:absolute; top:11px; width:66px; height:4px; pointer-events:none; border-radius:3px; background:none; ";
-            r.style.left = 38 + (i*106)+'px'
-            this.inner.appendChild(r)
-            this.rci[i] = r
-        }
-        
-    }
-
-    updateRCI( r, c, i ){
-
-        this.rci[0].style.width = r*0.033 + 'px'
-        this.rci[1].style.width = c*0.033 + 'px'
-        this.rci[2].style.width = i*0.033 + 'px'
-
-        this.rci[0].style.background = r>0 ? '#dce8f5' : '#CC6600'
-        this.rci[1].style.background = c>0 ? '#dce8f5' : '#CC6600'
-        this.rci[2].style.background = i>0 ? '#dce8f5' : '#CC6600'
-
-    }
-
-	switchMenu( N ){
-
-		this.resetTool()
-
-		switch (N){
-			case 0:
-			this.tool = [ 1,2,3,7,8,9,11,10,12,14 ]
-			this.img0.style.display = 'block';
-			this.img1.style.display = 'none'; 
-            this.rci[0].style.display = 'block'
-            this.rci[1].style.display = 'block'
-            this.rci[2].style.display = 'block'
-			break;
-			case 1:
-			this.tool = [ 5,6,4,13,15,17,16,18,20,19 ]
-			this.img0.style.display = 'none';
-			this.img1.style.display = 'block';
-            this.rci[0].style.display = 'none'
-            this.rci[1].style.display = 'none'
-            this.rci[2].style.display = 'none' 
-			break;
-		}
-
-        this.innerb.querySelectorAll('div').forEach((button, index) => {
-            const tool = Base.toolSet[this.tool[index]].tool;
-            button.setAttribute('aria-label', tool);
-            button.title = tool;
-            button.setAttribute('aria-disabled', String(this.tool[index] === 14));
-            if (this.tool[index] === 14) button.title = 'Wind turbine unavailable in upstream / Indisponível no original';
+        const speeds=document.createElement('div');
+        speeds.className='city-speeds';
+        this.header.appendChild(speeds);
+        this.speedButton=[];
+        ['Ⅱ','▷','▷▷','▷▷▷','»'].forEach((label,index)=>{
+            const button=document.createElement('button');
+            button.type='button';button.textContent=label;button.dataset.speed=index;
+            button.dataset.state=index===2?'select':'close';
+            button.addEventListener('click',()=>this.setActiveSpeed(index));
+            speeds.appendChild(button);this.speedButton.push(button);
         });
-
-	}
-
-    setActiveSpeed( id ){
-
-        AppState.main.setSpeed(Number(id));
-
-        for(let i=0; i<5; i++){ 
-            this.speedButton[i].dataset.state = 'close'
-            this.speedButton[i].style.background = 'none'
-        }
-
-        this.speedButton[id].style.background = this.speedSelect;
-        this.speedButton[id].dataset.state = 'select';
-
-    }
-
-    addSpeedButton( target, left, id ) {
-
-        const self = this;
-
-        var b = document.createElement( 'div' );
-        b.style.cssText ="position:absolute; bottom:6px; width:47px; height:30px; pointer-events:auto; cursor:pointer; display:flex; background:none;" 
-        if(id===0) b.style.cssText += "border-radius:50% 0% 0% 50%;" 
-        if(id===4) b.style.cssText += "border-radius:0% 50% 50% 0%;" 
-        b.style.left = left+(id*47)+'px';
-        b.id = id;
-        b.setAttribute('role', 'button');
-        b.setAttribute('aria-label', ['Pause', 'Slow', 'Normal speed', 'Fast', 'Very fast'][id]);
-        b.tabIndex = 0;
-        b.addEventListener('keydown', event => {
-            if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); self.setActiveSpeed(id); }
+        this.innerb=document.createElement('div');
+        this.innerb.className='city-tools';
+        this.content.appendChild(this.innerb);
+        this.toolButtons=Array.from({length:10},(_,index)=>{
+            const button=document.createElement('button');
+            button.type='button';
+            button.className='city-tool';
+            button.addEventListener('click',()=>this.selectId(index));
+            button.addEventListener('mouseenter',()=>this.showToolInfo(index));
+            button.addEventListener('focus',()=>this.showToolInfo(index));
+            button.addEventListener('mouseleave',()=>this.showSelectedInfo());
+            this.innerb.appendChild(button);
+            return button;
         });
-        b.dataset.state = 'close';
-        if(id===2){ 
-            b.dataset.state = 'select';
-            b.style.background = this.speedSelect;
-        }
-        target.appendChild( b );
-        b.addEventListener( 'mouseover', function ( e ) { e.preventDefault(); this.style.background = 'rgba(255,255,255,0.2)' }, false );
-        b.addEventListener( 'mouseout', function ( e ) { e.preventDefault();  this.style.background = this.dataset.state !== 'close' ? self.speedSelect : 'none'  }, false );
-        b.addEventListener( 'click', function ( e ) { e.preventDefault(); self.setActiveSpeed( this.id ); }, false )
-        return b;
-
+        const footer=document.createElement('div');
+        footer.className='city-build-footer';
+        this.content.appendChild(footer);
+        this.toolInfo=document.createElement('span');
+        this.toolInfo.className='city-tool-info';
+        footer.appendChild(this.toolInfo);
+        this.demand=document.createElement('div');
+        this.demand.className='city-demand';
+        footer.appendChild(this.demand);
+        this.demandTitle=document.createElement('span');
+        this.demand.appendChild(this.demandTitle);
+        this.rci=['residential','commercial','industrial'].map(key=>{
+            const track=document.createElement('span');
+            track.className='city-demand-track';track.dataset.zone=key;
+            const bar=document.createElement('i');
+            bar.style.background=Base.toolSet.find(tool=>tool.tool===key).color;
+            track.appendChild(bar);this.demand.appendChild(track);return bar;
+        });
+        this.switchMenu(0);
+        this.localize();
+        document.addEventListener('city-language-change',()=>this.localize());
     }
-
-	addBottomButton( target, left, name ) {
-
-		var b = document.createElement( 'div' );
-        b.style.cssText ="position:absolute; bottom:4px; width:137px; height:43px; pointer-events:auto; cursor:pointer; display:flex; text-transform: uppercase;" 
-        b.style.cssText += "justify-content:center; align-items:center; color: var(--c-text); font: 700 20px/1 var(--font-ui); letter-spacing: 0.04em; text-shadow: 0 1px 4px rgba(0,0,0,0.8);";
-        b.style.left = left+'px'
-        b.textContent = name;
-        target.appendChild( b );
-        return b;
-
-	}
-
-	addToolButton( target, id ) {
-
-		const self = this
-
-        var b = document.createElement( 'div' );
-        b.id = id
-        b.style.cssText ="margin:3px 3px; width:100px; height:100px; border:2px solid #284766; pointer-events:auto; cursor:pointer; border-radius:6px";
-        b.addEventListener('mouseover', function ( e ) { e.preventDefault(); self.overId(id) }, false );
-        b.addEventListener('mouseout', function ( e ) { e.preventDefault(); self.toolOver.style.display = 'none'; self.toolInfo.innerHTML = ''}, false );
-        b.addEventListener('click',  function(e){ e.preventDefault();  self.selectId(id); }, false);
-        target.appendChild( b );
-        return b;
-
+    localize() {
+        this.tabs.forEach((button,index)=>button.textContent=t(index?'services':'build'));
+        const keys=['pause','slow','normal','fast','veryFast'];
+        this.speedButton.forEach((button,index)=>{button.setAttribute('aria-label',t(keys[index]));button.title=t(keys[index]);});
+        this.demandTitle.textContent=t('demand');
+        this.renderTools();
     }
-
-    overId( id ) {
-
-    	this.toolOver.style.display = 'block';
-    	this.toolOver.style.left = 20 + (id*106) + 'px';
-
-    	this.showToolInfo(id)
-    
+    switchMenu(index) {
+        this.menu=index;
+        this.tool=index===0?[1,2,3,7,8,9,11,10,12,14]:[5,6,4,13,15,17,16,18,20,19];
+        this.tabs.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+        this.resetTool();
+        this.renderTools();
     }
-
-    selectId( id ) {
-
-    	let tid = this.tool[id];
-
-        // if same remove desactive tool !
-        if( this.currentToolName === tid ){
-            this.resetTool()
-            return
-        }
-
-    	this.toolSelect.style.display = 'block';
-    	this.toolSelect.style.left = 20 + (id*106) + 'px';
-    	this.toolSelect.style.borderColor = Base.toolSet[tid].color
-
-    	// disable turbine for the moment 
-    	if(tid === 14) tid = 0
-
-    	this.currentToolName = tid;
-    	AppState.main.selectTool(this.currentToolName);
-
+    renderTools() {
+        this.toolButtons.forEach((button,index)=>{
+            const tool=Base.toolSet[this.tool[index]];
+            button.dataset.tool=tool.tool;
+            button.style.setProperty('--tool-color',tool.color==='none'?'#597367':tool.color);
+            button.disabled=tool.id===14;
+            button.setAttribute('aria-label',t(tool.tool));
+            button.title=button.disabled?t('unavailable'):`${t(tool.tool)} · ${tool.price}`;
+            button.innerHTML=icon(tool.tool)+`<span>${t(tool.tool)}</span><small>${tool.price?tool.price:'—'}</small>`;
+            button.setAttribute('aria-pressed',String(this.currentToolName===tool.id&&tool.id!==0));
+        });
+        this.showSelectedInfo();
     }
-
-    showToolInfo( id ) {
-
-    	let tid = this.tool[id];
-
-        this.toolOver.style.borderColor = Base.toolSet[tid].color
-        var name = Base.toolSet[tid].tool;
-        name = name.charAt(0).toUpperCase() + name.substring(1).toLowerCase();
-        if(id.name===19) this.toolInfo.innerHTML = 'Drag view';
-        else if(id.name===20) this.toolInfo.innerHTML = 'Get info';
-        else if(id.name===21) this.toolInfo.innerHTML = 'Rotate view';
-        else this.toolInfo.innerHTML = name+'&nbsp;<span style="color:#00d26a;">'+ Base.toolSet[tid].price+'</span>💲';
-    
+    setActiveSpeed(index) {
+        AppState.main.setSpeed(Number(index));
+        this.speedButton.forEach((button,i)=>button.dataset.state=i===Number(index)?'select':'close');
     }
-
+    selectId(index) {
+        const id=this.tool[index];
+        if(id===14)return;
+        if(this.currentToolName===id){this.resetTool();return;}
+        this.currentToolName=id;
+        AppState.main.selectTool(id);
+        this.renderTools();
+    }
+    showToolInfo(index) {
+        const tool=Base.toolSet[this.tool[index]];
+        this.toolInfo.textContent=tool.id===14?t('unavailable'):`${t(tool.tool)}${tool.price?' · '+tool.price:''}`;
+    }
+    showSelectedInfo() {
+        const index=this.tool.indexOf(this.currentToolName);
+        if(index>=0)this.showToolInfo(index);
+        else this.toolInfo.textContent=t('selectTool');
+    }
+    updateRCI(residential,commercial,industrial) {
+        [residential,commercial,industrial].forEach((value,index)=>{
+            this.rci[index].style.width=Math.min(100,Math.abs(value)/20)+'%';
+            this.rci[index].style.opacity=value<0?'.4':'1';
+            this.rci[index].parentElement.title=t(['residential','commercial','industrial'][index])+': '+value;
+        });
+    }
     resetTool() {
-
-        this.toolSelect.style.display = 'none';
-        this.currentToolName = 0;
-        this.toolInfo.innerHTML = ''
-        AppState.main.selectTool(this.currentToolName);
-
+        this.currentToolName=0;
+        AppState.main.selectTool(0);
+        if(this.toolButtons)this.toolButtons.forEach(button=>button.setAttribute('aria-pressed','false'));
+        if(this.toolInfo)this.toolInfo.textContent=t('selectTool');
     }
-
-
 }

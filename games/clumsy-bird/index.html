@@ -3,21 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Clumsy Bird: voe entre os canos. Fly between the pipes.">
-  <title>Clumsy Bird</title>
-  <link rel="icon" href="data/img/favicon.ico">
+  <meta name="description" content="Arcade 2D: pilote um pequeno robô por portais de energia em uma cidade solar.">
+  <title>Arcade 2D</title>
+  <link rel="icon" href="data/art/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="index.css">
   <link rel="author" href="humans.txt">
 </head>
 <body>
-  <main id="screen" aria-label="Clumsy Bird"></main>
-  <div id="controls">
-    <p id="status" role="status" aria-live="polite">Carregando… / Loading…</p>
-    <div class="buttons">
-      <button id="restart" type="button" hidden>Jogar novamente</button>
-      <button id="sound" type="button" aria-pressed="false">Som ligado</button>
+  <main id="screen" aria-label="Arcade 2D"></main>
+  <header id="topbar" class="interface">
+    <div class="brand"><img src="data/art/icon.svg" width="38" height="38" alt=""><div><p>SquadOS · Playground</p><h1 id="game-title">Arcade 2D</h1></div></div>
+    <div id="score-panel" aria-label="Pontuação"><span id="score-label">PORTAIS</span><strong id="score-value">0</strong></div>
+    <a id="back" href="../">← Jogos</a>
+  </header>
+  <section id="result" class="interface" aria-labelledby="result-title" hidden>
+    <div class="result-card">
+      <p id="result-brand" class="eyebrow">ARCADE 2D · RESULTADO</p>
+      <img src="data/art/robot-badge.svg" width="88" height="88" alt="">
+      <h2 id="result-title">Voo encerrado</h2>
+      <p id="result-copy">Cada portal é um novo começo.</p>
+      <div class="result-stats"><div><strong id="result-count">0</strong><span id="result-score-label">PORTAIS</span></div><div><strong id="result-best">0</strong><span id="result-best-label">RECORDE</span></div></div>
+      <span id="record-badge" hidden>Novo recorde</span>
+      <button id="restart" type="button" hidden>Jogar novamente <span aria-hidden="true">↗</span></button>
     </div>
-  </div>
+  </section>
+  <footer id="controls" class="interface">
+    <p id="status" role="status" aria-live="polite">Arcade 2D · Carregando…</p>
+    <button id="sound" type="button" aria-pressed="false">Som ligado</button>
+  </footer>
   <script src="js/melonJS-min.js"></script>
   <script src="js/game.js"></script>
   <script src="js/entities/entities.js"></script>

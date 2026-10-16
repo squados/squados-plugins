@@ -26,16 +26,19 @@
     h1 { font-size: clamp(42px, 6vw, 76px); line-height: 1.04; font-weight: 600; letter-spacing: -.055em; margin: 0 0 24px; }
     .intro p:last-child { max-width: 540px; color: #b0baaa; line-height: 1.7; font-size: 17px; margin: 0; }
     .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-    .game { text-decoration: none; display: block; border: 1px solid #35402f; border-radius: 16px; background: #182016; overflow: hidden; transition: border-color 160ms, transform 160ms; }
-    .game:hover { border-color: #9bbd70; transform: translateY(-4px); }
-    .picture { position: relative; background: #242f20; aspect-ratio: 16 / 10; overflow: hidden; }
+    .game { text-decoration: none; display: flex; flex-direction: column; border: 1px solid #35402f; border-radius: 16px; background: #182016; overflow: hidden; transition: border-color 160ms, transform 160ms; }
+    .game { --accent: #d0ef8e; }
+    .game--racing { --accent: #9be3ff; }
+    .game--arcade { --accent: #ffd5a4; }
+    .game:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .picture { position: relative; flex: none; background: #242f20; aspect-ratio: 16 / 10; overflow: hidden; }
     .picture img { display: block; width: 100%; height: 100%; object-fit: cover; }
     .number { position: absolute; top: 15px; left: 15px; font-size: 11px; font-variant-numeric: tabular-nums; background: #101510d9; border: 1px solid #e7efd433; padding: 6px 9px; border-radius: 20px; }
-    .content { padding: 25px; }
+    .content { display: flex; flex-direction: column; flex: 1; padding: 25px; }
     .genre { color: #adbe9f; font-size: 11px; letter-spacing: 1.3px; text-transform: uppercase; margin: 0 0 12px; }
     h2 { font-size: 27px; font-weight: 600; letter-spacing: -.7px; margin: 0 0 12px; }
-    .description { color: #b0baaa; font-size: 14px; line-height: 1.65; margin: 0 0 28px; min-height: 70px; }
-    .play { display: flex; align-items: center; justify-content: space-between; color: #d0ef8e; font-size: 14px; font-weight: 650; }
+    .description { flex: 1; color: #b0baaa; font-size: 14px; line-height: 1.65; margin: 0 0 28px; min-height: 70px; }
+    .play { display: flex; align-items: center; justify-content: space-between; color: var(--accent); font-size: 14px; font-weight: 650; }
     .play span:last-child { font-size: 20px; }
     footer { display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid #35402f; margin: 60px 0 4px; padding-top: 22px; font-size: 12px; line-height: 1.7; color: #8c9b84; }
     footer p { margin: 0; }
@@ -64,27 +67,27 @@
         <div class="picture"><img src="./3d-city/preview.png" alt="" width="1280" height="800"><span class="number">01</span></div>
         <div class="content">
           <p class="genre" data-copy="cityGenre">Construção · Simulação 3D</p>
-          <h2>3D City</h2>
-          <p class="description" data-copy="cityDescription">Uma cidade viva nas suas mãos. Construa bairros, conecte ruas e acompanhe o crescimento.</p>
+          <h2 data-copy="cityTitle">Simulador de Cidades</h2>
+          <p class="description" data-copy="cityDescription">Planeje bairros, conecte serviços e cuide de uma cidade viva. Cada escolha abre espaço para crescer.</p>
           <div class="play"><span data-copy="cityPlay">Explorar a cidade</span><span aria-hidden="true">↗</span></div>
         </div>
       </a>
-      <a class="game" href="./hexgl/">
+      <a class="game game--racing" href="./hexgl/">
         <div class="picture"><img src="./hexgl/preview.png" alt="" width="1280" height="800"><span class="number">02</span></div>
         <div class="content">
-          <p class="genre" data-copy="raceGenre">Corrida · Ficção científica</p>
-          <h2>HexGL</h2>
-          <p class="description" data-copy="raceDescription">Uma nave, uma pista suspensa e muita velocidade. Acelere entre as curvas de uma metrópole futurista.</p>
+          <p class="genre" data-copy="raceGenre">Corrida · Circuito orbital</p>
+          <h2 data-copy="raceTitle">Corrida Espacial</h2>
+          <p class="description" data-copy="raceDescription">Uma nave, um circuito entre as estrelas e três voltas para chegar ao limite. A próxima curva já está perto.</p>
           <div class="play"><span data-copy="racePlay">Entrar na pista</span><span aria-hidden="true">↗</span></div>
         </div>
       </a>
-      <a class="game" href="./clumsy-bird/">
+      <a class="game game--arcade" href="./clumsy-bird/">
         <div class="picture"><img src="./clumsy-bird/preview.png" alt="" width="1280" height="800"><span class="number">03</span></div>
         <div class="content">
-          <p class="genre" data-copy="birdGenre">Arcade · Reflexos</p>
-          <h2>Clumsy Bird</h2>
-          <p class="description" data-copy="birdDescription">Um toque para voar. Encontre o ritmo, passe pelos obstáculos e tente superar sua melhor pontuação.</p>
-          <div class="play"><span data-copy="birdPlay">Abrir as asas</span><span aria-hidden="true">↗</span></div>
+          <p class="genre" data-copy="birdGenre">Arcade · Voo e reflexos</p>
+          <h2 data-copy="birdTitle">Arcade 2D</h2>
+          <p class="description" data-copy="birdDescription">Guie um pequeno robô voador por portais de energia. Um toque, um impulso e mais uma chance de bater o recorde.</p>
+          <div class="play"><span data-copy="birdPlay">Iniciar o voo</span><span aria-hidden="true">↗</span></div>
         </div>
       </a>
     </section>
@@ -98,17 +101,17 @@
       'pt-BR': {
         title: 'Jogos · SquadOS Studio', eyebrow: 'Três mundos para explorar', headline: 'Uma ideia começa\ncom um play.',
         intro: 'Construa uma cidade, pilote no futuro ou desafie seus reflexos. Entre, jogue e imagine o que você quer criar.',
-        cityGenre: 'Construção · Simulação 3D', cityDescription: 'Uma cidade viva nas suas mãos. Construa bairros, conecte ruas e acompanhe o crescimento.', cityPlay: 'Explorar a cidade',
-        raceGenre: 'Corrida · Ficção científica', raceDescription: 'Uma nave, uma pista suspensa e muita velocidade. Acelere entre as curvas de uma metrópole futurista.', racePlay: 'Entrar na pista',
-        birdGenre: 'Arcade · Reflexos', birdDescription: 'Um toque para voar. Encontre o ritmo, passe pelos obstáculos e tente superar sua melhor pontuação.', birdPlay: 'Abrir as asas',
+        cityTitle: 'Simulador de Cidades', cityGenre: 'Construção · Simulação 3D', cityDescription: 'Planeje bairros, conecte serviços e cuide de uma cidade viva. Cada escolha abre espaço para crescer.', cityPlay: 'Explorar a cidade',
+        raceTitle: 'Corrida Espacial', raceGenre: 'Corrida · Circuito orbital', raceDescription: 'Uma nave, um circuito entre as estrelas e três voltas para chegar ao limite. A próxima curva já está perto.', racePlay: 'Entrar na pista',
+        birdTitle: 'Arcade 2D', birdGenre: 'Arcade · Voo e reflexos', birdDescription: 'Guie um pequeno robô voador por portais de energia. Um toque, um impulso e mais uma chance de bater o recorde.', birdPlay: 'Iniciar o voo',
         footer: 'Demonstrações adaptadas de projetos independentes. Créditos preservados.', credits: 'Sobre os jogos e licenças'
       },
       en: {
         title: 'Games · SquadOS Studio', eyebrow: 'Three worlds to explore', headline: 'An idea starts\nwith play.',
         intro: 'Build a city, race into the future, or challenge your reflexes. Jump in, play, and imagine what you want to create.',
-        cityGenre: 'Building · 3D simulation', cityDescription: 'A living city in your hands. Build neighbourhoods, connect roads, and watch it grow.', cityPlay: 'Explore the city',
-        raceGenre: 'Racing · Science fiction', raceDescription: 'One ship, a sky-high track, and pure speed. Accelerate through a futuristic metropolis.', racePlay: 'Enter the race',
-        birdGenre: 'Arcade · Reflexes', birdDescription: 'Tap to fly. Find your rhythm, clear the obstacles, and try to beat your best score.', birdPlay: 'Take flight',
+        cityTitle: 'City Simulator', cityGenre: 'Building · 3D simulation', cityDescription: 'Plan neighbourhoods, connect services, and care for a living city. Every decision makes room to grow.', cityPlay: 'Explore the city',
+        raceTitle: 'Space Racing', raceGenre: 'Racing · Orbital circuit', raceDescription: 'One ship, a circuit among the stars, and three laps to push the limit. The next turn is already close.', racePlay: 'Enter the race',
+        birdTitle: '2D Arcade', birdGenre: 'Arcade · Flight and reflexes', birdDescription: 'Guide a little flying robot through energy gates. One tap, one boost, and another chance to beat your best.', birdPlay: 'Start flying',
         footer: 'Demos adapted from independent projects. Original credits preserved.', credits: 'About the games and licences'
       }
     };
@@ -127,7 +130,8 @@
       });
     }
     document.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
-    setLanguage(navigator.language.toLowerCase().startsWith('pt') ? 'pt-BR' : 'en');
+    const requestedLanguage = new URLSearchParams(location.search).get('lang');
+    setLanguage(Object.hasOwn(copy, requestedLanguage) ? requestedLanguage : navigator.language.toLowerCase().startsWith('pt') ? 'pt-BR' : 'en');
   </script>
 </body>
 </html>

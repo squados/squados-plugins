@@ -3,26 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Construa e explore uma cidade 3D. Demo jogável de 3d.city, de lo-th.">
-<title>3D.CITY · Cidade Jardim</title>
-<link rel="icon" href="./favicon.ico">
+<meta name="description" content="Simulador de Cidades: planeje bairros, serviços e o futuro de Nova Aurora.">
+<title>Simulador de Cidades · SquadOS</title>
+<link rel="icon" type="image/svg+xml" href="./assets/city-mark.svg">
 <link rel="stylesheet" href="./index.css">
 <link rel="stylesheet" href="./demo.css">
 </head>
 <body>
 <div id="container"></div>
 <div id="hub"></div>
-<aside class="demo-bar" aria-label="Demo">
-<strong>3D.CITY <span>· Cidade Jardim</span></strong>
-<button id="demo-help" type="button" aria-expanded="true" aria-controls="demo-instructions">Controles</button>
+<header class="city-header">
+<a class="city-home" id="city-home" href="../" aria-label="Todos os jogos"><span aria-hidden="true">‹</span> <span>SquadOS</span></a>
+<img class="city-brand" src="./assets/city-mark.svg" alt="" width="42" height="42">
+<div class="city-heading"><h1 id="city-title">Simulador de Cidades</h1><p id="city-subtitle">Planeje o futuro de Nova Aurora.</p></div>
+<nav class="city-actions" aria-label="Controles">
+<button id="city-management-toggle" type="button" aria-expanded="false" aria-controls="city-management">Gestão</button>
+<button id="demo-help" type="button" aria-expanded="false" aria-controls="demo-instructions">Como jogar</button>
 <button id="demo-reset" type="button">Reiniciar</button>
 <button id="demo-language" type="button" aria-label="English">EN</button>
-</aside>
-<div class="demo-instructions" id="demo-instructions">
-<p id="demo-line1">Selecione uma ferramenta abaixo e clique no terreno para construir.</p>
+</nav>
+</header>
+<div class="demo-instructions" id="demo-instructions" hidden>
+<h2 id="demo-help-title">Sua próxima decisão muda a cidade.</h2>
+<p id="demo-line1">Escolha uma ferramenta e clique no terreno para construir.</p>
 <p id="demo-line2">Arraste: girar · Botão direito: mover · Roda: zoom · WASD / setas: mover</p>
-<p id="demo-line3">Uma cidade inicial, pronta para crescer. Reiniciar restaura esta cidade.</p>
-<a href="./UPSTREAM.md" target="_blank" rel="noopener">lo-th / 3d.city · GPLv3 + termos Micropolis</a>
+<p id="demo-line3">Reiniciar restaura Nova Aurora e os fundos iniciais.</p>
+<a href="./UPSTREAM.md" target="_blank" rel="noopener" id="city-credit">Créditos e licenças</a>
 </div>
 <p id="demo-error" role="alert" hidden></p>
 <script type="module" src="./demo.js"></script>

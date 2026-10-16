@@ -1,15 +1,16 @@
 {
-  "checkedAt": "2026-10-15T23:03:06.226Z",
+  "checkedAt": "2026-10-16T01:17:43.371Z",
   "base": "http://127.0.0.1:4386/games/",
   "browser": "153.0.8010.12",
   "checks": [
+    "index: longer public names keep actions aligned at 1024px",
     "index: three decoded real previews, relative game URLs, PT/EN switch",
     "index: 390px layout has no horizontal overflow",
     {
       "game": "3d-city",
-      "readyMs": 3328,
+      "readyMs": 2437,
       "state": {
-        "title": "3D.CITY · Cidade Jardim",
+        "title": "Simulador de Cidades · SquadOS",
         "canvases": 1,
         "width": 1280,
         "scrollWidth": 1280
@@ -18,9 +19,9 @@
     },
     {
       "game": "hexgl",
-      "readyMs": 887,
+      "readyMs": 620,
       "state": {
-        "title": "HexGL · Cityscape",
+        "title": "Corrida Espacial · SquadOS",
         "canvases": 2,
         "width": 1280,
         "scrollWidth": 1280
@@ -29,9 +30,9 @@
     },
     {
       "game": "clumsy-bird",
-      "readyMs": 659,
+      "readyMs": 656,
       "state": {
-        "title": "Clumsy Bird",
+        "title": "Arcade 2D",
         "canvases": 1,
         "width": 1280,
         "scrollWidth": 1280
@@ -44,39 +45,11 @@
   "badResponses": [],
   "external": [],
   "escapedGamePaths": [],
-  "completedHdrCancellations": [
-    {
-      "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap2.hdr",
-      "message": "net::ERR_ABORTED",
-      "pageUrl": "http://127.0.0.1:4386/games/3d-city/",
-      "stage": "3d-city",
-      "at": "2026-10-15T23:03:06.902Z",
-      "read": {
-        "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap2.hdr",
-        "status": 200,
-        "expected": 1411630,
-        "bytes": 1411630,
-        "done": true
-      }
-    },
+  "completedStreamingCancellations": [],
+  "assetReads": [
     {
       "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap.hdr",
-      "message": "net::ERR_ABORTED",
-      "pageUrl": "http://127.0.0.1:4386/games/3d-city/",
-      "stage": "3d-city",
-      "at": "2026-10-15T23:03:06.938Z",
-      "read": {
-        "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap.hdr",
-        "status": 200,
-        "expected": 5376993,
-        "bytes": 5376993,
-        "done": true
-      }
-    }
-  ],
-  "hdrReads": [
-    {
-      "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap.hdr",
+      "kind": "hdr",
       "status": 200,
       "expected": 5376993,
       "bytes": 5376993,
@@ -84,6 +57,36 @@
     },
     {
       "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap2.hdr",
+      "kind": "hdr",
+      "status": 200,
+      "expected": 1411630,
+      "bytes": 1411630,
+      "done": true
+    },
+    {
+      "url": "http://127.0.0.1:4386/games/3d-city/assets/draco/draco_decoder.wasm",
+      "kind": "draco-wasm",
+      "status": 200,
+      "expected": 192420,
+      "bytes": 192420,
+      "done": true,
+      "sha256": "a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac",
+      "wasmCompiled": true,
+      "exports": 149
+    }
+  ],
+  "hdrReads": [
+    {
+      "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap.hdr",
+      "kind": "hdr",
+      "status": 200,
+      "expected": 5376993,
+      "bytes": 5376993,
+      "done": true
+    },
+    {
+      "url": "http://127.0.0.1:4386/games/3d-city/assets/textures/envmap2.hdr",
+      "kind": "hdr",
       "status": 200,
       "expected": 1411630,
       "bytes": 1411630,

@@ -1,4 +1,4 @@
-# Origem, créditos e licenças — HexGL
+# Origem, créditos e licenças — Corrida Espacial
 
 ## Proveniência
 
@@ -69,7 +69,7 @@ KineticJS sob escolha MIT/GPLv2 e jshashtable sob Apache 2.0. Esses utilitários
 são parte do caminho carregado pela corrida. Em qualquer conflito, a declaração
 específica do arquivo continua aplicável; o MIT da raiz não a substitui.
 
-## Alterações locais
+## Adaptação inicial de execução
 
 - `index.html`, `launch.js`, `css/demo.css`: entrada direta em Cityscape com
   contagem de três segundos, interface PT-BR/EN, ajuda breve, botão de som,
@@ -93,6 +93,42 @@ específica do arquivo continua aplicável; o MIT da raiz não a substitui.
   usar escala zero, evitando matrizes singulares e avisos repetidos do renderer.
 - Redimensionamento atualiza câmera, framebuffer, efeito hexagonal e HUD; soltar
   foco libera as teclas para não manter a aceleração presa.
+
+## Identidade Corrida Espacial / Space Racing — SquadOS
+
+O nome público da adaptação é **Corrida Espacial** em PT-BR e **Space Racing** em
+EN. O traçado herdado de Cityscape é apresentado como estação **Orbital 01**.
+A pasta técnica continua `games/hexgl`; isso não transforma o nome ou a autoria do
+upstream. A obra derivada continua sujeita às licenças mistas acima.
+
+Arquivos próprios criados ou alterados para esta identidade:
+
+- `space-racing.js`: ambientação com esfera noturna, 1.400 estrelas determinísticas
+  em `ParticleSystem`, planeta com bandas procedurais, anéis e uma lua. Usa
+  `SphereGeometry`, `TorusGeometry`, `Geometry`, `ParticleBasicMaterial`,
+  `MeshPhongMaterial`, `MeshBasicMaterial` e `Texture` do Three.js 50dev local.
+- Texturas novas são desenhadas por código em canvas: casco cobre/marfim sem a
+  pintura e inscrições originais, pavimento com linhas verdes, janelas da estação,
+  planeta e banner **SQUADOS / ORBITAL 01**. São novos desenhos; os rasters originais
+  permanecem preservados, sem edição, e não são os mapas usados nos materiais novos.
+- A geometria original de nave/pista/edifícios é reutilizada. Física, colisão,
+  checkpoints, aceleradores, câmera e efeitos continuam nativos; apenas materiais,
+  iluminação e o último passe visual mudam. O contorno hexagonal antigo dá lugar
+  ao passe `screen`, e o bloom nativo fica mais suave.
+- `assets/emblem.svg`: emblema vetorial próprio usado também como favicon.
+- `index.html`, `launch.js`, `css/demo.css`: nome e título PT/EN, tela de loading,
+  resultado, instrumentos próprios de volta/tempo/velocidade/escudo e link discreto
+  ao índice com `../?lang=pt-BR` ou `../?lang=en`, preservando o idioma. O canvas do HUD upstream é preservado, porém fica oculto; os
+  mesmos estados da corrida alimentam os instrumentos HTML novos.
+- `qa/verify-identity.mjs`: verificação headless da apresentação, mecânica e fluxos
+  afetados. `qa/evidence-identity.json` e capturas de estados registram a execução.
+- `preview.png`: substituída por captura atual da Corrida Espacial em movimento.
+
+Os rótulos HexGL/Cityscape foram retirados das superfícies do produto (título,
+loading, banner e instrumentos). **HexGL por BKcore** permanece explícito nos
+créditos, nesta documentação, nos cabeçalhos e na proveniência. Os avisos legais,
+`LICENSE`, `audio/LICENSE` e `README.upstream.md` permanecem preservados. Renomear
+ou criar a arte procedural não autoriza relicenciar as partes herdadas.
 
 ## Execução e evidência
 

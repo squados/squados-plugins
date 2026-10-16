@@ -43,7 +43,9 @@ export class Main {
         this.demoSave = demoSave;
         if (demoSave) {
             AppState.withHeight = false;
-            AppState.LUT_Map = { 'Cinematic.3dl': null, 'FILM2.CUBE': null };
+            AppState.LUT_on = false;
+            AppState.color.fog = '#d6e2d9';
+            AppState.color.border = '#456454';
         }
 
         if( DirectMessage !== undefined ){ 
@@ -166,9 +168,12 @@ export class Main {
         AppState.hub.cleartMaptHub()
         AppState.hub.initGameHub();
         if (this.demoSave) {
-            AppState.view3d.cam.distance = 60;
+            const narrow = window.innerWidth < 760;
+            AppState.view3d.cam.distance = narrow ? 108 : 72;
             AppState.view3d.cam.horizontal = 225;
-            AppState.view3d.cam.vertical = 48;
+            AppState.view3d.cam.vertical = 52;
+            AppState.view3d.center.x = narrow ? 32 : 37;
+            AppState.view3d.center.z = narrow ? 32 : 27;
             AppState.view3d.moveCamera();
         } else AppState.view3d.startZoom();
         // MAKELOADGAME já inicia a simulação; um segundo PLAYMAP descartava o save.

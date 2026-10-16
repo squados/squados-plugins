@@ -1,5 +1,6 @@
 import { Base } from '../Base.js';
 import { AppState } from '../../AppState.js'
+import { t as translateTitle } from '../Copy.js';
 
 //------------------------------------------------------//
 //                HUB BUILD INTERFACE                   //
@@ -68,13 +69,15 @@ export class Hub_Pannel {
 
         var t = document.createElement('span');
         t.className = 'hub-win-title';
-        t.textContent = this.title;
+        t.textContent = translateTitle(this.title);
+        document.addEventListener('city-language-change',()=>{t.textContent=translateTitle(this.title);});
         h.appendChild(t);
 
         var c = document.createElement('button');
         c.className = 'hub-win-close';
         c.innerHTML = '✕';
-        c.title = 'Close (Esc)';
+        c.title = translateTitle('close') + ' (Esc)';
+        document.addEventListener('city-language-change',()=>{c.title=translateTitle('close')+' (Esc)';});
         c.addEventListener('click', function(e){ e.preventDefault(); close(); }, false);
         h.appendChild(c);
         

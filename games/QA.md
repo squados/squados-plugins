@@ -1,65 +1,72 @@
-# Verificação do conjunto — 15/10/2026
+# Verificação das identidades — 15/10/2026
 
-Verificação local de pacotes estáticos em Chromium 153 headless, com Playwright
-emprestado do checkout Desktop. O servidor compartilhado usa `http-server` 14.1.1.
-O resultado integrado está em [QA.json](QA.json). Os screenshots de cada jogo
-foram inspecionados e são cenas reais dos respectivos runtimes.
+Verificação local em Chromium 153 headless, com Playwright do checkout Desktop e
+`http-server` 14.1.1. O [resultado integrado](QA.json) usa o prefixo real `/games/`;
+as três prévias foram capturadas dos runtimes atuais e inspecionadas visualmente.
+Cada jogo também possui evidência de controles, estado e reinício.
 
 ## Critérios e evidências
 
 | Critério | Resultado e referência de implementação |
 | --- | --- |
-| ✅ Três bases exatas preservadas | `git status --short` vazio nos três clones; hashes registrados no [README](README.md). `LICENSE`, `COPYING` de City e licenças de HexGL/Bird comparados byte a byte |
-| ✅ Derivados no destino pedido | `games/3d-city/`, `games/hexgl/`, `games/clumsy-bird/`, sem dependência dos clones em tempo de execução |
-| ✅ Cidade abre jogável | `3d-city/demo.js:32`, `3d-city/src/Main.js:90`: save nativo, aquecimento GPU e carga direta. Construção por seleção/clique real muda tile `0→244` e fundos `35000→34900`; reinício restaura ambos. [Evidência](3d-city/VALIDATION.md) |
-| ✅ Corrida abre na pista | `hexgl/launch.js:132`: carrega Cityscape e inicia contagem/corrida. Aceleração e duas direções por teclado real; reinício durante corrida, queda e resultado. [Evidência](hexgl/QA.md) |
-| ✅ Pássaro abre em cena segura | `clumsy-bird/js/game.js:69`: entra em PLAY, física inicia no primeiro comando. Dois pontos por teclado real, colisões de chão/cano e reinício. [Evidência](clumsy-bird/QA.json) |
-| ✅ Som do pássaro não perde a trilha | `clumsy-bird/js/game.js:72`: o primeiro voo cria um único loop, inclusive silenciado. Falha reproduzida antes, corrigida e revalidada pelo implementador e revisor independentes |
-| ✅ Índice PT-BR/EN e três prévias | `index.html:63`, `index.html:115`: três imagens decodificadas; alternância traduz o índice e leva `?lang=` aos jogos; sem overflow em 390px |
-| ✅ Caminhos independentes | Os três jogos renderizam sob `/games/<id>/`. Todos os requests exercitados permaneceram dentro da própria pasta do jogo; nenhum request externo nem HTTP 4xx/5xx |
-| ✅ Créditos/fontes/termos | README, UPSTREAM, fontes, assets e avisos preservados em cada pacote. Não há licença MIT global para todo o conteúdo; HexGL tem exceções não comerciais explícitas |
-| ✅ Revisão independente | Comparação das mudanças com os clones, inspeção das prévias, leitura dos fontes e revalidação do áudio. Nenhum achado Critical/Important aberto; o Minor de áudio foi resolvido |
-| ✅ Escopo de entrega | Somente arquivos estáticos, documentação e ferramenta de desenvolvimento local. `gallery.json` e a interface do Desktop não foram alterados para incorporar jogos |
+| ✅ Nomes próprios no catálogo | `index.html:70`, `index.html:104`: Simulador de Cidades, Corrida Espacial e Arcade 2D, com traduções em inglês |
+| ✅ Cidade com apresentação própria | `3d-city/src/city3d/hub/Hub_Top.js:27`, `3d-city/src/city3d/hub/Hub_Build.js:13`: Prefeitura, indicadores, selo SVG e ferramentas vetoriais; materiais e fundo verde/mineral. Nome no título, loading e cabeçalho |
+| ✅ Gestão urbana funcional | Construção real: tile **0→244**, fundos **35.000→34.900**; pausa, Serviços, save local, exportação JSON e reinício. Drawer e último item acessíveis em 390×568. Dez checks no [relatório da cidade](3d-city/VALIDATION.md) |
+| ✅ Corrida com cenário orbital | `hexgl/space-racing.js:48`, `hexgl/space-racing.js:67`, `hexgl/space-racing.js:128`: emblema/banner, 1.400 estrelas, planeta anelado, lua, nave cobre/marfim, pista recolorida e instrumentos próprios |
+| ✅ Pilotagem e resultados preservados | Teclado real acelera e muda direção; reinício durante corrida, queda e resultado; HUD acompanha estado nativo; som, idioma, resize e controles de toque. [Evidências da corrida](hexgl/QA.md) |
+| ✅ Arcade com arte original | `clumsy-bird/js/game.js:5`: sete SVGs próprios, robô animado, cidade solar, plataforma e portais de energia; HUD e resultado novos. Engine, física e colisores preservados |
+| ✅ Voo, colisão, pontos e áudio | Doze checks funcionais, incluindo dois pontos por comandos reais, mais cinco checks do loop de áudio. [Evidências do Arcade](clumsy-bird/QA.json) |
+| ✅ Controles e telas pequenas | `clumsy-bird/js/game.js:56`, `clumsy-bird/js/entities/HUD.js:40`, `clumsy-bird/index.css:28`: Espaço/Enter nos botões sem disparar voo, clique devolve foco ao canvas, M curto e mantido com repeat alternam uma vez; resultado permite reinício em 568×320 e 844×390. Sete checks focados em `QA.json.uiRegression` |
+| ✅ Índice PT-BR/EN e prévias atuais | `index.html:118`, `index.html:133`: três imagens decodificadas, idioma propagado e conservado no retorno; ações alinhadas em 1024px e ausência de overflow em 390px |
+| ✅ Pacotes estáticos independentes | Três cenas prontas sob `/games/<id>/`, recursos exercitados dentro da própria pasta; zero chamada externa, HTTP 4xx/5xx, erro JS ou aviso no gate integrado final |
+| ✅ Procedência preservada | Clones de origem intactos; licenças e avisos herdados mantidos, contribuições SquadOS identificadas nos UPSTREAMs. As pastas técnicas continuam `3d-city`, `hexgl`, `clumsy-bird` |
+| ✅ Escopo local | Fontes, builds estáticos, arte, prévias e documentação em `games/`. Sem mudança no catálogo/interface do Desktop, push ou publicação |
 
-## Cancelamentos de HDR no Chromium
+A revisão independente leu as alterações, inspecionou as três prévias e exercitou
+controles e telas pequenas. Seus achados de drawer da cidade, resultado landscape,
+teclado do som, repeat de M e retorno de idioma foram corrigidos e revalidados.
 
-O primeiro gate integrado falhou porque o CDP registrou `net::ERR_ABORTED` em
-`envmap.hdr` e `envmap2.hdr`. Esperar `networkidle` não eliminou o evento. O caso
-foi investigado sem suprimir erros nem alterar o renderer de terceiros:
+## Eventos de stream após consumo completo
 
-- Ambos retornaram HTTP 200 e foram consumidos até `done: true`, com exatamente
-  **5.376.993** e **1.411.630 bytes**, iguais ao `Content-Length`.
-- Um teste mínimo com `fetch().arrayBuffer()` terminou normalmente. Envolver a
-  leitura em `ReadableStream → Response → arrayBuffer`, como o FileLoader nativo,
-  reproduziu o evento sem qualquer AbortSignal e ainda devolveu todos os bytes.
-- O HDRLoader nativo decodificou o segundo arquivo em **1024 × 512**, com
-  **2.097.152 componentes HalfFloat**. O SHA256 do buffer recebido foi igual ao
-  arquivo local. A frequência variou entre execuções e o evento também ocorreu
-  com resposta chunked; os testes não demonstraram causalidade de um cabeçalho.
-- A cidade só sinaliza pronta depois de `Pool.loadEnvmap()` aguardar carregamento
-  e parsing dos HDRs. A cena final foi capturada e a construção exercitada.
+Algumas execuções da cidade registraram `net::ERR_ABORTED` no CDP após o consumo
+completo de HDRs e do decoder Draco WASM. O diagnóstico preservou os loaders
+upstream e distinguiu esses eventos de falhas reais de recurso:
 
-O gate aceita **apenas esses cancelamentos específicos após consumo completo**,
-exigindo HTTP 200, `done`, tamanho esperado positivo, bytes exatos e cidade pronta.
-Eles permanecem em `completedHdrCancellations` do JSON; qualquer outra falha de
-rede/JavaScript continua reprovando. Não se declara zero eventos `requestfailed`
-no servidor compartilhado. Não houve recurso obrigatório ausente, resposta HTTP
-de erro, erro/aviso de console ou chamada externa na execução integrada final.
+- HDRs: HTTP 200, EOF e **5.376.993** / **1.411.630 bytes** exatos. Um teste mínimo
+  com o wrapper `ReadableStream → Response.arrayBuffer()` reproduziu o evento sem
+  AbortSignal e recebeu o corpo integral. O HDRLoader nativo decodificou envmap2
+  em **1024×512**, com **2.097.152 componentes HalfFloat**, e SHA-256 igual ao local.
+- Draco: HTTP 200, EOF e **192.420 bytes** exatos. SHA-256 do stream
+  `a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac`
+  igual ao arquivo local; **WebAssembly.compile aprovado, com 149 exports**.
+- A cidade só fica pronta depois do carregamento/decodificação nativos. O teste
+  funcional também construiu e reiniciou a cidade. A frequência dos eventos
+  variou; os testes não demonstraram causalidade determinística de um cabeçalho.
+
+O gate classifica apenas esses três caminhos, exigindo HTTP 200, EOF, tamanho
+esperado positivo, bytes integrais e cena pronta; WASM exige também hash e
+compilação. Os eventos classificados permanecem em `completedStreamingCancellations`
+do relatório integrado. Qualquer outra falha de rede/JavaScript reprova.
+O gate integrado final não registrou cancelamentos; o [teste da cidade](3d-city/validation.json)
+preserva quatro HDR e um WASM pós-consumo. Não se afirma zero eventos brutos em
+todas as execuções. Nenhum loader ou engine foi alterado para esconder erros.
 
 ## Ambiente e limites
 
-Flags do navegador: `--use-gl=angle`, `--use-angle=d3d11`,
-`--ignore-gpu-blocklist`, `--enable-gpu-rasterization`; execução sempre headless.
-Os scripts e screenshots complementares ficaram no scratch autorizado e em
-`games/.verification/` (ignorado). Não são dependências dos jogos. A preparação
-de runtime do Studio, Firefox/Safari e aparelhos físicos não foi exercitada.
+Flags do gate: `--use-gl=angle`, `--use-angle=d3d11`, `--ignore-gpu-blocklist`,
+`--enable-gpu-rasterization`; navegador sempre headless. O servidor habitual
+4387 foi reutilizado, e 4386 serviu temporariamente a raiz do acervo para validar
+`/games/`. Scripts/screenhots complementares em `games/.verification/` são
+ignorados e não são dependências dos jogos. A corrida também inclui seu script
+reproduzível e evidências em `hexgl/qa/`.
 
-A prova do HexGL combina pilotagem real de aceleração/direção com fixtures nativas
-de destruição e checkpoints para os resultados. **Não houve pilotagem integral
-de três voltas.** O estado de áudio foi conferido programaticamente, sem escuta
-humana. Toque foi emulado. Painéis avançados da cidade não tiveram cobertura integral.
-Tempos locais registrados não são benchmarks de carregamento público ou de FPS.
+A corrida combina pilotagem real com fixtures nativas de destruição e checkpoints
+para resultados; **não houve pilotagem integral de três voltas**. Áudio foi
+conferido por estado, sem escuta humana. Toque foi emulado. Alguns campos internos
+de painéis avançados da cidade permanecem em inglês e não têm cobertura integral.
+Firefox, Safari, aparelhos físicos e integração ao runtime do Studio não foram
+exercitados. Tempos locais não são benchmarks de carregamento público ou FPS.
 
-Não houve push, deploy, hospedagem pública ou ativação no catálogo do Desktop.
-A restrição comercial de partes do HexGL permanece pendente de resolução para
-uma publicação nesse contexto; funcionamento local não concede direitos adicionais.
+Sem push, deploy, hospedagem pública ou ativação no catálogo Desktop. Partes do
+HexGL continuam sob CC BY-NC 3.0; identidade nova não resolve essa restrição para
+uma publicação comercial. Créditos, fontes e demais termos acompanham os pacotes.

@@ -1,0 +1,36 @@
+// Ícones vetoriais originais da adaptação, sem substituir modelos do mundo.
+const paths = {
+  residential:'M4 11 12 4l8 7M6 10v10h12V10M10 20v-6h4v6',
+  commercial:'M5 21V7h8v14M13 11h6v10M8 10h2m-2 4h2m-2 4h2m6-4h1m-1 4h1M3 21h18',
+  industrial:'M3 20V10l6 3V9l6 4V5h4l2 15H3M6 17h2m3 0h2m3 0h2',
+  road:'M4 21 8 3m8 0 4 18M12 5v3m0 3v3m0 3v3',
+  bulldozer:'M4 17h12l4 3H3v-4M7 17V9h6l3 8M9 9V5h4v4M19 12v7l3 2',
+  rail:'M7 3v18M17 3v18M5 6h14M5 10h14M5 14h14M5 18h14',
+  wire:'M12 2 5 13h7l-1 9 8-13h-7l1-7',
+  coal:'M4 20h16M6 20V9h5v11M14 20V5h4v15M7 5V3m8-1v-1',
+  nuclear:'M12 11v1m0-8c5 0 7 6 3 8m-3 0c3 4 0 9-5 7m5-7c-5 1-8-4-5-7M4 21h16',
+  turbine:'M12 12v10M12 12l1-10 3 2-4 8M12 12l9 3-2 3-7-6M12 12l-9 4v-4l9 0',
+  park:'M12 3 5 12h4l-5 5h7v5h2v-5h7l-5-5h4L12 3',
+  fire:'M13 3c2 5-2 5 1 8l2-4c5 6 4 14-4 14-7 0-10-7-4-13 0 4 2 4 2 4s3-4 3-9',
+  police:'m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3M8 12l3 3 5-6',
+  hospital:'M5 21V5h14v16M2 21h20M12 8v7M8.5 11.5h7M10 21v-3h4v3',
+  school:'M3 10 12 4l9 6-9 6-9-6M6 12v6c4 3 8 3 12 0v-6M21 10v8',
+  port:'M12 3v14M8 6h8M3 14c0 8 18 8 18 0M3 14v4m18-4v4M9 20l3 2 3-2',
+  stadium:'M3 9c0-7 18-7 18 0v8c0 6-18 6-18 0V9M3 9c0 6 18 6 18 0M7 14v6m5-5v6m5-7v6',
+  airport:'m12 3 2 7 7 5v3l-7-2v4l2 2H8l2-2v-4l-7 2v-3l7-5 2-7',
+  query:'M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14M15 15l6 6M10 7v6M7 10h6',
+  none:'M12 3v18M3 12h18M9 6l3-3 3 3M6 9l-3 3 3 3M18 9l3 3-3 3M9 18l3 3 3-3',
+  Budget:'M3 6h18v14H3V6M3 6l13-3v3M15 11h6v5h-6v-5',
+  Eval:'M4 20V4M4 20h17M8 16v-5m5 5V7m5 9v-3',
+  Orders:'M12 3v18M5 6h14M5 6l-3 7h6L5 6M19 6l-3 7h6l-3-7M7 21h10',
+  Economy:'M4 18 10 12l4 2 6-9M15 5h5v5M4 21h16',
+  Awards:'M8 3h8v7a4 4 0 0 1-8 0V3M8 5H4v3c0 3 4 4 4 4m8-7h4v3c0 3-4 4-4 4M12 14v6m-5 1h10',
+  History:'M4 9a9 9 0 1 1-1 7M4 3v6h6M12 7v6l4 2',
+  Overlay:'m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6M9 3v15m6-12v15',
+  Disaster:'m12 3 10 18H2L12 3M12 9v5m0 3v1',
+  Files:'M3 5h7l2 3h9v12H3V5M7 12h10m-10 4h7',
+  About:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M12 10v7m0-11v1',
+};
+export function icon(name) {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[name]||paths.none}"/></svg>`;
+}

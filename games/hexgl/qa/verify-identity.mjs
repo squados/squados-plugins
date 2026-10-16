@@ -1,0 +1,126 @@
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const require = createRequire(process.env.PLAYWRIGHT_PACKAGE_JSON || fileURLToPath(new URL('../../../../squados-desktop/package.json', import.meta.url)));
+const { chromium } = require('playwright');
+const root = fileURLToPath(new URL('../../../', import.meta.url));
+const scratch = fileURLToPath(new URL('./', import.meta.url));
+let browser;
+const errors=[],warnings=[],failed=[],bad=[],external=[],requests=[];
+const evidence={};
+try {
+  browser=await chromium.launch({headless:true,args:['--use-gl=angle','--use-angle=d3d11','--ignore-gpu-blocklist','--enable-gpu-rasterization']});
+  const context=await browser.newContext({viewport:{width:1440,height:900}});
+  await context.addInitScript(()=>{
+    window.shaderDiagnostics=[];
+    const p=WebGLRenderingContext.prototype;
+    const link=p.linkProgram;
+    p.linkProgram=function(program){link.call(this,program);if(!this.getProgramParameter(program,this.LINK_STATUS))window.shaderDiagnostics.push(this.getProgramInfoLog(program));};
+  });
+  function observe(page) {
+    page.on('console',m=>{if(m.type()==='error')errors.push(m.text());if(m.type()==='warning')warnings.push(m.text());});
+    page.on('pageerror',e=>errors.push(e.stack));
+    page.on('requestfailed',r=>failed.push({url:r.url(),failure:r.failure()}));
+    page.on('response',r=>{if(r.status()>=400)bad.push([r.status(),r.url()]);});
+    page.on('request',r=>{requests.push(r.url());if(!r.url().startsWith('http://127.0.0.1:4387/'))external.push(r.url());});
+  }
+  const page=await context.newPage();observe(page);
+  await page.goto('http://127.0.0.1:4387/hexgl/',{waitUntil:'networkidle'});
+  assert.deepEqual(errors,[]);
+  await page.waitForFunction(()=>window.hexGL?.gameplay?.step===4);
+  const snapshot=()=>page.evaluate(()=>{const c=hexGL.components.shipControls;return {speed:c.speed,position:{...c.getPosition()},quaternion:{...c.getQuaternion()},falling:c.falling,destroyed:c.destroyed,lap:hexGL.gameplay.lap,laps:hexGL.gameplay.lapTimes.slice(),result:hexGL.gameplay.result,step:hexGL.gameplay.step};});
+  evidence.initial=await snapshot();
+  assert.equal(await page.title(),'Corrida Espacial · SquadOS');
+  assert.equal(await page.locator('#game-name').textContent(),'Corrida Espacial');
+  assert.equal(await page.locator('#back-index').getAttribute('href'),'../?lang=pt-BR');
+  evidence.identity=await page.evaluate(()=>{
+    const scene=hexGL.manager.get('sky').scene;
+    const starfield=scene.children.find(o=>o.name==='orbital-stars');
+    return {stars:starfield.geometry.vertices.length,sky:scene.children.map(o=>o.name).filter(Boolean),shipMaterial:hexGL.components.shipControls.mesh.material instanceof THREE.MeshPhongMaterial,originalHUDVisible:getComputedStyle(hexGL.hud.canvas).display!=='none'};
+  });
+  assert.equal(evidence.identity.stars,1400);
+  assert(evidence.identity.sky.includes('orbital-planet'));
+  assert(evidence.identity.sky.includes('orbital-moon'));
+  assert.equal(evidence.identity.shipMaterial,true);
+  assert.equal(evidence.identity.originalHUDVisible,false);
+  assert.equal(await page.locator('#loading').isVisible(),false);
+  assert.equal(evidence.initial.speed,0);
+  evidence.renderer=await page.evaluate(()=>{const gl=hexGL.canvas.getContext('webgl');const ext=gl.getExtension('WEBGL_debug_renderer_info');return gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);});
+  await page.keyboard.down('ArrowUp');await page.waitForTimeout(2400);evidence.accelerating=await snapshot();
+  assert(evidence.accelerating.speed>2);
+  assert(evidence.accelerating.position.z-evidence.initial.position.z>150);
+  await page.keyboard.down('ArrowLeft');await page.waitForTimeout(400);await page.keyboard.up('ArrowLeft');evidence.left=await snapshot();
+  assert(evidence.left.quaternion.y>0.1);
+  assert(evidence.left.position.x-evidence.accelerating.position.x>5);
+  await page.screenshot({path:root+'/games/hexgl/preview.png'});
+  await page.keyboard.down('ArrowRight');await page.waitForTimeout(450);await page.keyboard.up('ArrowRight');evidence.right=await snapshot();
+  assert(evidence.right.quaternion.y<evidence.left.quaternion.y);
+  await page.evaluate(()=>window.dispatchEvent(new Event('blur')));
+  assert.equal(await page.evaluate(()=>hexGL.components.shipControls.key.forward),false);
+  await page.keyboard.up('ArrowUp');
+  await page.click('#sound');await page.waitForFunction(()=>bkcore.Audio._ctx.state==='running');
+  evidence.sound={enabled:await page.locator('#sound').getAttribute('aria-pressed'),state:await page.evaluate(()=>bkcore.Audio._ctx.state)};
+  assert.equal(evidence.sound.enabled,'true');
+  await page.click('#sound');await page.waitForFunction(()=>bkcore.Audio._ctx.state==='suspended');
+  await page.keyboard.press('r');evidence.restart=await snapshot();
+  assert.equal(evidence.restart.speed,0);assert.equal(evidence.restart.position.z,-886);
+  await page.evaluate(()=>hexGL.components.shipControls.fall());
+  await page.keyboard.press('r');await page.waitForTimeout(1800);evidence.restartDuringFall=await snapshot();
+  assert.equal(evidence.restartDuringFall.falling,false);assert.equal(evidence.restartDuringFall.destroyed,false);
+  await page.waitForFunction(()=>hexGL.gameplay.step===4);
+  await page.evaluate(()=>hexGL.components.shipControls.fall());
+  await page.waitForFunction(()=>!document.getElementById('result').hidden);
+  evidence.destroyed={...(await snapshot()),title:await page.locator('#result-title').textContent()};
+  assert.equal(evidence.destroyed.result,2);assert.equal(evidence.destroyed.title,'Nave destruída');
+  await page.click('#race-again');await page.waitForFunction(()=>hexGL.gameplay.step===4);
+  evidence.afterDestroyedRestart=await snapshot();
+  assert.equal(evidence.afterDestroyedRestart.falling,false);assert.equal(evidence.afterDestroyedRestart.result,-1);
+  // Contrato do resultado de 3 voltas: injeta checkpoints, não simula uma pilotagem completa.
+  await page.evaluate(()=>{window.qaCheckpoint=-1;window.qaOriginalCheckPoint=hexGL.gameplay.checkPoint;hexGL.gameplay.checkPoint=()=>window.qaCheckpoint;});
+  for(const cp of [2,0,2,0,2,0]) { await page.evaluate(cp=>{window.qaCheckpoint=cp;},cp);await page.waitForTimeout(140); }
+  await page.evaluate(()=>{hexGL.gameplay.checkPoint=window.qaOriginalCheckPoint;});
+  await page.waitForFunction(()=>!document.getElementById('result').hidden);
+  evidence.finished={...(await snapshot()),title:await page.locator('#result-title').textContent(),time:await page.locator('#result-time').textContent()};
+  await page.screenshot({path:scratch+'/result-pt.png'});
+  assert.equal(evidence.finished.result,1);assert.equal(evidence.finished.laps.length,3);assert.equal(evidence.finished.title,'Corrida concluída');
+  await page.click('#race-again');evidence.afterFinishRestart=await snapshot();
+  assert.deepEqual(evidence.afterFinishRestart.laps,[]);assert.equal(evidence.afterFinishRestart.result,-1);assert.equal(evidence.afterFinishRestart.lap,1);
+  await page.waitForFunction(()=>hexGL.gameplay.step===4);
+  await page.click('#language');
+  await page.evaluate(()=>{window.qaCheckpoint=-1;window.qaOriginalCheckPoint=hexGL.gameplay.checkPoint;hexGL.gameplay.checkPoint=()=>window.qaCheckpoint;});
+  for(const cp of [2,0,2,0,2,0]) { await page.evaluate(cp=>{window.qaCheckpoint=cp;},cp);await page.waitForTimeout(140); }
+  await page.evaluate(()=>{hexGL.gameplay.checkPoint=window.qaOriginalCheckPoint;});
+  await page.waitForFunction(()=>!document.getElementById('result').hidden);
+  evidence.resultEnglish={title:await page.locator('#result-title').textContent(),brand:await page.locator('#result-brand').textContent(),time:await page.locator('#result-time').textContent()};
+  assert.equal(evidence.resultEnglish.title,'Race complete');assert.equal(evidence.resultEnglish.brand,'Space Racing');
+  await page.screenshot({path:scratch+'/result-en.png'});
+  await page.click('#race-again');await page.click('#language');
+  await page.waitForFunction(()=>hexGL.gameplay.step===4);await page.keyboard.down('ArrowUp');await page.waitForTimeout(500);await page.keyboard.up('ArrowUp');
+  assert((await snapshot()).speed>0);
+  await page.setViewportSize({width:390,height:844});await page.waitForTimeout(600);
+  evidence.resize=await page.evaluate(()=>({viewport:[innerWidth,innerHeight],canvases:[...document.querySelectorAll('canvas')].map(c=>[c.width,c.height]),overflow:document.documentElement.scrollWidth>innerWidth}));
+  assert.deepEqual(evidence.resize.canvases,[[390,844],[390,844]]);assert.equal(evidence.resize.overflow,false);
+  await page.click('#language');assert.equal(await page.locator('html').getAttribute('lang'),'en');assert.match(await page.locator('#race-goal').textContent(),/Complete 3 laps/);
+  assert.equal(await page.title(),'Space Racing · SquadOS');
+  assert.equal(await page.locator('#back-index').getAttribute('href'),'../?lang=en');
+  await page.screenshot({path:scratch+'/resize-en.png'});
+  evidence.shaderDiagnostics=await page.evaluate(()=>window.shaderDiagnostics);assert.deepEqual(evidence.shaderDiagnostics,[]);
+  // Novo contexto móvel prova o caminho por botões de toque, sem alterar o controle nativo.
+  const touchContext=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
+  const touchPage=await touchContext.newPage();observe(touchPage);
+  await touchPage.goto('http://127.0.0.1:4387/hexgl/?lang=en',{waitUntil:'networkidle'});await touchPage.waitForFunction(()=>window.hexGL?.gameplay?.step===4);
+  assert.equal(await touchPage.locator('#touch-controls').isVisible(),true);
+  assert.equal(await touchPage.locator('#back-index').getAttribute('href'),'../?lang=en');
+  const touchBox=await touchPage.locator('#accelerate').boundingBox();
+  await touchPage.mouse.move(touchBox.x+touchBox.width/2,touchBox.y+touchBox.height/2);await touchPage.mouse.down();await touchPage.waitForTimeout(900);await touchPage.mouse.up();
+  evidence.touch=await touchPage.evaluate(()=>({speed:hexGL.components.shipControls.speed,forward:hexGL.components.shipControls.key.forward,lang:document.documentElement.lang,overflow:document.documentElement.scrollWidth>innerWidth}));
+  assert(evidence.touch.speed>0);assert.equal(evidence.touch.forward,false);assert.equal(evidence.touch.lang,'en');assert.equal(evidence.touch.overflow,false);
+  await touchPage.screenshot({path:scratch+'/touch-en.png'});
+  await touchContext.close();
+  assert.deepEqual(errors,[]);assert.deepEqual(warnings,[]);assert.deepEqual(failed,[]);assert.deepEqual(bad,[]);assert.deepEqual(external,[]);
+  evidence.network={requestCount:requests.length,errors,warnings,failed,httpErrors:bad,external};
+  evidence.status='PASS';
+  fs.writeFileSync(scratch+'/evidence-identity.json',JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence,null,2));
+} catch(error) { evidence.status='FAIL';evidence.failure=error.stack;evidence.network={errors,warnings,failed,httpErrors:bad,external};fs.writeFileSync(scratch+'/evidence-identity.json',JSON.stringify(evidence,null,2));throw error; }
+finally { if(browser)await browser.close(); }

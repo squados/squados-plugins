@@ -1,31 +1,122 @@
 {
-  "timestamp": "2026-10-15T22:54:21.953Z",
-  "baseUrl": "http://127.0.0.1:4388/games/3d-city/",
+  "timestamp": "2026-10-16T01:10:44.852Z",
+  "baseUrl": "http://127.0.0.1:4387/3d-city/",
   "checks": [
-    "query ?lang=en applies English instructions",
-    "Pause stops worker RUN ticks",
-    "PT/EN toggle changes instructions",
-    "Residential selected in native toolbar; real canvas click creates zone and deducts 100 funds",
-    "Real wheel, orbit drag and ArrowRight events exercised without runtime errors",
-    "Restart restores original empty tile and 35000 funds; single native load without duplicate PLAYMAP"
+    "English name in title, heading and real loading screen; native city boots",
+    "New Pause button stops native RUN ticks",
+    "PT toggle changes title, native panel navigation, tools and metrics; URL keeps language across restart",
+    "Budget opens original functional panel with own translated header; Credits identify SquadOS adaptation and inherited engine",
+    "New Housing SVG button + real canvas click builds tile0→244 and charges100 funds",
+    "Save and open panel translated; native local save and JSON export preserve34900 funds/64×64 map",
+    "Services tab routes Park to native tool; switching Build clears selected tool",
+    "Restart preserves Portuguese and restores tile0/35000 funds through one native save load",
+    "390×844: no page overflow, full Management drawer, last Credits action and Close reachable",
+    "390×568: no page overflow, full Management drawer, last Credits action and Close reachable"
   ],
   "pageErrors": [],
   "consoleErrors": [],
   "warnings": [],
   "failedRequests": [],
+  "consumedHdrCancellations": [
+    {
+      "url": "http://127.0.0.1:4387/3d-city/assets/textures/envmap.hdr",
+      "error": "net::ERR_ABORTED",
+      "proof": {
+        "url": "http://127.0.0.1:4387/3d-city/assets/textures/envmap.hdr",
+        "status": 200,
+        "contentLength": 5376993,
+        "bytes": 5376993,
+        "done": true
+      }
+    },
+    {
+      "url": "http://127.0.0.1:4387/3d-city/assets/textures/envmap2.hdr",
+      "error": "net::ERR_ABORTED",
+      "proof": {
+        "url": "http://127.0.0.1:4387/3d-city/assets/textures/envmap2.hdr",
+        "status": 200,
+        "contentLength": 1411630,
+        "bytes": 1411630,
+        "done": true
+      }
+    },
+    {
+      "url": "http://127.0.0.1:4387/3d-city/assets/textures/envmap.hdr",
+      "error": "net::ERR_ABORTED",
+      "proof": {
+        "url": "http://127.0.0.1:4387/3d-city/assets/textures/envmap.hdr",
+        "status": 200,
+        "contentLength": 5376993,
+        "bytes": 5376993,
+        "done": true
+      }
+    },
+    {
+      "url": "http://127.0.0.1:4387/3d-city/assets/textures/envmap.hdr",
+      "error": "net::ERR_ABORTED",
+      "proof": {
+        "url": "http://127.0.0.1:4387/3d-city/assets/textures/envmap.hdr",
+        "status": 200,
+        "contentLength": 5376993,
+        "bytes": 5376993,
+        "done": true
+      }
+    }
+  ],
+  "consumedDecoderCancellations": [
+    {
+      "url": "http://127.0.0.1:4387/3d-city/assets/draco/draco_decoder.wasm",
+      "error": "net::ERR_ABORTED",
+      "proof": {
+        "url": "http://127.0.0.1:4387/3d-city/assets/draco/draco_decoder.wasm",
+        "status": 200,
+        "contentLength": 192420,
+        "bytes": 192420,
+        "done": true,
+        "sha256": "a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac",
+        "wasmCompiled": true,
+        "exports": 149
+      }
+    }
+  ],
   "httpErrors": [],
   "externalRequests": [],
-  "coldLoad": {
-    "readyMs": 2761.800000011921,
-    "ticks": 27,
-    "resources": 42,
-    "transferredBytes": 29586535
-  },
-  "initial": {
-    "ticks": 28,
-    "funds": 35000,
-    "population": 37920
-  },
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "drawer": {
+        "height": 256,
+        "scrollHeight": 256,
+        "top": 124,
+        "bottom": 379.796875
+      },
+      "lastManagementButtonClicked": true,
+      "tools": {
+        "width": 346,
+        "scrollWidth": 346,
+        "height": 155
+      }
+    },
+    {
+      "width": 390,
+      "height": 568,
+      "overflow": false,
+      "drawer": {
+        "height": 256,
+        "scrollHeight": 256,
+        "top": 124,
+        "bottom": 379.796875
+      },
+      "lastManagementButtonClicked": true,
+      "tools": {
+        "width": 346,
+        "scrollWidth": 650,
+        "height": 86
+      }
+    }
+  ],
   "construction": {
     "click": {
       "tell": "MAPCLICK",
@@ -37,22 +128,25 @@
       "x": 13,
       "y": 32
     },
+    "before": {
+      "tile": 0,
+      "funds": 35000
+    },
     "after": {
       "tile": 244,
-      "funds": 34900,
-      "ticks": 32
-    },
-    "beforeTile": 0
+      "funds": 34900
+    }
   },
   "restart": {
     "funds": 35000,
     "tile": 0,
-    "sent": [
-      "INIT",
-      "LOADGAME",
-      "MAKELOADGAME",
-      "TOOL"
-    ]
+    "loads": 1,
+    "playmaps": 0
+  },
+  "desktop": {
+    "title": "Simulador de Cidades · SquadOS",
+    "bodyWidth": 1440,
+    "readyMs": 1378.699999988079
   },
   "passed": true
 }
