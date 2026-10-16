@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 const asset = (name) => `${import.meta.env.BASE_URL}${name}`;
 const modules = [
@@ -30,9 +30,14 @@ export default function App() {
   const [format, setFormat] = useState('Conversa individual');
   const [submitted, setSubmitted] = useState(false);
   const dialogRef = useRef(null);
+  const confirmationActionRef = useRef(null);
   const openerRef = useRef(null);
   const tabsRef = useRef([]);
   const currentModule = modules[selectedModule];
+
+  useLayoutEffect(() => {
+    if (activeDialog === 'enrollment' && submitted) confirmationActionRef.current?.focus({ preventScroll: true });
+  }, [activeDialog, submitted]);
 
   useEffect(() => {
     if (!activeDialog) return undefined;
@@ -117,7 +122,7 @@ export default function App() {
         {lessonStep === 1 && <><h3>Escolha uma primeira entrega pequena.</h3><p>Antes de criar um curso inteiro, experimente um formato simples para ouvir, ajudar e aprender com uma pessoa.</p><fieldset><legend>Como você prefere começar?</legend>{['Conversa individual', 'Oficina em grupo', 'Guia de exercícios'].map((option) => <label className="radio-choice" key={option}><input type="radio" name="lesson-format" value={option} checked={format === option} onChange={() => setFormat(option)} /><span>{option}</span></label>)}</fieldset></>}
         {lessonStep === 2 && <><h3>Agora você tem um ponto de partida.</h3><div className="lesson-summary"><span>O problema</span><p>{problem.trim() || 'Uma dificuldade específica que você conhece e pode ajudar a resolver.'}</p><span>A primeira entrega</span><p>{format}</p></div><p>Seu próximo passo: converse com uma pessoa que vive esse problema. Pergunte como ela lida com isso hoje e escute antes de apresentar sua ideia.</p><p className="lesson-takeaway">Uma boa oferta começa com uma boa escuta.</p></>}
       </div><div className="lesson-navigation"><span>Etapa {lessonStep + 1} de 3</span><div><button className="text-button" disabled={lessonStep === 0} onClick={() => setLessonStep((step) => step - 1)}>Voltar</button>{lessonStep < 2 ? <button className="button button-dark" onClick={() => setLessonStep((step) => step + 1)}>Avançar <Arrow /></button> : <button className="button button-dark" onClick={() => dialogRef.current.close()}>Concluir aula <Arrow /></button>}</div></div></div>}
-      {activeDialog === 'enrollment' && <div className="enrollment"><p className="section-label">Formação Trama</p><h2 id="enrollment-title">Seu próximo passo começa aqui.</h2>{submitted ? <div className="enrollment-success"><Mark /><div role="status" aria-live="polite"><h3>Demonstração concluída.</h3><p>Nenhum dado foi enviado ou salvo. Esta inscrição é apenas um exemplo de como a experiência funciona.</p></div><button className="button button-dark" onClick={() => { setSubmitted(false); dialogRef.current.close(); }}>Explorar novamente <Arrow /></button></div> : <><p>Experimente a inscrição demonstrativa. Use dados fictícios para conhecer o fluxo.</p><form onSubmit={(event) => { event.preventDefault(); if (event.currentTarget.reportValidity()) setSubmitted(true); }}><label htmlFor="enrollment-name">Seu nome</label><input id="enrollment-name" name="name" type="text" required minLength="2" maxLength="100" autoComplete="off" placeholder="Como podemos chamar você?" onInput={(event) => event.currentTarget.setCustomValidity(event.currentTarget.value.trim().length >= 2 ? '' : 'Informe um nome com pelo menos dois caracteres.')} /><label htmlFor="enrollment-email">Seu e-mail</label><input id="enrollment-email" name="email" type="email" required maxLength="254" autoComplete="off" placeholder="voce@exemplo.com" /><p className="form-note">Demonstração local. Nenhum dado será enviado ou salvo e nenhuma cobrança será feita.</p><button className="button button-dark" type="submit">Confirmar interesse <Arrow /></button></form></>}</div>}
+      {activeDialog === 'enrollment' && <div className="enrollment"><p className="section-label">Formação Trama</p><h2 id="enrollment-title">Seu próximo passo começa aqui.</h2>{submitted ? <div className="enrollment-success"><Mark /><div role="status" aria-live="polite"><h3>Demonstração concluída.</h3><p>Nenhum dado foi enviado ou salvo. Esta inscrição é apenas um exemplo de como a experiência funciona.</p></div><button ref={confirmationActionRef} className="button button-dark" onClick={() => { setSubmitted(false); dialogRef.current.close(); }}>Explorar novamente <Arrow /></button></div> : <><p>Experimente a inscrição demonstrativa. Use dados fictícios para conhecer o fluxo.</p><form onSubmit={(event) => { event.preventDefault(); if (event.currentTarget.reportValidity()) setSubmitted(true); }}><label htmlFor="enrollment-name">Seu nome</label><input id="enrollment-name" name="name" type="text" required minLength="2" maxLength="100" autoComplete="off" placeholder="Como podemos chamar você?" onInput={(event) => event.currentTarget.setCustomValidity(event.currentTarget.value.trim().length >= 2 ? '' : 'Informe um nome com pelo menos dois caracteres.')} /><label htmlFor="enrollment-email">Seu e-mail</label><input id="enrollment-email" name="email" type="email" required maxLength="254" autoComplete="off" placeholder="voce@exemplo.com" /><p className="form-note">Demonstração local. Nenhum dado será enviado ou salvo e nenhuma cobrança será feita.</p><button className="button button-dark" type="submit">Confirmar interesse <Arrow /></button></form></>}</div>}
     </dialog>
   </>;
 }
