@@ -4,63 +4,77 @@
   "scope": "Quatro pacotes independentes, galeria HTTP local e contrato candidato do Desktop",
   "environment": {
     "system": "Windows / PowerShell 7",
-    "browser": "Chromium headless / Playwright core",
-    "screenshots": "1440x1000 e 390x844, reduced motion",
+    "browser": "Chromium: initial headless verification; revised Trama verified in background in-app browser",
+    "screenshots": "Originais 1440x1000/390x844; Trama revisada capturada em1425x990 (conteúdo de viewport1440x1000), JPEG do navegador convertido para PNG sem alterar a composição",
     "additionalTaskWidths": [
       360,
       768,
       1024,
       1920
-    ]
+    ],
+    "initialBrowser": "Chromium headless / Playwright core"
   },
   "templates": [
     {
       "id": "website-digital-marketing",
       "brand": "Trama",
-      "sourceRevision": "d9fb9e21d11ba2be493dcbff9265a47dd1896f4d",
+      "sourceRevision": "8d2b0c00902465ba1f462fe26d8fcd3cb060fec2",
       "independentBuild": true,
       "interactionsVerified": [
-        "Hero sem cabeçalho, retrato focal e prova social demonstrativa após CTAs",
-        "Programa de quatro módulos por clique e teclado",
-        "Mini-aula com três etapas e escolhas que mudam o resumo",
-        "Inscrição inválida/válida por Enter, confirmação, foco e reset",
-        "Dialog, Escape, backdrop, contenção/restauração de foco, FAQ"
+        "Hero sem cabeçalho, títulos sem serifa, retrato focal e prova social após CTAs",
+        "Página dark contínua com cards de desafios e seis recursos",
+        "Quatro módulos nativos expansíveis, 12 aulas e prévia de mini-aula",
+        "Três projetos com detalhes, Escape e foco restaurado",
+        "Mini-aula com texto longo, escolha de formato, teclado e fechamento",
+        "Três planos, valores à vista/parcelados e inscrição com plano selecionado",
+        "Form vazio/email inválido/Enter válido, foco na confirmação e reset",
+        "FAQ por teclado; layouts 360/390/768/1440 sem overflow"
       ],
       "packageReview": {
-        "specification": "approved",
-        "quality": "approved"
+        "specification": "checked against revised request and reference",
+        "quality": "author self-review and browser verification",
+        "independentReviewThisRevision": false
       },
       "integration": {
-        "id": "website-digital-marketing",
         "entry": true,
         "subpath": true,
         "anchors": true,
         "localAssets": true,
-        "externalRequests": 0,
+        "externalRequests": null,
+        "networkTraceRepeated": false,
+        "sourceAndDomExternalReferences": 0,
         "viewports": [
           {
-            "width": 1440,
+            "width": 360,
             "horizontalOverflow": false
           },
           {
             "width": 390,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 768,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 1440,
             "horizontalOverflow": false
           }
         ],
         "preview": "preview.png"
       },
       "adaptation": {
-        "id": "website-digital-marketing",
-        "request": "Aprenda a desenhar e lançar sua primeira oficina online.",
-        "file": "src/App.jsx",
+        "request": "Adaptar a abertura para uma oficina de escrita criativa",
+        "source": "website-digital-marketing",
         "build": true,
         "originalUnchanged": true,
         "changedFiles": [
           "src/App.jsx"
         ],
-        "hermesExecution": false,
-        "copyDirectory": "adapted-final/website-digital-marketing",
         "runtimeVerified": true,
+        "hermesExecution": false,
+        "url": "http://127.0.0.1:57313/website-digital-marketing/_adaptation/index.html",
+        "browser": "Chromium in-app browser, background",
         "runtimeErrors": []
       },
       "nativeReader": {
@@ -68,22 +82,29 @@
         "files": 21,
         "entry": "src/App.jsx",
         "preview": {
-          "width": 1440,
-          "height": 1000
+          "width": 1425,
+          "height": 990
         },
         "metadata": "creationTemplateSchema",
         "resolved": true
       },
       "preview": {
         "file": "preview.png",
-        "width": 1440,
-        "height": 1000,
-        "sha256": "cf771e04a0e83d2c84d1b7e4ce5fbee39962a9ded5e0d9b87a4dd8e2a142d8d5"
+        "width": 1425,
+        "height": 990,
+        "sha256": "93d3de2000a76c913899833ea7df1ce28ec475755338b6875342c2fb67fdefc6"
       },
       "resources": {
         "nativeRasterArt": 3,
         "localFonts": 2,
         "sha256Verified": true
+      },
+      "revision": {
+        "reference": "https://www.flux-academy.com/courses/web-design-masterclass",
+        "request": "Refazer toda dark, com módulos e cards mais próximos da referência",
+        "verificationDirectory": ".claude/plans/trama-dark",
+        "checksPassed": 34,
+        "resolvedHarnessAttempts": 4
       }
     },
     {
@@ -347,7 +368,19 @@
     "integration": "integration-results.json",
     "nativeContract": "native-contract-results.json",
     "adaptations": "adaptation-results.json",
-    "focalFix": "final-fix/green-results.json"
+    "focalFix": "final-fix/green-results.json",
+    "tramaRevisionDirectory": ".claude/plans/trama-dark (ignorado pelo Git)",
+    "tramaRevisionFiles": [
+      "self-review.md",
+      "verification.json",
+      "browser-results.json",
+      "native-contract.json",
+      "adaptation.json",
+      "preservation.json",
+      "hero-desktop.jpg",
+      "hero-mobile.jpg",
+      "curriculum-desktop.jpg"
+    ]
   },
   "boundaries": {
     "physicalDevicesTested": false,
@@ -359,39 +392,51 @@
     "backendAuthenticationPayments": false
   },
   "notes": [
-    "As provas de pacote incluem RED antes e GREEN após implementação, com correções focais posteriores registradas.",
+    "Na entrega inicial, as provas de pacote incluem RED antes e GREEN após implementação; a revisão dark da Trama tem verificação funcional e visual própria.",
     "A adaptação foi feita numa cópia de cada pacote por edição de código, build e verificação HTTP; não foi uma execução pelo Hermes.",
     "Os recursos e fontes são locais. Os formulários não enviam nem persistem dados pessoais.",
     "A base original foi comparada por SHA-256 antes/depois; o schema e o leitor CreationTemplates usados são os reais do Desktop.",
-    "Revisão geral e re-review dos dois fixes concluídos sem findings abertos. A aprovação é técnica/local; não representa incorporação ao catálogo ou publicação."
+    "A revisão geral inicial está em reviewHistory. A revisão dark atual da Trama foi conferida pelo autor e verificada no navegador, sem nova revisão independente."
   ],
   "finalReview": {
     "approved": true,
-    "reviewedRange": "0d8b1fd..9ea07bd",
-    "fixRevision": "d9fb9e21d11ba2be493dcbff9265a47dd1896f4d",
-    "findings": [
-      {
-        "id": "M1",
-        "package": "website-futuristic",
-        "issue": "Foco ao limpar busca",
-        "status": "addressed"
-      },
-      {
-        "id": "M2",
-        "package": "website-digital-marketing",
-        "issue": "Quebra de referência longa no resumo",
-        "status": "addressed"
-      }
-    ],
+    "scope": "Revised Trama; other three packages preserved by SHA-256",
+    "method": "Implementing author self-review, item-by-item source checklist, browser UI and native reader",
+    "independentReviewThisRevision": false,
+    "sourceRevision": "8d2b0c00902465ba1f462fe26d8fcd3cb060fec2",
     "openFindings": 0,
-    "scopedReReview": "approved",
-    "focalVerification": {
-      "checks": 60,
-      "passed": 60,
-      "browserErrors": 0,
-      "externalRequests": 0,
-      "scope": "Busca Orbe 1440/390, Enter/Space; resumo Trama 390/360, referência longa/texto normal, fechamento e Tab útil"
-    },
-    "afterFixIntegration": "Builds afetados atualizados no cache; subpastas, capturas e cópias adaptadas verificadas; leitor nativo 4/4 após isolar instalações"
-  }
+    "priorIndependentReview": "reviewHistory[0]"
+  },
+  "reviewHistory": [
+    {
+      "stage": "initial-four-template-delivery",
+      "approved": true,
+      "reviewedRange": "0d8b1fd..9ea07bd",
+      "fixRevision": "d9fb9e21d11ba2be493dcbff9265a47dd1896f4d",
+      "findings": [
+        {
+          "id": "M1",
+          "package": "website-futuristic",
+          "issue": "Foco ao limpar busca",
+          "status": "addressed"
+        },
+        {
+          "id": "M2",
+          "package": "website-digital-marketing",
+          "issue": "Quebra de referência longa no resumo",
+          "status": "addressed"
+        }
+      ],
+      "openFindings": 0,
+      "scopedReReview": "approved",
+      "focalVerification": {
+        "checks": 60,
+        "passed": 60,
+        "browserErrors": 0,
+        "externalRequests": 0,
+        "scope": "Busca Orbe 1440/390, Enter/Space; resumo Trama 390/360, referência longa/texto normal, fechamento e Tab útil"
+      },
+      "afterFixIntegration": "Builds afetados atualizados no cache; subpastas, capturas e cópias adaptadas verificadas; leitor nativo 4/4 após isolar instalações"
+    }
+  ]
 }
