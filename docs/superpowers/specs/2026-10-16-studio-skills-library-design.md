@@ -52,10 +52,16 @@ exibição; `name` e pasta usam os identificadores em inglês indicados.
   individual não retorna como `ibeia-diagnostico-individual` depois do corte de 034.
 - Excluir as famílias Jupyter, delegação de programação por CLI, deploy Cloudflare
   e arte p5.js. Não recuperar capacidades cortadas dentro de um pacote novo.
-- Reunir todo design em Michelangelo, partindo da skill existente.
+- Reunir direção e produção visual em Michelangelo, partindo da skill existente.
+  Operações de Figma ficam em Assistente Figma separado.
 - Reunir UX em Krug, partindo de dont-make-me-think.
 - Reunir vídeo em Tarantino, partindo do editor de vídeos existente.
+  Transcrição, Whisper, voz e áudio independentes ficam em outra skill técnica.
 - Reunir finanças em Warren - CFO; marketing, redes sociais e tráfego em Zuck.
+- Separar Vendas e Negociação de Zuck, reunindo propostas, prospecção,
+  relacionamento, pesquisa comercial de mercado e e-commerce no papel comercial.
+- Usar Gutenberg - Documentos e Dados, incluindo análise de dados;
+  Drucker - Gestor de Operações; Darwin - Pesquisador.
 - Usar Linus - Engenheiro de Software como nome do especialista de desenvolvimento.
 - Manter assistentes próprios por aplicação; não criar um Assistente de Aplicativos
   genérico. Reunir os modos da mesma aplicação, como os modos do Notion.
@@ -68,23 +74,26 @@ exibição; `name` e pasta usam os identificadores em inglês indicados.
 
 ## Composição adicional proposta
 
-O mapa resulta em 179 fontes retidas, reunidas em **17 especialistas e assistentes**; 173 fontes
+O mapa resulta em 179 fontes retidas, reunidas em **20 especialistas e assistentes**; 173 fontes
 removidas; 14 promovidas a prompt; 42 encaminhadas a instruções internas. Fontes
 são conjuntos de instruções, não a quantidade de pacotes finais. Não se importam
 179 skills para depois esconder seus cartões.
 
 | Pasta | Especialista | Modos e responsabilidade |
 |---|---|---|
-| `skills/michelangelo` | Michelangelo - Designer | Marcas; interfaces; design por imagem; peças visuais; ilustração; infográficos; diagramas; apresentações; SVG/ícones; animação; Figma e canvases. |
-| `skills/tarantino` | Tarantino - Editor de Vídeos | Montagem; decupagem; cortes; legendas; transcrição; voz/áudio; motion; renderização; ingestão e análise de vídeo. |
+| `skills/michelangelo` | Michelangelo - Designer | Marcas; interfaces; design por imagem; peças visuais; ilustração; infográficos; diagramas; apresentações; SVG/ícones; animação; canvases visuais. |
+| `skills/tarantino` | Tarantino - Editor de Vídeos | Criação de vídeos; roteiro; montagem; cortes; motion; efeitos; legendas no vídeo; renderização e exportação. |
+| `skills/audio` | Áudio, Voz e Transcrição | Transcrição; Whisper; síntese de voz; áudio e música; transcrições de vídeos. |
 | `skills/krug` | Krug - Especialista em UX | Jornadas; clareza; fricção; usabilidade; checkout/conversão; engajamento e gamificação. |
 | `skills/warren` | Warren - CFO | Planejamento; caixa; contas; demonstrações; conciliação; variações; valuation; modelos; preços; investimentos; operações de pagamento. |
-| `skills/zuck` | Zuck - O Marketeiro | Estratégia; mercado; copy; conteúdo; redes; SEO; tráfego; mensuração; e-commerce; prospecção; propostas; negociação; vendas e relacionamento. |
-| `skills/files` | Arquivos - Documentos e Dados | DOCX; PDF/OCR/formulários; XLSX/fórmulas; PPTX/templates; tratamento/análise de dados; redação e comunicação de trabalho. |
+| `skills/zuck` | Zuck - O Marketeiro | Estratégia de marketing; copy; conteúdo; redes; SEO; tráfego; mensuração e ideação de campanhas. |
+| `skills/sales` | Vendas e Negociação — nome próprio em discussão | Inteligência comercial e mercado; prospecção; qualificação; propostas; negociação; fechamento; treinamento de vendas; e-commerce; catálogo; relacionamento e sucesso do cliente. |
+| `skills/gutenberg` | Gutenberg - Documentos e Dados | DOCX; PDF/OCR/formulários; XLSX/fórmulas; PPTX/templates; tratamento/análise de dados; redação e comunicação de trabalho. |
 | `skills/linus` | Linus - Engenheiro de Software | Código; arquitetura; GitHub; MCP; banco/Supabase; segurança; navegador/testes; APIs; infraestrutura/publicação; IA/modelos. |
-| `skills/operations-manager` | Gestor de Operações | Projetos; produto; prioridades; qualidade; fornecedores/compras; estoque/logística; contratos e obrigações; panorama do dia. |
+| `skills/drucker` | Drucker - Gestor de Operações | Projetos; produto; prioridades; qualidade; fornecedores/compras; estoque/logística; contratos e obrigações; panorama do dia. |
 | `skills/people` | Especialista em Pessoas | Recrutamento; seleção; integração; treinamento; feedback; desenvolvimento. |
-| `skills/researcher` | Pesquisador | Fontes/citações; artigos; arXiv; Reddit; RSS; mapas; verificação de informação pública; escrita científica. |
+| `skills/darwin` | Darwin - Pesquisador | Fontes/citações; artigos; arXiv; Reddit; RSS; mapas; verificação de informação pública; escrita científica. |
+| `skills/figma` | Assistente Figma | Arquivos; criação e edição; componentes; bibliotecas; Plugin API; implementação a partir de Figma. |
 | `skills/notion` | Assistente Notion | Páginas; bases; captura de conhecimento; reuniões; pesquisa; planos e implementação. |
 | `skills/google-workspace` | Assistente Google Workspace | Serviços da suíte Google, com referências por serviço e operação. |
 | `skills/obsidian` | Assistente Obsidian | Vaults; notas; links; busca e organização. |
@@ -96,9 +105,10 @@ são conjuntos de instruções, não a quantidade de pacotes finais. Não se imp
 As junções adicionais desta revisão são escolhas propostas pelo agente, não nomes
 ou agrupamentos já aprovados individualmente pelo usuário. Em especial:
 
-- Zuck absorve também vendas e relacionamento com clientes. Contratos e obrigações
-  seguem com Operações, e orçamento/cálculo financeiro com Warren.
-- Arquivos reúne mecanismos de formatos e análise de dados. A junção preserva os
+- Zuck fica restrito a marketing. Vendas e Negociação é um especialista próprio;
+  sua composição absorve as capacidades comerciais retiradas de Zuck. Contratos
+  e obrigações seguem com Drucker; cálculos financeiros com Warren.
+- Gutenberg reúne mecanismos de formatos e análise de dados. A junção preserva os
   motores DOCX/PDF/XLSX/PPTX, scripts e revisão visual; não os transforma em prompts.
 - Engenheiro reúne ferramentas de desenvolvimento. MCP é um só modo, cobrindo
   desenvolvimento, descoberta, autenticação, inspeção de schema e chamada de
@@ -108,11 +118,13 @@ ou agrupamentos já aprovados individualmente pelo usuário. Em especial:
   implementação. Shop e Shopify são pacotes diferentes. A suíte Google conserva
   uma entrada própria; telefonia preserva sua integração técnica independente.
   Panorama do dia passa a Operações. Os limites já propostos para ferramentas
-  de design e desenvolvimento permanecem: Figma em Michelangelo; GitHub e
-  infraestrutura em Linus; pagamentos em Warren.
+  de desenvolvimento permanecem: GitHub, Supabase, MCP e Playwright em Linus;
+  pagamentos em Warren. Figma tem assistente independente, com seus próprios modos.
 - Pessoas reúne recrutamento, treinamento e desenvolvimento. Operações reúne os
   processos de execução; Pesquisador reúne os métodos de pesquisa restantes.
-- Gamificação passa a ser modo de Krug; áudio, voz e transcrição passam a Tarantino.
+- Gamificação passa a ser modo de Krug. Áudio, voz, transcrição e Whisper ficam
+  separados de Tarantino. O tratamento sonoro e as legendas necessários à montagem
+  de um vídeo continuam no fluxo do editor; isso não o torna a skill de transcrição.
 
 Não reduzir além disso por simples contagem: juntar Handoff, arquivos técnicos ou
 integrações a um “faz tudo” tornaria o nome menos útil. A separação por aplicação
@@ -120,15 +132,16 @@ prevalece sobre minimizar o total de entradas.
 
 ### Nomes ainda em discussão
 
-Linus é decisão do usuário. Os quatro nomes abaixo são sugestões editoriais para
-discussão, ainda não nomes aprovados ou aplicados às pastas:
+Gutenberg, Linus, Drucker e Darwin foram aprovados pelo usuário. Carnegie foi
+rejeitado por dificuldade de pronúncia. Restam estas sugestões editoriais:
 
 | Responsabilidade | Sugestão |
 |---|---|
-| Especialista em Pessoas | Carnegie - Especialista em Pessoas |
-| Documentos e Dados | Gutenberg - Documentos e Dados |
-| Gestor de Operações | Drucker - Gestor de Operações |
-| Pesquisador | Darwin - Pesquisador |
+| Especialista em Pessoas | Elton (recomendado), Mayo, Maslow, Simon ou Dale |
+| Vendas e Negociação | Zig (recomendado) ou Chris |
+
+O agrupamento técnico Áudio, Voz e Transcrição usa título descritivo; um nome
+próprio não é necessário para preservar a separação pedida nesta revisão.
 
 ## Fronteiras para tarefas que atravessam especialistas
 
@@ -136,12 +149,12 @@ O pedido determina a liderança; o especialista consulta a referência técnica
 adequada sem duplicar motores. Exemplos:
 
 - “Faça uma apresentação bonita”: Michelangelo define narrativa visual e layout;
-  se a entrega for PPTX editável, usa os recursos de PowerPoint de Arquivos.
+  se a entrega for PPTX editável, usa os recursos de PowerPoint de Gutenberg.
 - “Revise este fluxo de cadastro”: Krug identifica e valida a fricção;
   Michelangelo produz a solução visual quando a tarefa pedir.
 - “Monte um DCF em Excel”: Warren conduz premissas, fórmulas e checks financeiros;
-  Arquivos fornece criação, preservação e verificação de XLSX.
-- “Crie uma landing page para a campanha”: Zuck trabalha proposta/copy e
+  Gutenberg fornece criação, preservação e verificação de XLSX.
+- “Crie uma landing page para a campanha”: Zuck trabalha mensagem e copy da campanha e
   Michelangelo o design. Publicação segue o procedimento interno do Studio.
 - “Crie um servidor MCP e teste a conexão”: um único modo do Engenheiro cobre o
   desenvolvimento e a operação via mcporter, sem contratar outra skill.
@@ -161,9 +174,10 @@ disponibilidade; a ausência é resolvida pelos mecanismos de preparação do St
 | `editor-de-videos` | Tarantino, preservando o pacote técnico existente |
 | `ecommerce-conversion` | Krug |
 | `cfo`, `financial-assistant` | Warren |
-| `commercial-proposals`, `content-creator`, `copywriter`, `customer-success`, `ecommerce-competitors`, `market-researcher`, `marketing-strategist`, `marketing-traffic`, `negotiation`, `product-catalog`, `prospecting`, `sales-coach`, `seo-specialist`, `voice-of-customer` | Zuck |
-| `business-writer`, `data-specialist`, `spreadsheet-specialist` | Arquivos |
-| `contract-assistant`, `inventory`, `logistics`, `procurement`, `product-specialist`, `project-manager`, `quality-specialist` | Operações |
+| `content-creator`, `copywriter`, `marketing-strategist`, `marketing-traffic`, `seo-specialist` | Zuck |
+| `commercial-proposals`, `customer-success`, `ecommerce-competitors`, `market-researcher`, `negotiation`, `product-catalog`, `prospecting`, `sales-coach`, `voice-of-customer` | Vendas e Negociação |
+| `business-writer`, `data-specialist`, `spreadsheet-specialist` | Gutenberg |
+| `contract-assistant`, `inventory`, `logistics`, `procurement`, `product-specialist`, `project-manager`, `quality-specialist` | Drucker |
 | `people-development`, `recruitment`, `training-specialist` | Pessoas |
 | `executive-assistant` | Catálogo de prompts |
 | `skill-manager` | Procedimento interno do Studio, fora de `skills/` |

@@ -2,14 +2,14 @@
   "status": "passed",
   "environment": "jsdom; sem abrir navegador ou aplicativo",
   "initial_rows": 408,
-  "expert_cards": 17,
+  "expert_cards": 20,
   "final_filters": {
     "remove": 173,
     "specialist": 179,
     "prompt": 14,
     "internal": 42
   },
-  "expert_filters": "17 passaram",
+  "expert_filters": "20 passaram",
   "previous_category_filters": {
     "keep": 163,
     "prompt": 15,
