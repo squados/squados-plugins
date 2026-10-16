@@ -56,6 +56,9 @@ exibição; `name` e pasta usam os identificadores em inglês indicados.
 - Reunir UX em Krug, partindo de dont-make-me-think.
 - Reunir vídeo em Tarantino, partindo do editor de vídeos existente.
 - Reunir finanças em Warren - CFO; marketing, redes sociais e tráfego em Zuck.
+- Usar Linus - Engenheiro de Software como nome do especialista de desenvolvimento.
+- Manter assistentes próprios por aplicação; não criar um Assistente de Aplicativos
+  genérico. Reunir os modos da mesma aplicação, como os modos do Notion.
 - Unir 336 + 337; unir 347 + 348. Unir desenvolvimento MCP e operação via mcporter.
 - Handoff continua skill, pois atende à continuidade em nova sessão. As outras
   promoções a prompt permanecem aprovadas.
@@ -65,7 +68,7 @@ exibição; `name` e pasta usam os identificadores em inglês indicados.
 
 ## Composição adicional proposta
 
-O mapa resulta em 179 fontes retidas, reunidas em **12 especialistas**; 173 fontes
+O mapa resulta em 179 fontes retidas, reunidas em **17 especialistas e assistentes**; 173 fontes
 removidas; 14 promovidas a prompt; 42 encaminhadas a instruções internas. Fontes
 são conjuntos de instruções, não a quantidade de pacotes finais. Não se importam
 179 skills para depois esconder seus cartões.
@@ -78,11 +81,16 @@ são conjuntos de instruções, não a quantidade de pacotes finais. Não se imp
 | `skills/warren` | Warren - CFO | Planejamento; caixa; contas; demonstrações; conciliação; variações; valuation; modelos; preços; investimentos; operações de pagamento. |
 | `skills/zuck` | Zuck - O Marketeiro | Estratégia; mercado; copy; conteúdo; redes; SEO; tráfego; mensuração; e-commerce; prospecção; propostas; negociação; vendas e relacionamento. |
 | `skills/files` | Arquivos - Documentos e Dados | DOCX; PDF/OCR/formulários; XLSX/fórmulas; PPTX/templates; tratamento/análise de dados; redação e comunicação de trabalho. |
-| `skills/software-engineer` | Engenheiro de Software | Código; arquitetura; GitHub; MCP; banco/Supabase; segurança; navegador/testes; APIs; infraestrutura/publicação; IA/modelos. |
-| `skills/operations-manager` | Gestor de Operações | Projetos; produto; prioridades; qualidade; fornecedores/compras; estoque/logística; contratos e obrigações. |
+| `skills/linus` | Linus - Engenheiro de Software | Código; arquitetura; GitHub; MCP; banco/Supabase; segurança; navegador/testes; APIs; infraestrutura/publicação; IA/modelos. |
+| `skills/operations-manager` | Gestor de Operações | Projetos; produto; prioridades; qualidade; fornecedores/compras; estoque/logística; contratos e obrigações; panorama do dia. |
 | `skills/people` | Especialista em Pessoas | Recrutamento; seleção; integração; treinamento; feedback; desenvolvimento. |
 | `skills/researcher` | Pesquisador | Fontes/citações; artigos; arXiv; Reddit; RSS; mapas; verificação de informação pública; escrita científica. |
-| `skills/apps` | Assistente de Aplicativos | Notion; Google Workspace; Obsidian; Shop/Shopify; telefonia; panorama do dia. |
+| `skills/notion` | Assistente Notion | Páginas; bases; captura de conhecimento; reuniões; pesquisa; planos e implementação. |
+| `skills/google-workspace` | Assistente Google Workspace | Serviços da suíte Google, com referências por serviço e operação. |
+| `skills/obsidian` | Assistente Obsidian | Vaults; notas; links; busca e organização. |
+| `skills/shop` | Assistente Shop | Busca de produtos; compras; pedidos e devoluções. |
+| `skills/shopify` | Assistente Shopify | Operação da loja; produtos; pedidos; clientes; estoque e metafields. |
+| `skills/telephony` | Assistente de Telefonia | Integração técnica existente de números, mensagens e chamadas; referências por provedor. |
 | `skills/handoff` | Handoff | Passagem verificável de contexto para continuar em nova sessão. |
 
 As junções adicionais desta revisão são escolhas propostas pelo agente, não nomes
@@ -95,16 +103,32 @@ ou agrupamentos já aprovados individualmente pelo usuário. Em especial:
 - Engenheiro reúne ferramentas de desenvolvimento. MCP é um só modo, cobrindo
   desenvolvimento, descoberta, autenticação, inspeção de schema e chamada de
   servidores autorizados. Playwright e interativo são variantes de um modo.
-- Aplicativos reúne integrações de trabalho. Notion deixa de ter skills separadas
-  para captura, reunião, pesquisa e implementação. Figma pertence a Michelangelo;
-  GitHub e infraestrutura ao Engenheiro; pagamentos a Warren.
+- Assistentes de aplicação ficam separados, por correção explícita do usuário.
+  Notion reúne somente seus próprios modos de captura, reunião, pesquisa e
+  implementação. Shop e Shopify são pacotes diferentes. A suíte Google conserva
+  uma entrada própria; telefonia preserva sua integração técnica independente.
+  Panorama do dia passa a Operações. Os limites já propostos para ferramentas
+  de design e desenvolvimento permanecem: Figma em Michelangelo; GitHub e
+  infraestrutura em Linus; pagamentos em Warren.
 - Pessoas reúne recrutamento, treinamento e desenvolvimento. Operações reúne os
   processos de execução; Pesquisador reúne os métodos de pesquisa restantes.
 - Gamificação passa a ser modo de Krug; áudio, voz e transcrição passam a Tarantino.
 
 Não reduzir além disso por simples contagem: juntar Handoff, arquivos técnicos ou
-integrações a um “faz tudo” tornaria o nome menos útil. O número 12 resulta destas
-responsabilidades; não é uma quota arbitrária para futuras inclusões.
+integrações a um “faz tudo” tornaria o nome menos útil. A separação por aplicação
+prevalece sobre minimizar o total de entradas.
+
+### Nomes ainda em discussão
+
+Linus é decisão do usuário. Os quatro nomes abaixo são sugestões editoriais para
+discussão, ainda não nomes aprovados ou aplicados às pastas:
+
+| Responsabilidade | Sugestão |
+|---|---|
+| Especialista em Pessoas | Carnegie - Especialista em Pessoas |
+| Documentos e Dados | Gutenberg - Documentos e Dados |
+| Gestor de Operações | Drucker - Gestor de Operações |
+| Pesquisador | Darwin - Pesquisador |
 
 ## Fronteiras para tarefas que atravessam especialistas
 

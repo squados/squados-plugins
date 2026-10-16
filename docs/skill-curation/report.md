@@ -4,7 +4,7 @@ Segunda curadoria: decisões registradas; composição adicional proposta; pacot
 
 O destino é `squados-plugins/skills`. As fontes pessoais foram evidência da primeira avaliação; não são destino de instalação, exclusão ou publicação.
 
-Cobertura: **408 conjuntos de instruções, 448 IDs originais, 12 especialistas propostos**.
+Cobertura: **408 conjuntos de instruções, 448 IDs originais, 17 especialistas propostos**.
 
 | Destino | Conjuntos de instruções |
 |---|---:|
@@ -23,14 +23,19 @@ Cobertura: **408 conjuntos de instruções, 448 IDs originais, 12 especialistas 
 | `skills/warren` | Warren - CFO | Planejamento e caixa; Contas a pagar e receber; Demonstrações e conciliação; Análise de variações; Valuation e modelos financeiros; Preços e investimentos; Operações de pagamento | 13 |
 | `skills/zuck` | Zuck - O Marketeiro | Estratégia e pesquisa de mercado; Conteúdo e copywriting; Redes sociais e carrosséis; SEO; Tráfego e mensuração; E-commerce e catálogo comercial; Prospecção, propostas e negociação; Vendas e relacionamento com clientes | 18 |
 | `skills/files` | Arquivos - Documentos e Dados | Word e documentos; PDF, OCR e formulários; Planilhas e fórmulas; PowerPoint e templates; Análise e tratamento de dados; Redação e comunicação de trabalho | 17 |
-| `skills/software-engineer` | Engenheiro de Software | Código e arquitetura; GitHub e revisão; Desenvolvimento e operação MCP; Banco e Supabase; Segurança; Navegador e testes; APIs e diagnóstico; Infraestrutura e publicação; IA e modelos | 35 |
-| `skills/operations-manager` | Gestor de Operações | Projetos e execução; Produto e prioridades; Qualidade; Compras e fornecedores; Estoque e logística; Contratos e obrigações | 7 |
+| `skills/linus` | Linus - Engenheiro de Software | Código e arquitetura; GitHub e revisão; Desenvolvimento e operação MCP; Banco e Supabase; Segurança; Navegador e testes; APIs e diagnóstico; Infraestrutura e publicação; IA e modelos | 35 |
+| `skills/operations-manager` | Gestor de Operações | Projetos e execução; Produto e prioridades; Qualidade; Compras e fornecedores; Estoque e logística; Contratos e obrigações; Panorama do dia | 8 |
 | `skills/people` | Especialista em Pessoas | Recrutamento e seleção; Integração e capacitação; Treinamento; Feedback e desenvolvimento | 3 |
 | `skills/researcher` | Pesquisador | Pesquisa com fontes e citações; Artigos e arXiv; Reddit e RSS; Pesquisa geográfica; Verificação de informação pública; Escrita científica | 7 |
-| `skills/apps` | Assistente de Aplicativos | Notion; Google Workspace; Obsidian; Shop e Shopify; Telefonia; Panorama do dia | 15 |
+| `skills/notion` | Assistente Notion | Páginas e bases; Captura de conhecimento; Reuniões; Pesquisa; Planos e implementação | 8 |
+| `skills/google-workspace` | Assistente Google Workspace | Email e agenda; Drive; Docs, Sheets e Slides | 2 |
+| `skills/obsidian` | Assistente Obsidian | Vaults e notas; Busca e links; Organização | 1 |
+| `skills/shop` | Assistente Shop | Catálogo; Compras; Pedidos e devoluções | 1 |
+| `skills/shopify` | Assistente Shopify | Produtos e catálogo; Pedidos e clientes; Estoque e metafields | 1 |
+| `skills/telephony` | Assistente de Telefonia | Números e SMS/MMS; Chamadas; Diagnóstico de provedores | 1 |
 | `skills/handoff` | Handoff | Continuação em nova sessão | 1 |
 
-Os modos são referências internas escolhidas pela tarefa; a pessoa só precisa lembrar do especialista.
+Os modos são referências internas escolhidas pela tarefa; a pessoa só precisa lembrar do especialista. Assistentes de aplicações ficam separados; somente modos da mesma aplicação são reunidos.
 
 ## Mapa completo por ID
 
@@ -48,15 +53,15 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S008 | docx | Juntar | Reunir em especialista: Arquivos - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
 | S009 | frontend-design | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S010 | internal-comms | Juntar | Reunir em especialista: Arquivos - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
-| S011 | mcp-builder | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Desenvolvimento e operação MCP têm uma única entrada e referências próprias. |
+| S011 | mcp-builder | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Desenvolvimento e operação MCP têm uma única entrada e referências próprias. |
 | S012 | pptx | Juntar | Reunir em especialista: Arquivos - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
 | S013 | skill-creator | Instruções da plataforma | Instruções da plataforma: skill-creation/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S014 | slack-gif-creator | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S015 | theme-factory | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
-| S016 | webapp-testing | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S016 | webapp-testing | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S017 | brandkit | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S019 | carrossel-instagram | Manter como skill | Reunir em especialista: Zuck - O Marketeiro | Aquisição, comunicação e crescimento comercial em um especialista. |
-| S020 | deploy-vercel | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S020 | deploy-vercel | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S021 | design-taste-frontend | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S022 | dnd-illustration | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S022. |
 | S023 | docs | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Só encaminha a um conector Docs do Claude e exige seu protocolo de criação; não possui capacidade portável própria. |
@@ -64,7 +69,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S025 | dont-make-me-think | Juntar | Reunir em especialista: Krug - Especialista em UX | Melhora como as pessoas entendem e usam um produto. |
 | S026 | find-skills | Instruções da plataforma | Instruções da plataforma: skill-manager/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S027 | gamification | Manter como skill | Reunir em especialista: Krug - Especialista em UX | Melhora como as pessoas entendem e usam um produto. |
-| S028 | google-workspace | Juntar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
+| S028 | google-workspace | Juntar | Reunir em especialista: Assistente Google Workspace | Opera a suíte Google Workspace, com referências por serviço e operação. |
 | S029 | gpt-taste | Promover a prompt | Promover a prompt: Direção visual de uma página | Pedido reutilizável no catálogo de prompts. O especialista fornece o método ou mecanismo; o prompt só descreve a entrega. |
 | S030 | handoff | Promover a prompt | Reunir em especialista: Handoff | Prepara uma passagem de contexto verificável para continuar o trabalho em outra sessão. |
 | S031 | high-end-visual-design | Promover a prompt | Promover a prompt: Direção visual de uma página | Pedido reutilizável no catálogo de prompts. O especialista fornece o método ou mecanismo; o prompt só descreve a entrega. |
@@ -78,17 +83,17 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S039 | import-memory | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Importa para as ferramentas privadas de memória do Claude; não é o modelo de memória do Studio. |
 | S040 | loop-goal | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S040. |
 | S041 | michelangelo | Adaptar antes de aproveitar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
-| S042 | morning | Adaptar antes de aproveitar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
+| S042 | morning | Adaptar antes de aproveitar | Reunir em especialista: Gestor de Operações | Organiza o trabalho e os processos operacionais da empresa. |
 | S043 | pdf | Juntar | Reunir em especialista: Arquivos - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
 | S044 | pptx | Juntar | Reunir em especialista: Arquivos - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
-| S045 | publish-chrome-webstore | Adaptar antes de aproveitar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S045 | publish-chrome-webstore | Adaptar antes de aproveitar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S046 | redesign-existing-projects | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S047 | relatorio-diario | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S047. |
-| S048 | security-review | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S048 | security-review | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S049 | seo-audit | Juntar | Reunir em especialista: Zuck - O Marketeiro | Aquisição, comunicação e crescimento comercial em um especialista. |
 | S050 | skill-creator | Instruções da plataforma | Instruções da plataforma: skill-creation/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
-| S051 | supabase | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
-| S052 | supabase-postgres-best-practices | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S051 | supabase | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S052 | supabase-postgres-best-practices | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S053 | svg | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S054 | svg-icon | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S055 | telegram-send | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S055. |
@@ -96,7 +101,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S057 | xlsx | Juntar | Reunir em especialista: Arquivos - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
 | S058 | app-review-screencast | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S058. |
 | S059 | imagegen | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
-| S060 | openai-docs | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S060 | openai-docs | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S062 | review-agent | Instruções da plataforma | Instruções da plataforma: development/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S064 | skill-creator | Instruções da plataforma | Instruções da plataforma: skill-creation/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S065 | skill-installer | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Instala skills em CODEX_HOME e orienta reiniciar Codex; o Studio já tem instalador e propostas nativos. |
@@ -139,7 +144,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S102 | box | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S102. |
 | S103 | claude-code | Juntar | Remover da biblioteca: Fora da biblioteca | Aplicar o corte à mesma capacidade/família, inclusive a variantes não agrupadas pelo texto: Delegação de programação por CLI. |
 | S104 | claude-design | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
-| S105 | codebase-inspection | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S105 | codebase-inspection | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S106 | codex | Juntar | Remover da biblioteca: Fora da biblioteca | Aplicar o corte à mesma capacidade/família, inclusive a variantes não agrupadas pelo texto: Delegação de programação por CLI. |
 | S107 | competitor-news-monitor | Adaptar antes de aproveitar | Reunir em especialista: Zuck - O Marketeiro | Aquisição, comunicação e crescimento comercial em um especialista. |
 | S108 | computer-use | Adaptar antes de aproveitar | Instruções da plataforma: prepare-computer/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
@@ -150,8 +155,8 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S113 | email-inbox-triage | Promover a prompt | Promover a prompt: Organizar a caixa de entrada | Pedido reutilizável no catálogo de prompts. O especialista fornece o método ou mecanismo; o prompt só descreve a entrega. |
 | S114 | findmy | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S114. |
 | S115 | gif-search | Descartar por baixo valor | Remover da biblioteca: Fora da biblioteca | Busca/download de GIF por uma API simples; baixo ganho frente ao pedido e às ferramentas existentes. |
-| S116 | github | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
-| S117 | google-workspace | Manter como skill | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
+| S116 | github | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S117 | google-workspace | Manter como skill | Reunir em especialista: Assistente Google Workspace | Opera a suíte Google Workspace, com referências por serviço e operação. |
 | S118 | grounded-citations | Manter como skill | Reunir em especialista: Pesquisador | Método de investigação e fontes especializadas para perguntas de pesquisa. |
 | S119 | hermes-agent | Instruções da plataforma | Instruções da plataforma: skill-manager/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. Preservar a dependência nativa exigida pelo Hermes; ocultar da seleção não autoriza apagá-la do runtime. |
 | S120 | hermes-agent-skill-authoring | Instruções da plataforma | Instruções da plataforma: skill-creation/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
@@ -164,15 +169,15 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S127 | maps | Manter como skill | Reunir em especialista: Pesquisador | Método de investigação e fontes especializadas para perguntas de pesquisa. |
 | S128 | meeting-action-items | Promover a prompt | Promover a prompt: Transformar reunião em decisões e tarefas | Pedido reutilizável no catálogo de prompts. O especialista fornece o método ou mecanismo; o prompt só descreve a entrega. |
 | S129 | node-inspect-debugger | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S129. |
-| S130 | notion | Juntar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
-| S131 | obsidian | Manter como skill | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
+| S130 | notion | Juntar | Reunir em especialista: Assistente Notion | Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação. |
+| S131 | obsidian | Manter como skill | Reunir em especialista: Assistente Obsidian | Opera o Obsidian preservando notas, links e estrutura do vault. |
 | S132 | opencode | Juntar | Remover da biblioteca: Fora da biblioteca | Aplicar o corte à mesma capacidade/família, inclusive a variantes não agrupadas pelo texto: Delegação de programação por CLI. |
 | S133 | p5js | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S133. |
 | S134 | pdf | Manter como skill | Reunir em especialista: Arquivos - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
 | S135 | popular-web-designs | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S136 | powerpoint | Manter como skill | Reunir em especialista: Arquivos - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
 | S137 | product-price-monitor | Adaptar antes de aproveitar | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
-| S138 | python-debugpy | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S138 | python-debugpy | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S139 | requesting-code-review | Instruções da plataforma | Instruções da plataforma: development/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S140 | sdlc-review | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Exige ferramentas kanban_show e review lanes de um Kanban não integrado como fluxo do Studio. |
 | S141 | simplify-code | Instruções da plataforma | Instruções da plataforma: development/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
@@ -192,7 +197,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S155 | accelerate | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S155. |
 | S156 | actual-setup | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Troca/configura o provider de inferência Hermes diretamente, fora das contas/modelos geridos pelo Studio. |
 | S157 | adversarial-ux-test | Juntar | Reunir em especialista: Krug - Especialista em UX | Melhora como as pessoas entendem e usam um produto. |
-| S158 | agent-merge-conflict-arbiter | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S158 | agent-merge-conflict-arbiter | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S159 | agentmail | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S159. |
 | S160 | ai-presenter-video | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S160. |
 | S161 | anatomy | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
@@ -214,7 +219,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S177 | chroma | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S177. |
 | S178 | clip | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S178. |
 | S179 | cloudflare-temporary-deploy | Juntar | Remover da biblioteca: Fora da biblioteca | Aplicar o corte à mesma capacidade/família, inclusive a variantes não agrupadas pelo texto: Deploy Cloudflare. |
-| S180 | code-wiki | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S180 | code-wiki | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S181 | comfyui | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S182 | comps-analysis | Juntar | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
 | S183 | concept-diagrams | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
@@ -222,7 +227,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S185 | darwinian-evolver | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S185. |
 | S186 | dcf-model | Juntar | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
 | S187 | decision-questionnaire | Promover a prompt | Promover a prompt: Preparar questionário para uma decisão | Pedido reutilizável no catálogo de prompts. O especialista fornece o método ou mecanismo; o prompt só descreve a entrega. |
-| S188 | docker-management | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S188 | docker-management | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S189 | domain-intel | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S189. |
 | S190 | draw-your-font | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S191 | dream-loop | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S191. |
@@ -230,12 +235,12 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S193 | dspy | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S193. |
 | S194 | duckduckgo-search | Instruções da plataforma | Instruções da plataforma: Pesquisa web — referências de diagnóstico | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S195 | dynamic-workflow | Instruções da plataforma | Instruções da plataforma: planning/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
-| S196 | evaluating-llms-harness | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S196 | evaluating-llms-harness | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S197 | evm | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S197. |
 | S198 | excalidraw | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S199 | excel-author | Juntar | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
 | S200 | faiss | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S200. |
-| S201 | fastmcp | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Desenvolvimento e operação MCP têm uma única entrada e referências próprias. |
+| S201 | fastmcp | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Desenvolvimento e operação MCP têm uma única entrada e referências próprias. |
 | S202 | first-task | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Fluxo inicial pressupõe ferramentas de setup/conexão/preview do Hermes Desktop upstream. |
 | S203 | fitness-nutrition | Descartar por baixo valor | Remover da biblioteca: Fora da biblioteca | Planejamento de academia/nutrição foge do foco de trabalho/criação do catálogo; não é falta de conteúdo técnico. |
 | S204 | flash-attention | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S204. |
@@ -243,14 +248,14 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S206 | godmode | Descartar por baixo valor | Remover da biblioteca: Fora da biblioteca | Objetivo central é aplicar jailbreaks de modelos; não corresponde a capacidade de trabalho desejada para este catálogo. |
 | S207 | grill-me | Instruções da plataforma | Instruções da plataforma: planning/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S208 | grok | Juntar | Remover da biblioteca: Fora da biblioteca | Aplicar o corte à mesma capacidade/família, inclusive a variantes não agrupadas pelo texto: Delegação de programação por CLI. |
-| S209 | guidance | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S209 | guidance | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S210 | har-derived-api-client | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S210. |
 | S211 | heartmula | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S211. |
 | S212 | here-now | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S212. |
 | S213 | hermes-s6-container-supervision | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Administra o s6-overlay da imagem Docker Hermes; o Studio embarcado não é essa distribuição. |
 | S214 | honcho | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Configura memória Honcho diretamente no Hermes; não corresponde ao modelo de memória aprovado no Studio. |
-| S215 | huggingface-hub | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
-| S216 | huggingface-tokenizers | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S215 | huggingface-hub | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S216 | huggingface-tokenizers | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S217 | hyperframes | Manter como skill | Reunir em especialista: Tarantino - Editor de Vídeos | Edição audiovisual com o pacote de vídeo existente e referências de áudio. |
 | S218 | hyperliquid | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S218. |
 | S219 | impeccable | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
@@ -266,7 +271,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S229 | llama-cpp | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S229. |
 | S230 | llava | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S230. |
 | S231 | mcp-oauth-remote-gateway | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Gerencia tokens e OAuth de gateway Hermes remoto manualmente; não é a autenticação suportada do Studio. |
-| S232 | mcporter | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Desenvolvimento e operação MCP têm uma única entrada e referências próprias. |
+| S232 | mcporter | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Desenvolvimento e operação MCP têm uma única entrada e referências próprias. |
 | S233 | meme-generation | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S234 | memento-flashcards | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S234. |
 | S235 | merger-model | Juntar | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
@@ -287,7 +292,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S250 | page-agent | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S250. |
 | S251 | parallel-cli | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S251. |
 | S252 | peft | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S252. |
-| S253 | pinecone | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S253 | pinecone | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S254 | pinecone-research | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S254. |
 | S255 | pinggy-tunnel | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S255. |
 | S256 | pixel-art | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
@@ -304,7 +309,7 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S267 | qmd | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S267. |
 | S268 | reddit-reading | Manter como skill | Reunir em especialista: Pesquisador | Método de investigação e fontes especializadas para perguntas de pesquisa. |
 | S269 | research-paper-writing | Manter como skill | Reunir em especialista: Pesquisador | Método de investigação e fontes especializadas para perguntas de pesquisa. |
-| S270 | rest-graphql-debug | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S270 | rest-graphql-debug | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S271 | rss-feeds | Manter como skill | Reunir em especialista: Pesquisador | Método de investigação e fontes especializadas para perguntas de pesquisa. |
 | S272 | saelens | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S272. |
 | S273 | scrapling | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S273. |
@@ -314,8 +319,8 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S277 | serving-llms-vllm | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S277. |
 | S278 | setup-wizard-generator | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S278. |
 | S279 | sherlock | Manter como skill | Reunir em especialista: Pesquisador | Método de investigação e fontes especializadas para perguntas de pesquisa. |
-| S280 | shop | Manter como skill | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
-| S281 | shopify | Manter como skill | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
+| S280 | shop | Manter como skill | Reunir em especialista: Assistente Shop | Opera o Shop para busca de produtos e acompanhamento de compras. |
+| S281 | shopify | Manter como skill | Reunir em especialista: Assistente Shopify | Opera a loja Shopify e seus dados autorizados. |
 | S282 | simple-english | Descartar por baixo valor | Remover da biblioteca: Fora da biblioteca | Retirada editorial expressamente indicada pelo usuário; há método ASD-STE100, mas não merece espaço neste catálogo. |
 | S283 | simpo | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S283. |
 | S284 | siyuan | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S284. |
@@ -326,10 +331,10 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S289 | stable-diffusion | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S290 | stocks | Manter como skill | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
 | S291 | stripe-link-cli | Manter como skill | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
-| S292 | stripe-projects | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S292 | stripe-projects | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S293 | subagent-driven-development | Instruções da plataforma | Instruções da plataforma: development/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S294 | system-atlas | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
-| S295 | telephony | Manter como skill | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
+| S295 | telephony | Manter como skill | Reunir em especialista: Assistente de Telefonia | Opera a integração de telefonia existente com referências para os provedores disponíveis. |
 | S296 | tensorrt-llm | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S296. |
 | S297 | tldraw-offline | Manter como skill | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S298 | torchtitan | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S298. |
@@ -355,42 +360,42 @@ Os IDs e aliases da primeira revisão foram preservados. Nenhum item ficou sem d
 | S318, S362 | figma-generate-library | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S319, S363 | figma-implement-design | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S320, S364 | figma-use | Juntar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
-| S321, S365 | gh-address-comments | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
-| S322, S366 | gh-fix-ci | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S321, S365 | gh-address-comments | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S322, S366 | gh-fix-ci | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S323, S367 | hatch-pet | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Cria pets no formato/lifecycle do Codex; não é uma capacidade de pet do Studio. |
 | S324 | imagegen | Adaptar antes de aproveitar | Reunir em especialista: Michelangelo - Designer | Toda a direção e produção visual; parte da skill Michelangelo existente. |
 | S325, S368 | jupyter-notebook | Juntar | Remover da biblioteca: Fora da biblioteca | Aplicar o corte à mesma capacidade/família, inclusive a variantes não agrupadas pelo texto: Notebooks e kernel Jupyter. |
 | S326, S369 | linear | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S326. |
 | S327, S370 | migrate-to-codex | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Migra configurações/agents para Codex; destino e runtime são outros. |
 | S328, S371 | netlify-deploy | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S328. |
-| S329, S372 | notion-knowledge-capture | Juntar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
-| S330, S373 | notion-meeting-intelligence | Juntar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
-| S331, S374 | notion-research-documentation | Juntar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
-| S332, S375 | notion-spec-to-implementation | Juntar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
-| S333, S376 | openai-docs | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
-| S334 | openai-docs | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S329, S372 | notion-knowledge-capture | Juntar | Reunir em especialista: Assistente Notion | Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação. |
+| S330, S373 | notion-meeting-intelligence | Juntar | Reunir em especialista: Assistente Notion | Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação. |
+| S331, S374 | notion-research-documentation | Juntar | Reunir em especialista: Assistente Notion | Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação. |
+| S332, S375 | notion-spec-to-implementation | Juntar | Reunir em especialista: Assistente Notion | Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação. |
+| S333, S376 | openai-docs | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S334 | openai-docs | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S335, S377 | pdf | Juntar | Reunir em especialista: Arquivos - Documentos e Dados | Reúne as capacidades técnicas DOCX, PDF, XLSX e PPTX, com scripts e verificação por formato. |
-| S061, S336 | playwright | Adaptar antes de aproveitar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Atende à união explícita de 336 + 337 no modo Navegador e testes. |
-| S337, S378 | playwright-interactive | Adaptar antes de aproveitar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Atende à união explícita de 336 + 337 no modo Navegador e testes. |
+| S061, S336 | playwright | Adaptar antes de aproveitar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Atende à união explícita de 336 + 337 no modo Navegador e testes. |
+| S337, S378 | playwright-interactive | Adaptar antes de aproveitar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. Atende à união explícita de 336 + 337 no modo Navegador e testes. |
 | S338 | plugin-creator | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Gera plugin .codex-plugin/plugin.json; não é pacote de extensão Hermes/Studio. |
 | S339, S379 | render-deploy | Adaptar antes de aproveitar | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S339. |
 | S063, S340 | screenshot | Adaptar antes de aproveitar | Instruções da plataforma: prepare-computer/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
-| S341, S380 | security-best-practices | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
-| S342, S381 | security-ownership-map | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
-| S343, S382 | security-threat-model | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
-| S344, S383 | sentry | Manter como skill | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S341, S380 | security-best-practices | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S342, S381 | security-ownership-map | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S343, S382 | security-threat-model | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S344, S383 | sentry | Manter como skill | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S345 | skill-creator | Instruções da plataforma | Instruções da plataforma: skill-creation/guide.md | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
 | S346 | skill-installer | Descartar por incompatibilidade | Remover da biblioteca: Fora da biblioteca | Instala skills em CODEX_HOME e orienta reiniciar Codex; o Studio já tem instalador e propostas nativos. |
 | S347, S384 | speech | Adaptar antes de aproveitar | Reunir em especialista: Tarantino - Editor de Vídeos | Edição audiovisual com o pacote de vídeo existente e referências de áudio. Atende à união explícita de 347 + 348 nos modos de áudio. |
 | S348, S385 | transcribe | Adaptar antes de aproveitar | Reunir em especialista: Tarantino - Editor de Vídeos | Edição audiovisual com o pacote de vídeo existente e referências de áudio. Atende à união explícita de 347 + 348 nos modos de áudio. |
-| S349, S386 | vercel-deploy | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S349, S386 | vercel-deploy | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S350, S387 | winui-app | Manter como skill | Remover da biblioteca: Fora da biblioteca | Remover esta capacidade e suas variantes da biblioteca pública. IDs indicados: S350. |
-| S351, S388 | yeet | Juntar | Reunir em especialista: Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
+| S351, S388 | yeet | Juntar | Reunir em especialista: Linus - Engenheiro de Software | Reúne desenvolvimento, ferramentas de programação e operação técnica. |
 | S389 | call-prep | Promover a prompt | Promover a prompt: Preparar reunião comercial | Pedido reutilizável no catálogo de prompts. O especialista fornece o método ou mecanismo; o prompt só descreve a entrega. |
 | S390 | content-creation | Promover a prompt | Promover a prompt: Criar conteúdo para um canal | Pedido reutilizável no catálogo de prompts. O especialista fornece o método ou mecanismo; o prompt só descreve a entrega. |
-| S391 | notion-meeting-intelligence | Juntar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
-| S392 | notion-research-documentation | Juntar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
-| S393 | notion-spec-to-implementation | Juntar | Reunir em especialista: Assistente de Aplicativos | Opera aplicativos conectados, com uma referência por integração e operação. |
+| S391 | notion-meeting-intelligence | Juntar | Reunir em especialista: Assistente Notion | Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação. |
+| S392 | notion-research-documentation | Juntar | Reunir em especialista: Assistente Notion | Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação. |
+| S393 | notion-spec-to-implementation | Juntar | Reunir em especialista: Assistente Notion | Opera o Notion; reúne as variantes de Notion em uma única skill da aplicação. |
 | S394 | reconciliation | Juntar | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
 | S395 | variance-analysis | Juntar | Reunir em especialista: Warren - CFO | Finanças da empresa, modelagem e análise financeira. |
 | S396 | hermes-update | Instruções da plataforma | Instruções da plataforma: Documentação do mantenedor — atualizar Hermes | Orientação operacional do Studio, acessada por tarefa. Revisar o conteúdo útil e incorporar ao procedimento existente; sem cartão selecionável ou cópia integral de outro harness. |
