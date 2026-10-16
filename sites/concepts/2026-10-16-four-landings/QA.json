@@ -1,0 +1,24 @@
+{
+  "purpose": "Validação da galeria de conceitos estáticos; não valida os templates finais",
+  "errors": [],
+  "checks": [
+    "4 PNGs íntegros, com dimensões horizontais e SHA-256 correspondente",
+    "Galeria com quatro marcas, imagens decodificadas, status e links locais válidos",
+    "Primeira imagem acessível pelo teclado",
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "horizontalOverflow": false
+    }
+  ],
+  "pass": true
+}

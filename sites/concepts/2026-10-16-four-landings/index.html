@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quatro conceitos de landing pages · SquadOS</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f3ed; color: #202e28; font: 16px/1.6 system-ui, sans-serif; }
+    main { max-width: 1580px; margin: auto; padding: 48px 32px 70px; }
+    header { max-width: 920px; margin-bottom: 34px; }
+    .eyebrow { color: #5d6c60; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { font-size: clamp(30px, 4.3vw, 60px); line-height: 1.08; letter-spacing: -.045em; margin: 12px 0 18px; }
+    header p { color: #5b685f; }
+    .status { display: inline-block; background: #e5ebdc; border: 1px solid #cbd5be; padding: 7px 13px; border-radius: 30px; font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+    article { border-radius: 16px; border: 1px solid #d5d9cd; overflow: hidden; background: #fff; }
+    .preview { display: block; }
+    .preview img { display: block; width: 100%; height: auto; }
+    .copy { padding: 24px 26px 27px; }
+    .category { font-size: 12px; color: #687565; }
+    h2 { margin: 4px 0 8px; font-size: 29px; letter-spacing: -.025em; }
+    .copy p { margin: 8px 0; color: #59675c; }
+    .planned { padding-top: 12px; border-top: 1px solid #e5e8df; font-size: 14px; }
+    a { color: #246747; text-underline-offset: 4px; }
+    a:focus-visible { outline: 3px solid #d77b5c; outline-offset: 4px; }
+    footer { margin-top: 32px; color: #64705f; font-size: 13px; max-width: 1050px; }
+    @media (max-width: 760px) { main { padding: 28px 18px 48px; } .grid { grid-template-columns: 1fr; gap: 22px; } .copy { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">SquadOS Studio · 16/10/2026 · ImageGen nativo</div>
+      <h1>Quatro marcas.<br>Quatro primeiras impressões.</h1>
+      <p>Propostas de abertura para os templates one-page. As referências já estão escolhidas; agora validamos marcas, composição e arte próprias. Clique em cada imagem para vê-la no tamanho original.</p>
+      <span class="status">Conceitos estáticos · aguardando validação</span>
+    </header>
+    <section class="grid" aria-label="Conceitos dos quatro templates">
+      <article>
+        <a class="preview" href="trama-hero.png" aria-label="Ver conceito da Trama em tamanho original"><img src="trama-hero.png" alt="Trama: instrutora fictícia e materiais de uma formação digital, em ameixa, creme e coral."></a>
+        <div class="copy"><div class="category">Infoproduto / Marketing Digital · referência Flux Academy</div><h2>Trama</h2><p>Escola de negócios digitais. Uma abertura com retrato, materiais e uma promessa de formação.</p><p class="planned"><strong>Interações previstas:</strong> módulos com prévia, aula demonstrativa, FAQ e inscrição local.</p></div>
+      </article>
+      <article>
+        <a class="preview" href="nortea-hero.png" aria-label="Ver conceito da Nortea em tamanho original"><img src="nortea-hero.png" alt="Nortea: abertura editorial de consultoria, com fotos e relatórios em verde-petróleo e marfim."></a>
+        <div class="copy"><div class="category">Corporativo · referência BCG</div><h2>Nortea</h2><p>Consultoria de operações. Tipografia editorial, fotografia e uma composição sóbria e espaçosa.</p><p class="planned"><strong>Interações previstas:</strong> serviços e casos selecionáveis, detalhes expansíveis e contato local.</p></div>
+      </article>
+      <article>
+        <a class="preview" href="orbe-hero.png" aria-label="Ver conceito da Orbe em tamanho original"><img src="orbe-hero.png" alt="Orbe: halo de luz em azul e lilás atrás de um painel de produto frontal."></a>
+        <div class="copy"><div class="category">Futurista · referência Reflect</div><h2>Orbe</h2><p>Workspace de inteligência. Luz, camadas e diagrama 2D com um painel de produto próprio.</p><p class="planned"><strong>Interações previstas:</strong> demonstração com capacidades selecionáveis, troca de painel e comparação de planos.</p></div>
+      </article>
+      <article>
+        <a class="preview" href="pipa-hero.png" aria-label="Ver conceito da Pipa em tamanho original"><img src="pipa-hero.png" alt="Pipa: personagens 2D desenhando e inventando, com mascote-pipa em cores quentes."></a>
+        <div class="copy"><div class="category">Divertido · referência Headspace</div><h2>Pipa</h2><p>Escola criativa. Personagens originais, formas acolhedoras e pequenas experiências de criação.</p><p class="planned"><strong>Interações previstas:</strong> seletor de atividades, troca de ilustração, experiência demonstrativa e inscrição local.</p></div>
+      </article>
+    </section>
+    <footer><p>Estas imagens foram geradas no ImageGen nativo. Não são páginas implementadas. Os templates finais terão textos, navegação e controles reais, arte separada e interações locais funcionando, após a validação solicitada.</p><p><a href="README.md">Ler escopo e limites</a> · <a href="prompts.json">Ver prompts de geração</a></p></footer>
+  </main>
+</body>
+</html>

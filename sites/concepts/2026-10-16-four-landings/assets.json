@@ -1,0 +1,39 @@
+{
+  "mode": "native-imagegen",
+  "generatedAt": "2026-10-16",
+  "status": "awaiting-user-validation",
+  "images": [
+    {
+      "id": "trama",
+      "file": "trama-hero.png",
+      "width": 1586,
+      "height": 992,
+      "bytes": 2126883,
+      "sha256": "6f968dc7207cfc9106f7f6e7d0a776bc330d7ffce4f078e94b1db6d58c59ebfe"
+    },
+    {
+      "id": "nortea",
+      "file": "nortea-hero.png",
+      "width": 1586,
+      "height": 992,
+      "bytes": 1873774,
+      "sha256": "e74fdced18cc501d5072ac56ab776301b65d246ffca67f283e7cec56576f3314"
+    },
+    {
+      "id": "orbe",
+      "file": "orbe-hero.png",
+      "width": 1586,
+      "height": 992,
+      "bytes": 1609096,
+      "sha256": "ec8c909481a2cbfe1cba1d849d49e32bbb594f236fadf2abee82de9255dd0ec8"
+    },
+    {
+      "id": "pipa",
+      "file": "pipa-hero.png",
+      "width": 1586,
+      "height": 992,
+      "bytes": 1629227,
+      "sha256": "9842a8d91de86a539a295734c187d9338f65e3486fbfc259d05cd6c2101c08fa"
+    }
+  ]
+}
