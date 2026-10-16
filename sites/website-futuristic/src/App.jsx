@@ -240,6 +240,7 @@ export default function App() {
 	const [confirmed, setConfirmed] = useState(false);
 	const dialogRef = useRef(null),
 		resultRef = useRef(null),
+		searchInput = useRef(null),
 		ideaInput = useRef(null);
 	const config = modes[mode];
 	const filteredNotes = notes.filter((note) =>
@@ -417,6 +418,7 @@ export default function App() {
 												<div className="search-field">
 													<Icon name="search" size={16} />
 													<input
+														ref={searchInput}
 														type="search"
 														aria-label="Buscar ideias"
 														placeholder="Buscar ideias..."
@@ -426,7 +428,10 @@ export default function App() {
 													{query && (
 														<button
 															aria-label="Limpar busca"
-															onClick={() => setQuery("")}
+															onClick={() => {
+																setQuery("");
+																searchInput.current?.focus();
+															}}
 														>
 															<Icon name="close" size={14} />
 														</button>

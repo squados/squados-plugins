@@ -895,7 +895,8 @@ svg  {
 }
 .lesson-summary p  {
   margin: 4px 0 13px;
-  font-size: 14px
+  font-size: 14px;
+  overflow-wrap: anywhere
 }
 .lesson-summary p:last-child  {
   margin-bottom: 0
