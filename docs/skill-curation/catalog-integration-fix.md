@@ -48,3 +48,11 @@ opcionais foram puladas. Não há claim de gate geral ou smoke completo aprovado
 Nenhum perfil pessoal foi alterado diretamente pela sessão. As provas usam
 cópias dentro do scratch dos repositórios. A reconciliação roda no aplicativo
 atualizado; não é uma limpeza manual do computador. Push/publicação não executados.
+
+## Integração local
+
+Plugins: 42e258d. Desktop: 9485bb9f, a81e5f90 e affbf426, em main. Catálogos e
+vinte imagens foram comparados diretamente nos blobs HEAD dos dois repositórios,
+sem diferenças. As alterações simultâneas de importação/remoção de skills ficaram
+fora destes commits e foram preservadas no worktree. O lote posterior à integração
+passou com81testes/11arquivos; typecheck e check dos onze paths passaram.
