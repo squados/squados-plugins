@@ -24,9 +24,9 @@ one only pastes its text into the message bar; the person still submits it.
 
 ## Biblioteca de especialistas
 
-A [biblioteca de 20 especialistas](docs/skills-de-trabalho-pacotes.md) reúne métodos,
+A [biblioteca de 19 especialistas](docs/skills-de-trabalho-pacotes.md) reúne métodos,
 scripts e referências sob demanda. Inclui Michelangelo, Tarantino, Krug, Warren,
-Zuck, Flavio, Gutenberg, Linus, Drucker, Maslow e Darwin, além de Áudio, Handoff e
+Zuck, Flavio, Gutenberg, Linus, Drucker, Maslow e Darwin, além de Áudio e
 assistentes separados por aplicação. A pessoa descreve a tarefa; modos são internos.
 
 As 35 skills próprias anteriores foram consolidadas. Prompts simples ficam em
@@ -49,12 +49,12 @@ O índice tem até 1 MB, 500 itens e 50 áreas. Cada item tem `id`, `area`, `tit
 Nesta seleção, todas as fontes são `{ "type": "squados", "path": "skills/<nome>" }`.
 Editorial contém apresentação, exemplos, capa, proveniência, licença e requisitos.
 O catálogo pode evoluir sem transformar autoria de terceiros em autoria SquadOS.
-As [vinte capas](assets/README.md) são autorais e têm fonte SVG editável.
+As [capas](assets/README.md) são autorais e têm fonte SVG editável.
 
 ## Pacotes, requisitos e licenças
 
 Cada pasta possui `SKILL.md`, licença e recursos necessários. Copiar somente a
-entrada perde scripts, contratos, templates ou referências. Os vinte bundles
+entrada perde scripts, contratos, templates ou referências. Os dezenove bundles
 atuais cabem em 100 arquivos/4 MiB e são texto UTF-8, sem binários embutidos.
 Dependências e recursos de execução são preparados pelo procedimento do modo;
 não se presume conta, programa ou biblioteca instalada.
@@ -65,7 +65,7 @@ As fontes incorporadas e consultadas são distinguidas em `references/provenance
 avisos integrais e termos de componentes permanecem no pacote. A licença MIT da
 raiz não substitui a licença de conteúdo externo.
 
-Execute `python scripts/verify-skills.py` para conferir os vinte pacotes e o índice.
+Execute `python scripts/verify-skills.py` para conferir os dezenove pacotes e o índice.
 Os checks do consumidor e a instalação isolada têm evidência no
 [estado de entrega](docs/skills-de-trabalho-status.md). Estrutura, preparação,
 instalação, uso real autenticado e publicação são estados diferentes.

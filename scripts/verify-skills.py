@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
     'michelangelo', 'tarantino', 'audio', 'krug', 'warren', 'zuck', 'flavio',
     'gutenberg', 'linus', 'drucker', 'maslow', 'darwin', 'figma', 'notion',
-    'google-workspace', 'obsidian', 'shop', 'shopify', 'telephony', 'handoff',
+    'google-workspace', 'obsidian', 'shop', 'shopify', 'telephony',
 }
 SUPPORT = {'references', 'scripts', 'assets', 'templates', 'examples'}
 errors = []
@@ -136,8 +136,8 @@ def main():
 
     gallery = json.loads((ROOT / 'gallery.json').read_text(encoding='utf-8'))
     items = gallery['items']
-    if len(items) != 20 or {item['id'] for item in items} != EXPECTED:
-        fail('gallery', 'deve conter somente os vinte pacotes aprovados')
+    if len(items) != len(EXPECTED) or {item['id'] for item in items} != EXPECTED:
+        fail('gallery', 'deve conter somente os pacotes aprovados')
     areas = {area['id'] for area in gallery['areas']}
     for item in items:
         if item.get('editorial', {}).get('reviewedRevision') != package_revision(ROOT / 'skills' / item['id']):

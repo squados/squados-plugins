@@ -840,10 +840,10 @@
         "path": "skills/handoff"
       },
       "reviewedRevision": "sha256-lf:b58a7461d550ed12f51989aab959b731b3ac5883ecc7a6b818047c8620109da5",
-      "status": "ready",
+      "status": "unsupported",
       "reason": {
-        "pt-BR": "Pacote consolidado revisto com recursos, dependências e proveniência por arquivo.",
-        "en": "Reviewed consolidated package with resources, dependencies and per-file provenance."
+        "pt-BR": "Transferido para resources/instructions/handoff/guide.md no Desktop como procedimento interno sob demanda.",
+        "en": "Moved to resources/instructions/handoff/guide.md in Desktop as an on-demand internal procedure."
       }
     }
   ]

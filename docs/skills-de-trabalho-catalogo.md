@@ -1,6 +1,6 @@
 # Biblioteca de especialistas do SquadOS Studio
 
-Composição aprovada e implementada em 16/10/2026: **20 pacotes** com modos sob
+Composição aprovada e implementada em 16/10/2026: **19 pacotes** com modos sob
 demanda. Flavio cuida de vendas e negociação; Maslow, de pessoas. Cada entrada
 carrega só o método necessário. Assistentes permanecem separados por aplicação.
 
@@ -25,7 +25,6 @@ carrega só o método necessário. Assistentes permanecem separados por aplicaç
 | [Assistente Shop](../skills/shop/SKILL.md) | Catálogo; Compras; Pedidos e devoluções |
 | [Assistente Shopify](../skills/shopify/SKILL.md) | Produtos e catálogo; Pedidos e clientes; Estoque e metafields |
 | [Assistente de Telefonia](../skills/telephony/SKILL.md) | Números e SMS/MMS; Chamadas; Diagnóstico de provedores |
-| [Handoff](../skills/handoff/SKILL.md) | Continuação em nova sessão |
 
 Figma é independente de Michelangelo. Transcrição e voz ficam em Áudio; Tarantino
 cria e edita vídeos. Zuck concentra marketing, conteúdo, copy, redes, SEO e tráfego;
@@ -38,7 +37,7 @@ por baixo valor, incompatibilidade, origem Cursor e IDs explícitos estão no
 pesquisáveis na [classificação navegável](skill-curation/classification.html).
 
 O catálogo [gallery.json](../gallery.json) e seu espelho no Desktop contêm somente
-os vinte pacotes. A apresentação v2 inclui exemplos, requisitos e capas editoriais
+os dezenove pacotes. A apresentação v2 inclui exemplos, requisitos e capas editoriais
 próprias, com SVGs editáveis em assets; a capa ilustra a categoria, sem provar execução.
 Cada pacote registra conteúdo incorporado, licenças e fontes apenas consultadas
 em references/provenance.json. Fontes consultadas não significam código copiado.
@@ -49,3 +48,6 @@ nos guias condicionais existentes e documentos do mantenedor, fora das skills
 selecionáveis. Consulte [o mapa de destinos](skill-curation/migration-map.json).
 
 Verificação e limites: [estado de entrega](skills-de-trabalho-status.md).
+
+Handoff foi transferido para o procedimento interno sob demanda
+`resources/instructions/handoff/guide.md` no Desktop.

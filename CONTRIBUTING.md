@@ -43,7 +43,7 @@ Crie `skills/<nome>/SKILL.md`:
 - `license` no frontmatter;
 - somente texto no bundle; credenciais ficam fora do pacote; arquivos de apoio só em `references/`, `templates/`, `scripts/` ou `assets/`.
 
-Evite criar outro cartão quando um modo de especialista existente resolver. Procedimentos internos não são skills selecionáveis. Rode `python scripts/verify-skills.py` e os checks afetados; preserve o limite de vinte destinos salvo decisão explícita de produto.
+Evite criar outro cartão quando um modo de especialista existente resolver. Procedimentos internos não são skills selecionáveis. Rode `python scripts/verify-skills.py` e os checks afetados; preserve o limite de dezenove destinos salvo decisão explícita de produto.
 
 Depois acrescente o item correspondente em `gallery.json`, com `"source": { "type": "squados", "path": "skills/<nome>" }`.
 

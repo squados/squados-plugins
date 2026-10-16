@@ -28,7 +28,7 @@ não entram nesta vitrine. **Curadoria SquadOS não significa autoria SquadOS:**
 informe as fontes incorporadas/consultadas, preserve autoria e licença e não
 apresente código de terceiros como próprio.
 
-A composição aprovada em 16/10/2026 contém vinte especialistas próprios,
+A composição aprovada em 16/10/2026 contém dezenove especialistas próprios,
 com modos internos. Confira `docs/skills-de-trabalho-catalogo.md` e a curadoria
 completa em `docs/skill-curation/`. Prompts simples vão para `prompts/`;
 instruções da plataforma ficam nos guias condicionais do Desktop. Fontes Cursor

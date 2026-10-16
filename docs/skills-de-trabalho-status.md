@@ -5,8 +5,13 @@ Inclui rejeição de caches anteriores, snapshots completos, filtros SquadOS/Out
 reconciliação nativa das cópias de fábrica e vinte capas próprias com fonte SVG.
 
 Implementada localmente nos dois repositórios, sem push/publicação. Biblioteca com
-20 pacotes; prompts com 147 pedidos; instruções internas em progressive disclosure.
+19 pacotes; prompts com 147 pedidos; instruções internas em progressive disclosure.
 O relatório histórico cobre 408 conjuntos, 448 IDs e 498 exemplares originais.
+
+Handoff foi transferido para `resources/instructions/handoff/guide.md` no Desktop,
+como procedimento interno sob demanda. Catálogo, espelho e curadoria refletem a
+retirada. As provas abaixo dos vinte pacotes registram o estado anterior a essa
+transferência; não comprovam publicação remota da seleção atual.
 
 ## Evidência observada
 
