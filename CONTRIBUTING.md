@@ -23,11 +23,10 @@ installation is needed.
 
 ## 1. Acrescentar um item ao índice
 
-Edite `gallery.json` e acrescente um item (formato no [README](README.md)) apontando para:
-
-- uma skill deste repositório (`"type": "squados"`);
-- uma skill de `openai/skills`, `anthropics/skills`, `anthropics/knowledge-work-plugins` ou `openai/plugins` (`"type": "github"`). Outro repositório não entra: o Studio descarta o item;
-- uma skill do acervo do Hermes que o Studio já empacota (`"type": "hermes"`).
+Edite `gallery.json` e acrescente um item (formato no [README](README.md)) apontando
+para uma skill deste repositório (`"type": "squados"`). A seleção editorial é a
+biblioteca própria; pacotes de terceiros podem ser instalados diretamente pelo
+usuário, com sua procedência preservada, fora deste índice.
 
 Antes de abrir o pull request:
 

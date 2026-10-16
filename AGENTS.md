@@ -22,10 +22,11 @@ Não é o código do aplicativo nem um espelho de todos os repositórios de skil
 - `CONTRIBUTING.md`: orientação para contribuir com o índice e os pacotes.
 - `LICENSE`: licença deste repositório; não substitui as licenças de conteúdo externo.
 
-**Curadoria SquadOS não significa autoria SquadOS.** O contrato atual aceita três
-origens: `squados`, `hermes` e `github`. Skills externas permanecem em suas origens;
-não devem ser copiadas para cá apenas para compor a vitrine. Informe a origem real,
-preserve autoria e licença, e não apresente código de terceiros como próprio.
+O índice editorial publica somente pacotes `squados`. O contrato do Desktop ainda
+reconhece `hermes` e `github` para procedência e instalações diretas; essas fontes
+não entram nesta vitrine. **Curadoria SquadOS não significa autoria SquadOS:**
+informe as fontes incorporadas/consultadas, preserve autoria e licença e não
+apresente código de terceiros como próprio.
 
 A composição aprovada em 16/10/2026 contém vinte especialistas próprios,
 com modos internos. Confira `docs/skills-de-trabalho-catalogo.md` e a curadoria
@@ -48,7 +49,10 @@ As referências de implementação são:
 O Desktop lê `https://raw.githubusercontent.com/squados/squados-plugins/main/gallery.json`.
 Não usa este checkout local automaticamente. O consumidor usa seed e cache editorial; consulta sem credenciais, recusa
 redirecionamentos e limita tamanho/tempo. O catálogo atual usa version: 2; o parser
-conserva v1 histórico. Confira o contrato atual antes de mudar versão ou requisitos.
+conserva v1 histórico, mas o serviço não aceita catálogo v1 ou misto na vitrine.
+Um catálogo v2 próprio substitui integralmente o snapshot anterior, incluindo
+remoções; nunca unir cache antigo aos itens novos. Confira o contrato atual antes
+de mudar versão ou requisitos.
 
 O índice lista opções, sem instalar suas skills. Ao contratar, o adaptador resolve a
 origem, verifica conteúdo com o guard do Hermes e prepara uma proposta nativa para a

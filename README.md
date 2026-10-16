@@ -7,8 +7,8 @@ próprios em `skills/<nome>/SKILL.md`. Os quatro [templates de websites](sites/R
 têm pacotes independentes em `sites/`; os nove [templates de aplicativos web](apps/README.md)
 têm páginas demonstrativas independentes em `apps/`, com dados fictícios e temas claro/escuro.
 Os três [jogos demonstrativos](games/README.md) têm pacotes próprios
-em `games/`, separados do índice de skills. As skills de outros repositórios
-ficam onde estão e são baixadas só na hora da contratação.
+em `games/`, separados do índice de skills. Instalações diretas de outros
+repositórios aparecem no Studio como Outras, fora da vitrine editorial.
 
 ## Prompts de trabalho / Work prompts
 
@@ -39,7 +39,9 @@ Os 408 registros históricos e seus destinos estão na
 
 O índice publicado fica em `main/gallery.json`. Este checkout e o seed incluído
 no Desktop estão reconciliados; editar/commitar localmente não publica o remoto.
-O consumidor atual aceita v1 histórico e v2 editorial; a biblioteca usa v2.
+O parser conserva v1 histórico, mas a vitrine usa somente o catálogo editorial
+v2 próprio. Um snapshot aceito substitui o anterior, incluindo remoções. Caches
+mistos anteriores à curadoria e respostas v1 não sobrepõem a seleção embutida.
 Consulte o contrato em `squados-desktop/src/shared/skills/gallery.ts`.
 
 O índice tem até 1 MB, 500 itens e 50 áreas. Cada item tem `id`, `area`, `title`,
@@ -47,6 +49,7 @@ O índice tem até 1 MB, 500 itens e 50 áreas. Cada item tem `id`, `area`, `tit
 Nesta seleção, todas as fontes são `{ "type": "squados", "path": "skills/<nome>" }`.
 Editorial contém apresentação, exemplos, capa, proveniência, licença e requisitos.
 O catálogo pode evoluir sem transformar autoria de terceiros em autoria SquadOS.
+As [vinte capas](assets/README.md) são autorais e têm fonte SVG editável.
 
 ## Pacotes, requisitos e licenças
 

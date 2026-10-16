@@ -39,7 +39,7 @@ pesquisáveis na [classificação navegável](skill-curation/classification.html
 
 O catálogo [gallery.json](../gallery.json) e seu espelho no Desktop contêm somente
 os vinte pacotes. A apresentação v2 inclui exemplos, requisitos e capas editoriais
-próprias reaproveitadas; a capa ilustra a categoria, sem provar execução.
+próprias, com SVGs editáveis em assets; a capa ilustra a categoria, sem provar execução.
 Cada pacote registra conteúdo incorporado, licenças e fontes apenas consultadas
 em references/provenance.json. Fontes consultadas não significam código copiado.
 

@@ -1,5 +1,9 @@
 # Estado da biblioteca — 16/10/2026
 
+Correção posterior do consumidor: [catálogo e defaults](skill-curation/catalog-integration-fix.md).
+Inclui rejeição de caches anteriores, snapshots completos, filtros SquadOS/Outras,
+reconciliação nativa das cópias de fábrica e vinte capas próprias com fonte SVG.
+
 Implementada localmente nos dois repositórios, sem push/publicação. Biblioteca com
 20 pacotes; prompts com 147 pedidos; instruções internas em progressive disclosure.
 O relatório histórico cobre 408 conjuntos, 448 IDs e 498 exemplares originais.
