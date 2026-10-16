@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "state": "local-integration-verified-final-review-pending",
+  "state": "local-candidate-reviewed",
   "scope": "Quatro pacotes independentes, galeria HTTP local e contrato candidato do Desktop",
   "environment": {
     "system": "Windows / PowerShell 7",
@@ -17,7 +17,7 @@
     {
       "id": "website-digital-marketing",
       "brand": "Trama",
-      "sourceRevision": "6e9b08a1940d05c210522f26f1aa889c2aeb5935",
+      "sourceRevision": "d9fb9e21d11ba2be493dcbff9265a47dd1896f4d",
       "independentBuild": true,
       "interactionsVerified": [
         "Hero sem cabeçalho, retrato focal e prova social demonstrativa após CTAs",
@@ -59,6 +59,7 @@
           "src/App.jsx"
         ],
         "hermesExecution": false,
+        "copyDirectory": "adapted-final/website-digital-marketing",
         "runtimeVerified": true,
         "runtimeErrors": []
       },
@@ -159,7 +160,7 @@
     {
       "id": "website-futuristic",
       "brand": "Orbe",
-      "sourceRevision": "ea64a7959f14229f2d66e681fef5d24e19b5300f",
+      "sourceRevision": "d9fb9e21d11ba2be493dcbff9265a47dd1896f4d",
       "independentBuild": true,
       "interactionsVerified": [
         "Três modos mudam listas, mapa e detalhes",
@@ -201,6 +202,7 @@
           "src/App.jsx"
         ],
         "hermesExecution": false,
+        "copyDirectory": "adapted-final/website-futuristic",
         "runtimeVerified": true,
         "runtimeErrors": []
       },
@@ -302,9 +304,7 @@
   "gallery": {
     "links": 4,
     "images": 4,
-    "mobileOverflow": false,
-    "imageAspectRatioVerified": true,
-    "finalCapture": "gallery.png"
+    "mobileOverflow": false
   },
   "previewServer": {
     "documents": true,
@@ -339,11 +339,15 @@
       "task-3-report.md",
       "task-3-review.md",
       "task-4-report.md",
-      "task-4-review.md"
+      "task-4-review.md",
+      "final-review.md",
+      "final-fix-report.md",
+      "final-re-review.md"
     ],
     "integration": "integration-results.json",
     "nativeContract": "native-contract-results.json",
-    "adaptations": "adaptation-results.json"
+    "adaptations": "adaptation-results.json",
+    "focalFix": "final-fix/green-results.json"
   },
   "boundaries": {
     "physicalDevicesTested": false,
@@ -358,6 +362,36 @@
     "As provas de pacote incluem RED antes e GREEN após implementação, com correções focais posteriores registradas.",
     "A adaptação foi feita numa cópia de cada pacote por edição de código, build e verificação HTTP; não foi uma execução pelo Hermes.",
     "Os recursos e fontes são locais. Os formulários não enviam nem persistem dados pessoais.",
-    "A base original foi comparada por SHA-256 antes/depois; o schema e o leitor CreationTemplates usados são os reais do Desktop."
-  ]
+    "A base original foi comparada por SHA-256 antes/depois; o schema e o leitor CreationTemplates usados são os reais do Desktop.",
+    "Revisão geral e re-review dos dois fixes concluídos sem findings abertos. A aprovação é técnica/local; não representa incorporação ao catálogo ou publicação."
+  ],
+  "finalReview": {
+    "approved": true,
+    "reviewedRange": "0d8b1fd..9ea07bd",
+    "fixRevision": "d9fb9e21d11ba2be493dcbff9265a47dd1896f4d",
+    "findings": [
+      {
+        "id": "M1",
+        "package": "website-futuristic",
+        "issue": "Foco ao limpar busca",
+        "status": "addressed"
+      },
+      {
+        "id": "M2",
+        "package": "website-digital-marketing",
+        "issue": "Quebra de referência longa no resumo",
+        "status": "addressed"
+      }
+    ],
+    "openFindings": 0,
+    "scopedReReview": "approved",
+    "focalVerification": {
+      "checks": 60,
+      "passed": 60,
+      "browserErrors": 0,
+      "externalRequests": 0,
+      "scope": "Busca Orbe 1440/390, Enter/Space; resumo Trama 390/360, referência longa/texto normal, fechamento e Tab útil"
+    },
+    "afterFixIntegration": "Builds afetados atualizados no cache; subpastas, capturas e cópias adaptadas verificadas; leitor nativo 4/4 após isolar instalações"
+  }
 }
