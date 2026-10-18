@@ -8,7 +8,7 @@ license: MIT
 
 Entregue vídeo real e projeto revisável. Escolha edição de material existente ou composição/motion pelo resultado. Preserve os arquivos originais e a identidade definida; não imponha efeitos sem relação com a narrativa.
 
-O motor completo está em scripts/editor. Ele exige Python 3.11–3.12, Node 22+, FFmpeg e dependências fixadas nos locks. A galeria distribui código/texto; a preparação obtém fontes e modelos pelas URLs e SHA-256 do manifesto. Não considere o motor pronto apenas porque a skill foi ativada.
+O motor completo começa em [scripts/editor/scripts/run.py](scripts/editor/scripts/run.py). Ele exige Python 3.11–3.12, Node 22+, FFmpeg e dependências fixadas nos locks. A galeria distribui código/texto; a preparação obtém fontes e modelos pelas URLs e SHA-256 do manifesto. Não considere o motor pronto apenas porque a skill foi ativada.
 
 Tarantino cuida do vídeo, incluindo o som e as legendas necessários à montagem. Transcrição, Whisper, síntese de voz ou música como entregas independentes ficam na capacidade de Áudio, Voz e Transcrição. Revise preview e master, declare separadamente conferência de imagem e escuta e não marque como assistido o que não foi reproduzido.
 
