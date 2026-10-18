@@ -5,9 +5,16 @@
   "description": "Arcade 2D: robô voador e cidade solar originais SquadOS sobre a mecânica de Clumsy Bird e melonJS 4.",
   "license": "GPL-3.0-only",
   "author": "Ellison Leão",
-  "contributors": ["SquadOS (identidade visual, arte vetorial e adaptação)"],
-  "repository": { "type": "git", "url": "https://github.com/squados/squados-plugins.git", "directory": "games/clumsy-bird" },
+  "contributors": [
+    "SquadOS (identidade visual, arte vetorial e adaptação)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/squados/squados-plugins.git",
+    "directory": "games/clumsy-bird"
+  },
   "scripts": {
-    "check": "node --check js/game.js && node --check js/entities/entities.js && node --check js/entities/HUD.js && node --check js/screens/play.js && node --check js/screens/gameover.js"
+    "check": "node --check js/game.js && node --check js/entities/entities.js && node --check js/entities/HUD.js && node --check js/screens/play.js && node --check js/screens/gameover.js",
+    "build": "node template-build.mjs"
   }
 }

@@ -55,11 +55,12 @@ pelo lockfile. Troque a marca, copy, dados e arte na cópia, conforme o README d
 pacote. As ações demonstrativas já têm estados e feedback; ao integrar um serviço
 real, substitua o comportamento local e revise validação, erro e sucesso.
 
-Os templates estão em [index.json](index.json), no contrato `CreationTemplate`
+Os templates estão em [templates.json](../templates.json), no contrato `CreationTemplate`
 do Desktop: nomes/descrições PT-BR e inglês, origem/licenças, entry real,
 preview.png e instrução de adaptação. A interface de cada exemplo está em PT-BR.
-Este índice é candidato independente: não altera `gallery.json` nem o catálogo
-embutido do Desktop. Testes locais não significam publicação no Studio.
+O manifesto é a fonte publicada consumida pelo Desktop, incluindo objetivos e
+inventários com SHA-256. O índice de skills `gallery.json` permanece separado.
+Testes locais não significam push.
 
 ## Arte, exemplos e licenças
 

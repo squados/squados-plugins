@@ -37,19 +37,25 @@ Os 408 registros históricos e seus destinos estão na
 
 ## Como o Studio lê
 
-O índice publicado fica em `main/gallery.json`. Este checkout e o seed incluído
-no Desktop estão reconciliados; editar/commitar localmente não publica o remoto.
-O parser conserva v1 histórico, mas a vitrine usa somente o catálogo editorial
-v2 próprio. Um snapshot aceito substitui o anterior, incluindo remoções. Caches
-mistos anteriores à curadoria e respostas v1 não sobrepõem a seleção embutida.
-Consulte o contrato em `squados-desktop/src/shared/skills/gallery.ts`.
+O Studio busca `main/gallery.json` e `main/templates.json` na abertura. Este
+repositório é a fonte única dos metadados, objetivos, capas, previews e pacotes.
+O Desktop não inclui cópias editoriais; guarda apenas cache automático do último
+snapshot válido e arquivos de pacotes escolhidos. Uma publicação substitui a
+seleção anterior, incluindo remoções. Instalações e preferências pessoais são locais.
+Editar/commitar este checkout não publica o remoto: é necessário fazer push.
+
+O manifesto [templates.json](templates.json) oferece as 19 opções aprovadas: três
+slides, quatro sites, nove aplicativos e três jogos. Slides e as seis bases antigas
+não listadas foram transferidos para `templates/`. Cada pacote declara todos os
+arquivos, tamanhos e hashes; a abertura carrega o índice e a escolha baixa o pacote
+completo. Não há instalação automática de todas as skills.
 
 O índice tem até 1 MB, 500 itens e 50 áreas. Cada item tem `id`, `area`, `title`,
 `description`, `source` e `editorial`. Os textos públicos vêm em PT-BR e inglês.
 Nesta seleção, todas as fontes são `{ "type": "squados", "path": "skills/<nome>" }`.
 Editorial contém apresentação, exemplos, capa, proveniência, licença e requisitos.
 O catálogo pode evoluir sem transformar autoria de terceiros em autoria SquadOS.
-As [capas](assets/README.md) são autorais e têm fonte SVG editável.
+As [capas](assets/README.md) atuais são WebP autorais com o mascote SquadOS.
 
 ## Pacotes, requisitos e licenças
 
@@ -74,3 +80,16 @@ instalação, uso real autenticado e publicação são estados diferentes.
 
 Veja [CONTRIBUTING.md](CONTRIBUTING.md). Preserve a curadoria, os recursos,
 as licenças e os [termos dos jogos](games/README.md#licenças-e-publicação).
+
+## Validação editorial
+
+```powershell
+python scripts/verify-skills.py
+python -m unittest discover -s tests
+node scripts/validate-skills-catalog.mjs
+node scripts/templates-catalog.mjs
+node --test tests/*.test.mjs
+```
+
+Após alterar arquivos de um template, revise o pacote e atualize seu manifesto
+com `node scripts/templates-catalog.mjs --write` antes dos checks.

@@ -1,0 +1,4649 @@
+{
+  "version": 1,
+  "packages": [
+    {
+      "template": {
+        "id": "slides-commercial",
+        "kind": "slides",
+        "name": {
+          "pt-BR": "Proposta comercial",
+          "en": "Commercial proposal"
+        },
+        "description": {
+          "pt-BR": "Uma proposta em três atos.",
+          "en": "A proposal in three acts."
+        },
+        "preview": "preview.png",
+        "entry": "presentation.html",
+        "adaptation": "Copy the complete package into the selected working folder before editing. Replace generic text and example data with the requested content; retain useful layout and interactions. Install with the included lockfile. Do not modify the original template or publish automatically.",
+        "license": "Apache-2.0",
+        "origin": "SquadOS",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-commercial",
+        "goal": {
+          "pt-BR": "Quero criar uma apresentação de proposta comercial. Me ajude a organizar o problema do cliente, a solução, os diferenciais, o escopo, o investimento e os próximos passos.",
+          "en": "I want to create a commercial proposal presentation. Help me organize the client's problem, the solution, differentiators, scope, investment and next steps."
+        }
+      },
+      "path": "templates/slides-commercial",
+      "files": [
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "README.md",
+          "size": 360,
+          "sha256": "5323df532ea78584d62913ce909c86517dba6f4a7fb3ce8beb598678f77bc048"
+        },
+        {
+          "path": "presentation.html",
+          "size": 1486,
+          "sha256": "96ef58ca12c182af97d40028dc211c5fcb737b16b32f5b18755a78843d68cc72"
+        },
+        {
+          "path": "preview.png",
+          "size": 40584,
+          "sha256": "11a5391eecb6271bc94485dc717809d574431f58a3900ce0321548203e3dc810"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "slides-results",
+        "kind": "slides",
+        "name": {
+          "pt-BR": "Relatório de resultados",
+          "en": "Results report"
+        },
+        "description": {
+          "pt-BR": "Indicadores e conclusões.",
+          "en": "Indicators and conclusions."
+        },
+        "preview": "preview.png",
+        "entry": "presentation.html",
+        "adaptation": "Copy the complete package into the selected working folder before editing. Replace generic text and example data with the requested content; retain useful layout and interactions. Install with the included lockfile. Do not modify the original template or publish automatically.",
+        "license": "Apache-2.0",
+        "origin": "SquadOS",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-results",
+        "goal": {
+          "pt-BR": "Quero criar uma apresentação de resultados. Me ajude a transformar os dados do período em uma narrativa com indicadores, comparações, conclusões e decisões para o público certo.",
+          "en": "I want to create a results presentation. Help me turn the period's data into a narrative with indicators, comparisons, conclusions and decisions for the right audience."
+        }
+      },
+      "path": "templates/slides-results",
+      "files": [
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "README.md",
+          "size": 355,
+          "sha256": "86d97b4f2782cf3788278facb1b3e0d7aa3c2623c68b8f5d64b4acc4d4fdb27e"
+        },
+        {
+          "path": "presentation.html",
+          "size": 1493,
+          "sha256": "7b9b02b1f55ac6fde0f00f959124eafd29550c946c3d0ebec22af48d4e914c31"
+        },
+        {
+          "path": "preview.png",
+          "size": 41822,
+          "sha256": "9f3a049385acc3e03eb928833cc950713e8301126ef31cd66560d8c79ab9c79d"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "slides-training",
+        "kind": "slides",
+        "name": {
+          "pt-BR": "Treinamento",
+          "en": "Training"
+        },
+        "description": {
+          "pt-BR": "Uma sequência para ensinar.",
+          "en": "A sequence for teaching."
+        },
+        "preview": "preview.png",
+        "entry": "presentation.html",
+        "adaptation": "Copy the complete package into the selected working folder before editing. Replace generic text and example data with the requested content; retain useful layout and interactions. Install with the included lockfile. Do not modify the original template or publish automatically.",
+        "license": "Apache-2.0",
+        "origin": "SquadOS",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-training",
+        "goal": {
+          "pt-BR": "Quero criar uma apresentação de treinamento. Me ajude a definir os objetivos de aprendizagem, a sequência das aulas, exemplos práticos e exercícios adequados ao conhecimento do público.",
+          "en": "I want to create a training presentation. Help me define learning objectives, lesson sequence, practical examples and exercises suited to the audience's knowledge."
+        }
+      },
+      "path": "templates/slides-training",
+      "files": [
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "README.md",
+          "size": 349,
+          "sha256": "596b6e137d9b362b2c113a65480fb17462a73fdf188cdb8130a811916a55e6c2"
+        },
+        {
+          "path": "presentation.html",
+          "size": 1497,
+          "sha256": "e6a475e9c0e14826cd5fea966e2bab2d102eecffd06a893fe3a4d380c23db961"
+        },
+        {
+          "path": "preview.png",
+          "size": 37893,
+          "sha256": "82ab8907aeb6ebfacb3238c9ba75de86018cc76868925c620f04894559c34db6"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "website-digital-marketing",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Negócio digital · Trama",
+          "en": "Digital business · Trama"
+        },
+        "description": {
+          "pt-BR": "Landing page de formação toda dark, com currículo expansível, cards, três projetos, mini-aula e planos demonstrativos.",
+          "en": "Dark course landing page with an expandable curriculum, feature cards, three projects, a sample lesson and demo plans."
+        },
+        "preview": "preview.png",
+        "entry": "src/App.jsx",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, imagens, dados demonstrativos e contato conforme o pedido, preservando os componentes e interações úteis. Instale com npm ci e o lockfile incluído, execute npm run build e confira a cópia em desktop e celular. Formulários são demonstrações locais: só conecte integrações reais quando solicitado e configurado. Preserve LICENSE, NOTICE e as licenças das fontes. Não altere o template original nem publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica própria web-landing-page (Apache-2.0); composição, conteúdo e arte nativa próprios. Fontes Google Fonts (OFL-1.1). Referências visuais e proveniência em README.md e assets.json.",
+        "category": "website",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/sites/website-digital-marketing",
+        "goal": {
+          "pt-BR": "Quero criar uma landing page para vender um curso, uma formação ou outro infoproduto. Me ajude a definir a oferta, os módulos, a apresentação de quem ensina, as provas sociais disponíveis e a ação principal da página.",
+          "en": "I want to create a landing page to sell a course, training program or another digital product. Help me define the offer, modules, instructor introduction, available social proof and the page's main action."
+        }
+      },
+      "path": "sites/website-digital-marketing",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 46,
+          "sha256": "a459038af144bb649dd32c98f20e160838ec500ed5580fb1669ed0860196e140"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 1017,
+          "sha256": "70433a5ec905386ec8bbbf9d4e8d0a9be4d6465c12504da3e558dfdd88246e75"
+        },
+        {
+          "path": "README.md",
+          "size": 6242,
+          "sha256": "dc060090a88fba1726fa5696febbe582328079455f9cb9fbdd225d2e333da15e"
+        },
+        {
+          "path": "art-prompts.json",
+          "size": 5268,
+          "sha256": "38242eab9dc9c585d54a3ac5678f8f963a5786f1d45c01f4b90f4a859f10db5a"
+        },
+        {
+          "path": "assets.json",
+          "size": 2515,
+          "sha256": "104a3b799c5a6f742f2b91e8b8b8c1f1bdee0e01389056d97aea09eb3ffc29db"
+        },
+        {
+          "path": "index.html",
+          "size": 876,
+          "sha256": "1b00ccc02d882919b7f43cb4ec99021ba111ae13a1c9ddfaef7187510825415f"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 59717,
+          "sha256": "7c0d704a826dacf5baab7ea702f4bacacdf57c222db26dc749c0e5f4c90160a6"
+        },
+        {
+          "path": "package.json",
+          "size": 356,
+          "sha256": "065c27e10b47ac15e6cfdea6f126abdf842a069a569b57f75f50b096707212e4"
+        },
+        {
+          "path": "preview.png",
+          "size": 623734,
+          "sha256": "aee4b408272df998379e3a49f1ebe687497bb17482ab7a0ec74c3fafe638e3bc"
+        },
+        {
+          "path": "public/art/avatars.png",
+          "size": 1882879,
+          "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52"
+        },
+        {
+          "path": "public/art/course.png",
+          "size": 2225267,
+          "sha256": "93ed2a4f1d4312ba79b41cb8b0550d418a11e9c79b143503c25ec9b95c845e36"
+        },
+        {
+          "path": "public/art/instructor.png",
+          "size": 1715345,
+          "sha256": "993a0647d4202075b12374faa894587ba2d756492b510c78f44c96d4477da423"
+        },
+        {
+          "path": "public/fonts/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "public/fonts/Newsreader-OFL.txt",
+          "size": 4394,
+          "sha256": "fdfad38143ec470553cae82a1e45320bdd1b9ec70415d37bd0171051d8a4ded8"
+        },
+        {
+          "path": "public/fonts/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "public/fonts/display.woff2",
+          "size": 58084,
+          "sha256": "62981321d9a3cc7a61a73792729043703fd6112da86e8ec848bb57f088578757"
+        },
+        {
+          "path": "src/App.jsx",
+          "size": 33451,
+          "sha256": "b1ad19f686501192b4f074e730ceaeef88dacd7bc94c41db558e427fefcd727a"
+        },
+        {
+          "path": "src/main.jsx",
+          "size": 187,
+          "sha256": "baba45a06d1d8c7abf3c99e3fe6df624c8fe8c041147e5b9b66293b0fad5781d"
+        },
+        {
+          "path": "src/style.css",
+          "size": 40805,
+          "sha256": "a0f551db82f6e8638892b264a580250b28a264de34ae6942ebdce9dfe24feac2"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 144,
+          "sha256": "49a4e77a2eccb97fffdaf3f41b202dc3d9c3964ceb3ba429c694f0e1753053d5"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "website-corporate",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Corporativo · Nortea",
+          "en": "Corporate · Nortea"
+        },
+        "description": {
+          "pt-BR": "Consultoria com estética editorial sóbria, serviços selecionáveis, casos filtráveis e contato demonstrativo.",
+          "en": "Consultancy with restrained editorial design, selectable services, filterable cases and a demo contact form."
+        },
+        "preview": "preview.png",
+        "entry": "src/App.jsx",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, imagens, dados demonstrativos e contato conforme o pedido, preservando os componentes e interações úteis. Instale com npm ci e o lockfile incluído, execute npm run build e confira a cópia em desktop e celular. Formulários são demonstrações locais: só conecte integrações reais quando solicitado e configurado. Preserve LICENSE, NOTICE e as licenças das fontes. Não altere o template original nem publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica própria web-landing-page (Apache-2.0); composição, conteúdo e arte nativa próprios. Fontes Google Fonts (OFL-1.1). Referências visuais e proveniência em README.md e assets.json.",
+        "category": "website",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/sites/website-corporate",
+        "goal": {
+          "pt-BR": "Quero criar um site corporativo elegante para apresentar minha empresa. Me ajude a organizar os serviços, os diferenciais, os casos reais disponíveis e os caminhos para entrar em contato, com visual sóbrio e animações discretas.",
+          "en": "I want to create an elegant corporate website to present my company. Help me organize services, differentiators, available real case studies and contact options, with a restrained design and subtle animations."
+        }
+      },
+      "path": "sites/website-corporate",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 27,
+          "sha256": "f99ead27b34cbc6756d707e7e7ee7340eb9a71e02dfec2b40d5fb848dd3f4d4f"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 691,
+          "sha256": "759e5381b67a3a3ee86a816a2b0d0060d6fad7debe62805a1b36c3f9fe18f41e"
+        },
+        {
+          "path": "README.md",
+          "size": 3076,
+          "sha256": "a60363b246abd3c34109119e78495181c9f5b2e728f03c03081192dd5a948f9e"
+        },
+        {
+          "path": "art-prompts.json",
+          "size": 1420,
+          "sha256": "cc67cf4a30601548b89ff46aa69acada2e1821d2651b815dbaf1d2ee0cf024fb"
+        },
+        {
+          "path": "assets.json",
+          "size": 1647,
+          "sha256": "9951f1e5a710820d2e369ae5c4873f17e734446c4addc2dffe11002bfa52a58a"
+        },
+        {
+          "path": "index.html",
+          "size": 916,
+          "sha256": "a29ace8f0c8d01fdf46cafa57e408a2771ad530686bf8f9a5ba7ccaac6dafdbf"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 59721,
+          "sha256": "b22d8afdbaa4b99f1d9242a1e22879c704ab4b1da34dca3fce5ba467ce71b762"
+        },
+        {
+          "path": "package.json",
+          "size": 358,
+          "sha256": "67d3d5cb9379755069d0df885c9055ca85c218969fe0f9a4b0e1ee5c1232e205"
+        },
+        {
+          "path": "preview.png",
+          "size": 1223748,
+          "sha256": "99059e10d78698db0a493444f09466999631adebbe1261263a0dfe81570b9fdb"
+        },
+        {
+          "path": "public/art/editorial.png",
+          "size": 2772953,
+          "sha256": "822250f0d305d34496f0bdb77e94d6bd28a18d09420819bb2ed32c696ee1b791"
+        },
+        {
+          "path": "public/fonts/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "public/fonts/Newsreader-OFL.txt",
+          "size": 4394,
+          "sha256": "fdfad38143ec470553cae82a1e45320bdd1b9ec70415d37bd0171051d8a4ded8"
+        },
+        {
+          "path": "public/fonts/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "public/fonts/display.woff2",
+          "size": 58084,
+          "sha256": "62981321d9a3cc7a61a73792729043703fd6112da86e8ec848bb57f088578757"
+        },
+        {
+          "path": "src/App.jsx",
+          "size": 22723,
+          "sha256": "40489cd20d307134f30ab2f09754996ed6310ed9bea199dd6d6b792ef367b8c8"
+        },
+        {
+          "path": "src/main.jsx",
+          "size": 187,
+          "sha256": "baba45a06d1d8c7abf3c99e3fe6df624c8fe8c041147e5b9b66293b0fad5781d"
+        },
+        {
+          "path": "src/style.css",
+          "size": 23872,
+          "sha256": "59e641c7fbc8f4ebafbee2e3539439546d5fe99587ff1276c20903541f8c042f"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 144,
+          "sha256": "49a4e77a2eccb97fffdaf3f41b202dc3d9c3964ceb3ba429c694f0e1753053d5"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "website-futuristic",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Futurista · Orbe",
+          "en": "Futuristic · Orbe"
+        },
+        "description": {
+          "pt-BR": "Workspace de inteligência com halo 2D, painel interativo de ideias, conexões e planos demonstrativos.",
+          "en": "Intelligent workspace with a 2D light halo, interactive ideas and connections panel, and demo plans."
+        },
+        "preview": "preview.png",
+        "entry": "src/App.jsx",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, imagens, dados demonstrativos e contato conforme o pedido, preservando os componentes e interações úteis. Instale com npm ci e o lockfile incluído, execute npm run build e confira a cópia em desktop e celular. Formulários são demonstrações locais: só conecte integrações reais quando solicitado e configurado. Preserve LICENSE, NOTICE e as licenças das fontes. Não altere o template original nem publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica própria web-landing-page (Apache-2.0); composição, conteúdo, halo e diagramas CSS/SVG próprios. DM Sans (OFL-1.1). Referência visual e proveniência em README.md e assets.json.",
+        "category": "website",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/sites/website-futuristic",
+        "goal": {
+          "pt-BR": "Quero criar uma landing page futurista para apresentar um produto ou serviço de tecnologia. Me ajude a comunicar o valor, demonstrar os recursos e definir a ação principal, com efeitos leves e uma experiência fluida.",
+          "en": "I want to create a futuristic landing page for a technology product or service. Help me communicate its value, demonstrate features and define the main action, with lightweight effects and a smooth experience."
+        }
+      },
+      "path": "sites/website-futuristic",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 46,
+          "sha256": "a459038af144bb649dd32c98f20e160838ec500ed5580fb1669ed0860196e140"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 673,
+          "sha256": "085126af7076b8f217b12076a3736a4da18bc182281c6be9cb1fe9ccb585a09d"
+        },
+        {
+          "path": "README.md",
+          "size": 3222,
+          "sha256": "590b9ab9f4abf78d4762d4f7eb5ee1d27bf5a4e981b96e49e5d7e0951995737b"
+        },
+        {
+          "path": "art-prompts.json",
+          "size": 76,
+          "sha256": "8dcd088056e39cc0f9053090e997194566d4af8d867178fda82409455367a855"
+        },
+        {
+          "path": "assets.json",
+          "size": 825,
+          "sha256": "20d76d46e6e12816dd87fa78bd5e7902cd84840c61004ba3ea6ddc715aa61d39"
+        },
+        {
+          "path": "index.html",
+          "size": 942,
+          "sha256": "d1ca800c77cdecf6ae5343845179a6032b3b305e349ba32ddc1467d02d5d4ad3"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 59713,
+          "sha256": "3f08575b44c332637d8aa38c07eba6fb31e9939d69a230cffac9010bfd9454ea"
+        },
+        {
+          "path": "package.json",
+          "size": 330,
+          "sha256": "4d55f06c2ed4ca05946d6b4a6cf8652b362108e8b1f5c7716d30113336a535a8"
+        },
+        {
+          "path": "preview.png",
+          "size": 473700,
+          "sha256": "f48a716307c929bf5660281487ccf75ab5831196d2185930e4b16a80f98e9218"
+        },
+        {
+          "path": "public/fonts/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "public/fonts/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/App.jsx",
+          "size": 29756,
+          "sha256": "23387d252110de84490fa8b43ecda819fc9a3eaa2b783d9825efc20f4a447329"
+        },
+        {
+          "path": "src/main.jsx",
+          "size": 187,
+          "sha256": "baba45a06d1d8c7abf3c99e3fe6df624c8fe8c041147e5b9b66293b0fad5781d"
+        },
+        {
+          "path": "src/style.css",
+          "size": 32979,
+          "sha256": "a54a391cc784aaf26abc62dc7e90dd3a2666955adf57bcfba266c20030ab2fdb"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 144,
+          "sha256": "49a4e77a2eccb97fffdaf3f41b202dc3d9c3964ceb3ba429c694f0e1753053d5"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "website-playful",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Divertido · Pipa",
+          "en": "Playful · Pipa"
+        },
+        "description": {
+          "pt-BR": "Escola criativa com personagens próprios, três cenas e mini-experiências de desenho, escrita e invenção.",
+          "en": "Creative school with original characters, three scenes and mini experiences for drawing, writing and inventing."
+        },
+        "preview": "preview.png",
+        "entry": "src/App.jsx",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, imagens, dados demonstrativos e contato conforme o pedido, preservando os componentes e interações úteis. Instale com npm ci e o lockfile incluído, execute npm run build e confira a cópia em desktop e celular. Formulários são demonstrações locais: só conecte integrações reais quando solicitado e configurado. Preserve LICENSE, NOTICE e as licenças das fontes. Não altere o template original nem publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica própria web-landing-page (Apache-2.0); composição, conteúdo e arte nativa próprios. Fontes Google Fonts (OFL-1.1). Referências visuais e proveniência em README.md e assets.json.",
+        "category": "website",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/sites/website-playful",
+        "goal": {
+          "pt-BR": "Quero criar uma landing page divertida e acolhedora para minha marca. Me ajude a combinar ilustrações, cores, conteúdo e pequenas interações com uma mensagem clara e uma ação principal fácil de encontrar.",
+          "en": "I want to create a playful, welcoming landing page for my brand. Help me combine illustrations, colors, content and small interactions with a clear message and an easy-to-find main action."
+        }
+      },
+      "path": "sites/website-playful",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 46,
+          "sha256": "a459038af144bb649dd32c98f20e160838ec500ed5580fb1669ed0860196e140"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 700,
+          "sha256": "94a3ea88f02906dc28e4a9d7726ee00c6c3fb500a815c41c6687a6a5db9760d0"
+        },
+        {
+          "path": "README.md",
+          "size": 3349,
+          "sha256": "97ee89d4ad05ce77c83ad63a6fc770f1b3926d2d85350ef8c3f781b1cb5e1b52"
+        },
+        {
+          "path": "art-prompts.json",
+          "size": 3405,
+          "sha256": "e3fb6de88af80714290e863432393842366f9f5b1b37862c43541c16052a6ad3"
+        },
+        {
+          "path": "assets.json",
+          "size": 2310,
+          "sha256": "c21a223da499c0266213a6ce9de7b26e4cc1962b037197488de1812abf89e988"
+        },
+        {
+          "path": "index.html",
+          "size": 1021,
+          "sha256": "6470d58e771000aeee86591572afa9be5d14343eb48d0a76b348422c9b81dac5"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 59701,
+          "sha256": "4f3be8e5cc3e1adf0485a54f6a33239f3b676ceb674090ec19469b28025d0e33"
+        },
+        {
+          "path": "package.json",
+          "size": 348,
+          "sha256": "bdcf55d9d89f11487b4d1b8cf24258969373674da60e19c8a58dbf16d5b84cf7"
+        },
+        {
+          "path": "preview.png",
+          "size": 736926,
+          "sha256": "daa521b8e414a85e0aa8f442560d49dd3c603e0a12218cf76eba9b85fa52a958"
+        },
+        {
+          "path": "public/art/draw.png",
+          "size": 1756402,
+          "sha256": "bf2d2f1b667b6433f903bdd81fb2c2855938ea01ef3ee16fc7fe4cf46bd07ce3"
+        },
+        {
+          "path": "public/art/invent.png",
+          "size": 1744543,
+          "sha256": "6b2566cfa1c0b402fe29c032d630364ad409033cbfe7d2e2d40e0b60e27a5bd9"
+        },
+        {
+          "path": "public/art/write.png",
+          "size": 1751071,
+          "sha256": "3c7a238be37a7bcda15acc8847e91bb110d7aad7b9a4661e27598c0807b34b78"
+        },
+        {
+          "path": "public/fonts/Bricolage-Grotesque-OFL.txt",
+          "size": 4403,
+          "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+        },
+        {
+          "path": "public/fonts/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "public/fonts/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "public/fonts/display.woff2",
+          "size": 41344,
+          "sha256": "a97804dc9fbe5fc972a08018c5eda4dab7ef2346f64c57e61419d05e6de4ea1c"
+        },
+        {
+          "path": "src/App.jsx",
+          "size": 38926,
+          "sha256": "bb1e60a434ef292099425f97c1131314e50d9eb306c841bf3d628a14bc6c00ec"
+        },
+        {
+          "path": "src/main.jsx",
+          "size": 187,
+          "sha256": "baba45a06d1d8c7abf3c99e3fe6df624c8fe8c041147e5b9b66293b0fad5781d"
+        },
+        {
+          "path": "src/style.css",
+          "size": 29656,
+          "sha256": "7c2cc9271d78120ca1cad1d7fcb77000526ff8e335695f40d0985e9321d4d971"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 144,
+          "sha256": "49a4e77a2eccb97fffdaf3f41b202dc3d9c3964ceb3ba429c694f0e1753053d5"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "app-crm",
+        "kind": "web",
+        "name": {
+          "pt-BR": "CRM · Vínculo",
+          "en": "CRM · Vínculo"
+        },
+        "description": {
+          "pt-BR": "CRM compacto com pipeline kanban, contatos e oportunidades.",
+          "en": "Compact CRM with a kanban pipeline, contacts and deals."
+        },
+        "preview": "preview.png",
+        "entry": "src/app.js",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json.",
+        "category": "app",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/apps/app-crm",
+        "goal": {
+          "pt-BR": "Quero criar uma aplicação web de CRM para organizar contatos, oportunidades e o acompanhamento das vendas. Me ajude a definir as etapas do funil, as informações de cada cliente, as atividades da equipe e os indicadores importantes.",
+          "en": "I want to create a CRM web application to organize contacts, opportunities and sales follow-up. Help me define pipeline stages, customer information, team activities and useful indicators."
+        }
+      },
+      "path": "apps/app-crm",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 20,
+          "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 690,
+          "sha256": "435f33ae3e78d1ee200620dcfd7dce2c380058d386dac937a3358962842bd184"
+        },
+        {
+          "path": "README.md",
+          "size": 2961,
+          "sha256": "f110c319d5f2f2c10ab395f567383da5cef400d56f55edcec9cb688380feba12"
+        },
+        {
+          "path": "assets.json",
+          "size": 646,
+          "sha256": "2dd37457075e2db783d228b57cc0093c20a93865bddd62d5ea4a1a09adb40de6"
+        },
+        {
+          "path": "index.html",
+          "size": 867,
+          "sha256": "060d9a6da2a6040d90e041621a9f0e524ebe641cae341045678a0ecc5b96a4c2"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 34807,
+          "sha256": "d57a9c108c9d377a32770d90432e15d5d91494998f76994b93ba0be4b081cde8"
+        },
+        {
+          "path": "package.json",
+          "size": 229,
+          "sha256": "addd819e8548c82608512d010590633551882cd95323fd062712184498484d90"
+        },
+        {
+          "path": "preview-dark.png",
+          "size": 478963,
+          "sha256": "0ed2f3d57a9b1b92f6b2a8225b4fc9cc79c3cc8017f20a123d6511f66db4c34a"
+        },
+        {
+          "path": "preview-light.png",
+          "size": 404507,
+          "sha256": "9997b7367b3b51f6ff4cf612caa2afb0e49b0d1f12d54ccbcefc733bac63c897"
+        },
+        {
+          "path": "preview.png",
+          "size": 404507,
+          "sha256": "9997b7367b3b51f6ff4cf612caa2afb0e49b0d1f12d54ccbcefc733bac63c897"
+        },
+        {
+          "path": "src/app.js",
+          "size": 22938,
+          "sha256": "434142d843e72a94222a9ff6343e9e78574f8058f78559dcdee9f5b8a7db6a6c"
+        },
+        {
+          "path": "src/assets/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "src/assets/avatars.png",
+          "size": 1882879,
+          "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52"
+        },
+        {
+          "path": "src/assets/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/data.js",
+          "size": 3021,
+          "sha256": "eb20e56f5b3637c0427b2aeb95dceaa7b0c719bfa361dececa124a1e4f934a6b"
+        },
+        {
+          "path": "src/style.css",
+          "size": 35944,
+          "sha256": "7dd1306c5e03d60dd0367b697e1dffbfd2d7ab055cf562a66d0a0f5e2346ed30"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 77,
+          "sha256": "42590cd7082fd85e14624332a1d966eb8bcc65333b4efdf9bd46ade8a0f67968"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "app-management",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Sistema de gestão · Balanço",
+          "en": "Management · Balanço"
+        },
+        "description": {
+          "pt-BR": "Gestão com fluxo de caixa, conta e lançamentos financeiros.",
+          "en": "Management dashboard with cash flow, account balance and transactions."
+        },
+        "preview": "preview.png",
+        "entry": "src/app.js",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json.",
+        "category": "app",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/apps/app-management",
+        "goal": {
+          "pt-BR": "Quero criar uma aplicação web de gestão para acompanhar a operação e as finanças do meu negócio. Me ajude a definir receitas, despesas, contas, lançamentos, períodos e indicadores que orientem as decisões.",
+          "en": "I want to create a business management web application to track operations and finances. Help me define income, expenses, accounts, transactions, periods and indicators that inform decisions."
+        }
+      },
+      "path": "apps/app-management",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 20,
+          "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 690,
+          "sha256": "a8ee5429304a3d6ab348321c516a2f7e01210a17c1be89ed5be5aea469e8dbaf"
+        },
+        {
+          "path": "README.md",
+          "size": 3360,
+          "sha256": "b455165d407ba7fdaac59ff518932965fa2e48344b93ea8a863c61d20af83218"
+        },
+        {
+          "path": "assets.json",
+          "size": 646,
+          "sha256": "2dd37457075e2db783d228b57cc0093c20a93865bddd62d5ea4a1a09adb40de6"
+        },
+        {
+          "path": "index.html",
+          "size": 884,
+          "sha256": "1dce8f3d87098554b4d23f4c4c0db5fd42760b1dd43a8a80e545adb4f47f2a6e"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 34821,
+          "sha256": "52f7b29d853f7a9e46225eabc42f816264661d545475e961c64f0578ca3ec090"
+        },
+        {
+          "path": "package.json",
+          "size": 288,
+          "sha256": "cfa34d595f944e05c67bd4fba6e6be51a2bed673d8f415d6d53ff4a55c2ba3e5"
+        },
+        {
+          "path": "preview-dark.png",
+          "size": 353760,
+          "sha256": "f58d86f4c3f5ea08f60c91621a1a8968109947c47894ebed7026fb72a9b62c18"
+        },
+        {
+          "path": "preview-light.png",
+          "size": 305963,
+          "sha256": "a7644bc257b151c5b41d6b0c7e49d3404ff747c9148470ffe17835cfa6ea528d"
+        },
+        {
+          "path": "preview.png",
+          "size": 305963,
+          "sha256": "a7644bc257b151c5b41d6b0c7e49d3404ff747c9148470ffe17835cfa6ea528d"
+        },
+        {
+          "path": "src/app.js",
+          "size": 20623,
+          "sha256": "98d1defefbd4abd6e925c011cef31271fc0f4fc0b5ab92f52cce6709fcc5c1ad"
+        },
+        {
+          "path": "src/assets/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "src/assets/avatars.png",
+          "size": 1882879,
+          "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52"
+        },
+        {
+          "path": "src/assets/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/data.js",
+          "size": 1695,
+          "sha256": "3f9b74e8289bfde58bdf11f762cd064513359bc760e3e6ba3864cfc0603aa6cc"
+        },
+        {
+          "path": "src/style.css",
+          "size": 38356,
+          "sha256": "64fc649a36306c155215c2b3a1e65f4758a9e3d6d28769a2fdd453e0280262af"
+        },
+        {
+          "path": "src/transactions.js",
+          "size": 190,
+          "sha256": "111a6c1009f17db4b553a8433ee7041ac3a09714b2e2a3b47cd991bb5782ffee"
+        },
+        {
+          "path": "src/transactions.test.js",
+          "size": 801,
+          "sha256": "4b4f5da44e4f6f631c93a0964ed096ce79129508f5e13d4d264738abca858da4"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 77,
+          "sha256": "42590cd7082fd85e14624332a1d966eb8bcc65333b4efdf9bd46ade8a0f67968"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "app-people",
+        "kind": "web",
+        "name": {
+          "pt-BR": "RH e pessoas · Pulso",
+          "en": "People management · Pulso"
+        },
+        "description": {
+          "pt-BR": "Diretório de pessoas, calendário e jornadas do time.",
+          "en": "People directory, team calendar and onboarding journeys."
+        },
+        "preview": "preview.png",
+        "entry": "src/app.js",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json.",
+        "category": "app",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/apps/app-people",
+        "goal": {
+          "pt-BR": "Quero criar uma aplicação web de RH e gestão de pessoas. Me ajude a definir o diretório da equipe, as informações dos colaboradores, o calendário, as jornadas e os controles de acesso a dados pessoais.",
+          "en": "I want to create an HR and people management web application. Help me define the team directory, employee information, calendar, journeys and access controls for personal data."
+        }
+      },
+      "path": "apps/app-people",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 20,
+          "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 687,
+          "sha256": "528d4669ccd035023a60f07de95b21827ad7a72f17d26f48cbd6e8dd3abacb8d"
+        },
+        {
+          "path": "README.md",
+          "size": 2961,
+          "sha256": "87643cf35eae9173724cfbf36b4d87721a1fcd8ce4681c6e46aca274115edb64"
+        },
+        {
+          "path": "assets.json",
+          "size": 646,
+          "sha256": "2dd37457075e2db783d228b57cc0093c20a93865bddd62d5ea4a1a09adb40de6"
+        },
+        {
+          "path": "index.html",
+          "size": 868,
+          "sha256": "50c554fb53cc526c30058a79643aaaf7a680b6a456538ce1954b3fc7a06ba01a"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 34813,
+          "sha256": "36071db72493cbaf266b6ccd7155ef88d6cce16abac858e504285f2ca60a62f8"
+        },
+        {
+          "path": "package.json",
+          "size": 232,
+          "sha256": "1ede6f4dd694ddea22d3d6748836a4f5d334b2523979f6c82a23c2c88c1c8eca"
+        },
+        {
+          "path": "preview-dark.png",
+          "size": 465963,
+          "sha256": "2fd3bd695ed692b483b78c4ade00d273e34b18682e107d4dbce2f8e9196895d2"
+        },
+        {
+          "path": "preview-light.png",
+          "size": 410955,
+          "sha256": "9e693fcea8366cbf9ce196163e00035304237576c7e44ad5d88d24c9b856c416"
+        },
+        {
+          "path": "preview.png",
+          "size": 410955,
+          "sha256": "9e693fcea8366cbf9ce196163e00035304237576c7e44ad5d88d24c9b856c416"
+        },
+        {
+          "path": "src/app.js",
+          "size": 20730,
+          "sha256": "5ae30101203dd95d6bf7b259247f6f9c182dd0d20425dfa81d0c0dd57c25d121"
+        },
+        {
+          "path": "src/assets/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "src/assets/avatars.png",
+          "size": 1882879,
+          "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52"
+        },
+        {
+          "path": "src/assets/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/data.js",
+          "size": 2073,
+          "sha256": "01c18312b7b308073032674c6ae23f2cea2c5258a93e1ae6fdd4e555442a3abb"
+        },
+        {
+          "path": "src/style.css",
+          "size": 38447,
+          "sha256": "c4e2b8f478f2b9766ba8324b69e9f66b7c957149178fefbe7a5899263084237d"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 77,
+          "sha256": "42590cd7082fd85e14624332a1d966eb8bcc65333b4efdf9bd46ade8a0f67968"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "app-ai-chat",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Chat de IA · Lume",
+          "en": "AI chat · Lume"
+        },
+        "description": {
+          "pt-BR": "Chat em modo escuro com histórico, sugestões e respostas demonstrativas.",
+          "en": "Dark chat with conversation history, suggestions and demo replies."
+        },
+        "preview": "preview.png",
+        "entry": "src/app.js",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json.",
+        "category": "app",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/apps/app-ai-chat",
+        "goal": {
+          "pt-BR": "Quero criar uma aplicação web de IA com uma experiência de chat, começando em modo escuro. Me ajude a definir o que a IA deve resolver, quem vai usá-la, o histórico de conversas, os recursos necessários e os custos das integrações.",
+          "en": "I want to create an AI web application with a chat experience, starting in dark mode. Help me define what the AI should solve, who will use it, conversation history, required features and integration costs."
+        }
+      },
+      "path": "apps/app-ai-chat",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 20,
+          "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 654,
+          "sha256": "9be42ad1ad4536f29214df6ee82c44c33a344fee6d1290de773521f4a41ffc4f"
+        },
+        {
+          "path": "README.md",
+          "size": 3524,
+          "sha256": "c49d81546016180a220e1e056b69fe2d7d191c2238bb7ccd0296dec0534484dc"
+        },
+        {
+          "path": "assets.json",
+          "size": 293,
+          "sha256": "85328d2ecfcd3538f9c5bfd49721b99b47ca683975f825aedef1810625756183"
+        },
+        {
+          "path": "index.html",
+          "size": 884,
+          "sha256": "4a517efd3d51cff25d3d6d47e8e53a6cac8cd321f7e26900a38e2e1aff91dfac"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 34815,
+          "sha256": "175c117cc587487ab2f7dd0ebb142339e638460647236621b47bb5ecd0d2977a"
+        },
+        {
+          "path": "package.json",
+          "size": 278,
+          "sha256": "6b60594de40b40d25bcaf63ae0b55c780d6c64f96219d4bcd09314dd0b90f1fe"
+        },
+        {
+          "path": "preview-dark.png",
+          "size": 340080,
+          "sha256": "108091a54402c02d34fb862de7d9a252c990845c4c7efb839d9a59fe51bf8c05"
+        },
+        {
+          "path": "preview-light.png",
+          "size": 278306,
+          "sha256": "d4b7a78183a333bc17ca6e80bf7beb369ef4b0f50b1767717829d18d2b3dcfae"
+        },
+        {
+          "path": "preview.png",
+          "size": 340080,
+          "sha256": "108091a54402c02d34fb862de7d9a252c990845c4c7efb839d9a59fe51bf8c05"
+        },
+        {
+          "path": "src/app.js",
+          "size": 12227,
+          "sha256": "f11c2ac25d812f0f4c72479a5187dda16c5e0182d9c655dda32f363d8cec8d21"
+        },
+        {
+          "path": "src/assets/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "src/assets/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/model.js",
+          "size": 5603,
+          "sha256": "75ed31aad57a835407203cd2a3fb8d33c9aa334a454b3d5a125b76f0985845e4"
+        },
+        {
+          "path": "src/model.test.js",
+          "size": 3218,
+          "sha256": "6a5e067fe13fde4139045437d232b412bfd4ad233172192c298f54f470ae7fa7"
+        },
+        {
+          "path": "src/style.css",
+          "size": 11575,
+          "sha256": "dfba684ebb3c688d703c8e48f2f6c0372ac42770b32935a3951d5ed5eb9d0653"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 77,
+          "sha256": "42590cd7082fd85e14624332a1d966eb8bcc65333b4efdf9bd46ade8a0f67968"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "app-members",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Área de membros · Forma",
+          "en": "Member academy · Forma"
+        },
+        "description": {
+          "pt-BR": "Academia com frames de aulas, play central e progresso local.",
+          "en": "Academy with lesson frames, central play controls and local progress."
+        },
+        "preview": "preview.png",
+        "entry": "src/app.js",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json.",
+        "category": "app",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/apps/app-members",
+        "goal": {
+          "pt-BR": "Quero criar uma aplicação web de área de membros para organizar cursos e aulas. Me ajude a definir os cursos, os módulos, a reprodução dos vídeos, o progresso dos alunos e as regras de acesso ao conteúdo.",
+          "en": "I want to create a membership web application for courses and lessons. Help me define courses, modules, video playback, learner progress and content access rules."
+        }
+      },
+      "path": "apps/app-members",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 20,
+          "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 919,
+          "sha256": "c3330ffa2378b13abd052929fc0c2fa8be63b81641d2351091cf8e260d00b6b1"
+        },
+        {
+          "path": "README.md",
+          "size": 3238,
+          "sha256": "0bd8d15cb994fe246800677a7256bc30710a8f442c4b4bc0c245eb3d347869cd"
+        },
+        {
+          "path": "art-prompts.json",
+          "size": 3837,
+          "sha256": "84ba307c57c2010dec8783babafda8b1b89f2a62aa39c9020d50fb678932314d"
+        },
+        {
+          "path": "assets.json",
+          "size": 1580,
+          "sha256": "0068994703bf0dffa25da6d171147b772f52561fd6fde0764664cbcea4758b1b"
+        },
+        {
+          "path": "index.html",
+          "size": 879,
+          "sha256": "959a22c3dd1198e8a197e69a3cd2cde6591c82b4db95452a7998a20a672cb779"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 34815,
+          "sha256": "87a98c15e1303387a44bf29ec599e00874bb5488d6457dba57624b4190152091"
+        },
+        {
+          "path": "package.json",
+          "size": 233,
+          "sha256": "bb4f7bdc3e9a2751b37a55b551b6d0a8852f4acd7d441375376133c7bf833f50"
+        },
+        {
+          "path": "preview-dark.png",
+          "size": 682583,
+          "sha256": "03e62e5d1393d2ba8998d61f80ec5ffa87a145a795b1809c1807ae1a2c27a99f"
+        },
+        {
+          "path": "preview-light.png",
+          "size": 677769,
+          "sha256": "9f15f965e32a585e1feceaa4c6eb047249ca23074f378645a0e6d0a8a10c7aeb"
+        },
+        {
+          "path": "preview.png",
+          "size": 677769,
+          "sha256": "9f15f965e32a585e1feceaa4c6eb047249ca23074f378645a0e6d0a8a10c7aeb"
+        },
+        {
+          "path": "src/app.js",
+          "size": 19756,
+          "sha256": "91cbdaf5988c766586049f7589846882c423288b4f51b583df24830728e0fa26"
+        },
+        {
+          "path": "src/assets/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "src/assets/avatars.png",
+          "size": 1882879,
+          "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52"
+        },
+        {
+          "path": "src/assets/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/assets/lesson-ai.png",
+          "size": 1838782,
+          "sha256": "7880dc8a1d522a38a0d0adc440772d9108b0205b8267d682484272da5b1ff018"
+        },
+        {
+          "path": "src/assets/lesson-design.png",
+          "size": 1772607,
+          "sha256": "f65dcbc2f48b41cfae2d2cd5c33bfd9a65e5a11ac504d8f71116afd82cd6fad9"
+        },
+        {
+          "path": "src/assets/lesson-strategy.png",
+          "size": 1963198,
+          "sha256": "c7de25a7b3e1a876913cafca1302e1acd6cb059e1e8bb91f5582c6371a6faa14"
+        },
+        {
+          "path": "src/data.js",
+          "size": 1187,
+          "sha256": "f193466d20967812923f21cb10b5afb939324f2f7f4d62d8a74d0f214d95ccf5"
+        },
+        {
+          "path": "src/style.css",
+          "size": 43312,
+          "sha256": "0c63b680d6e4b479e009935c8cf881a9f7a15645b33d9bc3daaf0a98f10eb47e"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 77,
+          "sha256": "42590cd7082fd85e14624332a1d966eb8bcc65333b4efdf9bd46ade8a0f67968"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "app-community",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Comunidade · Pátio",
+          "en": "Community · Pátio"
+        },
+        "description": {
+          "pt-BR": "Feed com publicações, comentários, espaços e encontros.",
+          "en": "Community feed with posts, comments, spaces and events."
+        },
+        "preview": "preview.png",
+        "entry": "src/app.js",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json.",
+        "category": "app",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/apps/app-community",
+        "goal": {
+          "pt-BR": "Quero criar uma aplicação web de comunidade. Me ajude a definir os membros, os tópicos, as publicações, os comentários, os eventos e as regras de participação e moderação.",
+          "en": "I want to create a community web application. Help me define members, topics, posts, comments, events and participation and moderation rules."
+        }
+      },
+      "path": "apps/app-community",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 20,
+          "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 688,
+          "sha256": "5e0a2cb2fee21fc4b6c3ec73761c2f1840d361c854673bdc878cdd138ac39608"
+        },
+        {
+          "path": "README.md",
+          "size": 2996,
+          "sha256": "8e80f2067ef2b8faaf8b5338cf43957b5fbe7f2a9f7dc87f53d616df83b8ad5e"
+        },
+        {
+          "path": "assets.json",
+          "size": 646,
+          "sha256": "2dd37457075e2db783d228b57cc0093c20a93865bddd62d5ea4a1a09adb40de6"
+        },
+        {
+          "path": "index.html",
+          "size": 872,
+          "sha256": "0fd97f6438ad4a7067e7c397d8a7ef1d0791e9b9129fec5eaf019192a599a83b"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 34819,
+          "sha256": "35d75f6cd954346c69b749f5586df1edf0886c2630f9986764b30ee64968ba85"
+        },
+        {
+          "path": "package.json",
+          "size": 235,
+          "sha256": "69d651d04f8a5fc5a1a5a85f72750cab526fa07826497627ce14d114b5430a1f"
+        },
+        {
+          "path": "preview-dark.png",
+          "size": 494996,
+          "sha256": "8120bb088b8494bcc9400887e2097a0804674c2c0100af26518a85e86bc41743"
+        },
+        {
+          "path": "preview-light.png",
+          "size": 419869,
+          "sha256": "24545482c2773a0793291a0f2f788d4da1769cdd45d6a53bf3a727747bb7e8f4"
+        },
+        {
+          "path": "preview.png",
+          "size": 419869,
+          "sha256": "24545482c2773a0793291a0f2f788d4da1769cdd45d6a53bf3a727747bb7e8f4"
+        },
+        {
+          "path": "src/app.js",
+          "size": 21843,
+          "sha256": "912367a393d7f43b3a558b4df5ee19ad4ccaf035032ccb1a9dcb5291fefbdc06"
+        },
+        {
+          "path": "src/assets/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "src/assets/avatars.png",
+          "size": 1882879,
+          "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52"
+        },
+        {
+          "path": "src/assets/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/data.js",
+          "size": 3482,
+          "sha256": "23dd0c21b114f5bc8fdda711001b91391e12a807e6d9bb8229d4df6ea5e9c45b"
+        },
+        {
+          "path": "src/style.css",
+          "size": 41233,
+          "sha256": "fe4a2cff176729152bf386b06c480092698aaea213b4eee39f057798204159a5"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 77,
+          "sha256": "42590cd7082fd85e14624332a1d966eb8bcc65333b4efdf9bd46ade8a0f67968"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "app-quiz",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Quiz interativo · Prisma",
+          "en": "Interactive quiz · Prisma"
+        },
+        "description": {
+          "pt-BR": "Cinco perguntas, perfil criativo e navegação imersiva.",
+          "en": "Five questions, a creative profile and an immersive flow."
+        },
+        "preview": "preview.png",
+        "entry": "src/app.js",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json.",
+        "category": "app",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/apps/app-quiz",
+        "goal": {
+          "pt-BR": "Quero criar uma aplicação web de quiz interativo. Me ajude a definir o público, o tema, as perguntas, a pontuação, os resultados e o que a pessoa poderá fazer ao concluir.",
+          "en": "I want to create an interactive quiz web application. Help me define the audience, topic, questions, scoring, results and what people can do after finishing."
+        }
+      },
+      "path": "apps/app-quiz",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 20,
+          "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 688,
+          "sha256": "2fb520b7eb32845620c90a7d2a72de1175ed14318f654c16d1727c2d9ebf632d"
+        },
+        {
+          "path": "README.md",
+          "size": 2994,
+          "sha256": "d70475e7fb2e6635ce79b1a89f4faa4e4ecfab7432a4ec95da990d1ef309ff6d"
+        },
+        {
+          "path": "assets.json",
+          "size": 646,
+          "sha256": "2dd37457075e2db783d228b57cc0093c20a93865bddd62d5ea4a1a09adb40de6"
+        },
+        {
+          "path": "index.html",
+          "size": 874,
+          "sha256": "b356a510ce7c3b61a7f1a76050198cec9cbb899447ec352be6cde2506d0bb079"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 34809,
+          "sha256": "3feca072dad168275bb0640a4ec123491922d99e744ecc5c559a120606ed42f3"
+        },
+        {
+          "path": "package.json",
+          "size": 230,
+          "sha256": "b5ef852b20a4a3aa5715f02adc611a20a67a0224332a77737db8f4919785c9ea"
+        },
+        {
+          "path": "preview-dark.png",
+          "size": 386048,
+          "sha256": "ded4bd82c4e2a91bed2d132c3a542209c5fde222358de7724a4e9cef4488d48a"
+        },
+        {
+          "path": "preview-light.png",
+          "size": 341641,
+          "sha256": "68eca1c1cab915b5be7d9c9e33d7aa50f706752a98b02b180fc4a6f383b0d460"
+        },
+        {
+          "path": "preview.png",
+          "size": 341641,
+          "sha256": "68eca1c1cab915b5be7d9c9e33d7aa50f706752a98b02b180fc4a6f383b0d460"
+        },
+        {
+          "path": "src/app.js",
+          "size": 18553,
+          "sha256": "451e50304979e2094f96992acc1579614b1ac0d3dd00966cddb7442fbd177799"
+        },
+        {
+          "path": "src/assets/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "src/assets/avatars.png",
+          "size": 1882879,
+          "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52"
+        },
+        {
+          "path": "src/assets/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/data.js",
+          "size": 2337,
+          "sha256": "6274b7aacd682e04dffeb2570ec49035a68720ed5f70fb1142c6643b08f39210"
+        },
+        {
+          "path": "src/style.css",
+          "size": 39476,
+          "sha256": "9b97acf63a2b601ca5e07fac95fda24fc9552f93aafda184214fd8fde96862f1"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 77,
+          "sha256": "42590cd7082fd85e14624332a1d966eb8bcc65333b4efdf9bd46ade8a0f67968"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "app-calculator",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Calculadora interativa · Escopo",
+          "en": "Interactive calculator · Escopo"
+        },
+        "description": {
+          "pt-BR": "Estimativa de projeto com ajustes de escopo e comparação de cenários.",
+          "en": "Project estimates with scope controls and scenario comparison."
+        },
+        "preview": "preview.png",
+        "entry": "src/app.js",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json.",
+        "category": "app",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/apps/app-calculator",
+        "goal": {
+          "pt-BR": "Quero criar uma aplicação web de calculadora interativa. Me ajude a definir o cálculo, os campos de entrada, as fórmulas, as premissas, os cenários e a forma mais clara de apresentar o resultado.",
+          "en": "I want to create an interactive calculator web application. Help me define the calculation, input fields, formulas, assumptions, scenarios and the clearest way to present results."
+        }
+      },
+      "path": "apps/app-calculator",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 20,
+          "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 688,
+          "sha256": "ffcee78f3da9608b46c6d0497999fe03d694cb9602fc2db76b4e491e6225be21"
+        },
+        {
+          "path": "README.md",
+          "size": 3466,
+          "sha256": "fa75e4fe079f5eb0bbdb406fad36a707a90162ec7df7edcf90d5ff0799721492"
+        },
+        {
+          "path": "assets.json",
+          "size": 646,
+          "sha256": "2dd37457075e2db783d228b57cc0093c20a93865bddd62d5ea4a1a09adb40de6"
+        },
+        {
+          "path": "index.html",
+          "size": 897,
+          "sha256": "340223a722388f66b53fafd01bae9640cbf271c45dc0b1496e40038bbed89fa3"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 34821,
+          "sha256": "8d0c6175cbbcb2d2a6b8ea4fd1aaa1315b051aaf64ce85a8cfc9e73cd24b2496"
+        },
+        {
+          "path": "package.json",
+          "size": 284,
+          "sha256": "95cf26761991cfb2f05072f2622181d64ed117d78f5fecb7d019ab4100468ec5"
+        },
+        {
+          "path": "preview-dark.png",
+          "size": 314460,
+          "sha256": "9f3655ac231fb2fd81881059cd4cc214be49652a1ecae44147c07662f96ef54c"
+        },
+        {
+          "path": "preview-light.png",
+          "size": 294389,
+          "sha256": "f360b41be0c8829f02c13bc801d37ab956d2a16b417db04508bcbfbf7f478559"
+        },
+        {
+          "path": "preview.png",
+          "size": 294389,
+          "sha256": "f360b41be0c8829f02c13bc801d37ab956d2a16b417db04508bcbfbf7f478559"
+        },
+        {
+          "path": "src/app.js",
+          "size": 19965,
+          "sha256": "1e9b8d2e9c530a2f7c2f42ce15a28ea3b905cfba47384f6c93c3c7fe5d608a8e"
+        },
+        {
+          "path": "src/assets/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "src/assets/avatars.png",
+          "size": 1882879,
+          "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52"
+        },
+        {
+          "path": "src/assets/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/data.js",
+          "size": 471,
+          "sha256": "930f8f8e6c227b15457fc00fa38ba94b659b3d68abe80eeb6f07d9767a642fea"
+        },
+        {
+          "path": "src/estimate.js",
+          "size": 536,
+          "sha256": "74f1dbe525f86f64d6e03e99b416c4a71379600b48e53333c8191e04fe71dfbb"
+        },
+        {
+          "path": "src/estimate.test.js",
+          "size": 1136,
+          "sha256": "4f60eb079a787ea9cb4faaa05e4c0c1c36fd7c3ca5c25af16d133a746d0a0070"
+        },
+        {
+          "path": "src/style.css",
+          "size": 40940,
+          "sha256": "87a269a2b8e84d5954417400cb7ce14644d7c1501365aa57d15d69fcdcb77f57"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 77,
+          "sha256": "42590cd7082fd85e14624332a1d966eb8bcc65333b4efdf9bd46ade8a0f67968"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "app-conversion-tracker",
+        "kind": "web",
+        "name": {
+          "pt-BR": "Rastreador de conversões · Sinal",
+          "en": "Conversion tracker · Sinal"
+        },
+        "description": {
+          "pt-BR": "Atribuição com métricas, canais, campanhas e funil de conversão.",
+          "en": "Attribution metrics, channels, campaigns and conversion funnel."
+        },
+        "preview": "preview.png",
+        "entry": "src/app.js",
+        "adaptation": "Copie o pacote completo para uma nova pasta antes de editar. Troque marca, textos, dados fictícios e imagens conforme o pedido; preserve o original, as interações úteis, LICENSE, NOTICE e licenças das fontes. Instale com npm ci e o lockfile incluído; execute npm run build e confira desktop e celular. Ações são demonstrações locais em memória, sem autenticação, backend ou serviços reais. Só adicione integrações quando pedidas e configuradas. Não publique automaticamente.",
+        "license": "Apache-2.0; fonts: OFL-1.1",
+        "origin": "SquadOS. Base técnica web-landing-page e spike próprio aprovado, sob Apache-2.0. Fonte DM Sans OFL-1.1. Arte nativa própria; proveniência em NOTICE.md e assets.json.",
+        "category": "app",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/apps/app-conversion-tracker",
+        "goal": {
+          "pt-BR": "Quero criar uma aplicação web para acompanhar conversões. Me ajude a definir campanhas, origens do tráfego, eventos, etapas do funil e indicadores, distinguindo os dados demonstrativos das integrações reais que precisaremos configurar.",
+          "en": "I want to create a conversion tracking web application. Help me define campaigns, traffic sources, events, funnel stages and indicators, distinguishing mock data from the real integrations we will need to configure."
+        }
+      },
+      "path": "apps/app-conversion-tracker",
+      "files": [
+        {
+          "path": ".gitignore",
+          "size": 20,
+          "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+        },
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 687,
+          "sha256": "1e948cd4c927d7547bbf6389e8cb0bfc270ed99fe10c9a93712163a3df968a80"
+        },
+        {
+          "path": "README.md",
+          "size": 3340,
+          "sha256": "243b9b479856e82676e10f9e7fddb4f881a975696eb52dd6516207d6332f4388"
+        },
+        {
+          "path": "assets.json",
+          "size": 646,
+          "sha256": "2dd37457075e2db783d228b57cc0093c20a93865bddd62d5ea4a1a09adb40de6"
+        },
+        {
+          "path": "index.html",
+          "size": 895,
+          "sha256": "4882d424046e4ac9344ffcc5258fc3979a1aaa5df0353d0ef4f54f862e5913ec"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 34837,
+          "sha256": "2dd981a0aceb3d6a79d3afee34714328accdf4b99c505184d7d53910f255bae6"
+        },
+        {
+          "path": "package.json",
+          "size": 244,
+          "sha256": "8f32acd4059f07cbbf54ebd206c640386b4824373e7a94b4cf4f541dd4d3a904"
+        },
+        {
+          "path": "preview-dark.png",
+          "size": 345230,
+          "sha256": "9fee6af0fcda0bf513c57a54b1344664d457e4703761daeec7c0772abe738064"
+        },
+        {
+          "path": "preview-light.png",
+          "size": 273438,
+          "sha256": "8d026eea73475b3a5190abf75a731e2381d5b8a31161c0f5d31fe82ea88780f9"
+        },
+        {
+          "path": "preview.png",
+          "size": 273438,
+          "sha256": "8d026eea73475b3a5190abf75a731e2381d5b8a31161c0f5d31fe82ea88780f9"
+        },
+        {
+          "path": "src/app.js",
+          "size": 20923,
+          "sha256": "dfeadc4f8379456e062263521c18bfafda52055a9cdd71f4c6f371e3c79b9c8d"
+        },
+        {
+          "path": "src/assets/DM-Sans-OFL.txt",
+          "size": 4389,
+          "sha256": "2af94f4fb533be8fa23282eb33e08ca311ddf47c2f32777e2040b282deeec65c"
+        },
+        {
+          "path": "src/assets/avatars.png",
+          "size": 1882879,
+          "sha256": "42093959d6d2f27068a6dfeb0d4a721b7e3118fa77f906fbc92cab2cc13c2c52"
+        },
+        {
+          "path": "src/assets/body.woff2",
+          "size": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+        },
+        {
+          "path": "src/data.js",
+          "size": 1388,
+          "sha256": "abb31387dca53a2c7f99afb1b9ae90de72e2c4c493445b1a0f1a59848504ad57"
+        },
+        {
+          "path": "src/style.css",
+          "size": 38330,
+          "sha256": "2f69c6f4a958e11a767ce4c25713cbb9fa9ce7c9bfa252c51314f49228d1b552"
+        },
+        {
+          "path": "vite.config.js",
+          "size": 77,
+          "sha256": "42590cd7082fd85e14624332a1d966eb8bcc65333b4efdf9bd46ade8a0f67968"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "game-city-simulator",
+        "kind": "web",
+        "category": "game",
+        "name": {
+          "pt-BR": "Simulador de Cidades",
+          "en": "City Simulator"
+        },
+        "description": {
+          "pt-BR": "Construa uma cidade 3D, planeje bairros e acompanhe sua evolução.",
+          "en": "Build a 3D city, plan neighborhoods and watch it grow."
+        },
+        "preview": "preview.png",
+        "entry": "index.html",
+        "adaptation": "Copie o pacote inteiro para uma nova pasta antes de editar. Esta é uma base de jogo de navegador pronta, com fontes e recursos locais. Preserve a entrada direta, controles, todos os créditos, fontes e licenças descritos em NOTICE.md, README.md e UPSTREAM.md. Troque nome, cenário, arte e regras conforme o pedido e confira o jogo após cada alteração. Instale com npm ci e execute npm run build na cópia; sirva por HTTP. Não publique automaticamente.",
+        "license": "GPL-3.0 and Micropolis terms; see LICENSE and COPYING",
+        "origin": "lo-th/3d.city@60fc6de2451ac6cf4df211a7cdae6c55c97e73c7; identidade e adaptação SquadOS. Ver UPSTREAM.md, LICENSE e COPYING.",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/games/3d-city",
+        "goal": {
+          "pt-BR": "Quero criar um simulador de cidades jogável no navegador. Me ajude a personalizar a cidade, as construções, os recursos, os objetivos e a progressão, mantendo a experiência fácil de começar e interessante de explorar.",
+          "en": "I want to create a playable browser city simulator. Help me personalize the city, buildings, resources, goals and progression, keeping it easy to start and interesting to explore."
+        }
+      },
+      "path": "games/3d-city",
+      "files": [
+        {
+          "path": "COPYING",
+          "size": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "LICENSE",
+          "size": 2360,
+          "sha256": "ccf59fbc8eebda307b563c23e23104ace3a6e3943d5ade752c5128c2965abc96"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 584,
+          "sha256": "cbc484b15f2ad28322e53c7841de0c6546bf3b753d46cf5ce39de1640aa4dd6d"
+        },
+        {
+          "path": "README.md",
+          "size": 3128,
+          "sha256": "2cbc50cbacf5057c4f3d9848cb24f3041ac6393609258686b40f544eec531312"
+        },
+        {
+          "path": "UPSTREAM-README.md",
+          "size": 2073,
+          "sha256": "5af9035b75a318f70670b83539715087122789f16a515a45dbec617e10d3d3e8"
+        },
+        {
+          "path": "UPSTREAM.md",
+          "size": 5798,
+          "sha256": "f85e43c16ee0d2c8a16383cdcf6475d5180d2f40b9e8f4a4683ccf1791f14952"
+        },
+        {
+          "path": "VALIDATION.md",
+          "size": 5751,
+          "sha256": "2d8d7fe25312b30abf5e4dd5a9a921d17e62be8644576d1aeb3bd2c07940e39a"
+        },
+        {
+          "path": "assets/city-mark.svg",
+          "size": 430,
+          "sha256": "1d50e4bfa9ecb453910e664b087702247856a837d3b0b4162e1691ec73feed50"
+        },
+        {
+          "path": "assets/demo-city.json",
+          "size": 37927,
+          "sha256": "55d0c627d14b056d6f6df5670b14c5f11c59628b1b9900e527346d519062ec31"
+        },
+        {
+          "path": "assets/draco/draco_decoder.js",
+          "size": 512465,
+          "sha256": "8625489da79a805f4f2a7d511c3e52d8b4085608a9d2a4d5f4f9de5db0aea04f"
+        },
+        {
+          "path": "assets/draco/draco_decoder.wasm",
+          "size": 192420,
+          "sha256": "a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac"
+        },
+        {
+          "path": "assets/draco/draco_wasm_wrapper.js",
+          "size": 58456,
+          "sha256": "8bb2952d2ba7d67e1414f8df819410cb0434a666be53f671fff75f68843d76f6"
+        },
+        {
+          "path": "assets/img/build_0.png",
+          "size": 63988,
+          "sha256": "17e2500c9b6fa1e3fba95cb5151b9f1bad4d39253d432247d597177e34e729b9"
+        },
+        {
+          "path": "assets/img/build_1.png",
+          "size": 72320,
+          "sha256": "513a8d863aa9ab2f13be6cb9d5603496e58affa92f122371e47cfb34c70cf18b"
+        },
+        {
+          "path": "assets/img/preview01.jpg",
+          "size": 63845,
+          "sha256": "154188126c682068fc4174b2458e23c15d2b2251c88a0e2b980b68a7d5ad8ffb"
+        },
+        {
+          "path": "assets/img/preview02.jpg",
+          "size": 157258,
+          "sha256": "8b1a6db41804899ea002561558c822219518b34e8412d7b40c310de98c70f332"
+        },
+        {
+          "path": "assets/img/preview03.jpg",
+          "size": 98493,
+          "sha256": "7508510f3ab7b4748061ac9755a2eb44cf230676298bd05a540e5d01d146cef0"
+        },
+        {
+          "path": "assets/img/stripe_l.png",
+          "size": 345,
+          "sha256": "5fb70b24ae9e930b20f05f2d33a4d015aa1ef089970de29f12f18ad3799b4252"
+        },
+        {
+          "path": "assets/img/stripe_r.png",
+          "size": 304,
+          "sha256": "3520b0b627aefdc7e61f897bef81663cdfb2a1b4c2e64e1c54784da25c107e3b"
+        },
+        {
+          "path": "assets/img/tuto.png",
+          "size": 80076,
+          "sha256": "c4478c4163eb97e3d66c21f1e508ff1f18eacc29f75825ffa36874f5fba3e6b8"
+        },
+        {
+          "path": "assets/luts/1.CUBE",
+          "size": 970484,
+          "sha256": "281016079258582103c74cb1acb1fd76b59432cba332b88a417d4cba658a3fa6"
+        },
+        {
+          "path": "assets/luts/B&WLUT.png",
+          "size": 9069,
+          "sha256": "2b0e20f70145f41022ca6fb6b67462e87e211c174d500e23670238dc760b0776"
+        },
+        {
+          "path": "assets/luts/Bourbon 64.CUBE",
+          "size": 884952,
+          "sha256": "4be6adb63f6d3de57593a266f3c0cffd6243a978ef156fc377f1c20fe5cf2bde"
+        },
+        {
+          "path": "assets/luts/Chemical 168.CUBE",
+          "size": 884956,
+          "sha256": "c985bcfb12a8b6cafbad6990fc975e34e1e4a0bbe5c707df8f11e7a2dc2651f7"
+        },
+        {
+          "path": "assets/luts/Cinematic.3dl",
+          "size": 450415,
+          "sha256": "5829bb439f97b56993156ba038b687ed8a3f54ac857a4b72fdf2cfa1b05da66a"
+        },
+        {
+          "path": "assets/luts/Clayton 33.CUBE",
+          "size": 884963,
+          "sha256": "a2cb244bed473ec14a9cc00cb135571b5d5e2910b50b848ee8fc5e203e1cfc6b"
+        },
+        {
+          "path": "assets/luts/Cubicle 99.CUBE",
+          "size": 884953,
+          "sha256": "514eac4b0361937ec3972c8bad14f16237efde41cd9e647a6497b1e45fdd775e"
+        },
+        {
+          "path": "assets/luts/FILM1.CUBE",
+          "size": 961349,
+          "sha256": "787f244f0fcd796547e4cb62364f230432787ebc6287232b0795902fb9504d8c"
+        },
+        {
+          "path": "assets/luts/FILM2.CUBE",
+          "size": 688172,
+          "sha256": "3a33bcdb0f1f3502201616c90be3fee866f207756840d15b4d9716985c37c105"
+        },
+        {
+          "path": "assets/luts/LDmono1.cube",
+          "size": 963966,
+          "sha256": "edfff3b08e7c3ec56cd9e16812cb52003d4fbebfa7e76a3f9acdf9d473355a61"
+        },
+        {
+          "path": "assets/luts/LDmono2.cube",
+          "size": 966234,
+          "sha256": "a09c787490eb7b82508f70ba6757bd76c9a2a715ce5be216fac1071ec6cf4d46"
+        },
+        {
+          "path": "assets/luts/LDmono3.cube",
+          "size": 964264,
+          "sha256": "6f85fce7b71c2e8fced4a9b9e89ad40c2987ff23c5368d1834575b405e2d9f1f"
+        },
+        {
+          "path": "assets/luts/Monochrome.CUBE",
+          "size": 964264,
+          "sha256": "6f85fce7b71c2e8fced4a9b9e89ad40c2987ff23c5368d1834575b405e2d9f1f"
+        },
+        {
+          "path": "assets/luts/Neon 770.CUBE",
+          "size": 884909,
+          "sha256": "6dfa2f4cd55645d54f0aa3bf646c152fb1e6a7ff82684c0bd52d80ca09265d61"
+        },
+        {
+          "path": "assets/luts/NeutralLUT.png",
+          "size": 1611,
+          "sha256": "8b4c935007d12eb62f99c4f5dbc093be2bf75273a703a6290adb5aa22916c679"
+        },
+        {
+          "path": "assets/luts/NightLUT.png",
+          "size": 17418,
+          "sha256": "a7d6519268026f58851c8c5817b045272cbc4ac8fc727189b5d01235348eb859"
+        },
+        {
+          "path": "assets/luts/Remy 24.CUBE",
+          "size": 884956,
+          "sha256": "538d199fdb03b0973538bf8adb63219da587c30c82bba8327d3b2ccb0f6cdbd8"
+        },
+        {
+          "path": "assets/luts/premium.cube",
+          "size": 597593,
+          "sha256": "77ce3dc2f368c132602292eb0494fc50b0c8a10a4f1738344374b47bbc0d0bec"
+        },
+        {
+          "path": "assets/luts/realism.3dl",
+          "size": 464637,
+          "sha256": "b6534146333d9d538b4bfdc81c0b77e7b0be31df057d601e6192b6dca7bd8c9e"
+        },
+        {
+          "path": "assets/models/cars.glb",
+          "size": 21188,
+          "sha256": "678ca0920747153022d9e156ee4b39193be148b7ed377c3708610f41f139c988"
+        },
+        {
+          "path": "assets/models/world.glb",
+          "size": 233280,
+          "sha256": "e58bfba75fccf955f10401bec06c3d8f1d0b14493a22938b210a7e2721b1b98a"
+        },
+        {
+          "path": "assets/textures/Carbon.png",
+          "size": 1052035,
+          "sha256": "1d504adf20c83f26ce5519a19b9e33c2dc9ca6371a523a10869d308edd67f9e6"
+        },
+        {
+          "path": "assets/textures/basemenu.png",
+          "size": 13004,
+          "sha256": "3f5c40a9ffbb44834147c8feab65c2b531e7b1a213fdd6a8b3f8808daef3af91"
+        },
+        {
+          "path": "assets/textures/border.png",
+          "size": 1137,
+          "sha256": "2ca2e3dee669eab36455a36b5f7ce6f62cbbe57adc97b52aac17d35b541fc035"
+        },
+        {
+          "path": "assets/textures/building.png",
+          "size": 167370,
+          "sha256": "ba2cbed29813ee8f8f62be06bb48f017db63c04a785754ac46d8bfc7a0ce3ebb"
+        },
+        {
+          "path": "assets/textures/building0.png",
+          "size": 3117974,
+          "sha256": "1a3cfcd48a73940a30b7809582300ad028d241b8d6b1ed53f3d23a2d601684ec"
+        },
+        {
+          "path": "assets/textures/building_gg.png",
+          "size": 2514004,
+          "sha256": "5cb9675bb91524a1fff59a720c7fa0046d3e257415c0c27d5df698c3d05fe09e"
+        },
+        {
+          "path": "assets/textures/building_n.png",
+          "size": 3052144,
+          "sha256": "abf03fb5a76b1865e3307dcb4c5ff6b990170f80949663c7a549fbadf74be151"
+        },
+        {
+          "path": "assets/textures/building_nr.png",
+          "size": 6628803,
+          "sha256": "fb91aa1fb6617fdc2b685947e74527a595bd71ea14a31800e9ea04f1bb345bcc"
+        },
+        {
+          "path": "assets/textures/building_nro.png",
+          "size": 3691973,
+          "sha256": "f05df8bdcb253a9f6e7e35f5453c5f7f688dbb4d1459e241775bc4967bb6f750"
+        },
+        {
+          "path": "assets/textures/building_r.png",
+          "size": 143868,
+          "sha256": "1acb361935b366400f171156f0bbe6f0bbdd882a6b72374076f611d0379071df"
+        },
+        {
+          "path": "assets/textures/building_win.png",
+          "size": 44259,
+          "sha256": "abf62bb377147ac057144d8a6418ffbd6e981f2a59a005f8d5d5cc0c6804ed8a"
+        },
+        {
+          "path": "assets/textures/cars.png",
+          "size": 204241,
+          "sha256": "5ca7f36d7d2a98aba209908922bc2be9e62662643cf2e283df33290443ff1299"
+        },
+        {
+          "path": "assets/textures/env.jpg",
+          "size": 28394,
+          "sha256": "5f4cf57771fcd20ae5c71988c035eb3c0c7c9fe90787e68a5ed9c02731cfe04b"
+        },
+        {
+          "path": "assets/textures/envmap.hdr",
+          "size": 5376993,
+          "sha256": "83f51db5e50ec7cea4cd1a2f5da25a4d0f51623ac7831e9c7334ba7ed7708876"
+        },
+        {
+          "path": "assets/textures/envmap2.hdr",
+          "size": 1411630,
+          "sha256": "a12456127baeaef63c672581e72f10e0e046771980cc32deb214e63ce2ff5131"
+        },
+        {
+          "path": "assets/textures/feux.png",
+          "size": 32735,
+          "sha256": "eb3d2a6b92c4a700270ed1472dcb35386612191516481898d0451c42838fff97"
+        },
+        {
+          "path": "assets/textures/fire.png",
+          "size": 55150,
+          "sha256": "a8c4a48c3020c4aab045760352cbd75b1eeaf748296040dc83fa0512f3b22fb5"
+        },
+        {
+          "path": "assets/textures/ground1k.png",
+          "size": 282556,
+          "sha256": "756fab232e2ae12e32225f2ab89cf2bf1368b0ddd7c9e53e59c1ad4e3fc9056e"
+        },
+        {
+          "path": "assets/textures/ground1k_n.png",
+          "size": 310374,
+          "sha256": "6ef5b2699f5402d817fe5d06bdb2644df931abd0b20e67135f50f56c50b7c423"
+        },
+        {
+          "path": "assets/textures/ground2k.png",
+          "size": 1253311,
+          "sha256": "02c438a29e4a72181501f341f779f634dfcf1f302661971457cc3aa4c4bf5779"
+        },
+        {
+          "path": "assets/textures/ground2k_n.png",
+          "size": 2045313,
+          "sha256": "3e2cbf7b45bfd6ea3bd76411c79ce40fdd5e86478ee3a7e48aa6cc78b8f6bc4f"
+        },
+        {
+          "path": "assets/textures/light_a.png",
+          "size": 4953,
+          "sha256": "0403163f052e700136c033f0abc2ff96b30ef830b15260fd9bb3571f35142ab3"
+        },
+        {
+          "path": "assets/textures/monster.png",
+          "size": 1213505,
+          "sha256": "277d7dd0ea96f3d77a3dfe3af7a001555dc4ad209d2720d56f6a7286c8145193"
+        },
+        {
+          "path": "assets/textures/monster_n.png",
+          "size": 664113,
+          "sha256": "c9605bde3d4a11bfaf3b29a291422489098cf28735756bea056de8bd53a0282b"
+        },
+        {
+          "path": "assets/textures/night1k.png",
+          "size": 548760,
+          "sha256": "186ebeee67b56702bd333699f2399d920076df65e7415dee9666e6e92515c238"
+        },
+        {
+          "path": "assets/textures/night2k.png",
+          "size": 2070468,
+          "sha256": "00fc07ae1c2deaaba4017ecc32d999839f4742a962e162163644b305124f98b8"
+        },
+        {
+          "path": "assets/textures/road.png",
+          "size": 11696,
+          "sha256": "f8c48c33cedf7e6180e68ff15f39b9fbf6bb6eff061d4df72143ac676ff34aa8"
+        },
+        {
+          "path": "assets/textures/roadx.png",
+          "size": 9175,
+          "sha256": "784c7694f7b96623f7f119c906db64ec98282e3c324ed3e117497195437e0d62"
+        },
+        {
+          "path": "assets/textures/snow1k.png",
+          "size": 498292,
+          "sha256": "4845627755e863c9a7afd6a577d938fd44c09668d51570ac0ea89f1d65be45c1"
+        },
+        {
+          "path": "assets/textures/snow2k.png",
+          "size": 1773849,
+          "sha256": "8b0ee45ad12dcf13561baad40b83f9be1025dab07a78c990f65d688584157843"
+        },
+        {
+          "path": "assets/textures/tiles.ktx2",
+          "size": 486125,
+          "sha256": "9edea7bfb1ec0bc564720cdf657dd6e1da880964d00863f907025340b8dc3761"
+        },
+        {
+          "path": "assets/textures/tiles.png",
+          "size": 866523,
+          "sha256": "d4811a670d25624687c28db2ef2bd688488851ca19c837b3bb167ee18ba54439"
+        },
+        {
+          "path": "assets/textures/tiles_n.ktx2",
+          "size": 485453,
+          "sha256": "79ae87d3036d5d91b226af7c6374d8325e9accac3729b634b4a1876bddc91737"
+        },
+        {
+          "path": "assets/textures/tiles_n.png",
+          "size": 386997,
+          "sha256": "22a3a1bdf7281c113f7211a7e3ea8f88cd81442a02d68f6d61fced127f9b0748"
+        },
+        {
+          "path": "assets/textures/tiles_nr.png",
+          "size": 523833,
+          "sha256": "9498cc6c0a5b87e4399814dc536109af105d479c1b44e1e502357e1fe64f5c57"
+        },
+        {
+          "path": "assets/textures/tiles_ok.png",
+          "size": 580145,
+          "sha256": "05b5ee9c16c7c44c822389a3301d83c137d76b9f0663ed74873ec1c893d1550e"
+        },
+        {
+          "path": "assets/textures/tiles_r.png",
+          "size": 484525,
+          "sha256": "aadb5b46bf0ba50709447b4309ae086a8452e5d104cb782543147ef5cd459239"
+        },
+        {
+          "path": "assets/textures/tiles_test.png",
+          "size": 1327780,
+          "sha256": "afaa765952c998ee815a4b21ac992ef25d6bcf9755f4bf43061c48ea1da1455c"
+        },
+        {
+          "path": "assets/textures/title.png",
+          "size": 213561,
+          "sha256": "4438cf70f3e52d4c3a78e76a40324ad7f394e8a68d0ee352c2c07e9b8163154f"
+        },
+        {
+          "path": "assets/textures/town.png",
+          "size": 479888,
+          "sha256": "4f1cd188751a9cad5c9bed6ca1cc2956b8c4d80d8e97fcfed9ae1135251b1ee9"
+        },
+        {
+          "path": "assets/textures/town_n.png",
+          "size": 702641,
+          "sha256": "c6359915b78283b35436338e4c002608457c37a72bd92cd5188aa8351dc119e9"
+        },
+        {
+          "path": "assets/textures/town_nr.png",
+          "size": 866528,
+          "sha256": "5ee0a7ff758f3fc170f10480bafd9012716c0f31d54f14083f383d41d7b9dcf7"
+        },
+        {
+          "path": "assets/textures/town_r.png",
+          "size": 71262,
+          "sha256": "62d9c6392c8ce7ffe1795de06ca6291b0dd8bf5405339abbcf8420faf1f47bff"
+        },
+        {
+          "path": "assets/textures/town_win.png",
+          "size": 10946,
+          "sha256": "7ddfd7b68230f9e66857d1586fc5233cc0ac5e82ae71ca68a197a602b132cdd5"
+        },
+        {
+          "path": "assets/textures/water_n.jpg",
+          "size": 232497,
+          "sha256": "00ebf55b0376ba0426fe97c5157115ea517d27610159b944ff64795652197041"
+        },
+        {
+          "path": "build/MainGame.module.js",
+          "size": 1047959,
+          "sha256": "244c25a8dafff108e637f317f7774d9470aff8b99886d308f57f1ab326d4b5c3"
+        },
+        {
+          "path": "build/citygame.min.js",
+          "size": 143513,
+          "sha256": "32cd1c1b565c9ff5628fd0bbcb4016c5e7ece1103a26e49afdd0f83249da4983"
+        },
+        {
+          "path": "build/citygame.module.js",
+          "size": 143282,
+          "sha256": "f10e81f29f833372c0e794890dda8f27f6d39dbb0308cb925eb343467bd99787"
+        },
+        {
+          "path": "demo.css",
+          "size": 12607,
+          "sha256": "7a446dcaf54b311b70a6d76f8bbd4470c88e17dd124810a2d4fe96e58c894046"
+        },
+        {
+          "path": "demo.js",
+          "size": 3208,
+          "sha256": "e66982895505506c4fb39fd61a9b2c56f2737aedd27599539d74474461b7d9ad"
+        },
+        {
+          "path": "favicon.ico",
+          "size": 33750,
+          "sha256": "1ea0f84e5302cebf1a55327fc0afadf1cb9226d9ad35f5692c2e44e6ed521d15"
+        },
+        {
+          "path": "index.css",
+          "size": 17179,
+          "sha256": "accc16eadc2f9610d53108992ec599045d44bb41e5f7b2b18c06d16fd75ed254"
+        },
+        {
+          "path": "index.html",
+          "size": 1928,
+          "sha256": "9e5968e58abd57d4d3d211f7fab0b777943493fc176c5e711c50ac4437ebb09e"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 28118,
+          "sha256": "a65fd5d9e36d1390a1b8e37b4c288c1a89a6eb98597a6aa7ea5515c6b8aa2e7a"
+        },
+        {
+          "path": "package.json",
+          "size": 871,
+          "sha256": "95fc7023780f206c2ead9008377152c2ac1bb629499dd629d22c897845788a63"
+        },
+        {
+          "path": "preview-mobile-short.png",
+          "size": 217109,
+          "sha256": "2596b65173bd625d0a88e60010e4141675417d0623d14d224339ba461c3cd854"
+        },
+        {
+          "path": "preview-mobile.png",
+          "size": 367495,
+          "sha256": "0d18d51a0a08d546f4cf571897e9cb3ab48d8293be470cc7ab87d040eead9f21"
+        },
+        {
+          "path": "preview.png",
+          "size": 1332764,
+          "sha256": "41eb4811458f9380079487575c76fe6f4d07b8b907a137a255a760d420479b75"
+        },
+        {
+          "path": "scripts/generate-demo.mjs",
+          "size": 3884,
+          "sha256": "a08997fbe6f28c2e95a9125f91a5a260d9113af914cb76e0a8f6cc5190ebe9b4"
+        },
+        {
+          "path": "sound/bop.mp3",
+          "size": 2688,
+          "sha256": "898ce6d5638ee1e64dd481f3ce949e788cf5e7e2435443b76229ec4e800df9f4"
+        },
+        {
+          "path": "sound/explosion-high.mp3",
+          "size": 10880,
+          "sha256": "1d2519b27005911a51d93d425bdc6280812182dcf7ff0afa99498ef830840076"
+        },
+        {
+          "path": "sound/explosion-low.mp3",
+          "size": 33920,
+          "sha256": "aaa119f34356ce081c14afaaf9bc2f48de2b2a12142a14435f3c6ae72ed0574f"
+        },
+        {
+          "path": "sound/heavytraffic.mp3",
+          "size": 13952,
+          "sha256": "03c516feb1fa1e11ed42968e80f1b04a87d2ba0137c8bde448f50afafc057ff4"
+        },
+        {
+          "path": "sound/helico/1128.mp3",
+          "size": 382399,
+          "sha256": "0efaf7c53a4628518896335ea31ca7b06beffbfbdcef4badf5ad9ffa703795f3"
+        },
+        {
+          "path": "sound/helico/1140.mp3",
+          "size": 1023679,
+          "sha256": "e89dae45ac822aa31428a491b2db1f760c893e598ef09c25c9aa9873e0cc6a15"
+        },
+        {
+          "path": "sound/helico/2831.mp3",
+          "size": 848959,
+          "sha256": "a15361b343a7504b6d8dee19768a43b750ff2ec49a169add362f6a1c447cb355"
+        },
+        {
+          "path": "sound/helico/409801_SOUNDDOGS__ba.mp3",
+          "size": 42357,
+          "sha256": "c3d5560796e3e4f946b29ced7db90b04368541d81e84058b17b5e35b379e4336"
+        },
+        {
+          "path": "sound/helico/409802_SOUNDDOGS__ba.mp3",
+          "size": 42148,
+          "sha256": "851c28bdae55869393a76120909995e40a1092487c0162a99cb10c4a3f882f24"
+        },
+        {
+          "path": "sound/helico/8534.mp3",
+          "size": 785599,
+          "sha256": "2299661dde095bdaf7f7e9b3e0953199e2b851d301ed6ed1ec4ef2f87cd31fa2"
+        },
+        {
+          "path": "sound/helico/8535.mp3",
+          "size": 3918079,
+          "sha256": "64dd7e24bc8da8c5d06495fecc175d4b3ab59a1faf4a5733e51445ac1ccd3c6a"
+        },
+        {
+          "path": "sound/honkhonk-hi.mp3",
+          "size": 5760,
+          "sha256": "d0cfa13789f0337a73cd53b45b1f959860463db5d4ae38cf08dbbe9383e8f515"
+        },
+        {
+          "path": "sound/honkhonk-high.mp3",
+          "size": 5760,
+          "sha256": "172ad1a43a33d799410ab4e5c2c51e43b7f0d51e68d3c3cb2e0446458e7d19e6"
+        },
+        {
+          "path": "sound/honkhonk-low.mp3",
+          "size": 8320,
+          "sha256": "ea175181528e246a628d7748395bbe69d6aab2c239eb7cbd72f33c89d0fabdaf"
+        },
+        {
+          "path": "sound/honkhonk-med.mp3",
+          "size": 6784,
+          "sha256": "1495a42c7c47259aaa64300e6fb8cac12dc03331326b10bb37537811c62f46ae"
+        },
+        {
+          "path": "sound/layzone.mp3",
+          "size": 3200,
+          "sha256": "51c4a58a59d05bbffc5022b2ca391f70163879e18991cb9a50a1f577d9f03dd1"
+        },
+        {
+          "path": "sound/monster.mp3",
+          "size": 5760,
+          "sha256": "4907a0d3941b5c72b2d3e37f1dd5ba9f69c13f99d63c301fac0a5901af2b241e"
+        },
+        {
+          "path": "sound/original/bop.wav",
+          "size": 6548,
+          "sha256": "27754d2a65d32be8726e1b8340760102a8fa57b34e5f8880da5ed1347fbc4bcf"
+        },
+        {
+          "path": "sound/original/explosion-high.wav",
+          "size": 70924,
+          "sha256": "98bd8a25eaaca00563c1a441c90b26eb5607c5cbeaf09433b2807d28bdb38872"
+        },
+        {
+          "path": "sound/original/explosion-low.wav",
+          "size": 226900,
+          "sha256": "9c4b1c91a7e67b17888218e586e8098d6a9e07452581a4ce5cfe2b98f7736793"
+        },
+        {
+          "path": "sound/original/heavytraffic.wav",
+          "size": 91640,
+          "sha256": "1f6d7b29b48ee835e6cccd39f1ba905066a046aeed4d3f29df2ff4fece10d83e"
+        },
+        {
+          "path": "sound/original/honkhonk-hi.wav",
+          "size": 5347,
+          "sha256": "efca05d8d43f900d65c41430909745f2d03a0b2646d9970a0eb5578137a2b247"
+        },
+        {
+          "path": "sound/original/honkhonk-high.wav",
+          "size": 29200,
+          "sha256": "c23e8fe3c298b8d3f1ef7fbbef625de332341502a2bbba34a8b3739edd0d5549"
+        },
+        {
+          "path": "sound/original/honkhonk-low.wav",
+          "size": 41954,
+          "sha256": "8225ee2b1b687fcd95af2e475e78cd3a71fce8eff8676cf62b47de09a9d7b414"
+        },
+        {
+          "path": "sound/original/honkhonk-med.wav",
+          "size": 35334,
+          "sha256": "d07dc21b2a21df7f48918f0cc4d6b1dee2288dd1f00d59c28d1e749504aa7fcc"
+        },
+        {
+          "path": "sound/original/layzone.wav",
+          "size": 28072,
+          "sha256": "fb6c6ee4d86535f5c978372d3faf2595edd064272de08a3c3514fe55271c7b74"
+        },
+        {
+          "path": "sound/original/monster.wav",
+          "size": 32666,
+          "sha256": "231efc58749199cf1c7eb7f9ef4ab07a3c3eae6f4e04d89aa261b9b593c16f94"
+        },
+        {
+          "path": "sound/original/siren.wav",
+          "size": 103232,
+          "sha256": "256cd8ca121f1ff68feec87d8e631835cc98334b3f47826dbbb71d346aae6078"
+        },
+        {
+          "path": "sound/original/sorry.wav",
+          "size": 16696,
+          "sha256": "28535a34872598b0751553da7b1e85c5664a7bfc0434955736fdf6b9f25f1e66"
+        },
+        {
+          "path": "sound/original/uhuh.wav",
+          "size": 16564,
+          "sha256": "11c17057424b9ea978247774b8d0983e6ed9eddf4be1820806ef3b20477160d1"
+        },
+        {
+          "path": "sound/original/zombie-roar-5.wav",
+          "size": 94502,
+          "sha256": "5ed10c41030bca72a4b21f1b433a0b5b1029f7d48a9aef8d57e06ef09dcc5d68"
+        },
+        {
+          "path": "sound/siren.mp3",
+          "size": 14464,
+          "sha256": "93a77318940d91a152cfe67fa6aa6e6a4c1bf1f6c54754e36fc039cff8366e56"
+        },
+        {
+          "path": "sound/sorry.mp3",
+          "size": 4224,
+          "sha256": "935c93516cc2b6108a418a9f5f6c8c77e69bafda72cb892f19ee78e4946ed34d"
+        },
+        {
+          "path": "sound/uhuh.mp3",
+          "size": 4224,
+          "sha256": "1397d2b84c54b33693508d88e6002d4051edbb69b07a19dbe2948c1a60b6c378"
+        },
+        {
+          "path": "sound/zombie-roar-5.mp3",
+          "size": 10368,
+          "sha256": "cecdcfdae13c9f529dfd5f72449dcd8ed0347eac45cc3b50b41b61bd70850551"
+        },
+        {
+          "path": "src/AppState.js",
+          "size": 4186,
+          "sha256": "4e96dc9958fa5bedd6c8473caef90fa5823830fa581feb03f381d0cf926e4645"
+        },
+        {
+          "path": "src/DebugOverlay.js",
+          "size": 4579,
+          "sha256": "00d41180470bf83d508ad178a6a93d987bb2c80e640d87f4e307ab24b2b56a97"
+        },
+        {
+          "path": "src/Main.js",
+          "size": 8850,
+          "sha256": "2ca38eeb4dd2500403744d95afa8055e2a3a95b3986664073bd63359df03c9fe"
+        },
+        {
+          "path": "src/Main_Traffic.js",
+          "size": 2208,
+          "sha256": "d79f2ba2bd909f6011d427b4630ef787be99a2083aff7db488fda01c1c471ed3"
+        },
+        {
+          "path": "src/TrafficBase.js",
+          "size": 10980,
+          "sha256": "74ea788d8764148ba45e6ba60758c2b93a6dd53012b0320d7560c89b3c85c356"
+        },
+        {
+          "path": "src/WorkerBridge.js",
+          "size": 10087,
+          "sha256": "b5c542d9421067f982615513adb386486c74bcc2b7de175f7b96e3995e5a3c21"
+        },
+        {
+          "path": "src/city3d/AutoTexture.js",
+          "size": 2947,
+          "sha256": "2b08c4994ea4dd46ed414260cb5098e7932f21a47f1cf606706b963fcd1a7eb1"
+        },
+        {
+          "path": "src/city3d/Base.js",
+          "size": 5980,
+          "sha256": "a869fd04f9ed4b05fd452aaa24fd3b13c1e6d1e6d65292417dca77f1d38ad60f"
+        },
+        {
+          "path": "src/city3d/BuildTool.js",
+          "size": 4833,
+          "sha256": "b13b3272e675a4c8bc977781454c34bbc3ae5e43d030abbaa28a99ca9085a5b3"
+        },
+        {
+          "path": "src/city3d/Copy.js",
+          "size": 4619,
+          "sha256": "412e79a7835be1756d5122439c438ac8e79c077410451e60e0ed25cc383eaf52"
+        },
+        {
+          "path": "src/city3d/Files.js",
+          "size": 8517,
+          "sha256": "64ac84c0b40f50bd29f4d157fc7cef430603fb339c9bcbcb13ed84db7f5fb673"
+        },
+        {
+          "path": "src/city3d/GroundShader.js",
+          "size": 2980,
+          "sha256": "6dd1b4b8766ef323dbc3438d8780f0f29826e6bf0b3f269e86c7b911161f7d2a"
+        },
+        {
+          "path": "src/city3d/Hub.js",
+          "size": 20662,
+          "sha256": "5a36d06f8bb0a722b9fadcc1acf660ffc31cfb3515a36fe83574ac45f23a1e02"
+        },
+        {
+          "path": "src/city3d/InspectorTool.js",
+          "size": 2305,
+          "sha256": "b79907da9148d942a559647e252420ef0de6a9e95465d9f4586e5a3c3b3580c0"
+        },
+        {
+          "path": "src/city3d/Material.js",
+          "size": 15169,
+          "sha256": "efad12b2572f604929b5daeb61a341592ab966b55936f06d1abe40139d1d2909"
+        },
+        {
+          "path": "src/city3d/OverlayCanvas.js",
+          "size": 1292,
+          "sha256": "4ba10441d81ff40a31171486178548c740a6bdd4eddddfcebcd6829c60608c4d"
+        },
+        {
+          "path": "src/city3d/Pool.js",
+          "size": 17899,
+          "sha256": "ed46ecba40407f4e365060cbfc1fb3e7c4695aafd56c5b4041cbae0b68701a06"
+        },
+        {
+          "path": "src/city3d/PostEffect.js",
+          "size": 5704,
+          "sha256": "6430efa49e762d3087f7e085441a93fca739e743e3a8cd918fd23c9c75e7811c"
+        },
+        {
+          "path": "src/city3d/Sprites.js",
+          "size": 2677,
+          "sha256": "a128fb78fc2b34b3a31c779e49a1dbdcd4b89c07e1cf41e281b0cf4a1f27a2c4"
+        },
+        {
+          "path": "src/city3d/UrbanIcons.js",
+          "size": 2246,
+          "sha256": "fd24a83dbc191fa9d2cd3cdb1f2547e79856eaff7f0a647b14d7aae38134fa16"
+        },
+        {
+          "path": "src/city3d/View.js",
+          "size": 77253,
+          "sha256": "235d2432a9dc749d23916a6afe2fe0a6282fbfc0b2db46018f2f8a50543795ba"
+        },
+        {
+          "path": "src/city3d/Vignette.js",
+          "size": 3058,
+          "sha256": "303af88b4dcbe19bf25462dc8d1733cf26c4fdd43d5add373c558b83952f54d7"
+        },
+        {
+          "path": "src/city3d/hub/Hub_About.js",
+          "size": 863,
+          "sha256": "e26c95d26928c09cb88172ca6310327d9fd1bf9da567c09515cb3675a48e4b27"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Awards.js",
+          "size": 2155,
+          "sha256": "b8a0c35841fdab2b1d27924f6eb7df287f64e6bcb66afdbb1f372b7a9d8e1026"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Budget.js",
+          "size": 7716,
+          "sha256": "3bd09a477a45e157715dda7ba15996c3ba42d68570a423098c3aa645073d00b4"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Build.js",
+          "size": 6387,
+          "sha256": "29a828c404b970590a799f956d729a79e54503442ff92d579b07627840878763"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Disaster.js",
+          "size": 1055,
+          "sha256": "68bd93cae04dea2ca3e047090df060b752d32b46ef41757ee4adf0977c1a7b96"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Economy.js",
+          "size": 2760,
+          "sha256": "d6cc96fce0dc6f53a17c1b30538d93d8ad5ceb8a7084f9e2e9ffce1b69180a31"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Eval.js",
+          "size": 7918,
+          "sha256": "b6869efd8c0c7acc3d98c497cf03e3039c7adb743bc7495f8e640c3fe5befd9f"
+        },
+        {
+          "path": "src/city3d/hub/Hub_History.js",
+          "size": 2622,
+          "sha256": "f3aa81438cdbd566dfb3057d9ffea82c1386d1c1e6f41a74c34d16174a2bf0ac"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Ordinances.js",
+          "size": 3040,
+          "sha256": "c0d49208aa5118e4d1b460e166a6cf6bb7bd10baee3713a36e9b6a30c1c9c971"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Overlays.js",
+          "size": 1110,
+          "sha256": "7c7203d71e83a3c3a18c4970bdd8bf46597c0dece19fe189a5a73763c1eece93"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Pannel.js",
+          "size": 2196,
+          "sha256": "62eccb185359cbacac6413b8ef00039864834e4fa3e655f13f844559fd663624"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Save_Load.js",
+          "size": 1439,
+          "sha256": "92e74b8ef04a4266da3b648f6601c18dc51ef63fceb037c7339dd23a034a0be8"
+        },
+        {
+          "path": "src/city3d/hub/Hub_Top.js",
+          "size": 4650,
+          "sha256": "60b0a4d170e6ff4332ef210de8844b66efa2f10ce7168ebd3c9c239d54cd0221"
+        },
+        {
+          "path": "src/destructor.js",
+          "size": 1904,
+          "sha256": "547bed16774e53eb70703e04ff7e279413215edff99ed129818c5f32872511d0"
+        },
+        {
+          "path": "src/helicopter.js",
+          "size": 2693,
+          "sha256": "7d544aef9f32a273303e082fa05999412455e4fcfcc3f46156ac43cc5b356808"
+        },
+        {
+          "path": "src/jsm/controls/OrbitControls.js",
+          "size": 40526,
+          "sha256": "afb731bed7879e8e519c90f4877a2d3ca3ba3288e8c717fc17b10c538c6a89d9"
+        },
+        {
+          "path": "src/jsm/exporters/KTX2Exporter.js",
+          "size": 8430,
+          "sha256": "efd11c626a7bee2c5883087a34b7e58d9ec124c520ddb57d6e4c11157a9462c6"
+        },
+        {
+          "path": "src/jsm/inspector/Extension.js",
+          "size": 173,
+          "sha256": "d2c8e61a0672b698998bf476e4fe444392f4f907ab2a1f1aafd97794f53db7df"
+        },
+        {
+          "path": "src/jsm/inspector/Inspector.js",
+          "size": 9317,
+          "sha256": "b14ac87127e60bbcb74444f793f1ebd51cf62f63b38ec0dc840f59a1bee9f1fb"
+        },
+        {
+          "path": "src/jsm/inspector/RendererInspector.js",
+          "size": 7204,
+          "sha256": "f482470ebf9782913337bba2e7ae2334af5b6ad84d5b19288f9801e795ce5945"
+        },
+        {
+          "path": "src/jsm/inspector/extensions/extensions.json",
+          "size": 74,
+          "sha256": "6729e15da3e529eec089bc3a3d0cf9184450053556b1037d9deb4411f1907802"
+        },
+        {
+          "path": "src/jsm/inspector/extensions/tsl-graph/TSLGraphEditor.js",
+          "size": 23598,
+          "sha256": "7badc95f717ca082a6aa63551a313f40948e40cd0f9a94a0e614e4d0777c0eea"
+        },
+        {
+          "path": "src/jsm/inspector/extensions/tsl-graph/TSLGraphLoader.js",
+          "size": 4933,
+          "sha256": "101f7db193dc816f16bb51f1b344771afb6b127dae1b629a2fe5e3b675ab66c0"
+        },
+        {
+          "path": "src/jsm/inspector/tabs/Console.js",
+          "size": 6071,
+          "sha256": "86ed641fa5a86ad3f294be3a6c8437617ac00143a7ea0d2a4c9cddd2df10f1b5"
+        },
+        {
+          "path": "src/jsm/inspector/tabs/Memory.js",
+          "size": 4135,
+          "sha256": "5c097d712e83a8ee70fed1b1009cbafd534a41a23387158dfccc0ab2c723b88d"
+        },
+        {
+          "path": "src/jsm/inspector/tabs/Parameters.js",
+          "size": 7622,
+          "sha256": "7b41fdb5ba331191ea7b14b277cad95d7b6b8a985fd043cc11b5869a14d2061a"
+        },
+        {
+          "path": "src/jsm/inspector/tabs/Performance.js",
+          "size": 5885,
+          "sha256": "44be679a317b97f8361fe24cd33aaec8f2df2f900ad4c2deb1724ff367d201c5"
+        },
+        {
+          "path": "src/jsm/inspector/tabs/Settings.js",
+          "size": 4851,
+          "sha256": "802641799d1a6848ab719de3580c09e85ab239e4a206015978e439c3c8be76e3"
+        },
+        {
+          "path": "src/jsm/inspector/tabs/Timeline.js",
+          "size": 42709,
+          "sha256": "791742f6ca52468f6b433338eaa4b4f543f602432eaac34bab7e71a2be5d2cb7"
+        },
+        {
+          "path": "src/jsm/inspector/tabs/Viewer.js",
+          "size": 5630,
+          "sha256": "2e9fd8228e1bab4d5289dce05fc7746bb7deb444b3abacb4b2cbcdc8c129e924"
+        },
+        {
+          "path": "src/jsm/inspector/ui/Graph.js",
+          "size": 1829,
+          "sha256": "ee77ecc827b7f98f53672b32ea33d453a7dda96818c7a8f68bae127306de5c2e"
+        },
+        {
+          "path": "src/jsm/inspector/ui/Item.js",
+          "size": 2984,
+          "sha256": "a204c4ce09435ea7d609c380c083cf411b936676ad5485d8b9a73580de87e190"
+        },
+        {
+          "path": "src/jsm/inspector/ui/List.js",
+          "size": 1554,
+          "sha256": "b06790fb02f66f9d11add9af876dbdd04070b5becc877336e635c1c6a0027f00"
+        },
+        {
+          "path": "src/jsm/inspector/ui/Profiler.js",
+          "size": 50606,
+          "sha256": "8fb4fc05c0d925f700a889ae6285d280e62975f9c1b82465029feb3224503f0c"
+        },
+        {
+          "path": "src/jsm/inspector/ui/Style.js",
+          "size": 33640,
+          "sha256": "ca76fd94dc1c80370f3978698e5745f2117bbbffe61f5002ccb20d9e1467abe3"
+        },
+        {
+          "path": "src/jsm/inspector/ui/Tab.js",
+          "size": 6024,
+          "sha256": "882820d877359ac657680268974ee24afb9daa8c49c772ae2bdd0a5d3f7c32ae"
+        },
+        {
+          "path": "src/jsm/inspector/ui/Values.js",
+          "size": 7703,
+          "sha256": "fe0769c1867d5242665dea5a26bbd41b5351fde8e7c8aa02204cb307703b2922"
+        },
+        {
+          "path": "src/jsm/inspector/ui/utils.js",
+          "size": 1361,
+          "sha256": "b539a39eb3f8a4a66e7de754e2dbabeaf8e614d1a53e60e18acb48075324703d"
+        },
+        {
+          "path": "src/jsm/libs/ktx-parse.module.js",
+          "size": 19932,
+          "sha256": "f40c491f6c44dde511268121f778a0050e73b1a15fd844c1ae2c78c73213eafc"
+        },
+        {
+          "path": "src/jsm/libs/zstddec.module.js",
+          "size": 39754,
+          "sha256": "5cbf818e842628a4464e748594a6deae18ceddda3c2f541e7b3a0ff5fc7611e2"
+        },
+        {
+          "path": "src/jsm/loaders/DRACOLoader.js",
+          "size": 17924,
+          "sha256": "61bdbd743fd30c1171c919ffda51ff943069a56902d807fe9cd3ac91e1d3f444"
+        },
+        {
+          "path": "src/jsm/loaders/GLTFLoader.js",
+          "size": 114981,
+          "sha256": "bf05f6dac8e95f2d02952b80ac1a6a439399cc979a4224e6d92c7ed34ac16ff3"
+        },
+        {
+          "path": "src/jsm/loaders/HDRLoader.js",
+          "size": 12466,
+          "sha256": "8bbe18d5c7acd33fa8a764e190bef311eae5f00d6684edd5d5dc89f6b05bbb57"
+        },
+        {
+          "path": "src/jsm/loaders/KTX2Loader.js",
+          "size": 35788,
+          "sha256": "d34cf6b0f4377e0fa03a4d4ba313671f593782c5e9df53db92130015c9fdbb28"
+        },
+        {
+          "path": "src/jsm/loaders/LUT3dlLoader.js",
+          "size": 5087,
+          "sha256": "07a77303403bb4215a938f3b256215766e6245cdba8c06a122aa45f245da1db0"
+        },
+        {
+          "path": "src/jsm/loaders/LUTCubeLoader.js",
+          "size": 4645,
+          "sha256": "d530ebc7c75d516eecbe1a2bc0cc1372f263a72355b4e578d03409f55c5358db"
+        },
+        {
+          "path": "src/jsm/loaders/LUTImageLoader.js",
+          "size": 4206,
+          "sha256": "e45078b13c7cd9ba382f0a14f604fbab9b4cacd5c2cbca00bdad02640da7b468"
+        },
+        {
+          "path": "src/jsm/math/ColorSpaces.js",
+          "size": 4312,
+          "sha256": "8da9953246eed91e672be40c1ee62ca78c5c3482965c3c28491e2b2bda4b0474"
+        },
+        {
+          "path": "src/jsm/math/ImprovedNoise.js",
+          "size": 3056,
+          "sha256": "86995866a74d0961ff33a5df93ac947a2e800673162e9b88916fcd357c1d80b8"
+        },
+        {
+          "path": "src/jsm/math/MeshSurfaceSampler.js",
+          "size": 8183,
+          "sha256": "322614cc8748896633d9aed43276d1699cf44f4657e68d3c0c75d6cd792d9120"
+        },
+        {
+          "path": "src/jsm/tsl/display/GTAONode.js",
+          "size": 16543,
+          "sha256": "e6cb77b34483b0369e589c239b7b89e23958485d4f5cbbc906b9ef711822f780"
+        },
+        {
+          "path": "src/jsm/tsl/display/GaussianBlurNode.js",
+          "size": 10732,
+          "sha256": "934db76737d539465826db5ff718ab48bbcce58e8779d857db4db8815a6e3cf8"
+        },
+        {
+          "path": "src/jsm/tsl/display/Lut3DNode.js",
+          "size": 2745,
+          "sha256": "241bfb2489b8299c71b36e05a959a5e16db32030b1c315c76d0f32041ced30ce"
+        },
+        {
+          "path": "src/jsm/tsl/display/TRAANode.js",
+          "size": 20652,
+          "sha256": "a1d87ab9d700299955f5b8fbb39e1e7e14ceae58b9c3daba207de062e47ba4e3"
+        },
+        {
+          "path": "src/jsm/utils/BufferGeometryUtils.js",
+          "size": 35561,
+          "sha256": "0f5df6a98b4af2f5835ad3ea4435ee9aaa68bf555e0c266549c1842ad97c6f17"
+        },
+        {
+          "path": "src/jsm/utils/SkeletonUtils.js",
+          "size": 11084,
+          "sha256": "978d96643c9b0d3ac7295a535af76688036fdecf8aaede4fa8a55ed335fdd046"
+        },
+        {
+          "path": "src/jsm/utils/WorkerPool.js",
+          "size": 3110,
+          "sha256": "5ac7095fd566bc9ae48376055fd66edf27cb9ebbf9e1269dc206bfd4933ae9eb"
+        },
+        {
+          "path": "src/micro/CityGame.js",
+          "size": 31376,
+          "sha256": "9bf41939a1de16693ba792f0963ea5f4ec6b6d73512c13bfb3ac8f4162bd5419"
+        },
+        {
+          "path": "src/micro/MessageManager.js",
+          "size": 624,
+          "sha256": "4bbdd08b52b7e31e885e5f178252f72f89c2c890a277c10442cd9a580a7ff953"
+        },
+        {
+          "path": "src/micro/Messages.js",
+          "size": 6359,
+          "sha256": "f35a86e3ba372dac2eb5f194ab26922e9d0105422c31b4dcce26b44f58dab1f9"
+        },
+        {
+          "path": "src/micro/Micro.js",
+          "size": 7735,
+          "sha256": "743cb4a575962f78c6b09cd2bfe83e7182bbc896776b0d0b5c3861bb245503cb"
+        },
+        {
+          "path": "src/micro/Simulation.js",
+          "size": 28020,
+          "sha256": "a2dc6a711e9da96e19c438e39128e9f724b04a7fae3c826a2f595a509a4c0079"
+        },
+        {
+          "path": "src/micro/Storage.js",
+          "size": 2767,
+          "sha256": "ae1b4bc666624c4919243634066775cbb8f01ab747806f23394aa0cd1c4509cc"
+        },
+        {
+          "path": "src/micro/Text.js",
+          "size": 7331,
+          "sha256": "0af5d8ee55ac2c24e92ff8d29a2570f10660b61fc2bd08d824005c10807cfe54"
+        },
+        {
+          "path": "src/micro/Tile.js",
+          "size": 23360,
+          "sha256": "e80345d12a59ffddb5b560c040619dc22bcbd52c0f66494b67b27aacf7e4d1da"
+        },
+        {
+          "path": "src/micro/_not_use/InputStatus.js",
+          "size": 6275,
+          "sha256": "2e6bd2e905fe022d0383bf80a24f0d2088ed847f99aa8228e29168780b7385b2"
+        },
+        {
+          "path": "src/micro/_not_use/PositionMaker.js",
+          "size": 5181,
+          "sha256": "187fa48a5ec7a625e271baf7a5401f7a38372be71695dbc2429ed975085219a3"
+        },
+        {
+          "path": "src/micro/game/Achievements.js",
+          "size": 6224,
+          "sha256": "8363554bf3c5ccee5b969e78a15ef7e6090a7ba92147f4a162c49ccc63e691ae"
+        },
+        {
+          "path": "src/micro/game/AnimationManager.js",
+          "size": 8358,
+          "sha256": "6d27cd2c769be7ad7b18a2f959b3254a29b597d8d3ab7d8fcfa41dbf46573e79"
+        },
+        {
+          "path": "src/micro/game/BlockMap.js",
+          "size": 2090,
+          "sha256": "52ac56b60b06a1685818b66d8715da3a7b02e9ffaed68dfc7234e2b45ae80d88"
+        },
+        {
+          "path": "src/micro/game/Budget.js",
+          "size": 16557,
+          "sha256": "a76c5eea2fac02193817e6fa86b4bae00b8e3b7169f3a23a0cb3d74fab91173f"
+        },
+        {
+          "path": "src/micro/game/Census.js",
+          "size": 3995,
+          "sha256": "f8e3e25f8c60dbf548a1a187e53458b0dff80dbf2aa0a8ae7c1e418a51b0695e"
+        },
+        {
+          "path": "src/micro/game/CityHistory.js",
+          "size": 1370,
+          "sha256": "45dc49a65ce1b1379413a7c63a1eea6cb38395957c49596512c819c40d18c9e0"
+        },
+        {
+          "path": "src/micro/game/DisasterManager.js",
+          "size": 7959,
+          "sha256": "b2234e14ebca2daf3631f4cbaf2c274c2089e4a3562688a5666a755ea621f786"
+        },
+        {
+          "path": "src/micro/game/Evaluation.js",
+          "size": 11915,
+          "sha256": "db977bed522c58d6133557f42b3262336304443b9b1db1edb331465e9943d01c"
+        },
+        {
+          "path": "src/micro/game/IndustrySpecialization.js",
+          "size": 5844,
+          "sha256": "6bc5b91b02f23b6ffa183936726ebcc1af175d8ab2fee31aa4311c894d16e6c6"
+        },
+        {
+          "path": "src/micro/game/MapScanner.js",
+          "size": 2318,
+          "sha256": "192981dc92f79bb807ab36ef8a87f95de46ed3a88787b1b1a00346e863bf6e31"
+        },
+        {
+          "path": "src/micro/game/Ordinances.js",
+          "size": 5548,
+          "sha256": "23ddd812cb10b53771f91a72abb72f49333f392dc06f4646f892c01339812a0d"
+        },
+        {
+          "path": "src/micro/game/PowerManager.js",
+          "size": 4822,
+          "sha256": "a79bafa5945f6709f349377661d56cca4ba02aa375ed5792ad3e7efe4fb4cf77"
+        },
+        {
+          "path": "src/micro/game/RepairManager.js",
+          "size": 2057,
+          "sha256": "e8b6c44b7d6158fee3a1b252b97e10d6b9072afa0dcfb8b58907806b1edbd137"
+        },
+        {
+          "path": "src/micro/game/SeasonManager.js",
+          "size": 3272,
+          "sha256": "317825766ac842bf1a32f35e0400e24f491f58ab19b3301368204eccbb4437d8"
+        },
+        {
+          "path": "src/micro/game/TileHistory.js",
+          "size": 728,
+          "sha256": "0a951dcd50b34d1f287d074b6e68c2faa830eda8be6dd2350fa39372f0566fe5"
+        },
+        {
+          "path": "src/micro/game/Traffic.js",
+          "size": 5059,
+          "sha256": "1d062dd8cb5364e65697da8298f42fa8508d965d425603296efbc662ba8c08a9"
+        },
+        {
+          "path": "src/micro/game/Valves.js",
+          "size": 5107,
+          "sha256": "dbccc5931d914036cd54bb3422209424201985b0822cb21b662f1ba6a3dac152"
+        },
+        {
+          "path": "src/micro/map/GameMap.js",
+          "size": 14003,
+          "sha256": "b6fa1b6bb4cf3efe3b3cd06f58bb0624c3f103028787cdb702491e423dd2ec56"
+        },
+        {
+          "path": "src/micro/map/MapGenerator.js",
+          "size": 15427,
+          "sha256": "4fa90ec9b1543363138a73d587ec54958718fa034f990c1b9be4bee17384958a"
+        },
+        {
+          "path": "src/micro/map/MapUtils.js",
+          "size": 18395,
+          "sha256": "ce0f07f3d4e02ca84f3c7e9d2ab0113cec432827e3f654a0afd4febe5137d06d"
+        },
+        {
+          "path": "src/micro/math/Direction.js",
+          "size": 2235,
+          "sha256": "40a47dc3754a1110b5ad2effb70e79586183662ef148bbea9992ca2be1c1919b"
+        },
+        {
+          "path": "src/micro/math/Position.js",
+          "size": 4975,
+          "sha256": "b4a23aa060d357bfc6ccafe9c8d64b99040b0ec79a1b4f3c1c2dd671b324fdc6"
+        },
+        {
+          "path": "src/micro/math/math.js",
+          "size": 971,
+          "sha256": "6bc0538dafe8cc6a451b4577d0c0148040c581eeb7fb21779f52516378b53fb5"
+        },
+        {
+          "path": "src/micro/sprite/AirplaneSprite.js",
+          "size": 3284,
+          "sha256": "e0d8ac13ed55836f1d2fee8db9c9ad1e6513e8e74d14a9f24610eaa316395a0f"
+        },
+        {
+          "path": "src/micro/sprite/BaseSprite.js",
+          "size": 1248,
+          "sha256": "60b3322f5e6200133593714843d3be6c9265f1ed0fdb2ded4046758c68f861dd"
+        },
+        {
+          "path": "src/micro/sprite/BoatSprite.js",
+          "size": 5331,
+          "sha256": "db90f4a35dcf8d018c95e9706b5676af5ea31937956e2a13970541a51bcdfcac"
+        },
+        {
+          "path": "src/micro/sprite/CopterSprite.js",
+          "size": 3474,
+          "sha256": "0fe04c7d271adffa81651ef6acef0243abd5398ba2a72e9e7442766045d094c7"
+        },
+        {
+          "path": "src/micro/sprite/ExplosionSprite.js",
+          "size": 2166,
+          "sha256": "abf146b3af504badf7c34e7f972c096055b560cabd3693be0bfda068e82e8757"
+        },
+        {
+          "path": "src/micro/sprite/MonsterSprite.js",
+          "size": 5108,
+          "sha256": "423ad372c80d0eb75e4fe4bf5aa8b925afa82cab65a70fb6b452974958f24504"
+        },
+        {
+          "path": "src/micro/sprite/SpriteManager.js",
+          "size": 7710,
+          "sha256": "63e747464533672f1e007ecb4208420b245882bf7796ebb659f8fab9c82b1c10"
+        },
+        {
+          "path": "src/micro/sprite/SpriteUtils.js",
+          "size": 4053,
+          "sha256": "2ad9e886b8b0f5626e3450bd630d36c87045795e0363123132ddc631959db65a"
+        },
+        {
+          "path": "src/micro/sprite/TornadoSprite.js",
+          "size": 2693,
+          "sha256": "94226b932135fc3297533af7153f3e71ab9a7ea9f39cbe0683ac3e51d04f6111"
+        },
+        {
+          "path": "src/micro/sprite/TrainSprite.js",
+          "size": 4028,
+          "sha256": "4cb41614c8ffd5dbdcbe6ee1a3a3d62d4a1c34349275cf6565c4fa6c2803f194"
+        },
+        {
+          "path": "src/micro/tool/BaseTool.js",
+          "size": 2406,
+          "sha256": "7b79abb6992bf4de794e6c965abc0826696227f8a7a0f6a8d05ef60e8821cfac"
+        },
+        {
+          "path": "src/micro/tool/BaseToolConnector.js",
+          "size": 6261,
+          "sha256": "2d4e411a868351579b12583cd11fca794df5347f9019147d2af9948a59c9c770"
+        },
+        {
+          "path": "src/micro/tool/BuildingTool.js",
+          "size": 3098,
+          "sha256": "b63d448ab79436df03348c12c99a58f11ce06aa45d3d12992aa1b1909ef79b9c"
+        },
+        {
+          "path": "src/micro/tool/BulldozerTool.js",
+          "size": 4462,
+          "sha256": "94aef7f3389ec626be4895c7e993a4aa8eecb7fb0b64189200f3fefc292a316f"
+        },
+        {
+          "path": "src/micro/tool/ParkTool.js",
+          "size": 1197,
+          "sha256": "26b7b1bdcebefd7f785727e8a55508a9da8e786f3af9637dfb109de01894dc7f"
+        },
+        {
+          "path": "src/micro/tool/QueryTool.js",
+          "size": 6019,
+          "sha256": "01a28224945933d09ed1d5f792d133eaf1f291616791a907de856eb5a076db20"
+        },
+        {
+          "path": "src/micro/tool/RailTool.js",
+          "size": 3623,
+          "sha256": "9306ac99846f4614ec7e3fe8ddc1b3e82adc463389ca38613afc8367e39f50bb"
+        },
+        {
+          "path": "src/micro/tool/RoadTool.js",
+          "size": 3672,
+          "sha256": "adaf981b1ff35268b7ccb73105064095bcf3380f28c30a9890023d6952d3bedc"
+        },
+        {
+          "path": "src/micro/tool/WireTool.js",
+          "size": 4147,
+          "sha256": "c992fa3a955ef832a13442cb3410f5290c6c22e9ce44ce6b610373fd3b930b8b"
+        },
+        {
+          "path": "src/micro/tool/WorldEffects.js",
+          "size": 1562,
+          "sha256": "b5dbcd4c97024269815e9b73e2c4f05f1a4bf52b86fc3b864f6976e970340f97"
+        },
+        {
+          "path": "src/micro/zone/Commercial.js",
+          "size": 7081,
+          "sha256": "23433e608112b38fd6d5ce447ccf97d1dc3e6b7863f3d79b7477aa1d51fd1e98"
+        },
+        {
+          "path": "src/micro/zone/EmergencyServices.js",
+          "size": 1686,
+          "sha256": "06dbc70b0c63fd75ccdd6c67c6ff3b0db26acfe5ddb8fc057131e241d5cc3d65"
+        },
+        {
+          "path": "src/micro/zone/Industrial.js",
+          "size": 6863,
+          "sha256": "f724753bbaf0ff9e2369b75d8ea18870eb2b1c17d360b4ddce662e562df3d48f"
+        },
+        {
+          "path": "src/micro/zone/MiscTiles.js",
+          "size": 3006,
+          "sha256": "c5e185845a3ba73c7f263fc29c35d37bc44795cbd0030982e322328081fe8ad6"
+        },
+        {
+          "path": "src/micro/zone/Residential.js",
+          "size": 14116,
+          "sha256": "3ffefe439393c6dc7dbaad2706c274cea495987d2ea17b086578486b13e525ba"
+        },
+        {
+          "path": "src/micro/zone/Road.js",
+          "size": 7519,
+          "sha256": "1a670ad815bea673d63e8546d3978df3fe527d8c57aa1f665da13b0b2ecb2573"
+        },
+        {
+          "path": "src/micro/zone/Stadia.js",
+          "size": 1703,
+          "sha256": "1d1407dde1ac5869230535e8dfeab07d1f3ecc580f5bbf5717909e212542ddfa"
+        },
+        {
+          "path": "src/micro/zone/Transport.js",
+          "size": 2780,
+          "sha256": "93c17b604180f4cd3d8df6bcb4498d0d55d4b76f60a0ac326433cceabe964562"
+        },
+        {
+          "path": "src/saveAs.js",
+          "size": 4482,
+          "sha256": "f0f10543796fa6d2473ee054fa08446e30f5e16e3dae216e0e17d309de84b5df"
+        },
+        {
+          "path": "src/three/three.cjs",
+          "size": 2070999,
+          "sha256": "7e1eb26e0c1fb41b6a03ce3d0c23fbdc4b911dc5c2646f5bd4919a55c3543aed"
+        },
+        {
+          "path": "src/three/three.core.js",
+          "size": 1427304,
+          "sha256": "e1edbd957971f65c1af04b30d9a45eda92e6c524e261702f4e0f1a3a26a2496f"
+        },
+        {
+          "path": "src/three/three.core.min.js",
+          "size": 384211,
+          "sha256": "5e3d56f62f5791a3ed2c174a01a33d4fecf855216e076f27c9e81f41378d97eb"
+        },
+        {
+          "path": "src/three/three.module.js",
+          "size": 643851,
+          "sha256": "b111f58b7c28c6a72ac41fea5fd54add44e684c65614e2306ab57c8b714bfb42"
+        },
+        {
+          "path": "src/three/three.module.min.js",
+          "size": 361211,
+          "sha256": "44fce965b681fad80794e4c7bae560ed07cb4084e730895f081a5999bb48d988"
+        },
+        {
+          "path": "src/three/three.tsl.js",
+          "size": 33614,
+          "sha256": "e6c3b8f03ef9e4a2fdf5500db72399a2e36574287e55190c9e641bc72968e436"
+        },
+        {
+          "path": "src/three/three.tsl.min.js",
+          "size": 23265,
+          "sha256": "c6e256f58ef5f51cf00b75840abebff1089491df432299147987ca8c07cef47e"
+        },
+        {
+          "path": "src/three/three.tsl2.js",
+          "size": 33619,
+          "sha256": "b784f8dcd06d8824df56d8d52caa7debc3000300c901e27e64bfe47d1214723c"
+        },
+        {
+          "path": "src/three/three.webgpu.js",
+          "size": 2061521,
+          "sha256": "5fab3d142bc0f5a1c92485fa32e648f48a2f1443c40934419bfb5fc5f4e12445"
+        },
+        {
+          "path": "src/three/three.webgpu.min.js",
+          "size": 637459,
+          "sha256": "9b7bad0c376b2f961cb5a9404b1406c96c58d70d310db63626fe830ba1c6a32f"
+        },
+        {
+          "path": "src/three/three.webgpu.nodes.js",
+          "size": 2053215,
+          "sha256": "16807d5013e24aab881123dc04b7965697a76039fc4c91127e2c1ba99062cf6d"
+        },
+        {
+          "path": "src/three/three.webgpu.nodes.min.js",
+          "size": 635577,
+          "sha256": "d23aee32a5f17982a4d62ebf96505c742801320700e5f74e056b8d67edf3b24d"
+        },
+        {
+          "path": "src/traffic/Traffic.js",
+          "size": 7811,
+          "sha256": "eae817695ddf977239d77cbc3acd1a54e9f64c8ff5a0b93fadddd76c35d441c7"
+        },
+        {
+          "path": "src/traffic/TrafficLib.js",
+          "size": 97,
+          "sha256": "75534c5f2349e7193ed5c073d038bcd61aeb2ba7a32588f3bf5f62e2b93315f5"
+        },
+        {
+          "path": "src/traffic/core/Car.js",
+          "size": 5582,
+          "sha256": "bbc36fe8aba48eeac3dd3e815dbffa65455cd527e81e263fadad9eef9418ebda"
+        },
+        {
+          "path": "src/traffic/core/ControlSignals.js",
+          "size": 2562,
+          "sha256": "fef53f5b91d7c011782a02746fae53d48293394a8d2ee670e7b88d2df350ca03"
+        },
+        {
+          "path": "src/traffic/core/Intersection.js",
+          "size": 1182,
+          "sha256": "a2bedfee5eeb608813e7f73a867bbaa883d4f888ef08e517ac15b7b38f375596"
+        },
+        {
+          "path": "src/traffic/core/Lane.js",
+          "size": 2524,
+          "sha256": "145ee1fb50d707b0464bddf0208e8255b8b99a379499c84cf4cad7a068c1df2a"
+        },
+        {
+          "path": "src/traffic/core/LanePosition.js",
+          "size": 1472,
+          "sha256": "34c3a40cd9681189a4149c9d65276d8d0cef8ae6384a11db515ad97165ba944d"
+        },
+        {
+          "path": "src/traffic/core/Pool.js",
+          "size": 1019,
+          "sha256": "afc2c9042a1c44b6b46233beb64d913c860451ff57a3cbd18481ba341886cceb"
+        },
+        {
+          "path": "src/traffic/core/Road.js",
+          "size": 3215,
+          "sha256": "506ca7a3169645035933eff70fa3a02d2ca18188a2a37580002fcd9d90faa5f4"
+        },
+        {
+          "path": "src/traffic/core/TrafficWorld.js",
+          "size": 7440,
+          "sha256": "6321faf5adf6d096259f66b43ec42b1329a4aeb958df871b05523ede3df08119"
+        },
+        {
+          "path": "src/traffic/core/Trajectory.js",
+          "size": 6768,
+          "sha256": "83fbf01daefe6e0a14f456fd4c04cc33fac5c7ead9d91629bb685b42ac392fdf"
+        },
+        {
+          "path": "src/traffic/geom/Curve.js",
+          "size": 1632,
+          "sha256": "173f06d25086467076aaedf8b15edb63bed8f6eb15b3016ac692582e2cb9fca4"
+        },
+        {
+          "path": "src/traffic/geom/Point.js",
+          "size": 1077,
+          "sha256": "36a2608d50b95331dd121c20cfc62ccb783d132203e22bab097dc959dda3e39a"
+        },
+        {
+          "path": "src/traffic/geom/Rect.js",
+          "size": 3320,
+          "sha256": "449ba385d605cc3dd85088dc45e3cc61bd05d9efa2027f432f6c03b70ed3108f"
+        },
+        {
+          "path": "src/traffic/geom/Segment.js",
+          "size": 984,
+          "sha256": "c876641ae7ee92712a947672dd195453cdbce32d2af5e0f2b4d3c175c2e8f7a3"
+        },
+        {
+          "path": "utils/____Main_rollup.config.js",
+          "size": 1449,
+          "sha256": "d6988d9bc6056fe9e060f8e887db057a9a68f750556a8e6c6c0f005ba88282f2"
+        },
+        {
+          "path": "utils/____rollup.config.js",
+          "size": 2048,
+          "sha256": "8d3972fbb5c6ebc9c7472fd2d8caa5370e8d96ec508cf7be5c75f40c9532d5d9"
+        },
+        {
+          "path": "utils/rollup.config.city.js",
+          "size": 734,
+          "sha256": "5a34b9df76ba0dee3be028ab2ea541dacd788f65e91deaa1937319e3801a69b8"
+        },
+        {
+          "path": "utils/rollup.config.main.js",
+          "size": 644,
+          "sha256": "0ad895e30562a80aa1081c5dbf0a5788112b3c4883d14f156ae780dda0ca556e"
+        },
+        {
+          "path": "validation.json",
+          "size": 4277,
+          "sha256": "4e38e23ecd3a9af53668efcb3a8e21454e40c7fad3fdd37449bc987296a088e9"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "game-space-racing",
+        "kind": "web",
+        "category": "game",
+        "name": {
+          "pt-BR": "Corrida Espacial",
+          "en": "Space Racing"
+        },
+        "description": {
+          "pt-BR": "Uma corrida 3D orbital. Base com restrições de uso comercial; consulte as licenças.",
+          "en": "Orbital 3D racing. The base has commercial-use restrictions; see its licenses."
+        },
+        "preview": "preview.png",
+        "entry": "index.html",
+        "adaptation": "Copie o pacote inteiro para uma nova pasta antes de editar. Esta é uma base de jogo de navegador pronta, com fontes e recursos locais. Preserve a entrada direta, controles, todos os créditos, fontes e licenças descritos em NOTICE.md, README.md e UPSTREAM.md. Troque nome, cenário, arte e regras conforme o pedido e confira o jogo após cada alteração. Instale com npm ci e execute npm run build na cópia; sirva por HTTP. Há restrições CC BY-NC 3.0 em arquivos centrais; não afirme autorização comercial nem publique sem resolver os direitos aplicáveis. Não publique automaticamente.",
+        "license": "MIT; code exceptions CC BY-NC 3.0; audio CC BY 3.0",
+        "origin": "BKcore/HexGL@6addc95a2fce3bf05f4d751823cc054c61a16d68; identidade e adaptação SquadOS. Ver UPSTREAM.md/README.md e cabeçalhos CC BY-NC 3.0.",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/games/hexgl",
+        "goal": {
+          "pt-BR": "Quero criar um jogo de corrida espacial 3D para navegador. Me ajude a definir a identidade das naves e pistas, os controles, a velocidade, as voltas e os desafios de uma corrida completa.",
+          "en": "I want to create a 3D space racing browser game. Help me define the identity of ships and tracks, controls, speed, laps and challenges for a complete race."
+        }
+      },
+      "path": "games/hexgl",
+      "files": [
+        {
+          "path": "LICENSE",
+          "size": 1085,
+          "sha256": "546e4044d830dc6153713f0512c09042b9cc49b7f902f654a5a1d3b41ca07db1"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 749,
+          "sha256": "ddd9ce84ed00186d78d3ed095130b620871f4896118b9435b4ead946c876a721"
+        },
+        {
+          "path": "QA.md",
+          "size": 6470,
+          "sha256": "2a27dde4c08eaab76fc9d3484c9093a8fead843da5b8048849e67b4d91c65f1d"
+        },
+        {
+          "path": "README.md",
+          "size": 2895,
+          "sha256": "248abd2e8b8e304c29c0f1d22f49a5ecc6042dc672c2b67fb256bcdb26f5262a"
+        },
+        {
+          "path": "README.upstream.md",
+          "size": 792,
+          "sha256": "bc5a138aacde2ba3a13292faf6529c15ffefe5d59f73bfe3b66508caa3ddbf6e"
+        },
+        {
+          "path": "UPSTREAM.md",
+          "size": 8322,
+          "sha256": "90eb6cec2922075e46a14ba3f69df1c1bd9d8f9c8abd6299dfa3f3cf7f4892df"
+        },
+        {
+          "path": "assets/emblem.svg",
+          "size": 264,
+          "sha256": "1fa17227dcae1370cd51fc91960e179b46deaf399d6c9de3529b6be261e41035"
+        },
+        {
+          "path": "audio/LICENSE",
+          "size": 744,
+          "sha256": "b79b53d1fde5c46ef08480782e97ecb47b36cad370c0caadb2e931aeca241177"
+        },
+        {
+          "path": "audio/bg.ogg",
+          "size": 1546870,
+          "sha256": "63aa572885b9b00cacedcb2a30be5a6722472ee41c4e6d36b48f628ab13c793f"
+        },
+        {
+          "path": "audio/boost.ogg",
+          "size": 30388,
+          "sha256": "c66da128697a4a2c0202777c5d8661e3b5c7b7e84fc544624af29cfed9861ac3"
+        },
+        {
+          "path": "audio/crash.ogg",
+          "size": 12447,
+          "sha256": "ed32078e8d37b0710a134baa011e2549e1ec6b3455c891f4af6bacb451bef2d0"
+        },
+        {
+          "path": "audio/destroyed.ogg",
+          "size": 145937,
+          "sha256": "1c8f9fa046dd44cb253b5013153ffdd413f2661910fae6e6831aa4c9da146d89"
+        },
+        {
+          "path": "audio/wind.ogg",
+          "size": 402462,
+          "sha256": "7502fba01bd10d5a1b58e5f8cc5f67e2f1f96a7a148b01c582fe292dea68ec28"
+        },
+        {
+          "path": "bkcore/Audio.js",
+          "size": 3211,
+          "sha256": "8be97e67f9eebcfb8aa1c21a6cbc46ac50fa47f9aca795336bb0ece61739af6b"
+        },
+        {
+          "path": "bkcore/hexgl/CameraChase.js",
+          "size": 2270,
+          "sha256": "a6a4451424dd8fe04f85bafe0744886214a42556daacbfab6179173f2323439d"
+        },
+        {
+          "path": "bkcore/hexgl/Gameplay.js",
+          "size": 5824,
+          "sha256": "30a22d4c930d01a7f3ee21daf563a1bf0f02ddf75c9e90119aa6692560d992a5"
+        },
+        {
+          "path": "bkcore/hexgl/HUD.js",
+          "size": 7227,
+          "sha256": "d534035779f49e3ee94542b800fe38d528efbba46dcc0eb661ff065afa57750f"
+        },
+        {
+          "path": "bkcore/hexgl/HexGL.js",
+          "size": 12709,
+          "sha256": "28c39d2d53b03f3606605cfb97e477227b928df09f758dd38a8f2a8849bfe5a7"
+        },
+        {
+          "path": "bkcore/hexgl/Ladder.js",
+          "size": 1376,
+          "sha256": "9553fdf058d36f510a94c5c9374b13ce9e648abc0e9c551ccf041af7b0377761"
+        },
+        {
+          "path": "bkcore/hexgl/RaceData.js",
+          "size": 2233,
+          "sha256": "9c7ad50f7210c93956d7507a7d7249e77929d494e178beeacf7495d0d8e24324"
+        },
+        {
+          "path": "bkcore/hexgl/ShipControls.js",
+          "size": 21795,
+          "sha256": "7208bc685dc99188a9d5cf4ba50c61bdb19ca4682ac3139d05da639ce1ee7829"
+        },
+        {
+          "path": "bkcore/hexgl/ShipEffects.js",
+          "size": 5290,
+          "sha256": "7b6a40c1a0a142e80f8a26963f29f30df9c4bd05df9022f1c29b8a01f7a4375f"
+        },
+        {
+          "path": "bkcore/hexgl/tracks/Cityscape.js",
+          "size": 18010,
+          "sha256": "d4611e5848261a9fd4c67c8988edfbca0d004e26511a03ffefc2e65239950195"
+        },
+        {
+          "path": "bkcore/threejs/Loader.js",
+          "size": 5559,
+          "sha256": "0255a9088dcd6331eefebdcc8e95ef7da8e17d465527688c4cf2650aa1244308"
+        },
+        {
+          "path": "bkcore/threejs/Particles.js",
+          "size": 5167,
+          "sha256": "9143e1a15c9a267d8bd07f291ed8f18a018b2fae7d7cb4fdf7f545e415b9a9e4"
+        },
+        {
+          "path": "bkcore/threejs/Preloader.js",
+          "size": 3599,
+          "sha256": "dd6404a394d93aa7f97f531ae0c0839f6a2a2da71bf4aed00246d7cb743f6ac5"
+        },
+        {
+          "path": "bkcore/threejs/RenderManager.js",
+          "size": 3167,
+          "sha256": "d02836ef698dd1075e9a0570d446cb37efc57d7f417c3db52700859a9a62cbbe"
+        },
+        {
+          "path": "bkcore/threejs/Shaders.js",
+          "size": 25563,
+          "sha256": "04b696528279872d78fb78e44c6ad837625f45fa3b1ff9753ee478ff7a0b13ec"
+        },
+        {
+          "path": "bkcore.coffee/ImageData.coffee",
+          "size": 3181,
+          "sha256": "a20160e8971e55bbea9ff0cf5d3c67023f3104aba0b879855426fdd5de77fd22"
+        },
+        {
+          "path": "bkcore.coffee/ImageData.js",
+          "size": 4193,
+          "sha256": "b7e3af56f51f72b98ec2b15b38652ec126938a573df2524875cfd52c2bae3499"
+        },
+        {
+          "path": "bkcore.coffee/Timer.coffee",
+          "size": 2246,
+          "sha256": "eef8a41b03366cc20e9ffe66870330bf86b4b39266410bf5a3ccdf22f97a6c24"
+        },
+        {
+          "path": "bkcore.coffee/Timer.js",
+          "size": 3181,
+          "sha256": "e9ec5818ec0550fd97fab5783bcfb24e2a16255b79257de9cb5d9ec37e2c3a5f"
+        },
+        {
+          "path": "bkcore.coffee/Utils.coffee",
+          "size": 4807,
+          "sha256": "0e7e77477bcfb322731aee9fe3d0091cca23363b98dbade77220bcf541a22a2c"
+        },
+        {
+          "path": "bkcore.coffee/Utils.js",
+          "size": 6688,
+          "sha256": "a942b74004524b86370579ffc137b231ebd520a818bcc086b76641584771ae65"
+        },
+        {
+          "path": "bkcore.coffee/controllers/GamepadController.coffee",
+          "size": 1193,
+          "sha256": "0cdf768955252adc930fdb06e3770fde1debfc24b41a5895922bbda1b9ea1b13"
+        },
+        {
+          "path": "bkcore.coffee/controllers/GamepadController.js",
+          "size": 1952,
+          "sha256": "e7a03bdc5a4652c9ebad4f77629740eb328f03dda7833148d1a4baa31ac87a62"
+        },
+        {
+          "path": "bkcore.coffee/controllers/OrientationController.coffee",
+          "size": 1853,
+          "sha256": "e7a074e5f8c052fc89e0f931f1c25ef8ad1c1ab76824f67a0079955a13512f4d"
+        },
+        {
+          "path": "bkcore.coffee/controllers/OrientationController.js",
+          "size": 3338,
+          "sha256": "a5c2d500f79c7c4ee5660a24e077b49b2c456360f22b27f131170f35139ab771"
+        },
+        {
+          "path": "bkcore.coffee/controllers/TouchController.coffee",
+          "size": 2601,
+          "sha256": "6d79161bd9a407a86ec56b523ff5d53ffe0122c6b2b4e603ead385b21ac9e44e"
+        },
+        {
+          "path": "bkcore.coffee/controllers/TouchController.js",
+          "size": 4665,
+          "sha256": "1db3ab648f25e9e172f0b7493815975362c7674ffef6bae524d60cd68f691754"
+        },
+        {
+          "path": "bkcore.coffee/tests.html",
+          "size": 206,
+          "sha256": "786385a06655a6b30a93a5967efcc50568679890f12a93c4c996b6da527c7c6f"
+        },
+        {
+          "path": "bkcore.coffee/threejs/Particles.coffee",
+          "size": 4534,
+          "sha256": "e261f56d4e502c25abfc5845480f670a3b8097711d6f1e725dba8707d0e0ab15"
+        },
+        {
+          "path": "bkcore.coffee/threejs/Particles.js",
+          "size": 6819,
+          "sha256": "20a5884b35c36f518e3b8c6c87b0de3d9325441c6ecb727b982c3d71e53fedf2"
+        },
+        {
+          "path": "css/BebasNeue-webfont.eot",
+          "size": 15438,
+          "sha256": "3a0bad208ed2d43496c5675dfd4be7f6ad150a037ceeeaf1d892d19744110921"
+        },
+        {
+          "path": "css/BebasNeue-webfont.svg",
+          "size": 40456,
+          "sha256": "1ad7b0b3f4d72a1ff17e45ab91ec3ad197b6c50986e1af6595c0b1a8a5683169"
+        },
+        {
+          "path": "css/BebasNeue-webfont.ttf",
+          "size": 41128,
+          "sha256": "259646f9f827abfe5975cee51dfb7973a084a247245935aff3e48f909a41fbd2"
+        },
+        {
+          "path": "css/BebasNeue-webfont.woff",
+          "size": 18036,
+          "sha256": "0cc7740c9468aaae51503c1e2a06376b3c946ff587e8eddf5265f92fd5508b2c"
+        },
+        {
+          "path": "css/bg.jpg",
+          "size": 83997,
+          "sha256": "a0115fb8416731a935346b745f4540f8306cd74a5364949a9d6cc9ec05481f1d"
+        },
+        {
+          "path": "css/demo.css",
+          "size": 5768,
+          "sha256": "0004a44661b80acad6b54bf8dc4f99d619236fe0dd26b5f87dc215c955be9cbe"
+        },
+        {
+          "path": "css/fonts.css",
+          "size": 511,
+          "sha256": "43c33e4b24263f3592346795492892b399faa72685db5818730e219b3e063a79"
+        },
+        {
+          "path": "css/help-0.png",
+          "size": 31972,
+          "sha256": "244f40a36dc01b8df22c976bb44a2f9ca39e0b941267f46b812aa58a3b7502e7"
+        },
+        {
+          "path": "css/help-1.png",
+          "size": 33539,
+          "sha256": "4b40843d9f0504bfdd07854cceee9f1b0defcc00da078e0d27caa0f77e9737c8"
+        },
+        {
+          "path": "css/help-2.png",
+          "size": 40214,
+          "sha256": "0f5a40c51451b6798b90a1e441ddaffc501878b00e55b9aa37198d0d2a1c0ae2"
+        },
+        {
+          "path": "css/help-3.png",
+          "size": 39917,
+          "sha256": "9f139889d5e3145f462dd4338618a66b13a98d98b6b58369b9fc132a0afcfb8d"
+        },
+        {
+          "path": "css/mobile-controls-1.jpg",
+          "size": 190883,
+          "sha256": "bb8a10c8416a0c1d6a0f7d9bbb45eec380d2a06ae3e970be63a4efae5db2b567"
+        },
+        {
+          "path": "css/mobile-controls-2.jpg",
+          "size": 204535,
+          "sha256": "0d952f18c66020a2faca3f72497082f3acbaddc04015f5abc3c216c880f4d106"
+        },
+        {
+          "path": "css/mobile-over.jpg",
+          "size": 178381,
+          "sha256": "dbac60b60af3e1c9ea3e597c2be8b5a37d0d7f264ae32e844cbf360b1ff1c807"
+        },
+        {
+          "path": "css/mobile.jpg",
+          "size": 251974,
+          "sha256": "47a8905d72243b83964700a26cf62830abf8e69498f27658ea2620a732393d0e"
+        },
+        {
+          "path": "css/multi.css",
+          "size": 7150,
+          "sha256": "a0987fc5b4629c6a7446d3d47d3a797092547c4e6d42679ae877ed541019823e"
+        },
+        {
+          "path": "css/title.png",
+          "size": 484372,
+          "sha256": "8e5ebfe834b7a7a8ab7dc54b049051dd6230181ad36dcf4fbc433a5fd5802d93"
+        },
+        {
+          "path": "css/touchcontroller.css",
+          "size": 432,
+          "sha256": "4e3d37c825e32b85730b3336ccb7cf28de80c9aa73d1a085b8de5af900923a1c"
+        },
+        {
+          "path": "favicon.png",
+          "size": 1459,
+          "sha256": "8c6244cf639579bfe7af926ae5f7d0a39eff4c490e9fc41f12444573fd298cca"
+        },
+        {
+          "path": "geometries/bonus/base/base.js",
+          "size": 12141,
+          "sha256": "79485de286a2e950284d54e1e789d85c7f6c84727e3239942412607ad0e05dca"
+        },
+        {
+          "path": "geometries/booster/booster.js",
+          "size": 6427,
+          "sha256": "3d032b38292fba7edd0f4d517e738c605c24713bee1cafed90c11689d5ccdea1"
+        },
+        {
+          "path": "geometries/ships/feisar/feisar.js",
+          "size": 139136,
+          "sha256": "5a97ef50a510e2d1ff3628ee13210a27666139ee07783fe67374b34773dcc716"
+        },
+        {
+          "path": "geometries/tracks/cityscape/bonus/speed.js",
+          "size": 15257,
+          "sha256": "5f59eca92bfdba8350a0731e6a4757c26996a50ffa3ae57f4ed9ad1b3925b805"
+        },
+        {
+          "path": "geometries/tracks/cityscape/scrapers1.js",
+          "size": 9864,
+          "sha256": "3ed663ec33f3282f0bb111ddf78e5c523aa2a85eef6a78dc687f10b94f3bda91"
+        },
+        {
+          "path": "geometries/tracks/cityscape/scrapers2.js",
+          "size": 9689,
+          "sha256": "0fa57ea89932f78816b9e81128216970a3a7ea882986e3d2c32988e33e4aa7df"
+        },
+        {
+          "path": "geometries/tracks/cityscape/start.js",
+          "size": 11515,
+          "sha256": "93077d9b8285850e799942d3816bcd302b95738f3d0aea1c701f2e4c7ef70f55"
+        },
+        {
+          "path": "geometries/tracks/cityscape/startbanner.js",
+          "size": 1679,
+          "sha256": "46ef976e97dbb5f53c9f47ba96784c749aa752ae6e10e179c78ad705599f8829"
+        },
+        {
+          "path": "geometries/tracks/cityscape/track.js",
+          "size": 739195,
+          "sha256": "194637db9a5cb1b219180c64f727567f4050d36fa1a6d0f6341e382c059d8a55"
+        },
+        {
+          "path": "geometries/tracks/edge/track.js",
+          "size": 387450,
+          "sha256": "ff510e0794ad32de707a616a2b6dc57ca857f7a6e0bcb6e83eb406eb84327929"
+        },
+        {
+          "path": "icon_128.png",
+          "size": 19903,
+          "sha256": "8e9d6a06b3515ab697fb066c2b071ad0bb39b8178d10082060ed0e48ef9b59e0"
+        },
+        {
+          "path": "icon_256.png",
+          "size": 52713,
+          "sha256": "6280caad320dbb9f193f61131a76e62a173dfad1a08db264d9d771e78e3f1046"
+        },
+        {
+          "path": "icon_32.png",
+          "size": 2699,
+          "sha256": "94149159a70fa52d86ea13d5fca3883008eba162e0917ad9c4e470f16cb76979"
+        },
+        {
+          "path": "icon_64.png",
+          "size": 6730,
+          "sha256": "2f1f265be64f17787604e10f5244e59ba369ec663c243e174a9500ca59d8574a"
+        },
+        {
+          "path": "index.html",
+          "size": 5050,
+          "sha256": "8e756697ffe4f65890a7d8b865626e09043e4dda87efa1422f12af4e7dc7875b"
+        },
+        {
+          "path": "launch.js",
+          "size": 10069,
+          "sha256": "95b5401fd04e374d9aac468178d2f4cfbaee2c128dce9840fb96ec21d068c141"
+        },
+        {
+          "path": "libs/DAT.GUI.min.js",
+          "size": 20183,
+          "sha256": "4c4281d3de0016a5abcc848e4e8955dc9336a03af4de8fd393f295da29bf6125"
+        },
+        {
+          "path": "libs/Detector.js",
+          "size": 1907,
+          "sha256": "dd181eab6e27989bfdeac832c9da42f66c44758d8ffadff7f77457d6610de9e9"
+        },
+        {
+          "path": "libs/Editor.html",
+          "size": 44088,
+          "sha256": "c936574eac0dcc1cab840fcfdfd4bd4dc4925d75a4bcbb91da8bf38a67ef0af2"
+        },
+        {
+          "path": "libs/Editor_files/App.js",
+          "size": 4538,
+          "sha256": "bbc4d3d64f6e8c8700532005ecb283c82c4f9e438e57f7bc820bffc63eef3f8d"
+        },
+        {
+          "path": "libs/Editor_files/CanvasRenderer.js",
+          "size": 7842,
+          "sha256": "3cdb229bbd0e9bdcb72978b6f61da483e309277c214691bdc1c1b5cf96f287f1"
+        },
+        {
+          "path": "libs/Editor_files/Diagram.js",
+          "size": 3057,
+          "sha256": "90c91764076b7344e7cb0d82d610d0a97ceebc2cdea3bdde6031a2692f256e06"
+        },
+        {
+          "path": "libs/Editor_files/Iterator.js",
+          "size": 1645,
+          "sha256": "69920abfcb3a1a0f6fa8faa235881e04e1062e88b7037dd339c9579cc27802ce"
+        },
+        {
+          "path": "libs/Editor_files/Links.js",
+          "size": 1155,
+          "sha256": "dbcb5c6e60e32708b5d6351ff3ddd226d05c5702a176e4e6a6c9232fe109187c"
+        },
+        {
+          "path": "libs/Editor_files/ModuleList.js",
+          "size": 1199,
+          "sha256": "8bfa04226471dd7c10a520040bf789fc430398306c38593d553f6df2241078da"
+        },
+        {
+          "path": "libs/Editor_files/Node.js",
+          "size": 2406,
+          "sha256": "c1add2bfc2368fda4a579c42b5e746b34945257893858750e7734808534b206c"
+        },
+        {
+          "path": "libs/Editor_files/Parser.js",
+          "size": 2826,
+          "sha256": "82b7b48481735ca00ef224cf28965a84688c27f12db15f2e530e28010ab8ae88"
+        },
+        {
+          "path": "libs/Editor_files/Project.js",
+          "size": 2832,
+          "sha256": "268efeb50b0d0da8b44276d01e2db0dd326880982b069683d3c73d55d7a0d500"
+        },
+        {
+          "path": "libs/Editor_files/Timer.js",
+          "size": 3010,
+          "sha256": "03f8fb19627f6138a7d7c5da05d2c3507387bcc6e789fa736949d458bffc3cb4"
+        },
+        {
+          "path": "libs/Editor_files/ace.js",
+          "size": 277697,
+          "sha256": "c99dbd23e106bef465072e11f2eef70bcaeeb94f28a74a08d8ed7a6f07448f4b"
+        },
+        {
+          "path": "libs/Editor_files/class.js",
+          "size": 35829,
+          "sha256": "b1d59902d0ac29a609b5ddf413f5056c80c579f4b62157929531ad91d3726dea"
+        },
+        {
+          "path": "libs/Editor_files/editor.css",
+          "size": 249,
+          "sha256": "e557d918c2aca27edb258ba302fff39c15a895dfa315eb05658ceb02dce79df7"
+        },
+        {
+          "path": "libs/Editor_files/font.css",
+          "size": 737,
+          "sha256": "055b7cd0bdaf79e1e911668ba017a1da75d4a8606e7c4a851c00b6d5d13a327a"
+        },
+        {
+          "path": "libs/Editor_files/gamecore.js",
+          "size": 3217,
+          "sha256": "d18d2189d5ff099f6077ea4c5e28753919022d40338c9391a26f671565fcc4c7"
+        },
+        {
+          "path": "libs/Editor_files/hashlist.js",
+          "size": 1026,
+          "sha256": "63bc2a974a59b07f3df110f768d4ce1b0e9aaa3c874c3974dee53e3be499b582"
+        },
+        {
+          "path": "libs/Editor_files/jhashtable.js",
+          "size": 14196,
+          "sha256": "24cdcb87728a023b2613c90ee354cd5ff66bf7a108704cd78f3ed72a31f46458"
+        },
+        {
+          "path": "libs/Editor_files/jquery-1.8.js",
+          "size": 93435,
+          "sha256": "f554d2f09272c6f71447ebfe4532d3b1dd1959bce669f9a5ccc99e64ef511729"
+        },
+        {
+          "path": "libs/Editor_files/kinetic.js",
+          "size": 68851,
+          "sha256": "3882c436c20ed5fc0379d59054a23f0031805fd79c0e295d290ccc454716fe4a"
+        },
+        {
+          "path": "libs/Editor_files/main.css",
+          "size": 3820,
+          "sha256": "5d03258a203839c06218fa88e5db3e75861cf9ef1e9de5c0f528f5d7e9f0defd"
+        },
+        {
+          "path": "libs/Editor_files/mode-json.js",
+          "size": 8311,
+          "sha256": "5c94f0be3334448a8c5757a07a1d34e3c8cc962f70aa0af2ca3e63a30d5427f3"
+        },
+        {
+          "path": "libs/Editor_files/pooled.js",
+          "size": 15536,
+          "sha256": "3b047301331537211f32b4e320f937fc18d47a996981b2501815c8910d7723fe"
+        },
+        {
+          "path": "libs/Editor_files/theme-monokai.js",
+          "size": 2681,
+          "sha256": "a5d1e272f4a57c75e04401077fb46dd0af7b13edd21ef418e0cf38e2307f141d"
+        },
+        {
+          "path": "libs/ShaderExtras.js",
+          "size": 45027,
+          "sha256": "ffe28733951beccdf438ae9728a055dbf7ad8069b59ece9c0f337baab67160a7"
+        },
+        {
+          "path": "libs/Stats.js",
+          "size": 2243,
+          "sha256": "956fe0f777f224eef8c2f5580723990c30dd7caf916c64bcb0b0e873990fc1cb"
+        },
+        {
+          "path": "libs/Three.dev.js",
+          "size": 382352,
+          "sha256": "4a5b751fbff62706df4d5f13191111e9d8a5d94b063acbb85593794290d3000d"
+        },
+        {
+          "path": "libs/Three.r53.js",
+          "size": 392908,
+          "sha256": "1089bcaab2a23a3edf11837dcc93ba2b7916e11d3430e3d0b77cacbbb0473bb5"
+        },
+        {
+          "path": "libs/hexgl-compat.js",
+          "size": 503,
+          "sha256": "a24526df828ef6df8a1c52484f5885b300e31e8993de4d7dfe28d6455b9de84f"
+        },
+        {
+          "path": "libs/leap-0.4.1.min.js",
+          "size": 83438,
+          "sha256": "e612e0d6c8aa6bb09bb9ec72c92ba8df38a3cfb095f9c4b95444e1a9de177366"
+        },
+        {
+          "path": "libs/postprocessing/BloomPass.js",
+          "size": 3214,
+          "sha256": "3df2a886402c90dd198070ebfacdab10114547caf90b66c687ba4e6ccddfaa5e"
+        },
+        {
+          "path": "libs/postprocessing/DotScreenPass.js",
+          "size": 1206,
+          "sha256": "070514f29559c54f5a19283b8cb5715b593e23c1cca86aa707df19d164869252"
+        },
+        {
+          "path": "libs/postprocessing/EffectComposer.js",
+          "size": 3637,
+          "sha256": "5ef32e9ca4ab457c637857649fb43a1d0c211d6993ceb4a683a530b4517d43f8"
+        },
+        {
+          "path": "libs/postprocessing/FilmPass.js",
+          "size": 1320,
+          "sha256": "c66cf0018607c371d0e98310da2f2e3a4c7e433bbd171f5f676a70e4c6b3638a"
+        },
+        {
+          "path": "libs/postprocessing/MaskPass.js",
+          "size": 1622,
+          "sha256": "af1fa148f551c698fce232dae34bd81bf3aae4508756d1b652b0c4e64495ce84"
+        },
+        {
+          "path": "libs/postprocessing/RenderPass.js",
+          "size": 1235,
+          "sha256": "fe15aea230242197c8f8978bfa1692be81f18cffb031fd946ec7a08facfe12f6"
+        },
+        {
+          "path": "libs/postprocessing/SavePass.js",
+          "size": 1201,
+          "sha256": "23fc12426398cda4562e6b62b980abe0021e5f4e35f75210564418d1931f7a1e"
+        },
+        {
+          "path": "libs/postprocessing/ShaderPass.js",
+          "size": 1009,
+          "sha256": "eae0a08e085bc0116ad8469b690c6d62ba3e72f16a7e1d9924ee585d08415591"
+        },
+        {
+          "path": "libs/postprocessing/TexturePass.js",
+          "size": 811,
+          "sha256": "268d12da6ebb7f01a977524222b924d552bb8b969a05c641458bc0930784f0c9"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 256,
+          "sha256": "9501a24c88830220a9dddfbdbc427ca794f85ad74606d167eb17cb57a54036cd"
+        },
+        {
+          "path": "package.json",
+          "size": 181,
+          "sha256": "10161e40d8d3a6598cb1e456b8622f4e6be35224749a78d92f06319ac98e8cbb"
+        },
+        {
+          "path": "preview.png",
+          "size": 404203,
+          "sha256": "224fdf680c80c30404a310b32b1e59813c892a21d189b7af4c5517109fe7e0b2"
+        },
+        {
+          "path": "qa/evidence-identity.json",
+          "size": 4489,
+          "sha256": "cf794986bb1f6b91df1d0c76363850b5f3f23425e41fbdd33f4cdda714d03b8a"
+        },
+        {
+          "path": "qa/resize-en.png",
+          "size": 163027,
+          "sha256": "9a8038d93b381fd549499d3e9da7aef74ac00d2be2716b5c8a45e3e27ba8aeb1"
+        },
+        {
+          "path": "qa/result-en.png",
+          "size": 111650,
+          "sha256": "369c067116de0c71551ae35acaf27ea95327331b9faf8996c01ff84908cefcce"
+        },
+        {
+          "path": "qa/result-pt.png",
+          "size": 114193,
+          "sha256": "4b05d502aaeebc4529b72d3970241c72e2e60f44960d6aa2da013eff29db2ca6"
+        },
+        {
+          "path": "qa/touch-en.png",
+          "size": 167998,
+          "sha256": "e6340f2765a4c30a962df23b0045ab6cc79a1dc08fa0c2eb14bcfa82cf45da57"
+        },
+        {
+          "path": "qa/verify-identity.log",
+          "size": 4490,
+          "sha256": "2b6d8369b8dcd812ab0933a63ca95b4b83fffceccfadc387afdcac676854a001"
+        },
+        {
+          "path": "qa/verify-identity.mjs",
+          "size": 11182,
+          "sha256": "19da74ff09bcbeb75b1f085750d37b64c07a202b79a62df3ac7e5b3a73ba84d3"
+        },
+        {
+          "path": "replays/cityscape-casual/bkcore.replay.json",
+          "size": 615416,
+          "sha256": "73ac69e71f9d537f2f78f1ff63859c59eb56198da71e48ab007fbceac79f7ba7"
+        },
+        {
+          "path": "space-racing.js",
+          "size": 8529,
+          "sha256": "6b64e06e9f6fd3f301317b20a3cd43326b07f28aa81d4faac744653e57d892f0"
+        },
+        {
+          "path": "template-build.mjs",
+          "size": 415,
+          "sha256": "242ae78c7a3ec25c7efee879ce3a63d688ec9b49efb0e39224d1fa03ccc8e6ad"
+        },
+        {
+          "path": "textures/bonus/base/diffuse.jpg",
+          "size": 35098,
+          "sha256": "3e612bad2f6756df128232b969877116bc1d4115fb007fcd27597ede0dcbe880"
+        },
+        {
+          "path": "textures/bonus/base/normal.jpg",
+          "size": 48284,
+          "sha256": "c379c2f8525d290f8b55519ca915c4730f6f1dafdf9c6af27c97c6b225b424db"
+        },
+        {
+          "path": "textures/bonus/base/specular.jpg",
+          "size": 112338,
+          "sha256": "9ecb56d2784694ad632dd80e726a318db97d58ac03d07e521355c205d1ea946e"
+        },
+        {
+          "path": "textures/checker.png",
+          "size": 340,
+          "sha256": "04b43b41afe039f455877c8c0312ec42e4cf5427b1c19fbc45cdba127783860b"
+        },
+        {
+          "path": "textures/hud/hex.jpg",
+          "size": 53410,
+          "sha256": "56d74bedd3fac0ae10000bfb7ba16b848e431f9bdb265bd7e5c0f3a3661b58d3"
+        },
+        {
+          "path": "textures/hud/hud-bg.png",
+          "size": 83435,
+          "sha256": "f52649f88f5275485d677699f6195313721895874abbe0d33e8b3c6a866913ea"
+        },
+        {
+          "path": "textures/hud/hud-fg-shield.png",
+          "size": 30092,
+          "sha256": "cf44acdbc864ce6634b973b5e91376cf0aee2f03d105395fce9b35cd56a39e44"
+        },
+        {
+          "path": "textures/hud/hud-fg-speed.png",
+          "size": 77277,
+          "sha256": "c5eab0f5815d001acf26f87f80c9df0c873c55dcb622860cc8519d20fc7d801b"
+        },
+        {
+          "path": "textures/particles/cloud - Copie.png",
+          "size": 60512,
+          "sha256": "ece213192f6a85fa093a03e59801f76b1065cff00eea91f8dc0c2453479341d3"
+        },
+        {
+          "path": "textures/particles/cloud.png",
+          "size": 60512,
+          "sha256": "c8e56519bbfd3e42d0c1aff8249e43d2e5a2946f5109dcdfe3574d8219ca65b3"
+        },
+        {
+          "path": "textures/particles/damage.png",
+          "size": 25050,
+          "sha256": "cf5173906b08e8c1693928f4e63482d30d65e6eacba5c5d4345395f3375cad1d"
+        },
+        {
+          "path": "textures/particles/spark - Copie.png",
+          "size": 3472,
+          "sha256": "204e02e6664497b22e62bb905cae3e2c319639b3f488e287fa0eeef62a19a1ef"
+        },
+        {
+          "path": "textures/particles/spark.png",
+          "size": 2882,
+          "sha256": "9f90354a518db007118cc76875a3e8d4fa570437b1608d317fa5071cb9bd7ace"
+        },
+        {
+          "path": "textures/ships/feisar/booster/booster.png",
+          "size": 81100,
+          "sha256": "8427219b736170a8f3ecd54e0b241ffd020a442fcfd2b7b6b0abdb18e02f5b22"
+        },
+        {
+          "path": "textures/ships/feisar/booster/boostersprite.jpg",
+          "size": 13234,
+          "sha256": "c811eff6d9ebf4a07f32c7ef31db72d7dd6ddb4b80e93e85cccc2046cc1f9016"
+        },
+        {
+          "path": "textures/ships/feisar/diffuse.jpg",
+          "size": 115601,
+          "sha256": "b8e1effc02e62b7c79f134427971f4fb48ce2ad81410d1e1bba2dcb0601dbd84"
+        },
+        {
+          "path": "textures/ships/feisar/normal.jpg",
+          "size": 314506,
+          "sha256": "51832d00c6704ffc4c28806a4c1f65ce90b0ae3d8f9628d48c04bfd2700f75b4"
+        },
+        {
+          "path": "textures/ships/feisar/specular.jpg",
+          "size": 335448,
+          "sha256": "aa9404d803bae9f16cd92d965ebcae407e8616008eff5e332d26639ec509bea2"
+        },
+        {
+          "path": "textures/skybox/dawnclouds/nx.jpg",
+          "size": 35046,
+          "sha256": "178887c0403f41a269ff00c7d4261dd56b74c304ffaeea962822dd6e7fb7caaf"
+        },
+        {
+          "path": "textures/skybox/dawnclouds/ny.jpg",
+          "size": 34726,
+          "sha256": "7afdda2733fe370d4927244b3541ea5070b1f15a392a234dc31ec1d0006ac6a0"
+        },
+        {
+          "path": "textures/skybox/dawnclouds/nz.jpg",
+          "size": 34537,
+          "sha256": "5e5ba7b8955522e8d86ffb303c201548209df1a7d7177565c7be29103619a17e"
+        },
+        {
+          "path": "textures/skybox/dawnclouds/px.jpg",
+          "size": 36766,
+          "sha256": "57d99274a0a845efa6f2becf2c95e5016162eace1407cc72451287be3c7b96a2"
+        },
+        {
+          "path": "textures/skybox/dawnclouds/py.jpg",
+          "size": 20815,
+          "sha256": "c206d7eeec43a778e038c771532c733ef3c13a345b35717446bc05162ab5b6ba"
+        },
+        {
+          "path": "textures/skybox/dawnclouds/pz.jpg",
+          "size": 36546,
+          "sha256": "b4880fa714eddcef261700a98af318b476b9053f23f1b39091036a9e70e91110"
+        },
+        {
+          "path": "textures/tracks/cityscape/collision.png",
+          "size": 146459,
+          "sha256": "9a3452d7c092d02cd02c8f0595f2a1306eae38c263c47c5777b8233fd6bfadde"
+        },
+        {
+          "path": "textures/tracks/cityscape/diffuse.jpg",
+          "size": 63186,
+          "sha256": "ead336170dd1547d729c05e4d2d25e7355b4154c65b08bcd2da5fcf78cfbce26"
+        },
+        {
+          "path": "textures/tracks/cityscape/height.png",
+          "size": 209516,
+          "sha256": "b04ec5cafad024c8ebd761453173c9b5d7e982a157263ec3f54e369c27ab38a8"
+        },
+        {
+          "path": "textures/tracks/cityscape/normal.jpg",
+          "size": 648304,
+          "sha256": "edd6dd342419f9138f1ec7e9bddacd631b1b615ec5fcf04a598d08a9326ea573"
+        },
+        {
+          "path": "textures/tracks/cityscape/scrapers1/diffuse.jpg",
+          "size": 60434,
+          "sha256": "9308b3d62dffc4a45e687f0d009de2a7fc268577a0562865df749ad7002ce665"
+        },
+        {
+          "path": "textures/tracks/cityscape/scrapers1/normal.jpg",
+          "size": 112111,
+          "sha256": "06b70ea74ed7c1583f2fba092016c03cc9cd09b855f7bf3d590ffffb95549fd3"
+        },
+        {
+          "path": "textures/tracks/cityscape/scrapers1/specular.jpg",
+          "size": 315830,
+          "sha256": "544794d4b1d734b1342782c11f1dce6bf3085adce4f51f3aa9c277660469f3c5"
+        },
+        {
+          "path": "textures/tracks/cityscape/scrapers2/diffuse.jpg",
+          "size": 65749,
+          "sha256": "a97fb5c44d94daa14becaeecdfb1fee9b463a2e3162ac8f869fda61c6063358a"
+        },
+        {
+          "path": "textures/tracks/cityscape/scrapers2/normal.jpg",
+          "size": 59219,
+          "sha256": "26160538d8c2b3493ecb038138531cc8c8d897fec651c395efdec00c717837f8"
+        },
+        {
+          "path": "textures/tracks/cityscape/scrapers2/specular.jpg",
+          "size": 207975,
+          "sha256": "9a9d0cb1caae0835de6c7fb2eb08e44a148f7bc616e7ec1b26a0dadfb1465725"
+        },
+        {
+          "path": "textures/tracks/cityscape/specular.jpg",
+          "size": 444304,
+          "sha256": "dfbbd750acd2da0178c72f0365cd4c590121cc772afaa49ac92ac14bd345ee03"
+        },
+        {
+          "path": "textures/tracks/cityscape/start/diffuse.jpg",
+          "size": 75560,
+          "sha256": "b8b83099e11861c5a07793c2f7cc7ead27b537b34d8e12b5492a073faebd94ae"
+        },
+        {
+          "path": "textures/tracks/cityscape/start/normal.jpg",
+          "size": 111293,
+          "sha256": "31253c93db5deeb50f41204e2cb9f470e5c9636fede56121c1185f2c7a919132"
+        },
+        {
+          "path": "textures/tracks/cityscape/start/specular.jpg",
+          "size": 80452,
+          "sha256": "f51e7d7e1c9eef829fbd2cd4810ef46f2a8b4c6be1027533dea8db280f224be1"
+        },
+        {
+          "path": "textures/tracks/cityscape/start/start.jpg",
+          "size": 32273,
+          "sha256": "c810d525868b4698b42c2637847d144eda271d089484c87b87d19af3ce07e269"
+        },
+        {
+          "path": "textures.full/bonus/base/diffuse.jpg",
+          "size": 102448,
+          "sha256": "19218aeaacf874cd9aca081912567acc38a95a1577f91bd92dc2b7a53834c9eb"
+        },
+        {
+          "path": "textures.full/bonus/base/normal.jpg",
+          "size": 48284,
+          "sha256": "c379c2f8525d290f8b55519ca915c4730f6f1dafdf9c6af27c97c6b225b424db"
+        },
+        {
+          "path": "textures.full/bonus/base/specular.jpg",
+          "size": 112338,
+          "sha256": "9ecb56d2784694ad632dd80e726a318db97d58ac03d07e521355c205d1ea946e"
+        },
+        {
+          "path": "textures.full/checker.png",
+          "size": 340,
+          "sha256": "04b43b41afe039f455877c8c0312ec42e4cf5427b1c19fbc45cdba127783860b"
+        },
+        {
+          "path": "textures.full/hud/hex.jpg",
+          "size": 53410,
+          "sha256": "56d74bedd3fac0ae10000bfb7ba16b848e431f9bdb265bd7e5c0f3a3661b58d3"
+        },
+        {
+          "path": "textures.full/hud/hud-bg.png",
+          "size": 83435,
+          "sha256": "f52649f88f5275485d677699f6195313721895874abbe0d33e8b3c6a866913ea"
+        },
+        {
+          "path": "textures.full/hud/hud-fg-shield.png",
+          "size": 30092,
+          "sha256": "cf44acdbc864ce6634b973b5e91376cf0aee2f03d105395fce9b35cd56a39e44"
+        },
+        {
+          "path": "textures.full/hud/hud-fg-speed.png",
+          "size": 77277,
+          "sha256": "c5eab0f5815d001acf26f87f80c9df0c873c55dcb622860cc8519d20fc7d801b"
+        },
+        {
+          "path": "textures.full/particles/cloud - Copie.png",
+          "size": 60512,
+          "sha256": "ece213192f6a85fa093a03e59801f76b1065cff00eea91f8dc0c2453479341d3"
+        },
+        {
+          "path": "textures.full/particles/cloud.png",
+          "size": 60512,
+          "sha256": "c8e56519bbfd3e42d0c1aff8249e43d2e5a2946f5109dcdfe3574d8219ca65b3"
+        },
+        {
+          "path": "textures.full/particles/damage.png",
+          "size": 25050,
+          "sha256": "cf5173906b08e8c1693928f4e63482d30d65e6eacba5c5d4345395f3375cad1d"
+        },
+        {
+          "path": "textures.full/particles/spark - Copie.png",
+          "size": 3472,
+          "sha256": "204e02e6664497b22e62bb905cae3e2c319639b3f488e287fa0eeef62a19a1ef"
+        },
+        {
+          "path": "textures.full/particles/spark.png",
+          "size": 2882,
+          "sha256": "9f90354a518db007118cc76875a3e8d4fa570437b1608d317fa5071cb9bd7ace"
+        },
+        {
+          "path": "textures.full/ships/feisar/booster/booster.png",
+          "size": 428605,
+          "sha256": "0750767f8996ad2d4797152874401a57aac0df90c4b2e39542252ec48e09ab79"
+        },
+        {
+          "path": "textures.full/ships/feisar/booster/boostersprite.jpg",
+          "size": 16055,
+          "sha256": "bd1b08f8f30650463b80e19e42f99a97372854a20ed0a390cc3c376ea267c32b"
+        },
+        {
+          "path": "textures.full/ships/feisar/diffuse.jpg",
+          "size": 294683,
+          "sha256": "92ef78fbb14042c3f6cb935faa9a50ef3f469141e91ff2c14164990ca4084fe3"
+        },
+        {
+          "path": "textures.full/ships/feisar/normal.jpg",
+          "size": 314506,
+          "sha256": "51832d00c6704ffc4c28806a4c1f65ce90b0ae3d8f9628d48c04bfd2700f75b4"
+        },
+        {
+          "path": "textures.full/ships/feisar/specular.jpg",
+          "size": 335448,
+          "sha256": "aa9404d803bae9f16cd92d965ebcae407e8616008eff5e332d26639ec509bea2"
+        },
+        {
+          "path": "textures.full/skybox/dawnclouds/nx.jpg",
+          "size": 55756,
+          "sha256": "12b1ce6c91aa3aaf258a8a5944df739a6c1cc76e89d4d7119d1f795a30fc1bf2"
+        },
+        {
+          "path": "textures.full/skybox/dawnclouds/ny.jpg",
+          "size": 52198,
+          "sha256": "e18fe2206b63d3df2c879f5e0b9937a61d99734b6c43ac288226c58d2418d23e"
+        },
+        {
+          "path": "textures.full/skybox/dawnclouds/nz.jpg",
+          "size": 54574,
+          "sha256": "00dddd1b715d5877af2a74c014ff6e47891f07435b471d213cd0673a8c47f2b2"
+        },
+        {
+          "path": "textures.full/skybox/dawnclouds/px.jpg",
+          "size": 60050,
+          "sha256": "bf20acd6817c9e7073e485bbe2d2ce56dacff73c021c2b613ba072ba2df2b754"
+        },
+        {
+          "path": "textures.full/skybox/dawnclouds/py.jpg",
+          "size": 19634,
+          "sha256": "16f0d692af0b80e46929d8d8a7e596123c76729cc5eb7dfd1c9184b115dd143a"
+        },
+        {
+          "path": "textures.full/skybox/dawnclouds/pz.jpg",
+          "size": 58868,
+          "sha256": "b850b5e882889df26be9289d7c25ba30524b37e56bc2075b968a83197ad977f3"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/collision.png",
+          "size": 146459,
+          "sha256": "9a3452d7c092d02cd02c8f0595f2a1306eae38c263c47c5777b8233fd6bfadde"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/diffuse.jpg",
+          "size": 394118,
+          "sha256": "524ee7d00a296e6536f1f76646c6d842a5f57e02ad5c40a8d8fcf6a6f5ffc6be"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/height.png",
+          "size": 209516,
+          "sha256": "b04ec5cafad024c8ebd761453173c9b5d7e982a157263ec3f54e369c27ab38a8"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/normal.jpg",
+          "size": 648304,
+          "sha256": "edd6dd342419f9138f1ec7e9bddacd631b1b615ec5fcf04a598d08a9326ea573"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/scrapers1/diffuse.jpg",
+          "size": 87923,
+          "sha256": "e740901dbe1ea7e0f33132ce5bfeb6fe543a00f868649e21701dbc4da374edcf"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/scrapers1/normal.jpg",
+          "size": 112111,
+          "sha256": "06b70ea74ed7c1583f2fba092016c03cc9cd09b855f7bf3d590ffffb95549fd3"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/scrapers1/specular.jpg",
+          "size": 315830,
+          "sha256": "544794d4b1d734b1342782c11f1dce6bf3085adce4f51f3aa9c277660469f3c5"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/scrapers2/diffuse.jpg",
+          "size": 120659,
+          "sha256": "3f369d9cad864afe2873da621e84ce2f17410c9ef88c2437a765102ba61b9088"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/scrapers2/normal.jpg",
+          "size": 59219,
+          "sha256": "26160538d8c2b3493ecb038138531cc8c8d897fec651c395efdec00c717837f8"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/scrapers2/specular.jpg",
+          "size": 207975,
+          "sha256": "9a9d0cb1caae0835de6c7fb2eb08e44a148f7bc616e7ec1b26a0dadfb1465725"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/specular.jpg",
+          "size": 444304,
+          "sha256": "dfbbd750acd2da0178c72f0365cd4c590121cc772afaa49ac92ac14bd345ee03"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/start/diffuse.jpg",
+          "size": 75560,
+          "sha256": "b8b83099e11861c5a07793c2f7cc7ead27b537b34d8e12b5492a073faebd94ae"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/start/normal.jpg",
+          "size": 111293,
+          "sha256": "31253c93db5deeb50f41204e2cb9f470e5c9636fede56121c1185f2c7a919132"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/start/specular.jpg",
+          "size": 80452,
+          "sha256": "f51e7d7e1c9eef829fbd2cd4810ef46f2a8b4c6be1027533dea8db280f224be1"
+        },
+        {
+          "path": "textures.full/tracks/cityscape/start/start.jpg",
+          "size": 32273,
+          "sha256": "c810d525868b4698b42c2637847d144eda271d089484c87b87d19af3ce07e269"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "game-arcade-2d",
+        "kind": "web",
+        "category": "game",
+        "name": {
+          "pt-BR": "Arcade 2D",
+          "en": "Arcade 2D"
+        },
+        "description": {
+          "pt-BR": "Um robô voador, portais de energia e uma cidade solar para explorar.",
+          "en": "A flying robot, energy portals and a solar city to explore."
+        },
+        "preview": "preview.png",
+        "entry": "index.html",
+        "adaptation": "Copie o pacote inteiro para uma nova pasta antes de editar. Esta é uma base de jogo de navegador pronta, com fontes e recursos locais. Preserve a entrada direta, controles, todos os créditos, fontes e licenças descritos em NOTICE.md, README.md e UPSTREAM.md. Troque nome, cenário, arte e regras conforme o pedido e confira o jogo após cada alteração. Instale com npm ci e execute npm run build na cópia; sirva por HTTP. Não publique automaticamente.",
+        "license": "GPL-3.0-only; melonJS license in LICENSE-melonJS.txt",
+        "origin": "ellisonleao/clumsy-bird@fae3d487d5102af29fb3f78431cbd45e9b83aed3; identidade, arte e adaptação SquadOS. Ver UPSTREAM.md e licenças locais.",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/games/clumsy-bird",
+        "goal": {
+          "pt-BR": "Quero criar um jogo arcade 2D para navegador. Me ajude a definir personagem, obstáculos, controles, pontuação e dificuldade, com reinício rápido e uma identidade visual própria.",
+          "en": "I want to create a 2D arcade browser game. Help me define the character, obstacles, controls, scoring and difficulty, with quick restarts and its own visual identity."
+        }
+      },
+      "path": "games/clumsy-bird",
+      "files": [
+        {
+          "path": "LICENSE-melonJS.txt",
+          "size": 1091,
+          "sha256": "43911694e7079f9906a6671fe6e7ede09d2fc18753f6e734a0c08c3ec3426f7f"
+        },
+        {
+          "path": "LICENSE.md",
+          "size": 35141,
+          "sha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 543,
+          "sha256": "94a018a3005d01b5ecad3e5d18712597ea02bc5be6b8febd7cff1354218451aa"
+        },
+        {
+          "path": "QA.json",
+          "size": 6760,
+          "sha256": "ab07ed493e5cf4db1b20247fdad5e6a9860c51856b4dd75c26ad55d46523f503"
+        },
+        {
+          "path": "README.md",
+          "size": 2681,
+          "sha256": "488adbec24dbc7b0357f6cb5d3e503c3bcd146df09a05e8ba3b497e6b17fe39a"
+        },
+        {
+          "path": "UPSTREAM.md",
+          "size": 7263,
+          "sha256": "3919c2a140ce20d52c013d6cb03de2ccaa8a8d3ed1dd01bbd48129b66ebeb86f"
+        },
+        {
+          "path": "data/art/icon.svg",
+          "size": 547,
+          "sha256": "acfe8bb657287741a47c13b18976442138c4437ab2842b2014e160e1ed5ac7a6"
+        },
+        {
+          "path": "data/art/marker.svg",
+          "size": 244,
+          "sha256": "fba96c76f038b46f981dfe7fd10c32039134c198e08ec57cac5d2a59cae4e8c9"
+        },
+        {
+          "path": "data/art/portal.svg",
+          "size": 1273,
+          "sha256": "d1d7677f31b534963898aa2e448045f8a641464c3ee64c5cc29a8408d2a57339"
+        },
+        {
+          "path": "data/art/robot-badge.svg",
+          "size": 1016,
+          "sha256": "6be85acefc973dfc258fc1e6dc4f88992fdf72740969fb33f3702a2ca889bce1"
+        },
+        {
+          "path": "data/art/robot.svg",
+          "size": 2281,
+          "sha256": "820c295430535a32e32af8ce5795616fc8af2d9f3286a875cd32d37c30795b65"
+        },
+        {
+          "path": "data/art/runway.svg",
+          "size": 759,
+          "sha256": "7b0e93f38511479e5e5fddb339860e31f7521d6b85d9a80091bacecfd3529f25"
+        },
+        {
+          "path": "data/art/skyline.svg",
+          "size": 4883,
+          "sha256": "a2c4dd6bd67aefb4f976c2c25475b94d43bea51bc6aa90188eaf05ede13c6c50"
+        },
+        {
+          "path": "data/bgm/theme.mp3",
+          "size": 1408418,
+          "sha256": "8bed9acfb0bce3b1f98f7296f838039a81d1582aa7b946e85c14d30361eac354"
+        },
+        {
+          "path": "data/bgm/theme.ogg",
+          "size": 2078186,
+          "sha256": "c6bbde7e3572121536eaa43f9885f585fb14469345455e3bb78f6b7d068d7536"
+        },
+        {
+          "path": "data/css/gamefont.woff",
+          "size": 4080,
+          "sha256": "ec9e8ce7eb397f64908f74d2e5f58c9c7c2e5d2aa277212aa36d230957c9bc6c"
+        },
+        {
+          "path": "data/img/bg.png",
+          "size": 4576,
+          "sha256": "1ca3ef1c0433183445973aa87d7105c8a2ff266099490276592d8815de7c94d9"
+        },
+        {
+          "path": "data/img/clumsy.png",
+          "size": 1557,
+          "sha256": "e42e12f2a957a481fb5ec9d1f209e9118e81750cd288ffef254aab75957735e6"
+        },
+        {
+          "path": "data/img/favicon.ico",
+          "size": 32038,
+          "sha256": "ed305e8974d78d64d5700a56f0eede99b2d4b38f2ff23bfa47093e920d5431c3"
+        },
+        {
+          "path": "data/img/gameover.png",
+          "size": 2749,
+          "sha256": "1808919fc97deb987959f72ae8467fd9dc16201ff323c4b0c55e7b13b34cc819"
+        },
+        {
+          "path": "data/img/gameoverbg.png",
+          "size": 1983,
+          "sha256": "01c091e40279744cc80e409cc2906c93757bba752982ef0eab626e4f3761a4aa"
+        },
+        {
+          "path": "data/img/ground.png",
+          "size": 1612,
+          "sha256": "ceac2ab3b0eeb26bf8b993a8a668a0dcba89a36bb23200045e0e74e6805d482b"
+        },
+        {
+          "path": "data/img/hit.png",
+          "size": 1028,
+          "sha256": "38c19fca1d144129588d327e5851af24deb2d7d111a97d0820a933c0d63fdbee"
+        },
+        {
+          "path": "data/img/new.png",
+          "size": 2196,
+          "sha256": "ebb48544f9f123260c0a5bfc2b07492b9b0cc829da55a9f4297ccb0e76620d15"
+        },
+        {
+          "path": "data/img/pipe.png",
+          "size": 23851,
+          "sha256": "3caa3c7b83727a06320c2e3d29da46a6e54d0da9b38fc258323084783a7e791c"
+        },
+        {
+          "path": "data/img/touch-icon-iphone-retina.png",
+          "size": 1265,
+          "sha256": "b3b4b9ea231efbfddfac19aa57bc005a07a738a822c0e25659b228502344a31c"
+        },
+        {
+          "path": "data/img/touch-icon-iphone.png",
+          "size": 997,
+          "sha256": "dd718f9f414e6581cbae7f4756b653476366e913f9ceadf8d89372081db7e0ce"
+        },
+        {
+          "path": "data/sfx/hit.mp3",
+          "size": 2821,
+          "sha256": "e53e723202bba588d4b0b60077d3ba2bc8494760e6eab095abe785389c7cc44c"
+        },
+        {
+          "path": "data/sfx/hit.ogg",
+          "size": 6590,
+          "sha256": "52c99910ea73862a7f73be18d08b54aa417e6fa058de511a493afa272f19c81c"
+        },
+        {
+          "path": "data/sfx/lose.mp3",
+          "size": 5015,
+          "sha256": "4a39a555ad2e3ea1a6d54f549d31fa42714ff25751d74d5437cb4c1bff82fb82"
+        },
+        {
+          "path": "data/sfx/lose.ogg",
+          "size": 9030,
+          "sha256": "19e55bc294cd663a8bd2df6c1f04ba22b0fab7a11dfa608ad33f0a593d12733e"
+        },
+        {
+          "path": "data/sfx/wing.mp3",
+          "size": 3200,
+          "sha256": "5b97a31e54597b1165549106ecf0df48ca24767af43d2794099c5c0e4c7a5d04"
+        },
+        {
+          "path": "data/sfx/wing.ogg",
+          "size": 7332,
+          "sha256": "97c0b9ad647c96327d963f620d920499ad702c3f8674be90ba885426a499f307"
+        },
+        {
+          "path": "humans.txt",
+          "size": 556,
+          "sha256": "48b6946ade89b05b54ab3b6d5c00f505741b79fd0eed96d2aa3541f772e01f39"
+        },
+        {
+          "path": "index.css",
+          "size": 5473,
+          "sha256": "cd79dfaa12610955544610668d405499bfbed7765dd5bcb529a85406123e089a"
+        },
+        {
+          "path": "index.html",
+          "size": 2245,
+          "sha256": "4cd034c229e78d4e7c7a558313cb220e6f46b85bbe1f84f378891742222292ba"
+        },
+        {
+          "path": "js/entities/HUD.js",
+          "size": 1460,
+          "sha256": "ca343bf506104db147da702d616a86d9d53e5f50e9f61f894a265f8cef57d7f0"
+        },
+        {
+          "path": "js/entities/entities.js",
+          "size": 8514,
+          "sha256": "a18caef1cb757220e041f68e6bd355c951267a31bfd28699f795361e221631d7"
+        },
+        {
+          "path": "js/game.js",
+          "size": 6862,
+          "sha256": "36d831537c108203d01c1260effaf8ae623540727de2a40f10aaf1c94f8b6919"
+        },
+        {
+          "path": "js/melonJS-min.js",
+          "size": 224345,
+          "sha256": "7bb34b3dd8df92f9ff254d5e32e2c8d599fb4011670c07cf2b1a9bf8c1712b25"
+        },
+        {
+          "path": "js/screens/gameover.js",
+          "size": 1954,
+          "sha256": "2873504717c93a6ff796955c08d28c4bf2ea25da2064b97048f98427f4cadfd6"
+        },
+        {
+          "path": "js/screens/play.js",
+          "size": 1977,
+          "sha256": "0a7571ef4badaa3f272ee5e6ae8528bc06164e0dc8f24995740aa38c021a908e"
+        },
+        {
+          "path": "package-lock.json",
+          "size": 240,
+          "sha256": "67c0edcb2b82ae2cc426badeb4cc54ce859d0e2593617d67d46d1779445f52b0"
+        },
+        {
+          "path": "package.json",
+          "size": 737,
+          "sha256": "c24ede00d6925d0663a9df1313c1e2a35f9bc5378debfb8ea5f099fa21779dec"
+        },
+        {
+          "path": "preview.png",
+          "size": 146883,
+          "sha256": "634a8936585c862da542e4284138909da59c39086be2a2ad633c47bed1ff7724"
+        },
+        {
+          "path": "template-build.mjs",
+          "size": 415,
+          "sha256": "242ae78c7a3ec25c7efee879ce3a63d688ec9b49efb0e39224d1fa03ccc8e6ad"
+        }
+      ]
+    }
+  ]
+}

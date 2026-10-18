@@ -52,10 +52,11 @@ distribua o `dist/` da cópia adaptada. Publicação não é feita por estes scr
 
 ## Catálogo, autoria e adaptação
 
-`index.json` usa os campos `id`, `kind: web`, `name`/`description` em PT-BR e EN,
+Cada registro de `../templates.json` inclui `template`, `path` e `files` com
+tamanho e SHA-256. O objeto `template` usa os campos `id`, `kind: web`, `name`/`description` em PT-BR e EN,
 `entry`, `preview`, `adaptation`, `license` e `origin`, conforme o schema atual do
 Desktop. A entrada é `src/app.js`; o preview é um PNG do aplicativo renderizado.
-O catálogo embutido do Desktop e `gallery.json` permanecem separados.
+O Desktop consome o manifesto publicado, sem catálogo ou pacotes embarcados. O índice de skills `gallery.json` é separado.
 
 As direções visuais foram aprovadas no [spike](concepts/2026-10-16-web-apps/README.md).
 A IA foi substituída pelo chat solicitado. Referências em

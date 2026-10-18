@@ -1,13 +1,11 @@
-# Capas da biblioteca SquadOS Studio
+# Capas do catálogo
 
-Cada especialista tem uma capa própria: o SVG é a fonte editável e o WebP de
-800 × 450 px é a exportação usada no catálogo. Arte autoral, sob a licença MIT
-da raiz. As formas representam áreas de trabalho; não são capturas de entregas
-nem prova da execução de uma capacidade.
+As capas atuais são as imagens WebP autorais com o mascote SquadOS e exemplos de
+entrega de cada especialista, publicadas neste diretório. Foram criadas com geração
+de imagens nativa e aprovadas na exploração visual do Studio de 16/10/2026.
+Os SVGs anteriores são estudos históricos e não são a fonte das capas atuais.
 
-Os vinte SVGs foram renderizados em Chromium headless e exportados para WebP.
-Fontes: Arial/sans-serif do sistema, sem redistribuição de arquivos de fontes.
-As capas históricas de fornecedores foram retiradas da biblioteca em 16/10/2026.
-
-O Desktop recebe os dezenove WebPs publicados e o mesmo gallery.json em docs/squados-skills.
-Não reutilizar capas com marcas de fornecedores para representar os especialistas.
+`gallery.json` referencia estas imagens diretamente. O Desktop resolve os caminhos
+relativos neste repositório público; não embarca cópias das capas.
+Valide conteúdo, proporção 16:9 e existência com
+`node scripts/validate-skills-catalog.mjs`.

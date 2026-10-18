@@ -1,0 +1,5 @@
+/templates/** text=auto eol=lf
+/sites/** text=auto eol=lf
+/apps/** text=auto eol=lf
+/games/** text=auto eol=lf
+/templates.json text eol=lf

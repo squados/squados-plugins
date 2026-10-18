@@ -16,8 +16,8 @@ Não é o código do aplicativo nem um espelho de todos os repositórios de skil
 - `gallery.json`: índice que o Studio consulta para mostrar a vitrine de agentes no RH.
 - `skills/<nome>/`: conteúdo das skills próprias; o pacote pode incluir arquivos de apoio.
 - `games/`: jogos estáticos independentes, índice local, documentação e licenças próprias.
-- `sites/`: quatro templates one-page, índice candidato próprio, fontes, arte, previews e licenças. Consulte o README dessa pasta; não é o catálogo embutido do Desktop.
-- `apps/`: nove templates web one-page, índice candidato próprio, dados mock, temas, fontes e previews. Consulte o README; não é o catálogo embutido do Desktop nem o índice de skills.
+- `sites/`: quatro templates one-page, fontes, arte, previews e licenças. Metadados no manifesto único `templates.json`.
+- `apps/`: nove templates web one-page, dados mock, temas, fontes e previews. Metadados no manifesto único `templates.json`.
 - `README.md`: funcionamento, formato, curadoria e exceções de distribuição.
 - `CONTRIBUTING.md`: orientação para contribuir com o índice e os pacotes.
 - `LICENSE`: licença deste repositório; não substitui as licenças de conteúdo externo.
@@ -121,15 +121,22 @@ Não há runner npm na raiz. Use `python scripts/verify-skills.py`,
 Pacotes independentes e o consumidor Desktop têm seus próprios checks.
 
 Para o catálogo, valide JSON, campos, traduções, unicidade, referências de área,
-caminhos e licenças. Compare com `../squados-desktop/docs/squados-skills/gallery.json`:
-o teste `gallery-content.test.ts` lê esse espelho, não este repositório. Se houver uma
-mudança no índice, o espelho precisa ser reconciliado na entrega coordenada do Desktop;
-um teste verde sobre o espelho antigo não valida o novo índice.
+caminhos e licenças com `node scripts/validate-skills-catalog.mjs` e
+`node --test tests/validate-skills-catalog.test.mjs` neste repositório. O Desktop
+não mantém espelho editorial nem capas embarcadas: testa o contrato com fixtures.
+
+Para templates, a autoria única é `templates.json`: cada registro contém `template`
+(metadados e `goal` bilíngue), `path` e a lista completa `files` com caminho,
+tamanho e SHA-256. Sites/apps/jogos conservam seus diretórios; slides e bases
+antigas estão em `templates/`. As seis bases antigas continuam fora da galeria.
+Depois de revisar arquivos, rode `node scripts/templates-catalog.mjs --write` e
+`node --test tests/templates-catalog.test.mjs`. O leitor baixa o pacote completo
+sob demanda e confere todos os hashes. Não inclua node_modules, builds ou segredos.
 
 No Desktop, use o script nomeado e um escopo focado:
 
 ```powershell
-npm test -- src/shared/skills/gallery.test.ts src/shared/skills/gallery-content.test.ts src/main/services/skills/gallery-service.test.ts src/runtime/hermes/skills-gallery.integration.test.ts src/main/ipc/gallery.test.ts src/renderer/src/features/skills/GalleryBrowser.test.tsx
+npm test -- src/shared/skills/gallery.test.ts src/main/services/skills/gallery-remote-source.test.ts src/main/services/creation-templates/creation-templates.remote.test.ts src/main/ipc/gallery.test.ts
 ```
 
 Os testes de conteúdo Hermes e integração podem ser pulados quando o source/runtime
