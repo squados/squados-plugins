@@ -10,18 +10,18 @@
           "en": "Commercial proposal"
         },
         "description": {
-          "pt-BR": "Uma proposta em três atos.",
-          "en": "A proposal in three acts."
+          "pt-BR": "Capa editorial em vinho e marfim.",
+          "en": "Editorial cover in burgundy and ivory."
         },
         "preview": "preview.png",
         "entry": "presentation.html",
-        "adaptation": "Copy the complete package into the selected working folder before editing. Replace generic text and example data with the requested content; retain useful layout and interactions. Install with the included lockfile. Do not modify the original template or publish automatically.",
+        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, assets, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, cover ID and visual composition. The background artwork is a PNG without text; typography and layout live in HTML/CSS. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
         "license": "Apache-2.0",
         "origin": "SquadOS",
         "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-commercial",
         "goal": {
-          "pt-BR": "Quero criar uma apresentação de proposta comercial. Me ajude a organizar o problema do cliente, a solução, os diferenciais, o escopo, o investimento e os próximos passos.",
-          "en": "I want to create a commercial proposal presentation. Help me organize the client's problem, the solution, differentiators, scope, investment and next steps."
+          "pt-BR": "Quero personalizar a capa de uma proposta comercial usando este modelo. Me ajude a definir o título do projeto, o cliente, a empresa e a data, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
+          "en": "I want to personalize a commercial proposal cover using this template. Help me define the project title, client, company and date while preserving the visual style. Keep only the cover until I request more slides."
         }
       },
       "path": "templates/slides-commercial",
@@ -33,18 +33,23 @@
         },
         {
           "path": "README.md",
-          "size": 360,
-          "sha256": "5323df532ea78584d62913ce909c86517dba6f4a7fb3ce8beb598678f77bc048"
+          "size": 1795,
+          "sha256": "56dd7c876680765b07da60eaf50ff9f87aeecfe265186426f2984cceb2b1fcd7"
+        },
+        {
+          "path": "assets/commercial.png",
+          "size": 1717386,
+          "sha256": "81dabbeaa38334459cf92794db6c1ac5db331cc70ebca8c9b43bb9765e6eeb98"
         },
         {
           "path": "presentation.html",
-          "size": 1486,
-          "sha256": "96ef58ca12c182af97d40028dc211c5fcb737b16b32f5b18755a78843d68cc72"
+          "size": 2438,
+          "sha256": "0142964ef6d83b767feb9af2e9522d9e783b54b5ddd7f503c65c4c0fa958b738"
         },
         {
           "path": "preview.png",
-          "size": 40584,
-          "sha256": "11a5391eecb6271bc94485dc717809d574431f58a3900ce0321548203e3dc810"
+          "size": 874943,
+          "sha256": "e9dfc7abb54e9e0c5b591326264c9cd0e47be69a69a181926390d5379cad2a77"
         }
       ]
     },
@@ -57,18 +62,18 @@
           "en": "Results report"
         },
         "description": {
-          "pt-BR": "Indicadores e conclusões.",
-          "en": "Indicators and conclusions."
+          "pt-BR": "Capa tipográfica com arte em azul cobalto.",
+          "en": "Typographic cover with cobalt-blue artwork."
         },
         "preview": "preview.png",
         "entry": "presentation.html",
-        "adaptation": "Copy the complete package into the selected working folder before editing. Replace generic text and example data with the requested content; retain useful layout and interactions. Install with the included lockfile. Do not modify the original template or publish automatically.",
+        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, assets, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, cover ID and visual composition. The background artwork is a PNG without text; typography and layout live in HTML/CSS. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
         "license": "Apache-2.0",
         "origin": "SquadOS",
         "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-results",
         "goal": {
-          "pt-BR": "Quero criar uma apresentação de resultados. Me ajude a transformar os dados do período em uma narrativa com indicadores, comparações, conclusões e decisões para o público certo.",
-          "en": "I want to create a results presentation. Help me turn the period's data into a narrative with indicators, comparisons, conclusions and decisions for the right audience."
+          "pt-BR": "Quero personalizar a capa de uma apresentação de resultados usando este modelo. Me ajude a definir o título, o período e a área da empresa, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
+          "en": "I want to personalize a results presentation cover using this template. Help me define the title, reporting period and company area while preserving the visual style. Keep only the cover until I request more slides."
         }
       },
       "path": "templates/slides-results",
@@ -80,18 +85,23 @@
         },
         {
           "path": "README.md",
-          "size": 355,
-          "sha256": "86d97b4f2782cf3788278facb1b3e0d7aa3c2623c68b8f5d64b4acc4d4fdb27e"
+          "size": 1821,
+          "sha256": "61b7b09c43f177889341178731c7b4e9127061c2e43879de19493981c638f51d"
+        },
+        {
+          "path": "assets/results.png",
+          "size": 1627396,
+          "sha256": "5f09bb7b8179042a9935bedd9d3ff532dcd802f59a8cf4ac96b89872ad53eb57"
         },
         {
           "path": "presentation.html",
-          "size": 1493,
-          "sha256": "7b9b02b1f55ac6fde0f00f959124eafd29550c946c3d0ebec22af48d4e914c31"
+          "size": 2464,
+          "sha256": "b6678127119ec44ab2a14d21195b84f7d9ff3c2bec1b47a8c23a6998d1650c7f"
         },
         {
           "path": "preview.png",
-          "size": 41822,
-          "sha256": "9f3a049385acc3e03eb928833cc950713e8301126ef31cd66560d8c79ab9c79d"
+          "size": 801348,
+          "sha256": "ac8195e0097093c7b530450648fac91e5c23754289a73bd0b792b92c3b64681e"
         }
       ]
     },
@@ -104,18 +114,18 @@
           "en": "Training"
         },
         "description": {
-          "pt-BR": "Uma sequência para ensinar.",
-          "en": "A sequence for teaching."
+          "pt-BR": "Capa expressiva com colagem em papel.",
+          "en": "Expressive cover with a paper collage."
         },
         "preview": "preview.png",
         "entry": "presentation.html",
-        "adaptation": "Copy the complete package into the selected working folder before editing. Replace generic text and example data with the requested content; retain useful layout and interactions. Install with the included lockfile. Do not modify the original template or publish automatically.",
+        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, assets, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, cover ID and visual composition. The background artwork is a PNG without text; typography and layout live in HTML/CSS. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
         "license": "Apache-2.0",
         "origin": "SquadOS",
         "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-training",
         "goal": {
-          "pt-BR": "Quero criar uma apresentação de treinamento. Me ajude a definir os objetivos de aprendizagem, a sequência das aulas, exemplos práticos e exercícios adequados ao conhecimento do público.",
-          "en": "I want to create a training presentation. Help me define learning objectives, lesson sequence, practical examples and exercises suited to the audience's knowledge."
+          "pt-BR": "Quero personalizar a capa de um treinamento usando este modelo. Me ajude a definir o tema, a finalidade e a empresa, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
+          "en": "I want to personalize a training cover using this template. Help me define the topic, purpose and company while preserving the visual style. Keep only the cover until I request more slides."
         }
       },
       "path": "templates/slides-training",
@@ -127,18 +137,23 @@
         },
         {
           "path": "README.md",
-          "size": 349,
-          "sha256": "596b6e137d9b362b2c113a65480fb17462a73fdf188cdb8130a811916a55e6c2"
+          "size": 1800,
+          "sha256": "437320a424c748e3c3b7a06299c39273ae2baaee64f8a972aa91de4908dd950d"
+        },
+        {
+          "path": "assets/training.png",
+          "size": 2168624,
+          "sha256": "fe6997e94171898accb7b8129f155704d272ea7866df3631c2665e0cc466436c"
         },
         {
           "path": "presentation.html",
-          "size": 1497,
-          "sha256": "e6a475e9c0e14826cd5fea966e2bab2d102eecffd06a893fe3a4d380c23db961"
+          "size": 2410,
+          "sha256": "aa7148fe65b070dc2a54f150a70bf8fdcb6492f704b76734467ea8d4bea1ca44"
         },
         {
           "path": "preview.png",
-          "size": 37893,
-          "sha256": "82ab8907aeb6ebfacb3238c9ba75de86018cc76868925c620f04894559c34db6"
+          "size": 1038442,
+          "sha256": "520d0dfcb7636b2a6ed44ea3a4c828e17731ee7da660e9be7754bfb7a7423c26"
         }
       ]
     },

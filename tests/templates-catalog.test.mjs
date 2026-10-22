@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { test } from "node:test";
 import { verifyTemplatesCatalog } from "../scripts/templates-catalog.mjs";
@@ -8,6 +8,24 @@ import { verifyTemplatesCatalog } from "../scripts/templates-catalog.mjs";
 test("every published template has complete files, preview, goals and matching hashes", () => {
   assert.deepEqual(verifyTemplatesCatalog(resolve(".")), []);
 });
+test("presentation templates start with one editable cover and bundled artwork", () => {
+  const catalog = JSON.parse(readFileSync(resolve("templates.json"), "utf8"));
+  const expected = ["slides-commercial", "slides-results", "slides-training"];
+  const slides = catalog.packages.filter(({ template }) => template.kind === "slides");
+  assert.deepEqual(slides.map(({ template }) => template.id).sort(), expected.sort());
+  for (const entry of slides) {
+    const id = entry.template.id.slice("slides-".length);
+    const source = readFileSync(resolve(entry.path, entry.template.entry), "utf8");
+    assert.equal((source.match(/<section\b[^>]*\bdata-slide\b/g) ?? []).length, 1, `${id}: only the cover belongs in the base`);
+    assert.match(source, /<h1\b/, `${id}: title must remain editable HTML`);
+    assert.ok(source.includes(`id="${id}-cover"`), `${id}: stable cover ID missing`);
+    assert.ok(source.includes(`id="${id}-title-line1"`), `${id}: editable title field missing`);
+    assert.ok(entry.files.some(({ path }) => path === `assets/${id}.png`), `${id}: bundled artwork missing`);
+    assert.ok(source.includes(`src="assets/${id}.png"`), `${id}: relative artwork missing`);
+    assert.ok(!source.includes("<script"), `${id}: a cover does not need executable code`);
+  }
+});
+
 test("a changed package or escaping path cannot be published", () => {
   mkdirSync(".scratch", { recursive: true });
   const root = mkdtempSync(resolve(".scratch/template-catalog-"));
