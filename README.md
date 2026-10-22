@@ -50,6 +50,13 @@ não listadas foram transferidos para `templates/`. Cada pacote declara todos os
 arquivos, tamanhos e hashes; a abertura carrega o índice e a escolha baixa o pacote
 completo. Não há instalação automática de todas as skills.
 
+Os quatro sites e nove aplicativos incluem `demo/index.html` e seus recursos,
+reaproveitados das prévias já criadas. O Studio usa essa distribuição para abrir
+a interface completa, com rolagem e interações locais, nos detalhes de Nova
+conversa. As fontes editáveis continuam no mesmo pacote, e `preview.png` permanece
+como miniatura. Todos os arquivos da demo entram na verificação de tamanho e
+SHA-256 do manifesto; não é necessário instalar dependências para experimentar.
+
 O índice tem até 1 MB, 500 itens e 50 áreas. Cada item tem `id`, `area`, `title`,
 `description`, `source` e `editorial`. Os textos públicos vêm em PT-BR e inglês.
 Nesta seleção, todas as fontes são `{ "type": "squados", "path": "skills/<nome>" }`.

@@ -1,12 +1,30 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { test } from "node:test";
 import { verifyTemplatesCatalog } from "../scripts/templates-catalog.mjs";
 
 test("every published template has complete files, preview, goals and matching hashes", () => {
   assert.deepEqual(verifyTemplatesCatalog(resolve(".")), []);
+});
+
+test("website and application packages include their runnable preview", () => {
+  const root = resolve(".");
+  const catalog = JSON.parse(readFileSync(join(root, "templates.json"), "utf8"));
+  const interfaces = catalog.packages.filter(({ template }) =>
+    template.kind === "web" && ["website", "app"].includes(template.category),
+  );
+  assert.equal(interfaces.length, 13);
+  for (const entry of interfaces) {
+    assert.ok(entry.files.some(({ path }) => path === "demo/index.html"), `${entry.template.id}: runnable preview missing`);
+    const html = readFileSync(join(root, entry.path, "demo/index.html"), "utf8");
+    const resources = [...html.matchAll(/(?:src|href)=["'](\.\/[^"']+)["']/g)].map((match) => `demo/${match[1].slice(2)}`);
+    assert.ok(resources.some((path) => path.endsWith(".js")), `${entry.template.id}: JavaScript entry missing`);
+    for (const path of resources) {
+      assert.ok(entry.files.some((file) => file.path === path), `${entry.template.id}: undeclared demo resource ${path}`);
+    }
+  }
 });
 test("a changed package or escaping path cannot be published", () => {
   mkdirSync(".scratch", { recursive: true });
