@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Divertido</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #fff6e5; }
+    * { box-sizing: border-box; }
+    h1, p { margin: 0; }
+    section[data-slide] { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #fff6e5; color: #2b2140; font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    .shape { position: absolute; }
+    .sun { right: -150px; top: -170px; width: 560px; height: 560px; border-radius: 50%; background: #ff6b5b; }
+    .ring { right: 300px; top: 60px; width: 92px; height: 92px; border-radius: 50%; border: 14px solid #ffc93c; }
+    .pill { right: 70px; top: 420px; width: 300px; height: 120px; border-radius: 60px; background: #3dd6a3; transform: rotate(-14deg); }
+    .grape { right: 330px; top: 520px; width: 64px; height: 64px; border-radius: 50%; background: #7b5cff; }
+    .dots { right: 40px; top: 590px; width: 220px; height: 110px; background: radial-gradient(#2b2140 3px, transparent 3.5px) 0 0 / 22px 22px; opacity: 0.85; }
+    .half { left: -60px; bottom: -120px; width: 240px; height: 240px; border-radius: 50%; background: #ffc93c; }
+    .squiggle { right: 120px; top: 250px; width: 230px; height: 80px; }
+    .brand { position: absolute; left: 72px; top: 56px; display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 700; line-height: 1; }
+    .face { position: relative; width: 30px; height: 30px; border-radius: 50%; background: #ffc93c; border: 3px solid #2b2140; }
+    .face::before { content: ""; position: absolute; left: 6px; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: #2b2140; box-shadow: 9px 0 #2b2140; }
+    .face::after { content: ""; position: absolute; left: 6px; top: 13px; width: 13px; height: 6px; border: 3px solid #2b2140; border-top: 0; border-radius: 0 0 10px 10px; }
+    .tag { position: absolute; left: 72px; top: 150px; padding: 10px 22px; border-radius: 999px; background: #7b5cff; color: #fff; font-size: 16px; font-weight: 800; letter-spacing: 3px; line-height: 1; text-transform: uppercase; transform: rotate(-4deg); }
+    .title { position: absolute; left: 66px; top: 210px; width: 800px; font-family: "Segoe UI Black", "Arial Black", "Segoe UI", sans-serif; font-weight: 900; font-size: 112px; line-height: 1; letter-spacing: -3px; }
+    .title > span { display: block; white-space: nowrap; }
+    .mark { padding: 0 10px; background: linear-gradient(transparent 58%, #ffc93c 58%, #ffc93c 92%, transparent 92%); }
+    .subtitle { position: absolute; left: 72px; top: 462px; width: 720px; font-size: 26px; font-weight: 500; line-height: 1.35; }
+    .chips { position: absolute; left: 72px; top: 580px; display: flex; gap: 16px; }
+    .chip { padding: 14px 24px; border: 3px solid #2b2140; border-radius: 999px; background: #fff; box-shadow: 5px 5px 0 #2b2140; font-size: 20px; font-weight: 700; line-height: 1; }
+    .chip.alt { background: #3dd6a3; }
+  </style>
+</head>
+<body>
+  <section data-slide id="playful-cover">
+    <div class="shape sun" aria-hidden="true"></div>
+    <div class="shape ring" aria-hidden="true"></div>
+    <div class="shape pill" aria-hidden="true"></div>
+    <div class="shape grape" aria-hidden="true"></div>
+    <div class="shape dots" aria-hidden="true"></div>
+    <div class="shape half" aria-hidden="true"></div>
+    <svg class="shape squiggle" viewBox="0 0 230 80" aria-hidden="true"><path d="M8 52 C 30 8, 52 8, 70 40 S 112 72, 132 36 S 176 4, 196 34 S 218 64, 222 44" fill="none" stroke="#2b2140" stroke-width="9" stroke-linecap="round"/></svg>
+    <p id="playful-brand" class="brand"><span class="face" aria-hidden="true"></span>Estúdio Exemplo</p>
+    <p id="playful-kicker" class="tag">Workshop</p>
+    <h1 class="title"><span id="playful-title-line1">Ideias que</span><span id="playful-title-line2"><span class="mark">dão certo!</span></span></h1>
+    <p id="playful-subtitle" class="subtitle">Um encontro criativo para destravar os projetos do time.</p>
+    <div class="chips">
+      <p id="playful-date" class="chip">24 OUT · 14h</p>
+      <p id="playful-place" class="chip alt">Sala Criativa</p>
+    </div>
+  </section>
+</body>
+</html>

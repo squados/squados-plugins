@@ -3,28 +3,28 @@
   "packages": [
     {
       "template": {
-        "id": "slides-commercial",
+        "id": "slides-corporate",
         "kind": "slides",
         "name": {
-          "pt-BR": "Proposta comercial",
-          "en": "Commercial proposal"
+          "pt-BR": "Corporativo",
+          "en": "Corporate"
         },
         "description": {
-          "pt-BR": "Capa editorial em vinho e marfim.",
-          "en": "Editorial cover in burgundy and ivory."
+          "pt-BR": "Capa em azul-marinho e cobalto com painel de formas geométricas.",
+          "en": "Navy and cobalt cover with a geometric shapes panel."
         },
         "preview": "preview.png",
         "entry": "presentation.html",
-        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, assets, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, cover ID and visual composition. The background artwork is a PNG without text; typography and layout live in HTML/CSS. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
+        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, the cover ID and the visual composition. Everything is HTML/CSS: there are no images or scripts, and new slides must keep it that way, reusing the navy and cobalt palette, sans-serif type and the geometric CSS panel. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
         "license": "Apache-2.0",
         "origin": "SquadOS",
-        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-commercial",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-corporate",
         "goal": {
-          "pt-BR": "Quero personalizar a capa de uma proposta comercial usando este modelo. Me ajude a definir o título do projeto, o cliente, a empresa e a data, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
-          "en": "I want to personalize a commercial proposal cover using this template. Help me define the project title, client, company and date while preserving the visual style. Keep only the cover until I request more slides."
+          "pt-BR": "Quero criar uma apresentação corporativa a partir deste layout. Me ajude a definir o título, a empresa, a data e o subtítulo da capa, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
+          "en": "I want to create a corporate presentation from this layout. Help me define the cover title, company, date and subtitle while preserving the visual style. Keep only the cover until I request more slides."
         }
       },
-      "path": "templates/slides-commercial",
+      "path": "templates/slides-corporate",
       "files": [
         {
           "path": "LICENSE",
@@ -33,50 +33,45 @@
         },
         {
           "path": "README.md",
-          "size": 1795,
-          "sha256": "56dd7c876680765b07da60eaf50ff9f87aeecfe265186426f2984cceb2b1fcd7"
-        },
-        {
-          "path": "assets/commercial.png",
-          "size": 1717386,
-          "sha256": "81dabbeaa38334459cf92794db6c1ac5db331cc70ebca8c9b43bb9765e6eeb98"
+          "size": 1501,
+          "sha256": "dd77fa779bf2131010341054b03f56aa57faf05b4da9a2a2c4efdae3ac20d804"
         },
         {
           "path": "presentation.html",
-          "size": 2438,
-          "sha256": "0142964ef6d83b767feb9af2e9522d9e783b54b5ddd7f503c65c4c0fa958b738"
+          "size": 4798,
+          "sha256": "00db8c75bf356b9845d29cd380cde0e126686ff4a216fbef70e89bcf9b657d04"
         },
         {
           "path": "preview.png",
-          "size": 874943,
-          "sha256": "e9dfc7abb54e9e0c5b591326264c9cd0e47be69a69a181926390d5379cad2a77"
+          "size": 54586,
+          "sha256": "5603a034a40a2ba1a83d5cbad4eea5d13ee045e2c915db347adbfa5b3d9962e8"
         }
       ]
     },
     {
       "template": {
-        "id": "slides-results",
+        "id": "slides-editorial",
         "kind": "slides",
         "name": {
-          "pt-BR": "Relatório de resultados",
-          "en": "Results report"
+          "pt-BR": "Editorial",
+          "en": "Editorial"
         },
         "description": {
-          "pt-BR": "Capa tipográfica com arte em azul cobalto.",
-          "en": "Typographic cover with cobalt-blue artwork."
+          "pt-BR": "Capa de revista em marfim, preto e vermelho, com títulos em serifa.",
+          "en": "Magazine cover in ivory, black and red with serif headlines."
         },
         "preview": "preview.png",
         "entry": "presentation.html",
-        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, assets, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, cover ID and visual composition. The background artwork is a PNG without text; typography and layout live in HTML/CSS. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
+        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, the cover ID and the visual composition. Everything is HTML/CSS: there are no images or scripts, and new slides must keep it that way, reusing the ivory, black and red palette, serif headlines, drop cap and hairline rules. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
         "license": "Apache-2.0",
         "origin": "SquadOS",
-        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-results",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-editorial",
         "goal": {
-          "pt-BR": "Quero personalizar a capa de uma apresentação de resultados usando este modelo. Me ajude a definir o título, o período e a área da empresa, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
-          "en": "I want to personalize a results presentation cover using this template. Help me define the title, reporting period and company area while preserving the visual style. Keep only the cover until I request more slides."
+          "pt-BR": "Quero criar uma apresentação com cara de revista a partir deste layout. Me ajude a definir o título, a empresa, a data e o subtítulo da capa, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
+          "en": "I want to create a magazine-style presentation from this layout. Help me define the cover title, company, date and subtitle while preserving the visual style. Keep only the cover until I request more slides."
         }
       },
-      "path": "templates/slides-results",
+      "path": "templates/slides-editorial",
       "files": [
         {
           "path": "LICENSE",
@@ -85,50 +80,45 @@
         },
         {
           "path": "README.md",
-          "size": 1821,
-          "sha256": "61b7b09c43f177889341178731c7b4e9127061c2e43879de19493981c638f51d"
-        },
-        {
-          "path": "assets/results.png",
-          "size": 1627396,
-          "sha256": "5f09bb7b8179042a9935bedd9d3ff532dcd802f59a8cf4ac96b89872ad53eb57"
+          "size": 1681,
+          "sha256": "6781fabe881ebaf741fa73996b2454577002571b8b8ac1898b1a8647655e1d4c"
         },
         {
           "path": "presentation.html",
-          "size": 2464,
-          "sha256": "b6678127119ec44ab2a14d21195b84f7d9ff3c2bec1b47a8c23a6998d1650c7f"
+          "size": 4285,
+          "sha256": "d313c0f4fb5c503cb31b3fd15a5e9664f4d66afae5ce31adf045ec3740845560"
         },
         {
           "path": "preview.png",
-          "size": 801348,
-          "sha256": "ac8195e0097093c7b530450648fac91e5c23754289a73bd0b792b92c3b64681e"
+          "size": 94423,
+          "sha256": "cd25fd6fd45cdd354021b0dc90bc1de3eeb0aa2db04934ef40e5af3118a77662"
         }
       ]
     },
     {
       "template": {
-        "id": "slides-training",
+        "id": "slides-playful",
         "kind": "slides",
         "name": {
-          "pt-BR": "Treinamento",
-          "en": "Training"
+          "pt-BR": "Divertido",
+          "en": "Playful"
         },
         "description": {
-          "pt-BR": "Capa expressiva com colagem em papel.",
-          "en": "Expressive cover with a paper collage."
+          "pt-BR": "Capa colorida com formas arredondadas e tipografia pesada.",
+          "en": "Colorful cover with rounded shapes and heavy type."
         },
         "preview": "preview.png",
         "entry": "presentation.html",
-        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, assets, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, cover ID and visual composition. The background artwork is a PNG without text; typography and layout live in HTML/CSS. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
+        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, the cover ID and the visual composition. Everything is HTML/CSS: there are no images or scripts, and new slides must keep it that way, reusing the cream, coral, yellow, mint and purple palette, heavy type and solid-shadow chips. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
         "license": "Apache-2.0",
         "origin": "SquadOS",
-        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-training",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-playful",
         "goal": {
-          "pt-BR": "Quero personalizar a capa de um treinamento usando este modelo. Me ajude a definir o tema, a finalidade e a empresa, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
-          "en": "I want to personalize a training cover using this template. Help me define the topic, purpose and company while preserving the visual style. Keep only the cover until I request more slides."
+          "pt-BR": "Quero criar uma apresentação divertida a partir deste layout. Me ajude a definir o título, a empresa, a data e o subtítulo da capa, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
+          "en": "I want to create a playful presentation from this layout. Help me define the cover title, company, date and subtitle while preserving the visual style. Keep only the cover until I request more slides."
         }
       },
-      "path": "templates/slides-training",
+      "path": "templates/slides-playful",
       "files": [
         {
           "path": "LICENSE",
@@ -137,23 +127,65 @@
         },
         {
           "path": "README.md",
-          "size": 1800,
-          "sha256": "437320a424c748e3c3b7a06299c39273ae2baaee64f8a972aa91de4908dd950d"
-        },
-        {
-          "path": "assets/training.png",
-          "size": 2168624,
-          "sha256": "fe6997e94171898accb7b8129f155704d272ea7866df3631c2665e0cc466436c"
+          "size": 1565,
+          "sha256": "f8d01b045fea0f53508a1edc4a7bb2849f5530028a18bfcf45c4831cde98e6cb"
         },
         {
           "path": "presentation.html",
-          "size": 2410,
-          "sha256": "aa7148fe65b070dc2a54f150a70bf8fdcb6492f704b76734467ea8d4bea1ca44"
+          "size": 4231,
+          "sha256": "abbfff3595c71e2dde32206b60a73536fa67ff1b01bbe8fce4567ab645f51b51"
         },
         {
           "path": "preview.png",
-          "size": 1038442,
-          "sha256": "520d0dfcb7636b2a6ed44ea3a4c828e17731ee7da660e9be7754bfb7a7423c26"
+          "size": 61737,
+          "sha256": "bcd96b284209e763414fd1156593ee1ad574ce9769a3cd21ec7008c1ec4395c2"
+        }
+      ]
+    },
+    {
+      "template": {
+        "id": "slides-futuristic",
+        "kind": "slides",
+        "name": {
+          "pt-BR": "Futurista",
+          "en": "Futuristic"
+        },
+        "description": {
+          "pt-BR": "Capa escura com anel luminoso, grade em perspectiva e brilho neon.",
+          "en": "Dark cover with a glowing ring, perspective grid and neon glow."
+        },
+        "preview": "preview.png",
+        "entry": "presentation.html",
+        "adaptation": "Copy the complete package into the selected working folder before editing, including presentation.html, README.md, LICENSE and preview.png. Personalize the visible HTML text using its stable field IDs while preserving the 1280x720 slide, the cover ID and the visual composition. Everything is HTML/CSS: there are no images or scripts, and new slides must keep it that way, reusing the near-black background, cyan, violet and pink glow, monospaced labels and corner marks. This base contains only the cover. Add further slides when the person requests them. Retain the local font stack, fallbacks, origin and license in the copy.",
+        "license": "Apache-2.0",
+        "origin": "SquadOS",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/templates/slides-futuristic",
+        "goal": {
+          "pt-BR": "Quero criar uma apresentação futurista a partir deste layout. Me ajude a definir o título, a empresa, a data e o subtítulo da capa, preservando o visual. Mantenha somente a capa até eu pedir outros slides.",
+          "en": "I want to create a futuristic presentation from this layout. Help me define the cover title, company, date and subtitle while preserving the visual style. Keep only the cover until I request more slides."
+        }
+      },
+      "path": "templates/slides-futuristic",
+      "files": [
+        {
+          "path": "LICENSE",
+          "size": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "README.md",
+          "size": 1774,
+          "sha256": "0d6066fdb1a25682afe3bf3e41f739edd18f4091cc19eed6345d5639b2d9e7df"
+        },
+        {
+          "path": "presentation.html",
+          "size": 5763,
+          "sha256": "01fd13bdabc9581e37c8005f0821d13c7319cb714026ff886d30708d958edc68"
+        },
+        {
+          "path": "preview.png",
+          "size": 484028,
+          "sha256": "8037b1b44c31904edb9295157cf5f7fe68db1e88feda866832a456073cd942db"
         }
       ]
     },

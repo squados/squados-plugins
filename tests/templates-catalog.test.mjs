@@ -9,9 +9,9 @@ test("every published template has complete files, preview, goals and matching h
   assert.deepEqual(verifyTemplatesCatalog(resolve(".")), []);
 });
 
-test("presentation templates start with one editable cover and bundled artwork", () => {
+test("presentation templates are layouts with one editable cover made only of HTML and CSS", () => {
   const catalog = JSON.parse(readFileSync(resolve("templates.json"), "utf8"));
-  const expected = ["slides-commercial", "slides-results", "slides-training"];
+  const expected = ["slides-corporate", "slides-editorial", "slides-futuristic", "slides-playful"];
   const slides = catalog.packages.filter(({ template }) => template.kind === "slides");
   assert.deepEqual(slides.map(({ template }) => template.id).sort(), expected.sort());
   for (const entry of slides) {
@@ -21,8 +21,12 @@ test("presentation templates start with one editable cover and bundled artwork",
     assert.match(source, /<h1\b/, `${id}: title must remain editable HTML`);
     assert.ok(source.includes(`id="${id}-cover"`), `${id}: stable cover ID missing`);
     assert.ok(source.includes(`id="${id}-title-line1"`), `${id}: editable title field missing`);
-    assert.ok(entry.files.some(({ path }) => path === `assets/${id}.png`), `${id}: bundled artwork missing`);
-    assert.ok(source.includes(`src="assets/${id}.png"`), `${id}: relative artwork missing`);
+    assert.deepEqual(
+      entry.files.map(({ path }) => path).sort(),
+      ["LICENSE", "README.md", "presentation.html", "preview.png"],
+      `${id}: the layout ships no images or other assets`,
+    );
+    assert.ok(!/<img\b|url\(|https?:/i.test(source), `${id}: a layout cannot depend on image files or remote resources`);
     assert.ok(!source.includes("<script"), `${id}: a cover does not need executable code`);
   }
 });
