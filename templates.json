@@ -162,8 +162,8 @@
         "id": "website-digital-marketing",
         "kind": "web",
         "name": {
-          "pt-BR": "Negócio digital · Trama",
-          "en": "Digital business · Trama"
+          "pt-BR": "Negócio digital e infoproduto",
+          "en": "Digital business and info products"
         },
         "description": {
           "pt-BR": "Landing page de formação toda dark, com currículo expansível, cards, três projetos, mini-aula e planos demonstrativos.",
@@ -400,8 +400,8 @@
         "id": "website-corporate",
         "kind": "web",
         "name": {
-          "pt-BR": "Corporativo · Nortea",
-          "en": "Corporate · Nortea"
+          "pt-BR": "Corporativo",
+          "en": "Corporate"
         },
         "description": {
           "pt-BR": "Consultoria com estética editorial sóbria, serviços selecionáveis, casos filtráveis e contato demonstrativo.",
@@ -578,8 +578,8 @@
         "id": "website-futuristic",
         "kind": "web",
         "name": {
-          "pt-BR": "Futurista · Orbe",
-          "en": "Futuristic · Orbe"
+          "pt-BR": "Futurista",
+          "en": "Futuristic"
         },
         "description": {
           "pt-BR": "Workspace de inteligência com halo 2D, painel interativo de ideias, conexões e planos demonstrativos.",
@@ -721,8 +721,8 @@
         "id": "website-playful",
         "kind": "web",
         "name": {
-          "pt-BR": "Divertido · Pipa",
-          "en": "Playful · Pipa"
+          "pt-BR": "Divertido",
+          "en": "Playful"
         },
         "description": {
           "pt-BR": "Escola criativa com personagens próprios, três cenas e mini-experiências de desenho, escrita e invenção.",
@@ -919,8 +919,8 @@
         "id": "app-crm",
         "kind": "web",
         "name": {
-          "pt-BR": "CRM · Vínculo",
-          "en": "CRM · Vínculo"
+          "pt-BR": "CRM",
+          "en": "CRM"
         },
         "description": {
           "pt-BR": "CRM compacto com pipeline kanban, contatos e oportunidades.",
@@ -1087,8 +1087,8 @@
         "id": "app-management",
         "kind": "web",
         "name": {
-          "pt-BR": "Sistema de gestão · Balanço",
-          "en": "Management · Balanço"
+          "pt-BR": "Sistema de gestão",
+          "en": "Management"
         },
         "description": {
           "pt-BR": "Gestão com fluxo de caixa, conta e lançamentos financeiros.",
@@ -1265,8 +1265,8 @@
         "id": "app-people",
         "kind": "web",
         "name": {
-          "pt-BR": "RH e pessoas · Pulso",
-          "en": "People management · Pulso"
+          "pt-BR": "RH e pessoas",
+          "en": "People management"
         },
         "description": {
           "pt-BR": "Diretório de pessoas, calendário e jornadas do time.",
@@ -1433,8 +1433,8 @@
         "id": "app-ai-chat",
         "kind": "web",
         "name": {
-          "pt-BR": "Chat de IA · Lume",
-          "en": "AI chat · Lume"
+          "pt-BR": "Chat de IA",
+          "en": "AI chat"
         },
         "description": {
           "pt-BR": "Chat em modo escuro com histórico, sugestões e respostas demonstrativas.",
@@ -1591,8 +1591,8 @@
         "id": "app-members",
         "kind": "web",
         "name": {
-          "pt-BR": "Área de membros · Forma",
-          "en": "Member academy · Forma"
+          "pt-BR": "Área de membros",
+          "en": "Member academy"
         },
         "description": {
           "pt-BR": "Academia com frames de aulas, play central e progresso local.",
@@ -1799,8 +1799,8 @@
         "id": "app-community",
         "kind": "web",
         "name": {
-          "pt-BR": "Comunidade · Pátio",
-          "en": "Community · Pátio"
+          "pt-BR": "Comunidade",
+          "en": "Community"
         },
         "description": {
           "pt-BR": "Feed com publicações, comentários, espaços e encontros.",
@@ -1972,8 +1972,8 @@
         "id": "app-quiz",
         "kind": "web",
         "name": {
-          "pt-BR": "Quiz interativo · Prisma",
-          "en": "Interactive quiz · Prisma"
+          "pt-BR": "Quiz interativo",
+          "en": "Interactive quiz"
         },
         "description": {
           "pt-BR": "Cinco perguntas, perfil criativo e navegação imersiva.",
@@ -2140,8 +2140,8 @@
         "id": "app-calculator",
         "kind": "web",
         "name": {
-          "pt-BR": "Calculadora interativa · Escopo",
-          "en": "Interactive calculator · Escopo"
+          "pt-BR": "Calculadora interativa",
+          "en": "Interactive calculator"
         },
         "description": {
           "pt-BR": "Estimativa de projeto com ajustes de escopo e comparação de cenários.",
@@ -2318,8 +2318,8 @@
         "id": "app-conversion-tracker",
         "kind": "web",
         "name": {
-          "pt-BR": "Rastreador de conversões · Sinal",
-          "en": "Conversion tracker · Sinal"
+          "pt-BR": "Rastreador de conversões",
+          "en": "Conversion tracker"
         },
         "description": {
           "pt-BR": "Atribuição com métricas, canais, campanhas e funil de conversão.",
