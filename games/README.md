@@ -1,14 +1,15 @@
 # Jogos demonstrativos do SquadOS Studio
 
-Três jogos de navegador adaptados das bases escolhidas pelo usuário. Cada pasta é
-um pacote independente, com o jogo, suas fontes e recursos, créditos, licença e
-prévia real. O [índice visual](index.html) abre cada demonstração diretamente.
+Quatro jogos de navegador: três adaptados das bases escolhidas pelo usuário e um
+original. Cada pasta é um pacote independente, com o jogo, suas fontes e recursos,
+créditos, licença e prévia real. O [índice visual](index.html) abre cada demonstração diretamente.
 
 | Jogo | Demonstração | Origem e documentação |
 | --- | --- | --- |
 | [Simulador de Cidades](3d-city/) | Gestão urbana 3D, com identidade verde/mineral e cidade preparada | [lo-th/3d.city](https://github.com/lo-th/3d.city) · [README](3d-city/README.md) |
 | [Corrida Espacial](hexgl/) | Corrida 3D com ambientação orbital e interface própria | [BKcore/HexGL](https://github.com/BKcore/HexGL) · [README](hexgl/README.md) |
 | [Arcade 2D](clumsy-bird/) | Robô voador, cenário vetorial e portais de energia originais | [ellisonleao/clumsy-bird](https://github.com/ellisonleao/clumsy-bird) · [README](clumsy-bird/README.md) |
+| [Cidade Sem Lei](lawless-city/play/) | Cidade 3D aberta para correr, roubar carros e dirigir pelo tráfego | Original SquadOS sobre Three.js, assets Kenney CC0 · [README](lawless-city/README.md) |
 
 Os nomes públicos são do SquadOS; os projetos que serviram de base conservam
 autoria e créditos na documentação de cada pacote. As adaptações incluem identidade
@@ -49,6 +50,7 @@ snapshots e as modificações estão documentados nos registros de cada pacote.
 | Simulador de Cidades / base 3d.city | Metadados MIT, mas `LICENSE`/`COPYING` incluem GPLv3 e termos adicionais do Micropolis | Preservar o conjunto, seus créditos e fontes; não rotular tudo como MIT |
 | Corrida Espacial / base HexGL | MIT geral, com cabeçalhos **CC BY-NC 3.0** em arquivos centrais; áudio com licença CC BY 3.0 | A autorização para distribuição/uso comercial precisa ser resolvida antes de publicar neste contexto |
 | Arcade 2D / base Clumsy Bird | `LICENSE.md` GPLv3; indicação MIT do package antigo é inconsistente | Preservar GPLv3, autoria, fontes e licenças das dependências |
+| Cidade Sem Lei | Código MIT (SquadOS); Three.js MIT; modelos e sons Kenney CC0 | Preservar LICENSE, LICENSE-three.txt e LICENSE-Kenney.txt |
 
 O HexGL contém exceções não comerciais expressas por arquivo e, portanto, o pacote
 incluído não deve ser apresentado como integralmente open-source ou liberado para

@@ -1,0 +1,17 @@
+{
+  "name": "cidade-sem-lei",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite --open --port 5199 --strictPort",
+    "dev": "vite --port 5199 --strictPort",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
+}

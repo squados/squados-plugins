@@ -25,11 +25,12 @@
     .eyebrow { color: #b1c99c; text-transform: uppercase; font-size: 11px; letter-spacing: 2.2px; font-weight: 650; margin: 0 0 22px; }
     h1 { font-size: clamp(42px, 6vw, 76px); line-height: 1.04; font-weight: 600; letter-spacing: -.055em; margin: 0 0 24px; }
     .intro p:last-child { max-width: 540px; color: #b0baaa; line-height: 1.7; font-size: 17px; margin: 0; }
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
     .game { text-decoration: none; display: flex; flex-direction: column; border: 1px solid #35402f; border-radius: 16px; background: #182016; overflow: hidden; transition: border-color 160ms, transform 160ms; }
     .game { --accent: #d0ef8e; }
     .game--racing { --accent: #9be3ff; }
     .game--arcade { --accent: #ffd5a4; }
+    .game--lawless { --accent: #ffd23f; }
     .game:hover { border-color: var(--accent); transform: translateY(-4px); }
     .picture { position: relative; flex: none; background: #242f20; aspect-ratio: 16 / 10; overflow: hidden; }
     .picture img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -58,7 +59,7 @@
       </div>
     </header>
     <section class="intro">
-      <p class="eyebrow" data-copy="eyebrow">Três mundos para explorar</p>
+      <p class="eyebrow" data-copy="eyebrow">Quatro mundos para explorar</p>
       <h1 data-copy="headline">Uma ideia começa<br>com um play.</h1>
       <p data-copy="intro">Construa uma cidade, pilote no futuro ou desafie seus reflexos. Entre, jogue e imagine o que você quer criar.</p>
     </section>
@@ -90,6 +91,15 @@
           <div class="play"><span data-copy="birdPlay">Iniciar o voo</span><span aria-hidden="true">↗</span></div>
         </div>
       </a>
+      <a class="game game--lawless" href="./lawless-city/play/">
+        <div class="picture"><img src="./lawless-city/preview.png" alt="" width="1280" height="800"><span class="number">04</span></div>
+        <div class="content">
+          <p class="genre" data-copy="lawlessGenre">Ação · Mundo aberto 3D</p>
+          <h2 data-copy="lawlessTitle">Cidade Sem Lei</h2>
+          <p class="description" data-copy="lawlessDescription">Corra pelas calçadas, pegue o primeiro carro que aparecer e atravesse o tráfego. Sem regras e sem missões.</p>
+          <div class="play"><span data-copy="lawlessPlay">Entrar na cidade</span><span aria-hidden="true">↗</span></div>
+        </div>
+      </a>
     </section>
     <footer>
       <p data-copy="footer">Demonstrações adaptadas de projetos independentes. Créditos preservados.</p>
@@ -99,19 +109,21 @@
   <script>
     const copy = {
       'pt-BR': {
-        title: 'Jogos · SquadOS Studio', eyebrow: 'Três mundos para explorar', headline: 'Uma ideia começa\ncom um play.',
+        title: 'Jogos · SquadOS Studio', eyebrow: 'Quatro mundos para explorar', headline: 'Uma ideia começa\ncom um play.',
         intro: 'Construa uma cidade, pilote no futuro ou desafie seus reflexos. Entre, jogue e imagine o que você quer criar.',
         cityTitle: 'Simulador de Cidades', cityGenre: 'Construção · Simulação 3D', cityDescription: 'Planeje bairros, conecte serviços e cuide de uma cidade viva. Cada escolha abre espaço para crescer.', cityPlay: 'Explorar a cidade',
         raceTitle: 'Corrida Espacial', raceGenre: 'Corrida · Circuito orbital', raceDescription: 'Uma nave, um circuito entre as estrelas e três voltas para chegar ao limite. A próxima curva já está perto.', racePlay: 'Entrar na pista',
         birdTitle: 'Arcade 2D', birdGenre: 'Arcade · Voo e reflexos', birdDescription: 'Guie um pequeno robô voador por portais de energia. Um toque, um impulso e mais uma chance de bater o recorde.', birdPlay: 'Iniciar o voo',
+        lawlessTitle: 'Cidade Sem Lei', lawlessGenre: 'Ação · Mundo aberto 3D', lawlessDescription: 'Corra pelas calçadas, pegue o primeiro carro que aparecer e atravesse o tráfego. Sem regras e sem missões.', lawlessPlay: 'Entrar na cidade',
         footer: 'Demonstrações adaptadas de projetos independentes. Créditos preservados.', credits: 'Sobre os jogos e licenças'
       },
       en: {
-        title: 'Games · SquadOS Studio', eyebrow: 'Three worlds to explore', headline: 'An idea starts\nwith play.',
+        title: 'Games · SquadOS Studio', eyebrow: 'Four worlds to explore', headline: 'An idea starts\nwith play.',
         intro: 'Build a city, race into the future, or challenge your reflexes. Jump in, play, and imagine what you want to create.',
         cityTitle: 'City Simulator', cityGenre: 'Building · 3D simulation', cityDescription: 'Plan neighbourhoods, connect services, and care for a living city. Every decision makes room to grow.', cityPlay: 'Explore the city',
         raceTitle: 'Space Racing', raceGenre: 'Racing · Orbital circuit', raceDescription: 'One ship, a circuit among the stars, and three laps to push the limit. The next turn is already close.', racePlay: 'Enter the race',
         birdTitle: '2D Arcade', birdGenre: 'Arcade · Flight and reflexes', birdDescription: 'Guide a little flying robot through energy gates. One tap, one boost, and another chance to beat your best.', birdPlay: 'Start flying',
+        lawlessTitle: 'Lawless City', lawlessGenre: 'Action · 3D open world', lawlessDescription: 'Run down the sidewalks, grab the first car you see and cut through traffic. No rules and no missions.', lawlessPlay: 'Enter the city',
         footer: 'Demos adapted from independent projects. Original credits preserved.', credits: 'About the games and licences'
       }
     };

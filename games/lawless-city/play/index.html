@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cidade Sem Lei</title>
+<link rel="icon" href="data:," />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #1b2130; font-family: 'Segoe UI', system-ui, sans-serif; color: #fff; user-select: none; }
+  #app canvas { display: block; }
+  .hidden { display: none !important; }
+  .overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  #loading { flex-direction: column; gap: 18px; background: #1b2130; font-size: 18px; letter-spacing: 1px; }
+  #loading .track { width: 320px; height: 10px; border-radius: 6px; background: #343c52; overflow: hidden; }
+  #bar { height: 100%; width: 0; background: linear-gradient(90deg, #ffcc33, #ff6a3d); transition: width .15s; }
+  #menu { background: radial-gradient(ellipse at center, rgba(10,14,25,.35) 0%, rgba(10,14,25,.82) 70%); }
+  .card { text-align: center; max-width: 760px; padding: 10px 24px; cursor: pointer; }
+  h1 { margin: 0; font-family: Impact, 'Arial Black', sans-serif; font-size: 92px; line-height: 1; letter-spacing: 3px; color: #ffd23f;
+       text-shadow: 0 5px 0 #c4501d, 0 10px 22px rgba(0,0,0,.6); transform: rotate(-3deg); }
+  .tag { margin: 12px 0 26px; font-size: 18px; opacity: .9; }
+  .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; text-align: left; }
+  .box { background: rgba(20,26,42,.82); border: 2px solid rgba(255,210,63,.35); border-radius: 14px; padding: 14px 18px; }
+  .box h3 { margin: 0 0 8px; color: #ffd23f; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .row { display: flex; align-items: center; gap: 10px; margin: 6px 0; font-size: 15px; }
+  kbd { display: inline-block; min-width: 28px; padding: 3px 7px; border-radius: 6px; background: #f1f1f1; color: #1b2130; font: 700 13px/1.2 'Segoe UI', sans-serif;
+        text-align: center; box-shadow: 0 3px 0 #9aa0ad; }
+  .go { margin-top: 26px; font-size: 22px; font-weight: 800; color: #fff; animation: pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .45; transform: scale(.97); } }
+  #hud { position: fixed; inset: 0; pointer-events: none; }
+  #hint { position: absolute; left: 50%; bottom: 120px; transform: translateX(-50%); background: rgba(15,20,32,.78); border: 2px solid rgba(255,210,63,.6);
+          padding: 10px 20px; border-radius: 12px; font-size: 18px; white-space: nowrap; }
+  #hint b { color: #ffd23f; }
+  .ctl { position: absolute; left: 18px; bottom: 18px; background: rgba(15,20,32,.62); border-radius: 12px; padding: 10px 14px; font-size: 13px; }
+  .ctl .row { margin: 4px 0; font-size: 13px; }
+  .ctl kbd { min-width: 22px; padding: 2px 5px; font-size: 11px; }
+  #speed { position: absolute; right: 26px; bottom: 22px; font: 900 52px Impact, 'Arial Black', sans-serif; color: #fff; text-shadow: 0 3px 0 #000a; }
+  #speed small { font-size: 18px; margin-left: 4px; opacity: .8; }
+  #fps { position: absolute; right: 12px; top: 10px; font-size: 12px; opacity: .55; }
+  #cross { position: absolute; left: 50%; top: 50%; }
+  .ptitle { font-family: Impact, 'Arial Black', sans-serif; font-size: 70px; color: #ffd23f; text-shadow: 0 4px 0 #c4501d; margin-bottom: 18px; }
+</style>
+  <script type="module" crossorigin src="./assets/index-DfbcK_c6.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <div id="loading" class="overlay">
+    <div>Carregando a cidade…</div>
+    <div class="track"><div id="bar"></div></div>
+  </div>
+
+  <div id="menu" class="overlay">
+    <div id="start" class="card hidden">
+      <h1>CIDADE SEM LEI</h1>
+      <div class="tag">Sem regras, sem missões. A cidade é toda sua.</div>
+      <div class="controls">
+        <div class="box">
+          <h3>A pé</h3>
+          <div class="row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> correr</div>
+          <div class="row"><kbd>Mouse</kbd> girar a câmera</div>
+          <div class="row"><kbd>Clique</kbd> ou <kbd>Espaço</kbd> atirar para a frente</div>
+          <div class="row"><kbd>E</kbd> entrar / roubar carro</div>
+        </div>
+        <div class="box">
+          <h3>No carro</h3>
+          <div class="row"><kbd>W</kbd> acelerar &nbsp; <kbd>S</kbd> frear / ré</div>
+          <div class="row"><kbd>A</kbd><kbd>D</kbd> esterçar</div>
+          <div class="row"><kbd>Espaço</kbd> freio de mão &nbsp; <kbd>H</kbd> buzina</div>
+          <div class="row"><kbd>E</kbd> sair do carro</div>
+        </div>
+      </div>
+      <div class="row" style="justify-content:center;margin-top:14px;opacity:.8"><kbd>P</kbd> ou <kbd>Esc</kbd> pausa o jogo</div>
+      <div class="go">Clique ou aperte ENTER para começar</div>
+    </div>
+    <div id="pause" class="card hidden">
+      <div class="ptitle">PAUSADO</div>
+      <div class="controls">
+        <div class="box">
+          <h3>A pé</h3>
+          <div class="row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> correr</div>
+          <div class="row"><kbd>Mouse</kbd> girar a câmera</div>
+          <div class="row"><kbd>Clique</kbd> ou <kbd>Espaço</kbd> atirar</div>
+          <div class="row"><kbd>E</kbd> entrar / roubar carro</div>
+        </div>
+        <div class="box">
+          <h3>No carro</h3>
+          <div class="row"><kbd>W</kbd> acelerar &nbsp; <kbd>S</kbd> frear / ré</div>
+          <div class="row"><kbd>A</kbd><kbd>D</kbd> esterçar</div>
+          <div class="row"><kbd>Espaço</kbd> freio de mão &nbsp; <kbd>H</kbd> buzina</div>
+          <div class="row"><kbd>E</kbd> sair do carro</div>
+        </div>
+      </div>
+      <div class="go">Clique ou aperte ENTER para voltar</div>
+    </div>
+  </div>
+
+  <div id="hud" class="hidden">
+    <div id="hint" class="hidden"></div>
+    <div id="ctl-foot" class="ctl">
+      <div class="row"><kbd>WASD</kbd> correr &nbsp; <kbd>Mouse</kbd> câmera</div>
+      <div class="row"><kbd>Clique</kbd>/<kbd>Espaço</kbd> atirar &nbsp; <kbd>E</kbd> carro &nbsp; <kbd>P</kbd> pausa</div>
+    </div>
+    <div id="ctl-car" class="ctl hidden">
+      <div class="row"><kbd>W</kbd> acelerar &nbsp; <kbd>S</kbd> freio/ré &nbsp; <kbd>A</kbd><kbd>D</kbd> volante</div>
+      <div class="row"><kbd>Espaço</kbd> freio de mão &nbsp; <kbd>H</kbd> buzina &nbsp; <kbd>E</kbd> sair &nbsp; <kbd>P</kbd> pausa</div>
+    </div>
+    <div id="speed" class="hidden">0<small>km/h</small></div>
+    <div id="fps"></div>
+  </div>
+
+</body>
+</html>
