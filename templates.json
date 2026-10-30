@@ -6154,6 +6154,319 @@
           "sha256": "3b35939d037b11b1c2712060a53f5504f91837a9dad5401ac1df313c850e367a"
         }
       ]
+    },
+    {
+      "template": {
+        "id": "game-high-jump",
+        "kind": "web",
+        "category": "game",
+        "name": {
+          "pt-BR": "Pulo Alto",
+          "en": "High Jump"
+        },
+        "description": {
+          "pt-BR": "Um jogo de plataforma 2D de uma fase, com moedas, slimes e bandeira de chegada.",
+          "en": "A single-level 2D platformer with coins, slimes and a finish flag."
+        },
+        "preview": "preview.png",
+        "entry": "index.html",
+        "adaptation": "Copie o pacote inteiro para uma nova pasta antes de editar. Esta é uma base de jogo de plataforma 2D em Canvas, sem build nem dependências: a fase é um mapa de caracteres em level.js, a física e as regras ficam em game.js e os sprites e sons Kenney em assets/. Preserve os créditos e as licenças descritos em NOTICE.md e README.md. Troque nome, personagem, fase, inimigos e regras conforme o pedido e confira o jogo após cada alteração, servindo a pasta por HTTP. Não publique automaticamente.",
+        "license": "MIT (código, SquadOS); sprites e sons Kenney CC0. Ver LICENSE e LICENSE-Kenney.txt.",
+        "origin": "Jogo original SquadOS em Canvas 2D, com o New Platformer Pack da Kenney (CC0). Ver README.md e NOTICE.md.",
+        "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/games/high-jump",
+        "goal": {
+          "pt-BR": "Quero criar um jogo de plataforma 2D no navegador. Me ajude a personalizar o personagem, a fase, os inimigos e os itens, mantendo os controles simples e a diversão imediata.",
+          "en": "I want to create a 2D platformer browser game. Help me personalize the character, the level, the enemies and the items, keeping the controls simple and the fun immediate."
+        }
+      },
+      "path": "games/high-jump",
+      "files": [
+        {
+          "path": "LICENSE",
+          "size": 1064,
+          "sha256": "ad6b3b31aa0723921b686ca362fc3707c474d7ff42d125c2dd9fd7d6f918f170"
+        },
+        {
+          "path": "LICENSE-Kenney.txt",
+          "size": 396,
+          "sha256": "52298f2238a3ffbde3490c61737a99e957dcfc8ca3175384491cf95a649f66ec"
+        },
+        {
+          "path": "NOTICE.md",
+          "size": 470,
+          "sha256": "ad9afdeff4298bc2cc256fba1f1c2db86842e51f52769652bfc92efa6106ac66"
+        },
+        {
+          "path": "README.md",
+          "size": 2651,
+          "sha256": "4044ff99b10c979aeb4c5500c3375286af41fbaab9a3d4fd1a76594fe4d2d088"
+        },
+        {
+          "path": "assets/sounds/sfx_bump.ogg",
+          "size": 5454,
+          "sha256": "165ad7337553e88ca9bc1c267980c090875b3ba0c6f2066387cbd28dfa0ac682"
+        },
+        {
+          "path": "assets/sounds/sfx_coin.ogg",
+          "size": 5572,
+          "sha256": "38c897c7a0f056e8cda892ca4a31639e1397ef9c70490351ecb0c4df0cc95e45"
+        },
+        {
+          "path": "assets/sounds/sfx_disappear.ogg",
+          "size": 9939,
+          "sha256": "83d034a1bf133745f9772b11f31537d231ae7c3ca8b150468fe5ffff19baabbb"
+        },
+        {
+          "path": "assets/sounds/sfx_hurt.ogg",
+          "size": 5804,
+          "sha256": "ee126f78cfd70e665c37d7afe7e1dc0fa84d6b2ab25ce27d797738d54d082ec6"
+        },
+        {
+          "path": "assets/sounds/sfx_jump.ogg",
+          "size": 5926,
+          "sha256": "7a0e42879c60350c6866976e8f6013943d9cb78a5ff1d126107ae3322566ee8f"
+        },
+        {
+          "path": "assets/sounds/sfx_magic.ogg",
+          "size": 9594,
+          "sha256": "c63c0abb1353c633993e1fa1acea68b27ee0119c842b095783b78879727476d5"
+        },
+        {
+          "path": "assets/sprites/background_clouds.png",
+          "size": 1800,
+          "sha256": "af584247f5df2ad50c0d53427ff34424038d0aed61f58d7861158e957166983e"
+        },
+        {
+          "path": "assets/sprites/background_color_hills.png",
+          "size": 1912,
+          "sha256": "4690d86430aae4b22f212173414213dca16637f1748a7fb7c75a21c5cf6cc4e4"
+        },
+        {
+          "path": "assets/sprites/background_solid_sky.png",
+          "size": 119,
+          "sha256": "2a5933f9f6d6a8495b32c544a80f1ca98031d8cb82639fc0ca6db44b76a313c9"
+        },
+        {
+          "path": "assets/sprites/block_coin_active.png",
+          "size": 851,
+          "sha256": "ae7262276388674afeb17565c869ca808321a5d68adfcbc81ab46d219920c06a"
+        },
+        {
+          "path": "assets/sprites/block_empty.png",
+          "size": 431,
+          "sha256": "08d382b99320f92e9baee3ff8ba65ac997b08ccffa0579625b5165524ecb6647"
+        },
+        {
+          "path": "assets/sprites/bricks_brown.png",
+          "size": 553,
+          "sha256": "70a86c65e39d8bdb0821bb57267c05107fe22a59b3a32406a9672021d2ce0e39"
+        },
+        {
+          "path": "assets/sprites/bush.png",
+          "size": 1146,
+          "sha256": "220ff29e8e935cc5d0908cecd5ab030349446dee7c781ef52c93dbfd0aee984f"
+        },
+        {
+          "path": "assets/sprites/character_green_hit.png",
+          "size": 3447,
+          "sha256": "0f8f96eaca37c74b0a71622c5c35d331af4175b44988467659dcffd804f05e0d"
+        },
+        {
+          "path": "assets/sprites/character_green_idle.png",
+          "size": 3295,
+          "sha256": "471928edcbb0f5e1616dabbf7481b997b625df5b827231ce9ef3adaeba87a907"
+        },
+        {
+          "path": "assets/sprites/character_green_jump.png",
+          "size": 3382,
+          "sha256": "9b7d04a44ecaaa809855607aefeb3feef2bc5079e1dc4da16d8b5822a233207b"
+        },
+        {
+          "path": "assets/sprites/character_green_walk_a.png",
+          "size": 3329,
+          "sha256": "abaad6be675130eee78862c3452a5eda729ee3712b5c04682ec6ef6fbab98e86"
+        },
+        {
+          "path": "assets/sprites/character_green_walk_b.png",
+          "size": 3421,
+          "sha256": "ac9a31de5aff851b5e9be765b24b95cc9d0cc79c1e41f3dd9beefa06f5640351"
+        },
+        {
+          "path": "assets/sprites/coin_gold.png",
+          "size": 1233,
+          "sha256": "edc38726153392a10c0ddd73a72aeef91bf41baf9b697fd334eb43f9ed12b56c"
+        },
+        {
+          "path": "assets/sprites/flag_green_a.png",
+          "size": 764,
+          "sha256": "dd0fb1c58ea696999ff5371257c627fd2c1a48ffdd907a9b96319be075d0aeb9"
+        },
+        {
+          "path": "assets/sprites/flag_green_b.png",
+          "size": 767,
+          "sha256": "fbb0d2865c81c3f8053ff53dd3e23d00197f916746a00aced0b80edf8921b229"
+        },
+        {
+          "path": "assets/sprites/flag_off.png",
+          "size": 355,
+          "sha256": "0164aebc37a6e8c147cfef055da0e81a3e8d3445c5e4e78a2f250eefd52a736a"
+        },
+        {
+          "path": "assets/sprites/grass.png",
+          "size": 1563,
+          "sha256": "1b2a356f09b1900c2129e6bddf69330b2c12a764368884445e1b212f67d92bcf"
+        },
+        {
+          "path": "assets/sprites/hud_character_0.png",
+          "size": 652,
+          "sha256": "d9b44c9d00b162d111e13f2ee3eef0180ab190d8206abff36797c429e85ec7a1"
+        },
+        {
+          "path": "assets/sprites/hud_character_1.png",
+          "size": 517,
+          "sha256": "0cb893c509881261652d49622fc86c190e4dbaf3dd59ea5cad0746c64f27f838"
+        },
+        {
+          "path": "assets/sprites/hud_character_2.png",
+          "size": 616,
+          "sha256": "0f04e16feea928732aa03fbe022037bb4a8d4df77e353033ee18ffc6caade849"
+        },
+        {
+          "path": "assets/sprites/hud_character_3.png",
+          "size": 676,
+          "sha256": "d62dab504e141e4c3e88b31da961e564ea00d4e7f19bf796798351b587ea1645"
+        },
+        {
+          "path": "assets/sprites/hud_character_4.png",
+          "size": 499,
+          "sha256": "c158ae932d2147f8d66a8aa47bc819a03280a7ac6d91c52576a12cfb298e18e1"
+        },
+        {
+          "path": "assets/sprites/hud_character_5.png",
+          "size": 645,
+          "sha256": "3e34130ba3102ccb1da801090800253f06ae8adf23274bf0cf2e8b2695a3dcdf"
+        },
+        {
+          "path": "assets/sprites/hud_character_6.png",
+          "size": 665,
+          "sha256": "8bab8e61c03beddd3d7bb04b1abc39cbf7723e4b1ec935190e7e1e36ce1cd70a"
+        },
+        {
+          "path": "assets/sprites/hud_character_7.png",
+          "size": 638,
+          "sha256": "5c92c8e04708e59f896528db0b6c253bc8b6feae6a67389746b32244c5467c07"
+        },
+        {
+          "path": "assets/sprites/hud_character_8.png",
+          "size": 670,
+          "sha256": "fcd4973ab83d89b835e9fc29959a8ef6f86dbf4f30c3bfc0962e3c7b2babc360"
+        },
+        {
+          "path": "assets/sprites/hud_character_9.png",
+          "size": 672,
+          "sha256": "53eeb371f24289e879adbadde9f992048fdbdc637639f1e7de320697e9cc383a"
+        },
+        {
+          "path": "assets/sprites/hud_character_multiply.png",
+          "size": 532,
+          "sha256": "5fa240736836eb3f7858a779ab3ed3759c476539cb6de60381586a4463764813"
+        },
+        {
+          "path": "assets/sprites/hud_coin.png",
+          "size": 1403,
+          "sha256": "3583ade2dead6c120e8674222d103553a5ee4b4fe4db7443958b65415bfc4a3e"
+        },
+        {
+          "path": "assets/sprites/hud_heart.png",
+          "size": 921,
+          "sha256": "c7f290669e5abb832bd0ee99147aa6b3c9069d501f6dd2500c32905f0cb643ed"
+        },
+        {
+          "path": "assets/sprites/hud_heart_empty.png",
+          "size": 917,
+          "sha256": "3bfdb001733c07a355ef854badd10ab8f91cb3cadbea8c7422e505dbd31d94ec"
+        },
+        {
+          "path": "assets/sprites/slime_normal_flat.png",
+          "size": 631,
+          "sha256": "02d424f0361c3e49ee6286af2bd0a30f5bf3db1e97c3a1f8cd07874f32eb8906"
+        },
+        {
+          "path": "assets/sprites/slime_normal_walk_a.png",
+          "size": 972,
+          "sha256": "7638fb729219329aa4086fa669318bcbd02043d4460ffc87065f5954b5f11906"
+        },
+        {
+          "path": "assets/sprites/slime_normal_walk_b.png",
+          "size": 920,
+          "sha256": "6eeceab591f2655532f294c960621d72e7d18859cb07323e57c02c6d98cd9bc6"
+        },
+        {
+          "path": "assets/sprites/terrain_grass_block_center.png",
+          "size": 666,
+          "sha256": "5b8f08b5a557ce0600ae48f6702b0f3ec799484083faeca259cb7ef181ecc03b"
+        },
+        {
+          "path": "assets/sprites/terrain_grass_block_left.png",
+          "size": 666,
+          "sha256": "f7d61b07336dcf566e55575051f9453a1265295e7c448b43a143b109e4970f72"
+        },
+        {
+          "path": "assets/sprites/terrain_grass_block_right.png",
+          "size": 654,
+          "sha256": "81d0b60d9cc7084a3354c7ba8a965604d81f1eabe329e1a7c133ffd157e801dc"
+        },
+        {
+          "path": "assets/sprites/terrain_grass_block_top.png",
+          "size": 755,
+          "sha256": "4eae0c24b3cac19c77025c789d9b6fcb9c1a98cdffe2a8375b32c86ebfcbdcc6"
+        },
+        {
+          "path": "assets/sprites/terrain_grass_block_top_left.png",
+          "size": 932,
+          "sha256": "631f88597998244a6d4b679106987e27e04fdaeb7b6a2dba953d7c3e63526a4a"
+        },
+        {
+          "path": "assets/sprites/terrain_grass_block_top_right.png",
+          "size": 820,
+          "sha256": "4f334ca4c7950e041b19fb000e63e6c16ac0554c55c86d970f032259c038763b"
+        },
+        {
+          "path": "assets/sprites/terrain_grass_horizontal_left.png",
+          "size": 961,
+          "sha256": "b60f4bd5c8bb4cdd3991a78aca1be06f5558eaefa56bb163bdafa27d2039a439"
+        },
+        {
+          "path": "assets/sprites/terrain_grass_horizontal_middle.png",
+          "size": 667,
+          "sha256": "86783ffa474a524bc3f83eaf698e21aa1eec821ef911f9bc45f9099a90b7918b"
+        },
+        {
+          "path": "assets/sprites/terrain_grass_horizontal_right.png",
+          "size": 1007,
+          "sha256": "b9df7fc14464fee87126a20db3a216481f13db19cb546e0b27382b2d50b21d95"
+        },
+        {
+          "path": "game.js",
+          "size": 16581,
+          "sha256": "9626bc55fb133bc97b512033b1af09de72d8065678f82d5f701a95ffcb108243"
+        },
+        {
+          "path": "index.html",
+          "size": 2682,
+          "sha256": "9db664d3bbd59887ff595870edd82ce860910b749c8fa963570d87995532cbaf"
+        },
+        {
+          "path": "level.js",
+          "size": 1515,
+          "sha256": "2dfa7fcc53feb70d1488605666f61d7f6088b4141d0e4e8bc00af89da183fc1f"
+        },
+        {
+          "path": "preview.png",
+          "size": 45036,
+          "sha256": "f613f3d4471d3654fb92520eb1e2729565e83a6083b60e5236a1c2467979f318"
+        }
+      ]
     }
   ]
 }

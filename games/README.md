@@ -1,7 +1,7 @@
 # Jogos demonstrativos do SquadOS Studio
 
-Quatro jogos de navegador: três adaptados das bases escolhidas pelo usuário e um
-original. Cada pasta é um pacote independente, com o jogo, suas fontes e recursos,
+Cinco jogos de navegador: três adaptados das bases escolhidas pelo usuário e dois
+originais. Cada pasta é um pacote independente, com o jogo, suas fontes e recursos,
 créditos, licença e prévia real. O [índice visual](index.html) abre cada demonstração diretamente.
 
 | Jogo | Demonstração | Origem e documentação |
@@ -10,6 +10,7 @@ créditos, licença e prévia real. O [índice visual](index.html) abre cada dem
 | [Corrida Espacial](hexgl/) | Corrida 3D com ambientação orbital e interface própria | [BKcore/HexGL](https://github.com/BKcore/HexGL) · [README](hexgl/README.md) |
 | [Arcade 2D](clumsy-bird/) | Robô voador, cenário vetorial e portais de energia originais | [ellisonleao/clumsy-bird](https://github.com/ellisonleao/clumsy-bird) · [README](clumsy-bird/README.md) |
 | [Cidade Sem Lei](lawless-city/play/) | Cidade 3D aberta para correr, roubar carros e dirigir pelo tráfego | Original SquadOS sobre Three.js, assets Kenney CC0 · [README](lawless-city/README.md) |
+| [Pulo Alto](high-jump/) | Plataforma 2D de uma fase: moedas, slimes e bandeira de chegada | Original SquadOS em Canvas 2D, assets Kenney CC0 · [README](high-jump/README.md) |
 
 Os nomes públicos são do SquadOS; os projetos que serviram de base conservam
 autoria e créditos na documentação de cada pacote. As adaptações incluem identidade
@@ -51,6 +52,7 @@ snapshots e as modificações estão documentados nos registros de cada pacote.
 | Corrida Espacial / base HexGL | MIT geral, com cabeçalhos **CC BY-NC 3.0** em arquivos centrais; áudio com licença CC BY 3.0 | A autorização para distribuição/uso comercial precisa ser resolvida antes de publicar neste contexto |
 | Arcade 2D / base Clumsy Bird | `LICENSE.md` GPLv3; indicação MIT do package antigo é inconsistente | Preservar GPLv3, autoria, fontes e licenças das dependências |
 | Cidade Sem Lei | Código MIT (SquadOS); Three.js MIT; modelos e sons Kenney CC0 | Preservar LICENSE, LICENSE-three.txt e LICENSE-Kenney.txt |
+| Pulo Alto | Código MIT (SquadOS); sprites e sons Kenney CC0 | Preservar LICENSE e LICENSE-Kenney.txt |
 
 O HexGL contém exceções não comerciais expressas por arquivo e, portanto, o pacote
 incluído não deve ser apresentado como integralmente open-source ou liberado para

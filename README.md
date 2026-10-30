@@ -6,7 +6,7 @@ As skills têm um índice curado (`gallery.json`) para contratação pelo RH e p
 próprios em `skills/<nome>/SKILL.md`. Os quatro [templates de websites](sites/README.md)
 têm pacotes independentes em `sites/`; os nove [templates de aplicativos web](apps/README.md)
 têm páginas demonstrativas independentes em `apps/`, com dados fictícios e temas claro/escuro.
-Os quatro [jogos demonstrativos](games/README.md) têm pacotes próprios
+Os cinco [jogos demonstrativos](games/README.md) têm pacotes próprios
 em `games/`, separados do índice de skills. Instalações diretas de outros
 repositórios aparecem no Studio como Outras, fora da vitrine editorial.
 
@@ -44,8 +44,8 @@ snapshot válido e arquivos de pacotes escolhidos. Uma publicação substitui a
 seleção anterior, incluindo remoções. Instalações e preferências pessoais são locais.
 Editar/commitar este checkout não publica o remoto: é necessário fazer push.
 
-O manifesto [templates.json](templates.json) oferece as 21 opções aprovadas: quatro
-slides, quatro sites, nove aplicativos e quatro jogos. Slides e as seis bases antigas
+O manifesto [templates.json](templates.json) oferece as 22 opções aprovadas: quatro
+slides, quatro sites, nove aplicativos e cinco jogos. Slides e as seis bases antigas
 não listadas foram transferidos para `templates/`. Cada pacote declara todos os
 arquivos, tamanhos e hashes; a abertura carrega o índice e a escolha baixa o pacote
 completo. Não há instalação automática de todas as skills.
