@@ -6170,13 +6170,13 @@
         },
         "preview": "preview.png",
         "entry": "index.html",
-        "adaptation": "Copie o pacote inteiro para uma nova pasta antes de editar. Esta é uma base de jogo de plataforma 2D em Canvas, sem build nem dependências: a fase é um mapa de caracteres em level.js, a física e as regras ficam em game.js e os sprites e sons Kenney em assets/. Preserve os créditos e as licenças descritos em NOTICE.md e README.md. Troque nome, personagem, fase, inimigos e regras conforme o pedido e confira o jogo após cada alteração, servindo a pasta por HTTP. Não publique automaticamente.",
+        "adaptation": "Copie o pacote inteiro para uma nova pasta antes de editar. Esta é uma base de jogo de plataforma 2D em Canvas, sem build nem dependências: a fase é um mapa de caracteres em level.js, o tema (personagem, terreno, fundo, inimigo e moeda) fica no objeto THEME no topo de game.js e assets/ traz o New Platformer Pack completo da Kenney, com vetores SVG. Para personagens que o pacote não tem, como uma pessoa ou um unicórnio, gere ou desenhe imagens no formato descrito em \"Personalizar\" no README.md e aponte THEME para elas. Preserve os créditos e as licenças descritos em NOTICE.md e README.md. Confira o jogo após cada alteração, servindo a pasta por HTTP. Não publique automaticamente.",
         "license": "MIT (código, SquadOS); sprites e sons Kenney CC0. Ver LICENSE e LICENSE-Kenney.txt.",
         "origin": "Jogo original SquadOS em Canvas 2D, com o New Platformer Pack da Kenney (CC0). Ver README.md e NOTICE.md.",
         "sourceUrl": "https://github.com/squados/squados-plugins/tree/main/games/high-jump",
         "goal": {
-          "pt-BR": "Quero criar um jogo de plataforma 2D no navegador. Me ajude a personalizar o personagem, a fase, os inimigos e os itens, mantendo os controles simples e a diversão imediata.",
-          "en": "I want to create a 2D platformer browser game. Help me personalize the character, the level, the enemies and the items, keeping the controls simple and the fun immediate."
+          "pt-BR": "Quero criar um jogo de plataforma 2D no navegador. Me ajude a personalizar o personagem, a fase, os inimigos e os itens — inclusive com personagens meus, como alguém da família ou um bicho favorito —, mantendo os controles simples e a diversão imediata.",
+          "en": "I want to create a 2D platformer browser game. Help me personalize the character, the level, the enemies and the items — including my own characters, like a family member or a favourite animal — keeping the controls simple and the fun immediate."
         }
       },
       "path": "games/high-jump",
@@ -6188,18 +6188,33 @@
         },
         {
           "path": "LICENSE-Kenney.txt",
-          "size": 396,
-          "sha256": "52298f2238a3ffbde3490c61737a99e957dcfc8ca3175384491cf95a649f66ec"
+          "size": 484,
+          "sha256": "5b9dede0180e8b201f31b332b4cc6b640f1613c27d6fdb7d5d84c35791acc864"
         },
         {
           "path": "NOTICE.md",
-          "size": 470,
-          "sha256": "ad9afdeff4298bc2cc256fba1f1c2db86842e51f52769652bfc92efa6106ac66"
+          "size": 579,
+          "sha256": "c2457812ed1a71a056302bead98a3aea2e47c8e6fb8531c0538c38eb9a1d797a"
         },
         {
           "path": "README.md",
-          "size": 2651,
-          "sha256": "4044ff99b10c979aeb4c5500c3375286af41fbaab9a3d4fd1a76594fe4d2d088"
+          "size": 5614,
+          "sha256": "aa3c7f4f1451cc164299098d4b25e465e56246cc8b2741ad270621c46222721a"
+        },
+        {
+          "path": "assets/catalog-backgrounds.png",
+          "size": 14838,
+          "sha256": "4af93b15223afc907ebbf9cdab0f35b3b1cf15040012d89c67196018fe9e7d9c"
+        },
+        {
+          "path": "assets/catalog-characters.png",
+          "size": 50505,
+          "sha256": "7d6433fb10f48a101e4317acf447ad29af3d250b02fcbef6a6e8597de046b297"
+        },
+        {
+          "path": "assets/catalog-tiles.png",
+          "size": 44609,
+          "sha256": "5028e82b141431ed0916b8edd38e0f3b26245638260d2ced503f9436b1156eb8"
         },
         {
           "path": "assets/sounds/sfx_bump.ogg",
@@ -6217,9 +6232,19 @@
           "sha256": "83d034a1bf133745f9772b11f31537d231ae7c3ca8b150468fe5ffff19baabbb"
         },
         {
+          "path": "assets/sounds/sfx_gem.ogg",
+          "size": 7414,
+          "sha256": "a8b9259598dd26e79afa2b802e296e175662f3e28651c65eac96af71f306794d"
+        },
+        {
           "path": "assets/sounds/sfx_hurt.ogg",
           "size": 5804,
           "sha256": "ee126f78cfd70e665c37d7afe7e1dc0fa84d6b2ab25ce27d797738d54d082ec6"
+        },
+        {
+          "path": "assets/sounds/sfx_jump-high.ogg",
+          "size": 8396,
+          "sha256": "39a049350321dc8cd9e2e19df746d18f56135dadd7aa239498fa25f9f8b4c5f5"
         },
         {
           "path": "assets/sounds/sfx_jump.ogg",
@@ -6232,224 +6257,2709 @@
           "sha256": "c63c0abb1353c633993e1fa1acea68b27ee0119c842b095783b78879727476d5"
         },
         {
-          "path": "assets/sprites/background_clouds.png",
+          "path": "assets/sounds/sfx_select.ogg",
+          "size": 5252,
+          "sha256": "6aecd59f1216107ffce484055950d76a066f0b02581cf7d3bbe5bb363c216f54"
+        },
+        {
+          "path": "assets/sounds/sfx_throw.ogg",
+          "size": 5786,
+          "sha256": "98e9154af18ac4a4ec7d4f249edca6c2315854c48c996019fe387da3f22778f0"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_clouds.png",
           "size": 1800,
           "sha256": "af584247f5df2ad50c0d53427ff34424038d0aed61f58d7861158e957166983e"
         },
         {
-          "path": "assets/sprites/background_color_hills.png",
+          "path": "assets/sprites/backgrounds/background_color_desert.png",
+          "size": 2807,
+          "sha256": "e90b72aa1f30a920393c7c548ce3abc15cb74a0022392a3acf35d85721211e00"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_color_hills.png",
           "size": 1912,
           "sha256": "4690d86430aae4b22f212173414213dca16637f1748a7fb7c75a21c5cf6cc4e4"
         },
         {
-          "path": "assets/sprites/background_solid_sky.png",
+          "path": "assets/sprites/backgrounds/background_color_mushrooms.png",
+          "size": 3061,
+          "sha256": "7218a18a637cfdc8d2aa13c5a15160deaff4d642bccda7ab15855d86a8ca4c47"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_color_trees.png",
+          "size": 3032,
+          "sha256": "01d9e07b407c095b65444b86cfc9ecff6542d6619d702d2b04779d1e203de750"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_fade_desert.png",
+          "size": 1766,
+          "sha256": "47ecc5ce05eeaf74eb73d7d457b0e355c2455851d5c3fcac68494f651a8484e8"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_fade_hills.png",
+          "size": 1148,
+          "sha256": "fdb2cdfe9fed9cb79323ea71e5c3caa57f12a1e0c54f97c519322445cc492d0a"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_fade_mushrooms.png",
+          "size": 1934,
+          "sha256": "c773ca9e42b31e0c4e43a349b6ac99391fb096f30b55accc7a3c1a513cd5602d"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_fade_trees.png",
+          "size": 1951,
+          "sha256": "8d40f0fa15ceedacac06135869a414c22aafc589e5c3cac481719be7d66800ce"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_solid_cloud.png",
+          "size": 119,
+          "sha256": "a31767e04c75e6abfb0821090784afb84e9d66df5c5d9afdab709347650ddb91"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_solid_dirt.png",
+          "size": 119,
+          "sha256": "9cb5a19f8be0488b304c4f4ed146860063075cc7f06ef5e06d08d36edb7e07ea"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_solid_grass.png",
+          "size": 119,
+          "sha256": "733c1fc081c98fe5ee354c6f208f5dbf58d1fcc0556d92b9c0cb605e7f562cd8"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_solid_sand.png",
+          "size": 119,
+          "sha256": "5b4e4e58391aad81b20c9998ba2448703ef30e3c19b831d10a491aa2ee8812c3"
+        },
+        {
+          "path": "assets/sprites/backgrounds/background_solid_sky.png",
           "size": 119,
           "sha256": "2a5933f9f6d6a8495b32c544a80f1ca98031d8cb82639fc0ca6db44b76a313c9"
         },
         {
-          "path": "assets/sprites/block_coin_active.png",
-          "size": 851,
-          "sha256": "ae7262276388674afeb17565c869ca808321a5d68adfcbc81ab46d219920c06a"
+          "path": "assets/sprites/characters/character_beige_climb_a.png",
+          "size": 3257,
+          "sha256": "bba3c0417e600b98dfa991221077fddd3a79900c342fc8fcc0475b15801bbeff"
         },
         {
-          "path": "assets/sprites/block_empty.png",
-          "size": 431,
-          "sha256": "08d382b99320f92e9baee3ff8ba65ac997b08ccffa0579625b5165524ecb6647"
+          "path": "assets/sprites/characters/character_beige_climb_b.png",
+          "size": 3230,
+          "sha256": "8656acf92b8a113e901e491503faf0e3b3d1002ed3a465726c0edaa667706630"
         },
         {
-          "path": "assets/sprites/bricks_brown.png",
-          "size": 553,
-          "sha256": "70a86c65e39d8bdb0821bb57267c05107fe22a59b3a32406a9672021d2ce0e39"
+          "path": "assets/sprites/characters/character_beige_duck.png",
+          "size": 3164,
+          "sha256": "4f89f6bc8056df33dcd3cafec00ad3ece1eb9bdd973c20ed815b45a7651ca5e3"
         },
         {
-          "path": "assets/sprites/bush.png",
-          "size": 1146,
-          "sha256": "220ff29e8e935cc5d0908cecd5ab030349446dee7c781ef52c93dbfd0aee984f"
+          "path": "assets/sprites/characters/character_beige_front.png",
+          "size": 3345,
+          "sha256": "e28a8ae19f2fa1da5b2702e605e5ec68eeb767df265fb405d221505344fe9d06"
         },
         {
-          "path": "assets/sprites/character_green_hit.png",
+          "path": "assets/sprites/characters/character_beige_hit.png",
+          "size": 3469,
+          "sha256": "23c07a047aab857621193293687092289138afd9404a9bf4df57960268021aa3"
+        },
+        {
+          "path": "assets/sprites/characters/character_beige_idle.png",
+          "size": 3323,
+          "sha256": "157b0994e98acde8dd3a375fddc644ef0430ebe256487ffb0d1ba16808694082"
+        },
+        {
+          "path": "assets/sprites/characters/character_beige_jump.png",
+          "size": 3399,
+          "sha256": "49344973f8679f029259a04df8ffe4eef27c022af967f49462830c848428729d"
+        },
+        {
+          "path": "assets/sprites/characters/character_beige_walk_a.png",
+          "size": 3322,
+          "sha256": "e88c3d03d02171f42611db9e2674782f285214d5c0190d34e745778ef7543643"
+        },
+        {
+          "path": "assets/sprites/characters/character_beige_walk_b.png",
+          "size": 3411,
+          "sha256": "df3fb8b1096b4cbcdd9eeca14358e165083dd4966d09bc928ac9c9410adfcf29"
+        },
+        {
+          "path": "assets/sprites/characters/character_green_climb_a.png",
+          "size": 3193,
+          "sha256": "b4898f16e5e7af0bd39910dd0cb6d484fea03ad1e5edd78af9e15009be10471d"
+        },
+        {
+          "path": "assets/sprites/characters/character_green_climb_b.png",
+          "size": 3164,
+          "sha256": "f6722b878468b70519d0dd76a78d04ca0ee4d8a9c74da7e16af243e4cb923982"
+        },
+        {
+          "path": "assets/sprites/characters/character_green_duck.png",
+          "size": 3136,
+          "sha256": "cefdd66f8f9d267f8607e425541ae761fe09854eb5b452a0f3afab6646a9caef"
+        },
+        {
+          "path": "assets/sprites/characters/character_green_front.png",
+          "size": 3349,
+          "sha256": "137dec4dd36570598fb45ae8db631546f389b93944236fc22307f7b3fe768eea"
+        },
+        {
+          "path": "assets/sprites/characters/character_green_hit.png",
           "size": 3447,
           "sha256": "0f8f96eaca37c74b0a71622c5c35d331af4175b44988467659dcffd804f05e0d"
         },
         {
-          "path": "assets/sprites/character_green_idle.png",
+          "path": "assets/sprites/characters/character_green_idle.png",
           "size": 3295,
           "sha256": "471928edcbb0f5e1616dabbf7481b997b625df5b827231ce9ef3adaeba87a907"
         },
         {
-          "path": "assets/sprites/character_green_jump.png",
+          "path": "assets/sprites/characters/character_green_jump.png",
           "size": 3382,
           "sha256": "9b7d04a44ecaaa809855607aefeb3feef2bc5079e1dc4da16d8b5822a233207b"
         },
         {
-          "path": "assets/sprites/character_green_walk_a.png",
+          "path": "assets/sprites/characters/character_green_walk_a.png",
           "size": 3329,
           "sha256": "abaad6be675130eee78862c3452a5eda729ee3712b5c04682ec6ef6fbab98e86"
         },
         {
-          "path": "assets/sprites/character_green_walk_b.png",
+          "path": "assets/sprites/characters/character_green_walk_b.png",
           "size": 3421,
           "sha256": "ac9a31de5aff851b5e9be765b24b95cc9d0cc79c1e41f3dd9beefa06f5640351"
         },
         {
-          "path": "assets/sprites/coin_gold.png",
-          "size": 1233,
-          "sha256": "edc38726153392a10c0ddd73a72aeef91bf41baf9b697fd334eb43f9ed12b56c"
+          "path": "assets/sprites/characters/character_pink_climb_a.png",
+          "size": 3225,
+          "sha256": "417bec2beb12d86b24ebfe5d44de47845478fad998d176be9a3caba408f90e51"
         },
         {
-          "path": "assets/sprites/flag_green_a.png",
+          "path": "assets/sprites/characters/character_pink_climb_b.png",
+          "size": 3221,
+          "sha256": "c721e7baeff2e3e0fcf3851dbed52457eac0caa7bb7506fe265e3cb6f82b2226"
+        },
+        {
+          "path": "assets/sprites/characters/character_pink_duck.png",
+          "size": 3206,
+          "sha256": "cd2a0b48cc4184dcf02345081d2190642538adc903606ebb18c11bfe727977e0"
+        },
+        {
+          "path": "assets/sprites/characters/character_pink_front.png",
+          "size": 3394,
+          "sha256": "512b5c17f902b1145f5bfb1e2dd9f165a818312fd4e51e7c3f311857a977eb30"
+        },
+        {
+          "path": "assets/sprites/characters/character_pink_hit.png",
+          "size": 3478,
+          "sha256": "16899ede7df56c9ac1d9e7efb065eb1d537c5ea78bd72b6b3249c43144f012bf"
+        },
+        {
+          "path": "assets/sprites/characters/character_pink_idle.png",
+          "size": 3357,
+          "sha256": "adbf4740643be0d2e7d8528c079c43ed33d2be9af2afd488228750ca6d45e89d"
+        },
+        {
+          "path": "assets/sprites/characters/character_pink_jump.png",
+          "size": 3442,
+          "sha256": "f4a41d9c0a8d2b9bb6e88f0b818fe562fbb59c1d352d4ce96b52bf77a58c857c"
+        },
+        {
+          "path": "assets/sprites/characters/character_pink_walk_a.png",
+          "size": 3392,
+          "sha256": "df3e9347eca78dd6ad284e34bfca24c8e20d9c5567cddcf7afce97b35e25e750"
+        },
+        {
+          "path": "assets/sprites/characters/character_pink_walk_b.png",
+          "size": 3480,
+          "sha256": "6b08ee78c35bdf289ac7f27e1323809f906ba80d192b4c15e16fff989141b4a0"
+        },
+        {
+          "path": "assets/sprites/characters/character_purple_climb_a.png",
+          "size": 3245,
+          "sha256": "2c129e843f6ebe6644a863d7b5043320fb6f5938c7b74e60bc356c54b3085e90"
+        },
+        {
+          "path": "assets/sprites/characters/character_purple_climb_b.png",
+          "size": 3272,
+          "sha256": "804691dc0d5f3f8ed5b7b5b8f1008d0b663e2e66f6f454d4c8213552d81e7cef"
+        },
+        {
+          "path": "assets/sprites/characters/character_purple_duck.png",
+          "size": 3237,
+          "sha256": "226e9a6baaf4301a828091e1241a9fadf813c9bf4ba44ce603ec9a7cfd261f61"
+        },
+        {
+          "path": "assets/sprites/characters/character_purple_front.png",
+          "size": 3423,
+          "sha256": "4acb8860d15d1d6691744c27ba9c10d54b4ef88d77b3f83f3125b571234724a5"
+        },
+        {
+          "path": "assets/sprites/characters/character_purple_hit.png",
+          "size": 3523,
+          "sha256": "c848111d4b0d5d9ec1c1a2ef06ee8279b51a583236080aa3b5e8bd09cc4197e1"
+        },
+        {
+          "path": "assets/sprites/characters/character_purple_idle.png",
+          "size": 3392,
+          "sha256": "3bdd659ae73cc28dbd70db36b2e66c45964e313b13226dbb1d73e8d303326c3c"
+        },
+        {
+          "path": "assets/sprites/characters/character_purple_jump.png",
+          "size": 3420,
+          "sha256": "c853e84138576b3aeeefd79b8836efddd86ff090d7979da1c2f004f79983773d"
+        },
+        {
+          "path": "assets/sprites/characters/character_purple_walk_a.png",
+          "size": 3377,
+          "sha256": "abd4bbc1e2c9541be6f456b0050d10f81f5dce96d3059c7e882d4cf9fe5a1108"
+        },
+        {
+          "path": "assets/sprites/characters/character_purple_walk_b.png",
+          "size": 3469,
+          "sha256": "7e206f753d69fcd00e609cfd3ba3cf5d879efc306d0d81bc14dc51240ad40b18"
+        },
+        {
+          "path": "assets/sprites/characters/character_yellow_climb_a.png",
+          "size": 3227,
+          "sha256": "efcd06f51a1ae875c3072952c8ca8ab36ece6cd4ac61463880f94a7be99c7fc0"
+        },
+        {
+          "path": "assets/sprites/characters/character_yellow_climb_b.png",
+          "size": 3236,
+          "sha256": "ccf915aa8cdab4ad8e559db8d5bb44fb3309c54e4d78e48d86fb0b3f7269adfc"
+        },
+        {
+          "path": "assets/sprites/characters/character_yellow_duck.png",
+          "size": 3150,
+          "sha256": "102a865ac66f36b0100996c5ba5acc50096b6ba066c292ba3eff3300d6555e43"
+        },
+        {
+          "path": "assets/sprites/characters/character_yellow_front.png",
+          "size": 3330,
+          "sha256": "683ff1496b851bd45e5d367153be75e442e90324032c837a7aa61dc1a2460429"
+        },
+        {
+          "path": "assets/sprites/characters/character_yellow_hit.png",
+          "size": 3439,
+          "sha256": "deea171b3d03581b3e3bd6c410257cddfa16627ab25b6e86ea67ea99bdb21352"
+        },
+        {
+          "path": "assets/sprites/characters/character_yellow_idle.png",
+          "size": 3316,
+          "sha256": "8818d3b292a5535e9e995f7f4c3f71adef184b3b28b94779850c2388b1feec97"
+        },
+        {
+          "path": "assets/sprites/characters/character_yellow_jump.png",
+          "size": 3393,
+          "sha256": "d40e04c06e468518c688814948f3ed74e2d569edb07b07be676dac11d6277385"
+        },
+        {
+          "path": "assets/sprites/characters/character_yellow_walk_a.png",
+          "size": 3309,
+          "sha256": "805a28f48eb525a6843e04a4f005d39e1d9fb0192ed57521755a0813fa5b5a94"
+        },
+        {
+          "path": "assets/sprites/characters/character_yellow_walk_b.png",
+          "size": 3390,
+          "sha256": "b00e4d46755d1cac79aadef943f06d24cb10961d66c1f68db03f7187e9873e82"
+        },
+        {
+          "path": "assets/sprites/enemies/barnacle_attack_a.png",
+          "size": 1382,
+          "sha256": "bfcab9f78b628df994f9612eaf4290b1b9eab6fa19a8b1a5aac75beced777d21"
+        },
+        {
+          "path": "assets/sprites/enemies/barnacle_attack_b.png",
+          "size": 1397,
+          "sha256": "1886e6880772387b295bc7c78f4bc14c0cdd7da243428873256bb2a50107f634"
+        },
+        {
+          "path": "assets/sprites/enemies/barnacle_attack_rest.png",
+          "size": 1133,
+          "sha256": "340b6f660ef62b9b3a78935d6984e411101a8c0e94c31c412fc8a61b2dc4450f"
+        },
+        {
+          "path": "assets/sprites/enemies/bee_a.png",
+          "size": 2062,
+          "sha256": "814511d3a8c5a279c7ad182e1703ac16cc18a2a429ba73d52f0250a7a6f04dc8"
+        },
+        {
+          "path": "assets/sprites/enemies/bee_b.png",
+          "size": 1726,
+          "sha256": "be92a27c5272fc5668086a95a06b9c2947f89e18b8eaa36dfdac2a39bddf8879"
+        },
+        {
+          "path": "assets/sprites/enemies/bee_rest.png",
+          "size": 2069,
+          "sha256": "e396a4aff5e84d02dd05ada24f50e9f895154adccb9187c5054b59cead38d980"
+        },
+        {
+          "path": "assets/sprites/enemies/block_fall.png",
+          "size": 1307,
+          "sha256": "37bc536ae0253b644a917642c2b8cea258c1fbe3b792ce4653209abaf2a01b21"
+        },
+        {
+          "path": "assets/sprites/enemies/block_idle.png",
+          "size": 1249,
+          "sha256": "d3d4c960af3fff2605657cb348d6ff6c7a49cc377996974f82425b9b5b20e349"
+        },
+        {
+          "path": "assets/sprites/enemies/block_rest.png",
+          "size": 1225,
+          "sha256": "f560a8ea90eaaead15f0c6d27335f1c14a92f6422bb82559723554811caa093d"
+        },
+        {
+          "path": "assets/sprites/enemies/fish_blue_rest.png",
+          "size": 2120,
+          "sha256": "ffd88a16771c5d7476edaad4e0f704bfd7bc521479e924392146eb75b297fe4f"
+        },
+        {
+          "path": "assets/sprites/enemies/fish_blue_swim_a.png",
+          "size": 2092,
+          "sha256": "2c6e49e356df8de571012d859fb3d61eefd8642554cd8d0e3364c1c548320ebc"
+        },
+        {
+          "path": "assets/sprites/enemies/fish_blue_swim_b.png",
+          "size": 1951,
+          "sha256": "197433e8812096377f90a5c67ed7a1a4516a451298b430ae0f8bcb5ec511f9d8"
+        },
+        {
+          "path": "assets/sprites/enemies/fish_purple_down.png",
+          "size": 1964,
+          "sha256": "4a0926cfd923135d5657786f5513688350a0c431bb61902f2474be152658645c"
+        },
+        {
+          "path": "assets/sprites/enemies/fish_purple_rest.png",
+          "size": 1966,
+          "sha256": "76710c8b6a8692b7e2cb80d4fb9b4a2905aba9faee002d677c33bc9b164b3167"
+        },
+        {
+          "path": "assets/sprites/enemies/fish_purple_up.png",
+          "size": 1934,
+          "sha256": "5888bdd8998be0bd69ae142f429f17c0451f5e876d403c394e9160cf54b36c1d"
+        },
+        {
+          "path": "assets/sprites/enemies/fish_yellow_rest.png",
+          "size": 2035,
+          "sha256": "fe5808eb66d0c17d7b0f1133276619b04cb45211ca672db6dd273c8c69cd2461"
+        },
+        {
+          "path": "assets/sprites/enemies/fish_yellow_swim_a.png",
+          "size": 2028,
+          "sha256": "029f6f96efe33e882288d10499b5ad0ab736e7c2a10e70c1002b8141e98b208e"
+        },
+        {
+          "path": "assets/sprites/enemies/fish_yellow_swim_b.png",
+          "size": 1872,
+          "sha256": "74483d1c8571dcb760b771cb77f01a6178f7063a0d1b44631c7784c5ad815b93"
+        },
+        {
+          "path": "assets/sprites/enemies/fly_a.png",
+          "size": 2043,
+          "sha256": "27cd2405a54774a84a40a4c810e004c6db97d674ceabf82312011b81a466eb2d"
+        },
+        {
+          "path": "assets/sprites/enemies/fly_b.png",
+          "size": 1978,
+          "sha256": "478697ffdb6a943013c4648accbc241b217bcdea64765e3c4cae86c8490c4d44"
+        },
+        {
+          "path": "assets/sprites/enemies/fly_rest.png",
+          "size": 1987,
+          "sha256": "e8e00eb90da4a4db1d40750af7676c2f996bfb8776d24529c7ec7bdc4555b2fb"
+        },
+        {
+          "path": "assets/sprites/enemies/frog_idle.png",
+          "size": 1882,
+          "sha256": "6e089aeb3d28fabb5602c9263588d7b291f5ebd50e325762456b3c519bf5a78a"
+        },
+        {
+          "path": "assets/sprites/enemies/frog_jump.png",
+          "size": 1392,
+          "sha256": "8b950a7b05370d765ee9c85d4d0ab80b83974ccf48fb9cd3b9694600c04055c2"
+        },
+        {
+          "path": "assets/sprites/enemies/frog_rest.png",
+          "size": 1311,
+          "sha256": "a8ca60994e166dcf19cd6a93897a07a50109c8c5d0deb0a3c915ee1f1c682718"
+        },
+        {
+          "path": "assets/sprites/enemies/ladybug_fly.png",
+          "size": 1748,
+          "sha256": "948156417476f68956ff3a5633c1481ffffc84831eb5495b31e4ec8be21b39af"
+        },
+        {
+          "path": "assets/sprites/enemies/ladybug_rest.png",
+          "size": 1527,
+          "sha256": "206d4474bada2f18f8ac96093e4a7b1e3a5448563832e96409bf5541e69d9eff"
+        },
+        {
+          "path": "assets/sprites/enemies/ladybug_walk_a.png",
+          "size": 1501,
+          "sha256": "a3a55e7190c69db99164a8229e3bfdd3d613774d1c5a0850183cca04e9f74277"
+        },
+        {
+          "path": "assets/sprites/enemies/ladybug_walk_b.png",
+          "size": 1513,
+          "sha256": "50f85c541de4e20b13618e3041008adedb3610fcce1717fbfa0c0279af1fb788"
+        },
+        {
+          "path": "assets/sprites/enemies/mouse_rest.png",
+          "size": 1153,
+          "sha256": "4f490e39418090006faf221604d8557e8a910a59660872b2ca6e5d62fb80f739"
+        },
+        {
+          "path": "assets/sprites/enemies/mouse_walk_a.png",
+          "size": 1243,
+          "sha256": "da3e9a7c065ce11ab8e35885a078237f0b9eaf8d27ac83ec641c9d7534bd3677"
+        },
+        {
+          "path": "assets/sprites/enemies/mouse_walk_b.png",
+          "size": 1240,
+          "sha256": "6ba391851c57f69e745e7b3acf49a8a2aa20ae4a0afb69c0d9e1e56e94bbb1e2"
+        },
+        {
+          "path": "assets/sprites/enemies/saw_a.png",
+          "size": 1687,
+          "sha256": "3c751cb65fcddf68b4b128d656f68f3f6219ee336f2199bd61acdb2bef712331"
+        },
+        {
+          "path": "assets/sprites/enemies/saw_b.png",
+          "size": 1804,
+          "sha256": "085c8440e83ff1718b0e69fffb8df2aaf2305a53f76ce20e28f7bb07b3f33aaf"
+        },
+        {
+          "path": "assets/sprites/enemies/saw_rest.png",
+          "size": 1624,
+          "sha256": "fb13bd42f9339fc93096b2d423a4c99d14e22ae4581d8f6916f371ec2fa6b582"
+        },
+        {
+          "path": "assets/sprites/enemies/slime_block_jump.png",
           "size": 764,
-          "sha256": "dd0fb1c58ea696999ff5371257c627fd2c1a48ffdd907a9b96319be075d0aeb9"
+          "sha256": "6a6f2e397f542ea17d589bbccbb178d4b3a2386fb159a8e684ed196678b4b3ec"
         },
         {
-          "path": "assets/sprites/flag_green_b.png",
+          "path": "assets/sprites/enemies/slime_block_rest.png",
+          "size": 685,
+          "sha256": "a63070e9ca11171f4be992c90968a6bd1b0413dc963a853330618c2701fdf162"
+        },
+        {
+          "path": "assets/sprites/enemies/slime_block_walk_a.png",
           "size": 767,
-          "sha256": "fbb0d2865c81c3f8053ff53dd3e23d00197f916746a00aced0b80edf8921b229"
+          "sha256": "9c19250103aed90e4867959138babb34c15de7242019fefe546e2aee60ac37ff"
         },
         {
-          "path": "assets/sprites/flag_off.png",
-          "size": 355,
-          "sha256": "0164aebc37a6e8c147cfef055da0e81a3e8d3445c5e4e78a2f250eefd52a736a"
+          "path": "assets/sprites/enemies/slime_block_walk_b.png",
+          "size": 760,
+          "sha256": "b1f9d2df11ba2163cce85f63af775007df64b8ce8f66aacc175b35b0b9b798e3"
         },
         {
-          "path": "assets/sprites/grass.png",
-          "size": 1563,
-          "sha256": "1b2a356f09b1900c2129e6bddf69330b2c12a764368884445e1b212f67d92bcf"
+          "path": "assets/sprites/enemies/slime_fire_flat.png",
+          "size": 1168,
+          "sha256": "ab2f010caf89348c947500303c03f4a1f275fd52df8d5caa61f1898c40f7f6c0"
         },
         {
-          "path": "assets/sprites/hud_character_0.png",
-          "size": 652,
-          "sha256": "d9b44c9d00b162d111e13f2ee3eef0180ab190d8206abff36797c429e85ec7a1"
+          "path": "assets/sprites/enemies/slime_fire_rest.png",
+          "size": 1507,
+          "sha256": "1447430642806ada0e2a2109d6dbe2d9c15c62485049fa1126afa94567d5c78e"
         },
         {
-          "path": "assets/sprites/hud_character_1.png",
-          "size": 517,
-          "sha256": "0cb893c509881261652d49622fc86c190e4dbaf3dd59ea5cad0746c64f27f838"
+          "path": "assets/sprites/enemies/slime_fire_walk_a.png",
+          "size": 1572,
+          "sha256": "4ef8e65714de7eb9a30130dec09ce500830986f92c54a72f765cd0b1fa8b7af6"
         },
         {
-          "path": "assets/sprites/hud_character_2.png",
-          "size": 616,
-          "sha256": "0f04e16feea928732aa03fbe022037bb4a8d4df77e353033ee18ffc6caade849"
+          "path": "assets/sprites/enemies/slime_fire_walk_b.png",
+          "size": 1524,
+          "sha256": "77e692ebb2c45cefdbbd5ad7712be2e5d929d80ea666ceee7cc63ae234336385"
         },
         {
-          "path": "assets/sprites/hud_character_3.png",
-          "size": 676,
-          "sha256": "d62dab504e141e4c3e88b31da961e564ea00d4e7f19bf796798351b587ea1645"
-        },
-        {
-          "path": "assets/sprites/hud_character_4.png",
-          "size": 499,
-          "sha256": "c158ae932d2147f8d66a8aa47bc819a03280a7ac6d91c52576a12cfb298e18e1"
-        },
-        {
-          "path": "assets/sprites/hud_character_5.png",
-          "size": 645,
-          "sha256": "3e34130ba3102ccb1da801090800253f06ae8adf23274bf0cf2e8b2695a3dcdf"
-        },
-        {
-          "path": "assets/sprites/hud_character_6.png",
-          "size": 665,
-          "sha256": "8bab8e61c03beddd3d7bb04b1abc39cbf7723e4b1ec935190e7e1e36ce1cd70a"
-        },
-        {
-          "path": "assets/sprites/hud_character_7.png",
-          "size": 638,
-          "sha256": "5c92c8e04708e59f896528db0b6c253bc8b6feae6a67389746b32244c5467c07"
-        },
-        {
-          "path": "assets/sprites/hud_character_8.png",
-          "size": 670,
-          "sha256": "fcd4973ab83d89b835e9fc29959a8ef6f86dbf4f30c3bfc0962e3c7b2babc360"
-        },
-        {
-          "path": "assets/sprites/hud_character_9.png",
-          "size": 672,
-          "sha256": "53eeb371f24289e879adbadde9f992048fdbdc637639f1e7de320697e9cc383a"
-        },
-        {
-          "path": "assets/sprites/hud_character_multiply.png",
-          "size": 532,
-          "sha256": "5fa240736836eb3f7858a779ab3ed3759c476539cb6de60381586a4463764813"
-        },
-        {
-          "path": "assets/sprites/hud_coin.png",
-          "size": 1403,
-          "sha256": "3583ade2dead6c120e8674222d103553a5ee4b4fe4db7443958b65415bfc4a3e"
-        },
-        {
-          "path": "assets/sprites/hud_heart.png",
-          "size": 921,
-          "sha256": "c7f290669e5abb832bd0ee99147aa6b3c9069d501f6dd2500c32905f0cb643ed"
-        },
-        {
-          "path": "assets/sprites/hud_heart_empty.png",
-          "size": 917,
-          "sha256": "3bfdb001733c07a355ef854badd10ab8f91cb3cadbea8c7422e505dbd31d94ec"
-        },
-        {
-          "path": "assets/sprites/slime_normal_flat.png",
+          "path": "assets/sprites/enemies/slime_normal_flat.png",
           "size": 631,
           "sha256": "02d424f0361c3e49ee6286af2bd0a30f5bf3db1e97c3a1f8cd07874f32eb8906"
         },
         {
-          "path": "assets/sprites/slime_normal_walk_a.png",
+          "path": "assets/sprites/enemies/slime_normal_rest.png",
+          "size": 905,
+          "sha256": "e1f357d3822b31e4ab92bfdddfed22f53e73c9a8062c5692e0a773920dca1e4f"
+        },
+        {
+          "path": "assets/sprites/enemies/slime_normal_walk_a.png",
           "size": 972,
           "sha256": "7638fb729219329aa4086fa669318bcbd02043d4460ffc87065f5954b5f11906"
         },
         {
-          "path": "assets/sprites/slime_normal_walk_b.png",
+          "path": "assets/sprites/enemies/slime_normal_walk_b.png",
           "size": 920,
           "sha256": "6eeceab591f2655532f294c960621d72e7d18859cb07323e57c02c6d98cd9bc6"
         },
         {
-          "path": "assets/sprites/terrain_grass_block_center.png",
+          "path": "assets/sprites/enemies/slime_spike_flat.png",
+          "size": 941,
+          "sha256": "150a76800278f5290cc7a7fd51841a913420272f86740e93180be1319b8d70c8"
+        },
+        {
+          "path": "assets/sprites/enemies/slime_spike_rest.png",
+          "size": 1210,
+          "sha256": "f58dc6f53f6c3dcecb616c94cd0435d119a82361c2c2c7789972eabfc0c20709"
+        },
+        {
+          "path": "assets/sprites/enemies/slime_spike_walk_a.png",
+          "size": 1273,
+          "sha256": "63afbc1c4c51ffc915254975f8ce7258792172ac826d8e1a27d20ab00e9f40a1"
+        },
+        {
+          "path": "assets/sprites/enemies/slime_spike_walk_b.png",
+          "size": 1245,
+          "sha256": "b4f99b086f3de245fee5c426e3e5997df4b238e49c4cae48e105661ee454e24f"
+        },
+        {
+          "path": "assets/sprites/enemies/snail_rest.png",
+          "size": 1561,
+          "sha256": "d96f4f5547896aa6f1890d55b92051d4751b19c2ced1158123720fb4a6367b0c"
+        },
+        {
+          "path": "assets/sprites/enemies/snail_shell.png",
+          "size": 939,
+          "sha256": "00e218a48a0d99bcbd031b12e27e86e1cfc60fd027b8a9bfd8ed61a51c94d127"
+        },
+        {
+          "path": "assets/sprites/enemies/snail_walk_a.png",
+          "size": 1531,
+          "sha256": "014f72fc434008e899c8a443acb6dd6e2dcf9768e762174e42e888249538e44b"
+        },
+        {
+          "path": "assets/sprites/enemies/snail_walk_b.png",
+          "size": 1551,
+          "sha256": "a669cc4aa51cf8a8044ba6b0cb7cf49fbeb40a9746be3b48c8d77565b0e8c926"
+        },
+        {
+          "path": "assets/sprites/enemies/worm_normal_move_a.png",
+          "size": 1007,
+          "sha256": "695d5b561bce11ceeac2e0ef2ea5562fe010e24e199a1b2b74d1d9f3b79db896"
+        },
+        {
+          "path": "assets/sprites/enemies/worm_normal_move_b.png",
+          "size": 989,
+          "sha256": "12fdf0672a398585bb663bd4c5a3c1e67054984948f779cea49b7283c498df14"
+        },
+        {
+          "path": "assets/sprites/enemies/worm_normal_rest.png",
+          "size": 690,
+          "sha256": "b6b3b1b22632073c005c69d11e19695b6f1ee490b68a96435942fcf2b6261bb4"
+        },
+        {
+          "path": "assets/sprites/enemies/worm_ring_move_a.png",
+          "size": 1046,
+          "sha256": "4335f3a2c9bf1fb8bede80d7390f3763c276af81e572ee4dc5afca6f7befa1bb"
+        },
+        {
+          "path": "assets/sprites/enemies/worm_ring_move_b.png",
+          "size": 1012,
+          "sha256": "a58c3e8f430c79b956cc5e27549ef9049b23c69e20d305edbfdb17162946c56f"
+        },
+        {
+          "path": "assets/sprites/enemies/worm_ring_rest.png",
+          "size": 840,
+          "sha256": "baf9210f762cd0dd0e62e6139cab77c19a9c5ee0f71f6fe5efe8615b46bcdfb4"
+        },
+        {
+          "path": "assets/sprites/tiles/block_blue.png",
+          "size": 468,
+          "sha256": "af762ae23f2edd143e17846b4e967fb3156f011a00478344eba8ee36267b5aa2"
+        },
+        {
+          "path": "assets/sprites/tiles/block_coin.png",
+          "size": 849,
+          "sha256": "cdc84a59d743a2a4047c9ed30ffa69519f91e40d684b38541f4dc6ec36ef9ce0"
+        },
+        {
+          "path": "assets/sprites/tiles/block_coin_active.png",
+          "size": 851,
+          "sha256": "ae7262276388674afeb17565c869ca808321a5d68adfcbc81ab46d219920c06a"
+        },
+        {
+          "path": "assets/sprites/tiles/block_empty.png",
+          "size": 431,
+          "sha256": "08d382b99320f92e9baee3ff8ba65ac997b08ccffa0579625b5165524ecb6647"
+        },
+        {
+          "path": "assets/sprites/tiles/block_empty_warning.png",
+          "size": 676,
+          "sha256": "a2b46378a4020f101e2f155833742277b00d9337a81160cec16a62bf1775f26a"
+        },
+        {
+          "path": "assets/sprites/tiles/block_exclamation.png",
+          "size": 808,
+          "sha256": "2325b2f721861650703945ca30e17ee1eb8b5c15e29297971945c16539a8f0c8"
+        },
+        {
+          "path": "assets/sprites/tiles/block_exclamation_active.png",
+          "size": 809,
+          "sha256": "b3c91e8375034e5a88ba85076ec96fa8d7432de028062f36cc616d2ae876789b"
+        },
+        {
+          "path": "assets/sprites/tiles/block_green.png",
+          "size": 468,
+          "sha256": "5b0822b7df6f435fc6431e0fcd09673cf812432e3ec483857d956ee0522b1906"
+        },
+        {
+          "path": "assets/sprites/tiles/block_plank.png",
+          "size": 1130,
+          "sha256": "d184381804a95680e2c07a90f0c8ba8babd566939fd80df3be1e876e8b8f3324"
+        },
+        {
+          "path": "assets/sprites/tiles/block_planks.png",
+          "size": 1449,
+          "sha256": "aff8ad9267cb95a762a97f38de847bb0996ed944037cc4397b5cfb4c9a5ffd06"
+        },
+        {
+          "path": "assets/sprites/tiles/block_red.png",
+          "size": 468,
+          "sha256": "ec3f0ee7eada266b697c6d6e6f5a6137f792ba4ef1713a8da30d3c309932e072"
+        },
+        {
+          "path": "assets/sprites/tiles/block_spikes.png",
+          "size": 1118,
+          "sha256": "ef0059f317f26256495d6df061c52cbb0cabc4dc1d204423ec57b5fbb8014709"
+        },
+        {
+          "path": "assets/sprites/tiles/block_strong_coin.png",
+          "size": 773,
+          "sha256": "c78a8024be2cc003423c69cbea770e364e5a34b99b6a9a7a5f7a81c1d011d24f"
+        },
+        {
+          "path": "assets/sprites/tiles/block_strong_coin_active.png",
+          "size": 756,
+          "sha256": "741626ef708125837f956a051fc8ac19068c3c8dfd16b110ceb02cfa048e29d4"
+        },
+        {
+          "path": "assets/sprites/tiles/block_strong_danger.png",
+          "size": 765,
+          "sha256": "00cea0c5722903a39f0a80e2b5b878555dbd5b23bb94ec517827eae0da9db3dd"
+        },
+        {
+          "path": "assets/sprites/tiles/block_strong_danger_active.png",
+          "size": 747,
+          "sha256": "1a5024dfec1678a386550162957db43e70442f51b4cad37f669a27c68a012a2a"
+        },
+        {
+          "path": "assets/sprites/tiles/block_strong_empty.png",
+          "size": 442,
+          "sha256": "9b563baa6b736dcebb253fd781f73089fbd125ed22b69446814ac8ab6ba2fb9e"
+        },
+        {
+          "path": "assets/sprites/tiles/block_strong_empty_active.png",
+          "size": 417,
+          "sha256": "031449a76053299d9c9783bb0e17324e068622d041ee97b626cf717baa1b7a64"
+        },
+        {
+          "path": "assets/sprites/tiles/block_strong_exclamation.png",
+          "size": 735,
+          "sha256": "73ab0ba6695a7ae8566dfa66561ceeda2af97e528cc5db933aea3f9fa0a9ad2c"
+        },
+        {
+          "path": "assets/sprites/tiles/block_strong_exclamation_active.png",
+          "size": 718,
+          "sha256": "c71cade127a79355becba698c5561b54ade4caf77d7839fc3fdd3827443f8fe2"
+        },
+        {
+          "path": "assets/sprites/tiles/block_yellow.png",
+          "size": 468,
+          "sha256": "748c8e54af19e40a22634c97055f2a01f34343ffc8c2d8ba3cd7ac6f347d2d3b"
+        },
+        {
+          "path": "assets/sprites/tiles/bomb.png",
+          "size": 1097,
+          "sha256": "50f5f1ea44cbd95d358ad4db45fa9c76a0280ff70d1dace8e4d9594479740b7b"
+        },
+        {
+          "path": "assets/sprites/tiles/bomb_active.png",
+          "size": 1083,
+          "sha256": "a981cb678506756e4eec05076cc57e09b87c0dd5d7c25b2a9c6791a759752660"
+        },
+        {
+          "path": "assets/sprites/tiles/brick_brown.png",
+          "size": 367,
+          "sha256": "d6af3bb98320f43114d6d19151694d77dfc821feaa14b30289607c175433ae32"
+        },
+        {
+          "path": "assets/sprites/tiles/brick_brown_diagonal.png",
+          "size": 563,
+          "sha256": "dbcd0b4271882134a21407fa4fc563827f75242ed76501eced6513b0978ca0f6"
+        },
+        {
+          "path": "assets/sprites/tiles/brick_grey.png",
+          "size": 367,
+          "sha256": "132ba60de5de281a36cc18e9b3f6d965e5d3ce054f43b1276805896ab59eb558"
+        },
+        {
+          "path": "assets/sprites/tiles/brick_grey_diagonal.png",
+          "size": 563,
+          "sha256": "c015f9a56e7f8183c319793e82a353661f688cbbf4c9f7664c3f1aa92ed411b7"
+        },
+        {
+          "path": "assets/sprites/tiles/bricks_brown.png",
+          "size": 553,
+          "sha256": "70a86c65e39d8bdb0821bb57267c05107fe22a59b3a32406a9672021d2ce0e39"
+        },
+        {
+          "path": "assets/sprites/tiles/bricks_grey.png",
+          "size": 572,
+          "sha256": "c8543572e3463f207f7f6b67127bb54c72e0b3e550479c1a39660480fdce5624"
+        },
+        {
+          "path": "assets/sprites/tiles/bridge.png",
+          "size": 618,
+          "sha256": "0436dc90d29ba7f67b3291018827a0599ca4ba91b7ffb30a0b42314cd191f8f8"
+        },
+        {
+          "path": "assets/sprites/tiles/bridge_logs.png",
+          "size": 1124,
+          "sha256": "99d0c828210ee70cd62aef82ee537d101fbce36a29468d8fb8305c292a2e87a5"
+        },
+        {
+          "path": "assets/sprites/tiles/bush.png",
+          "size": 1146,
+          "sha256": "220ff29e8e935cc5d0908cecd5ab030349446dee7c781ef52c93dbfd0aee984f"
+        },
+        {
+          "path": "assets/sprites/tiles/cactus.png",
+          "size": 1811,
+          "sha256": "e95631190475ac84a2bf108f85f6049920050aae0e8618effb822e7153fe327c"
+        },
+        {
+          "path": "assets/sprites/tiles/chain.png",
+          "size": 763,
+          "sha256": "842e22d846ca4a979974303f6eb8614bcc827c5756e7c93132d341f66fa61ee0"
+        },
+        {
+          "path": "assets/sprites/tiles/coin_bronze.png",
+          "size": 1210,
+          "sha256": "38a0ec9bf25faf3593cd0d4481432713a25f25dc35d58c41b24e06cd5acf3f3c"
+        },
+        {
+          "path": "assets/sprites/tiles/coin_bronze_side.png",
+          "size": 377,
+          "sha256": "f3146bc53f4349545c23b61c619dbbe005a9e7356f6411e966c77743fadb392b"
+        },
+        {
+          "path": "assets/sprites/tiles/coin_gold.png",
+          "size": 1233,
+          "sha256": "edc38726153392a10c0ddd73a72aeef91bf41baf9b697fd334eb43f9ed12b56c"
+        },
+        {
+          "path": "assets/sprites/tiles/coin_gold_side.png",
+          "size": 378,
+          "sha256": "4094530b500bd2c3d7f7a22ca05688ef99ff19b4a2b081928782ad9ff5a2cb53"
+        },
+        {
+          "path": "assets/sprites/tiles/coin_silver.png",
+          "size": 1137,
+          "sha256": "8c18eb6326cf2c5cc39dd11e3a507d0371b944d2afa2665c4c97958ff5987d64"
+        },
+        {
+          "path": "assets/sprites/tiles/coin_silver_side.png",
+          "size": 377,
+          "sha256": "d183ec1993b51d3ea624d8c9a3749e9c93e25a61e325ec2553c7eaee656559d4"
+        },
+        {
+          "path": "assets/sprites/tiles/conveyor.png",
+          "size": 635,
+          "sha256": "c49e7c3ec30d68d0a5f6d50c003006a8858530e0ccba9b5a9d0bc2e4d58ccfad"
+        },
+        {
+          "path": "assets/sprites/tiles/door_closed.png",
+          "size": 433,
+          "sha256": "207791aff17fb5b98b0ae4b2072e9f93c81f7f3a1f1951a4751f8e4349fdfc38"
+        },
+        {
+          "path": "assets/sprites/tiles/door_closed_top.png",
+          "size": 1210,
+          "sha256": "ecad41dd6e178c571f5d0140f8f0cecbe5882339d3ecd985459cffacd2f66764"
+        },
+        {
+          "path": "assets/sprites/tiles/door_open.png",
+          "size": 125,
+          "sha256": "ccb02fabc6481d214cc3af33011e1baa086e20c431e7bec3f130873d96ce0266"
+        },
+        {
+          "path": "assets/sprites/tiles/door_open_top.png",
+          "size": 988,
+          "sha256": "159a12d84066dac0c70c7a1a33bd0f32fe576fc2bcae251a7910206b8fd58345"
+        },
+        {
+          "path": "assets/sprites/tiles/fence.png",
+          "size": 434,
+          "sha256": "31677e73ca4154f617e09e73ea4af311dce1000e2fc264daa8e32704b8cd21e8"
+        },
+        {
+          "path": "assets/sprites/tiles/fence_broken.png",
+          "size": 564,
+          "sha256": "c6ac4716460d2ecfa01ad53650d2afaa4fed5737738468c7adfb97a6c2de7d60"
+        },
+        {
+          "path": "assets/sprites/tiles/fireball.png",
+          "size": 1409,
+          "sha256": "1c1e79559fe8ba74e32d8eddc741a6f2ea694c085af5493df0cf40ad38710965"
+        },
+        {
+          "path": "assets/sprites/tiles/flag_blue_a.png",
+          "size": 763,
+          "sha256": "37958183b125d61a4ad8d2162c268f03234764302913b6cac4e6be51d98553bd"
+        },
+        {
+          "path": "assets/sprites/tiles/flag_blue_b.png",
+          "size": 768,
+          "sha256": "ecf39274158403b130d7c350229ead45a1b21dc2ca2554f7a307374bd3eb2d9d"
+        },
+        {
+          "path": "assets/sprites/tiles/flag_green_a.png",
+          "size": 764,
+          "sha256": "dd0fb1c58ea696999ff5371257c627fd2c1a48ffdd907a9b96319be075d0aeb9"
+        },
+        {
+          "path": "assets/sprites/tiles/flag_green_b.png",
+          "size": 767,
+          "sha256": "fbb0d2865c81c3f8053ff53dd3e23d00197f916746a00aced0b80edf8921b229"
+        },
+        {
+          "path": "assets/sprites/tiles/flag_off.png",
+          "size": 355,
+          "sha256": "0164aebc37a6e8c147cfef055da0e81a3e8d3445c5e4e78a2f250eefd52a736a"
+        },
+        {
+          "path": "assets/sprites/tiles/flag_red_a.png",
+          "size": 767,
+          "sha256": "91a0787fba57dc0773e276e5d091d1bd5c9f7b2cf7a83f8bc70acb6e80d01c0e"
+        },
+        {
+          "path": "assets/sprites/tiles/flag_red_b.png",
+          "size": 767,
+          "sha256": "7826cefc40551811a8b06a7412c7e526e854366b3551baeda6971ea34e7a4cc1"
+        },
+        {
+          "path": "assets/sprites/tiles/flag_yellow_a.png",
+          "size": 765,
+          "sha256": "81554383471a86afe230b7a18636a0a4e02360dee17b3549434b5fc47247da1e"
+        },
+        {
+          "path": "assets/sprites/tiles/flag_yellow_b.png",
+          "size": 768,
+          "sha256": "cb0c3e57a8cca03406fc3f13143c4280773d286bc75897cd9fe7975c092d141d"
+        },
+        {
+          "path": "assets/sprites/tiles/gem_blue.png",
+          "size": 838,
+          "sha256": "3c17e659a6db0a9e44a6eaf6ad3fd0856bed5410d229787e52499749d4d0ed39"
+        },
+        {
+          "path": "assets/sprites/tiles/gem_green.png",
+          "size": 835,
+          "sha256": "069c7f79cded3c9396c46d5d759253719e48dc7d67b97ee21b96fb032c1eb941"
+        },
+        {
+          "path": "assets/sprites/tiles/gem_red.png",
+          "size": 837,
+          "sha256": "87abc0b9585eb51752891752ea09714c0791f17d4b30daa71824c3eedcebb56e"
+        },
+        {
+          "path": "assets/sprites/tiles/gem_yellow.png",
+          "size": 829,
+          "sha256": "ab2e5637b70bc3592aa38090f9a13345a53580a7f2b1026bcbd6fec56d8c14b9"
+        },
+        {
+          "path": "assets/sprites/tiles/grass.png",
+          "size": 1563,
+          "sha256": "1b2a356f09b1900c2129e6bddf69330b2c12a764368884445e1b212f67d92bcf"
+        },
+        {
+          "path": "assets/sprites/tiles/grass_purple.png",
+          "size": 1306,
+          "sha256": "46c77001dd74501e6022308157f26af4554c43238706e2778a559cb915f85180"
+        },
+        {
+          "path": "assets/sprites/tiles/heart.png",
+          "size": 669,
+          "sha256": "b46482f9749b10486ecea4cda7696076fc235da951c7f42343fedd0a67b43f8c"
+        },
+        {
+          "path": "assets/sprites/tiles/hill.png",
+          "size": 389,
+          "sha256": "a0915b11a5b3d0a7d70484861c409752fec8a2bb3e0b599cb2d0b75adc65b23d"
+        },
+        {
+          "path": "assets/sprites/tiles/hill_top.png",
+          "size": 976,
+          "sha256": "8283527df897720c15625fc2ffb7e30182f2eccf34c6572446f729ee04720bf9"
+        },
+        {
+          "path": "assets/sprites/tiles/hill_top_smile.png",
+          "size": 1262,
+          "sha256": "2cac8d3c808798481455fd28a6dcd2288ab395838db2036c318f340ce1da14b3"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_0.png",
+          "size": 652,
+          "sha256": "d9b44c9d00b162d111e13f2ee3eef0180ab190d8206abff36797c429e85ec7a1"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_1.png",
+          "size": 517,
+          "sha256": "0cb893c509881261652d49622fc86c190e4dbaf3dd59ea5cad0746c64f27f838"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_2.png",
+          "size": 616,
+          "sha256": "0f04e16feea928732aa03fbe022037bb4a8d4df77e353033ee18ffc6caade849"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_3.png",
+          "size": 676,
+          "sha256": "d62dab504e141e4c3e88b31da961e564ea00d4e7f19bf796798351b587ea1645"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_4.png",
+          "size": 499,
+          "sha256": "c158ae932d2147f8d66a8aa47bc819a03280a7ac6d91c52576a12cfb298e18e1"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_5.png",
+          "size": 645,
+          "sha256": "3e34130ba3102ccb1da801090800253f06ae8adf23274bf0cf2e8b2695a3dcdf"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_6.png",
+          "size": 665,
+          "sha256": "8bab8e61c03beddd3d7bb04b1abc39cbf7723e4b1ec935190e7e1e36ce1cd70a"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_7.png",
+          "size": 638,
+          "sha256": "5c92c8e04708e59f896528db0b6c253bc8b6feae6a67389746b32244c5467c07"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_8.png",
+          "size": 670,
+          "sha256": "fcd4973ab83d89b835e9fc29959a8ef6f86dbf4f30c3bfc0962e3c7b2babc360"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_9.png",
+          "size": 672,
+          "sha256": "53eeb371f24289e879adbadde9f992048fdbdc637639f1e7de320697e9cc383a"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_multiply.png",
+          "size": 532,
+          "sha256": "5fa240736836eb3f7858a779ab3ed3759c476539cb6de60381586a4463764813"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_character_percent.png",
+          "size": 653,
+          "sha256": "3c7e5649fb8c33c11a5cba53e6a425b67aca13d0e4af5aaa221624e010f63cec"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_coin.png",
+          "size": 1403,
+          "sha256": "3583ade2dead6c120e8674222d103553a5ee4b4fe4db7443958b65415bfc4a3e"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_heart.png",
+          "size": 921,
+          "sha256": "c7f290669e5abb832bd0ee99147aa6b3c9069d501f6dd2500c32905f0cb643ed"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_heart_empty.png",
+          "size": 917,
+          "sha256": "3bfdb001733c07a355ef854badd10ab8f91cb3cadbea8c7422e505dbd31d94ec"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_heart_half.png",
+          "size": 1033,
+          "sha256": "69011b8b50e3d29f6ff093fb5eed07370d3778febd3be9004a921aa9047cd8be"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_key_blue.png",
+          "size": 989,
+          "sha256": "53dd0c483d4c804ec03b0d5b146499518800440dc37262f0a7245236347b4a2d"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_key_green.png",
+          "size": 984,
+          "sha256": "98194e81190c9ab5cb5974f7f7ad8ec276f6cb691293cf0d69af6b1bb2894986"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_key_red.png",
+          "size": 988,
+          "sha256": "0c0e7bb4f285014e236a84c96df01baa08723e85fdd9153db2a50b3851672655"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_key_yellow.png",
+          "size": 982,
+          "sha256": "6d36d4f7baff5fc112fb8ab6990c1b15bb0d0773c9fcf6a2e33cdbba15e7d969"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_beige.png",
+          "size": 1387,
+          "sha256": "059a82af18b3183d6a8658f91ab31396da04666caecebcff6eff492e637bdf06"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_green.png",
+          "size": 1370,
+          "sha256": "779bbf514a5fd48cd1c17e967028fde5f12f10b755e12182cf3b123702d2d784"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_helmet_beige.png",
+          "size": 1686,
+          "sha256": "ac98c5589ba11d9fd4c17f309272c097c0193c040f6c5cf3fd44bff2bd38b6f4"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_helmet_green.png",
+          "size": 1681,
+          "sha256": "33b5294d26be6d25ae72ac0b5343e23df88661ede91dca3cbeb08507db22ca5e"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_helmet_pink.png",
+          "size": 1680,
+          "sha256": "ba93c8fcd31550a765b2837e0fad426839c475365b530f5d61152ddc29b6e923"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_helmet_purple.png",
+          "size": 1802,
+          "sha256": "b13b5b0e9f541969c28767b6b015ceed8e4f559fed89cc30943da0b8e32c6bfb"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_helmet_yellow.png",
+          "size": 1659,
+          "sha256": "7b298fa033eec60069dde558efcb0d3dab0b5db474f0dfebb1e5e2041855d48b"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_pink.png",
+          "size": 1401,
+          "sha256": "9a722967c0138979f668714901df5cedaf4ce6712d0410a0145a798b487b83b1"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_purple.png",
+          "size": 1401,
+          "sha256": "71ae15787667837ca3c8b77d921235e35205634fbc62fee057403a5a976c2891"
+        },
+        {
+          "path": "assets/sprites/tiles/hud_player_yellow.png",
+          "size": 1352,
+          "sha256": "3b8264a848eb9007a02b8267374be84f6184f9cd86d7af88e4c7b3e8151b97d3"
+        },
+        {
+          "path": "assets/sprites/tiles/key_blue.png",
+          "size": 660,
+          "sha256": "efcf0a7cf18da1e9a88e9855db5fedf81d603784eef16e16da0455f2aac9d0d4"
+        },
+        {
+          "path": "assets/sprites/tiles/key_green.png",
+          "size": 660,
+          "sha256": "9ccf11cc2db1d816a7afeac68e71045abd1a405f572ca0c97c951829b8b6b537"
+        },
+        {
+          "path": "assets/sprites/tiles/key_red.png",
+          "size": 660,
+          "sha256": "e966aa682d1f8e1e770c41a3ffc96291699d1dadec4930bb15dd6e2ddcc42f22"
+        },
+        {
+          "path": "assets/sprites/tiles/key_yellow.png",
+          "size": 660,
+          "sha256": "ba64b3f3149d440814e371ea1c16eb924b33983e75faefcd2bd3f216c74866a1"
+        },
+        {
+          "path": "assets/sprites/tiles/ladder_bottom.png",
+          "size": 319,
+          "sha256": "73abad7e888711b3b8ce364f55cbdc7dc89d9c56461a439fc1d79c4a29907e4c"
+        },
+        {
+          "path": "assets/sprites/tiles/ladder_middle.png",
+          "size": 169,
+          "sha256": "8af18f4f65425316785cd4ff51007f29ba8151cb7958a28e34961da886199b03"
+        },
+        {
+          "path": "assets/sprites/tiles/ladder_top.png",
+          "size": 354,
+          "sha256": "39b583c88ba4712d0921a69b2edf75f679826ecdbd48fadad6d158b9e9868abe"
+        },
+        {
+          "path": "assets/sprites/tiles/lava.png",
+          "size": 513,
+          "sha256": "d42b6708571e1953958fa23097e4a7fb2daacea4597e2dcbacca171031f6fa26"
+        },
+        {
+          "path": "assets/sprites/tiles/lava_top.png",
+          "size": 789,
+          "sha256": "dfd4051d328215e9272649e6ff7aa9b4a8ac8e17873685959d51bb4962ff47d4"
+        },
+        {
+          "path": "assets/sprites/tiles/lava_top_low.png",
+          "size": 597,
+          "sha256": "2b00faead7da0697e3afab11d28089e391e6d624968656a962ef65b830cd6771"
+        },
+        {
+          "path": "assets/sprites/tiles/lever.png",
+          "size": 1040,
+          "sha256": "73eb5423dc2a10c9a5ae120a119ecfe6d0069db18c034c43b76c0680d4c711ad"
+        },
+        {
+          "path": "assets/sprites/tiles/lever_left.png",
+          "size": 1321,
+          "sha256": "0f2b18eb4d9262280ab2bc0db710a431cbe39131ee1df6480c1cb67ab63c0413"
+        },
+        {
+          "path": "assets/sprites/tiles/lever_right.png",
+          "size": 1323,
+          "sha256": "00f2a09adf164792aa8981b96cc35b473b473f2a686af3bcba1a43f02bad964c"
+        },
+        {
+          "path": "assets/sprites/tiles/lock_blue.png",
+          "size": 731,
+          "sha256": "62fb932de8bfae3ad66a9929e02f220cc19e99c0d969f0f21f414b2ce19d16c7"
+        },
+        {
+          "path": "assets/sprites/tiles/lock_green.png",
+          "size": 731,
+          "sha256": "e337b2e8c36760a75cc6d578e3ff639c3818ee5aed7c43ac7051e2bd8d22c0b5"
+        },
+        {
+          "path": "assets/sprites/tiles/lock_red.png",
+          "size": 731,
+          "sha256": "eac7e14a9910b6fd474897fa96ae600c62ddcc2d655f8de8a4ae654a71eff10c"
+        },
+        {
+          "path": "assets/sprites/tiles/lock_yellow.png",
+          "size": 800,
+          "sha256": "7dcd23f3ebfead135c9885ecabb86d4b40af0da3127c75ee23ea8ec63ea0835a"
+        },
+        {
+          "path": "assets/sprites/tiles/mushroom_brown.png",
+          "size": 668,
+          "sha256": "a1c9570c04a1a2d3e7ecc9cfe7b2abc0febc5fc0227f506ec807ee7df3745baf"
+        },
+        {
+          "path": "assets/sprites/tiles/mushroom_red.png",
+          "size": 657,
+          "sha256": "1ff22c62502175c6122924ab2d0f631515fe842ef9567612416dec0692bfb55e"
+        },
+        {
+          "path": "assets/sprites/tiles/ramp.png",
+          "size": 616,
+          "sha256": "48a7ee01a2b3929ade92222a281eedcd29d8aa934420fc73e72a9c48779be7c0"
+        },
+        {
+          "path": "assets/sprites/tiles/rock.png",
+          "size": 1025,
+          "sha256": "10cb167335c99def13a20944beee5c162ac29f761433fd74e60a0ff51b65cb71"
+        },
+        {
+          "path": "assets/sprites/tiles/rop_attached.png",
+          "size": 762,
+          "sha256": "b9a70e9807dc70b72739ec760e8e4c542bacb9b8e3acbfb2d912c333cc290683"
+        },
+        {
+          "path": "assets/sprites/tiles/rope.png",
+          "size": 202,
+          "sha256": "dcf41b4d0c125402c95c57ca99964f702cf3026f04de26a0e8e742ab1414f6fd"
+        },
+        {
+          "path": "assets/sprites/tiles/saw.png",
+          "size": 1764,
+          "sha256": "6fdcc66e3a5d75a0c22650de0025df08106b4ac6aca53c42c0f0edca12622fd6"
+        },
+        {
+          "path": "assets/sprites/tiles/sign.png",
+          "size": 714,
+          "sha256": "819f2fd43fb5abd2af612e50ad923417bffc4459e616b6e391fca6615d764ef2"
+        },
+        {
+          "path": "assets/sprites/tiles/sign_exit.png",
+          "size": 1170,
+          "sha256": "0be6034433cc351c548d2133f225f9bb02580102f71019451dcbcb03b50914d7"
+        },
+        {
+          "path": "assets/sprites/tiles/sign_left.png",
+          "size": 835,
+          "sha256": "774aa797aea98baa16639a9a263010a0109ea55d0f7634eede2d69b237646399"
+        },
+        {
+          "path": "assets/sprites/tiles/sign_right.png",
+          "size": 829,
+          "sha256": "76fb18747da8f09e4192b7304799ed61be1960973a801907713cbcaa31f74ea1"
+        },
+        {
+          "path": "assets/sprites/tiles/snow.png",
+          "size": 485,
+          "sha256": "a656f5aa72480c575f8e910ba76e68e9dc3e61aedff3c4d50828ac3693f8a0bc"
+        },
+        {
+          "path": "assets/sprites/tiles/spikes.png",
+          "size": 861,
+          "sha256": "3aac88c1bde80bee1bdd0a87297beba45bf7ba5659450f69eb5473826e377221"
+        },
+        {
+          "path": "assets/sprites/tiles/spring.png",
+          "size": 691,
+          "sha256": "fdb3ecde7ad75547cc04e1545632d441b90410502095f93d268c876158caf38a"
+        },
+        {
+          "path": "assets/sprites/tiles/spring_out.png",
+          "size": 1358,
+          "sha256": "1515dd6a7958338eb1f5f66663ee2cefc5e67ca80c4bc2e5b6b7060fc1e53ff4"
+        },
+        {
+          "path": "assets/sprites/tiles/star.png",
+          "size": 1353,
+          "sha256": "196aee99fb9cf06e90477ffc29b25c09ef64a12f7f9ffad479793225195b1fb7"
+        },
+        {
+          "path": "assets/sprites/tiles/switch_blue.png",
+          "size": 866,
+          "sha256": "453ea9bdad00095d096aea3ed2f82af428607f394dc5d73d43ac7f4e71f6e8a2"
+        },
+        {
+          "path": "assets/sprites/tiles/switch_blue_pressed.png",
+          "size": 613,
+          "sha256": "ff4b6647a19274dbc307f6f40eefa8357f7fe6f0700dbc7f6ccbf44052c1fd8a"
+        },
+        {
+          "path": "assets/sprites/tiles/switch_green.png",
+          "size": 864,
+          "sha256": "290921ad3da9e84dec4fc3358c83758c708cb0043eb27cce633ad4b6d111111c"
+        },
+        {
+          "path": "assets/sprites/tiles/switch_green_pressed.png",
+          "size": 613,
+          "sha256": "47cb214b84042698db2a8cb36818621fc2dc1ce69f71ffb3a18e0720cdc73907"
+        },
+        {
+          "path": "assets/sprites/tiles/switch_red.png",
+          "size": 864,
+          "sha256": "a73fc322a68be632c1e3d893d4dc57c015ba3bedfd5ba9d6ebe32ee31423b001"
+        },
+        {
+          "path": "assets/sprites/tiles/switch_red_pressed.png",
+          "size": 613,
+          "sha256": "11fc5f5d25e1865eec42d832650d770cc1fbf27e16da09c04d0159591c51a321"
+        },
+        {
+          "path": "assets/sprites/tiles/switch_yellow.png",
+          "size": 864,
+          "sha256": "a076a35d9cc53f87f034a52010c2209f07692725eb0bf8414b677d8342a69228"
+        },
+        {
+          "path": "assets/sprites/tiles/switch_yellow_pressed.png",
+          "size": 612,
+          "sha256": "d1425d05e0077e738f80ae74e0b4604c463c599e8a3d0175cab1dfab0ce84738"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block.png",
+          "size": 1102,
+          "sha256": "93c8dfaaf7bcf7efac1c0cc83e7fcfc3ea58a37855f900bb7a63c88bb6ae6946"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block_bottom.png",
+          "size": 639,
+          "sha256": "87b2dba5e0e480c33d1519bd0f7846695711b3e239878689334a39ea83302ecc"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block_bottom_left.png",
+          "size": 793,
+          "sha256": "c32c0bc998354ec3a4372305384ff42bb33517d49a40e1ca2ab423e51e7c04c8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block_bottom_right.png",
+          "size": 784,
+          "sha256": "cdbd2601e531da37bc9b5e44ae45ff00986a9802678514f9f309ec667c6831fc"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block_center.png",
+          "size": 669,
+          "sha256": "45212bc8b38c6e5f584059123355467f291bfe1d0fe28ba46e059e64e26658ea"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block_left.png",
+          "size": 668,
+          "sha256": "85eed9c9fde78acb133c631d48fcbe59788c3795eedfac046e9d11eaefaae2d2"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block_right.png",
+          "size": 653,
+          "sha256": "4cf7ee899bf43f1343230d071d8f17af35812a0c83f7e097bdcf3896dc382eec"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block_top.png",
+          "size": 755,
+          "sha256": "97d0f3db40814a56c03f9dcd5019586d248f2aab679d5489f4a6987508f1f1fe"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block_top_left.png",
+          "size": 931,
+          "sha256": "4c577378d55b13883b9b791efbbc7d500610c91d317dc92b9a8d1a8cf4ca9901"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_block_top_right.png",
+          "size": 820,
+          "sha256": "09c57a49ef096dd3515fbd72245fe15e0ffaea0ed0188b5fc16e37cc07214fa6"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_cloud.png",
+          "size": 1041,
+          "sha256": "2644e465e52e8a0610709771dd57fd68952ad5622d44ea4a96cc68c27a7e8970"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_cloud_background.png",
+          "size": 1038,
+          "sha256": "0bbf3a23fe924236899a256592c9aab57970b9a10aa0cf4c0a28bffdb7eee014"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_cloud_left.png",
+          "size": 886,
+          "sha256": "a667fb7bdf0c5929bd44492526530efeafef90802fe0963af7c6f8b3ecf8013d"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_cloud_middle.png",
+          "size": 615,
+          "sha256": "9054a38e214aa8b1b88d12c692c32be56e5e4a7cc2d80e70f83b3b3b849894dd"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_cloud_right.png",
+          "size": 764,
+          "sha256": "b8e3fe36096cfd91c700d490a23b5defd488da5d29857fa1216ce1fa564f9823"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_horizontal_left.png",
+          "size": 961,
+          "sha256": "0fc5c36ecd346117e20ec38d60f4c708e509b6f238d9afc126cf75776b7bf1a2"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_horizontal_middle.png",
+          "size": 667,
+          "sha256": "79c3022625710f0455c06c9977efcd2c5b59749c087b74b9388931fa4f03d099"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_horizontal_overhang_left.png",
+          "size": 1264,
+          "sha256": "1f4c4f9749fc639d01fd96eee8e469b1d47a05beaf49c4c9f5e22cc937763f8f"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_horizontal_overhang_right.png",
+          "size": 1198,
+          "sha256": "a5b19f3ac8ccceabe2563a5526a6dba9bd67a5645668d1d8c6e92eeee7558954"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_horizontal_right.png",
+          "size": 1007,
+          "sha256": "1221bac6a8468282ccc30d8ae2bc9477a38afb2d2379879f2a78ac92917deab3"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_ramp_long_a.png",
+          "size": 614,
+          "sha256": "89519edfc672c26eb83d636a68ffdddc2bc7e773808a93171a2f75a551646a6e"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_ramp_long_b.png",
+          "size": 274,
+          "sha256": "952748d35952da0e9a677c4209dee26d3149a974d551f21ee3e31654f6573ca6"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_ramp_long_c.png",
+          "size": 864,
+          "sha256": "40d0322b7b1fa88561f495d71791c0b7ee225fa14bfe467b566c1cd7a74430e5"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_ramp_short_a.png",
+          "size": 747,
+          "sha256": "23e450c53290ba68686246d49db3366c0cbc1f234d33957726e1e8d4ef1404d3"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_ramp_short_b.png",
+          "size": 560,
+          "sha256": "64b28c81c860ef41d5715e206d048a5aad6b449d4c05528e55b46eff0680a5a8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_vertical_bottom.png",
+          "size": 850,
+          "sha256": "d72fe1d7b6289b847b32c128dee4543708744ce9a135a55c8e5e4b343d61c52d"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_vertical_middle.png",
+          "size": 659,
+          "sha256": "36f3ac93092495502744275df5d8f84a21a66433ff5bcce3a39b014013f1c265"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_dirt_vertical_top.png",
+          "size": 984,
+          "sha256": "a68097056f45db431d6d88f9822382aec3502975f49c5540e60ffb50c40d275c"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_block.png",
+          "size": 1106,
+          "sha256": "f0fcae533e78a9ed81dca587050e89bc9924d13c7a8d1a09465926445a96cf15"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_block_bottom.png",
+          "size": 638,
+          "sha256": "31b3c580c81d9267f4c59cce89f03067a69fb7c13f9012081746c4b7e17c6ba8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_block_bottom_left.png",
+          "size": 791,
+          "sha256": "7f940f890f4f670901ce3858a849b88c88e545956ef3c15c77df223a1c2694ae"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_block_bottom_right.png",
+          "size": 783,
+          "sha256": "4e092007e79a3654a248e1c026734bf61d7c1ad54e9c64eb597176fe4ae44d7b"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_block_center.png",
           "size": 666,
           "sha256": "5b8f08b5a557ce0600ae48f6702b0f3ec799484083faeca259cb7ef181ecc03b"
         },
         {
-          "path": "assets/sprites/terrain_grass_block_left.png",
+          "path": "assets/sprites/tiles/terrain_grass_block_left.png",
           "size": 666,
           "sha256": "f7d61b07336dcf566e55575051f9453a1265295e7c448b43a143b109e4970f72"
         },
         {
-          "path": "assets/sprites/terrain_grass_block_right.png",
+          "path": "assets/sprites/tiles/terrain_grass_block_right.png",
           "size": 654,
           "sha256": "81d0b60d9cc7084a3354c7ba8a965604d81f1eabe329e1a7c133ffd157e801dc"
         },
         {
-          "path": "assets/sprites/terrain_grass_block_top.png",
+          "path": "assets/sprites/tiles/terrain_grass_block_top.png",
           "size": 755,
           "sha256": "4eae0c24b3cac19c77025c789d9b6fcb9c1a98cdffe2a8375b32c86ebfcbdcc6"
         },
         {
-          "path": "assets/sprites/terrain_grass_block_top_left.png",
+          "path": "assets/sprites/tiles/terrain_grass_block_top_left.png",
           "size": 932,
           "sha256": "631f88597998244a6d4b679106987e27e04fdaeb7b6a2dba953d7c3e63526a4a"
         },
         {
-          "path": "assets/sprites/terrain_grass_block_top_right.png",
+          "path": "assets/sprites/tiles/terrain_grass_block_top_right.png",
           "size": 820,
           "sha256": "4f334ca4c7950e041b19fb000e63e6c16ac0554c55c86d970f032259c038763b"
         },
         {
-          "path": "assets/sprites/terrain_grass_horizontal_left.png",
+          "path": "assets/sprites/tiles/terrain_grass_cloud.png",
+          "size": 1044,
+          "sha256": "568078c7ae059a287163565ca68bda252c8e6ca2cba31689e6181e6342522fb1"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_cloud_background.png",
+          "size": 1044,
+          "sha256": "d9b7e1595306b4f27ab774a053a1ce1bb456ba3e582bb40437a70711e4e302e3"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_cloud_left.png",
+          "size": 885,
+          "sha256": "5cd221f3615b9e0b5149c9bd162f4712a952d654ae6108708d6f1c80171b5a83"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_cloud_middle.png",
+          "size": 615,
+          "sha256": "792bfc0fb5b4b3022f2500a25017c041f2e72425c6e9619f7b89d51d13e1f15f"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_cloud_right.png",
+          "size": 764,
+          "sha256": "297cead1d04558d310e6f9f274de21b323be36540d5d7d72805d76000e1797fe"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_horizontal_left.png",
           "size": 961,
           "sha256": "b60f4bd5c8bb4cdd3991a78aca1be06f5558eaefa56bb163bdafa27d2039a439"
         },
         {
-          "path": "assets/sprites/terrain_grass_horizontal_middle.png",
+          "path": "assets/sprites/tiles/terrain_grass_horizontal_middle.png",
           "size": 667,
           "sha256": "86783ffa474a524bc3f83eaf698e21aa1eec821ef911f9bc45f9099a90b7918b"
         },
         {
-          "path": "assets/sprites/terrain_grass_horizontal_right.png",
+          "path": "assets/sprites/tiles/terrain_grass_horizontal_overhang_left.png",
+          "size": 1268,
+          "sha256": "19d5ef65ec7bb378b6123f5d263442cd4ca881fa1b04011f410e2ffd9381a641"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_horizontal_overhang_right.png",
+          "size": 1202,
+          "sha256": "27f69682e732e05761c719272cef5a1673891dfbb464401e52ca35c3bcc52a55"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_horizontal_right.png",
           "size": 1007,
           "sha256": "b9df7fc14464fee87126a20db3a216481f13db19cb546e0b27382b2d50b21d95"
         },
         {
+          "path": "assets/sprites/tiles/terrain_grass_ramp_long_a.png",
+          "size": 614,
+          "sha256": "2f3fc297d96065dfc45627bee7df5f8d9d0de9da373f5e7354706007b7c30fed"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_ramp_long_b.png",
+          "size": 274,
+          "sha256": "35c241687b8d2743f309dab558e80f57cb78708ff5889efbe71293d635d43b48"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_ramp_long_c.png",
+          "size": 864,
+          "sha256": "7a558dced53e66579843cbe91fcdb57973959a6b65ff0a64298311d47d9478d5"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_ramp_short_a.png",
+          "size": 744,
+          "sha256": "7f1b4cbf7bea361452bc0255c8dc2e5842ac98c96271add0212c57953fd163f0"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_ramp_short_b.png",
+          "size": 560,
+          "sha256": "c0a33a89fcf51db49293515112e84294ddacf029a8ca167ad60843cbe4cbb944"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_vertical_bottom.png",
+          "size": 859,
+          "sha256": "8ec24c54102d5f0fb220c49bce3bb13e3cf6473eb8eaf24d0d50c2c8a6aafccf"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_vertical_middle.png",
+          "size": 658,
+          "sha256": "6eab0b0cbd00cca897afd56ba2282f5acc31665f97e391ef4d033dbb7728f7ee"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_grass_vertical_top.png",
+          "size": 983,
+          "sha256": "7b6826b794970ee0c3fbfc57b8eb558e75ee9fe9196daa06b24c1a1a1a3222ec"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block.png",
+          "size": 1272,
+          "sha256": "5387367bbe26c3a0827b73a3075bfc9b9721320535314a98c9cae51b7223c443"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block_bottom.png",
+          "size": 588,
+          "sha256": "f2c720353f77c270db8542d0a973700c882f3001221b9ac3d3e0d3d78f455244"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block_bottom_left.png",
+          "size": 717,
+          "sha256": "64be3610cebab20e9fc3c6b765314535746483c024d4983b2926b9ca7acef798"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block_bottom_right.png",
+          "size": 742,
+          "sha256": "0249b8636c821924162b2e0d6106d9b2c706d4d3f266922cd858607e29db3205"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block_center.png",
+          "size": 583,
+          "sha256": "426b45eb90138b721dda2f37f503fb6faa8ee57ba3f35cbcd5261a15aca0de0c"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block_left.png",
+          "size": 576,
+          "sha256": "809d93cf857c943c81fc3abfcb78ca6430162b91f147cfd60d4eb9f8486f01e4"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block_right.png",
+          "size": 590,
+          "sha256": "810523027db825311036a1e69948b4c5161fe12ae307aac967d03caecf4a71ef"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block_top.png",
+          "size": 698,
+          "sha256": "eef7ee42963dbbe0cd2763be52c6bedc79244848790cfce62d52a3501ffbd609"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block_top_left.png",
+          "size": 924,
+          "sha256": "3ce38ba353588e549f932ec8dcb063832623b84bd198607f5fcab2def56278a8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_block_top_right.png",
+          "size": 944,
+          "sha256": "7c1ad21fb0cfca1cdf47f8fb4222d7aa5bfef26d20b86e2d7be5fbba2febc161"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_cloud.png",
+          "size": 1300,
+          "sha256": "68aebc1aaf54feaf6136a4868f1af21d765c0d1da88218df0a514001b0359af5"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_cloud_background.png",
+          "size": 1201,
+          "sha256": "bc3782a435d6de3a69a79beb585df6ab317f7b0358b195772848f0abccc102c1"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_cloud_left.png",
+          "size": 1066,
+          "sha256": "26f9e3a1390068280b6ac5e7499a1e8ed56d39756bf759bef8e36790e57ef112"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_cloud_middle.png",
+          "size": 813,
+          "sha256": "eb6862fd2109bc4990598365d3703b0983a0c0a1cfeaa7edece8af970ee4e5eb"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_cloud_right.png",
+          "size": 1063,
+          "sha256": "c658cb3307d2edfe3f1678f6f1b3499b5b3e7fd21a0847106e2cdfe3611c7161"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_horizontal_left.png",
+          "size": 1009,
+          "sha256": "38e7e6f8491377cbe9469440ad1f32e76e225e6181aad8203f38e8e51a9b46c5"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_horizontal_middle.png",
+          "size": 704,
+          "sha256": "cd2a4b870a52d44bd2c70942805a2f3b5f5d0e2f5c5b7bf0dbee262fbd5c9ded"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_horizontal_overhang_left.png",
+          "size": 1226,
+          "sha256": "f607450c99b62ef53235b02212220d55f7e0ecf9e12b6273c61d4e197d61cc4c"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_horizontal_overhang_right.png",
+          "size": 1249,
+          "sha256": "0eeb7cb334aaa528fe032891085e0ae2ebb3e48762caf6455b04fb206257c8a5"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_horizontal_right.png",
+          "size": 1026,
+          "sha256": "a285f113357e8a8be3402c17ba839ba7b6522c6aa8118deda901438b2d8d3732"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_ramp_long_a.png",
+          "size": 757,
+          "sha256": "d5b1b0284e1b03e80a981c9b426e6bb816b9eec68d41a59bb1fa968add25ccac"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_ramp_long_b.png",
+          "size": 270,
+          "sha256": "7433a201c3fc75d6592d9789f7cb1b580092ff4af728b6943fbddd4bf2a82895"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_ramp_long_c.png",
+          "size": 937,
+          "sha256": "723cc9a0f4ef03d311c58b8af7590438704a346c18bca79591626f241a9e6bdc"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_ramp_short_a.png",
+          "size": 695,
+          "sha256": "1e590858bc29b81a5127ac77b4cc01cf352b88b96a6902103637ab751ee0509f"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_ramp_short_b.png",
+          "size": 584,
+          "sha256": "1916db74016ec9d6327e36b1efa93052de9d929155d5b02d4904bbf326da72ad"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_vertical_bottom.png",
+          "size": 769,
+          "sha256": "0d9be9ec83c484c3e1e5a686ad3f5e4aaabdd40617ab3d40a378b41b339dac0a"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_vertical_middle.png",
+          "size": 574,
+          "sha256": "186c228b952511eb978010ef7407ca41c72bebda3188b8fdd3582cdd8882da1f"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_purple_vertical_top.png",
+          "size": 1142,
+          "sha256": "f665886cd70f3db74b5aba86d70e400fe2217c8afa4fc36762c4498faa04b1de"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block.png",
+          "size": 1313,
+          "sha256": "0acf5f076f5335d40231171c592afa48e2b63a128238cdcf34494e72645cd1b4"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block_bottom.png",
+          "size": 729,
+          "sha256": "487bd9b5494999bf5cf201e0e76439171023e119b8b952e1b97106b458f1a31b"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block_bottom_left.png",
+          "size": 807,
+          "sha256": "1dfad9cb0165ef95f8c2036db5e1b14cba3f34cc76799ff50b055323beea6625"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block_bottom_right.png",
+          "size": 791,
+          "sha256": "6cd7d00300d28a6c9aad555a99abab4ea4071ab5bf49aa21a7b87eddcf6e0228"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block_center.png",
+          "size": 683,
+          "sha256": "8d880630ca501347410740f6ac3bbb07c825c163b1f3b586e31d033eb6996f0f"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block_left.png",
+          "size": 674,
+          "sha256": "8741417f4dde7a3fcbd369abb6c34c65c9a80e2bf9d8cf133a2a327f91dacfcf"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block_right.png",
+          "size": 686,
+          "sha256": "08ef9da0c84b37192b203483ffd6803892453cd693965365be4265da82210457"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block_top.png",
+          "size": 1003,
+          "sha256": "47768de322ddeb85b33fec957963e0d1fff3011a7e768ab4586773b1c8e2a52a"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block_top_left.png",
+          "size": 1182,
+          "sha256": "8824a50d917f2e9aa0d14987823e95ef51b41fbd421cc435bafbc603d1c2f24c"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_block_top_right.png",
+          "size": 1085,
+          "sha256": "4eb09ef2fe0b17196ed872648b3210f3067adb717c7817a99d80710a9439933b"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_cloud.png",
+          "size": 1284,
+          "sha256": "1c1dfe7e51d446bee9fa019b6eeb3c7b1ccc6e8ddacf0e77d820ab3d6d414565"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_cloud_background.png",
+          "size": 1234,
+          "sha256": "bde2a02b7ee4c02960b873e2b8e5e641c84cd85e90868f56e2bc000891607274"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_cloud_left.png",
+          "size": 1218,
+          "sha256": "52bf4b332fb732560e7abcc29790b063f418e962dcdfe9ae1498deabb261b1db"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_cloud_middle.png",
+          "size": 966,
+          "sha256": "e68dfbf40262068c13047626071cba8f9d0383d9de833de67caf2f04fa0bdde0"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_cloud_right.png",
+          "size": 1174,
+          "sha256": "379d42f02f3b7d951f37c1a8c131dee893df9605fec39eee2810147a9479c7be"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_horizontal_left.png",
+          "size": 1186,
+          "sha256": "21bb1cd7518e8b8bcc5677c2c3ea530ee7fe1bf9879aa380487b94e7f7fd2db0"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_horizontal_middle.png",
+          "size": 905,
+          "sha256": "72165469ada1cdc6a661ae0d899fb5a8f689cebb45798d4de9f67df27206b2dd"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_horizontal_overhang_left.png",
+          "size": 1407,
+          "sha256": "95a4bd188c72764b7b1f892711f68586ef2920ab2dab01e9957418a6f223237d"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_horizontal_overhang_right.png",
+          "size": 1435,
+          "sha256": "dc44bb745f123c6c88efe8193f725967aab83de04cc26e5e3611fb5597b34786"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_horizontal_right.png",
+          "size": 1195,
+          "sha256": "16baf9d4a92c2929443475350b603af89146e6a85e0e51c59cc4cd63afc299e2"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_ramp_long_a.png",
+          "size": 778,
+          "sha256": "6ad299ec1d46c5b609025e2d2036d9238995a651d53946231b6f93dc7dce17fd"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_ramp_long_b.png",
+          "size": 270,
+          "sha256": "63007adba38a06fdbc19f097a19516812193d00a1c066732a6ac7c4817fd98a8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_ramp_long_c.png",
+          "size": 869,
+          "sha256": "d93b3bef624bee330aae1d9973b52d1df40287d140aa68a3e6c70d6b526b85d7"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_ramp_short_a.png",
+          "size": 811,
+          "sha256": "2d72919eb80b31f74660bf61761139cc82edb5838b5010a4b1c7b0da052682c8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_ramp_short_b.png",
+          "size": 506,
+          "sha256": "7983dbe4bef6ba23950a805cd69f68093ebee3cb32caeb1b29163a536e1c32f9"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_vertical_bottom.png",
+          "size": 919,
+          "sha256": "e8630de7e029cfdd353866840cb1cf7d7f078710cb1f13052a3f4d067bb3a607"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_vertical_middle.png",
+          "size": 695,
+          "sha256": "cbab79c92c441c1fb67c948946cb120b68f079220adf43e3f72921d584e41931"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_sand_vertical_top.png",
+          "size": 1155,
+          "sha256": "5a4fbc230d9ca6cabc6da535599ee36b34b04d1d5c601221a26fa3f3fd891589"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block.png",
+          "size": 1369,
+          "sha256": "9ecc92e8371cad7dca396105068273ac1e1f369f60e14da509dd0a85bdb116be"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block_bottom.png",
+          "size": 719,
+          "sha256": "e5028d89cf4fce7c5156ac1a10f0db7209ed57b832297340ef0ead12c06b8af7"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block_bottom_left.png",
+          "size": 798,
+          "sha256": "10ba2e554b1b644e73fb105b44b3fc0728d406716c4dab05e40c69d4a4bc13f9"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block_bottom_right.png",
+          "size": 783,
+          "sha256": "49c2927ee597dfc39326d32326a04505a459461f950fa501c66830e4161568fb"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block_center.png",
+          "size": 673,
+          "sha256": "33586434753a5acfd48bd22237501d73378256095c11b570cea5bcd2a37bbbf3"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block_left.png",
+          "size": 665,
+          "sha256": "e2f64b62420a7ebc3278a772d8d5b48c0e5abe2a566097988ff2c7f64d42aeb9"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block_right.png",
+          "size": 677,
+          "sha256": "41ecefcdfe4b1425494710183ad3a9914e6ebe8b40fbdc492998a1abfc7e1ef8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block_top.png",
+          "size": 990,
+          "sha256": "51009f4ec1ce8d0b20f8b414efc1717a25c433fe7a211925cba388a34af0e4d5"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block_top_left.png",
+          "size": 1267,
+          "sha256": "efbc2f110b6fe308eb102f833b7bc3ec0502df758e2d5a8ccbad91228f58bfce"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_block_top_right.png",
+          "size": 1132,
+          "sha256": "522bed4e729027d1f1ea7a04ebbcc3929ff06db51ad2799fca03634034594f9d"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_cloud.png",
+          "size": 1328,
+          "sha256": "92acce88ae3227e2b24c768f77a94dcd19cf93c348b74c600bec1147cd3c502b"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_cloud_background.png",
+          "size": 1267,
+          "sha256": "07875e99b0de699083e0a830578bd6a781b30b59120e096a8d499685bb98bcfd"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_cloud_left.png",
+          "size": 1267,
+          "sha256": "a2a23db3f51c700d07e097f206160e022913133b318e1384ca771397eb55f56e"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_cloud_middle.png",
+          "size": 967,
+          "sha256": "9d8729192c290753bff8b7c4ccf149ea51aff0539247aa0d828f8b476813497a"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_cloud_right.png",
+          "size": 1294,
+          "sha256": "d69b72d23f5d21962cca72e2e348f6c36a4561ac24f882b14b955baedbec903e"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_horizontal_left.png",
+          "size": 1264,
+          "sha256": "f6478090e5a971a649ef8b9e43002e6e62de05851c534a9e4403467e87babf76"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_horizontal_middle.png",
+          "size": 892,
+          "sha256": "699b1665ebf8e96cd361518f15cac332c6f2bb9f55ec039147a3b06455793139"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_horizontal_overhang_left.png",
+          "size": 1476,
+          "sha256": "adf08abfa241b9d68baf845127599b0baa82e33ca2db87f2a3630e5347926555"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_horizontal_overhang_right.png",
+          "size": 1424,
+          "sha256": "3df528e2921ec8ce402521d7332f57748c670c853bb3eed07cfdd861c322b4e5"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_horizontal_right.png",
+          "size": 1220,
+          "sha256": "067279b8c3b3c212ef760244a5ce53cdaebf36e88df1a2ed8db792b15e500cf5"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_ramp_long_a.png",
+          "size": 770,
+          "sha256": "23a8f549962e0a6e6cef7f30f8c979fe7fafffa18cc4941e22877a41dab4340c"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_ramp_long_b.png",
+          "size": 270,
+          "sha256": "27cac1dce84bba17ad2b400edcb85728d065aa738c64e2a9532bddd64dedad23"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_ramp_long_c.png",
+          "size": 857,
+          "sha256": "cb041cd73d420fb59d0a8441499c81955f64a9c937edfcc8bd3c37a671beb4f8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_ramp_short_a.png",
+          "size": 804,
+          "sha256": "64486f071aefd0a09383b034f0ed07bebbd8ebc2871d3001a80d451c572c837e"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_ramp_short_b.png",
+          "size": 498,
+          "sha256": "aac035978783f55d2a9aebaae90542be44a5e0e00818017c60679839dc840864"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_vertical_bottom.png",
+          "size": 908,
+          "sha256": "c3572169428a55f71bd74c3639a9719df55b7c438ef6797a547c60f82dd08f1b"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_vertical_middle.png",
+          "size": 687,
+          "sha256": "9f850dbbbbb6a84da8e22fc47c260378f0fbc6f92bdf4e9dcac798275cad6716"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_snow_vertical_top.png",
+          "size": 1203,
+          "sha256": "6a2721989c06fd57ffc0bb34bf9c25b6d24fc591674226bd194edfae1a9ed3f8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block.png",
+          "size": 964,
+          "sha256": "ddcb8851134f9269d7b8a0cba63a3a5749a267990451c266e13ffe69b6d64961"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block_bottom.png",
+          "size": 488,
+          "sha256": "5d58be3a9266b448b953d137bedae2880dfbe1cad852d505b0232a2d51be750a"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block_bottom_left.png",
+          "size": 654,
+          "sha256": "04847c9ca7cfbca3f372f147f298ce444af4740f76fb4ec82403555ad3492862"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block_bottom_right.png",
+          "size": 658,
+          "sha256": "681d629d5cc82ddc04fff100a23dd7a8d5f49b87d19063b9380bb53f75b44925"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block_center.png",
+          "size": 503,
+          "sha256": "d9f7523736b7b28fbf5c3e9d6694a8585ca4d443c4050fee89de85ccebade222"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block_left.png",
+          "size": 540,
+          "sha256": "be9353b806cd6aa5b321f40b86b10e371efaa412392687ac0ef20c1319aec61c"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block_right.png",
+          "size": 538,
+          "sha256": "da3463367acb4c84cac85c96dbf87fb145d5330127e4f2e14555ff9ef95ff488"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block_top.png",
+          "size": 556,
+          "sha256": "e6ede2e9dbd6beec89b2b4fc13f798183ad002e1c8a1eb6692192bcd5a161101"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block_top_left.png",
+          "size": 763,
+          "sha256": "1d5793e74ba2c4ddf5fa105fc7a521cd09685edd3657e092aa824b67a8527871"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_block_top_right.png",
+          "size": 767,
+          "sha256": "680f4c49e73be1b952aaea7192bfe019c1de20be5f9cc7f6f688dfe4a5ee3050"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_cloud.png",
+          "size": 919,
+          "sha256": "70d8112b1a089467b30238b1576588e14bab4b095914ee259e933de84eb95aa8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_cloud_background.png",
+          "size": 963,
+          "sha256": "5ea58b396eb862db610c4bc3b01991a5d1e8961634f5edeb2d3449a8d4010f99"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_cloud_left.png",
+          "size": 774,
+          "sha256": "1e57d7b62d4e61b9b2104f4301aa7ff8e1c3fcbe2836e068b247013a1221a5f8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_cloud_middle.png",
+          "size": 537,
+          "sha256": "550e5c181e30cc02c4ce20db7ee9ee6aa71c7a77fb6c9efaa8db75e9d59fad6b"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_cloud_right.png",
+          "size": 764,
+          "sha256": "4b8fa50493b399206d998f422bd465e74ab3b1c9d7b247c0c52c99a07b57afe9"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_horizontal_left.png",
+          "size": 834,
+          "sha256": "7b6b1c9f021a3f350426f1aa43c239bd7f5db4cf535af3da15579886d3b6f0e4"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_horizontal_middle.png",
+          "size": 540,
+          "sha256": "85aa3aaeb9bb0c1ac42c07a72066eb0e8bf3edec589dcabd6ae1ae6bf2678a00"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_horizontal_overhang_left.png",
+          "size": 1021,
+          "sha256": "8d46df2a62a514e7952294f9f804b00c5dc35518c0bfed9544fc26a189aae36a"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_horizontal_overhang_right.png",
+          "size": 1009,
+          "sha256": "1c3608d2eb17b8b9828167d00f75236cf2e94f69a01ccb0a8c8e16528be45d26"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_horizontal_right.png",
+          "size": 825,
+          "sha256": "457eede1d55c68710ce7c0076707ed165d51191a5cd615f691e9ef30cc08f25d"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_ramp_long_a.png",
+          "size": 605,
+          "sha256": "96ae0dd7c1ce54944babe58898c64de59993f3f0c0b02a62caf90cdd83184480"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_ramp_long_b.png",
+          "size": 344,
+          "sha256": "a1cc54df9d53a9422304793e4a6e99f6ac5a5ef90f2bb7acc3f85db5c215625a"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_ramp_long_c.png",
+          "size": 610,
+          "sha256": "60fcf6813d4081b450f8577e0fd2cecbea8dd01b0aa12dc72db788c99c7855c8"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_ramp_short_a.png",
+          "size": 598,
+          "sha256": "24142b8ffd8dc396e7a6ae20f044c21d84601eaef8da2d6bcea4836504b9dcf9"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_ramp_short_b.png",
+          "size": 477,
+          "sha256": "36c7e5820a70d1022b38b7c70f2fd539646649a440862b16cc9defdf249f1ff6"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_vertical_bottom.png",
+          "size": 698,
+          "sha256": "451fc5f86fe3f14013bf311cfa9a0ab9e19e7dd8e07b2b5d03e6cbb25636e130"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_vertical_middle.png",
+          "size": 508,
+          "sha256": "a5898bccb38cfd2897d4662172a8cedeafe974588e28e7a263bfea3c3dd504af"
+        },
+        {
+          "path": "assets/sprites/tiles/terrain_stone_vertical_top.png",
+          "size": 850,
+          "sha256": "3d86ecc5f20ac052687b830be2c49bfb59b44e6a0272a24e305ea5e724167535"
+        },
+        {
+          "path": "assets/sprites/tiles/torch_off.png",
+          "size": 740,
+          "sha256": "5407a31b14b6783d38508c1a50eeeb3cdc17f04a228153bbc76506ba10229eb6"
+        },
+        {
+          "path": "assets/sprites/tiles/torch_on_a.png",
+          "size": 1473,
+          "sha256": "61ea5b3fc33971a61516c4f5ac820c9c26e2346b3b37305b148619d642a26d5f"
+        },
+        {
+          "path": "assets/sprites/tiles/torch_on_b.png",
+          "size": 1481,
+          "sha256": "1814f81b0fdff1f37ccd0ab28a70c2b75519331e8e7105b85c71e814938564d7"
+        },
+        {
+          "path": "assets/sprites/tiles/water.png",
+          "size": 507,
+          "sha256": "bfb92dae338c9affb119cfc0f293b48cb59f1166207c5f2a5bd3e360b0d1504a"
+        },
+        {
+          "path": "assets/sprites/tiles/water_top.png",
+          "size": 801,
+          "sha256": "630faf38495cca9b9250b661f88fbacb58edb271fee667d8e416a4b99da6304a"
+        },
+        {
+          "path": "assets/sprites/tiles/water_top_low.png",
+          "size": 598,
+          "sha256": "ac4e572095906f591bbca9d580082f090a1d22ea23532154278a456af07c8704"
+        },
+        {
+          "path": "assets/sprites/tiles/weight.png",
+          "size": 1256,
+          "sha256": "bf98194c4b858b79a21273d29a7b34243cefa148b776d5d4c39d26496dcdecef"
+        },
+        {
+          "path": "assets/sprites/tiles/window.png",
+          "size": 1049,
+          "sha256": "02a7ea9ad8f8cbccd9b0117ba51a56aa83cc2d19f8be5b78e056cb1f2a1263c1"
+        },
+        {
+          "path": "assets/vector/characters/character_beige_climb_a.svg",
+          "size": 4946,
+          "sha256": "3d8a64a0271fe8a9d51659bbffd3641ff17c0612fc77203256d01b24d427f17a"
+        },
+        {
+          "path": "assets/vector/characters/character_beige_climb_b.svg",
+          "size": 4960,
+          "sha256": "919dd8ef9f4bd7989fd1b1ad4345210490ade964984f10a5a59ebf8ac9d28a2c"
+        },
+        {
+          "path": "assets/vector/characters/character_beige_duck.svg",
+          "size": 5837,
+          "sha256": "63ec90942bede4ca82f7f2d48cb3a847241908272a8360ccb3ea33f529d27deb"
+        },
+        {
+          "path": "assets/vector/characters/character_beige_front.svg",
+          "size": 6027,
+          "sha256": "5fd61491156583060ee0f22de98829352840f20af72b54dfb1d4b31788edc8dc"
+        },
+        {
+          "path": "assets/vector/characters/character_beige_hit.svg",
+          "size": 6125,
+          "sha256": "c42beb512ce4868b4bce705e40f0e9675fc367cba92f1ad25399033947612b5f"
+        },
+        {
+          "path": "assets/vector/characters/character_beige_idle.svg",
+          "size": 5535,
+          "sha256": "26596a493b0de430b54e13eebf8044bcb5082a07504d91d9f27b2dbd92f696df"
+        },
+        {
+          "path": "assets/vector/characters/character_beige_jump.svg",
+          "size": 5833,
+          "sha256": "e70b0f22d699a060beef3da1ca7d8aa09de3302cbbfed52fc9a76a564891cf3c"
+        },
+        {
+          "path": "assets/vector/characters/character_beige_walk_a.svg",
+          "size": 5612,
+          "sha256": "d3cffc8aedffbaaeaaee298d52c721bb5010fc774e6999022dbe08e99e40b784"
+        },
+        {
+          "path": "assets/vector/characters/character_beige_walk_b.svg",
+          "size": 5650,
+          "sha256": "149188d962dcad48b391d25f314078e76efa531745b0bbb1bde69f60d9fa990d"
+        },
+        {
+          "path": "assets/vector/characters/character_green_climb_a.svg",
+          "size": 4946,
+          "sha256": "2ef039c8c8cc77997709f42a6d3f974ba03a60574d53692aa0bdfb561202929b"
+        },
+        {
+          "path": "assets/vector/characters/character_green_climb_b.svg",
+          "size": 4960,
+          "sha256": "5615677e3642ca191c314c2010ce1eefad79337a2796d3acf6e00c0ff2f52d0c"
+        },
+        {
+          "path": "assets/vector/characters/character_green_duck.svg",
+          "size": 6565,
+          "sha256": "ca5ffa4cf1d0b817176809b41be4400a83aa1ba55fe5387b6bb31f0a5b98d5ca"
+        },
+        {
+          "path": "assets/vector/characters/character_green_front.svg",
+          "size": 6426,
+          "sha256": "36082a4667869baa4ecdcf365dcabb3ebdd50441e35f9fb087749aa0f2e906fe"
+        },
+        {
+          "path": "assets/vector/characters/character_green_hit.svg",
+          "size": 6543,
+          "sha256": "cb30cd85d74b75c1555133aa628f1f09c28801f72fc53c0419d35e70c11e8ebd"
+        },
+        {
+          "path": "assets/vector/characters/character_green_idle.svg",
+          "size": 5853,
+          "sha256": "34e994a87a6af1ee2ed3da1b1f31d0bceafd2002396c60e991eb79ee8b689a5a"
+        },
+        {
+          "path": "assets/vector/characters/character_green_jump.svg",
+          "size": 6248,
+          "sha256": "f531f02dfb70624b4477b33b29752158b41fec23f76d3e68118a001b5c249bc2"
+        },
+        {
+          "path": "assets/vector/characters/character_green_walk_a.svg",
+          "size": 6011,
+          "sha256": "8502f4b5e7dd857ad36efe4de6d5485e414bec6e58537cbd331bf6d53dfefddd"
+        },
+        {
+          "path": "assets/vector/characters/character_green_walk_b.svg",
+          "size": 6049,
+          "sha256": "3f1721b5c45502feeaa53ac2df1fceeaacfb2e2e8e42e37fd2a06e4cf728ee17"
+        },
+        {
+          "path": "assets/vector/characters/character_pink_climb_a.svg",
+          "size": 4946,
+          "sha256": "5a391d1b8cdd4c7a3982c67b00138cf7645c7bf703f3a9878e5766879b9d937e"
+        },
+        {
+          "path": "assets/vector/characters/character_pink_climb_b.svg",
+          "size": 4960,
+          "sha256": "f22c67b8b0c234079d77080a4a718ef675f724f596ab2b084652240973a19f92"
+        },
+        {
+          "path": "assets/vector/characters/character_pink_duck.svg",
+          "size": 5648,
+          "sha256": "2ed07147192dce0d84988112917af73f7d18b4923ea26cf7e18016589d5f8211"
+        },
+        {
+          "path": "assets/vector/characters/character_pink_front.svg",
+          "size": 5945,
+          "sha256": "362ed5608c576c2e95ad528970b3d379c77cebe34b72a8ed792881036579665a"
+        },
+        {
+          "path": "assets/vector/characters/character_pink_hit.svg",
+          "size": 5948,
+          "sha256": "d82036123e7c66c9c9739c41aa246a44a0c08799d40e1a69616e40137d3c2d15"
+        },
+        {
+          "path": "assets/vector/characters/character_pink_idle.svg",
+          "size": 5358,
+          "sha256": "ec6eec87a822648fc5c9360c6d3f18fb6d9d8ab579cfef30d7bc19df8014e589"
+        },
+        {
+          "path": "assets/vector/characters/character_pink_jump.svg",
+          "size": 5656,
+          "sha256": "ff0dfad6bd0ba1a4c42cd1d80f24dcfe4c936e35cb015f47dd086fdb80e44130"
+        },
+        {
+          "path": "assets/vector/characters/character_pink_walk_a.svg",
+          "size": 5435,
+          "sha256": "dd205fbc03aca2d816cd3427f837e5edebefe4e669cbd0d2a864ef345384d54c"
+        },
+        {
+          "path": "assets/vector/characters/character_pink_walk_b.svg",
+          "size": 5473,
+          "sha256": "d7f099fa645c7aca61f874cc14b23f5f3f5cd1711a474485b28d00480282a454"
+        },
+        {
+          "path": "assets/vector/characters/character_purple_climb_a.svg",
+          "size": 5352,
+          "sha256": "e8327db83cf2553ff68370822f00efb2f25e25a062c9b159e588fa0b2b37322e"
+        },
+        {
+          "path": "assets/vector/characters/character_purple_climb_b.svg",
+          "size": 5366,
+          "sha256": "0e189c88666427968a145673d8ae732ec60dad83b5a53e7fed413c288a3aa142"
+        },
+        {
+          "path": "assets/vector/characters/character_purple_duck.svg",
+          "size": 7054,
+          "sha256": "f9a6d430a77d15c2217d4587efbd9cbe4a92b7c27c9adbfc03034ce8023beb27"
+        },
+        {
+          "path": "assets/vector/characters/character_purple_front.svg",
+          "size": 7256,
+          "sha256": "7b29559b762c4f2022a5540aff0a813418e15929927efffc0685b89b723008ca"
+        },
+        {
+          "path": "assets/vector/characters/character_purple_hit.svg",
+          "size": 7364,
+          "sha256": "cf8d561aa9291246a444b03d498fcbd380b9e230fc92c916518e1ebd61783ede"
+        },
+        {
+          "path": "assets/vector/characters/character_purple_idle.svg",
+          "size": 6764,
+          "sha256": "327c2531cfbfebf722ab2539c072747ab567529699f99f45742f33a4b2104471"
+        },
+        {
+          "path": "assets/vector/characters/character_purple_jump.svg",
+          "size": 7062,
+          "sha256": "643395c8b1370b754a9c85448f0e17e53a9363c44bbb9d3b63b3214c5e6794c0"
+        },
+        {
+          "path": "assets/vector/characters/character_purple_walk_a.svg",
+          "size": 6879,
+          "sha256": "64e4e061d2ba450f60624c3c7847279ca76e1e116c433514fc82c1de3208f3b8"
+        },
+        {
+          "path": "assets/vector/characters/character_purple_walk_b.svg",
+          "size": 6879,
+          "sha256": "2151d3df8a9119402067379dc0f8c09af42de51a6f75383495f12fef8e83bcbf"
+        },
+        {
+          "path": "assets/vector/characters/character_yellow_climb_a.svg",
+          "size": 4966,
+          "sha256": "53f39a37fd51cdef5912447c08299fc6c6f30dff82d8b60604f068abaaaeb533"
+        },
+        {
+          "path": "assets/vector/characters/character_yellow_climb_b.svg",
+          "size": 4980,
+          "sha256": "cf91639cb2e03bafe338091a04ca7f2906b117326e2fae87adbc622ab5502454"
+        },
+        {
+          "path": "assets/vector/characters/character_yellow_duck.svg",
+          "size": 6340,
+          "sha256": "f1505ec59afd0fc20d8480c5be2bb6ff43a4f9184d0961bda49a2140a31efed1"
+        },
+        {
+          "path": "assets/vector/characters/character_yellow_front.svg",
+          "size": 6585,
+          "sha256": "97466a6660787db0b374277fdb50013aed784fc1b409c5ea3672c2f3f18ecbe1"
+        },
+        {
+          "path": "assets/vector/characters/character_yellow_hit.svg",
+          "size": 6683,
+          "sha256": "637c726e7f6a78e257f83d897b54bdef8dafc89d1ec7af3aacb1c85bcb4dcdad"
+        },
+        {
+          "path": "assets/vector/characters/character_yellow_idle.svg",
+          "size": 6012,
+          "sha256": "35a13d14b073489f872223ce2e2f136847ba31b9a11442946a013fd331787682"
+        },
+        {
+          "path": "assets/vector/characters/character_yellow_jump.svg",
+          "size": 6391,
+          "sha256": "28976be595d4abbafd1237c947837b29ffca713a96d3d36ec63fb85dd2eb4132"
+        },
+        {
+          "path": "assets/vector/characters/character_yellow_walk_a.svg",
+          "size": 6170,
+          "sha256": "3e8528d4e9a4588cbdfa979c96fb1be0414d1351eeae016e8f4bc48d7097b6bf"
+        },
+        {
+          "path": "assets/vector/characters/character_yellow_walk_b.svg",
+          "size": 6198,
+          "sha256": "78e302161e1fe6c188b560e59c0407c56347d1843b2810b9342a3e584b3e47ac"
+        },
+        {
+          "path": "assets/vector/enemies/barnacle_attack_a.svg",
+          "size": 3180,
+          "sha256": "ffc75d3222367df6b2c024f976de5425be7f5345deb46cc8c31bb7543f8e4eda"
+        },
+        {
+          "path": "assets/vector/enemies/barnacle_attack_b.svg",
+          "size": 3154,
+          "sha256": "e3a4d54c8e58fe9bf248992e8ce7cf469f3da61680c18995fcdd8d032b22e769"
+        },
+        {
+          "path": "assets/vector/enemies/barnacle_attack_rest.svg",
+          "size": 2918,
+          "sha256": "4f157aa5e41425034c6c1b391b17d02abbdcfc3c0d724ec0c7c2a17e2abcbb2f"
+        },
+        {
+          "path": "assets/vector/enemies/bee_a.svg",
+          "size": 4392,
+          "sha256": "604753cc79e19c1348dc49adafba2ef2da9ffc0d07b6b471faa8020dbe41e895"
+        },
+        {
+          "path": "assets/vector/enemies/bee_b.svg",
+          "size": 4347,
+          "sha256": "43bb576a7b5397b5e451ff1ca0ca36586cbf96861c8eee9db2852b654106bec1"
+        },
+        {
+          "path": "assets/vector/enemies/bee_rest.svg",
+          "size": 4130,
+          "sha256": "4a0e12bde85d172d8e8b9408ed7609c3532cc7e0c3f76da8627cdb9b0fdf34a1"
+        },
+        {
+          "path": "assets/vector/enemies/block_fall.svg",
+          "size": 3969,
+          "sha256": "2c0354b50734adbcf4036e39b7712d99b0d3c00330c5b641423be72c0eef4bcf"
+        },
+        {
+          "path": "assets/vector/enemies/block_idle.svg",
+          "size": 4523,
+          "sha256": "628b0b0e168bd9565f11cc37ecbb5a44b78ec6ec4d48631011eb028bdb590ee8"
+        },
+        {
+          "path": "assets/vector/enemies/block_rest.svg",
+          "size": 4061,
+          "sha256": "030561d60b2c209296aa823dd3ad92eb3d61a05d2eeab3c5d59801c2b4ebbd8d"
+        },
+        {
+          "path": "assets/vector/enemies/fish_blue_rest.svg",
+          "size": 4240,
+          "sha256": "40512a445b428d0671a2189111dffd9d3d5b95fb7c9935a1e839ac55574fc75c"
+        },
+        {
+          "path": "assets/vector/enemies/fish_blue_swim_a.svg",
+          "size": 4576,
+          "sha256": "366775ea2179829b2e5e5eb23bf198d30f007aa9766aa914c65ed1c60be6f0b7"
+        },
+        {
+          "path": "assets/vector/enemies/fish_blue_swim_b.svg",
+          "size": 4503,
+          "sha256": "ec16ed241291762bdd36c79cfaef6ac3fecbed15413d66c491a3470251050f6a"
+        },
+        {
+          "path": "assets/vector/enemies/fish_purple_down.svg",
+          "size": 4684,
+          "sha256": "91ed4a45d312d818ed8f21ae062cd2d2f024e4cbe6d6814bbb27102779e7eb84"
+        },
+        {
+          "path": "assets/vector/enemies/fish_purple_rest.svg",
+          "size": 4501,
+          "sha256": "41225e380d660d349b6092f7b0e168138c17684d80a3fda0237acf66fa262e1d"
+        },
+        {
+          "path": "assets/vector/enemies/fish_purple_up.svg",
+          "size": 4617,
+          "sha256": "55542245ef32fd38cab00ea7ca334b91ce56d8d0e626d779fb6ed84c242d68ba"
+        },
+        {
+          "path": "assets/vector/enemies/fish_yellow_rest.svg",
+          "size": 4522,
+          "sha256": "086b10a8876a9a092d50ec73c805c424d803940ea6e295b2d8a3298f0aa30b8e"
+        },
+        {
+          "path": "assets/vector/enemies/fish_yellow_swim_a.svg",
+          "size": 4835,
+          "sha256": "6d31d1516107fe39f809c9c6de19f1cda3302c8319b80455a767f5bb08b360b2"
+        },
+        {
+          "path": "assets/vector/enemies/fish_yellow_swim_b.svg",
+          "size": 4755,
+          "sha256": "c345ad78641f5072dfa5fcc9e84d4d0b17fa690321633c14db3b1c5171a6c220"
+        },
+        {
+          "path": "assets/vector/enemies/fly_a.svg",
+          "size": 4211,
+          "sha256": "c7f0c4ed9513ed0c948b37c284da44978a09b2bc91840f2d09b5f631fd58d820"
+        },
+        {
+          "path": "assets/vector/enemies/fly_b.svg",
+          "size": 4111,
+          "sha256": "2f8a344ad9166bb44845b8a7224f4952238c520ef62670e00a2a0c33e48a67aa"
+        },
+        {
+          "path": "assets/vector/enemies/fly_rest.svg",
+          "size": 3957,
+          "sha256": "ab4a7b869a6d644bc2bd3c2de9c5ae71d39b6dc937b97c68eec4af566c0ec991"
+        },
+        {
+          "path": "assets/vector/enemies/frog_idle.svg",
+          "size": 4434,
+          "sha256": "e451357ddf865b6b0c51aeeca9f95a2598ac8e92462f52e79abc8b2834b91789"
+        },
+        {
+          "path": "assets/vector/enemies/frog_jump.svg",
+          "size": 4404,
+          "sha256": "aa075bb230f00257b9f82ba4471dbb06828b1c5ac62a9af75791ea4a23dd0ec7"
+        },
+        {
+          "path": "assets/vector/enemies/frog_rest.svg",
+          "size": 3817,
+          "sha256": "c324c9924b72d1e908362adb3e2ab0d21bf6c7b82106aceeae5e3cbcd52aa266"
+        },
+        {
+          "path": "assets/vector/enemies/ladybug_fly.svg",
+          "size": 4801,
+          "sha256": "62088e6feef35ad20773bce567e944e6131b696bb6be9e608832f1c9a89443d8"
+        },
+        {
+          "path": "assets/vector/enemies/ladybug_rest.svg",
+          "size": 4421,
+          "sha256": "f136890f50d6acaadfd4b4fa07851ce933e9190d9bd57ef38b809b7aa4cb5a83"
+        },
+        {
+          "path": "assets/vector/enemies/ladybug_walk_a.svg",
+          "size": 4286,
+          "sha256": "22d55e895301bb5bdde481e349060fb0e6f26768fea510885597e1398301e391"
+        },
+        {
+          "path": "assets/vector/enemies/ladybug_walk_b.svg",
+          "size": 4352,
+          "sha256": "b7954c778d9eaaf3b7a85d906c04a1d37e8e3aeff180ff71a04535bb2c566eca"
+        },
+        {
+          "path": "assets/vector/enemies/mouse_rest.svg",
+          "size": 2997,
+          "sha256": "31df140e198f45f0c9a4f965286db4e3ba09778045729dc4de5efd3ee70b6e76"
+        },
+        {
+          "path": "assets/vector/enemies/mouse_walk_a.svg",
+          "size": 3256,
+          "sha256": "ece4a71eb6ca3aea4b3b33877675912ce6b6117c3823c9032a0ac3a76d97dce9"
+        },
+        {
+          "path": "assets/vector/enemies/mouse_walk_b.svg",
+          "size": 3308,
+          "sha256": "274af55ef29f23af43b2a3a544dbcde630a1ab702318a596ba265c7aecdb02e2"
+        },
+        {
+          "path": "assets/vector/enemies/saw_a.svg",
+          "size": 5654,
+          "sha256": "4bb69f3b6e3a73a2d8cf2c9d8b4f903cb605cac39d7662c4583d908a1f55e12a"
+        },
+        {
+          "path": "assets/vector/enemies/saw_b.svg",
+          "size": 5752,
+          "sha256": "1b7d658b9486d2b814637b7e1431537de8748cd9d5310677d6436f01c4c37bdf"
+        },
+        {
+          "path": "assets/vector/enemies/saw_rest.svg",
+          "size": 5615,
+          "sha256": "8dcc9d2af999a33a9cf6e441ec411fc29ed0f6556ff936ec41ebf4c73a335548"
+        },
+        {
+          "path": "assets/vector/enemies/slime_block_jump.svg",
+          "size": 2667,
+          "sha256": "d823b767c710a467fed1cff809ab1fe7a1691bb48b31c7e070df2eca030d457e"
+        },
+        {
+          "path": "assets/vector/enemies/slime_block_rest.svg",
+          "size": 2243,
+          "sha256": "9a0c3e868168daba57ae9506fd910e156a5dd3aa7c7b1f7dd3afcf783f403700"
+        },
+        {
+          "path": "assets/vector/enemies/slime_block_walk_a.svg",
+          "size": 2678,
+          "sha256": "7f1fc67d5e053eb97eee17a6d0754ea9c1e60d74dab4ab022cb3165f3b6e23d2"
+        },
+        {
+          "path": "assets/vector/enemies/slime_block_walk_b.svg",
+          "size": 2679,
+          "sha256": "a6122afe5b5d99f3dada2b6552d7fe888d97a1bb5c230b8f22f70c1d9c4ea267"
+        },
+        {
+          "path": "assets/vector/enemies/slime_fire_flat.svg",
+          "size": 3276,
+          "sha256": "238243672defb2179f89a05338e43cfc27d9977325ad99035ed375bf51298be4"
+        },
+        {
+          "path": "assets/vector/enemies/slime_fire_rest.svg",
+          "size": 4082,
+          "sha256": "9cba1ba9688d7ada14ef392cdf667cdd90b5a3d3831b02af8b972f9d46f5d92c"
+        },
+        {
+          "path": "assets/vector/enemies/slime_fire_walk_a.svg",
+          "size": 4240,
+          "sha256": "eae5191def36a31ab162de2a03b0e4a57bee371e46772636955f3d7226c017cf"
+        },
+        {
+          "path": "assets/vector/enemies/slime_fire_walk_b.svg",
+          "size": 4264,
+          "sha256": "8552836686d1a22820290a7e316bc79de0ab888272c25d439d858165fe678a1b"
+        },
+        {
+          "path": "assets/vector/enemies/slime_normal_flat.svg",
+          "size": 1604,
+          "sha256": "12106418d5dc4f20f658ac2a60293c56a8981c378f8cad1b25d198c2af0fed7f"
+        },
+        {
+          "path": "assets/vector/enemies/slime_normal_rest.svg",
+          "size": 1734,
+          "sha256": "7307db1a29e449ffc50981099e84e357f3101d4c2463058153750161354d9c9a"
+        },
+        {
+          "path": "assets/vector/enemies/slime_normal_walk_a.svg",
+          "size": 1889,
+          "sha256": "4cb72f7e26034ee617a2ecdcab625f9595f1c53f27f7678df4bc4151531c6bc9"
+        },
+        {
+          "path": "assets/vector/enemies/slime_normal_walk_b.svg",
+          "size": 1867,
+          "sha256": "2aa924c9196637a94f60225049fd2252d63b4b251754cda4464d27d2bad8bdec"
+        },
+        {
+          "path": "assets/vector/enemies/slime_spike_flat.svg",
+          "size": 2548,
+          "sha256": "79ffd325c5809e35db202e2cd7b481a05bb6a3554bda304a33d209a92fb79d6d"
+        },
+        {
+          "path": "assets/vector/enemies/slime_spike_rest.svg",
+          "size": 2723,
+          "sha256": "5cce6c851c090ddb81d46c42a1cd950a0e14a00290ac9dedb13d0898746ab1db"
+        },
+        {
+          "path": "assets/vector/enemies/slime_spike_walk_a.svg",
+          "size": 2885,
+          "sha256": "3d468229a3784268a9c190bc2047b1a806a87da9a2a395e8c5a8cc4f08a6bd5d"
+        },
+        {
+          "path": "assets/vector/enemies/slime_spike_walk_b.svg",
+          "size": 2893,
+          "sha256": "8ef8c4d2330edf0abee696e4c9bf7714f7440db8982c391e08feab6f5c82417b"
+        },
+        {
+          "path": "assets/vector/enemies/snail_rest.svg",
+          "size": 4967,
+          "sha256": "02b7e0ac230cc7715546db34e17f64834f96ca39ccf2cb725615ccd6a6f170d7"
+        },
+        {
+          "path": "assets/vector/enemies/snail_shell.svg",
+          "size": 3374,
+          "sha256": "861fd0c8998a6ae294647925cb7dac0926aa941ea4957eb17104fa7a6b429b00"
+        },
+        {
+          "path": "assets/vector/enemies/snail_walk_a.svg",
+          "size": 4840,
+          "sha256": "0a29fb00e0c925c8c2dec02438852aed1d44aeb91eb0df769325e685985b8c50"
+        },
+        {
+          "path": "assets/vector/enemies/snail_walk_b.svg",
+          "size": 5273,
+          "sha256": "d02eb1ebf4e2328cfa6b186360f6a7664c5e95d4e27bfae33f4bec08699d1dd8"
+        },
+        {
+          "path": "assets/vector/enemies/worm_normal_move_a.svg",
+          "size": 3496,
+          "sha256": "5379acf733f3590ffec3b3e73e6e7a1c85b0fdd85b3418871d05d2a7d7ec67c7"
+        },
+        {
+          "path": "assets/vector/enemies/worm_normal_move_b.svg",
+          "size": 3595,
+          "sha256": "2d6d0a84afedb83742681a3b580adc70df43fe35a821202b5cfe5a58ab1c0823"
+        },
+        {
+          "path": "assets/vector/enemies/worm_normal_rest.svg",
+          "size": 2068,
+          "sha256": "5a36213e77325c84b8d96002c26e71537766fd3764020055d486cc635565b83f"
+        },
+        {
+          "path": "assets/vector/enemies/worm_ring_move_a.svg",
+          "size": 3052,
+          "sha256": "01ad9ae7f56afdf65c1e4bebc9c6f53b4763ad4588bf3333637608c02217ae0f"
+        },
+        {
+          "path": "assets/vector/enemies/worm_ring_move_b.svg",
+          "size": 3164,
+          "sha256": "95bb8b9dae38f8fbd6cab320c0dbc4fadfb550ce480c2fc50a9575b86c2fad57"
+        },
+        {
+          "path": "assets/vector/enemies/worm_ring_rest.svg",
+          "size": 2093,
+          "sha256": "3bfe2c4d66922365bb77825bba1313b45302e4704617c74b335e8000abe15bdd"
+        },
+        {
           "path": "game.js",
-          "size": 16581,
-          "sha256": "9626bc55fb133bc97b512033b1af09de72d8065678f82d5f701a95ffcb108243"
+          "size": 17220,
+          "sha256": "ef9d61e93f551c27fdaeb7b7394dc0880451e040ba205448f0a8edc12a8ec15d"
         },
         {
           "path": "index.html",
@@ -6458,8 +8968,8 @@
         },
         {
           "path": "level.js",
-          "size": 1515,
-          "sha256": "2dfa7fcc53feb70d1488605666f61d7f6088b4141d0e4e8bc00af89da183fc1f"
+          "size": 1527,
+          "sha256": "17c2df2a3312ebbe37131ae3a1f88421275eb75908c6de7c07009038cdfa99d3"
         },
         {
           "path": "preview.png",

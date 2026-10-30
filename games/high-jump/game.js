@@ -22,17 +22,32 @@ const MAX_HEARTS = 3;
 const INVULNERABLE_TIME = 1.2;
 const STEP = 1 / 120;
 
-const SPRITES = [
-  'background_solid_sky', 'background_clouds', 'background_color_hills',
-  'character_green_idle', 'character_green_jump', 'character_green_walk_a', 'character_green_walk_b', 'character_green_hit',
-  'slime_normal_walk_a', 'slime_normal_walk_b', 'slime_normal_flat',
-  'terrain_grass_block_top_left', 'terrain_grass_block_top', 'terrain_grass_block_top_right',
-  'terrain_grass_block_left', 'terrain_grass_block_center', 'terrain_grass_block_right',
-  'terrain_grass_horizontal_left', 'terrain_grass_horizontal_middle', 'terrain_grass_horizontal_right',
-  'block_coin_active', 'block_empty', 'bricks_brown', 'coin_gold', 'flag_green_a', 'flag_green_b', 'flag_off',
-  'bush', 'grass', 'hud_coin', 'hud_heart', 'hud_heart_empty', 'hud_character_multiply',
-  ...Array.from({ length: 10 }, (_, i) => `hud_character_${i}`),
-];
+// ---------- Tema: troque aqui personagem, terreno, fundo, inimigo e moeda ----------
+// Os nomes correspondem aos arquivos de assets/sprites/; veja "Personalizar" no README.md.
+const THEME = {
+  character: 'green',  // beige, green, pink, purple, yellow ou o nome de um personagem próprio
+  terrain: 'grass',    // grass, dirt, purple, sand, snow, stone
+  background: 'hills', // desert, hills, mushrooms, trees
+  enemy: { walk: ['slime_normal_walk_a', 'slime_normal_walk_b'], defeated: 'slime_normal_flat' },
+  coin: 'coin_gold',   // por exemplo gem_blue, gem_red, star ou heart
+};
+
+const character = (pose) => `character_${THEME.character}_${pose}`;
+const terrain = (part) => `terrain_${THEME.terrain}_${part}`;
+const backgroundHills = `background_color_${THEME.background}`;
+
+const SPRITES = {
+  backgrounds: ['background_solid_sky', 'background_clouds', backgroundHills],
+  characters: ['idle', 'jump', 'walk_a', 'walk_b', 'hit'].map(character),
+  enemies: [...THEME.enemy.walk, THEME.enemy.defeated],
+  tiles: [
+    ...['block_top_left', 'block_top', 'block_top_right', 'block_left', 'block_center', 'block_right',
+      'horizontal_left', 'horizontal_middle', 'horizontal_right'].map(terrain),
+    'block_coin_active', 'block_empty', 'bricks_brown', THEME.coin, 'flag_green_a', 'flag_green_b', 'flag_off',
+    'bush', 'grass', 'hud_heart', 'hud_heart_empty', 'hud_character_multiply',
+    ...Array.from({ length: 10 }, (_, i) => `hud_character_${i}`),
+  ],
+};
 const SOUNDS = { jump: 'sfx_jump', coin: 'sfx_coin', bump: 'sfx_bump', hurt: 'sfx_hurt', stomp: 'sfx_disappear', win: 'sfx_magic' };
 
 const canvas = document.getElementById('game');
@@ -51,12 +66,12 @@ let state = 'loading'; // loading | title | play | paused | won | over
 let level, player, enemies, coins, pops, camX, time, jumpBuffer;
 
 // ---------- Carregamento ----------
-function loadImage(name) {
+function loadImage(folder, name) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => resolve((images[name] = img));
-    img.onerror = () => reject(new Error(`sprite ausente: ${name}`));
-    img.src = `assets/sprites/${name}.png`;
+    img.onerror = () => reject(new Error(`sprite ausente: assets/sprites/${folder}/${name}.png`));
+    img.src = `assets/sprites/${folder}/${name}.png`;
   });
 }
 
@@ -259,27 +274,27 @@ function terrainSprite(tx, ty) {
   const up = ground(tx, ty - 1);
   const left = ground(tx - 1, ty);
   const right = ground(tx + 1, ty);
-  if (!up) return !left && right ? 'terrain_grass_block_top_left' : left && !right ? 'terrain_grass_block_top_right' : 'terrain_grass_block_top';
-  return !left && right ? 'terrain_grass_block_left' : left && !right ? 'terrain_grass_block_right' : 'terrain_grass_block_center';
+  if (!up) return terrain(!left && right ? 'block_top_left' : left && !right ? 'block_top_right' : 'block_top');
+  return terrain(!left && right ? 'block_left' : left && !right ? 'block_right' : 'block_center');
 }
 
 function platformSprite(tx, ty) {
   const left = tileAt(tx - 1, ty) === '=';
   const right = tileAt(tx + 1, ty) === '=';
-  return left && !right ? 'terrain_grass_horizontal_right' : !left && right ? 'terrain_grass_horizontal_left' : 'terrain_grass_horizontal_middle';
+  return terrain(left && !right ? 'horizontal_right' : !left && right ? 'horizontal_left' : 'horizontal_middle');
 }
 
 const TILE_SPRITES = { B: () => 'bricks_brown', '?': () => 'block_coin_active', X: () => 'block_empty', '#': terrainSprite, '=': platformSprite };
 
 function drawBackground() {
   ctx.drawImage(images.background_solid_sky, 0, 0, VIEW_W, VIEW_H);
-  const layers = [['background_clouds', 0.2, 128], ['background_color_hills', 0.45, 384]];
+  const layers = [['background_clouds', 0.2, 128], [backgroundHills, 0.45, 384]];
   for (const [name, speed, y] of layers) {
     const offset = -((camX * speed) % 512);
     for (let x = offset; x < VIEW_W; x += 512) ctx.drawImage(images[name], x, y, 512, 256);
   }
-  ctx.fillStyle = '#2ecc71'; // mesma cor da base das colinas, visível no fundo dos buracos
-  ctx.fillRect(0, 640, VIEW_W, VIEW_H - 640);
+  // Estica a última linha das colinas para cobrir o fundo dos buracos.
+  ctx.drawImage(images[backgroundHills], 0, 255, 256, 1, 0, 640, VIEW_W, VIEW_H - 640);
 }
 
 function drawNumber(value, x, y, size) {
@@ -288,7 +303,7 @@ function drawNumber(value, x, y, size) {
 }
 
 function drawHud() {
-  ctx.drawImage(images.hud_coin, 24, 20, 56, 56);
+  ctx.drawImage(images[THEME.coin], 24, 20, 56, 56);
   drawNumber(player.coins, 72, 20, 56);
   for (let i = 0; i < MAX_HEARTS; i++) {
     ctx.drawImage(images[i < player.hearts ? 'hud_heart' : 'hud_heart_empty'], VIEW_W - 80 - i * 52, 20, 56, 56);
@@ -318,37 +333,36 @@ function draw() {
   }
 
   const bob = Math.sin(time * 4) * 3;
-  for (const coin of coins) if (!coin.taken) ctx.drawImage(images.coin_gold, coin.x, coin.y + bob);
+  for (const coin of coins) if (!coin.taken) ctx.drawImage(images[THEME.coin], coin.x, coin.y + bob);
   for (const pop of pops) {
     ctx.globalAlpha = 1 - pop.t / 0.5;
-    ctx.drawImage(images.coin_gold, pop.x, pop.y - pop.t * 120);
+    ctx.drawImage(images[THEME.coin], pop.x, pop.y - pop.t * 120);
     ctx.globalAlpha = 1;
   }
 
   for (const e of enemies) {
-    const sprite = e.dead ? 'slime_normal_flat' : Math.floor(time * 5) % 2 ? 'slime_normal_walk_b' : 'slime_normal_walk_a';
-    drawFlipped(images[sprite], e.x + e.w / 2, e.y + e.h, 64, e.vx > 0);
+    const sprite = e.dead ? THEME.enemy.defeated : THEME.enemy.walk[Math.floor(time * 5) % THEME.enemy.walk.length];
+    drawFlipped(images[sprite], e.x + e.w / 2, e.y + e.h, 1, e.vx > 0);
   }
 
   const p = player;
   if (!(p.hurt > 0 && Math.floor(p.hurt * 12) % 2)) {
     const walking = p.onGround && Math.abs(p.vx) > 20;
-    const sprite = state === 'over' ? 'character_green_hit'
-      : !p.onGround ? 'character_green_jump'
-      : walking ? (Math.floor(time * 10) % 2 ? 'character_green_walk_b' : 'character_green_walk_a')
-      : 'character_green_idle';
-    drawFlipped(images[sprite], p.x + p.w / 2, p.y + p.h, 96, p.facing < 0);
+    const pose = state === 'over' ? 'hit' : !p.onGround ? 'jump' : walking ? (Math.floor(time * 10) % 2 ? 'walk_b' : 'walk_a') : 'idle';
+    drawFlipped(images[character(pose)], p.x + p.w / 2, p.y + p.h, 0.75, p.facing < 0);
   }
   ctx.restore();
   drawHud();
 }
 
-// Desenha o sprite com a base centralizada em (cx, bottom), espelhando se preciso.
-function drawFlipped(img, cx, bottom, size, flip) {
+// Desenha o sprite em escala com a base centralizada em (cx, bottom), espelhando se preciso.
+function drawFlipped(img, cx, bottom, scale, flip) {
   ctx.save();
   ctx.translate(Math.round(cx), Math.round(bottom));
   if (flip) ctx.scale(-1, 1);
-  ctx.drawImage(img, -size / 2, -size, size, size);
+  const w = img.width * scale;
+  const h = img.height * scale;
+  ctx.drawImage(img, -w / 2, -h, w, h);
   ctx.restore();
 }
 
@@ -439,7 +453,7 @@ function frame(now) {
 }
 
 for (const [name, file] of Object.entries(SOUNDS)) sounds[name] = new Audio(`assets/sounds/${file}.ogg`);
-Promise.all(SPRITES.map(loadImage)).then(() => {
+Promise.all(Object.entries(SPRITES).flatMap(([folder, names]) => names.map((name) => loadImage(folder, name)))).then(() => {
   resetGame();
   state = 'title';
   requestAnimationFrame(frame);

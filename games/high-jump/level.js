@@ -1,7 +1,7 @@
 // Mapa da fase. Cada caractere ocupa um bloco de 64 px; as linhas podem ter tamanhos diferentes.
 //
-//   #  terreno de grama        =  plataforma flutuante    B  tijolo
-//   ?  bloco de moeda          o  moeda                   s  slime (inimigo)
+//   #  terreno                 =  plataforma flutuante    B  tijolo
+//   ?  bloco de moeda          o  moeda                   s  inimigo (slime por padrão)
 //   P  início do jogador       F  bandeira de chegada     b  arbusto   g  grama (decoração)
 //   .  vazio
 //

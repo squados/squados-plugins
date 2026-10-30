@@ -1,6 +1,7 @@
 Kenney assets used in assets/
 
 Pack: New Platformer Pack (1.1), from Kenney Game Assets All-in-1 3.5.0.
+Included: all Default PNG sprites, character and enemy SVGs, sounds and preview sheets.
 
 Created/distributed by Kenney (www.kenney.nl)
 
