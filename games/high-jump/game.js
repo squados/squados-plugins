@@ -42,7 +42,7 @@ const SPRITES = {
   enemies: [...THEME.enemy.walk, THEME.enemy.defeated],
   tiles: [
     ...['block_top_left', 'block_top', 'block_top_right', 'block_left', 'block_center', 'block_right',
-      'horizontal_left', 'horizontal_middle', 'horizontal_right'].map(terrain),
+      'vertical_top', 'vertical_middle', 'horizontal_left', 'horizontal_middle', 'horizontal_right'].map(terrain),
     'block_coin_active', 'block_empty', 'bricks_brown', THEME.coin, 'flag_green_a', 'flag_green_b', 'flag_off',
     'bush', 'grass', 'hud_heart', 'hud_heart_empty', 'hud_character_multiply',
     ...Array.from({ length: 10 }, (_, i) => `hud_character_${i}`),
@@ -274,8 +274,9 @@ function terrainSprite(tx, ty) {
   const up = ground(tx, ty - 1);
   const left = ground(tx - 1, ty);
   const right = ground(tx + 1, ty);
-  if (!up) return terrain(!left && right ? 'block_top_left' : left && !right ? 'block_top_right' : 'block_top');
-  return terrain(!left && right ? 'block_left' : left && !right ? 'block_right' : 'block_center');
+  // Coluna com os dois lados abertos usa as peças verticais, que têm contorno dos dois lados.
+  if (!up) return terrain(left && right ? 'block_top' : right ? 'block_top_left' : left ? 'block_top_right' : 'vertical_top');
+  return terrain(left && right ? 'block_center' : right ? 'block_left' : left ? 'block_right' : 'vertical_middle');
 }
 
 function platformSprite(tx, ty) {
@@ -290,7 +291,7 @@ function drawBackground() {
   ctx.drawImage(images.background_solid_sky, 0, 0, VIEW_W, VIEW_H);
   const layers = [['background_clouds', 0.2, 128], [backgroundHills, 0.45, 384]];
   for (const [name, speed, y] of layers) {
-    const offset = -((camX * speed) % 512);
+    const offset = -Math.round((camX * speed) % 512);
     for (let x = offset; x < VIEW_W; x += 512) ctx.drawImage(images[name], x, y, 512, 256);
   }
   // Estica a última linha das colinas para cobrir o fundo dos buracos.
@@ -326,10 +327,17 @@ function draw() {
   }
 
   if (level.flag) {
+    // Mastro de 4 blocos: o pano vem do sprite da bandeira e o mastro é o flag_off esticado
+    // só no meio, para manter as pontas arredondadas.
     const { x, y } = level.flag;
-    ctx.drawImage(images.flag_off, x * TILE, y * TILE);
-    ctx.drawImage(images.flag_off, x * TILE, (y - 1) * TILE);
-    ctx.drawImage(images[Math.floor(time * 4) % 2 ? 'flag_green_b' : 'flag_green_a'], x * TILE, (y - 2) * TILE);
+    const left = x * TILE;
+    const top = (y - 3) * TILE;
+    const bottom = (y + 1) * TILE;
+    const cloth = images[Math.floor(time * 4) % 2 ? 'flag_green_b' : 'flag_green_a'];
+    ctx.drawImage(cloth, 18, 0, TILE - 18, TILE, left + 18, top, TILE - 18, TILE);
+    ctx.drawImage(images.flag_off, 0, 0, 20, 20, left, top, 20, 20);
+    ctx.drawImage(images.flag_off, 0, 20, 20, 24, left, top + 20, 20, bottom - top - 40);
+    ctx.drawImage(images.flag_off, 0, 44, 20, 20, left, bottom - 20, 20, 20);
   }
 
   const bob = Math.sin(time * 4) * 3;
