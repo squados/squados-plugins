@@ -1,5 +1,7 @@
 # Stocks Skill
 
+Use as fontes, a planilha e o motor de cálculo adequados ao trabalho. Os comandos com auxiliares são exemplos de execução. Confira os dados e o recálculo no resultado entregue.
+
 Read-only market data via Yahoo Finance. Five commands: `quote`, `search`,
 `history`, `compare`, `crypto`. Python stdlib only — no API key, no pip
 installs. Yahoo's endpoint is unofficial and may rate-limit or change.

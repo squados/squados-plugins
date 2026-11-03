@@ -6,6 +6,8 @@ Recalculate before delivery: `python SKILL_DIR/scripts/excel-author/recalc.py ./
 
 # 3-Statement Financial Model Template Completion
 
+Use as fontes, a planilha e o motor de cálculo adequados ao trabalho. Os comandos com auxiliares são exemplos de execução. Confira os dados e o recálculo no resultado entregue.
+
 Complete and populate integrated financial model templates with proper linkages between Income Statement, Balance Sheet, and Cash Flow Statement.
 
 ## ⚠️ CRITICAL PRINCIPLES — Read Before Populating Any Template

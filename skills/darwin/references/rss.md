@@ -1,5 +1,7 @@
 # RSS Feeds Skill
 
+Use a fonte primária e as ferramentas de consulta disponíveis. Os exemplos de comandos ilustram o uso de auxiliares de consulta.
+
 Reads any RSS 2.0, RSS 1.0/RDF, Atom, or JSON Feed URL into a clean, date-sorted list of
 entries, and discovers the feed behind an ordinary page URL (`<link rel="alternate">` or
 the usual `/feed`, `/rss.xml`, `/atom.xml` paths). Standard library only, nothing to

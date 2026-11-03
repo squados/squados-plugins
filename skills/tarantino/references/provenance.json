@@ -6,10 +6,9 @@
       "revision": "60e0402",
       "license": "MIT; dependências com licenças próprias",
       "notices": [
-        "scripts/editor/LICENSE",
-        "scripts/editor/THIRD-PARTY-NOTICES.md"
+        "LICENSE"
       ],
-      "changes": "Motor e contratos preservados; instaladores de outros perfis omitidos; binários preparados pelo manifesto original; avisos legais integrais agregados."
+      "changes": "Direção editorial consolidada em instruções. Motor e dependências retirados do pacote."
     }
   ],
   "consulted": [

@@ -103,7 +103,7 @@ accent com luminância média (corais, laranjas, verdes-médio, ciano, amarelo) 
 - `--accent-forte` — derivada, mais escura. Uso **tipográfico**: verificada ≥4.5:1 sobre o
   fundo, e ≥4.5:1 com texto claro por cima quando vira fundo de bloco.
 
-Calcule antes de desenhar (não depois de o gate reprovar):
+Calcule antes de desenhar:
 
 ```python
 def lum(h):

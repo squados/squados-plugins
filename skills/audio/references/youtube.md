@@ -1,5 +1,7 @@
 # YouTube Content Tool
 
+Escolha um transcritor, sintetizador ou leitor disponível conforme o pedido. Os comandos abaixo são exemplos para quem usar o auxiliar correspondente.
+
 ## When to use
 
 Use when the user shares a YouTube URL or video link, asks to summarize a video, requests a transcript, or wants to extract and reformat content from any YouTube video. Transforms transcripts into structured content (chapters, summaries, threads, blog posts).

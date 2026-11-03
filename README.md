@@ -72,8 +72,7 @@ atuais cabem em 100 arquivos/4 MiB e são texto UTF-8, sem binários embutidos.
 Dependências e recursos de execução são preparados pelo procedimento do modo;
 não se presume conta, programa ou biblioteca instalada.
 
-Tarantino preserva o motor do editor em `scripts/editor`, com locks e preparação
-verificada de fontes/modelos. Gutenberg preserva os motores DOCX/PDF/XLSX/PPTX.
+As instruções orientam as decisões. Tarantino usa as ferramentas de mídia disponíveis e Gutenberg oferece auxiliares para operações pontuais de arquivo.
 As fontes incorporadas e consultadas são distinguidas em `references/provenance.json`;
 avisos integrais e termos de componentes permanecem no pacote. A licença MIT da
 raiz não substitui a licença de conteúdo externo.

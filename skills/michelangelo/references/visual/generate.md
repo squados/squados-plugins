@@ -2,7 +2,7 @@
 
 Regras concretas para produzir UI bonita — usadas pela geração das 3 variantes (galeria)
 e como referência de correção pelo `polish`. Não são sugestões: são os alvos que o
-detector determinístico (`scripts/detector/`) mede e reprova.
+render final revela problemas de aplicação.
 Toda decisão de estrutura passa primeiro pelo princípio de DRY reuse-first (última seção)
 antes de qualquer regra visual abaixo.
 
@@ -108,7 +108,7 @@ antes de qualquer regra visual abaixo.
 - **"Grid over flex-math."** Nunca calcule colunas com `w-[calc(33.333%-16px)]` ou
   equivalente — isso é fazer matemática de grid manualmente dentro de flex. Use `grid` +
   `gap`: o browser resolve o cálculo e o gap não precisa ser subtraído à mão em cada célula.
-  `w-[calc(...%-...)]` para colunas é reprovado pelo detector.
+  `w-[calc(...%-...)]` para colunas pode criar desalinhamento e merece inspeção no render.
 - **`min-h-[100dvh]`, não `h-screen`.** `h-screen` usa `100vh`, que em mobile não desconta a
   UI do browser (barra de endereço) e causa overflow/scroll fantasma. `min-h-[100dvh]`
   respeita a viewport dinâmica real e ainda permite que o conteúdo cresça além dela quando

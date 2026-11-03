@@ -1,5 +1,7 @@
 # Estado da biblioteca — 16/10/2026
 
+Registro histórico. Em 03/11/2026, Tarantino passou a orientar a edição no SKILL.md e Michelangelo passou a orientar a revisão visual do render. Os resultados abaixo descrevem as versões anteriores.
+
 Correção posterior do consumidor: [catálogo e defaults](skill-curation/catalog-integration-fix.md).
 Inclui rejeição de caches anteriores, snapshots completos, filtros SquadOS/Outras,
 reconciliação nativa das cópias de fábrica e vinte capas próprias com fonte SVG.

@@ -96,30 +96,13 @@ Valem as regras normais de formulário — e três que este padrão torna visív
 - **Rótulo e campo se pareiam com `flex`/`gap`, não com `space-y-*`.** No Tailwind 4
   `space-y-*` compila para `margin-bottom` no filho, e margem vertical **não se aplica a
   elemento inline**: um `<label>` inline (o de shadcn/Radix é) engole o espaçamento
-  inteiro, e o gap medido fica em ~3px por mais que você aumente o valor. O detector
-  flagra como `sibling-gap-too-tight` e nenhuma mudança de valor resolve — é a categoria
-  de bug que se persegue por rodadas até perceber que o problema é o `display`.
+  inteiro, e o gap medido fica em ~3px por mais que você aumente o valor. Confira o `display` do rótulo antes de aumentar a margem.
 - **Instrução ANTES das opções.** "Pode escolher mais de uma" embaixo de oito caixas chega
   depois de a escolha ter sido feita.
 - **Grade sem órfão.** Numa grade de 2 colunas, faça os campos largos ocuparem a linha
   inteira (`col-span-2`) de modo que a contagem de células feche par. Um campo sozinho na
   última linha, com metade da linha vazia, é o defeito que mais denuncia layout não
   desenhado.
-
-## O que o detector vai dizer
-
-Este padrão produz **um falso-positivo estrutural conhecido** e já corrigido no detector:
-as linhas da lista **encostam** (gap 0) porque a separação vem do filete, não de espaço —
-exatamente como `table`/`tr`. `checks/spacing.mjs` isenta irmãos separados por
-`borderTopWidth`/`borderBottomWidth` > 0. Se `sibling-gap-too-tight` voltar a aparecer
-entre linhas de uma lista dividida, é **regressão do check**, não limitação a aceitar.
-
-O que **não** é falso-positivo e precisa de conserto no componente:
-
-- gap entre o cabeçalho da seção e o painel aberto: o afastamento tem de virar **margem**
-  (medível) e não só `padding` do cabeçalho (invisível para o medidor de rects);
-- gap entre título e descrição dentro do cabeçalho da linha;
-- contraste do resumo e da descrição — é texto funcional, o piso de AA vale.
 
 ## Ao propor este padrão numa auditoria
 

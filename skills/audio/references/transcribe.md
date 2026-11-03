@@ -1,5 +1,7 @@
 # Audio Transcribe
 
+Escolha um transcritor, sintetizador ou leitor disponível conforme o pedido. Os comandos abaixo são exemplos para quem usar o auxiliar correspondente.
+
 Transcribe audio using OpenAI, with optional speaker diarization when requested. Prefer the bundled CLI for deterministic, repeatable runs.
 
 ## Workflow

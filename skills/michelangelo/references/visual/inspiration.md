@@ -24,6 +24,6 @@ de inferência; uma captura não revela todo o comportamento responsivo/interati
 ## Aplicar com critério
 
 Traduza padrões em tokens, componentes e composição coerentes com o projeto.
-Uma referência bonita não isenta contraste, legibilidade ou defeitos do detector.
+Uma referência bonita não isenta contraste, legibilidade ou defeitos visíveis na saída.
 Consulte slop.md e os métodos de audit/polish/rebuild conforme o trabalho. Verifique
 o resultado aplicado ao conteúdo real e preserve a identidade já aprovada.

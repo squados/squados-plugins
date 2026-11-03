@@ -1,5 +1,7 @@
 # Powerpoint Skill
 
+Use o aplicativo, a biblioteca ou a ferramenta do projeto que melhor preservar o arquivo. Os comandos abaixo ilustram operações pontuais com os auxiliares disponíveis. A validação se aplica ao resultado, qualquer que seja a ferramenta.
+
 Create, inspect, and edit PowerPoint (.pptx) presentations using the
 python-pptx library. Five helper scripts cover deck creation from a JSON
 spec, structured read-back, in-place edits, template-driven brand decks,

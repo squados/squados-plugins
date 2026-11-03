@@ -25,7 +25,7 @@
       "notices": [
         "references/LICENSE-SquadOS.txt"
       ],
-      "changes": "Detector e métodos preservados; extração editorial e testes de desenvolvimento não fazem parte do pacote de execução; caminhos, runtime e entrega adaptados ao Studio."
+      "changes": "Métodos visuais adaptados para inspeção do artefato no meio de entrega."
     },
     {
       "id": "S256",

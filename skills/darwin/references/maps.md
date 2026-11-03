@@ -1,5 +1,7 @@
 # Maps Skill
 
+Use a fonte primária e as ferramentas de consulta disponíveis. Os exemplos de comandos ilustram o uso de auxiliares de consulta.
+
 Location intelligence using free, open data sources. 8 commands, 44 POI
 categories, zero dependencies (Python stdlib only), no API key required.
 

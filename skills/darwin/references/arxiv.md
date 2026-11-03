@@ -1,5 +1,7 @@
 # Pesquisa no arXiv
 
+Use a fonte primária e as ferramentas de consulta disponíveis. Os exemplos de comandos ilustram o uso de auxiliares de consulta.
+
 O cliente incluído scripts/arxiv.py consulta a API pública por HTTPS e devolve
 JSON com título, autores, resumo, datas, ID e links. Não precisa de chave. Execute
 com --help e use --query, --limit e --start; não confunda resultado vazio com erro

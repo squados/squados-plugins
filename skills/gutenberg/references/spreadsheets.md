@@ -1,5 +1,7 @@
 # Xlsx Skill
 
+Use o aplicativo, a biblioteca ou a ferramenta do projeto que melhor preservar o arquivo. Os comandos abaixo ilustram operações pontuais com os auxiliares disponíveis. A validação se aplica ao resultado, qualquer que seja a ferramenta.
+
 Work with Excel .xlsx workbooks using Python and openpyxl: build styled
 multi-sheet workbooks with formulas and charts, inspect or dump existing
 files, edit cells and structure, and convert to/from CSV. All helper

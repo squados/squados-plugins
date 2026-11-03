@@ -5,7 +5,7 @@ hover, scrollbar, alvo de toque. Num PDF, metade desses checks é ruído e as re
 realmente importam não existiam em lugar nenhum.
 
 O meio é decidido na Abertura (`SKILL.md`) e vale para a sessão inteira. Ele determina
-**três coisas**: quais regras de `generate.md` se aplicam, quais checks do detector rodam,
+**três coisas**: quais regras de `generate.md` se aplicam, quais aspectos do render conferir,
 e o que é obrigatório antes de entregar.
 
 ## Perfis
@@ -18,33 +18,6 @@ e o que é obrigatório antes de entregar.
 | Interação | hover, focus, transição | nenhuma | nenhuma (ou transições de slide) |
 | Distância de leitura | ~50 cm | ~40 cm | metros — tipo grande é regra |
 | Falha típica | quebra em mobile | quebra de página no lugar errado | texto pequeno demais |
-
-## `--medium` no detector
-
-```bash
-node $SKILL_DIR/scripts/detector/run.mjs <alvo> --medium print
-```
-
-O flag **desliga os checks que não têm domínio de aplicação** no meio. Não é tolerância a
-defeito: é remover ruído que esconde defeito real. Um check que não pode ser satisfeito
-num meio não mede qualidade, só polui o relatório.
-
-| Check | web | print | slide | Por quê |
-|---|:-:|:-:|:-:|---|
-| `low-contrast` (P0) | ✅ | ✅ | ✅ | Vale em todo meio; em impresso, mais ainda. |
-| `horizontal-overflow` (P0) | ✅ | ✅ | ✅ | Conteúdo fora da página é pior que fora da tela. |
-| `sibling-gap-too-tight` (P1) | ✅ | ✅ | ✅ | Ritmo é universal. |
-| `tiny-text` (P1) | ✅ | ✅ | ✅ | Piso de legibilidade sobe no slide. |
-| `native-scrollbar` (P1) | ✅ | ❌ | ❌ | Não existe scroll em papel. |
-| `touch-target-small` (P2) | ✅ | ❌ | ❌ | Não se toca em papel. Em web, cuidado: o check mede todo `<a>`, então texto com links inline gera ruído. |
-| `interactive-no-transition` (P3) | ✅ | ❌ | ❌ | Não há hover em papel. |
-| `line-length` (P2) | ✅ | ✅ | ✅ | Medida de linha é tipografia, não meio. |
-| `weak-hierarchy`, `cramped-padding`, `tight-leading`, `monotonous-spacing`, `radius-off-system`, `wide-tracking`, `zindex-magic` | ✅ | ✅ | ✅ | Craft geral. |
-
-**Ressalva honesta sobre `cramped-padding` em print:** ele espera padding proporcional à
-fonte em todo elemento com texto. Num documento, texto corrido usa margem e entrelinha, não
-padding — então ele gera P2 em massa em `<p>`/`<li>`/`<td>`. P2 não bloqueia, mas não trate
-esse volume como sinal de qualidade; olhe os P0/P1 e a Camada 2.
 
 ## O que muda no craft
 

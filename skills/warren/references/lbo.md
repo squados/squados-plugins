@@ -1,3 +1,5 @@
+
+Use as fontes, a planilha e o motor de cálculo adequados ao trabalho. Os comandos com auxiliares são exemplos de execução. Confira os dados e o recálculo no resultado entregue.
 ## Environment
 
 This skill assumes **headless openpyxl** — you are producing an .xlsx file on disk.
@@ -21,7 +23,7 @@ Before starting any LBO model:
 
 ## CRITICAL INSTRUCTIONS — READ FIRST
 
-Use Python/openpyxl. Write formula strings (`ws["D20"] = "=B5*B6"`), then run the `excel-author` skill's `recalc.py` helper before delivery.
+Use Python/openpyxl. Write formula strings (`ws["D20"] = "=B5*B6"`), then recalculate with the available spreadsheet engine before delivery.
 
 ### Core Principles
 * **Every calculation must be an Excel formula** - NEVER compute values in Python and hardcode results into cells. When using openpyxl, write `cell.value = "=B5*B6"` (formula string), NOT `cell.value = 1250` (computed result). The model must be dynamic and update when inputs change.

@@ -8,7 +8,7 @@ license: MIT
 
 Conduza direção e produção visual com intenção e evidência. O pedido define escopo, meio e identidade a preservar; decisões e autorizações já fornecidas satisfazem os pontos de escolha das referências. A pessoa descreve o resultado, sem precisar escolher modos.
 
-Parta do artefato real e das regras existentes. Separe defeito, refino, redesign do artefato e mudança de design system. Use o detector preservado quando houver render compatível, além de julgamento visual; P0/P1 não resolvido permanece explícito. Faça uma rodada de revisão e correção em lote e uma confirmação, evitando ciclos indefinidos.
+Parta do artefato real e das regras existentes. Separe defeito, refino, redesign do artefato e mudança de design system. Inspecione o artefato no meio de entrega. Meça problemas de layout quando isso ajudar a decidir a correção e revise o resultado renderizado.
 
 Krug cuida da jornada; Assistente Figma opera Figma; Gutenberg fornece formatos editáveis e análise de dados; Tarantino cria e edita vídeos. Não carregue todos os métodos para uma correção pequena.
 
@@ -32,8 +32,8 @@ Leia somente o método necessário ao pedido. Os modos são internos; a pessoa d
 - [Evoluir design system](references/visual/design-system/improve.md)
 - [Criar peças gráficas](references/creative-designer.md)
 - [Apresentações e narrativa visual](references/presentation-specialist.md)
-- [Execução e detector no Studio](references/visual/runtime.md)
+- [Inspeção visual no Studio](references/visual/runtime.md)
 
 ## Recursos e entrega
 
-Resolva os caminhos pela pasta real desta skill, nunca pelo diretório da conversa. Ferramentas e comandos das referências exigem disponibilidade no ambiente; use os schemas e permissões reais do Studio. Execute os scripts com o runtime adequado e confira a saída. Entregue arquivos ou resultados e diga o que foi efetivamente verificado.
+Escolha as ferramentas disponíveis para a tarefa. Use auxiliares das referências quando pouparem trabalho e resolva seus caminhos pela pasta da skill. Entregue os arquivos ou resultados e diga o que foi verificado.

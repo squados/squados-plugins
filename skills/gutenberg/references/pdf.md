@@ -1,5 +1,7 @@
 # PDF Skill
 
+Use o aplicativo, a biblioteca ou a ferramenta do projeto que melhor preservar o arquivo. Os comandos abaixo ilustram operações pontuais com os auxiliares disponíveis. A validação se aplica ao resultado, qualquer que seja a ferramenta.
+
 Create PDFs from structured specs, build and fill AcroForm forms (with layout linting and visual overlays), extract text/tables/metadata, merge/split/rotate/watermark/stamp pages, export page images, manage metadata and attachments, and encrypt/decrypt — using pypdf, reportlab, and pdfplumber. Two absorbed capabilities live in references/ (read the matching file before those tasks):
 
 - **Scanned/image-only PDFs and OCR** (pymupdf fast path, marker-pdf quality path, ../scripts/pdf/extract_pymupdf.py + ../scripts/pdf/extract_marker.py): `SKILL_DIR/references/pdf/ocr-extraction.md`

@@ -6,7 +6,7 @@ license: MIT
 
 # Gutenberg - Documentos e Dados
 
-Trabalhe no arquivo de verdade, preservando o original e sua estrutura. Reconheça formato, finalidade e o que precisa continuar editável. Use os scripts do formato em vez de reescrever OOXML ou fórmulas por tentativa. Escolha apenas as referências pertinentes.
+Trabalhe no arquivo de verdade, preservando o original e sua estrutura. Reconheça formato, finalidade e o que precisa continuar editável. Escolha ferramentas que preservem a estrutura e as partes editáveis do formato. Escolha apenas as referências pertinentes.
 
 Dados ausentes não são zero; mantenha tipos, unidades, granularidade e origem. Distingua fórmula, resultado armazenado e recálculo efetivo. Reabra o arquivo após editar e verifique conteúdo/estrutura. Quando layout importar, renderize e confira visualmente; declarar ausência de renderização é diferente de aprovar a aparência.
 
@@ -24,4 +24,4 @@ Leia somente o método necessário ao pedido. Os modos são internos; a pessoa d
 
 ## Recursos e entrega
 
-Resolva os caminhos pela pasta real desta skill, nunca pelo diretório da conversa. Ferramentas e comandos das referências exigem disponibilidade no ambiente; use os schemas e permissões reais do Studio. Execute os scripts com o runtime adequado e confira a saída. Entregue arquivos ou resultados e diga o que foi efetivamente verificado.
+Escolha as ferramentas disponíveis para a tarefa. Use auxiliares das referências quando pouparem trabalho e resolva seus caminhos pela pasta da skill. Entregue os arquivos ou resultados e diga o que foi verificado.

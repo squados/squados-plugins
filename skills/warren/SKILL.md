@@ -30,4 +30,4 @@ Leia somente o método necessário ao pedido. Os modos são internos; a pessoa d
 
 ## Recursos e entrega
 
-Resolva os caminhos pela pasta real desta skill, nunca pelo diretório da conversa. Ferramentas e comandos das referências exigem disponibilidade no ambiente; use os schemas e permissões reais do Studio. Execute os scripts com o runtime adequado e confira a saída. Entregue arquivos ou resultados e diga o que foi efetivamente verificado.
+Escolha as ferramentas disponíveis para a tarefa. Use auxiliares das referências quando pouparem trabalho e resolva seus caminhos pela pasta da skill. Entregue os arquivos ou resultados e diga o que foi verificado.

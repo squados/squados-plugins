@@ -97,10 +97,6 @@ preparação. Confira também os limites e validações nativos do Hermes.
 O adaptador e seu teste de integração são a referência para essas regras. Não remova
 avisos legais para contornar restrições de empacotamento.
 
-Tarantino substitui o editor anterior: motor em scripts/editor, texto dentro dos
-limites, fontes/modelos preparados pelo manifesto verificado e locks preservados.
-Não reintroduza binários embutidos nem remova avisos legais para caber no bundle.
-
 Não assuma que uma dependência mencionada por uma skill está instalada. O Desktop
 atual possui bibliotecas Python de documentos instaladas sob demanda; confirme seu
 perfil, locks e rotina de preparação antes de dizer que "o Studio já traz" uma biblioteca.

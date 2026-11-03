@@ -6,6 +6,8 @@ Recalculate before delivery: `python SKILL_DIR/scripts/excel-author/recalc.py ./
 
 # Comparable Company Analysis
 
+Use as fontes, a planilha e o motor de cálculo adequados ao trabalho. Os comandos com auxiliares são exemplos de execução. Confira os dados e o recálculo no resultado entregue.
+
 ## ⚠️ CRITICAL: Data Source Priority (READ FIRST)
 
 **ALWAYS follow this data source hierarchy:**

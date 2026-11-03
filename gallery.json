@@ -143,7 +143,7 @@
           "roles": ["design"],
           "outputs": ["files"]
         },
-        "reviewedRevision": "sha256-lf:f45384a57c2b26367e8750e94f8bf18f1a7566270e4f5fb0e3bc1a20a6a15d13",
+        "reviewedRevision": "sha256-lf:cddb6d6ef1adf2ebc23a6033b4588607e39c431521481a6e6f92eaf699161a45",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/michelangelo/LICENSE"
@@ -168,7 +168,7 @@
         "en": "Tarantino - Video Editor"
       },
       "description": {
-        "pt-BR": "Cria e edita vídeos e motion, preservando o motor do editor existente.",
+        "pt-BR": "Dirige e edita vídeos com cortes, motion, som e legendas.",
         "en": "Video Editor with task-specific methods and resources."
       },
       "source": {
@@ -182,11 +182,11 @@
             "en": "Tarantino - Video Editor"
           },
           "summary": {
-            "pt-BR": "Cria e edita vídeos e motion, preservando o motor do editor existente.",
+            "pt-BR": "Dirige e edita vídeos com cortes, motion, som e legendas.",
             "en": "Video Editor with task-specific methods and resources."
           },
           "overview": {
-            "pt-BR": "Cria e edita vídeos e motion, preservando o motor do editor existente.\n\nModos: Criação de vídeos; Roteiro e decupagem; Montagem e cortes; Motion e efeitos; Legendas no vídeo; Renderização e exportação.\n\nTranscrição, Whisper, síntese de voz e áudio como entregas independentes ficam no especialista de Áudio, Voz e Transcrição. O tratamento de áudio e as legendas necessários à edição do vídeo permanecem no fluxo do editor.",
+            "pt-BR": "Dirige e edita vídeos com cortes, motion, som e legendas.\n\nModos: Criação de vídeos; Roteiro e decupagem; Montagem e cortes; Motion e efeitos; Legendas no vídeo; Renderização e exportação.\n\nTranscrição, Whisper, síntese de voz e áudio como entregas independentes ficam no especialista de Áudio, Voz e Transcrição. O tratamento de áudio e as legendas necessários à edição do vídeo permanecem no fluxo do editor.",
             "en": "Video Editor. Read only the method needed for the requested task. Tools, dependencies and connections are checked before execution. Preparation and authenticated use are verified separately."
           },
           "examples": [
@@ -223,7 +223,7 @@
           "roles": ["media"],
           "outputs": ["files"]
         },
-        "reviewedRevision": "sha256-lf:f40c8e4033a837a2c65ece31407dfc83c3add84f81d831b956097f553bea8f8b",
+        "reviewedRevision": "sha256-lf:47b9b3b949da6ba59272547a3cbb6995557e4bf9907d4382579b8dc12077f857",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/tarantino/LICENSE"
@@ -302,7 +302,7 @@
           "roles": ["media"],
           "outputs": ["files"]
         },
-        "reviewedRevision": "sha256-lf:e1a9815b880759487f9851c0444ea75f15699cac6e9ddf4a68862d6d21474e68",
+        "reviewedRevision": "sha256-lf:9c963f2759a240bf1252235b3896221ab5d62001409b8decd540ae36f10c4a50",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/audio/LICENSE"
@@ -381,7 +381,7 @@
           "roles": ["design"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:7df49b5eba5a9b83c3471d01676271160dad76864a1a2965f0b2bfe052ce0130",
+        "reviewedRevision": "sha256-lf:db8adc4557de12e4278a5b9b2661053ffb6b54c26cece535718f22f9428e5348",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/krug/LICENSE"
@@ -455,7 +455,7 @@
           "roles": ["finance"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:21dd80b2f9a5c082bf484c7efdf3f175d90b69b3af8abc67eb6c39431cc8f8e9",
+        "reviewedRevision": "sha256-lf:8fcc2e354cde5f3b7abbddfec909b0173b3f5df759f0257d3cc38c6d2f6efce1",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/warren/LICENSE"
@@ -535,7 +535,7 @@
           "roles": ["marketing"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:037978e252ad3fa4d72a19734825527199d670c348e5eb446a32410fc7e65f69",
+        "reviewedRevision": "sha256-lf:bc7e38e946feb52f73dcdd5d73a32ecad819e8295c534ba215df7805a50c4437",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/zuck/LICENSE"
@@ -610,7 +610,7 @@
           "roles": ["sales"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:c87bfd6ca4656e660a8acf99583988509e0faf0fbe6bfe126972f0ccf97463bf",
+        "reviewedRevision": "sha256-lf:b7cc41a534eaf19d3518700960767ccf27e112520741e1c55553ac752e6c6928",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/flavio/LICENSE"
@@ -684,7 +684,7 @@
           "roles": ["documents"],
           "outputs": ["files"]
         },
-        "reviewedRevision": "sha256-lf:73d88aacaa8cc02155147475eb2685ff3c1e4343f18fb378ae939610cfa330cd",
+        "reviewedRevision": "sha256-lf:392378084264f7208b24f94b67ee8ce2ab4e8b3c929abb71d7052e98b44c5da7",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/gutenberg/LICENSE"
@@ -764,7 +764,7 @@
           "roles": ["engineering"],
           "outputs": ["files"]
         },
-        "reviewedRevision": "sha256-lf:c6e225a0f1d876f3df2402ed7a61065eeba4ed6f4ae891d96c1858153bd93cfa",
+        "reviewedRevision": "sha256-lf:26021bce5654bf84dcc5bf5d42d04e92eac0e1de02f61aa58b53839e2204f985",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/linus/LICENSE"
@@ -844,7 +844,7 @@
           "roles": ["operations"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:171edf74f2f09b5a75a27467bfc645b264e1beb06e6ac7fc185910dfa31541ea",
+        "reviewedRevision": "sha256-lf:ddfb9f42bd4c9274378893ce6eb828d0d4e04580967d25d7d40c2d02fada9adb",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/drucker/LICENSE"
@@ -918,7 +918,7 @@
           "roles": ["people"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:e5ae4528fb492073f39a55063858a809bc480f0b7fc11a8a5ceef57160cbe3f5",
+        "reviewedRevision": "sha256-lf:d4b5673684a5104a221dc6ea85897cf448d2195b56dbd16ef104d63de580edc4",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/maslow/LICENSE"
@@ -992,7 +992,7 @@
           "roles": ["research"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:f7b2a235f98744dda7eddb826b26ee3d10fea8c9372f9f919fe38c5f469a4e91",
+        "reviewedRevision": "sha256-lf:a160374795e4038d5624b494e51ce94686df1ae42be2983d8dd6a18bc3a6fc0e",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/darwin/LICENSE"
@@ -1066,7 +1066,7 @@
           "roles": ["applications"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:38b68756a94a629c498e8b08a651526939f4a21a8f1ee833128666c2abea34fd",
+        "reviewedRevision": "sha256-lf:d4c3be6e4ae9d5621dbc7391915209b1a1740533457738d347743780bc886c24",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/figma/LICENSE"
@@ -1145,7 +1145,7 @@
           "roles": ["applications"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:592e66a0436fb734a98d258921a1361d7ff0cf15641b06a16c8c5dc15259ac94",
+        "reviewedRevision": "sha256-lf:9ddfb5f2349518eceb2ce3a48d894f4a508a21c9d2711b10345bfde57ef57da1",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/notion/LICENSE"
@@ -1224,7 +1224,7 @@
           "roles": ["applications"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:841babf59bb27bb6811353537c2f3896592822d336c49a352b8b7fcd9bbd73f1",
+        "reviewedRevision": "sha256-lf:f9b85738c23b6f037332f0fd511b4ef7e772b7c44f961609efad7d79e80b698d",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/google-workspace/LICENSE"
@@ -1303,7 +1303,7 @@
           "roles": ["applications"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:494124584de873e276342373eef4ddfdeaa25646dfaf67e37e037574b20735aa",
+        "reviewedRevision": "sha256-lf:5847670be383f6bcb4fa49064720e72a342fcf41142d2c4e7a9354e8defe6e2c",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/obsidian/LICENSE"
@@ -1382,7 +1382,7 @@
           "roles": ["applications"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:933d9e62744173fc4e7ba96eadee3e73aea5422224cc88a3e55994a57951ed4e",
+        "reviewedRevision": "sha256-lf:cc2b8ccdeccfdc2de8e4a4a127db46e05daf0deb10317052ac65536989096ac2",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/shop/LICENSE"
@@ -1461,7 +1461,7 @@
           "roles": ["applications"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:921fa0225ce84a3058dc26cfc801c6b406f1eb17f7e7018ea9a50b49a0353042",
+        "reviewedRevision": "sha256-lf:b1f4a5e0e4832f3c3b3c103fc0a27b48ae20ba031b1d9c61adb2af955a5a09be",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/shopify/LICENSE"
@@ -1540,7 +1540,7 @@
           "roles": ["applications"],
           "outputs": ["work-results"]
         },
-        "reviewedRevision": "sha256-lf:82500389d1e24602f44f893888e834d93adfef81317dff367ecefa62c9f3638f",
+        "reviewedRevision": "sha256-lf:e903922630d766a9ce201612b043dbb0e2b92b9140b031956d3ebf089c87b755",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/telephony/LICENSE"

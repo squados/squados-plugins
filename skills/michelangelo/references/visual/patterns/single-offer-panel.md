@@ -182,25 +182,6 @@ cada ícone em caixa, cada filete, cada rótulo, cada tag. Referências reais de
 conte antes de redesenhar: quase sempre há um grupo inteiro de repetição (9 ícones, 9
 rótulos "incluso", 8 filetes) que sai sem perder informação nenhuma.
 
-## O que o detector vai dizer
-
-Defeitos que este tipo de seção quase sempre carrega, e que valem conserto:
-
-- **`tiny-text` nos selos e na linha de assinatura.** `0.72rem` = 11,52px e `0.7rem` =
-  11,2px reprovam no piso de 12px. É o defeito nº 1 desse padrão: texto de confiança nasce
-  pequeno "porque é secundário", e vira ilegível.
-- **`sibling-gap-too-tight` no card de preço.** Um `gap: 6px` no container do card fica
-  abaixo do mínimo de 8px e reprova *todos* os pares de irmãos ali dentro de uma vez — um
-  valor, muitas violações.
-- **Pares título/detalhe com `margin-top: 2px`/`4px`.** Reprovam. 8px é o piso, e visualmente
-  ainda lê como par.
-
-Um falso-positivo estrutural conhecido: medindo a **página inteira**, a `<section>` do
-painel acusa `sibling-gap-too-tight` contra a seção vizinha (gap 0, o respiro vem do
-padding interno de cada seção). Isso é do ritmo da página, não do padrão — meça a seção
-isolada para avaliar o padrão, e não tente consertar o encosto entre seções dentro desta
-tarefa.
-
 ## Ao propor este padrão numa auditoria
 
 O gatilho é medível: **uma oferta única + 6 ou mais entregáveis + 2 ou mais números de

@@ -1,6 +1,6 @@
 # Playwright CLI Workflows
 
-Use the wrapper script and snapshot often.
+Use the browser tool available to the project and inspect the page state when it changes.
 Assume `PWCLI` is set and `pwcli` is an alias for `"$PWCLI"`.
 In this repo, run commands from `output/playwright/<label>/` to keep artifacts contained.
 

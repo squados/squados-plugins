@@ -1,5 +1,7 @@
 # Docx Skill
 
+Use o aplicativo, a biblioteca ou a ferramenta do projeto que melhor preservar o arquivo. Os comandos abaixo ilustram operações pontuais com os auxiliares disponíveis. A validação se aplica ao resultado, qualquer que seja a ferramenta.
+
 Create, read, edit, and template Microsoft Word `.docx` files with
 python-docx via small CLIs. It handles text, styles, lists, tables,
 images, headers/footers, `{{token}}` templating, tracked changes

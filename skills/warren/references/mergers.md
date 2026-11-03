@@ -6,6 +6,8 @@ Recalculate before delivery: `python SKILL_DIR/scripts/excel-author/recalc.py ./
 
 # Merger Model
 
+Use as fontes, a planilha e o motor de cálculo adequados ao trabalho. Os comandos com auxiliares são exemplos de execução. Confira os dados e o recálculo no resultado entregue.
+
 Build accretion/dilution analysis for M&A transactions. Models pro forma EPS impact, synergy sensitivities, and purchase price allocation. Use when evaluating a potential acquisition, preparing merger consequences analysis for a pitch, or advising on deal terms.
 
 ## Workflow

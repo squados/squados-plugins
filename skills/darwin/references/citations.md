@@ -1,5 +1,7 @@
 # Grounded Citations
 
+Use a fonte primária e as ferramentas de consulta disponíveis. Os exemplos de comandos ilustram o uso de auxiliares de consulta.
+
 Every claim taken from an outside source gets an inline numbered citation and a
 `Sources:` list, Perplexity-style. A ledger script owns the `url → [n]` mapping
 so the numbers and URLs come from retrieval, never from memory — the model only

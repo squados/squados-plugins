@@ -14,9 +14,8 @@ Reflexo, não parágrafo. Qualquer um destes na saída é falha:
 - Herói centrado + 3 cards idênticos.
 - Valor cru (`padding: 13px`, hex solto) onde já existe token do DS.
 - Criar componente/modal novo sem procurar um reutilizável antes.
-- Concluir sem passar o gate do detector.
 - **Começar a trabalhar num repo sem `DESIGN.md` sem antes propor escrevê-lo.** Sem lei,
-  o detector mede defeito e não mede fidelidade — e o resultado é craft sem endereço.
+  a inspeção deve cobrir defeitos e fidelidade — e o resultado é craft sem endereço.
 - **Concluir sem o passo de fechamento do guardião** — a pergunta "o que eu fiz é melhor
   que o DS?", com uma das três saídas nomeada. Pular equivale a decidir "nada muda" sem
   ter olhado.
@@ -24,14 +23,9 @@ Reflexo, não parágrafo. Qualquer um destes na saída é falha:
   no chat, ou só o caminho de um `.html` na pasta de trabalho, não é entrega.
 - **Entregar Artifact sem link clicável para sua URL absoluta e completa** — preview
   embutido e caminho local não contam como link de abertura.
-- **Narrar uma saída de gate `BLOCKED`.** Se `P0+P1 > 0` a entrega não está pronta. Ou
-  conserta, ou o veredito é "NÃO ENTREGUE — travado por X", nunca "entregue, mas
-  aceitável". Reclassificar um P1 como candidato de DS **não destrava** o gate.
 - **Passar do teto de verificação** (`SKILL.md` §O teto). Uma rodada de inspeção, um lote
   de correção, no máximo mais uma rodada. Uma terceira leva de prints é auto-QA sem fim,
   não zelo.
-- **Escrever harness de captura ad hoc.** `scripts/shot.mjs` é o caminho; falta de opção se
-  resolve acrescentando a opção ao script, não com um heredoc que morre na sessão.
 - **Auditar superfície que diverge da produção** — um `/dev` sandbox, um mockup, ou
   `fullPage` numa tela de altura travada (expande a página e esconde o corte, o clamp e a
   scrollbar). Ver `audit.md` §Passo 1.
@@ -39,7 +33,7 @@ Reflexo, não parágrafo. Qualquer um destes na saída é falha:
 - **Entregar alvo impresso sem validar num segundo motor de render** (`rebuild.md`
   §Verificação cruzada). O Chromium aprova o que ele mesmo gerou.
 - **Medir um alvo que outra sessão está reescrevendo.** Sinais: `Edit` falha com "file has
-  been modified"; um fix seu volta ao valor antigo; o gate oscila sem você ter causado.
+  been modified"; um fix seu volta ao valor antigo; o resultado muda sem uma alteração sua.
   Cheque o mtime dos arquivos do alvo antes de aplicar fix; mtime recente = pare, o
   baseline é ficção.
 - **Interruptor que liga uma NEGATIVA.** Um toggle só ativa algo: o rótulo nomeia o
@@ -90,7 +84,7 @@ produto sem ler o logo?". Se a resposta for não, a opção falhou mesmo com P0/
 
 **Só no redesign explícito do design system a lei se inverte.** A unidade vira o sistema
 inteiro, porque se julga a coerência entre paleta, tipografia, estrutura e capa. Nesse
-escopo o DS antigo é o que se tenta bater, e o detector mede contra a direção candidata.
+escopo o DS antigo é o que se tenta bater, e confira a aderência à direção candidata.
 Usar essa liberdade num redesign de tela é quebra de escopo.
 
 ## DRY reuse-first

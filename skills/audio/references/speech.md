@@ -1,5 +1,7 @@
 # Speech Generation Skill
 
+Escolha um transcritor, sintetizador ou leitor disponível conforme o pedido. Os comandos abaixo são exemplos para quem usar o auxiliar correspondente.
+
 Generate spoken audio for the current project (narration, product demo voiceover, IVR prompts, accessibility reads). Defaults to `gpt-4o-mini-tts-2025-12-15` and built-in voices, and prefers the bundled CLI for deterministic, reproducible runs.
 
 ## When to use

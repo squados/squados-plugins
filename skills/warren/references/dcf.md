@@ -2,9 +2,11 @@
 
 This skill assumes **headless openpyxl** — you are producing an .xlsx file on disk.
 Follow financial-spreadsheets.md conventions for cell coloring, formulas, named ranges, and sensitivity tables.
-Recalculate before delivery: `python SKILL_DIR/scripts/excel-author/recalc.py ./out/model.xlsx`.
+Example of recalculation: `python SKILL_DIR/scripts/excel-author/recalc.py ./out/model.xlsx`.
 
 # DCF Model Builder
+
+Use as fontes, a planilha e o motor de cálculo adequados ao trabalho. Os comandos com auxiliares são exemplos de execução. Confira os dados e o recálculo no resultado entregue.
 
 ## Overview
 
@@ -55,7 +57,7 @@ These constraints apply throughout all DCF model building. Review before startin
 - Test formulas immediately after creation
 
 **Formula Recalculation:**
-- Run `python recalc.py model.xlsx 30` before delivery
+- Recalculate before delivery
 - Fix ALL errors until status is "success"
 - Zero formula errors required (#REF!, #DIV/0!, #VALUE!, etc.)
 
@@ -776,7 +778,7 @@ Create **two sheets**:
 
 ### Formula Recalculation (MANDATORY)
 
-After creating or modifying the Excel model, **recalculate all formulas** using the `recalc.py` script from the `excel-author` skill:
+After creating or modifying the Excel model, **recalculate all formulas** with the available spreadsheet engine. For example, with the bundled helper:
 
 ```bash
 python recalc.py [path_to_excel_file] [timeout_seconds]
@@ -817,7 +819,7 @@ The script will:
 }
 ```
 
-**Fix all errors** and re-run recalc.py until status is "success" before delivering the model.
+**Fix all errors** and verify recalculated results before delivering the model.
 
 ### Formatting Standards
 
@@ -1199,13 +1201,13 @@ This approach centralizes scenario logic, making the model easier to audit and m
    - Cell comments on ALL hardcoded inputs
    - Professional borders around major sections
 
-2. **Recalculate formulas**: Run `python recalc.py model.xlsx 30`
+2. **Recalculate formulas** with the chosen spreadsheet engine
 
 3. **Check output**:
    - If `status` is `"success"` → Continue to step 4
    - If `status` is `"errors_found"` → Check `error_summary` and read [TROUBLESHOOTING.md](dcf-model/TROUBLESHOOTING.md) for debugging guidance
 
-4. **Fix errors and re-run recalc.py** until status is "success"
+4. **Fix errors and recalculate**
 
 5. **Spot-check formulas**:
    - Test one FCF formula - does it reference the correct assumption rows?
@@ -1226,7 +1228,7 @@ This approach centralizes scenario logic, making the model easier to audit and m
 Before delivering DCF model:
 
 **Required:**
-- Run `python recalc.py model.xlsx 30` until status is "success" (zero formula errors)
+- Verify that recalculation leaves no formula errors
 - Two sheets: DCF (with sensitivity at bottom), WACC
 - Font colors: Blue=inputs, Black=formulas, Green=sheet links
 - Cell comments on ALL hardcoded inputs

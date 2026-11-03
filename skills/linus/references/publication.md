@@ -6,8 +6,7 @@ Confirme conta, identificador, versão, build e artefato antes do envio.
 
 ## Chrome Web Store
 
-O auxiliar scripts/chrome-webstore/upload.mjs preserva o envio como rascunho.
-Com Node disponível, execute primeiro `node SKILL_DIR/scripts/chrome-webstore/upload.mjs
+Use a integração oficial disponível. Para preparar o envio com o auxiliar Node, execute `node SKILL_DIR/scripts/chrome-webstore/upload.mjs
 --cwd PROJECT --item-id ITEM_ID --dry-run` para um plano offline, sem credenciais,
 alteração de versão, build ou arquivos de configuração. Resolva os placeholders.
 

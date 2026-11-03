@@ -1,5 +1,7 @@
 # Reddit Reading Skill
 
+Use a fonte primária e as ferramentas de consulta disponíveis. Os exemplos de comandos ilustram o uso de auxiliares de consulta.
+
 Reads Reddit content — subreddit listings, site or subreddit search, full threads with
 comments, and user activity — from a server or headless machine where the normal routes
 are dead. It does not post, vote, or log in as a user. Idea credit: the per-platform

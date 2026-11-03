@@ -37,7 +37,6 @@ python "$TTS_GEN" speak --input "Hello" --voice cedar --out speech.mp3
 
 ## Guardrails (important)
 - Use `python "$TTS_GEN" ...` (or equivalent full path) for all TTS work.
-- Do **not** create one-off runners (e.g., `gen_audio.py`) unless the user explicitly asks.
 - **Never modify** `SKILL_DIR/scripts/speech/text_to_speech.py`. If something is missing, ask the user before doing anything else.
 
 ## Defaults (unless overridden by flags)
