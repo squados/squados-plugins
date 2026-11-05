@@ -18,7 +18,9 @@ Quando o contexto confirmar que o apresentador fala com o editor, interprete “
 
 Escolha as ferramentas pelo trabalho. FFmpeg e ffprobe ajudam a inspecionar, cortar, montar, mixar e exportar. Para composições animadas, consulte o [guia oficial do HyperFrames](https://hyperframes.app/docs/1-startup/2-quickstart) ou siga a ferramenta do projeto, como Remotion.
 
-Use a galeria, os exemplos e a identidade indicados. Escolha como movimento, tipografia e som ajudam a contar a história. Em tela com câmera no canto, preserve a ação, o cursor e a leitura. Para um logo acompanhando a mão, use tracking disponível ou marque posições ao longo do take e confira as passagens rápidas. Para uma notícia, use a fonte ou o print real e destaque o trecho relevante. Componha uma simulação de interface para o momento da fala em que ela ajuda a explicar.
+Quando a pessoa mencionar um efeito da galeria, consulte o [catálogo de motion do SquadOS](https://raw.githubusercontent.com/squados/squados-plugins/main/motion-gallery/catalog.json). Se o checkout do catálogo estiver disponível no workspace, use o arquivo local `squados-plugins/motion-gallery/catalog.json`. Resolva cada efeito pelo nome exato ou ID, lendo os campos `title`, `id` e `prompt`. Use o prompt como receita para reproduzir o movimento e adapte o material, a duração e o enquadramento à edição pedida.
+
+Use os exemplos e a identidade indicados. Escolha como movimento, tipografia e som ajudam a contar a história. Em tela com câmera no canto, preserve a ação, o cursor e a leitura. Para um logo acompanhando a mão, use tracking disponível ou marque posições ao longo do take e confira as passagens rápidas. Para uma notícia, use a fonte ou o print real e destaque o trecho relevante. Componha uma simulação de interface para o momento da fala em que ela ajuda a explicar.
 
 Escolha efeitos sonoros e trilha licenciados para o uso. Use arquivos fornecidos ou fontes autorizadas e mantenha a voz clara. Sincronize as legendas com a montagem final e confira nomes, números e legibilidade.
 

@@ -1,0 +1,3957 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "01-G",
+      "title": "Do prompt ao carrossel publicado",
+      "category": "Carrosséis com IA",
+      "prompt": "Digite um pedido sobre trilhas, revele três slides ilustrados um após o outro e aproxime os cartões da tela do celular. Encerre com a grade do perfil e a confirmação de publicação.",
+      "demo": {
+        "key": "01-G",
+        "seconds": 6,
+        "posterAt": 0.96
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "01-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "01-E1",
+      "title": "Preenchimento automático de slides",
+      "category": "Carrosséis com IA",
+      "prompt": "Coloque três cartões vazios em fila. Preencha cada slide com uma paisagem, um título curto e uma linha de apoio com atraso progressivo. Deixe a sequência completa em quadro.",
+      "demo": {
+        "key": "01-E1",
+        "seconds": 5,
+        "posterAt": 0.74
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "01-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "01-E2",
+      "title": "Carrossel replicado em variações",
+      "category": "Carrosséis com IA",
+      "prompt": "Comece com um único cartão grande de carrossel. Faça seis cópias saírem do centro, mudarem de cor e se acomodarem em uma grade de três colunas por duas linhas.",
+      "demo": {
+        "key": "01-E2",
+        "seconds": 5,
+        "posterAt": 0.77
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "01-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "01-E3",
+      "title": "Fila que alimenta a grade do perfil",
+      "category": "Carrosséis com IA",
+      "prompt": "Mostre três carrosséis na fila de publicação. Solte um por vez, faça cada peça encolher no caminho até o celular e encaixe-a na grade para revelar o novo perfil.",
+      "demo": {
+        "key": "01-E3",
+        "seconds": 6,
+        "posterAt": 0.59
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "01-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "02-G",
+      "title": "Do prompt ao site publicado",
+      "category": "Sites com IA",
+      "prompt": "Digite um pedido de site para um refúgio de serra. Revele o hero ilustrado e os cartões da página, role suavemente até a seção seguinte e termine com o selo de publicação.",
+      "demo": {
+        "key": "02-G",
+        "seconds": 7,
+        "posterAt": 0.56
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "02-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "02-E1",
+      "title": "Hero com paralaxe na rolagem",
+      "category": "Sites com IA",
+      "prompt": "Mostre o hero ilustrado em uma janela de navegador. Na rolagem vertical, faça a paisagem deslizar mais devagar que o conteúdo e revele três cartões de seção embaixo.",
+      "demo": {
+        "key": "02-E1",
+        "seconds": 5,
+        "posterAt": 0.48
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "02-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "02-E2",
+      "title": "Referência visual vira site com identidade própria",
+      "category": "Sites com IA",
+      "prompt": "Mostre uma prancha de referência em tons rosados. Passe uma varredura pela imagem e use a seta para revelar um site em verde com texto, paisagem e seções próprias.",
+      "demo": {
+        "key": "02-E2",
+        "seconds": 6,
+        "posterAt": 0.8
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "02-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "02-E3",
+      "title": "Formulário preenchido com confirmação",
+      "category": "Sites com IA",
+      "prompt": "Digite nome, e-mail e número de visitantes em três batidas. Faça o cursor clicar em Reservar. Troque o botão por uma confirmação verde com uma pequena dispersão de confete.",
+      "demo": {
+        "key": "02-E3",
+        "seconds": 5,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "02-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "03-G",
+      "title": "Blog editorial criado e publicado",
+      "category": "Blogs automáticos",
+      "prompt": "Digite um pedido de blog de trilhas. Faça o texto do pedido sair enquanto a janela editorial entra, preencha a grade com capas em sequência e encerre com o selo Blog publicado.",
+      "demo": {
+        "key": "03-G",
+        "seconds": 7,
+        "posterAt": 0.94
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "03-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "03-E1",
+      "title": "Artigo se preenche na página",
+      "category": "Blogs automáticos",
+      "prompt": "Em uma página editorial vazia, revele o título primeiro, depois a imagem de capa e por último as linhas de texto uma de cada vez. Deixe a página final em quadro.",
+      "demo": {
+        "key": "03-E1",
+        "seconds": 5,
+        "posterAt": 0.78
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "03-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "03-E2",
+      "title": "Novos posts empurram a grade",
+      "category": "Blogs automáticos",
+      "prompt": "Fixe o cabeçalho do blog e insira três capas novas da esquerda para a direita. Faça a fileira de artigos anteriores descer de forma contínua à medida que chegam os novos posts.",
+      "demo": {
+        "key": "03-E2",
+        "seconds": 5,
+        "posterAt": 0.59
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "03-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "03-E3",
+      "title": "De poucos posts a um blog completo",
+      "category": "Blogs automáticos",
+      "prompt": "Abra com duas capas na grade editorial. Complete o espaço restante e acrescente uma segunda fileira, mantendo o cabeçalho e a identidade do mesmo blog durante toda a animação.",
+      "demo": {
+        "key": "03-E3",
+        "seconds": 6,
+        "posterAt": 0.83
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "03-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "04-G",
+      "title": "Do prompt ao vídeo montado",
+      "category": "Vídeos com IA",
+      "prompt": "Digite um pedido de animação, abra três cenas com o mesmo personagem em movimento e faça os takes convergirem para a prévia vertical pronta, que alterna os planos.",
+      "demo": {
+        "key": "04-G",
+        "seconds": 7,
+        "posterAt": 0.76
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "04-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "04-E1",
+      "title": "Retrato estático ganha movimento",
+      "category": "Vídeos com IA",
+      "prompt": "Mostre um desenho estático de personagem em uma moldura de vídeo. Revele a versão colorida no mesmo lugar e mova braços, corpo e fundo com o avanço do indicador de reprodução.",
+      "demo": {
+        "key": "04-E1",
+        "seconds": 5,
+        "posterAt": 0.63
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "04-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "04-E2",
+      "title": "Storyboard vira três takes animados",
+      "category": "Vídeos com IA",
+      "prompt": "Alinhe três cartões de storyboard numerados. Aplique cor e movimento a cada cartão em batidas sucessivas, da esquerda para a direita, deixando os três takes rodarem juntos.",
+      "demo": {
+        "key": "04-E2",
+        "seconds": 6,
+        "posterAt": 0.67
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "04-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "04-E3",
+      "title": "Takes convergem para vídeo vertical",
+      "category": "Vídeos com IA",
+      "prompt": "Mostre três pequenos takes em sequência horizontal. Desloque-os para o centro, um por cima do outro, e revele um celular que reproduz os cortes em enquadramento vertical.",
+      "demo": {
+        "key": "04-E3",
+        "seconds": 6,
+        "posterAt": 0.9
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "04-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "05-G",
+      "title": "Otimização eleva orçamento e pedidos",
+      "category": "Tráfego e escala",
+      "prompt": "Digite o pedido de otimização, aumente o orçamento com um controle deslizante e trace a curva verde do painel. Encerre com o aumento de 35% e pedidos chegando em sequência.",
+      "demo": {
+        "key": "05-G",
+        "seconds": 6,
+        "posterAt": 0.9
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "05-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "05-E1",
+      "title": "Orçamento sobe 35% e pedidos aceleram",
+      "category": "Tráfego e escala",
+      "prompt": "Leve o cursor pelo controle de orçamento até o novo valor. Revele um único “+35%” em destaque e depois mostre quatro pedidos com intervalos cada vez mais curtos.",
+      "demo": {
+        "key": "05-E1",
+        "seconds": 5,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "05-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "05-E2",
+      "title": "Variações de criativo alimentam a campanha",
+      "category": "Tráfego e escala",
+      "prompt": "Faça um criativo gerar três variações de capa. Envie cada cartão em sequência para o painel e revele a curva verde crescendo à medida que as peças chegam.",
+      "demo": {
+        "key": "05-E2",
+        "seconds": 5,
+        "posterAt": 0.52
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "05-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "05-E3",
+      "title": "Dados dispersos viram relatório visual",
+      "category": "Tráfego e escala",
+      "prompt": "Espalhe cartões de impressões, pedidos, orçamento e receita. Aproxime os cartões em direção ao relatório e substitua a dispersão por um gráfico de barras verdes.",
+      "demo": {
+        "key": "05-E3",
+        "seconds": 5,
+        "posterAt": 0.85
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "05-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "05-E4",
+      "title": "Tabela de anúncios vira painel de crescimento",
+      "category": "Tráfego e escala",
+      "prompt": "Troque uma tabela de quatro campanhas por um painel visual. Anime o cursor aumentando o orçamento e sincronize o avanço do controle com o crescimento da curva verde.",
+      "demo": {
+        "key": "05-E4",
+        "seconds": 6,
+        "posterAt": 0.87
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "05-E4"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "06-G",
+      "title": "Aplicativo de gestão criado, econômico e protegido",
+      "category": "Aplicativos com IA e economia de créditos",
+      "prompt": "Digite um pedido de aplicativo de gestão, revele o painel e abra o funil com um cartão em movimento. Reduza doze fichas a três e marque a proteção com um escudo.",
+      "demo": {
+        "key": "06-G",
+        "seconds": 7,
+        "posterAt": 0.94
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "06-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "06-E1",
+      "title": "Prompt vira painel com filtro e funil arrastável",
+      "category": "Aplicativos com IA e economia de créditos",
+      "prompt": "Digite o pedido para organizar projetos. Depois de montar o aplicativo, clique no filtro para trocar a curva por barras e arraste o cartão Projeto Sol de Aberto para Fechado.",
+      "demo": {
+        "key": "06-E1",
+        "seconds": 6,
+        "posterAt": 0.94
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "06-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "06-E2",
+      "title": "Painel ativo enquanto créditos diminuem",
+      "category": "Aplicativos com IA e economia de créditos",
+      "prompt": "Abra o painel com cartões e um gráfico interativo. Faça as doze fichas se juntarem até restarem três e alterne o período do gráfico durante a redução.",
+      "demo": {
+        "key": "06-E2",
+        "seconds": 5,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "06-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "06-E3",
+      "title": "Painel em monitor com campo magnético",
+      "category": "Aplicativos com IA e economia de créditos",
+      "prompt": "Abra com um painel de gestão em funcionamento. Acenda um campo oval azul ao redor do monitor e faça três sinais vermelhos baterem na borda e recuarem sem alterar os dados.",
+      "demo": {
+        "key": "07-G",
+        "seconds": 6,
+        "posterAt": 0.53
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "06-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "07-G",
+      "title": "Campo magnético repele invasões do aplicativo",
+      "category": "Aplicativo seguro",
+      "prompt": "Mostre um monitor com um gráfico ativo. Expanda um campo azul ao redor da tela e faça três projéteis vermelhos retornarem pelo mesmo caminho após cada impacto.",
+      "demo": {
+        "key": "07-G",
+        "seconds": 6,
+        "posterAt": 0.53
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "07-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "07-E1",
+      "title": "Projéteis vermelhos rebatem no campo",
+      "category": "Aplicativo seguro",
+      "prompt": "Lance três projéteis vermelhos alternando os lados do monitor. No ponto de contato, desenhe um anel de impacto e inverta a trajetória, mantendo a interface visível.",
+      "demo": {
+        "key": "07-E1",
+        "seconds": 5,
+        "posterAt": 0.57
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "07-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "07-E2",
+      "title": "Câmera acompanha o campo em volta da tela",
+      "category": "Aplicativo seguro",
+      "prompt": "Desloque o enquadramento do monitor para a direita enquanto o contorno azul se fecha. Faça um ponto percorrer a proteção e deixe o painel organizado dentro dela.",
+      "demo": {
+        "key": "07-E2",
+        "seconds": 6,
+        "posterAt": 0.73
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "07-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "08-G",
+      "title": "Pastas de departamentos viram proposta comercial",
+      "category": "Organização e tarefas da empresa",
+      "prompt": "Digite o pedido de proposta, abra quatro pastas ao redor do texto e faça as capas darem lugar a duas páginas. Revele ilustração, título e gráfico da proposta.",
+      "demo": {
+        "key": "08-G",
+        "seconds": 7,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "08-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "08-E1",
+      "title": "Proposta comercial montada e folheada",
+      "category": "Organização e tarefas da empresa",
+      "prompt": "Empilhe três páginas de proposta. Preencha primeiro a capa e depois simule o virar de folha, comprimindo a página até a lombada antes de revelar escopo e projeção.",
+      "demo": {
+        "key": "08-E1",
+        "seconds": 6,
+        "posterAt": 0.62
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "08-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "08-E2",
+      "title": "Slides se alinham em uma apresentação",
+      "category": "Organização e tarefas da empresa",
+      "prompt": "Solte três slides de pontos diferentes acima e abaixo do centro. Alinhe-os lado a lado, respeitando a ordem capa, plano e projeção, e numere a sequência no final.",
+      "demo": {
+        "key": "08-E2",
+        "seconds": 5,
+        "posterAt": 0.87
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "08-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "08-E3",
+      "title": "Planilha preenche linhas e gera gráfico",
+      "category": "Organização e tarefas da empresa",
+      "prompt": "Em uma planilha vazia, preencha colunas e linhas com valores fictícios. Quando os dados estiverem legíveis, faça um gráfico de barras subir ao lado da tabela.",
+      "demo": {
+        "key": "08-E3",
+        "seconds": 6,
+        "posterAt": 0.85
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "08-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "08-E4",
+      "title": "Documento ganha capa e páginas",
+      "category": "Organização e tarefas da empresa",
+      "prompt": "Mostre uma capa e duas páginas surgindo em leque. Revele o título, as imagens e os blocos de texto em momentos distintos, terminando com as três páginas abertas.",
+      "demo": {
+        "key": "08-E4",
+        "seconds": 5,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "08-E4"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "08-E5",
+      "title": "Massa de dados vira dois gráficos",
+      "category": "Organização e tarefas da empresa",
+      "prompt": "Faça números dispersos se aproximarem e desaparecerem no centro. No lugar deles, revele um gráfico de barras e outro de linha, com rótulos diferentes e desenho em tempos alternados.",
+      "demo": {
+        "key": "08-E5",
+        "seconds": 6,
+        "posterAt": 0.85
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "08-E5"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "09-G",
+      "title": "Dados dispersos viram painel com vendas, tráfego e RH",
+      "category": "Dashboard de gestão da empresa",
+      "prompt": "Digite o pedido de painel e reúna três fontes. Faça vendas e tráfego crescerem em gráficos separados e termine com dois currículos organizados na coluna de RH.",
+      "demo": {
+        "key": "09-G",
+        "seconds": 7,
+        "posterAt": 0.9
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "09-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "09-E1",
+      "title": "Indicadores e barras de vendas crescem",
+      "category": "Dashboard de gestão da empresa",
+      "prompt": "Abra um painel de vendas com três cartões vazios. Faça as contagens subirem em ordem e anime abaixo as barras mensais, da primeira até a última.",
+      "demo": {
+        "key": "09-E1",
+        "seconds": 5,
+        "posterAt": 0.83
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "09-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "09-E2",
+      "title": "Campanhas alimentam indicadores de tráfego",
+      "category": "Dashboard de gestão da empresa",
+      "prompt": "Empilhe três cartões de campanha à esquerda. Envie pulsos verdes por uma seta até o gráfico e faça o indicador de pedidos subir junto com o avanço da curva.",
+      "demo": {
+        "key": "09-E2",
+        "seconds": 5,
+        "posterAt": 0.67
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "09-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "09-E3",
+      "title": "Currículos se organizam e ganham destaque",
+      "category": "Dashboard de gestão da empresa",
+      "prompt": "Faça quatro currículos chegarem de alturas diferentes e se alinharem no painel de seleção. Depois contorne em verde dois perfis para mostrar a lista de pré-seleção.",
+      "demo": {
+        "key": "09-E3",
+        "seconds": 6,
+        "posterAt": 0.92
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "09-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "10-G",
+      "title": "Auditoria de SEO corrige a página e eleva a nota",
+      "category": "SEO e descoberta da empresa",
+      "prompt": "Digite o pedido de auditoria, passe uma linha de varredura e realinhe título, imagem e links. Faça a nota subir de 47 em vermelho até 99 em verde conforme as correções aparecem.",
+      "demo": {
+        "key": "10-G",
+        "seconds": 7,
+        "posterAt": 0.9
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "10-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "10-E1",
+      "title": "Varredura reorganiza trechos da página",
+      "category": "SEO e descoberta da empresa",
+      "prompt": "Desenhe uma linha de varredura descendo pelo site. À medida que ela passa, alinhe os três blocos fora de posição, alongue as caixas e acenda marcas de correção.",
+      "demo": {
+        "key": "10-E1",
+        "seconds": 5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "10-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "10-E2",
+      "title": "Nota de SEO sobe de 47 para 99",
+      "category": "SEO e descoberta da empresa",
+      "prompt": "Deixe o site ilustrado atrás do medidor. Faça o número contar de 47 a 99 enquanto o arco cresce, troque a cor de vermelho para verde e segure a nota final.",
+      "demo": {
+        "key": "10-E2",
+        "seconds": 5,
+        "posterAt": 0.83
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "10-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "10-E3",
+      "title": "Busca conversacional destaca uma loja de tênis",
+      "category": "SEO e descoberta da empresa",
+      "prompt": "Digite a pergunta por tênis em uma cidade fictícia. Revele uma resposta de busca em formato de cartão com o nome da loja, uma ilustração de tênis e um selo de destaque.",
+      "demo": {
+        "key": "10-E3",
+        "seconds": 6,
+        "posterAt": 0.83
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "10-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "11-G",
+      "title": "Gravação longa vira vídeo vertical editado",
+      "category": "Edição de vídeo com IA",
+      "prompt": "Mostre o arquivo bruto entrando, retire trechos vazios da linha do tempo e encaixe títulos e áudio. Envie a montagem ao celular para revelar a prévia vertical.",
+      "demo": {
+        "key": "11-G",
+        "seconds": 7,
+        "posterAt": 0.83
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "11-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "11-E1",
+      "title": "Remoção de erros e fechamento de lacunas",
+      "category": "Edição de vídeo com IA",
+      "prompt": "Mostre os erros em vermelho entre quatro clipes. Faça os trechos ruins encolherem e desaparecerem enquanto os clipes válidos deslizam para fechar as lacunas.",
+      "demo": {
+        "key": "11-E1",
+        "seconds": 5,
+        "posterAt": 0.4
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "11-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "11-E2",
+      "title": "Gravação vira três cortes verticais",
+      "category": "Edição de vídeo com IA",
+      "prompt": "Mostre a gravação horizontal e destaque uma faixa central de enquadramento. Revele três celulares em cascata com recortes diferentes da mesma personagem.",
+      "demo": {
+        "key": "11-E2",
+        "seconds": 6,
+        "posterAt": 0.84
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "11-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "11-E3",
+      "title": "Legendas e grafismos entram no ritmo",
+      "category": "Edição de vídeo com IA",
+      "prompt": "Reproduza o take em plano médio e troque a palavra em destaque a cada batida. Faça uma faixa com o nome do quadro deslizar para dentro entre a segunda e a terceira palavra.",
+      "demo": {
+        "key": "11-E3",
+        "seconds": 6,
+        "posterAt": 0.58
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "11-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "12-G",
+      "title": "Sugestão de resposta durante a videochamada",
+      "category": "Assistência comercial ao vivo",
+      "prompt": "Mostre a cliente falando na chamada. Faça o cartão de sugestão entrar pela lateral e revelar as linhas em sequência. Passe o destaque de fala para o consultor.",
+      "demo": {
+        "key": "12-G",
+        "seconds": 6,
+        "posterAt": 0.74
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "12-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "12-E1",
+      "title": "Resposta guiada para pergunta de preço",
+      "category": "Assistência comercial ao vivo",
+      "prompt": "Mostre a pergunta sobre investimento na faixa inferior da chamada. Revele uma sugestão para confirmar o escopo antes de citar valores e passe a fala ao consultor.",
+      "demo": {
+        "key": "12-E1",
+        "seconds": 6,
+        "posterAt": 0.72
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "12-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "12-E2",
+      "title": "Objeção vira próximo passo na chamada",
+      "category": "Assistência comercial ao vivo",
+      "prompt": "Mostre a objeção sobre falta de tempo. Na coluna lateral, revele a sugestão de começar com um piloto curto. Troque o destaque para o consultor que responde.",
+      "demo": {
+        "key": "12-E2",
+        "seconds": 6,
+        "posterAt": 0.72
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "12-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "13-G",
+      "title": "Do currículo à lista de candidatos",
+      "category": "Análise de currículos",
+      "prompt": "Abra com um pedido de triagem e quatro currículos fictícios empilhados. Passe cada documento pelo leitor e revele cartões de candidatos, com as duas melhores compatibilidades em destaque.",
+      "demo": {
+        "key": "13-G",
+        "seconds": 5,
+        "posterAt": 0.94
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "13-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "13-E1",
+      "title": "Pilha de currículos vira cartões",
+      "category": "Análise de currículos",
+      "prompt": "Empilhe quatro folhas desencontradas e distribua cada uma em seu lugar numa grade. Enquanto a folha chega, revele um retrato vetorial, o nome fictício e um indicador de compatibilidade.",
+      "demo": {
+        "key": "13-E1",
+        "seconds": 4,
+        "posterAt": 0.79
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "13-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "13-E2",
+      "title": "Critérios conectados aos candidatos",
+      "category": "Análise de currículos",
+      "prompt": "Coloque os requisitos à esquerda e quatro candidatos à direita. Desenhe as conexões dos requisitos até os melhores perfis, avance os dois cartões selecionados e mantenha os outros atenuados.",
+      "demo": {
+        "key": "13-E2",
+        "seconds": 5,
+        "posterAt": 0.92
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "13-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "14-G",
+      "title": "Do perfil ao painel de métricas",
+      "category": "Análise de redes sociais",
+      "prompt": "Mostre um perfil fictício com miniaturas de posts. Deslize o painel de métricas para dentro do quadro e conte alcance, publicações e interações, acompanhando os números com barras crescentes.",
+      "demo": {
+        "key": "14-G",
+        "seconds": 5,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "14-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "14-E1",
+      "title": "Ranking de publicações por visualizações",
+      "category": "Análise de redes sociais",
+      "prompt": "Abra uma lista de três publicações em ordem cronológica com suas miniaturas. Anime as contagens e mova as linhas para ordenar da publicação mais vista até a menos vista.",
+      "demo": {
+        "key": "14-E1",
+        "seconds": 4,
+        "posterAt": 0.87
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "14-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "14-E2",
+      "title": "Desempenho por formato de conteúdo",
+      "category": "Análise de redes sociais",
+      "prompt": "Crie três linhas para Vídeos, Fotos e Stories com ícones distintos. Revele uma barra por vez e conte os números à direita até cada barra parar em seu valor de exemplo.",
+      "demo": {
+        "key": "14-E2",
+        "seconds": 4,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "14-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "14-E3",
+      "title": "Visão geral de atividade do perfil",
+      "category": "Análise de redes sociais",
+      "prompt": "Abra uma visão geral do perfil fictício e trace um gráfico de atividade da esquerda para a direita. Preencha a área sob a linha e mostre os totais de alcance e visitas no fechamento.",
+      "demo": {
+        "key": "14-E3",
+        "seconds": 4.5,
+        "posterAt": 0.92
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "14-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "15-G",
+      "title": "De sites a um relatório comparativo",
+      "category": "Análise de concorrentes",
+      "prompt": "Digite um pedido curto e revele três sites fictícios em cartões. Depois reúna as informações num relatório com tabela de características e barras comparativas.",
+      "demo": {
+        "key": "15-G",
+        "seconds": 5,
+        "posterAt": 0.94
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "15-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "15-E1",
+      "title": "Comparação de sites lado a lado",
+      "category": "Análise de concorrentes",
+      "prompt": "Deslize três janelas de sites fictícios de pontos diferentes até alinhá-las pela borda superior. Revele abaixo de cada janela o preço e a condição fictícios correspondentes.",
+      "demo": {
+        "key": "15-E1",
+        "seconds": 4,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "15-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "15-E2",
+      "title": "Matriz de diferenças entre concorrentes",
+      "category": "Análise de concorrentes",
+      "prompt": "Monte uma matriz com três fornecedores e quatro recursos. Revele as respostas em sequência por linha e realce a linha na qual as ofertas diferem entre si.",
+      "demo": {
+        "key": "15-E2",
+        "seconds": 4,
+        "posterAt": 0.82
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "15-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "15-E3",
+      "title": "Relatório de concorrentes folheado",
+      "category": "Análise de concorrentes",
+      "prompt": "Abra uma capa vertical com o título do relatório. Vire a página com compressão horizontal até revelar, em dois movimentos, a tabela de diferenças e a página de gráficos.",
+      "demo": {
+        "key": "15-E3",
+        "seconds": 5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "15-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "16-G",
+      "title": "Assistente em dois canais de conversa",
+      "category": "Agentes conversacionais",
+      "prompt": "Coloque dois aplicativos genéricos de conversa lado a lado. Faça pedidos diferentes aparecerem alternadamente e use bolhas de digitação para preparar as respostas do mesmo assistente.",
+      "demo": {
+        "key": "16-G",
+        "seconds": 5,
+        "posterAt": 0.85
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "16-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "16-E1",
+      "title": "Atendimento retomado em outro canal",
+      "category": "Agentes conversacionais",
+      "prompt": "Abra o pedido em uma janela de chat. Em seguida, envie um cartão de contexto pelo espaço entre os canais e continue o mesmo assunto numa segunda conversa, sem repetir a pergunta.",
+      "demo": {
+        "key": "16-E1",
+        "seconds": 5,
+        "posterAt": 0.84
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "16-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "16-E2",
+      "title": "Proposta em PDF enviada no chat",
+      "category": "Agentes conversacionais",
+      "prompt": "Mostre o pedido do cliente, depois componha um cartão com ícone PDF e nome fictício do arquivo. Encaixe-o na conversa e revele a confirmação do envio logo abaixo.",
+      "demo": {
+        "key": "16-E2",
+        "seconds": 5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "16-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "16-E3",
+      "title": "Horário escolhido e confirmado no chat",
+      "category": "Agentes conversacionais",
+      "prompt": "Faça uma pergunta de agendamento surgir no chat. Revele dois horários, selecione a opção de 14h com o cursor e encerre com uma confirmação verde do horário marcado.",
+      "demo": {
+        "key": "16-E3",
+        "seconds": 5,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "16-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "16-E4",
+      "title": "Pedido de dado privado recusado no chat",
+      "category": "Agentes conversacionais",
+      "prompt": "Receba um pedido fictício de dado privado e marque essa bolha como restrita. Faça o agente oferecer um caminho permitido na bolha seguinte e continue com a resposta do cliente.",
+      "demo": {
+        "key": "16-E4",
+        "seconds": 5,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "16-E4"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "16-E5",
+      "title": "Resposta com próxima pergunta no chat",
+      "category": "Agentes conversacionais",
+      "prompt": "Mostre uma dúvida sobre prazo, sinalize que o assistente está digitando e revele a resposta com o prazo fictício. Faça uma segunda bolha perguntar o local de entrega.",
+      "demo": {
+        "key": "16-E5",
+        "seconds": 4.5,
+        "posterAt": 0.84
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "16-E5"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "17-G",
+      "title": "Janelas manuais viram um fluxo automático",
+      "category": "Processo manual virando automação",
+      "prompt": "Sobreponha janelas de planilha, arquivos e e-mail. Faça o cursor percorrê-las, alinhe as três tarefas em um fluxo e dispare um pulso que percorre os blocos até entregar o resultado.",
+      "demo": {
+        "key": "17-G",
+        "seconds": 5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "17-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "17-E1",
+      "title": "Planilhas consolidadas em um relatório",
+      "category": "Processo manual virando automação",
+      "prompt": "Abra três planilhas fictícias à esquerda. Anime linhas de dados saindo delas e preenchendo o relatório à direita, uma por vez, até o total ser calculado.",
+      "demo": {
+        "key": "17-E1",
+        "seconds": 5,
+        "posterAt": 0.95
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "17-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "17-E2",
+      "title": "Imagem-base vira uma grade de variações",
+      "category": "Processo manual virando automação",
+      "prompt": "Comece com uma ilustração de produto à esquerda e uma grade vazia à direita. Faça seis versões surgir em sequência, mudando paleta e fundo enquanto o produto mantém a forma.",
+      "demo": {
+        "key": "17-E2",
+        "seconds": 4.5,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "17-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "17-E3",
+      "title": "Pedidos em fila passam pelo mesmo fluxo",
+      "category": "Processo manual virando automação",
+      "prompt": "Organize três pedidos numa fila. Envie cada um separadamente pelos nós Receber, Conferir e Registrar, e empilhe os comprovantes concluídos do outro lado.",
+      "demo": {
+        "key": "17-E3",
+        "seconds": 5,
+        "posterAt": 0.73
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "17-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "18-G",
+      "title": "Mentoria com fluxo compartilhado ao vivo",
+      "category": "Mentoria",
+      "prompt": "Componha uma chamada com três avatares fictícios e uma área compartilhada no centro. Conecte os nós do fluxo conforme cada participante contribui e acenda a trilha de execução.",
+      "demo": {
+        "key": "18-G",
+        "seconds": 5,
+        "posterAt": 0.8
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "18-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "18-E1",
+      "title": "Participantes apontam para o mesmo fluxo",
+      "category": "Mentoria",
+      "prompt": "Mostre três participantes fictícios sobre a tela compartilhada. Mova dois cursores identificados até nós diferentes e desenhe a conexão que os liga ao último bloco.",
+      "demo": {
+        "key": "18-E1",
+        "seconds": 4.5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "18-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "18-E2",
+      "title": "Execução do fluxo na chamada de mentoria",
+      "category": "Mentoria",
+      "prompt": "Comece com o diagrama já conectado e os participantes na mesma chamada. Destaque o participante ativo, execute as etapas em sequência e mostre a confirmação no painel compartilhado.",
+      "demo": {
+        "key": "18-E2",
+        "seconds": 5,
+        "posterAt": 0.87
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "18-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "19-G",
+      "title": "Acesso, progresso e conquista no painel",
+      "category": "Licenças, cursos e gamificação",
+      "prompt": "Distribua três acessos fictícios, faça os respectivos indicadores de aula avançarem e acrescente a conquista de conclusão ao painel quando a primeira pessoa terminar.",
+      "demo": {
+        "key": "19-G",
+        "seconds": 5,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "19-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "19-E1",
+      "title": "Licença atribuída e primeira aula aberta",
+      "category": "Licenças, cursos e gamificação",
+      "prompt": "Mostre uma licença disponível e um cartão de colaborador. Mova a licença até o cartão e abra à direita a primeira aula da trilha, com o botão de reprodução em evidência.",
+      "demo": {
+        "key": "19-E1",
+        "seconds": 4.5,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "19-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "19-E2",
+      "title": "Progresso coletivo com medalhas de conclusão",
+      "category": "Licenças, cursos e gamificação",
+      "prompt": "Monte três linhas de progresso com ritmos diferentes. Quando cada barra alcançar cem por cento, faça uma medalha saltar da extremidade e estabilizar no fim da linha.",
+      "demo": {
+        "key": "19-E2",
+        "seconds": 5,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "19-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "19-E3",
+      "title": "Trilha de aulas até a conquista final",
+      "category": "Licenças, cursos e gamificação",
+      "prompt": "Desenhe quatro etapas em uma trilha curva. Revele cada etapa ao acender a conexão anterior e faça a última etapa crescer até se transformar na medalha de conclusão.",
+      "demo": {
+        "key": "19-E3",
+        "seconds": 5,
+        "posterAt": 0.87
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "19-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "20-G",
+      "title": "Retratos ilustrados revelados em um mural",
+      "category": "Mural de conquistas",
+      "prompt": "Organize avatares e troféus fictícios em um mural. Revele os quadros em ondas diagonais, começando no canto superior esquerdo, e mantenha a composição completa no fim.",
+      "demo": {
+        "key": "20-G",
+        "seconds": 5,
+        "posterAt": 0.87
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "20-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "20-E1",
+      "title": "Afastamento de câmera revela o mural",
+      "category": "Mural de conquistas",
+      "prompt": "Abra com uma placa ilustrada ocupando o centro. Afaste a câmera continuamente até mostrar dezenas de retratos e conquistas fictícias nas bordas do mural.",
+      "demo": {
+        "key": "20-E1",
+        "seconds": 4.5,
+        "posterAt": 0.72
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "20-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "20-E2",
+      "title": "Mosaico de conquistas preenchido em blocos",
+      "category": "Mural de conquistas",
+      "prompt": "Divida o quadro em uma grade com avatares e troféus originais. Preencha blocos alternados por quadrante, com um breve aumento de escala a cada revelação, até fechar o mosaico.",
+      "demo": {
+        "key": "20-E2",
+        "seconds": 4.5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "20-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "20-E3",
+      "title": "Travelling lateral pelo mural de conquistas",
+      "category": "Mural de conquistas",
+      "prompt": "Desenhe uma faixa de cartões com retratos e placas fictícias, mais larga que o quadro. Desloque a câmera lateralmente a velocidade constante e use uma segunda faixa mais distante para criar paralaxe.",
+      "demo": {
+        "key": "20-E3",
+        "seconds": 4.5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "20-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "21-G",
+      "title": "Prompt gera imagem e abre galeria",
+      "category": "Imagens e thumbnails com IA",
+      "prompt": "Digite um pedido curto para uma cena ilustrada. Revele a imagem principal com varredura vertical e faça a câmera abrir para uma galeria de oito miniaturas com temas variados.",
+      "demo": {
+        "key": "21-G",
+        "seconds": 5,
+        "posterAt": 0.92
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "21-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "21-E1",
+      "title": "Retrato e referência viram thumbnail",
+      "category": "Imagens e thumbnails com IA",
+      "prompt": "Coloque à esquerda um retrato vetorial fictício e um esboço de composição. Ligue ambos à direita, onde nasce uma thumbnail com o retrato recortado e a tipografia do esboço.",
+      "demo": {
+        "key": "21-E1",
+        "seconds": 5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "21-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "21-E2",
+      "title": "Um frasco em três cenários de produto",
+      "category": "Imagens e thumbnails com IA",
+      "prompt": "Apresente o mesmo frasco original em três quadros que entram em sequência. Troque o fundo entre floresta, água e rua noturna e preserve o contorno e a posição do produto em cada imagem.",
+      "demo": {
+        "key": "21-E2",
+        "seconds": 5,
+        "posterAt": 0.82
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "21-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "21-E3",
+      "title": "Galeria de oito estilos de imagem",
+      "category": "Imagens e thumbnails com IA",
+      "prompt": "Mostre oito criações vetoriais em uma grade. Destaque cada uma por um instante, passando por miniatura, paisagem, infográfico, produto, desenho, moda, 3D e pôster.",
+      "demo": {
+        "key": "21-E3",
+        "seconds": 5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "21-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "22-G",
+      "title": "Pedido vira fluxo e entrega um arquivo",
+      "category": "Automações e modelos prontos",
+      "prompt": "Comece com um pedido à esquerda. Transforme-o em nós conectados, faça um pulso percorrer o caminho de leitura e resumo e revele o arquivo pronto à direita.",
+      "demo": {
+        "key": "22-G",
+        "seconds": 5,
+        "posterAt": 0.94
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "22-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "22-E1",
+      "title": "Modelo encaixado no fluxo de automação",
+      "category": "Automações e modelos prontos",
+      "prompt": "Mostre três modelos na biblioteca. Retire o cartão de resumo, deslize-o para a lacuna entre Entrada e Entrega e faça o fluxo acender a partir do novo nó.",
+      "demo": {
+        "key": "22-E1",
+        "seconds": 4.5,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "22-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "22-E2",
+      "title": "Agentes passam tarefas até consolidar a entrega",
+      "category": "Automações e modelos prontos",
+      "prompt": "Crie três cartões para leitura, checagem e síntese. Passe uma ficha de trabalho de um agente ao próximo e reúna três marcas de conclusão num único documento final.",
+      "demo": {
+        "key": "22-E2",
+        "seconds": 5,
+        "posterAt": 0.93
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "22-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "22-E3",
+      "title": "PDF transformado em resumo visual",
+      "category": "Automações e modelos prontos",
+      "prompt": "Mostre um PDF fictício aberto à esquerda. Varra a página de cima para baixo e revele três destaques num painel de resumo, seguidos por uma confirmação de leitura.",
+      "demo": {
+        "key": "22-E3",
+        "seconds": 5,
+        "posterAt": 0.94
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "22-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "23-G",
+      "title": "Do prompt ao aplicativo em duas telas",
+      "category": "Aplicativos e projetos completos",
+      "prompt": "Digite um pedido e revele o aplicativo fictício em um monitor. Faça a mesma interface entrar no celular e finalize a ação de salvar nos dois formatos, com retorno visual.",
+      "demo": {
+        "key": "23-G",
+        "seconds": 5,
+        "posterAt": 0.87
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "23-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "23-E1",
+      "title": "Cadastro concluído numa landing page",
+      "category": "Aplicativos e projetos completos",
+      "prompt": "Mostre uma landing page fictícia com um formulário simples. Digite um endereço de exemplo, pressione o botão de cadastro e faça um novo contato surgir no painel ao lado.",
+      "demo": {
+        "key": "23-E1",
+        "seconds": 4.5,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "23-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "23-E2",
+      "title": "Aplicativo entrega seleção de imóveis",
+      "category": "Aplicativos e projetos completos",
+      "prompt": "Monte três cartões com imóveis desenhados. Aplique um filtro, desloque os dois imóveis compatíveis para uma seleção e confirme a entrega das duas opções ao cliente.",
+      "demo": {
+        "key": "23-E2",
+        "seconds": 4.5,
+        "posterAt": 0.93
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "23-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "23-E3",
+      "title": "Vistoria preenchida e notificação enviada",
+      "category": "Aplicativos e projetos completos",
+      "prompt": "Mostre uma tela de vistoria com três itens. Marque cada inspeção em sequência e faça a notificação de envio subir no canto quando a última for concluída.",
+      "demo": {
+        "key": "23-E3",
+        "seconds": 5,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "23-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "23-E4",
+      "title": "Cartões avançam num quadro de tarefas",
+      "category": "Aplicativos e projetos completos",
+      "prompt": "Desenhe três colunas de tarefas. Mova cartões de A fazer para Em curso e Concluído em tempos diferentes, com os números de cada coluna mudando junto.",
+      "demo": {
+        "key": "23-E4",
+        "seconds": 5,
+        "posterAt": 0.78
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "23-E4"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "24-G",
+      "title": "Trilha de formação com ajuda no projeto",
+      "category": "Cursos e suporte ao aluno",
+      "prompt": "Abra uma trilha de aulas e avance até o projeto fictício. Mostre uma dúvida no canto e traga uma resposta de ajuda sobre o mesmo quadro, com o projeto visível ao lado.",
+      "demo": {
+        "key": "24-G",
+        "seconds": 5,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "24-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "24-E1",
+      "title": "Tutor responde com uma aula relacionada",
+      "category": "Cursos e suporte ao aluno",
+      "prompt": "Faça uma pergunta curta entrar num painel de ajuda. Revele a resposta e deslize um cartão com o nome da aula correspondente para baixo da conversa.",
+      "demo": {
+        "key": "24-E1",
+        "seconds": 4.5,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "24-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "24-E2",
+      "title": "Biblioteca de cursos abre uma trilha",
+      "category": "Cursos e suporte ao aluno",
+      "prompt": "Faça quatro capas ilustradas se organizarem numa grade. Aproxime a capa selecionada e substitua seu conteúdo por uma trilha com quatro etapas alinhadas.",
+      "demo": {
+        "key": "24-E2",
+        "seconds": 4.5,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "24-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "24-E3",
+      "title": "Do pedido de suporte de volta ao projeto",
+      "category": "Cursos e suporte ao aluno",
+      "prompt": "Mostre um projeto fictício pausado por um erro. Abra o chat lateral, receba uma instrução curta e recolha o suporte antes de mostrar o projeto com a correção aplicada.",
+      "demo": {
+        "key": "24-E3",
+        "seconds": 5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "24-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-02-01",
+      "title": "Criador de 45 anos, relógio, fuga e notebook no chão",
+      "category": "Carrosséis com IA",
+      "prompt": "Corte de um plano médio no escritório para um plano aberto da corrida até a porta. Incline o corpo no tropeço e corte na ação para o notebook girando e batendo no chão.",
+      "demo": {
+        "key": "RM26-02-01",
+        "seconds": 7,
+        "posterAt": 0.57
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-02-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-02-02",
+      "title": "Apatia no feed vira interesse no carrossel",
+      "category": "Carrosséis com IA",
+      "prompt": "Abra no close de um rosto com expressão neutra. Insira um close do celular passando por dois slides de trilhas. Volte ao mesmo enquadramento do rosto e faça o sorriso crescer.",
+      "demo": {
+        "key": "RM26-02-02",
+        "seconds": 6
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-02-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-02-03",
+      "title": "Antes e depois do perfil",
+      "category": "Carrosséis com IA",
+      "prompt": "Compare duas versões da mesma grade social. Preserve a coluna anterior à esquerda e faça seis capas novas entrarem na coluna à direita, seguidas da contagem de publicações.",
+      "demo": {
+        "key": "RM26-02-03",
+        "seconds": 6,
+        "posterAt": 0.82
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-02-03"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-03-01",
+      "title": "Criador mostra site e recebe pagamento do empresário",
+      "category": "Sites com IA",
+      "prompt": "Em plano médio, coloque dois personagens diante de um site aberto. Faça o comprador sinalizar a aprovação e deslizar um maço de cédulas ilustradas até a mão do criador.",
+      "demo": {
+        "key": "RM26-03-01",
+        "seconds": 6,
+        "posterAt": 0.7
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-03-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-04-01",
+      "title": "Tendência vira artigo publicado",
+      "category": "Blogs automáticos",
+      "prompt": "Mostre uma busca fictícia por trilhas ao amanhecer. Passe ao artigo com o mesmo título, preencha capa e texto e finalize com o post correspondente na grade do blog.",
+      "demo": {
+        "key": "RM26-04-01",
+        "seconds": 6,
+        "posterAt": 0.62
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-04-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-04-02",
+      "title": "Capa gerada e configurada no artigo",
+      "category": "Blogs automáticos",
+      "prompt": "Digite um pedido de ilustração, revele a capa em tamanho grande e reduza a mesma imagem ao arrastá-la até o artigo. Termine com a capa aplicada na prévia.",
+      "demo": {
+        "key": "RM26-04-02",
+        "seconds": 6,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-04-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-05-01",
+      "title": "Seleção de elenco e apreensão após o pagamento",
+      "category": "Vídeos com IA",
+      "prompt": "Abra com uma produtora ao notebook. Insira a tela de seleção de três atores fictícios e a confirmação de pagamento. Corte de volta para um close da expressão apreensiva.",
+      "demo": {
+        "key": "RM26-05-01",
+        "seconds": 6,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-05-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-05-02",
+      "title": "Mesma personagem em três ambientes",
+      "category": "Vídeos com IA",
+      "prompt": "Mantenha rosto, roupa e escala da personagem em três planos. Dê cinco segundos a cada cenário, cortando a seco do estúdio para a praia e depois para o escritório.",
+      "demo": {
+        "key": "RM26-05-02",
+        "seconds": 15,
+        "posterAt": 0.51
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-05-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-05-03",
+      "title": "Mensagem no chat vira fala da personagem",
+      "category": "Vídeos com IA",
+      "prompt": "Envie a frase fictícia “Vamos descobrir a trilha?” num chat. Corte para a personagem com movimento de fala e exiba a frase exata em palavras sincronizadas na legenda.",
+      "demo": {
+        "key": "RM26-05-03",
+        "seconds": 6,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-05-03"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-05-04",
+      "title": "Imagem, voz e vídeo no fluxo de produção",
+      "category": "Vídeos com IA",
+      "prompt": "Mostre a referência visual, desenhe a onda de voz e revele o take com o personagem em movimento. Passe um playhead pelas faixas para ligar os insumos à montagem.",
+      "demo": {
+        "key": "RM26-05-04",
+        "seconds": 7,
+        "posterAt": 0.72
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-05-04"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-06-01",
+      "title": "Analista confuso entre planilhas e dashboard",
+      "category": "Tráfego e escala",
+      "prompt": "Mostre um analista em plano médio diante de planilhas sobrepostas. Alterne o foco entre as tabelas e desloque o olhar. Termine com o painel parcialmente preenchido e a dúvida visível.",
+      "demo": {
+        "key": "RM26-06-01",
+        "seconds": 6,
+        "posterAt": 0.48
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-06-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-06-02",
+      "title": "Dois canais de mídia alimentam painel por IA",
+      "category": "Tráfego e escala",
+      "prompt": "Coloque mídia social e mídia de busca nas pontas. Faça pontos percorrerem as conexões até o nó central de IA e descerem para o painel, que ganha barras de resultado.",
+      "demo": {
+        "key": "RM26-06-02",
+        "seconds": 6,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-06-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-06-03",
+      "title": "Prompt, relatório e otimização",
+      "category": "Tráfego e escala",
+      "prompt": "Digite o pedido de auditoria, abra um relatório com resultados da campanha e revele a sugestão de mover verba para a busca. Termine com a confirmação ilustrativa do ajuste.",
+      "demo": {
+        "key": "RM26-06-03",
+        "seconds": 6,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-06-03"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-06-04",
+      "title": "Tradicional versus IA",
+      "category": "Tráfego e escala",
+      "prompt": "Divida a tela em dois. Faça os relógios chegarem a seis e duas horas e desenhe uma curva descendente em vermelho e outra ascendente em verde. Segure os resultados lado a lado.",
+      "demo": {
+        "key": "RM26-06-04",
+        "seconds": 6,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-06-04"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-07-01",
+      "title": "Descrição vira aplicativo moderno",
+      "category": "Aplicativos com IA e economia de créditos",
+      "prompt": "Digite uma descrição para um aplicativo de projetos. Revele seus indicadores e faça o cursor clicar na tarefa pendente, que muda para concluída com a confirmação em verde.",
+      "demo": {
+        "key": "RM26-07-01",
+        "seconds": 6,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-07-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-07-02",
+      "title": "Triângulo dos três passos",
+      "category": "Aplicativos com IA e economia de créditos",
+      "prompt": "Revele os vértices Planejar, Desenhar e Criar nessa ordem. Trace as setas à medida que cada vértice aparece e feche o triângulo com a ligação de volta ao planejamento.",
+      "demo": {
+        "key": "RM26-07-02",
+        "seconds": 5,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-07-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-08-01",
+      "title": "Golpe contra o dono do aplicativo",
+      "category": "Aplicativo seguro",
+      "prompt": "Corte do invasor no computador para um alerta de transferência indevida. Mostre o valor fictício em vermelho e volte para um close da reação do dono ao perceber a perda.",
+      "demo": {
+        "key": "RM26-08-01",
+        "seconds": 6
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-08-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-08-02",
+      "title": "Três portas fecham e ficam protegidas",
+      "category": "Aplicativo seguro",
+      "prompt": "Desenhe três portas vermelhas abertas. Feche-as da esquerda para a direita, troque cada cor para verde ao bater no batente e revele um cadeado grande sobre a fileira.",
+      "demo": {
+        "key": "RM26-08-02",
+        "seconds": 5,
+        "posterAt": 0.93
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-08-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-08-03",
+      "title": "Vinte e um itens formam escudo azul",
+      "category": "Aplicativo seguro",
+      "prompt": "Revele 21 cartões numerados em três fileiras. Faça os cartões convergirem ao centro ao mesmo tempo e substitua o conjunto por um escudo azul com marca de verificação.",
+      "demo": {
+        "key": "RM26-08-03",
+        "seconds": 6,
+        "posterAt": 0.82
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-08-03"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-09-01",
+      "title": "Setores dentro da pasta da empresa",
+      "category": "Organização e tarefas da empresa",
+      "prompt": "Abra a pasta Empresa no topo. Envie quatro conexões até as pastas dos departamentos e mostre, com atraso curto, uma subpasta se encaixando em cada setor.",
+      "demo": {
+        "key": "RM26-09-01",
+        "seconds": 6,
+        "posterAt": 0.94
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-09-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-09-02",
+      "title": "Colaborador pede depoimento e recebe placa",
+      "category": "Organização e tarefas da empresa",
+      "prompt": "Mostre um colaborador pedindo um depoimento no chat. Revele a resposta em forma de retrato ilustrado com placa fictícia e faça o cartão avançar até ocupar o destaque.",
+      "demo": {
+        "key": "RM26-09-02",
+        "seconds": 6,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-09-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-09-03",
+      "title": "Assistente busca arquivo na gaveta e entrega",
+      "category": "Organização e tarefas da empresa",
+      "prompt": "Abra duas gavetas em sequência com um assistente ilustrado. Faça uma pasta sair da segunda e percorrer o quadro até o colaborador, que recebe com um sorriso.",
+      "demo": {
+        "key": "RM26-09-03",
+        "seconds": 6,
+        "posterAt": 0.62
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-09-03"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-10-01",
+      "title": "Frase pesquisada e site no topo",
+      "category": "SEO e descoberta da empresa",
+      "prompt": "Digite “Trilhas em Vila Clara” no chat. Faça a mesma frase migrar para a caixa de busca e revele, no primeiro resultado, o site fictício com o título idêntico.",
+      "demo": {
+        "key": "RM26-10-01",
+        "seconds": 6,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-10-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-10-02",
+      "title": "Vídeo bobo, especialista e descoberta",
+      "category": "SEO e descoberta da empresa",
+      "prompt": "Abra num vídeo vertical cômico de um explorador desastrado. Corte para a especialista em plano médio e depois para uma busca que encontra o guia assinado por ela.",
+      "demo": {
+        "key": "RM26-10-02",
+        "seconds": 7
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-10-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-10-03",
+      "title": "Palavras-chave ganham cliques",
+      "category": "SEO e descoberta da empresa",
+      "prompt": "Passe uma lupa até a expressão “trilhas leves”. Leve a expressão ao primeiro resultado e faça o cursor clicar, aumentando a contagem de visitas no mesmo site.",
+      "demo": {
+        "key": "RM26-10-03",
+        "seconds": 6,
+        "posterAt": 0.81
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-10-03"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-10-04",
+      "title": "Auditoria, palavras e ranking",
+      "category": "SEO e descoberta da empresa",
+      "prompt": "Passe a varredura pelos três blocos de palavras-chave. Acenda uma estrela amarela por correção e anime o ranking da oitava posição em vermelho à primeira em verde.",
+      "demo": {
+        "key": "RM26-10-04",
+        "seconds": 6,
+        "posterAt": 0.82
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-10-04"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-10-05",
+      "title": "Quarta página vira primeira",
+      "category": "SEO e descoberta da empresa",
+      "prompt": "Mantenha a consulta e o domínio fictício nas duas telas. Deslize o resultado da página 4 para fora, traga a página 1 pelo lado oposto e destaque o domínio em verde.",
+      "demo": {
+        "key": "RM26-10-05",
+        "seconds": 6,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-10-05"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-11-01",
+      "title": "Tempo para gravar versus editar",
+      "category": "Edição de vídeo com IA",
+      "prompt": "Divida o quadro entre gravação e timeline. Mova a personagem no primeiro lado e os clipes no segundo. Faça o relógio de edição avançar além do relógio de gravação.",
+      "demo": {
+        "key": "RM26-11-01",
+        "seconds": 6,
+        "posterAt": 0.83
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-11-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-11-02",
+      "title": "IA edita do bruto ao vídeo final",
+      "category": "Edição de vídeo com IA",
+      "prompt": "Abra com o cartão de importação, corte erros na timeline, monte as faixas de títulos e áudio e faça a exportação completar. Termine na prévia com a legenda ativa.",
+      "demo": {
+        "key": "RM26-11-02",
+        "seconds": 7,
+        "posterAt": 0.69
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-11-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-12-01",
+      "title": "Vendedor recebe sugestão e fecha",
+      "category": "Assistência comercial ao vivo",
+      "prompt": "Abra com a dúvida do vendedor durante a conversa. Revele a sugestão de combinar a próxima entrega, passe a palavra a ele e finalize com a confirmação verde do negócio.",
+      "demo": {
+        "key": "RM26-12-01",
+        "seconds": 6,
+        "posterAt": 0.92
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-12-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-12-02",
+      "title": "Equipe comercial bate meta",
+      "category": "Assistência comercial ao vivo",
+      "prompt": "Coloque três colegas diante de um painel. Faça as barras chegarem à meta, mostre a confirmação de 100% e deixe a equipe reagir com sorrisos e confete curto.",
+      "demo": {
+        "key": "RM26-12-02",
+        "seconds": 6,
+        "posterAt": 0.83
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-12-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-13-01",
+      "title": "Vaga recebe 500 inscrições",
+      "category": "Análise de currículos",
+      "prompt": "Mostre uma vaga fictícia e um contador crescente de inscrições. Faça currículos se acumularem na mesa enquanto um avatar de recrutamento passa de tranquilo a preocupado.",
+      "demo": {
+        "key": "RM26-13-01",
+        "seconds": 5,
+        "posterAt": 0.93
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-13-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-13-02",
+      "title": "IA reduz 500 candidatos a 3",
+      "category": "Análise de currículos",
+      "prompt": "Anime documentos entrando num funil com três requisitos. Reduza a contagem a cada estágio e revele no fim três cartões fictícios com nomes e compatibilidades.",
+      "demo": {
+        "key": "RM26-13-02",
+        "seconds": 5,
+        "posterAt": 0.92
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-13-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-14-01",
+      "title": "Pessoa confusa rolando o feed",
+      "category": "Análise de redes sociais",
+      "prompt": "Mostre uma personagem vetorial ao lado de um celular genérico. Role miniaturas de posts e faça a expressão mudar de curiosa para aflita conforme marcadores de dúvida se acumulam.",
+      "demo": {
+        "key": "RM26-14-01",
+        "seconds": 5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-14-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-14-02",
+      "title": "Análise vira pauta pronta para gravar",
+      "category": "Análise de redes sociais",
+      "prompt": "Mostre um perfil fictício com três conteúdos e suas visualizações. Organize os resultados por alcance e faça aparecer uma pauta com tema, abertura e cena para gravar.",
+      "demo": {
+        "key": "RM26-14-02",
+        "seconds": 5,
+        "posterAt": 0.87
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-14-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-15-01",
+      "title": "Homem tenta atender cinco celulares",
+      "category": "Agentes conversacionais",
+      "prompt": "Mostre de cima uma bancada com cinco celulares fictícios. Faça notificações chegarem em tempos diferentes e destaque a mão que tenta responder num deles enquanto os outros acumulam alertas.",
+      "demo": {
+        "key": "RM26-15-01",
+        "seconds": 5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-15-01"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-15-02",
+      "title": "Demora leva cliente ao concorrente",
+      "category": "Agentes conversacionais",
+      "prompt": "Abra duas conversas de lojas fictícias. Deixe o primeiro pedido sem resposta com um relógio avançando e faça o pedido ser confirmado na segunda conversa ao final.",
+      "demo": {
+        "key": "RM26-15-02",
+        "seconds": 5,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-15-02"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-15-03",
+      "title": "Agente atende e cliente paga",
+      "category": "Agentes conversacionais",
+      "prompt": "Faça a conversa avançar da dúvida à resposta e ao link fictício de pagamento. Termine com um comprovante em destaque e a confirmação em uma nova bolha.",
+      "demo": {
+        "key": "RM26-15-03",
+        "seconds": 5,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-15-03"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-15-04",
+      "title": "Os cinco níveis do agente",
+      "category": "Agentes conversacionais",
+      "prompt": "Faça um avatar sintético subir cinco degraus em sequência. A cada salto, acenda a capacidade correspondente, da conversa inicial à identificação de lacunas.",
+      "demo": {
+        "key": "RM26-15-04",
+        "seconds": 5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-15-04"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-15-05",
+      "title": "Base da empresa sustenta bom atendimento",
+      "category": "Agentes conversacionais",
+      "prompt": "Mostre a pergunta de um cliente em um chat genérico. Passe um foco de busca por três pastas fictícias, copie o prazo encontrado para a resposta e termine com um agradecimento.",
+      "demo": {
+        "key": "RM26-15-05",
+        "seconds": 5,
+        "posterAt": 0.92
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-15-05"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "RM26-15-06",
+      "title": "Agente evolui em capacidade",
+      "category": "Agentes conversacionais",
+      "prompt": "Alterne de um plano com agente iniciante para um plano mais aberto com três recursos novos. Acenda conhecimento, ferramentas e autonomia antes de confirmar a tarefa executada.",
+      "demo": {
+        "key": "RM26-15-06",
+        "seconds": 5,
+        "posterAt": 0.91
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "RM26-15-06"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "25-G",
+      "title": "Corrida espacial 3D",
+      "category": "Jogos criados com IA",
+      "prompt": "Use perspectiva para colocar uma nave original numa pista orbital. Aproxime portais da câmera e, ao cruzar a marca de turbo, alongue as estrelas e faça o velocímetro passar de mil.",
+      "demo": {
+        "key": "25-G",
+        "seconds": 5,
+        "posterAt": 0.75
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "25-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "25-E1",
+      "title": "Simulador de cidades 3D",
+      "category": "Jogos criados com IA",
+      "prompt": "Monte quarteirões fictícios com ruas, prédios e uma usina em perspectiva. Gire devagar ao redor da maquete e mantenha um painel fixo mostrando população e energia.",
+      "demo": {
+        "key": "25-E1",
+        "seconds": 5,
+        "posterAt": 0.83
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "25-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-G",
+      "title": "Montagem ao redor do apresentador",
+      "category": "Efeitos de edição",
+      "prompt": "Mantenha um apresentador fictício no centro e faça quatro inserts entrarem alternadamente dos lados. Troque o conteúdo de cada insert em tempos distintos sem cortar a imagem central.",
+      "demo": {
+        "key": "26-G",
+        "seconds": 5,
+        "posterAt": 0.8
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-G"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E1",
+      "title": "Legenda com ênfase",
+      "category": "Efeitos de edição",
+      "prompt": "Use uma fala fictícia em três blocos. Revele cada bloco da esquerda para a direita no tempo da locução e reserve a cor de destaque para a última palavra.",
+      "demo": {
+        "key": "26-E1",
+        "seconds": 4,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E1"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E2",
+      "title": "Punch-in entre takes",
+      "category": "Efeitos de edição",
+      "prompt": "Corte do plano médio para duas aproximações cada vez mais fechadas, com o rosto fixo como âncora. Use um corte seco para voltar a um segundo take em plano de conversa.",
+      "demo": {
+        "key": "26-E2",
+        "seconds": 4.5,
+        "posterAt": 0.52
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E2"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E3",
+      "title": "Selo da ferramenta",
+      "category": "Efeitos de edição",
+      "prompt": "Faça o apresentador apontar para uma área livre do quadro. Introduza ali um cartão com o nome e um ícone de ferramenta fictícia, subindo e corrigindo a rotação até estabilizar.",
+      "demo": {
+        "key": "26-E3",
+        "seconds": 4,
+        "posterAt": 0.62
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E3"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E4",
+      "title": "Zoom e marca-texto",
+      "category": "Efeitos de edição",
+      "prompt": "Comece com uma página inteira e aproxime lentamente a câmera até uma linha escolhida. Revele o grifo amarelo da esquerda para a direita acompanhando a aproximação.",
+      "demo": {
+        "key": "26-E4",
+        "seconds": 5,
+        "posterAt": 0.83
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E4"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E5",
+      "title": "Página inclinada em perspectiva",
+      "category": "Efeitos de edição",
+      "prompt": "Introduza uma janela de leitura por baixo com a borda mais próxima ampliada. Endireite as bordas aos poucos até a janela ficar de frente e o texto ganhar espaço.",
+      "demo": {
+        "key": "26-E5",
+        "seconds": 4.5,
+        "posterAt": 0.54
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E5"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E6",
+      "title": "Fluxo do bruto ao resultado",
+      "category": "Efeitos de edição",
+      "prompt": "Coloque Bruto à esquerda, Cortes, Som e Motion em três ramos ao centro e Vídeo final à direita. Faça as conexões acenderem em sequência até convergirem na entrega.",
+      "demo": {
+        "key": "26-E6",
+        "seconds": 5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E6"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E7",
+      "title": "Lista sobre o apresentador",
+      "category": "Efeitos de edição",
+      "prompt": "Escureça apenas o lado esquerdo do vídeo com uma vinheta. Revele os três itens em sequência, subindo levemente ao aparecer, e deixe a imagem do apresentador legível à direita.",
+      "demo": {
+        "key": "26-E7",
+        "seconds": 4.5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E7"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E8",
+      "title": "Contador crescente",
+      "category": "Efeitos de edição",
+      "prompt": "Centralize o número e acelere no começo, desacelerando até 1.000. Use dígitos com largura constante e mostre a unidade em outra cor ao se aproximar do marco.",
+      "demo": {
+        "key": "26-E8",
+        "seconds": 4,
+        "posterAt": 0.84
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E8"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E9",
+      "title": "Capítulo com progresso",
+      "category": "Efeitos de edição",
+      "prompt": "Sobreponha ao apresentador uma pílula com o nome do capítulo. Faça o marcador ativo se alongar na régua de quatro pontos quando o rótulo muda de capítulo.",
+      "demo": {
+        "key": "26-E9",
+        "seconds": 4,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E9"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E10",
+      "title": "Checklist de ações em cena",
+      "category": "Efeitos de edição",
+      "prompt": "Alterne a entrada de pílulas nos dois lados do apresentador. Mostre primeiro um círculo vazio em cada ação e troque-o por um visto verde depois de uma breve pausa.",
+      "demo": {
+        "key": "26-E10",
+        "seconds": 4.5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E10"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E11",
+      "title": "Equipe com papéis desbloqueáveis",
+      "category": "Efeitos de edição",
+      "prompt": "Mostre seis funções bloqueadas em uma grade. Revele um papel por vez e mova o destaque para a função recém-liberada, deixando as anteriores visíveis.",
+      "demo": {
+        "key": "26-E11",
+        "seconds": 5,
+        "posterAt": 0.69
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E11"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E12",
+      "title": "Janela de demonstração com cursor",
+      "category": "Efeitos de edição",
+      "prompt": "Abra uma janela de edição isolada e digite um pedido curto. Mova um cursor até o botão, anime o clique e revele abaixo três blocos com as cenas geradas.",
+      "demo": {
+        "key": "26-E12",
+        "seconds": 5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E12"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E13",
+      "title": "Onda de áudio vira texto",
+      "category": "Efeitos de edição",
+      "prompt": "Sobreponha um cartão de transcrição ao vídeo. Preencha a forma de onda da esquerda para a direita e revele a frase em blocos logo abaixo conforme a leitura avança.",
+      "demo": {
+        "key": "26-E13",
+        "seconds": 4.5,
+        "posterAt": 0.9
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E13"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E14",
+      "title": "Seleção e descarte de takes",
+      "category": "Efeitos de edição",
+      "prompt": "Mostre quatro takes de uma mesma abertura em linhas empilhadas. Risque as três primeiras tentativas em sequência e conserve o quarto take com a indicação verde de escolhido.",
+      "demo": {
+        "key": "26-E14",
+        "seconds": 5,
+        "posterAt": 0.85
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E14"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E15",
+      "title": "Fluxo linear de etapas",
+      "category": "Efeitos de edição",
+      "prompt": "Conecte quatro cartões alinhados pela mesma régua. Percorra a linha da gravação à exportação e faça cada etapa aparecer quando a linha chega à sua posição.",
+      "demo": {
+        "key": "26-E15",
+        "seconds": 4.5,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E15"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E16",
+      "title": "Dois cartões de prova",
+      "category": "Efeitos de edição",
+      "prompt": "Introduza um cartão de resultado inclinado de um lado e um de contexto inclinado do outro. Escalone as duas entradas e sustente os dois quadros lado a lado para leitura.",
+      "demo": {
+        "key": "26-E16",
+        "seconds": 4.5,
+        "posterAt": 0.77
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E16"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E17",
+      "title": "Progresso e confirmação",
+      "category": "Efeitos de edição",
+      "prompt": "Sobreponha ao apresentador o estado Exportando e uma barra fina. Faça a barra avançar e troque o rótulo e o ícone por uma confirmação verde na conclusão.",
+      "demo": {
+        "key": "26-E17",
+        "seconds": 4,
+        "posterAt": 0.87
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E17"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E18",
+      "title": "Busca digitada e resultados",
+      "category": "Efeitos de edição",
+      "prompt": "Abra uma barra de busca e digite uma pergunta. Mostre um cursor de texto durante a escrita e revele duas linhas de resultado abaixo com pequeno atraso entre elas.",
+      "demo": {
+        "key": "26-E18",
+        "seconds": 4.5,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E18"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E19",
+      "title": "Checklist técnico em terminal",
+      "category": "Efeitos de edição",
+      "prompt": "Mostre um terminal fictício com quatro verificações de exportação. Revele cada comando em fonte monoespaçada e confirme resolução, quadros, cor e áudio em sequência.",
+      "demo": {
+        "key": "26-E19",
+        "seconds": 4.5,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E19"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E20",
+      "title": "Mapa mental radial",
+      "category": "Efeitos de edição",
+      "prompt": "Coloque Estilo no centro. Estenda quatro linhas curvas para os cantos e revele os nós Ritmo, Cor, Enquadramento e Som um por vez no fim de cada ligação.",
+      "demo": {
+        "key": "26-E20",
+        "seconds": 4.5,
+        "posterAt": 0.85
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E20"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E21",
+      "title": "Apresentador ao lado da demonstração",
+      "category": "Efeitos de edição",
+      "prompt": "Mantenha o apresentador em um painel estreito à esquerda. Use o espaço maior para digitar, clicar e mostrar a prévia da interface, com os dois painéis presentes até o fim.",
+      "demo": {
+        "key": "26-E21",
+        "seconds": 5,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E21"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E22",
+      "title": "Comparativo de planos e custo",
+      "category": "Efeitos de edição",
+      "prompt": "Faça três cartões entrarem em sequência, exibindo preço fictício, volume e custo por vídeo. Realce o último cartão para explicitar o resultado da divisão.",
+      "demo": {
+        "key": "26-E22",
+        "seconds": 4.5,
+        "posterAt": 0.8
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E22"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E23",
+      "title": "Timeline com playhead e marcação",
+      "category": "Efeitos de edição",
+      "prompt": "Sobreponha uma timeline com três blocos e uma forma de onda. Mova o playhead da esquerda para a direita e mantenha em amarelo a pausa de baixa amplitude.",
+      "demo": {
+        "key": "26-E23",
+        "seconds": 5,
+        "posterAt": 0.53
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E23"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E24",
+      "title": "Comparativo bruto e editado",
+      "category": "Efeitos de edição",
+      "prompt": "Alinhe duas versões do mesmo quadro. Arraste a divisória da esquerda para a direita para revelar a correção de cor, mantendo a cena no lugar e mudando apenas o tratamento.",
+      "demo": {
+        "key": "26-E24",
+        "seconds": 4.5,
+        "posterAt": 0.52
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E24"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E25",
+      "title": "Pilha rápida de provas",
+      "category": "Efeitos de edição",
+      "prompt": "Empilhe cartões de imagens ilustradas com leve deslocamento e rotação. Troque a imagem superior em cortes ritmados e avance o contador a cada nova imagem.",
+      "demo": {
+        "key": "26-E25",
+        "seconds": 4.5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E25"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E26",
+      "title": "Cutaway e volta ao apresentador",
+      "category": "Efeitos de edição",
+      "prompt": "Abra no apresentador e corte seco para dois inserts ilustrados em tela cheia. Acrescente uma aproximação lenta no primeiro e retorne ao plano de fala para fechar.",
+      "demo": {
+        "key": "26-E26",
+        "seconds": 5,
+        "posterAt": 0.64
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E26"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E27",
+      "title": "Uma instrução, várias saídas",
+      "category": "Efeitos de edição",
+      "prompt": "Coloque a instrução à esquerda e desenhe três ramificações. No fim de cada conexão, revele o arquivo correspondente, com transcrição, lista de cortes e prévia.",
+      "demo": {
+        "key": "26-E27",
+        "seconds": 4.5,
+        "posterAt": 0.86
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E27"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E28",
+      "title": "Tira de quadros do take",
+      "category": "Efeitos de edição",
+      "prompt": "Mostre o take fictício em movimento. Abra uma tira com sete amostras temporais do próprio take e deslize o marcador de leitura em sincronia com o quadro principal.",
+      "demo": {
+        "key": "26-E28",
+        "seconds": 5,
+        "posterAt": 0.7
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E28"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E29",
+      "title": "Onda e palavras no mesmo relógio",
+      "category": "Efeitos de edição",
+      "prompt": "Alinhe a forma de onda a cinco segmentos de palavras. Faça o playhead atravessar ambos e realce somente a palavra correspondente ao intervalo que ele ocupa.",
+      "demo": {
+        "key": "26-E29",
+        "seconds": 5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E29"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E30",
+      "title": "Régua de fala sobre a câmera",
+      "category": "Efeitos de edição",
+      "prompt": "Mantenha o apresentador atrás de uma régua translúcida. Desenhe os intervalos das palavras com seus tempos em segundos e avance o playhead sobre a voz medida.",
+      "demo": {
+        "key": "26-E30",
+        "seconds": 5,
+        "posterAt": 0.54
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E30"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E31",
+      "title": "A emenda se fecha",
+      "category": "Efeitos de edição",
+      "prompt": "Marque uma pausa entre dois trechos de fala. Comprima a área marcada até zero, reúna os dois blocos na emenda e mova o playhead pelo trecho resultante.",
+      "demo": {
+        "key": "26-E31",
+        "seconds": 5,
+        "posterAt": 0.48
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E31"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E32",
+      "title": "Faixas que formam um master",
+      "category": "Efeitos de edição",
+      "prompt": "Separe imagem, motion e som em três faixas. Faça um cursor percorrer as camadas e depois deslize cada faixa até uma única saída de vídeo final.",
+      "demo": {
+        "key": "26-E32",
+        "seconds": 5,
+        "posterAt": 0.64
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E32"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E33",
+      "title": "A câmera abre espaço para a prova",
+      "category": "Efeitos de edição",
+      "prompt": "Encolha e desloque o vídeo para uma janela oval mantendo o rosto no quadro. Revele no espaço livre uma prova ilustrada enquanto o apresentador segue em movimento.",
+      "demo": {
+        "key": "26-E33",
+        "seconds": 5,
+        "posterAt": 0.88
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E33"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "26-E34",
+      "title": "Um painel acompanha as etapas",
+      "category": "Efeitos de edição",
+      "prompt": "Fixe o apresentador à esquerda. Troque apenas o painel direito, primeiro com os tempos da gravação e depois com o registro de custo da mesma produção fictícia.",
+      "demo": {
+        "key": "26-E34",
+        "seconds": 5,
+        "posterAt": 0.69
+      },
+      "source": {
+        "collection": "ibeia",
+        "id": "26-E34"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-caption-animation",
+      "title": "Legenda com palavra ativa",
+      "category": "Vídeo vertical",
+      "prompt": "Sobre um take vertical fictício, fixe a frase “Mude o ritmo hoje” na região central inferior. Mantenha as palavras legíveis e passe o destaque lima, palavra por palavra, com um pequeno pop quando cada uma entra na fala.",
+      "demo": {
+        "key": "ms-caption-animation",
+        "seconds": 4,
+        "posterAt": 0.45
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "tiktok-video-skills/caption-animation",
+        "url": "https://github.com/iart-ai/tiktok-video-skills/blob/2a775336b5a638cbf8a61dbd785f9a1b649be016/skills/caption-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-countdown-video",
+      "title": "Contagem regressiva em anel",
+      "category": "Vídeo vertical",
+      "prompt": "Calcule 5 até 0 pelo tempo do vídeo e mostre o número com dígitos de largura fixa. Faça o arco menta esvaziar continuamente, troque o dígito a cada segundo e segure em “Agora” quando chegar a zero.",
+      "demo": {
+        "key": "ms-countdown-video",
+        "seconds": 6,
+        "posterAt": 0.42
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "tiktok-video-skills/countdown-video",
+        "url": "https://github.com/iart-ai/tiktok-video-skills/blob/2a775336b5a638cbf8a61dbd785f9a1b649be016/skills/countdown-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-lower-thirds-vertical",
+      "title": "Tarja de nome para vídeo vertical",
+      "category": "Vídeo vertical",
+      "prompt": "Use um quadro 9:16 fictício e mantenha as áreas de botões e legenda livres. Faça uma barra amarela curta entrar pela esquerda, revele “Lia Reis” e “Apresentadora” na altura do peito, sustente a leitura e recolha a barra na saída.",
+      "demo": {
+        "key": "ms-lower-thirds-vertical",
+        "seconds": 4,
+        "posterAt": 0.49
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "tiktok-video-skills/lower-thirds",
+        "url": "https://github.com/iart-ai/tiktok-video-skills/blob/2a775336b5a638cbf8a61dbd785f9a1b649be016/skills/lower-thirds/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-short-form-video",
+      "title": "Vídeo curto em três batidas",
+      "category": "Vídeo vertical",
+      "prompt": "Monte um quadro vertical sobre fotografia fictícia. Comece com um gancho e uma imagem escura, corte seco para a virada ampliada e mostre a imagem clara no payoff. Alterne os três enquadramentos no ritmo do texto.",
+      "demo": {
+        "key": "ms-short-form-video",
+        "seconds": 5,
+        "posterAt": 0.49
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "tiktok-video-skills/short-form-video",
+        "url": "https://github.com/iart-ai/tiktok-video-skills/blob/2a775336b5a638cbf8a61dbd785f9a1b649be016/skills/short-form-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-text-message-animation",
+      "title": "Conversa com indicador de digitação",
+      "category": "Chats e telas",
+      "prompt": "Abra uma conversa fictícia em painel vertical e faça a primeira mensagem surgir da direita. Pulse três pontos à esquerda por um instante, troque os pontos pela resposta e acrescente a réplica, com pequenas pausas de leitura.",
+      "demo": {
+        "key": "ms-text-message-animation",
+        "seconds": 5,
+        "posterAt": 0.56
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "text-message-video-skills/text-message-animation",
+        "url": "https://github.com/iart-ai/text-message-video-skills/blob/3a800e1e9b9635fa196a07b0143c80f7e9648558/skills/text-message-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-audiogram",
+      "title": "Onda de voz com legenda",
+      "category": "Áudio e ritmo",
+      "prompt": "Simule um trecho de podcast com barras simétricas em torno de uma linha de base. Mude a altura pela amplitude, deixe pequenos vales de silêncio e revele “Escute a pausa” em três trechos no tempo da voz.",
+      "demo": {
+        "key": "ms-audiogram",
+        "seconds": 4,
+        "posterAt": 0.48
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "youtube-video-skills/audiogram",
+        "url": "https://github.com/iart-ai/youtube-video-skills/blob/f3df381d65abe5078f5ed410bbc3ed72e7cb92bd/skills/audiogram/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-youtube-intro-outro",
+      "title": "Vinheta e tela final de canal",
+      "category": "Identidade em movimento",
+      "prompt": "Reúna duas metades de um símbolo fictício numa vinheta curta. Faça um corte seco para uma tela final com espaços para o próximo vídeo e inscrição e sustente o enquadramento para que os alvos possam ser lidos.",
+      "demo": {
+        "key": "ms-youtube-intro-outro",
+        "seconds": 6,
+        "posterAt": 0.3
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "youtube-video-skills/youtube-intro-outro",
+        "url": "https://github.com/iart-ai/youtube-video-skills/blob/f3df381d65abe5078f5ed410bbc3ed72e7cb92bd/skills/youtube-intro-outro/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-photo-slideshow",
+      "title": "Slideshow com efeito Ken Burns",
+      "category": "Produtos e anúncios",
+      "prompt": "Crie dois cartões de paisagem fictícios. Aproxime lentamente a primeira paisagem e desloque a segunda na direção contrária. Sobreponha os dois planos em dissolve no meio, com moldura estável e tempo de leitura para o lugar.",
+      "demo": {
+        "key": "ms-photo-slideshow",
+        "seconds": 5,
+        "posterAt": 0.6
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "ecommerce-video-skills/photo-slideshow",
+        "url": "https://github.com/iart-ai/ecommerce-video-skills/blob/2bd0dd19c9b2df5230f5d8f7453861b9681e49b4/skills/photo-slideshow/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-product-demo-video",
+      "title": "Demonstração com cursor e zoom",
+      "category": "Produtos e anúncios",
+      "prompt": "Comece com a tela fictícia de uma ferramenta de listas. Mova o cursor até “Criar lista”, aproxime a interface na chegada, pulse um anel no clique e destaque a linha “Lista criada” como consequência da ação.",
+      "demo": {
+        "key": "ms-product-demo-video",
+        "seconds": 5,
+        "posterAt": 0.65
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "ecommerce-video-skills/product-demo-video",
+        "url": "https://github.com/iart-ai/ecommerce-video-skills/blob/2bd0dd19c9b2df5230f5d8f7453861b9681e49b4/skills/product-demo-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-promo-video",
+      "title": "Preço riscado e oferta revelada",
+      "category": "Produtos e anúncios",
+      "prompt": "Mostre um cartão de oferta com o preço de R$ 90. Desenhe um traço sobre o preço, revele R$ 62 em escala com uma leve acomodação e deixe o selo “Semana da cor” entrar por último, com tempo de leitura.",
+      "demo": {
+        "key": "ms-promo-video",
+        "seconds": 4,
+        "posterAt": 0.57
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "ecommerce-video-skills/promo-video",
+        "url": "https://github.com/iart-ai/ecommerce-video-skills/blob/2bd0dd19c9b2df5230f5d8f7453861b9681e49b4/skills/promo-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-ad-creative-video",
+      "title": "Anúncio com gancho, benefício e ação",
+      "category": "Produtos e anúncios",
+      "prompt": "Divida a peça em três batidas. Abra com “Mesa sem espaço?”, substitua pelo benefício “Tudo à mão” e mostre um organizador fictício. Feche em “Veja as medidas”, com mudança de composição e cor a cada corte.",
+      "demo": {
+        "key": "ms-ad-creative-video",
+        "seconds": 5,
+        "posterAt": 0.48
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "ad-video-skills/ad-creative-video",
+        "url": "https://github.com/iart-ai/ad-video-skills/blob/0de0f2a1c1f42a98103fc0ec436509276428372c/skills/ad-creative-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-launch-video",
+      "title": "Teaser com cortes e revelação",
+      "category": "Produtos e anúncios",
+      "prompt": "Mostre dois detalhes recortados de uma luminária fictícia em cortes rápidos. Troque a escala entre os planos, revele o objeto inteiro no acento e deixe nome e chamada fixos no plano final.",
+      "demo": {
+        "key": "ms-launch-video",
+        "seconds": 5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "ad-video-skills/launch-video",
+        "url": "https://github.com/iart-ai/ad-video-skills/blob/0de0f2a1c1f42a98103fc0ec436509276428372c/skills/launch-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-testimonial-video",
+      "title": "Depoimento fictício em cartão",
+      "category": "Produtos e anúncios",
+      "prompt": "Abra um cartão editorial com aspas e um monograma fictício. Revele “Encontrei o arquivo em segundos” em duas linhas, realce o trecho sobre tempo e entre com o crédito de Ana, personagem fictícia, após uma pausa.",
+      "demo": {
+        "key": "ms-testimonial-video",
+        "seconds": 5,
+        "posterAt": 0.74
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "ad-video-skills/testimonial-video",
+        "url": "https://github.com/iart-ai/ad-video-skills/blob/0de0f2a1c1f42a98103fc0ec436509276428372c/skills/testimonial-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-animated-infographic",
+      "title": "Infográfico de indicadores em sequência",
+      "category": "Dados em movimento",
+      "prompt": "Desenhe um resumo de uma cooperativa fictícia com três cartões. Faça aparecer ícone, número crescente e rótulo de cada cartão em sequência da esquerda para a direita. Preserve o alinhamento até a leitura final.",
+      "demo": {
+        "key": "ms-animated-infographic",
+        "seconds": 5,
+        "posterAt": 0.62
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "data-animation-skills/animated-infographic",
+        "url": "https://github.com/iart-ai/data-animation-skills/blob/8ce2709c3992490251e8a991535b1945f01c6865/skills/animated-infographic/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-chart-animation",
+      "title": "Ranking com barras que trocam de posição",
+      "category": "Dados em movimento",
+      "prompt": "Anime as barras de três séries fictícias entre janeiro e junho. Interpole os valores, preserve uma cor por série e, na ultrapassagem, mova suavemente as linhas para que o ranking termine com a maior barra no topo.",
+      "demo": {
+        "key": "ms-chart-animation",
+        "seconds": 5,
+        "posterAt": 0.73
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "data-animation-skills/chart-animation",
+        "url": "https://github.com/iart-ai/data-animation-skills/blob/8ce2709c3992490251e8a991535b1945f01c6865/skills/chart-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-presentation-video",
+      "title": "Apresentação com argumento em três telas",
+      "category": "Dados em movimento",
+      "prompt": "Reconstrua três slides fictícios como sequência única. Faça aparecer a pergunta, conduza para a comparação de duas barras e depois dê destaque à decisão. Faça a barra de etapa avançar a cada troca.",
+      "demo": {
+        "key": "ms-presentation-video",
+        "seconds": 6,
+        "posterAt": 0.54
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "data-animation-skills/presentation-video",
+        "url": "https://github.com/iart-ai/data-animation-skills/blob/8ce2709c3992490251e8a991535b1945f01c6865/skills/presentation-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-diagram-animation",
+      "title": "Fluxograma revelado por etapas",
+      "category": "Explicação e educação",
+      "prompt": "Comece com o nó “Pedido”. Trace a primeira seta até “Triagem”, ilumine o nó e continue até “Resposta”. Mantenha todos os nós concluídos visíveis e faça uma pequena pausa antes de iniciar cada ligação.",
+      "demo": {
+        "key": "ms-diagram-animation",
+        "seconds": 5,
+        "posterAt": 0.52
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "explainer-video-skills/diagram-animation",
+        "url": "https://github.com/iart-ai/explainer-video-skills/blob/3e2d411b725d9a72939cf8e5eb81579e751373e7/skills/diagram-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-explainer-video",
+      "title": "Explicador com analogia visual",
+      "category": "Explicação e educação",
+      "prompt": "Explique um filtro de dados com a imagem de uma peneira. Deixe quadrados e círculos caírem juntos, segure os quadrados acima da tela e deixe os círculos passarem. Revele “Só o que interessa” quando a coleta terminar.",
+      "demo": {
+        "key": "ms-explainer-video",
+        "seconds": 5,
+        "posterAt": 0.64
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "explainer-video-skills/explainer-video",
+        "url": "https://github.com/iart-ai/explainer-video-skills/blob/3e2d411b725d9a72939cf8e5eb81579e751373e7/skills/explainer-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-isometric-animation",
+      "title": "Diagrama isométrico em camadas",
+      "category": "Explicação e educação",
+      "prompt": "Desenhe três placas isométricas com os mesmos eixos. Afaste as duas camadas superiores verticalmente, trace guias entre cantos correspondentes e revele os nomes “Coleta”, “Índice” e “Busca” durante a abertura.",
+      "demo": {
+        "key": "ms-isometric-animation",
+        "seconds": 5,
+        "posterAt": 0.64
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "explainer-video-skills/isometric-animation",
+        "url": "https://github.com/iart-ai/explainer-video-skills/blob/3e2d411b725d9a72939cf8e5eb81579e751373e7/skills/isometric-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-whiteboard-animation",
+      "title": "Desenho no quadro com marcador",
+      "category": "Explicação e educação",
+      "prompt": "Sobre um quadro claro, desenhe em azul a linha de um avião de papel. Revele o traço de forma contínua e mova a ponta do marcador junto com a frente do desenho. Faça a legenda entrar após a última dobra.",
+      "demo": {
+        "key": "ms-whiteboard-animation",
+        "seconds": 5,
+        "posterAt": 0.55
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "explainer-video-skills/whiteboard-animation",
+        "url": "https://github.com/iart-ai/explainer-video-skills/blob/3e2d411b725d9a72939cf8e5eb81579e751373e7/skills/whiteboard-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-wrapped-video",
+      "title": "Retrospectiva com números grandes",
+      "category": "Dados em movimento",
+      "prompt": "Apresente três estatísticas fictícias de leitura em sequência. Dê uma cor por tela, faça o número subir em escala e deixe o rótulo embaixo. Corte para a próxima métrica depois de uma pausa curta.",
+      "demo": {
+        "key": "ms-wrapped-video",
+        "seconds": 6,
+        "posterAt": 0.47
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "explainer-video-skills/wrapped-video",
+        "url": "https://github.com/iart-ai/explainer-video-skills/blob/3e2d411b725d9a72939cf8e5eb81579e751373e7/skills/wrapped-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-map-animation",
+      "title": "Mapa editorial com zoom e rota",
+      "category": "Explicação e educação",
+      "prompt": "Aproxime um mapa fictício de duas cidades costeiras. Faça a câmera chegar com movimento em passos e desenhe uma rota tracejada entre Porto Baixo e Vila Alta. Mostre o pino de destino quando o percurso terminar.",
+      "demo": {
+        "key": "ms-map-animation",
+        "seconds": 6,
+        "posterAt": 0.89
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "map-animation-skills/map-animation",
+        "url": "https://github.com/iart-ai/map-animation-skills/blob/390ca98bbcf2ea88a430a69c0dcbf423e43d075d/skills/map-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-60fps-animation",
+      "title": "Deslocamento contínuo por transformação",
+      "category": "Motion para interfaces",
+      "prompt": "Compare um cartão que avança em saltos com outro que percorre a mesma trilha em deslocamento e opacidade contínuos. Dê a ambos a mesma duração e alinhe a origem e o destino para que a diferença de cadência fique visível.",
+      "demo": {
+        "key": "ms-60fps-animation",
+        "seconds": 4,
+        "posterAt": 0.44
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "web-animation-skills/60fps-animation",
+        "url": "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/skills/60fps-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-accessible-animation",
+      "title": "Modo padrão e movimento reduzido",
+      "category": "Motion para interfaces",
+      "prompt": "Compare dois cartões que chegam ao mesmo estado. No padrão, aplique deslocamento e escala. Na versão de movimento reduzido, mantenha a posição e revele o conteúdo em fade breve. Sustente os dois estados finais lado a lado.",
+      "demo": {
+        "key": "ms-accessible-animation",
+        "seconds": 4,
+        "posterAt": 0.46
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "web-animation-skills/accessible-animation",
+        "url": "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/skills/accessible-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-ascii-animation",
+      "title": "Objeto animado em arte ASCII",
+      "category": "Motion para interfaces",
+      "prompt": "Converta a luz de uma esfera girando em caracteres monoespaçados. Use ponto nas sombras e símbolos densos nas altas luzes, respeite a proporção das células e faça a faixa clara percorrer o volume em loop.",
+      "demo": {
+        "key": "ms-ascii-animation",
+        "seconds": 4,
+        "posterAt": 0.38
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "web-animation-skills/ascii-animation",
+        "url": "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/skills/ascii-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-glassmorphism",
+      "title": "Cartão de vidro sobre manchas móveis",
+      "category": "Motion para interfaces",
+      "prompt": "Faça manchas coral, lilás e azul deslizarem por trás de um cartão escuro. Dentro do vidro, mostre as manchas desfocadas, com borda superior de brilho fino. Mantenha o texto nítido enquanto o fundo se move.",
+      "demo": {
+        "key": "ms-glassmorphism",
+        "seconds": 5,
+        "posterAt": 0.51
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "web-animation-skills/glassmorphism",
+        "url": "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/skills/glassmorphism/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-gsap-web",
+      "title": "Seção fixa com trilha horizontal",
+      "category": "Motion para interfaces",
+      "prompt": "Simule a rolagem de uma seção de interface. Trave o cabeçalho e atrele o progresso da barra à travessia de três painéis horizontais. Deixe o próximo painel começar a entrar enquanto o anterior termina de sair.",
+      "demo": {
+        "key": "ms-gsap-web",
+        "seconds": 5,
+        "posterAt": 0.43
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "web-animation-skills/gsap-web",
+        "url": "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/skills/gsap-web/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-lottie-animation",
+      "title": "Ícone vetorial em segmentos",
+      "category": "Motion para interfaces",
+      "prompt": "Anime um contorno circular que se desenha até fechar e faça um visto surgir em dois traços. Acomode o ícone em escala no fim e mostre o progresso do segmento “Carregando” até o segmento “Concluído”.",
+      "demo": {
+        "key": "ms-lottie-animation",
+        "seconds": 4,
+        "posterAt": 0.71
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "web-animation-skills/lottie-animation",
+        "url": "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/skills/lottie-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-micro-interaction",
+      "title": "Botão de curtir com resposta tátil",
+      "category": "Motion para interfaces",
+      "prompt": "Centralize um botão de favorito. Faça o cursor se aproximar, comprima o botão no toque, preencha o coração com coral e aumente o contador de 23 para 24. Solte pequenas partículas e deixe o botão acomodar.",
+      "demo": {
+        "key": "ms-micro-interaction",
+        "seconds": 4,
+        "posterAt": 0.56
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "web-animation-skills/micro-interaction",
+        "url": "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/skills/micro-interaction/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-page-transition-animation",
+      "title": "Transição de lista para detalhe",
+      "category": "Motion para interfaces",
+      "prompt": "Mostre três cartões de uma coleção fictícia. Expanda a miniatura do cartão central até virar a imagem de capa do detalhe, mantendo a cor como vínculo. Faça os cartões vizinhos saírem em fade e o texto entrar após a expansão.",
+      "demo": {
+        "key": "ms-page-transition-animation",
+        "seconds": 5,
+        "posterAt": 0.82
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "web-animation-skills/page-transition-animation",
+        "url": "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/skills/page-transition-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-svg-animation",
+      "title": "Assinatura com traço progressivo",
+      "category": "Motion para interfaces",
+      "prompt": "Revele uma assinatura abstrata por um caminho vetorial contínuo, com espessura e pontas arredondadas. Faça o ponto luminoso acompanhar a frente do traço e libere o sublinhado de uma vez só depois da curva final.",
+      "demo": {
+        "key": "ms-svg-animation",
+        "seconds": 4,
+        "posterAt": 0.53
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "web-animation-skills/svg-animation",
+        "url": "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/skills/svg-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-after-effects",
+      "title": "Amortecimento por expressão",
+      "category": "Princípios de motion",
+      "prompt": "Mova um losango até o ponto central e ligue sua escala vertical a uma oscilação amortecida. Mostre a curva da expressão abaixo do objeto, sincronize a primeira passada além do alvo com a chegada e reduza cada ressalto.",
+      "demo": {
+        "key": "ms-after-effects",
+        "seconds": 4,
+        "posterAt": 0.5
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "motion-design-skills/after-effects",
+        "url": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/after-effects/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-animation-principles",
+      "title": "Antecipação, impacto e acomodação",
+      "category": "Princípios de motion",
+      "prompt": "Comprima uma bola antes do salto, estique-a na subida e deixe o topo do arco respirar. Achate a bola na aterrissagem, dê um ressalto curto e aumente a sombra do chão conforme ela se aproxima.",
+      "demo": {
+        "key": "ms-animation-principles",
+        "seconds": 4,
+        "posterAt": 0.44
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "motion-design-skills/animation-principles",
+        "url": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/animation-principles/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-beat-sync-editing",
+      "title": "Cortes sincronizados à batida",
+      "category": "Áudio e ritmo",
+      "prompt": "Monte quatro enquadramentos fictícios com cores e formas distintas. Troque de plano nos marcadores regulares da régua inferior, acenda o marcador no impacto e aplique um pulso de escala curto em cada chegada.",
+      "demo": {
+        "key": "ms-beat-sync-editing",
+        "seconds": 5,
+        "posterAt": 0.54
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "motion-design-skills/beat-sync-editing",
+        "url": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/beat-sync-editing/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-color-motion",
+      "title": "Transição de paleta fria para quente",
+      "category": "Princípios de motion",
+      "prompt": "Comece com uma esfera violeta sobre fundo azul escuro. Desloque os matizes rumo ao coral e ao âmbar ao longo da cena, preservando o contraste do texto. Mostre três amostras atualizarem junto com o fundo.",
+      "demo": {
+        "key": "ms-color-motion",
+        "seconds": 5,
+        "posterAt": 0.53
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "motion-design-skills/color-motion",
+        "url": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/color-motion/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-logo-animation",
+      "title": "Símbolo que se monta em três partes",
+      "category": "Identidade em movimento",
+      "prompt": "Faça três losangos de uma marca fictícia entrarem de lados distintos, girarem e se juntarem em um único símbolo. Solte um pulso suave no encaixe e revele o nome “Orla” apenas depois que a marca parar.",
+      "demo": {
+        "key": "ms-logo-animation",
+        "seconds": 5,
+        "posterAt": 0.58
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "motion-design-skills/logo-animation",
+        "url": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/logo-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-motion-art-direction",
+      "title": "Direção de motion com dois ritmos",
+      "category": "Direção e entrega",
+      "prompt": "Compare a mesma composição de três lâminas em duas direções. Na primeira, use deslocamento curto, cadência lenta e azul escuro. Na segunda, use coral, inclinação e entrada escalonada com ressalto. Revele a diferença lado a lado.",
+      "demo": {
+        "key": "ms-motion-art-direction",
+        "seconds": 5,
+        "posterAt": 0.43
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "motion-design-skills/motion-art-direction",
+        "url": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/motion-art-direction/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-motion-background",
+      "title": "Fundo de aurora em loop",
+      "category": "Princípios de motion",
+      "prompt": "Monte um fundo escuro com três fitas translúcidas em verde e violeta. Faça as ondas correrem em frequências diferentes que reencontrem o quadro inicial. Deixe o título fixo com contraste sobre a região menos carregada.",
+      "demo": {
+        "key": "ms-motion-background",
+        "seconds": 5,
+        "posterAt": 0.51
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "motion-design-skills/motion-background",
+        "url": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/motion-background/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-remotion-video",
+      "title": "Cartão de dados animado por frame",
+      "category": "Dados em movimento",
+      "prompt": "Use dados fictícios de um painel e um relógio de 120 frames. Faça o cartão entrar por escala, preencha a barra e incremente a contagem até 42. Mostre o frame atual no rodapé para relacionar a composição ao tempo.",
+      "demo": {
+        "key": "ms-remotion-video",
+        "seconds": 4,
+        "posterAt": 0.56
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "motion-design-skills/remotion-video",
+        "url": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/remotion-video/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-shot-composition",
+      "title": "Composição com profundidade e paralaxe",
+      "category": "Princípios de motion",
+      "prompt": "Enquadre uma paisagem fictícia em três planos e coloque o farol no terço direito. Desloque a câmera lateralmente, deixando os morros do primeiro plano correrem mais rápido que o farol e o céu. Mantenha o ponto focal legível.",
+      "demo": {
+        "key": "ms-shot-composition",
+        "seconds": 5,
+        "posterAt": 0.47
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "motion-design-skills/shot-composition",
+        "url": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/shot-composition/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-kinetic-typography",
+      "title": "Tipografia cinética em três palavras",
+      "category": "Tipografia em movimento",
+      "prompt": "Mostre “Pare”, “Olhe” e “Siga” em três batidas. Comprima a primeira palavra na chegada, faça a segunda entrar por letras e empurre a terceira para a direita, mantendo uma cor e uma composição próprias para cada batida.",
+      "demo": {
+        "key": "ms-kinetic-typography",
+        "seconds": 5,
+        "posterAt": 0.5
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "kinetic-typography-skills/kinetic-typography",
+        "url": "https://github.com/iart-ai/kinetic-typography-skills/blob/fccc94bd325d824235ee9e715e65abde57b6513a/skills/kinetic-typography/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-brand-motion-guidelines",
+      "title": "Mesma cadência em selo, botão e cartão",
+      "category": "Direção e entrega",
+      "prompt": "Defina uma entrada de 320 ms com saída suave e aplique o mesmo deslocamento, escala e easing a um selo, um botão e um cartão fictícios. Inicie os três juntos e mostre a curva em comum sob a linha de exemplos.",
+      "demo": {
+        "key": "ms-brand-motion-guidelines",
+        "seconds": 4,
+        "posterAt": 0.56
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "freelance-motion-skills/brand-motion-guidelines",
+        "url": "https://github.com/iart-ai/freelance-motion-skills/blob/d85c2b484693d0387333c778d9c95230fa1856ce/skills/brand-motion-guidelines/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-client-revisions",
+      "title": "Antes e depois de uma revisão de leitura",
+      "category": "Direção e entrega",
+      "prompt": "Apresente a mesma peça fictícia em dois quadros. No antes, faça o preço desaparecer cedo. No depois, preserve o enquadramento, segure o preço por mais tempo e troque só a cadência. Use réguas para mostrar a diferença de duração.",
+      "demo": {
+        "key": "ms-client-revisions",
+        "seconds": 5,
+        "posterAt": 0.55
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "freelance-motion-skills/client-revisions",
+        "url": "https://github.com/iart-ai/freelance-motion-skills/blob/d85c2b484693d0387333c778d9c95230fa1856ce/skills/client-revisions/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-creative-brief",
+      "title": "Do briefing ao storyboard",
+      "category": "Direção e entrega",
+      "prompt": "Mostre um cartão com objetivo, público e mensagem de uma marca fictícia. Revele as linhas uma por vez e aponte para três quadros de storyboard, que entram na mesma ordem e traduzem a mensagem em gancho, produto e ação.",
+      "demo": {
+        "key": "ms-creative-brief",
+        "seconds": 5,
+        "posterAt": 0.62
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "freelance-motion-skills/creative-brief",
+        "url": "https://github.com/iart-ai/freelance-motion-skills/blob/d85c2b484693d0387333c778d9c95230fa1856ce/skills/creative-brief/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-motion-pricing",
+      "title": "Escopo visual para orçamento de motion",
+      "category": "Direção e entrega",
+      "prompt": "Compare visualmente um pacote com um filme e outro com filme mais duas adaptações. Revele os cartões de entrega em sequência e faça a soma ilustrativa atualizar conforme cada formato aparece, mantendo escopo e valor juntos.",
+      "demo": {
+        "key": "ms-motion-pricing",
+        "seconds": 5,
+        "posterAt": 0.7
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "freelance-motion-skills/motion-pricing",
+        "url": "https://github.com/iart-ai/freelance-motion-skills/blob/d85c2b484693d0387333c778d9c95230fa1856ce/skills/motion-pricing/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-video-delivery-specs",
+      "title": "Reenquadramento em 16:9 e 9:16",
+      "category": "Direção e entrega",
+      "prompt": "Coloque lado a lado a mesma cena fictícia em 16:9 e 9:16. Anime o produto e o título dentro das áreas seguras e desenhe as margens em tracejado. Aponte as regiões reservadas para a interface no quadro vertical.",
+      "demo": {
+        "key": "ms-video-delivery-specs",
+        "seconds": 5,
+        "posterAt": 0.57
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "freelance-motion-skills/video-delivery-specs",
+        "url": "https://github.com/iart-ai/freelance-motion-skills/blob/d85c2b484693d0387333c778d9c95230fa1856ce/skills/video-delivery-specs/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-particle-system",
+      "title": "Explosão radial de partículas",
+      "category": "3D e motion procedural",
+      "prompt": "Emita partículas de três cores em dois pulsos radiais. Dê velocidades variadas, deixe a gravidade curvar as trajetórias e reduza tamanho e opacidade no fim da vida. Mantenha visível o ponto de emissão entre os pulsos.",
+      "demo": {
+        "key": "ms-particle-system",
+        "seconds": 4,
+        "posterAt": 0.32
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "webgl-animation-skills/particle-system",
+        "url": "https://github.com/iart-ai/webgl-animation-skills/blob/50697d659fbf70152f48f9f8aadf1efe78bbdde1/skills/particle-system/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-shader-glsl",
+      "title": "Plasma procedural com ondas de cor",
+      "category": "3D e motion procedural",
+      "prompt": "Combine três ondas senoidais no espaço e no tempo para gerar um plasma, com roxo nas regiões baixas e laranja nas cristas. Anime as fases em loop e preserve a continuidade das manchas ao atravessarem o quadro.",
+      "demo": {
+        "key": "ms-shader-glsl",
+        "seconds": 5,
+        "posterAt": 0.44
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "webgl-animation-skills/shader-glsl",
+        "url": "https://github.com/iart-ai/webgl-animation-skills/blob/50697d659fbf70152f48f9f8aadf1efe78bbdde1/skills/shader-glsl/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-threejs-animation",
+      "title": "Órbita em torno de um objeto 3D",
+      "category": "3D e motion procedural",
+      "prompt": "Monte um cubo fictício com faces de três valores e uma grade de chão em perspectiva. Orbite em volta do objeto, deixando oclusão e escala variarem continuamente. Mantenha o centro do cubo como ponto de interesse.",
+      "demo": {
+        "key": "ms-threejs-animation",
+        "seconds": 5,
+        "posterAt": 0.41
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "webgl-animation-skills/threejs-animation",
+        "url": "https://github.com/iart-ai/webgl-animation-skills/blob/50697d659fbf70152f48f9f8aadf1efe78bbdde1/skills/threejs-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-manim",
+      "title": "Círculo trigonométrico e curva seno",
+      "category": "Explicação e educação",
+      "prompt": "Faça um ponto dar uma volta no círculo unitário. Projete sua altura com uma linha guia e desenhe simultaneamente o gráfico do seno até uma volta completa, mantendo as duas representações visíveis e sincronizadas.",
+      "demo": {
+        "key": "ms-manim",
+        "seconds": 5,
+        "posterAt": 0.61
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "manim-skills/manim",
+        "url": "https://github.com/iart-ai/manim-skills/blob/a15833c44de5108a3ee68f178a1fca126aa7c6d8/skills/manim/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-generative-illustration",
+      "title": "Ilustração generativa de folhagem",
+      "category": "3D e motion procedural",
+      "prompt": "Gere três ramos com folhas que brotam do caule em sequência e abrem por rotação. Dê pequena diferença de fase aos ramos, balance a ponta com suavidade e deixe áreas de respiro entre os grupos de folhas.",
+      "demo": {
+        "key": "ms-generative-illustration",
+        "seconds": 6,
+        "posterAt": 0.64
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "generative-illustration-skills/generative-illustration",
+        "url": "https://github.com/iart-ai/generative-illustration-skills/blob/e7d62437c875fc8ad5eff6e90fe0e25b30e43933/skills/generative-illustration/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-javascript-animation",
+      "title": "Filme em Canvas com chuva e reflexos",
+      "category": "3D e motion procedural",
+      "prompt": "Desenhe à mão em Canvas 2D uma rua noturna fictícia. Faça gotas diagonais cruzarem o céu, abra ondas elípticas nas poças quando caírem e mova os reflexos pelo chão. Calcule todos os movimentos pelo tempo do quadro.",
+      "demo": {
+        "key": "ms-javascript-animation",
+        "seconds": 5,
+        "posterAt": 0.52
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "javascript-animation-skills/javascript-animation",
+        "url": "https://github.com/iart-ai/javascript-animation-skills/blob/f7d0882a313249cbd43f0e4e9e209b1622870253/skills/javascript-animation/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-soundtrack",
+      "title": "Mapa visual de trilha sintetizada",
+      "category": "Áudio e ritmo",
+      "prompt": "Planeje três pistas para um corte fictício. Marque pulsos graves, contratempo e um acento no fim. Varra a régua com um cursor e acenda o evento na passagem, relacionando cada camada aos cartões de imagem acima.",
+      "demo": {
+        "key": "ms-soundtrack",
+        "seconds": 5,
+        "posterAt": 0.53
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "javascript-animation-skills/soundtrack",
+        "url": "https://github.com/iart-ai/javascript-animation-skills/blob/f7d0882a313249cbd43f0e4e9e209b1622870253/skills/soundtrack/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-lower-thirds-alpha",
+      "title": "Lower third de broadcast com alpha",
+      "category": "Identidade em movimento",
+      "prompt": "Crie uma sobreposição horizontal para vídeo com canal alfa. Sobre o quadriculado de prévia, deslize uma régua ciano, revele em máscara “Rui Terra” e “Curador convidado” e recolha o conjunto pela mesma borda.",
+      "demo": {
+        "key": "ms-lower-thirds-alpha",
+        "seconds": 5,
+        "posterAt": 0.53
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "lower-thirds-skills/lower-thirds",
+        "url": "https://github.com/iart-ai/lower-thirds-skills/blob/aa8ef7ed9fa59d0a79fc57701e493cfd8197b5d8/skills/lower-thirds/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-talking-head-b-roll",
+      "title": "B-roll acionado por palavras da fala",
+      "category": "Explicação e educação",
+      "prompt": "Mantenha uma apresentadora fictícia em quadro e destaque as palavras da frase “Uma caixa, três etapas”. Corte para uma caixa que abre ao ouvir “caixa” e mostre três cartões em sequência no trecho “três etapas”.",
+      "demo": {
+        "key": "ms-talking-head-b-roll",
+        "seconds": 6,
+        "posterAt": 0.74
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "b-roll-skills/talking-head-b-roll",
+        "url": "https://github.com/iart-ai/b-roll-skills/blob/a51e34b0a8def533759373733bde1869c21075fb/skills/talking-head-b-roll/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "ms-talking-head",
+      "title": "Apresentador fictício com inserção gráfica",
+      "category": "Explicação e educação",
+      "prompt": "Abra com um apresentador ilustrado, com pulsos discretos da boca e do olhar marcando as sílabas. Desloque o busto para a esquerda, faça um gráfico de três barras entrar na pausa e mantenha a pessoa e o apoio em quadro.",
+      "demo": {
+        "key": "ms-talking-head",
+        "seconds": 5,
+        "posterAt": 0.73
+      },
+      "source": {
+        "collection": "motion-skills",
+        "id": "talking-head-skills/talking-head",
+        "url": "https://github.com/iart-ai/talking-head-skills/blob/a315032ccffa94cda56a82fa306237250d3dd1bf/skills/talking-head/SKILL.md"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-implode",
+      "title": "Implosão em espiral entre cenas",
+      "category": "Transições de cena",
+      "prompt": "Mostre a palavra da primeira cena em letras separadas. Faça as letras das pontas partirem antes e convergirem com giro, desfoque e escala até um único ponto. Abra a segunda cena desse centro depois de um instante vazio.",
+      "demo": {
+        "key": "showcase-implode",
+        "seconds": 4,
+        "posterAt": 0.33
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "implode",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-color-band-sweep",
+      "title": "Varredura de faixas coloridas",
+      "category": "Transições de cena",
+      "prompt": "Mostre duas cenas fictícias com identidades diferentes. Passe três faixas diagonais de baixo para cima, em intervalos curtos. Troque a cena durante a cobertura e deixe a última faixa sair por cima para revelar o destino.",
+      "demo": {
+        "key": "showcase-color-band-sweep",
+        "seconds": 4,
+        "posterAt": 0.63
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "color-band-sweep",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-venetian-shutter",
+      "title": "Persiana horizontal em quatro lâminas",
+      "category": "Transições de cena",
+      "prompt": "Cubra a primeira cena com quatro lâminas horizontais coloridas que crescem do topo em sequência. Troque a cena com o quadro fechado e recolha cada lâmina para a própria borda inferior, revelando o plano seguinte em fatias.",
+      "demo": {
+        "key": "showcase-venetian-shutter",
+        "seconds": 4,
+        "posterAt": 0.65
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "venetian-shutter",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-whip-pan-blur",
+      "title": "Whip pan com desfoque horizontal",
+      "category": "Transições de cena",
+      "prompt": "Acelere a primeira cena lateralmente para a esquerda, deixando rastros horizontais no pico da velocidade. Faça a segunda entrar da direita em continuidade, desacelere até o centro e recupere a nitidez no fim.",
+      "demo": {
+        "key": "showcase-whip-pan-blur",
+        "seconds": 4,
+        "posterAt": 0.65
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "whip-pan-blur",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-iris",
+      "title": "Íris circular entre cenas",
+      "category": "Transições de cena",
+      "prompt": "Mantenha o primeiro plano por uma pausa breve. Feche uma abertura circular até o centro, troque para a segunda cena e expanda a janela com a mesma origem. Sustente o quadro limpo assim que o círculo cobrir os cantos.",
+      "demo": {
+        "key": "showcase-iris",
+        "seconds": 4,
+        "posterAt": 0.64
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "iris",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-s1",
+      "title": "Abertura com letras que viram para cima",
+      "category": "Cenas do showcase",
+      "prompt": "Abra com um crédito pequeno entrando por máscara vertical. Em seguida, revele “IMPULSO” letra por letra com subida, rotação aparente no eixo horizontal e um ressalto curto. Aumente levemente o espaço entre letras no final.",
+      "demo": {
+        "key": "showcase-s1",
+        "seconds": 4,
+        "posterAt": 0.58
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "s1",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-s2",
+      "title": "Entrada itálica com letras fora de ordem",
+      "category": "Cenas do showcase",
+      "prompt": "Use a frase itálica “a cada” no centro do quadro. Faça as letras entrarem de baixo com inclinação e ordem alternada, deixando a frase inteira respirar. Na saída, puxe primeiro as pontas para cima e reduza a escala.",
+      "demo": {
+        "key": "showcase-s2",
+        "seconds": 4,
+        "posterAt": 0.56
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "s2",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-s3",
+      "title": "Título em contorno com aproximação e tremor",
+      "category": "Cenas do showcase",
+      "prompt": "Faça “QUADRO” chegar ao centro a partir de letras grandes, desfocadas e em contorno. Escalone a chegada do miolo para as pontas, dê um tremor curto no impacto e faça o texto virar para baixo na saída.",
+      "demo": {
+        "key": "showcase-s3",
+        "seconds": 4,
+        "posterAt": 0.57
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "s3",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-s4",
+      "title": "Três linhas com entradas em direções distintas",
+      "category": "Cenas do showcase",
+      "prompt": "Monte “CORTE”, “MOVA” e “ENTREGUE” em linhas separadas. Faça a primeira subir, a segunda chegar pela esquerda e a terceira contrair em escala. Escalone as letras e termine com um ressalto em onda na última linha.",
+      "demo": {
+        "key": "showcase-s4",
+        "seconds": 5,
+        "posterAt": 0.68
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "s4",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-s5",
+      "title": "Composição tipográfica com cantos de enquadramento",
+      "category": "Cenas do showcase",
+      "prompt": "Revele “ESTÚDIO NORTE” em duas linhas que sobem em sequência. Traga os quatro cantos de fora para dentro, desenhe uma régua fina do centro para as bordas e revele o subtítulo após a composição principal.",
+      "demo": {
+        "key": "showcase-s5",
+        "seconds": 5,
+        "posterAt": 0.63
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "s5",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    },
+    {
+      "id": "showcase-s6",
+      "title": "Assinatura final com ponto pulsante",
+      "category": "Cenas do showcase",
+      "prompt": "Faça “norte.co” aparecer letra por letra em uma moldura de cantos que se ajusta. Revele o ponto em atraso, com uma pulsação, e faça o subtítulo subir sob uma linha que cresce do centro. Termine com a marca em repouso.",
+      "demo": {
+        "key": "showcase-s6",
+        "seconds": 5,
+        "posterAt": 0.65
+      },
+      "source": {
+        "collection": "showcase",
+        "id": "s6",
+        "url": "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/showcase.html"
+      },
+      "material": "fictional"
+    }
+  ]
+}

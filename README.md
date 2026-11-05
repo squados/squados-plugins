@@ -22,6 +22,13 @@ and English requests for the Work gallery. Each request consults existing
 context, interviews the person about gaps, and defines the deliverable. Selecting
 one only pastes its text into the message bar; the person still submits it.
 
+## Galeria de motion
+
+A [galeria de motion](motion-gallery/README.md) reúne demonstrações de edição,
+motion design, b-roll e transições. Abra [motion-gallery/index.html](motion-gallery/index.html)
+no navegador para ver os efeitos por categoria. A Tarantino consulta o
+[catálogo JSON](motion-gallery/catalog.json) quando você pede um efeito pelo nome.
+
 ## Biblioteca de especialistas
 
 A [biblioteca de 19 especialistas](docs/skills-de-trabalho-pacotes.md) reúne métodos,
