@@ -22,9 +22,11 @@ Quando a pessoa mencionar um efeito da galeria, consulte o [catálogo de motion 
 Quando a entrada tiver `demo`, abra `demo.composition` para conferir as entradas
 da peça e prepare um JSON com os campos de `demo.inputs`. No checkout local,
 execute `node "<checkout>/scripts/render-motion.mjs" "<nome ou ID>" --inputs "<dados.json>" --out "<cena.mp4>"`.
-Em **Gráfico em Contracampo**, forneça o take ou retrato em `presenter` e
-as duas séries em `series`. Com um take, use 6,8 s contínuos e preserve a
-sincronia da fala na montagem.
+Em **Gráfico em Contracampo**, forneça o take ou retrato em `presenter`.
+Envie dois valores em `values` para barras ou duas séries em `series` para
+linhas. Com um take, use 6,8 s contínuos e preserve a sincronia da fala na
+montagem. Para criar ou revisar um motion da galeria, siga a seção
+**Direção dos previews** da skill `remotion` quando disponível no projeto.
 
 Para uma entrada de referência da Skillry, use `source.package` para localizar a skill original da Skillry na instalação
 local ou em `ibeia-videoskills/benchmark/skillry/` no workspace. Abra o

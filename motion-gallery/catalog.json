@@ -1285,7 +1285,7 @@
         "bs-split-chart-swap"
       ],
       "seconds": 6.8,
-      "prompt": "Use Gráfico em Contracampo para comparar as duas séries. Mantenha o apresentador visível enquanto o gráfico e o take trocam de lado.",
+      "prompt": "Use Gráfico em Contracampo para comparar quantos tokens entram no contexto de um agente com o histórico completo ou resumido. Mantenha o apresentador visível enquanto o gráfico e o take trocam de lado.",
       "source": {
         "package": "bs-creatormotion",
         "url": "https://skillry.dev/skills/bs-creatormotion-split-chart-swap",
@@ -1302,7 +1302,8 @@
           "labelA": "text",
           "labelB": "text",
           "note": "text",
-          "accent": "color"
+          "accent": "color",
+          "values": "array"
         },
         "required": [
           "presenter"

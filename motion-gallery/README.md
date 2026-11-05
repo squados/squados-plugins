@@ -22,10 +22,18 @@ A página oficial em `source.url` é a referência de prévia e instalação.
 
 Para **Gráfico em Contracampo**, prepare um JSON com `presenter` apontando
 para uma foto ou um take de 6,8 s ou mais. Caminhos relativos são resolvidos
-a partir da pasta do JSON. Você pode enviar duas séries de 2 a 6 números de
-0 a 100 em `series`, com o mesmo número de pontos, e os rótulos em
-`axisLabels`. Use `title`, `labelA`, `labelB`, `note` e `accent` para
-adaptar o texto e a cor do gráfico. Os dados padrão são ilustrativos.
+a partir da pasta do JSON. Use `values` com dois valores não negativos para
+comparar duas barras. O exemplo de tokens usa números ilustrativos. A
+composição também aceita duas séries de 2 a 6 números de 0 a 100 em
+`series`, com o mesmo número de pontos e os rótulos em `axisLabels`.
+Use `title`, `labelA`, `labelB` e `accent` para adaptar o gráfico. `note` é
+opcional na visualização com linhas.
+
+A direção visual das peças da ibe.IA está na seção **Direção dos previews**
+da skill `remotion`. As fontes do preview são locais. Sora e Geist Sans
+vêm da revisão `fbe81817505e8aeadc53cc7a38a2b76fb57c333e` do Google Fonts.
+As licenças OFL acompanham os arquivos. [Sora](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/sora)
+· [Geist](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/geist)
 
 ```powershell
 node scripts/render-motion.mjs "Gráfico em Contracampo" --inputs dados.json --out cena.mp4

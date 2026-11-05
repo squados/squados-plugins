@@ -223,7 +223,7 @@
           "roles": ["media"],
           "outputs": ["files"]
         },
-        "reviewedRevision": "sha256-lf:804b6e9b54794d0442351f5d199e31bfd7b8ae4d3baa65334e72182c68fdf7a0",
+        "reviewedRevision": "sha256-lf:ca0c83888b421d40bfc275a8f07d80fad30532b028955baedf8c1c1f6f080f67",
         "license": {
           "label": "MIT; componentes com avisos próprios",
           "url": "https://github.com/squados/squados-plugins/blob/main/skills/tarantino/LICENSE"
