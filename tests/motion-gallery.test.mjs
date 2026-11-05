@@ -20,7 +20,10 @@ test('catálogo indexa o benchmark Skillry com slugs e páginas oficiais', () =>
     assert.equal(entries.filter(entry => entry.source.package === packageName).length, count)
   }
   const originals = entries.filter(entry => entry.demo)
-  assert.deepEqual(originals.map(entry => entry.id), ['grafico-em-contracampo'])
+  assert.deepEqual(originals.map(entry => entry.id).sort(), [
+    'ciclo-em-duas-voltas', 'colagem-em-torno-da-camera', 'conversa-em-camadas',
+    'grafico-em-contracampo', 'parede-em-perspectiva', 'radar-de-sinais', 'resposta-revelada',
+  ])
   for (const entry of entries) {
     assert.ok(collections.has(entry.source.package), entry.id)
     const sourceId = entry.source.id ?? entry.id
@@ -30,7 +33,7 @@ test('catálogo indexa o benchmark Skillry com slugs e páginas oficiais', () =>
     if (entry.demo) {
       assert.ok(entry.aliases.includes(sourceId))
       assert.equal(entry.demo.preview, 'previews/' + entry.id + '.mp4')
-      assert.match(read(entry.demo.composition), /data-composition-id="grafico-em-contracampo"/)
+      assert.ok(read(entry.demo.composition).includes(`data-composition-id="${entry.id}"`), entry.id)
     }
   }
   const spectrum = entries.find(entry => entry.title === 'Light Spectrum')

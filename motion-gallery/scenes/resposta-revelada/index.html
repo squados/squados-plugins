@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: #17151d; color: #f9eedf; }
+main::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 95%, #382c43, transparent 67%); }
+.composer { position: absolute; left: 381px; top: 445px; width: 1158px; height: 130px; display: flex; gap: 40px; align-items: center; justify-content: space-between; background: #272331; border: 2px solid #5f5069; border-radius: 36px; padding: 20px 25px 20px 48px; transform-origin: center; }
+.prompt { font-size: 49px; letter-spacing: -.035em; }
+.send { flex: none; display: grid; place-items: center; background: #ffd0ad; color: #231a23; width: 78px; height: 78px; border-radius: 22px; font-size: 47px; }
+.answer { position: absolute; left: 299px; right: 299px; top: 261px; }
+.answer h1 { font-size: 132px; max-width: 1300px; }
+.answer p { font-size: 43px; letter-spacing: -.035em; margin-top: 34px; color: #dccec9; }
+.progress { position: absolute; top: 300px; left: 300px; width: 1080px; display: grid; gap: 38px; }
+.progress i { display: block; height: 28px; border-radius: 15px; background: linear-gradient(90deg, #8b668e, #f8b695); transform-origin: left; }
+.progress i:nth-child(2) { width: 83%; }
+.progress i:nth-child(3) { width: 61%; }
+</style>
+</head>
+<body>
+<main data-composition-id="resposta-revelada" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+<section class="answer"><h1 class="display"></h1><p></p></section>
+<div class="progress" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="composer"><span class="prompt"></span><span class="send" aria-hidden="true">↑</span></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const question = Array.from(inputs.question ?? "Como testo se a IA está inventando?");
+copy(".answer h1", "answer", "Peça a origem.");
+copy(".answer p", "detail", "Confira a resposta no documento que ela citou.");
+const prompt = one(".prompt");
+window.renderMotion = time => {
+  const enter = beat(time, 0, .48);
+  const dock = flow(phase(time, 1.68, .78));
+  const typed = Math.floor(question.length * phase(time, .23, 1.24));
+  prompt.textContent = question.slice(0, typed).join("");
+  set(one(".composer"), { opacity: enter, transform: "translateY(" + mix(28 * (1 - enter), 319, dock) + "px) scale(" + mix(1, .81, dock) + ")" });
+  const press = Math.sin(Math.PI * phase(time, 1.52, .26));
+  set(one(".send"), { transform: "scale(" + (1 - .15 * press) + ")", opacity: 1 - .26 * dock });
+  const wipe = flow(phase(time, 3.13, .91));
+  // As barras e a resposta encontram a mesma fronteira no quadro.
+  one(".progress").style.clipPath = "inset(0 0 0 " + Math.min(1080, wipe * 1322) + "px)";
+  all(".progress i").forEach((line, index) => line.style.transform = "scaleX(" + beat(time, 2.02 + index * .19, .83) + ")");
+  set(one(".answer"), { clipPath: "inset(0 " + (1 - wipe) * 100 + "% 0 0)", transform: "translateX(" + (1 - wipe) * -27 + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

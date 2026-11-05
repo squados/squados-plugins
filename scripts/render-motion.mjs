@@ -60,11 +60,13 @@ function render(entry) {
     cpSync(dirname(join(gallery, entry.demo.composition)), project, { recursive: true })
     const inputs = { ...entry.demo.previewInputs, ...rawInputs }
     for (const [name, type] of Object.entries(entry.demo.inputs)) {
-      if (type !== 'media' || !Object.hasOwn(inputs, name)) continue
+      if (!['media', 'image'].includes(type) || !Object.hasOwn(inputs, name)) continue
       if (typeof inputs[name] !== 'string' || !inputs[name].trim()) throw Error('Informe um arquivo para ' + name + '.')
       const file = resolve(dirname(resolve(values.inputs)), inputs[name])
       const extension = extname(file).toLowerCase()
-      if (!['.png', '.jpg', '.jpeg', '.webp', '.svg', '.avif', '.mp4', '.mov', '.m4v', '.webm'].includes(extension) || !statSync(file).isFile()) {
+      const images = ['.png', '.jpg', '.jpeg', '.webp', '.svg', '.avif']
+      const videos = ['.mp4', '.mov', '.m4v', '.webm']
+      if (!(images.includes(extension) || (type === 'media' && videos.includes(extension))) || !statSync(file).isFile()) {
         throw Error('Formato de mídia inválido para ' + name + '.')
       }
       const staged = 'input-' + name + extension
@@ -73,7 +75,7 @@ function render(entry) {
     }
 
     const entryPath = join(project, 'index.html')
-    const source = readFileSync(entryPath, 'utf8').replace(
+    let source = readFileSync(entryPath, 'utf8').replace(
       /<!-- motion-media:([a-z]+):([\d.]+):([\d.]+):([\d]+) -->/g,
       (_marker, name, start, duration, track) => {
         if (!inputs[name]) return ''
@@ -83,6 +85,11 @@ function render(entry) {
           : `<img ${attrs} alt="">`
       },
     )
+    if (source.includes('../motion-assets/')) {
+      // The renderer serves only files inside the staged project.
+      cpSync(join(gallery, 'scenes', 'motion-assets'), join(project, 'motion-assets'), { recursive: true })
+      source = source.replaceAll('../motion-assets/', 'motion-assets/')
+    }
     const payload = JSON.stringify(inputs).replaceAll('<', '\\u003c')
     const bridge = `<script>
       // HyperFrames 0.8.33 seeks registered timelines for every captured frame.

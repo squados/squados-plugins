@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: #171d1b; }
+main::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 70%, #414b3d, transparent 73%); }
+.tiles { position: absolute; inset: 0; }
+.tiles .photo { position: absolute; left: 0; top: 0; width: 300px; height: 300px; border-radius: 12px; box-shadow: 0 24px 65px #080c0a65; transform-origin: 0 0; }
+.camera { position: absolute; left: 430px; top: 235px; width: 1060px; height: 610px; overflow: hidden; border-radius: 28px; background: #273027; box-shadow: 0 28px 70px #0c120faa; }
+.camera img, .camera video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+</style>
+</head>
+<body>
+<main data-composition-id="colagem-em-torno-da-camera" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+<div class="camera">
+  <!-- motion-media:presenter:2.35:4.45:0 -->
+</div>
+<div class="tiles"></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+photos(".tiles", 6);
+const tiles = all(".tiles .photo");
+const scattered = [[119, 216, -11], [660, 132, 11], [1354, 145, -7], [258, 618, 7], [838, 617, -9], [1419, 615, 11]];
+const docked = [[136, 128], [1537, 128], [1537, 425], [136, 722], [136, 425], [1537, 722]];
+window.renderMotion = time => {
+  const dock = flow(phase(time, 2.44, 1.16));
+  const cam = flow(phase(time, 2.45, 1.03));
+  set(one(".camera"), { opacity: cam, clipPath: "inset(" + (1 - cam) * 15 + "% " + (1 - cam) * 24 + "% round 28px)", transform: "scale(" + mix(.92, 1, cam) + ")" });
+  tiles.forEach((tile, index) => {
+    const [x, y, angle] = scattered[index];
+    const [endX, endY] = docked[index];
+    const starts = [.06, .59, .76, .91, 1.08, 1.27];
+    const enter = index === 0 ? flow(phase(time, starts[index], 1.21)) : beat(time, starts[index], .68);
+    const originX = index === 0 ? 0 : x + (index % 2 ? -128 : 128);
+    const originY = index === 0 ? -355 : y + (index % 2 ? 137 : -137);
+    const size = mix(mix(index === 0 ? 6.42 : .74, 1.24, enter), .82, dock);
+    const alpha = index === 0 ? 1 : enter;
+    set(tile, { opacity: alpha, borderRadius: (index === 0 ? enter : 1) * 12 + "px", transform: "translate(" + mix(mix(originX, x, enter), endX, dock) + "px," + mix(mix(originY, y, enter), endY, dock) + "px) rotate(" + mix(angle * enter, 0, dock) + "deg) scale(" + size + ")" });
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: #e9dfcf; color: #332820; }
+main::before { content: ""; position: absolute; inset: 0 0 0 34%; background: linear-gradient(130deg, #e5d2ba, #c1a78a); }
+.layout { position: absolute; inset: 0; }
+.wall .photo { position: absolute; border-radius: 15px; box-shadow: 0 18px 44px #37221838; }
+.feature { position: absolute; width: 292px; height: 292px; border-radius: 15px; box-shadow: 0 22px 54px #37221844; transform-origin: 0 0; }
+.words { position: absolute; top: 259px; left: 134px; width: 715px; }
+.words h1, .detail h2 { font-size: 144px; }
+.filter { display: inline-flex; gap: 18px; align-items: center; margin-top: 45px; padding: 17px 26px; border: 2px solid #8f7969; border-radius: 44px; font-size: 34px; }
+.filter::before { content: ""; width: 15px; height: 15px; border-radius: 50%; background: #9e4c31; }
+.detail { position: absolute; left: 134px; top: 325px; width: 745px; }
+.detail p { margin-top: 34px; font-size: 44px; color: #665044; }
+</style>
+</head>
+<body>
+<main data-composition-id="parede-em-perspectiva" data-start="0" data-duration="7.4" data-width="1920" data-height="1080">
+<div class="layout"><div class="wall"></div><div class="photo feature" style="--px:50%; --py:0%"></div></div>
+<div class="words"><h1 class="display"></h1><p class="filter"></p></div>
+<div class="detail"><h2 class="display"></h2><p></p></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".words h1", "title", "Arquivo de formas");
+copy(".filter", "filter", "Em espiral");
+copy(".detail h2", "feature", "Câmaras em espiral");
+copy(".detail p", "detail", "Concha marinha");
+photos(".wall", 6);
+const tiles = all(".wall .photo");
+const origins = [[883, 169], [1184, 125], [1485, 81], [929, 470], [1230, 426], [1531, 382]];
+const feature = one(".feature");
+const selected = Number.isInteger(inputs.selected) ? Math.max(0, Math.min(5, inputs.selected)) : 1;
+const [startX, startY] = origins[selected];
+feature.style.setProperty("--px", (selected % 3) * 50 + "%");
+feature.style.setProperty("--py", Math.floor(selected / 3) * 100 + "%");
+tiles[selected].style.display = "none";
+window.renderMotion = time => {
+  const focus = beat(time, 2.15, .5);
+  const zoom = flow(phase(time, 3.12, 1.34));
+  tiles.forEach((tile, index) => {
+    const enter = beat(time, .12 + .08 * index, .78);
+    const [x, y] = origins[index];
+    set(tile, { width: "292px", height: "292px", opacity: enter * (1 - .73 * focus) * (1 - zoom), transform: "translate(" + (x + 156 * zoom) + "px," + (y + 290 * (1 - enter)) + "px) rotate(-8.3deg)" });
+  });
+  const enter = beat(time, .12 + .08 * selected, .78);
+  set(feature, { opacity: enter, borderRadius: mix(15, 7, zoom) + "px", transform: "translate(" + mix(startX, 1010, zoom) + "px," + (mix(startY, 151, zoom) + 290 * (1 - enter) - 12 * focus * (1 - zoom)) + "px) rotate(" + mix(-8.3, 0, zoom) + "deg) scale(" + mix(1 + .04 * focus, 2.43, zoom) + ")" });
+  const head = beat(time, .16, .64);
+  const leave = beat(time, 3.07, .6);
+  set(one(".words"), { opacity: head * (1 - leave), transform: "translateY(" + (1 - head) * 36 + "px) translateX(" + -80 * leave + "px)" });
+  const filter = beat(time, 1.67, .49);
+  set(one(".filter"), { opacity: filter, transform: "translateX(" + (1 - filter) * -34 + "px)", backgroundColor: focus > .5 ? "#f1e3c7" : "transparent" });
+  const show = beat(time, 3.76, .91);
+  set(one(".detail"), { opacity: show, transform: "translateY(" + (1 - show) * 54 + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

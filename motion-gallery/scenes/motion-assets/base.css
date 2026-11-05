@@ -1,0 +1,9 @@
+@font-face { font-family: Fraunces; src: url(fraunces.ttf); font-weight: 100 900; }
+@font-face { font-family: Geist; src: url(geist.ttf); font-weight: 100 900; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font: 500 38px/1.2 Geist, sans-serif; }
+main { position: relative; width: 1920px; height: 1080px; overflow: hidden; isolation: isolate; }
+h1, h2, p { margin: 0; }
+.display { font-family: Fraunces, Georgia, serif; font-weight: 530; font-optical-sizing: auto; letter-spacing: -.028em; word-spacing: .024em; line-height: .99; }
+.photo { background: var(--atlas, url(field-atlas.webp)) var(--px) var(--py) / 300% 200% no-repeat; }

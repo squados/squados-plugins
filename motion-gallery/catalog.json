@@ -44,17 +44,30 @@
       }
     },
     {
-      "id": "bs-creatormotion-cards-chat-stack",
-      "title": "Chat Message Stack",
+      "id": "conversa-em-camadas",
+      "title": "Conversa em Camadas",
       "category": "Cartões e listas",
       "aliases": [
+        "Chat Message Stack",
+        "bs-creatormotion-cards-chat-stack",
         "bs-cards-chat-stack"
       ],
-      "seconds": 7,
-      "prompt": "Use o efeito Chat Message Stack (bs-creatormotion-cards-chat-stack) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "seconds": 6.3,
+      "prompt": "Use Conversa em Camadas neste trecho. Faça três mensagens aparecerem em sequência, com balões de larguras diferentes. Reserve o maior peso visual para a última frase.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-cards-chat-stack"
+        "url": "https://skillry.dev/skills/bs-creatormotion-cards-chat-stack",
+        "id": "bs-creatormotion-cards-chat-stack"
+      },
+      "demo": {
+        "composition": "scenes/conversa-em-camadas/index.html",
+        "preview": "previews/conversa-em-camadas.mp4",
+        "inputs": {
+          "topic": "text",
+          "question": "text",
+          "followup": "text",
+          "result": "text"
+        }
       }
     },
     {
@@ -436,17 +449,32 @@
       }
     },
     {
-      "id": "bs-creatormotion-collage-scatter-presenter",
-      "title": "Scattered Images to Presenter Wall",
+      "id": "colagem-em-torno-da-camera",
+      "title": "Colagem em Torno da Câmera",
       "category": "Colagens",
       "aliases": [
-        "bs-collage-scatter-presenter"
+        "Scattered Images to Presenter Wall",
+        "bs-creatormotion-collage-scatter-presenter",
+        "bs-collage-scatter-presenter",
+        "Scattered Images to Presenter"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Scattered Images to Presenter Wall (bs-creatormotion-collage-scatter-presenter) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Colagem em Torno da Câmera neste trecho. Abra com uma foto em tela cheia, espalhe as outras imagens pelo quadro e organize-as nas laterais para revelar o apresentador no centro.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-collage-scatter-presenter"
+        "url": "https://skillry.dev/skills/bs-creatormotion-collage-scatter-presenter",
+        "id": "bs-creatormotion-collage-scatter-presenter"
+      },
+      "demo": {
+        "composition": "scenes/colagem-em-torno-da-camera/index.html",
+        "preview": "previews/colagem-em-torno-da-camera.mp4",
+        "inputs": {
+          "presenter": "media",
+          "sheet": "image"
+        },
+        "required": [
+          "presenter"
+        ]
       }
     },
     {
@@ -968,17 +996,31 @@
       }
     },
     {
-      "id": "bs-creatormotion-diagram-cycle-traversal",
-      "title": "Cycle State Traversal",
+      "id": "ciclo-em-duas-voltas",
+      "title": "Ciclo em Duas Voltas",
       "category": "Diagramas e processos",
       "aliases": [
-        "bs-diagram-cycle-traversal"
+        "Cycle State Traversal",
+        "bs-creatormotion-diagram-cycle-traversal",
+        "bs-diagram-cycle-traversal",
+        "Cycle State Transversal"
       ],
-      "seconds": 7.8,
-      "prompt": "Use o efeito Cycle State Traversal (bs-creatormotion-diagram-cycle-traversal) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "seconds": 7.7,
+      "prompt": "Use Ciclo em Duas Voltas neste trecho. Percorra quatro etapas em um anel, iluminando uma etapa por vez. Reinicie o traço e troque o título quando começar a segunda volta.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-diagram-cycle-traversal"
+        "url": "https://skillry.dev/skills/bs-creatormotion-diagram-cycle-traversal",
+        "id": "bs-creatormotion-diagram-cycle-traversal"
+      },
+      "demo": {
+        "composition": "scenes/ciclo-em-duas-voltas/index.html",
+        "preview": "previews/ciclo-em-duas-voltas.mp4",
+        "inputs": {
+          "topic": "text",
+          "roundone": "text",
+          "roundtwo": "text",
+          "steps": "array"
+        }
       }
     },
     {
@@ -2529,17 +2571,29 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-prompt-sent-loader",
-      "title": "Answer Wipe",
+      "id": "resposta-revelada",
+      "title": "Resposta Revelada",
       "category": "Interfaces de produto",
       "aliases": [
+        "Answer Wipe",
+        "bs-launchmotion-ui-prompt-sent-loader",
         "lm-ui-prompt-sent-loader"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Answer Wipe (bs-launchmotion-ui-prompt-sent-loader) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Resposta Revelada neste trecho. Digite a pergunta, encaixe o campo abaixo, encha as barras de carregamento e use um wipe horizontal para revelar a resposta.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-ui-prompt-sent-loader"
+        "url": "https://skillry.dev/skills/bs-launchmotion-ui-prompt-sent-loader",
+        "id": "bs-launchmotion-ui-prompt-sent-loader"
+      },
+      "demo": {
+        "composition": "scenes/resposta-revelada/index.html",
+        "preview": "previews/resposta-revelada.mp4",
+        "inputs": {
+          "question": "text",
+          "answer": "text",
+          "detail": "text"
+        }
       }
     },
     {
@@ -2781,17 +2835,32 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-tilted-wall-lifestyle",
-      "title": "Tilted Photo Wall",
+      "id": "parede-em-perspectiva",
+      "title": "Parede em Perspectiva",
       "category": "Interfaces de produto",
       "aliases": [
+        "Tilted Photo Wall",
+        "bs-launchmotion-ui-tilted-wall-lifestyle",
         "lm-ui-tilted-wall-lifestyle"
       ],
-      "seconds": 11,
-      "prompt": "Use o efeito Tilted Photo Wall (bs-launchmotion-ui-tilted-wall-lifestyle) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "seconds": 7.4,
+      "prompt": "Use Parede em Perspectiva neste trecho. Faça subir um painel inclinado de fotografias. Selecione uma imagem pelo tema e aproxime a câmera até ela ocupar o quadro de detalhe.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-ui-tilted-wall-lifestyle"
+        "url": "https://skillry.dev/skills/bs-launchmotion-ui-tilted-wall-lifestyle",
+        "id": "bs-launchmotion-ui-tilted-wall-lifestyle"
+      },
+      "demo": {
+        "composition": "scenes/parede-em-perspectiva/index.html",
+        "preview": "previews/parede-em-perspectiva.mp4",
+        "inputs": {
+          "title": "text",
+          "filter": "text",
+          "feature": "text",
+          "detail": "text",
+          "selected": "number",
+          "sheet": "image"
+        }
       }
     },
     {
@@ -3635,17 +3704,29 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-signal-agent-scans",
-      "title": "Social Post Scan",
+      "id": "radar-de-sinais",
+      "title": "Radar de Sinais",
       "category": "Interfaces de produto",
       "aliases": [
+        "Social Post Scan",
+        "bs-launchmotion-ui-signal-agent-scans",
         "lm-ui-signal-agent-scans"
       ],
-      "seconds": 9,
-      "prompt": "Use o efeito Social Post Scan (bs-launchmotion-ui-signal-agent-scans) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "seconds": 7.6,
+      "prompt": "Use Radar de Sinais neste trecho. Mostre três comentários fictícios. Varra cada post, destaque seu tema e reúna os três assuntos numa lista de prioridades.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-ui-signal-agent-scans"
+        "url": "https://skillry.dev/skills/bs-launchmotion-ui-signal-agent-scans",
+        "id": "bs-launchmotion-ui-signal-agent-scans"
+      },
+      "demo": {
+        "composition": "scenes/radar-de-sinais/index.html",
+        "preview": "previews/radar-de-sinais.mp4",
+        "inputs": {
+          "question": "text",
+          "result": "text",
+          "posts": "array"
+        }
       }
     },
     {

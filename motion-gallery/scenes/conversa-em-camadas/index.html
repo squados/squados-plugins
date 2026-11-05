@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: #f6f1e6; color: #241d1a; }
+.conversation { position: absolute; inset: 108px 310px 106px; border-top: 2px solid #baaa94; border-bottom: 2px solid #baaa94; }
+.header { display: flex; align-items: center; gap: 22px; height: 128px; font-size: 35px; font-weight: 650; }
+.mark { display: grid; place-items: center; width: 51px; height: 51px; border-radius: 16px; background: #572f25; color: #f4d8a2; font-size: 32px; }
+.messages { position: absolute; top: 167px; left: 0; right: 0; display: flex; flex-direction: column; gap: 36px; }
+.bubble { width: fit-content; max-width: 900px; padding: 31px 46px; border-radius: 37px 37px 37px 8px; background: #eadfc9; color: #3b2921; transform-origin: 8% 100%; font-size: 43px; }
+.bubble:first-child { align-self: flex-end; border-radius: 37px 37px 8px 37px; background: #572f25; color: #fff0d3; transform-origin: 92% 100%; }
+.bubble:last-child { font-size: 77px; padding: 36px 46px 43px; color: #2e201a; background: #f0cf83; max-width: 970px; }
+</style>
+</head>
+<body>
+<main data-composition-id="conversa-em-camadas" data-start="0" data-duration="6.3" data-width="1920" data-height="1080">
+<section class="conversation">
+  <header class="header"><span class="mark" aria-hidden="true">↳</span><span class="topic"></span></header>
+  <div class="messages">
+    <p class="bubble question"></p>
+    <p class="bubble followup"></p>
+    <p class="bubble display result"></p>
+  </div>
+</section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".topic", "topic", "Copiloto de escrita");
+copy(".question", "question", "Como deixo esse pedido mais claro?");
+copy(".followup", "followup", "Diga quem vai ler e qual decisão precisa tomar.");
+copy(".result", "result", "Escreva para a decisão.");
+const bubbles = all(".bubble");
+window.renderMotion = time => {
+  const shell = beat(time, 0, .52);
+  set(one(".conversation"), { opacity: shell, transform: "translateY(" + (1 - shell) * 24 + "px)" });
+  bubbles.forEach((bubble, index) => {
+    const value = beat(time, [.47, 1.37, 2.58][index], .55);
+    set(bubble, { opacity: value, transform: "translateY(" + (1 - value) * 37 + "px) scale(" + mix(.92, 1, value) + ")" });
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

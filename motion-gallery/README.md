@@ -4,7 +4,7 @@ Abra [index.html](index.html) no navegador. Busque pelo nome, alias, coleção o
 ID do efeito. **Ver prévia na Skillry** abre a página do efeito no catálogo
 oficial. **Ver prompt** mostra um pedido que você pode usar numa edição.
 A busca funciona por arquivo local. A galeria abre em **Motions próprios**.
-O player desse cartão usa o vídeo local em `previews/`. As entradas de
+Os cartões próprios usam os vídeos locais em `previews/`. As entradas de
 referência abrem suas prévias no site da Skillry.
 
 O [catálogo JSON](catalog.json) contém 122 efeitos de CreatorMotion 1.0.1,
@@ -28,13 +28,36 @@ composição também aceita duas séries de 2 a 6 números de 0 a 100 em
 Use `title`, `labelA`, `labelB` e `accent` para adaptar o gráfico. `note` é
 opcional na visualização com linhas.
 
-O preview carrega Sora e Geist Sans dos arquivos que acompanham a composição.
+As seis composições seguintes aceitam seus nomes próprios e os aliases do benchmark.
+
+| Efeito | Entradas editáveis |
+| --- | --- |
+| Conversa em Camadas | `topic`, `question`, `followup`, `result` |
+| Radar de Sinais | `question`, `result` e `posts`, com três objetos contendo `author`, `text` e `tag`, na ordem da síntese |
+| Parede em Perspectiva | `title`, `filter`, `feature`, `detail`, `selected` de 0 a 5 e `sheet` |
+| Resposta Revelada | `question`, `answer`, `detail` |
+| Ciclo em Duas Voltas | `topic`, `roundone`, `roundtwo` e `steps`, com quatro nomes curtos |
+| Colagem em Torno da Câmera | `presenter`, com uma foto ou take de pelo menos 4,45 s, e `sheet` |
+
+`sheet` substitui a imagem de exemplo nas duas peças com fotos. Use uma
+imagem 3:2 com seis fotos em uma grade de três colunas por duas linhas,
+sem margens. Conte os índices por linha, da esquerda para a direita.
+Os caminhos de imagem e vídeo são relativos ao arquivo de entradas.
+
+Gráfico em Contracampo usa Sora e Geist Sans. As seis composições seguintes
+usam Fraunces e Geist Sans. Os arquivos locais acompanham as composições.
 As fontes vêm da revisão `fbe81817505e8aeadc53cc7a38a2b76fb57c333e` do Google Fonts.
 As licenças OFL acompanham os arquivos. [Sora](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/sora)
 · [Geist](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/geist)
+· [Fraunces](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/fraunces)
+
+O [atlas fotográfico](scenes/motion-assets/field-atlas.webp) das duas peças
+foi gerado com o ImageGen do Codex como uma grade de fotos editoriais sobre
+biomimética, com folha, concha, rio glacial, cogumelo, samambaia e basalto.
 
 ```powershell
 node scripts/render-motion.mjs "Gráfico em Contracampo" --inputs dados.json --out cena.mp4
+node scripts/render-motion.mjs "Resposta Revelada" --out resposta.mp4
 ```
 
 O comando gera 1920 × 1080 a 30 fps com HyperFrames 0.8.33. Sem `--out`,
@@ -50,7 +73,10 @@ a partir da raiz. Valide com `node scripts/build-motion-gallery.mjs --check` e
 O HTML e os recursos locais usam caminhos relativos. Para publicar com GitHub
 Pages, inclua um `.nojekyll` na raiz e, em **Settings → Pages**, selecione
 **Deploy from a branch**, a branch **main** e a pasta **/(root)**. Essa
-configuração publica a raiz do repositório. [Configuração do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+configuração publica a raiz do repositório. Antes de publicar o acervo,
+separe a seleção gratuita e confira o histórico do branch público.
+Mídia privada e peças pagas ficam em uma fonte separada.
+[Configuração do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
 O endereço esperado é [squados.github.io/squados-plugins/motion-gallery/](https://squados.github.io/squados-plugins/motion-gallery/).
 O [JSON bruto na main](https://raw.githubusercontent.com/squados/squados-plugins/main/motion-gallery/catalog.json)
