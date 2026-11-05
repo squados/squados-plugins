@@ -16,6 +16,6 @@ Abra a raiz do checkout `squados-plugins`, crie um JSON com as entradas da cena 
 node scripts/render-motion.mjs "cena-em-vidros" --inputs dados.json --out cena.mp4
 ```
 
-O JSON aceita `matte`, `title`, `labels`, `layout`. Caminhos de mídia são relativos ao JSON. A [composição](index.html) dura 8 s. Para ver a amostra da galeria, execute o mesmo comando sem `--inputs`.
+O JSON aceita `matte`, `title`, `labels`, `layout`. Caminhos de mídia são relativos ao JSON. A [composição](index.html) dura 8 s. Sem `--inputs`, a composição usa a amostra genérica. O preview do cartão usa um take em movimento.
 
 Verifique a ordem física antes, durante e depois da volta. Mantenha a face legível no giro e faça os planos voltar ao mesmo enquadramento do início.

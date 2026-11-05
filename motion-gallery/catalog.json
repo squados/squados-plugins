@@ -5565,67 +5565,6 @@
       }
     },
     {
-      "id": "duelo-em-dois-takes",
-      "title": "Duelo em Dois Takes",
-      "category": "Edição comparada",
-      "aliases": [
-        "comparativo vertical",
-        "split screen 9:16"
-      ],
-      "seconds": 5,
-      "prompt": "Use Duelo em Dois Takes neste trecho. Empilhe dois takes 16:9 com a mesma escala, no mesmo ponto de sincronização. Mantenha os nomes acima das respectivas janelas.",
-      "demo": {
-        "composition": "scenes/duelo-em-dois-takes/index.html",
-        "preview": "previews/duelo-em-dois-takes.mp4",
-        "skill": "scenes/duelo-em-dois-takes/SKILL.md",
-        "inputs": {
-          "title": "text",
-          "first": "media",
-          "second": "media",
-          "firstName": "text",
-          "secondName": "text",
-          "firstResult": "text",
-          "secondResult": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/duelo-em-dois-takes.mp4",
-          "lane": "both",
-          "start": 0,
-          "end": 78.8
-        }
-      }
-    },
-    {
-      "id": "pergunta-e-confronto",
-      "title": "Pergunta e Confronto",
-      "category": "Edição comparada",
-      "aliases": [
-        "duelo de modelos",
-        "pergunta com versus"
-      ],
-      "seconds": 6,
-      "prompt": "Use Pergunta e Confronto neste trecho. Revele a pergunta em dois tempos, mostre os dois candidatos no ritmo da fala e feche com o confronto.",
-      "demo": {
-        "composition": "scenes/pergunta-e-confronto/index.html",
-        "preview": "previews/pergunta-e-confronto.mp4",
-        "skill": "scenes/pergunta-e-confronto/SKILL.md",
-        "inputs": {
-          "presenter": "media",
-          "question": "text",
-          "emphasis": "text",
-          "firstName": "text",
-          "secondName": "text",
-          "layout": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/pergunta-e-confronto.mp4",
-          "lane": "upper",
-          "start": 1.4,
-          "end": 7.4
-        }
-      }
-    },
-    {
       "id": "icones-da-mao-ao-fundo",
       "title": "Ícones da Mão ao Fundo",
       "category": "Edição comparada",
@@ -5646,12 +5585,6 @@
           "rightMark": "image",
           "leftTrack": "array",
           "rightTrack": "array"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/icones-da-mao-ao-fundo.mp4",
-          "lane": "upper",
-          "start": 7.5,
-          "end": 22.7
         }
       }
     },
@@ -5675,72 +5608,6 @@
           "title": "text",
           "labels": "array",
           "layout": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/cena-em-vidros.mp4",
-          "lane": "upper",
-          "start": 22.8,
-          "end": 32.8
-        }
-      }
-    },
-    {
-      "id": "camera-encaixa-na-moldura",
-      "title": "Câmera Encaixa na Moldura",
-      "category": "Edição comparada",
-      "aliases": [
-        "picture-in-picture",
-        "reenquadramento lateral",
-        "moldura lateral"
-      ],
-      "seconds": 6,
-      "prompt": "Use Câmera Encaixa na Moldura neste trecho. Reduza, recorte e deslize a câmera atual para a moldura da direita. Revele a demonstração à esquerda e retorne ao quadro inteiro.",
-      "demo": {
-        "composition": "scenes/camera-encaixa-na-moldura/index.html",
-        "preview": "previews/camera-encaixa-na-moldura.mp4",
-        "skill": "scenes/camera-encaixa-na-moldura/SKILL.md",
-        "inputs": {
-          "presenter": "media",
-          "label": "text",
-          "title": "text",
-          "detail": "text",
-          "layout": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/camera-encaixa-na-moldura.mp4",
-          "lane": "upper",
-          "start": 33.4,
-          "end": 36.6
-        }
-      }
-    },
-    {
-      "id": "receita-em-movimento",
-      "title": "Receita em Movimento",
-      "category": "Edição comparada",
-      "aliases": [
-        "ingredientes no liquidificador",
-        "despejo da massa",
-        "forno e revelação"
-      ],
-      "seconds": 10,
-      "prompt": "Use Receita em Movimento neste trecho. Revele os ingredientes, derrube-os no copo, suba a mistura, despeje na forma e passe do forno ao resultado com vapor.",
-      "demo": {
-        "composition": "scenes/receita-em-movimento/index.html",
-        "preview": "previews/receita-em-movimento.mp4",
-        "skill": "scenes/receita-em-movimento/SKILL.md",
-        "inputs": {
-          "presenter": "media",
-          "title": "text",
-          "ingredients": "array",
-          "steps": "array",
-          "layout": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/receita-em-movimento.mp4",
-          "lane": "upper",
-          "start": 35.6,
-          "end": 49.9
         }
       }
     },
@@ -5766,12 +5633,6 @@
           "third": "media",
           "titles": "array",
           "direction": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/reels-atras-da-camera.mp4",
-          "lane": "upper",
-          "start": 51.4,
-          "end": 60.6
         }
       }
     },
@@ -5795,40 +5656,6 @@
           "title": "text",
           "labels": "array",
           "layout": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/casa-em-vista-explodida.mp4",
-          "lane": "upper",
-          "start": 60.7,
-          "end": 72.8
-        }
-      }
-    },
-    {
-      "id": "balanco-em-contagem",
-      "title": "Balanço em Contagem",
-      "category": "Edição comparada",
-      "aliases": [
-        "placar de tarefas",
-        "recapitulação com contador"
-      ],
-      "seconds": 6,
-      "prompt": "Use Balanço em Contagem neste trecho. Abra um painel de balanço, escreva as confirmações em cascata e some cada tarefa no contador quando o traço terminar.",
-      "demo": {
-        "composition": "scenes/balanco-em-contagem/index.html",
-        "preview": "previews/balanco-em-contagem.mp4",
-        "skill": "scenes/balanco-em-contagem/SKILL.md",
-        "inputs": {
-          "presenter": "media",
-          "title": "text",
-          "tasks": "array",
-          "unit": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/balanco-em-contagem.mp4",
-          "lane": "upper",
-          "start": 72.6,
-          "end": 74.1
         }
       }
     },
@@ -5854,12 +5681,6 @@
           "emphasis": "text",
           "action": "text",
           "layout": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/assinatura-com-chamada.mp4",
-          "lane": "upper",
-          "start": 73.8,
-          "end": 76.6
         }
       }
     },
@@ -5883,12 +5704,6 @@
           "comment": "text",
           "keyword": "text",
           "message": "text"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/do-comentario-ao-direct.mp4",
-          "lane": "upper",
-          "start": 76.3,
-          "end": 78.8
         }
       }
     },
@@ -5901,7 +5716,7 @@
         "karaokê por palavra",
         "tarja de legenda"
       ],
-      "seconds": 6,
+      "seconds": 7.1,
       "prompt": "Use Legenda de Palavra Ativa neste trecho. Mantenha o bloco de legenda na mesma posição e destaque uma palavra por vez, seguindo os tempos do take.",
       "demo": {
         "composition": "scenes/legenda-palavra-ativa/index.html",
@@ -5911,12 +5726,6 @@
           "presenter": "media",
           "layout": "text",
           "cues": "array"
-        },
-        "reference": {
-          "preview": "previews/referencias-edicao/legenda-palavra-ativa.mp4",
-          "lane": "lower",
-          "start": 0,
-          "end": 6.4
         }
       }
     }

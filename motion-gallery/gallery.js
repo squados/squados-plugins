@@ -20,51 +20,12 @@
   const seconds = new Intl.NumberFormat('pt-BR')
   const defaultScope = coreCategory.size ? 'core' : entries.some(entry => entry.demo) ? 'complement' : ''
   const comparisonCategory = 'Edição comparada'
-  const referenceLanes = { upper: 'Faixa superior', lower: 'Faixa inferior' }
 
   function element(tag, className, text) {
     const node = document.createElement(tag)
     if (className) node.className = className
     if (text !== undefined) node.textContent = text
     return node
-  }
-
-  function makeVideo(src, label, unavailable = 'Vídeo indisponível neste checkout.') {
-    const video = element('video', 'motion-video')
-    video.controls = true
-    video.playsInline = true
-    video.preload = 'metadata'
-    video.setAttribute('aria-label', label)
-    video.addEventListener('error', () => {
-      video.hidden = true
-      video.after(element('p', 'card-meta', unavailable))
-    }, { once: true })
-    video.src = src
-    return video
-  }
-
-  function timestamp(time) {
-    const tenths = Math.round(time * 10)
-    const minutes = String(Math.floor(tenths / 600)).padStart(2, '0')
-    const seconds = String(Math.floor(tenths / 10) % 60).padStart(2, '0')
-    return minutes + ':' + seconds + ',' + tenths % 10
-  }
-
-  function makeComparison(entry) {
-    const { preview, reference } = entry.demo
-    const comparison = element('div', 'motion-comparison')
-    const original = element('figure', 'comparison-panel')
-    const recreated = element('figure', 'comparison-panel')
-    const originalVideo = makeVideo(reference.preview, 'Vídeo original · ' + entry.title, 'Vídeo original indisponível neste checkout.')
-    const recreatedVideo = makeVideo(preview, 'Recriação · ' + entry.title)
-    original.append(element('figcaption', 'comparison-label', 'Vídeo original'), originalVideo)
-    recreated.append(element('figcaption', 'comparison-label', 'Recriação'), recreatedVideo)
-    const range = reference.lane === 'both' ? 'Vídeo completo' :
-      timestamp(reference.start) + '–' + timestamp(reference.end) + ' · ' + referenceLanes[reference.lane]
-    original.append(element('p', 'comparison-range', range))
-    comparison.classList.toggle('motion-comparison-portrait', reference.lane === 'both')
-    comparison.append(original, recreated)
-    return comparison
   }
 
   function makeCard(entry, title, scope) {
@@ -80,12 +41,17 @@
     const copy = element('div', 'card-copy')
     copy.append(element('p', 'card-meta', meta), heading, permalink)
     if (entry.demo) {
-      if (entry.demo.reference) {
-        article.classList.add('card-comparison')
-        copy.prepend(makeComparison(entry))
-      } else {
-        copy.prepend(makeVideo(entry.demo.preview, entry.title))
-      }
+      const video = element('video', 'motion-video')
+      video.controls = true
+      video.playsInline = true
+      video.preload = 'metadata'
+      video.setAttribute('aria-label', entry.title)
+      video.addEventListener('error', () => {
+        video.hidden = true
+        video.after(element('p', 'card-meta', 'Vídeo indisponível neste checkout.'))
+      }, { once: true })
+      video.src = entry.demo.preview
+      copy.prepend(video)
       const source = element('a', 'preview-link', 'Fonte da composição')
       source.href = entry.demo.composition
       copy.append(source)
@@ -108,7 +74,7 @@
     return {
       article,
       scope,
-      filter: entry.demo?.reference ? title : scope,
+      filter: title === comparisonCategory ? title : scope,
       search: normalize([entry.title, title, entry.category, collection, entry.id, ...(entry.aliases ?? [])].join(' ')),
     }
   }
@@ -170,9 +136,7 @@
       let count = 0
       for (const card of category.cards) {
         const matches = inCategory && (!scopeFilter || card.scope === filter) && words.every(word => card.search.includes(word))
-        if (!matches && !card.article.hidden) {
-          for (const video of card.article.querySelectorAll('video')) video.pause()
-        }
+        if (!matches && !card.article.hidden) card.article.querySelector('video')?.pause()
         card.article.hidden = !matches
         if (matches) count++
       }

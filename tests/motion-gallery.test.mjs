@@ -27,7 +27,7 @@ test('curvas rápidas chegam ao estado final e a mola assenta após o rebote', (
 test('catálogo indexa o benchmark Skillry com slugs e páginas oficiais', () => {
   const { version, entries } = catalog
   assert.equal(version, 2)
-  assert.equal(entries.length, 344)
+  assert.equal(entries.length, 339)
   assert.equal(new Set(entries.map(entry => entry.id)).size, entries.length)
   const sourced = entries.filter(entry => entry.source)
   assert.equal(sourced.length, 331)
@@ -70,21 +70,15 @@ test('seleção principal contém 50 composições próprias em seis categorias'
   assert.deepEqual(core.map(group => group.ids.length), [9, 8, 10, 8, 9, 6])
   assert.equal(new Set(ids).size, 50)
   for (const id of ids) assert.ok(originals.has(id), id)
-  assert.equal(originals.size - ids.length, 23)
+  assert.equal(originals.size - ids.length, 18)
 })
 
 test('edição comparada tem um guia de reutilização e uma composição por efeito', () => {
   const entries = catalog.entries.filter(entry => entry.category === 'Edição comparada')
-  assert.equal(entries.length, 12)
+  assert.equal(entries.length, 7)
   const inventory = read('comparativo-de-edicoes.md')
-  const references = catalog.entries.filter(entry => entry.demo?.reference)
-  assert.deepEqual(references.map(entry => entry.id), entries.map(entry => entry.id))
+  assert.ok(catalog.entries.every(entry => !entry.demo?.reference))
   for (const { id, demo, seconds } of entries) {
-    const { preview, start, end, lane } = demo.reference
-    assert.equal(preview, 'previews/referencias-edicao/' + id + '.mp4')
-    assert.ok(Number.isFinite(start) && Number.isFinite(end) && 0 <= start && start < end && end <= 78.8, id)
-    assert.ok(['upper', 'lower', 'both'].includes(lane), id)
-    assert.equal(lane === 'both', id === 'duelo-em-dois-takes')
     assert.equal(demo.skill, 'scenes/' + id + '/SKILL.md')
     assert.ok(read(demo.skill).split(/\r?\n/).includes('name: ' + id), id)
     const composition = read(demo.composition)

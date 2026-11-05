@@ -131,7 +131,7 @@ function render(entry) {
     }
     pendingOutput = output + '.' + process.pid + '.tmp'
     if (preview) {
-      execFileSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-i', raw, '-vf', 'scale=960:960:force_original_aspect_ratio=decrease:force_divisible_by=2',
+      execFileSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-i', raw, '-vf', 'scale=960:540',
         '-c:v', 'libx264', '-crf', '20', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-f', 'mp4', pendingOutput], options)
     } else {
       cpSync(raw, pendingOutput)

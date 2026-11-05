@@ -85,20 +85,7 @@ h1 { margin: 0; font-size: clamp(2.3rem, 6vw, 4.7rem); font-weight: 720; letter-
   border-radius: 8px;
   scroll-margin-block: 16px;
 }
-.card-comparison { grid-column: 1 / -1; }
 #edicao-comparada { scroll-margin-block: 16px; }
-.motion-comparison {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(8px, 2vw, 16px);
-  margin-bottom: 14px;
-}
-.motion-comparison-portrait { width: min(100%, 550px); margin-inline: auto; }
-.comparison-panel { min-width: 0; margin: 0; }
-.comparison-label { margin-bottom: 6px; font-size: .82rem; font-weight: 650; }
-.comparison-range { margin: 6px 0 0; color: var(--muted); font-size: .75rem; }
-.motion-comparison .motion-video { margin-bottom: 0; border-radius: 5px; object-fit: contain; }
-.motion-comparison-portrait .motion-video { aspect-ratio: 9 / 16; }
 .card:target { border-color: var(--accent); box-shadow: 0 0 0 2px #c6b8ff40; }
 .card-copy { padding: 14px 13px; }
 .card-meta { margin: 0 0 6px; color: var(--muted); font-size: .75rem; }

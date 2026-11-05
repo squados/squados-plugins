@@ -4,15 +4,13 @@ Abra [index.html](index.html) no navegador. Busque pelo nome, alias, coleção o
 ID do efeito. **Ver prévia na Skillry** abre a página do efeito no catálogo
 oficial. **Ver prompt** mostra um pedido que você pode usar numa edição.
 A galeria funciona por arquivo local e abre em **Seleção principal**, com
-50 efeitos próprios em seis categorias. Use o filtro para consultar os 23
+50 efeitos próprios em seis categorias. Use o filtro para consultar os 18
 vídeos do **Acervo complementar** e as 271 entradas em **Referências da Skillry**.
 A busca respeita o filtro ativo. Os vídeos próprios são lidos de `previews/`. A categoria **Edição comparada**
-reúne as 12 cenas do [comparativo de edições](comparativo-de-edicoes.md). Os
-cartões mostram o **Vídeo original** à esquerda e a **Recriação** à direita, com
-controles independentes e um link para a skill. Abra pela opção **Edição comparada**
-no topo. O primeiro cartão mostra o original completo. Nos demais, a legenda
-do player indica a faixa e o intervalo no vídeo original. Esses trechos ficam
-em `previews/referencias-edicao/` no checkout local.
+reúne as sete cenas do [comparativo de edições](comparativo-de-edicoes.md).
+Abra pelo atalho no topo para ver os previews e os links de reutilização.
+**Legenda de Palavra Ativa** e **Cena em Vidros** usam trechos em movimento
+do apresentador com o áudio do vídeo de referência.
 
 O [catálogo JSON](catalog.json) cobre 122 efeitos de CreatorMotion 1.0.1,
 208 cenas de LaunchMotion 1.0.4 e o fluxo Paper Cutout Story Video 1.0.0.
@@ -78,8 +76,7 @@ node scripts/render-motion.mjs "Gráfico em Contracampo" --inputs dados.json --o
 node scripts/render-motion.mjs "Resposta Revelada" --out resposta.mp4
 ```
 
-O comando gera 1920 × 1080 a 30 fps com HyperFrames 0.8.33. **Duelo em Dois
-Takes** gera 1080 × 1920. Sem `--out`,
+O comando gera 1920 × 1080 a 30 fps com HyperFrames 0.8.33. Sem `--out`,
 atualiza o vídeo do cartão. Os vídeos, fotos e entradas da demonstração
 ficam em `previews/` no checkout local.
 
