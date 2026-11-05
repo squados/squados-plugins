@@ -54,15 +54,15 @@ h1 { max-width: 1530px; font-size: 102px; }
   support.textContent = amount.format(value) + suffix + " · meta de " + amount.format(target) + suffix;
 
   window.renderMotion = time => {
-    const enter = beat(time, .16, .54);
+    const enter = snap(time, .16, .26);
     set(content, { opacity: enter, transform: "translateY(" + 23 * (1 - enter) + "px)" });
-    const first = Math.min(ratio, 1) * flow(phase(time, 1, 3.08));
-    const extra = Math.max(0, ratio - 1) * flow(phase(time, 4.08, .72));
+    const first = Math.min(ratio, 1) * beat(time, 1.08, 1.32);
+    const extra = Math.max(0, ratio - 1) * beat(time, 3.76, .43);
     fill.style.width = scale * first + "px";
     excess.style.width = scale * extra + "px";
     readout.textContent = amount.format((first + extra) * 100) + "%";
-    const final = beat(time, 5.03, .49);
-    set(support, { opacity: final, transform: "translateY(" + 15 * (1 - final) + "px)" });
+    const final = snap(time, 4.55, .25);
+    set(support, { opacity: final, transform: "translateY(" + 15 * (1 - spring(time,4.55,.28)) + "px)" });
   };
   window.renderMotion(0);
 </script>

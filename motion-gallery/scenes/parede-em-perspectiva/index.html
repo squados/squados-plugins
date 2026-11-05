@@ -116,9 +116,9 @@ focal.append(ring);
 artwork(one(".hero .art"), selected);
 
 window.renderMotion = time => {
-  const rise = flow(phase(time, SLIDE, 1.14));
+  const rise = beat(time, SLIDE, .95);
   const drift = phase(time, 2.1, 2.25);
-  const push = flow(phase(time, PUSH, FULL - PUSH));
+  const push = flow(phase(time, PUSH, FULL - PUSH)) ** .78;
   const pull = flow(phase(time, PULL, FINISH - PULL));
   const switchFrame = time >= FULL;
   const scale = mix(1.02 + .10 * drift, 6, push);
@@ -127,7 +127,7 @@ window.renderMotion = time => {
   const tilt = (1 - push);
   world.style.visibility = time < SLIDE || switchFrame ? "hidden" : "visible";
   world.style.transform = "translate(" + x + "px," + y + "px) scale(" + scale + ") perspective(1850px) rotateY(" + -12 * tilt + "deg) rotateX(" + 15 * tilt + "deg) rotateZ(" + -13 * tilt + "deg)";
-  const lit = flow(phase(time, FILTER, .48));
+  const lit = snap(time, FILTER, .30);
   const discard = flow(phase(time, PUSH + .28, .84));
   for (const tile of tiles) {
     tile.el.style.opacity = (tile.match ? 1 : 1 - .74 * lit) * (1 - discard);
@@ -135,26 +135,28 @@ window.renderMotion = time => {
   focal.style.borderRadius = mix(14, 0, push) + "px";
   focal.style.boxShadow = push > .82 ? "none" : "";
   ring.style.opacity = lit * (1 - push);
-  const appear = beat(time, .04, .55);
+  const appear = snap(time, .04, .29);
   const leave = flow(phase(time, SLIDE, .44));
   set(intro, { opacity: appear * (1 - leave), transform: "translateY(" + ((1 - appear) * 48 - 79 * leave) + "px)" });
-  const panelIn = beat(time, 2.22, .58);
+  const panelIn = snap(time, 2.22, .29);
   const panelOut = flow(phase(time, 3.88, .42));
   set(panel, { opacity: panelIn * (1 - panelOut), transform: "translateY(" + ((1 - panelIn) * 50 + panelOut * 46) + "px) scale(" + mix(.96, 1, panelIn) + ")" });
   filter.classList.toggle("checked", time >= FILTER);
-  filter.style.transform = "scale(" + (1 - .09 * Math.sin(Math.PI * phase(time, FILTER - .10, .29))) + ")";
+  filter.style.transform = "scale(" + (1 - .09 * Math.sin(Math.PI * phase(time, FILTER - .08, .22))) + ")";
   const heroWidth = mix(1920, 998, pull);
   set(hero, { visibility: switchFrame ? "visible" : "hidden", left: mix(0, 157, pull) + "px", top: mix(0, 259.3, pull) + "px", width: heroWidth + "px", height: (heroWidth * 9 / 16) + "px", borderRadius: mix(0, 19, pull) + "px" });
-  detailPanel.style.opacity = beat(time, PULL + .14, .62);
-  const read = beat(time, 6.83, .55);
+  detailPanel.style.opacity = snap(time, PULL + .14, .29);
+  const read = snap(time, 6.83, .29);
   set(detail, { opacity: read, transform: "translateY(" + (1 - read) * 34 + "px)" });
-  const press = Math.sin(Math.PI * phase(time, 8.03, .27));
+  const press = Math.sin(Math.PI * phase(time, 8.03, .19));
+  const iconSeat = spring(time, 8.86, .29);
   const filled = flow(phase(time, 8.19, .70));
   const added = filled >= .99;
   action.style.transform = "scale(" + (1 - .035 * press) + ")";
   fill.style.transform = "scaleX(" + filled + ")";
   action.classList.toggle("added", added);
   actionIcon.textContent = added ? "✓" : "+";
+  actionIcon.style.transform = added ? "scale(" + mix(.74, 1, iconSeat) + ")" : "";
   actionLabel.textContent = added ? "Salvo no roteiro" : "Salvar no roteiro";
 };
 window.renderMotion(0);

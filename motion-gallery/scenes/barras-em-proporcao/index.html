@@ -62,12 +62,12 @@ h1 { font-size: 100px; }
   });
 
   window.renderMotion = time => {
-    const opening = beat(time, .16, .43);
+    const opening = snap(time, .16, .25);
     set(content, { opacity: opening, transform: "translateY(" + 21 * (1 - opening) + "px)" });
     rows.forEach(({ element, bar, label }, index) => {
-      const show = beat(time, .29 + index * .08, .36);
+      const show = snap(time, .29 + index * .09, .24);
       const start = index === 0 ? .78 : 2.92;
-      const progress = flow(phase(time, start, index === 0 ? 1.32 : 1.56));
+      const progress = beat(time, start, index === 0 ? .72 : .83);
       const measured = values[index] * progress;
       const width = measured * 1000 / (largest || 1);
       element.style.opacity = show;
@@ -75,11 +75,11 @@ h1 { font-size: 100px; }
       label.style.left = width + 22 + "px";
       label.textContent = number.format(measured);
     });
-    const compare = flow(phase(time, 5, .53));
+    const compare = snap(time, 4.69, .26);
     bracket.style.opacity = compare > 0 ? 1 : 0;
     bracket.style.strokeDashoffset = 1 - compare;
-    const reveal = beat(time, 5.24, .38);
-    set(factor, { opacity: reveal, transform: "translateX(" + 14 * (1 - reveal) + "px)" });
+    const reveal = snap(time, 4.84, .24);
+    set(factor, { opacity: reveal, transform: "translateX(" + 14 * (1 - spring(time,4.84,.28)) + "px)" });
     unitLabel.style.opacity = reveal;
   };
   window.renderMotion(0);

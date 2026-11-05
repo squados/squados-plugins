@@ -91,16 +91,20 @@ main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 
   window.renderMotion = time => {
     for (const { task, row, check, phoneStep, icon } of taskViews) {
       const checked = time >= task.at;
-      const stroke = phase(time, task.at, .2);
+      const stroke = snap(time, task.at, .22);
+      const stamp = spring(time, task.at, .28);
       row.classList.toggle("done", checked);
       check.style.strokeDasharray = "1";
       check.style.strokeDashoffset = 1 - stroke;
       check.style.opacity = stroke > 0 ? 1 : 0;
+      row.firstElementChild.style.transform = checked ? "scale(" + mix(.85, 1, stamp) + ")" : "none";
       phoneStep.classList.toggle("done", checked);
       icon.textContent = checked ? "✓" : "";
+      icon.style.transform = checked ? "scale(" + mix(.8, 1, stamp) + ")" : "none";
     }
-    const visible = beat(time, lastCheck, .3);
-    set(deliverable, { opacity: visible, transform: "translateY(" + 15 * (1 - visible) + "px)" });
+    const visible = snap(time, lastCheck + .12, .22);
+    const seat = spring(time, lastCheck + .12, .28);
+    set(deliverable, { opacity: visible, transform: "translateY(" + 13 * (1 - seat) + "px)" });
   };
   window.renderMotion(0);
 </script>

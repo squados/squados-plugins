@@ -79,18 +79,18 @@ copy(".wait span", "waitLabel", "Consultando");
 if (hasWait) set(one(".wait"), { left: centers[steps[1].to] + "px", top: (steps[1].y + 37) + "px" });
 window.renderMotion = time => {
   lanes.forEach((lane, i) => {
-    const show = beat(time, .13 + i * .075, .46);
+    const show = snap(time, .13 + i * .075, .28);
     lane.style.opacity = show;
-    lane.querySelector(".lane-rule").style.transform = "scaleY(" + beat(time, .25 + i * .075, .53) + ")";
+    lane.querySelector(".lane-rule").style.transform = "scaleY(" + snap(time, .25 + i * .075, .36) + ")";
   });
   steps.forEach(({ time: start, message, label, line }) => {
-    const draw = beat(time, start, .54);
+    const draw = snap(time, start, .39);
     message.style.visibility = draw ? "visible" : "hidden";
     set(line, { width: (draw * 100) + "%", opacity: Math.min(1, draw * 10) });
-    const labelIn = beat(time, start + .13, .38);
-    set(label, { opacity: labelIn, transform: "translate(-50%," + (1 - labelIn) * 12 + "px)" });
+    const labelIn = spring(time, start + .10, .27);
+    set(label, { opacity: clamp(labelIn), transform: "translate(-50%," + (1 - labelIn) * 14 + "px)" });
   });
-  const waiting = hasWait ? beat(time, steps[1].time + .61, .29) * (1 - flow(phase(time, steps[2].time - .32, .26))) : 0;
+  const waiting = hasWait ? snap(time, steps[1].time + .54, .24) * (1 - flow(phase(time, steps[2].time - .28, .20))) : 0;
   set(one(".wait"), { opacity: waiting, transform: "translateY(" + (1 - waiting) * 9 + "px)" });
 };
 window.renderMotion(0);

@@ -70,18 +70,18 @@ main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 
   window.renderMotion = time => {
     const secondPass = time >= 3.94;
     const start = secondPass ? 3.94 : .94;
-    const cover = flow(phase(time, start, .28));
-    const reveal = flow(phase(time, start + .30, secondPass ? .32 : .30));
+    const cover = snap(time, start, .20);
+    const reveal = flow(phase(time, start + .21, .22));
     const reach = 104 * cover * (1 - reveal);
     masks.classList.toggle("reverse", secondPass);
     upper.style.clipPath = "polygon(0 0," + reach + "% 0,0 " + reach + "%)";
     lower.style.clipPath = "polygon(100% 100%," + (100 - reach) + "% 100%,100% " + (100 - reach) + "%)";
 
-    const currentScene = time < 1.22 ? 0 : time < 4.22 ? 1 : 2;
+    const currentScene = time < 1.14 ? 0 : time < 4.14 ? 1 : 2;
     scenes.forEach((scene, index) => { scene.hidden = currentScene !== index; });
-    const stamp = beat(time, 1.31, .34);
-    set(title, { opacity: stamp, transform: "translateY(" + 27 * (1 - stamp) + "px) scale(" + mix(.95, 1, stamp) + ")" });
-    ordinal.style.opacity = beat(time, 1.55, .28);
+    const stamp = snap(time, 1.24, .22);
+    set(title, { opacity: stamp, transform: "translateY(" + 22 * (1 - stamp) + "px)" });
+    ordinal.style.opacity = snap(time, 1.44, .22);
   };
   window.renderMotion(0);
 </script>

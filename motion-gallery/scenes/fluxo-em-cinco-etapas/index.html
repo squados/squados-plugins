@@ -146,7 +146,7 @@ const start = [2.00, 3.49, 4.80, 6.10, 7.41];
 const finish = [3.21, 4.38, 5.68, 6.97, 8.29];
 
 window.renderMotion = time => {
-  const opening = beat(time, .12, .65);
+  const opening = snap(time, .12, .29);
   const openingExit = flow(phase(time, 1.48, .48));
   set(intro, {
     opacity: opening * (1 - openingExit),
@@ -154,7 +154,7 @@ window.renderMotion = time => {
     transform: "translateY(" + (32 * (1 - opening) - 41 * openingExit) + "px)"
   });
 
-  const entered = beat(time, 1.87, .57);
+  const entered = snap(time, 1.87, .34);
   const leaving = flow(phase(time, 8.67, .65));
   set(flowView, {
     opacity: entered * (1 - leaving),
@@ -165,40 +165,41 @@ window.renderMotion = time => {
   let scroll = 0;
   let pulse = 0;
   for (const boundary of start.slice(1)) {
-    scroll += flow(phase(time, boundary - .18, .43));
-    pulse += Math.sin(Math.PI * phase(time, boundary - .09, .32));
+    scroll += beat(time, boundary - .12, .34);
+    pulse += Math.sin(Math.PI * phase(time, boundary - .05, .23));
   }
   focus.style.transform = "scale(" + (1 - .022 * pulse) + ")";
   activeDot.style.transform = "scale(" + (1 + .18 * pulse) + ")";
   rows.forEach(({ row, check }, index) => {
     const distance = index - scroll;
-    const checked = beat(time, finish[index], .30);
+    const checked = snap(time, finish[index], .20);
+    const seated = spring(time, finish[index], .27);
     set(row, {
       opacity: Math.max(0, 1 - Math.abs(distance) * .34) * (distance > 0 ? .79 : 1),
       transform: "translateY(" + distance * 132 + "px)"
     });
     row.classList.toggle("complete", checked > .40);
-    set(check, { opacity: checked, transform: "scale(" + mix(.63, 1, checked) + ")" });
+    set(check, { opacity: checked, transform: "scale(" + mix(.63, 1, seated) + ")" });
   });
 
   details.forEach(({ detail, status }, index) => {
     const inStart = start[index] - (index ? .06 : 0);
-    const show = beat(time, inStart, .44);
+    const show = snap(time, inStart, .28);
     const hide = index < details.length - 1 ? flow(phase(time, start[index + 1] - .27, .28)) : 0;
     set(detail, {
       opacity: show * (1 - hide),
       filter: "blur(" + (8 * (1 - show) + 8 * hide) + "px)",
       transform: "translateY(" + (23 * (1 - show) - 17 * hide) + "px)"
     });
-    const log = beat(time, start[index] + .41, .34);
+    const log = snap(time, start[index] + .41, .24);
     set(status, { opacity: log, transform: "translateY(" + 14 * (1 - log) + "px)" });
     const fill = flow(phase(time, start[index] + .23, finish[index] - start[index] - .06));
     fills[index].style.transform = "scaleX(" + fill + ")";
   });
 
-  const close = beat(time, 9.11, .76);
+  const close = snap(time, 9.11, .30);
   set(final, { opacity: close, filter: "blur(" + 10 * (1 - close) + "px)", transform: "translateY(" + 32 * (1 - close) + "px)" });
-  const brand = beat(time, 9.72, .40);
+  const brand = snap(time, 9.72, .26);
   set(product, { opacity: brand, transform: "translateY(" + 14 * (1 - brand) + "px)" });
 };
 window.renderMotion(0);

@@ -89,7 +89,7 @@
         "bs-cards-chat-stack"
       ],
       "seconds": 6.3,
-      "prompt": "Use Conversa em Camadas neste trecho. Faça três mensagens aparecerem em sequência, com balões de larguras diferentes. Reserve o maior peso visual para a última frase.",
+      "prompt": "Use Conversa em Camadas neste trecho. Faça três mensagens de IA entrarem com spring rápido e deixe o texto em repouso para leitura. Reserve o maior peso visual para a última mensagem.",
       "source": {
         "package": "bs-creatormotion",
         "url": "https://skillry.dev/skills/bs-creatormotion-cards-chat-stack",
@@ -535,7 +535,7 @@
         "Scattered Images to Presenter"
       ],
       "seconds": 6.8,
-      "prompt": "Use Colagem em Torno da Câmera neste trecho. Abra com uma foto em tela cheia, espalhe as outras imagens pelo quadro e organize-as nas laterais para revelar o apresentador no centro.",
+      "prompt": "Use Colagem em Torno da Câmera neste trecho. Abra com uma foto em tela cheia, espalhe as imagens em perspectiva no fundo preto com grão e organize-as nas laterais para revelar o apresentador.",
       "source": {
         "package": "bs-creatormotion",
         "url": "https://skillry.dev/skills/bs-creatormotion-collage-scatter-presenter",
@@ -1569,7 +1569,7 @@
         "bs-split-chart-swap"
       ],
       "seconds": 6.8,
-      "prompt": "Use Gráfico em Contracampo para comparar quantos tokens entram no contexto de um agente com o histórico completo ou resumido. Mantenha o apresentador visível enquanto o gráfico e o take trocam de lado.",
+      "prompt": "Use Gráfico em Contracampo para comparar os tokens de um histórico completo e resumido. Reenquadre o apresentador no take contínuo enquanto o painel de vidro troca de lado. Para exportar apenas o gráfico, omita presenter e use MOV.",
       "source": {
         "package": "bs-creatormotion",
         "url": "https://skillry.dev/skills/bs-creatormotion-split-chart-swap",
@@ -1588,10 +1588,7 @@
           "note": "text",
           "accent": "color",
           "values": "array"
-        },
-        "required": [
-          "presenter"
-        ]
+        }
       }
     },
     {
@@ -1604,7 +1601,7 @@
         "bs-split-phone-callouts"
       ],
       "seconds": 6.8,
-      "prompt": "Use Apresentador e Celular neste trecho. Mantenha o apresentador à esquerda, revele o celular à direita e escreva a captura sobre a imagem. Apresente as duas chamadas em sequência dentro da tela.",
+      "prompt": "Use Apresentador e Celular neste trecho. Reenquadre o take contínuo à esquerda e sobreponha o celular à direita. Escreva a captura sobre a imagem e revele duas chamadas em sequência.",
       "source": {
         "package": "bs-creatormotion",
         "id": "bs-creatormotion-split-phone-callouts",
@@ -1649,7 +1646,7 @@
         "bs-split-progressive-list"
       ],
       "seconds": 6.8,
-      "prompt": "Use Apresentador e Lista neste trecho. Mantenha o apresentador à direita. Revele cinco linhas à esquerda, escrevendo uma por vez e deslocando o destaque para o número do item atual.",
+      "prompt": "Use Apresentador e Lista neste trecho. Reenquadre o take contínuo à direita e sobreponha cinco itens à esquerda. Escreva uma linha por vez e destaque o número do item atual.",
       "source": {
         "package": "bs-creatormotion",
         "id": "bs-creatormotion-split-progressive-list",
@@ -1678,7 +1675,7 @@
         "bs-split-quote-underline"
       ],
       "seconds": 6.8,
-      "prompt": "Use Apresentador e Citação neste trecho. Mantenha o apresentador de um lado, revele a citação e sublinhe o trecho decisivo sem mover o texto.",
+      "prompt": "Use Apresentador e Citação neste trecho. Mantenha o take completo em preto e branco. Sobreponha a citação colorida em uma área livre do quadro e sublinhe o trecho decisivo.",
       "source": {
         "package": "bs-creatormotion",
         "url": "https://skillry.dev/skills/bs-creatormotion-split-quote-underline",
@@ -1986,7 +1983,7 @@
         "bs-type-behind-subject"
       ],
       "seconds": 6.8,
-      "prompt": "Use Título Atrás do Apresentador neste trecho. Faça um título entrar atrás do apresentador, com a mesma câmera contínua e o recorte alinhado ao take.",
+      "prompt": "Use Título Atrás do Apresentador neste trecho. Faça a frase branca e grande entrar como uma linha contínua. Use a silhueta do apresentador para ocluir parte das letras e preserve o enquadramento do take.",
       "source": {
         "package": "bs-creatormotion",
         "url": "https://skillry.dev/skills/bs-creatormotion-type-behind-subject",
@@ -2083,7 +2080,7 @@
         "bs-type-keyword-caption"
       ],
       "seconds": 6.8,
-      "prompt": "Use Legenda com Ênfase neste trecho. Faça a legenda aparecer palavra por palavra em posições fixas e sublinhe os termos da fala que merecem destaque.",
+      "prompt": "Use Legenda com Ênfase neste trecho. Mostre a legenda no ritmo da fala. No máximo uma vez a cada duas frases, substitua a legenda por uma única palavra maior e isolada no quadro.",
       "source": {
         "package": "bs-creatormotion",
         "url": "https://skillry.dev/skills/bs-creatormotion-type-keyword-caption",
@@ -4452,7 +4449,7 @@
         "lm-type-headline-builds-word"
       ],
       "seconds": 7,
-      "prompt": "Use Verbo em Virada neste trecho. Faça a frase entrar palavra por palavra, centralize o conjunto a cada entrada e troque o verbo duas vezes com compressão e sublinhado. Eleve a frase para revelar a linha de apoio.",
+      "prompt": "Use Verbo em Virada neste trecho. Revele a frase por partes e troque o verbo duas vezes no mesmo espaço. Preserve a largura da frase e a posição dos termos que ficam.",
       "source": {
         "package": "bs-launchmotion",
         "url": "https://skillry.dev/skills/bs-launchmotion-type-headline-builds-word",
@@ -5556,7 +5553,7 @@
         "Tarja de identificação"
       ],
       "seconds": 6,
-      "prompt": "Use Identificação do Apresentador neste trecho. Apresente o nome e a função numa tarja curta no terço inferior. Use o próprio take ou renderize a tarja separadamente para sobrepor.",
+      "prompt": "Use Identificação do Apresentador neste trecho. Anime nome e função com tipografia editorial diretamente no terço inferior. Use o take da cena ou exporte o lettering com transparência para sobrepor.",
       "demo": {
         "composition": "scenes/identificacao-do-apresentador/index.html",
         "preview": "previews/identificacao-do-apresentador.mp4",

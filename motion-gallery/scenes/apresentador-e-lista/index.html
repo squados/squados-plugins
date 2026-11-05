@@ -5,26 +5,27 @@
 <title>Apresentador e Lista</title>
 <link rel="stylesheet" href="../motion-assets/base.css">
 <style>
-main { color: #f2f5fb; background: #191c24; }
-.panel { position: absolute; inset: 0 50% 0 0; padding: 104px 83px 83px 96px; background: radial-gradient(ellipse at 12% 70%, #303540, #1b1e25 70%, #121419); }
-.panel::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.headline { position: relative; font-size: 80px; line-height: 1.05; }
-.items { position: relative; display: grid; margin-top: 37px; gap: 0; }
-.row { display: flex; align-items: center; gap: 21px; min-height: 95px; border-bottom: 1px solid #505b6c; color: #e0e8f5; font-size: 40px; line-height: 1.2; }
-.item { min-width: 0; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; line-height: 1.30; }
-.index { min-width: 50px; min-height: 39px; display: grid; place-items: center; flex: none; border: 1px solid #657487; border-radius: 12px; color: #bccce3; font-size: 24px; font-weight: 590; font-variant-numeric: tabular-nums; }
-.row.active .index { color: #15253c; border-color: #d2e6ff; background: #a8cdff; }
+main { color: #f2f5fb; background: #111318; }
+.presenter, .shade { position: absolute; inset: 0; }
+.presenter > :is(img,video) { display:block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 44%; transform-origin: 50% 0; }
+.shade { background: linear-gradient(90deg,#090e16e6 0%,#090e16bc 31%,#090e1670 45%,transparent 63%); }
+.panel { position: absolute; inset: 0 auto 0 103px; width: 795px; display: grid; align-content: center; }
+.headline { max-width: 9em; font-size: 93px; line-height: 1.01; text-shadow: 0 4px 18px #0008; }
+.items { display: grid; margin-top: 47px; }
+.row { display: flex; align-items: center; gap: 24px; min-height: 95px; border-bottom: 1px solid #c1d5ff4d; color: #e0e8f5; font-size: 45px; line-height: 1.12; }
+.item { min-width: 0; overflow-wrap: anywhere; line-height: 1.13; text-shadow: 0 3px 12px #000b; }
+.index { min-width: 62px; min-height: 45px; display: grid; place-items: center; flex: none; border: 1px solid #a1b9d489; border-radius: 9px; color: #c5d8f1; font-size: 26px; font-weight: 620; font-variant-numeric: tabular-nums; }
+.row.active .index { color: #14243a; border-color: #d2e6ff; background: #b8d7ff; }
 .row.active .item { color: #f9fbff; }
-.presenter { position: absolute; inset: 0 0 0 50%; overflow: hidden; background: #171b22; }
-.presenter img, .presenter video { width: 100%; height: 100%; object-fit: cover; object-position: 51% center; }
 </style>
 </head>
 <body>
 <main data-composition-id="apresentador-e-lista" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
-  <section class="panel"><h1 class="headline display"></h1><div class="items"></div></section>
   <div class="presenter">
     <!-- motion-media:presenter:0:6.8:0 -->
   </div>
+  <div class="shade" aria-hidden="true"></div>
+  <section class="panel"><h1 class="headline display"></h1><div class="items"></div></section>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
@@ -38,26 +39,31 @@ const rows = labels.map((label, index) => {
   row.innerHTML = '<span class="index"></span><span class="item"></span>';
   row.firstElementChild.textContent = String(index + 1).padStart(2, "0");
   one(".items").append(row);
-  return { row, item: row.lastElementChild, chars: Array.from(label) };
+  return { row, index: row.firstElementChild, item: row.lastElementChild, chars: Array.from(label) };
 });
 const headline = one(".headline");
 const items = one(".items");
-const starts = [.77, 1.69, 2.59, 3.50, 4.42];
+const camera = one(".presenter > :is(img,video)");
+const starts = [.69, 1.59, 2.49, 3.39, 4.29];
 window.renderMotion = time => {
-  const enter = beat(time, .30, .49);
+  const reframe = flow(phase(time, 0, .64));
+  if (camera) camera.style.transform = "translateX(" + 326 * reframe + "px) scale(" + mix(1, 1.39, reframe) + ")";
+  one(".shade").style.opacity = reframe;
+  const enter = snap(time, .31, .25);
   const leave = flow(phase(time, 6.44, .30));
-  set(headline, { opacity: enter * (1 - leave), transform: "translateY(" + (23 * (1 - enter) - 13 * leave) + "px)" });
+  set(headline, { opacity: enter * (1 - leave), transform: "translateY(" + (18 * (1 - enter) - 9 * leave) + "px)" });
   items.style.opacity = 1 - leave;
   let active = -1;
   starts.forEach((start, index) => {
     if (time >= start) active = index;
   });
-  rows.forEach(({ row, item, chars }, index) => {
-    const show = beat(time, starts[index], .23);
-    const type = phase(time, starts[index] + .03, .46);
+  rows.forEach(({ row, index: badge, item, chars }, index) => {
+    const show = snap(time, starts[index], .23);
+    const type = phase(time, starts[index] + .03, .29);
     item.textContent = chars.slice(0, Math.ceil(chars.length * type)).join("");
     set(row, { opacity: show, transform: "translateX(" + -18 * (1 - show) + "px)" });
     row.classList.toggle("active", index === active);
+    badge.style.transform = index === active ? "scale(" + mix(.89, 1, spring(time, starts[index], .29)) + ")" : "none";
   });
 };
 window.renderMotion(0);

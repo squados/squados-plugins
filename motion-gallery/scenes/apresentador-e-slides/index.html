@@ -93,18 +93,18 @@ slides.forEach((slide, index) => {
 });
 window.renderMotion = time => {
   const starts = [.04, 1.62, 3.07];
-  const overview = flow(phase(time, 4.48, .69));
-  deck.style.opacity = beat(time, 4.44, .43);
+  const overview = flow(phase(time, 4.48, .51));
+  deck.style.opacity = snap(time, 4.44, .25);
   slides.forEach((slide, index) => {
-    const enter = beat(time, starts[index], index ? .23 : .42);
-    const exit = index < 2 ? beat(time, starts[index + 1] - .07, .17) : 0;
+    const enter = snap(time, starts[index], .24);
+    const exit = index < 2 ? snap(time, starts[index + 1] - .03, .19) : 0;
     const zoom = index === 2 ? overview : 0;
     set(slide, {
       opacity: enter * (1 - exit),
       transform: "translate(" + 259 * zoom + "px," + (92 * zoom + 13 * (1 - enter) - 9 * exit) + "px) scale(" + mix(1, .79, zoom) + ")"
     });
   });
-  bars.forEach((bar, index) => bar.style.transform = "scaleY(" + beat(time, 1.70 + index * .065, .37) + ")");
+  bars.forEach((bar, index) => bar.style.transform = "scaleY(" + snap(time, 1.70 + index * .065, .24) + ")");
 };
 window.renderMotion(0);
 </script>

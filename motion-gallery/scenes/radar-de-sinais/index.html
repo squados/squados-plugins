@@ -219,9 +219,9 @@ const next = one(".next");
 
 window.renderMotion = time => {
   ask.style.visibility = time < 2.29 ? "visible" : "hidden";
-  const questionIn = beat(time, .15, .67);
+  const questionIn = snap(time, .15, .30);
   const questionOut = phase(time, 1.75, .49) ** 3;
-  const statusIn = beat(time, .58, .59);
+  const statusIn = snap(time, .56, .24);
   const statusOut = phase(time, 1.80, .49) ** 3;
   const askDrift = -24 * phase(time, .42, 1.48);
   set(question, {
@@ -237,16 +237,16 @@ window.renderMotion = time => {
   statusText.style.setProperty("--shine", mix(130, -38, phase(time, .70, 1.1)) + "%");
 
   feed.style.visibility = time >= 2.10 && time < 5.72 ? "visible" : "hidden";
-  const headIn = beat(time, 2.10, .58);
+  const headIn = snap(time, 2.10, .26);
   const headOut = phase(time, 4.94, .43) ** 3;
   set(head, { opacity: headIn * (1 - headOut), transform: "translateY(" + (16 * (1 - headIn) - 60 * headOut) + "px)" });
   counter.textContent = Math.round(total * flow(phase(time, 2.20, 2.60))) + " / " + total;
   cards.forEach(({ card, tag, scan }, index) => {
     const start = 2.14 + index * .28;
-    const entry = beat(time, start, .68);
+    const entry = snap(time, start, .33);
     const leave = phase(time, 4.99 + index * .065, .52) ** 3;
-    const sweep = flow(phase(time, start + .51, .66));
-    const scanned = beat(time, start + 1.05, .31);
+    const sweep = flow(phase(time, start + .39, .61));
+    const scanned = snap(time, start + .98, .22);
     const drift = 11 * phase(time, 4.12, .87);
     set(card, {
       opacity: entry,
@@ -257,26 +257,27 @@ window.renderMotion = time => {
       opacity: sweep > 0 && sweep < 1 ? Math.min(1, sweep * 18, (1 - sweep) * 18) : 0,
       transform: "translateY(" + mix(-75, 349, sweep) + "px)"
     });
-    const tick = Math.sin(Math.PI * phase(time, start + 1.06, .34));
-    set(tag, { opacity: scanned, transform: "scale(" + (mix(.79, 1, scanned) + .07 * tick) + ")" });
+    const settle = spring(time, start + .98, .29);
+    set(tag, { opacity: scanned, transform: "scale(" + mix(.72, 1, settle) + ")" });
   });
 
   answer.style.visibility = time >= 5.45 ? "visible" : "hidden";
-  const panelIn = beat(time, 5.45, .82);
+  const panelIn = snap(time, 5.45, .62);
   panel.style.transform = "translateY(" + 845 * (1 - panelIn) + "px)";
-  const agentIn = beat(time, 5.66, .83);
+  const agentIn = snap(time, 5.66, .51);
   suggestion.style.transform = "translateY(" + 510 * (1 - agentIn) + "px)";
   rows.forEach(({ row, percent, fill, value }, index) => {
     const start = 6.08 + index * .24;
-    const appear = beat(time, start, .48);
+    const appear = snap(time, start, .26);
     const filled = beat(time, start + .14, .75);
     set(row, { opacity: appear, transform: "translateY(" + 23 * (1 - appear) + "px)" });
     fill.style.transform = "scaleX(" + filled * percent / 100 + ")";
     value.textContent = Math.round(filled * percent) + "%";
   });
   if (rows.length) rows[0].row.style.borderColor = "rgba(153, 194, 255, " + mix(.25, .65, beat(time, 7.34, .40)) + ")";
-  const action = beat(time, 7.58, .64);
-  set(next, { opacity: action, transform: "translateX(" + -28 * (1 - action) + "px) scale(" + mix(.96, 1, action) + ")" });
+  const action = snap(time, 7.58, .25);
+  const actionSeat = spring(time, 7.58, .30);
+  set(next, { opacity: action, transform: "translateX(" + -28 * (1 - action) + "px) scale(" + mix(.94, 1, actionSeat) + ")" });
 };
 
 window.renderMotion(0);

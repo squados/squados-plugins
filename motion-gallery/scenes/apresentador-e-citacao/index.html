@@ -5,18 +5,20 @@
 <title>Apresentador e Citação</title>
 <link rel="stylesheet" href="../motion-assets/base.css">
 <style>
-main { background:radial-gradient(ellipse at 23% 69%,#484950,#29292e 44%,#19191c 88%); color:#f3f2f0; }
-.portrait { position:absolute; inset:0 49% 0 0; overflow:hidden; }
-.portrait :is(video,img) { position:absolute; inset:0; width:100%; height:100%; display:block; object-fit:cover; object-position:50% 49%; filter:grayscale(.94) contrast(.94); }
-.copy { position:absolute; left:1010px; top:50%; width:780px; transform:translateY(-50%); }
-.quote { font-size:85px; letter-spacing:-.038em; font-weight:620; line-height:1.06; }
-.byline { margin-top:36px; color:#c0c3cb; font-size:33px; }
-.emphasis { --ink:0%; background:linear-gradient(#d7bb83,#d7bb83) 0 96% / var(--ink) 4px no-repeat; box-decoration-break:clone; }
+main { background:#121212; color:#ffe0aa; }
+.portrait, .shade { position:absolute; inset:0; }
+.portrait :is(video,img) { width:100%; height:100%; display:block; object-fit:cover; object-position:50% 50%; filter:grayscale(1) contrast(1.02); }
+.shade { background:linear-gradient(270deg,#080808e0,#080808a3 24%,#08080824 43%,transparent 55%); }
+.copy { position:absolute; left:1240px; top:54%; width:590px; transform:translateY(-50%); }
+.quote { font-size:79px; letter-spacing:-.043em; font-weight:630; line-height:1.03; text-shadow:0 4px 20px #000a; }
+.byline { margin-top:34px; color:#f0d8b3; font-size:35px; text-shadow:0 3px 16px #000a; }
+.emphasis { --ink:0%; color:#ffd18a; background:linear-gradient(#ffbd61,#ffbd61) 0 99% / var(--ink) 4px no-repeat; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
 </style>
 </head>
 <body>
 <main data-composition-id="apresentador-e-citacao" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
 <div class="portrait"><!-- motion-media:portrait:0:6.8:0 --></div>
+<div class="shade" aria-hidden="true"></div>
 <section class="copy"><p class="quote"></p><p class="byline"></p></section>
 </main>
 <script src="../motion-assets/time.js"></script>
@@ -34,11 +36,9 @@ else {
 }
 copy(".byline","attribution","Aula de IA");
 window.renderMotion = time => {
-  const portrait=beat(time,.02,.46);
-  const shown=beat(time,.53,.45);
-  one(".portrait").style.opacity=portrait;
-  set(one(".copy"),{opacity:shown,transform:"translate("+mix(35,0,shown)+"px,-50%)"});
-  one(".emphasis")?.style.setProperty("--ink",100*flow(phase(time,2.74,.60))+"%");
+  const shown=snap(time,.35,.25);
+  set(one(".copy"),{opacity:shown,transform:"translate("+mix(25,0,shown)+"px,-50%)"});
+  one(".emphasis")?.style.setProperty("--ink",100*snap(time,2.42,.30)+"%");
 };
 window.renderMotion(0);
 </script>

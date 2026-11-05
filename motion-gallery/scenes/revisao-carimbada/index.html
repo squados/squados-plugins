@@ -33,17 +33,17 @@ copy(".correct .message","after","Extraia três decisões e cite as fontes.");
 const rejected = one(".rejected");
 const corrected = one(".correct");
 window.renderMotion = time => {
-  const appear = beat(time,.04,.30);
-  const reject = flow(phase(time,1.04,.25));
-  const fall = phase(time,2.12,.33) ** 2.4;
+  const appear = snap(time,.05,.24);
+  const reject = snap(time,1.04,.20);
+  const fall = phase(time,2.12,.26) ** 2.4;
   set(rejected,{opacity:appear*(1-fall),transform:"translate(" + 170*fall + "px," + (20*(1-appear)+630*fall) + "px) rotate(" + 10*fall + "deg)"});
   one(".strike").style.transform = "scaleX(" + reject + ")";
-  const bad = beat(time,1.18,.24);
-  set(one(".rejected .stamp"),{opacity:bad,transform:"scale(" + mix(1.27,1,bad) + ")"});
-  const land = beat(time,2.40,.34);
+  const bad = spring(time,1.15,.25);
+  set(one(".rejected .stamp"),{opacity:snap(time,1.15,.16),transform:"scale(" + mix(1.42,1,bad) + ")"});
+  const land = snap(time,2.35,.26);
   set(corrected,{opacity:land,transform:"translateY(" + (1-land)*-53 + "px) rotate(" + (1-land)*-1.7 + "deg)"});
-  const good = beat(time,3.06,.22);
-  set(one(".correct .stamp"),{opacity:good,transform:"scale(" + mix(1.28,1,good) + ") rotate(" + (1-good)*-18 + "deg)"});
+  const good = spring(time,2.88,.28);
+  set(one(".correct .stamp"),{opacity:snap(time,2.88,.17),transform:"scale(" + mix(1.55,1,good) + ") rotate(" + (1-good)*-18 + "deg)"});
 };
 window.renderMotion(0);
 </script>

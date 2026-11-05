@@ -80,13 +80,14 @@ function curve(a, b, c, t) {
 }
 
 window.renderMotion = time => {
-  const join = beat(time, 1.54, .29);
+  const join = snap(time, 1.48, .22);
+  const joinPop = spring(time, 1.48, .34);
   dots.forEach(({ dot, angle }, index) => {
-    const show = beat(time, .13 + index * .031, .37);
+    const show = snap(time, .13 + index * .031, .27);
     const pulse = .045 * Math.sin((time * 2 + index) * Math.PI / 3);
     const theta = angle - .47 * (1 - beat(time, .10, 1.10));
     const spread = mix(radius + 39, radius, show);
-    const dotScale = (.83 + (index % 3) * .095 + pulse) * mix(.38, 1, show);
+    const dotScale = (.83 + (index % 3) * .095 + pulse) * mix(.38, 1, show) * (index === joiningIndex ? mix(.58, 1, joinPop) : 1);
     const x = center[0] + Math.cos(theta) * spread;
     const y = center[1] + Math.sin(theta) * spread;
     set(dot, {
@@ -99,27 +100,27 @@ window.renderMotion = time => {
   const endX = center[0] + Math.cos(destination) * radius;
   const endY = center[1] + Math.sin(destination) * radius;
   const enter = phase(time, .39, .76);
-  const settle = flow(phase(time, 1.15, .58));
+  const settle = flow(phase(time, 1.15, .44));
   const orbX = time < 1.15 ? curve(-313, -161, 358, enter) : curve(358, 512, endX, settle);
   const orbY = time < 1.15 ? curve(-362, 293, 700, enter) : curve(700, 671, endY, settle);
   const shrink = mix(2.13, .87, flow(enter)) * mix(1, .082, settle);
   set(orb, {
-    opacity: time >= .39 ? 1 - beat(time, 1.63, .18) : 0,
+    opacity: time >= .39 ? 1 - snap(time, 1.49, .16) : 0,
     transform: "translate(" + (orbX - 200) + "px," + (orbY - 200) + "px) scale(" + shrink + ")"
   });
   grid.setAttribute("transform", "rotate(" + mix(-26, 22, enter) + " 200 200)");
   reflection.setAttribute("transform", "translate(" + mix(25, 1, settle) + " " + mix(-10, 8, enter) + ")");
 
-  const brandIn = beat(time, 1.45, .60);
+  const brandIn = snap(time, 1.45, .37);
   set(wordmark, {
     opacity: brandIn,
     clipPath: "inset(-12% " + 100 * (1 - brandIn) + "% -13% -8%)",
     transform: "translateX(" + -29 * (1 - brandIn) + "px)"
   });
-  const lineIn = beat(time, 3.59, .72);
+  const lineIn = snap(time, 3.59, .32);
   set(tagline, { opacity: lineIn, transform: "translateY(" + 23 * (1 - lineIn) + "px)", filter: "blur(" + 10 * (1 - lineIn) + "px)" });
-  const buttonIn = beat(time, 4.09, .56);
-  set(action, { opacity: buttonIn, transform: "translate(-50%," + 18 * (1 - buttonIn) + "px) scale(" + mix(.93, 1, buttonIn) + ")" });
+  const buttonIn = spring(time, 4.09, .30);
+  set(action, { opacity: clamp(buttonIn), transform: "translate(-50%," + 24 * (1 - buttonIn) + "px) scale(" + mix(.89, 1, buttonIn) + ")" });
 };
 window.renderMotion(0);
 </script>

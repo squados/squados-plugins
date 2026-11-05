@@ -70,20 +70,21 @@ names.forEach((name,index) => {
   card.append(number,label); cards.append(card);
 });
 window.renderMotion = time => {
-  const focus = flow(phase(time,1.60,.55)) * (1-flow(phase(time,5.43,.39)));
-  const camera = flow(phase(time,1.74,.92)) * (1-flow(phase(time,5.33,.56)));
-  const strike = flow(phase(time,5.04,.105)) * (1-flow(phase(time,5.22,.17)));
-  const keysIn = beat(time,.69,.43);
+  const focus = snap(time,1.60,.26) * (1-flow(phase(time,5.43,.35)));
+  const camera = beat(time,1.63,.63) * (1-flow(phase(time,5.33,.52)));
+  const strike = snap(time,5.04,.12) * (1-spring(time,5.18,.27));
+  const keysIn = snap(time,.69,.23);
+  const keySeat = spring(time,.69,.29);
   const keysOut = 1-flow(phase(time,5.48,.25));
-  const reveal = flow(phase(time,5.92,.74));
+  const reveal = beat(time,5.92,.62);
   set(one(".camera"),{transform:"translate("+(-44*camera)+"px,"+(-12*camera)+"px) scale("+mix(1,1.047,camera)+")"});
   set(one(".target"),{opacity:focus});
-  set(one(".keys"),{opacity:keysIn*keysOut,transform:"translate(-50%,"+(15*(1-keysIn))+"px)"});
+  set(one(".keys"),{opacity:keysIn*keysOut,transform:"translate(-50%,"+(20*(1-keySeat))+"px)"});
   all("kbd").forEach(key => set(key,{transform:"translateY("+(7*strike)+"px)",boxShadow:"0 "+mix(8,1,strike)+"px 0 #7d729e,0 18px 30px #0809159c"}));
   set(one(".run"),{filter:"brightness("+mix(1,1.23,strike)+")"});
   set(one(".result"),{clipPath:"inset(0 0 "+(100-100*reveal)+"% 0)",opacity:Number(reveal>0)});
   all(".steps article").forEach((card,index) => {
-    const progress = beat(time,6.27+index*.10,.55);
+    const progress = snap(time,6.27+index*.10,.26);
     set(card,{opacity:progress,transform:"translateY("+(28*(1-progress))+"px)"});
   });
 };

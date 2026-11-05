@@ -101,25 +101,26 @@ main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 
   const outgoing = outputs.map(({ y }) => makeWire("M 1215 " + center + " C 1307 " + center + " 1240 " + y + " 1370 " + y, true));
 
   window.renderMotion = time => {
-    const hubIn = beat(time, .15, .42);
-    set(hub, { opacity: hubIn, transform: "scale(" + mix(.93, 1, hubIn) + ")" });
+    const hubIn = spring(time, .15, .32);
+    const confirmed = spring(time, 3.1, .28);
+    set(hub, { opacity: clamp(hubIn), transform: "scale(" + mix(.90, 1, hubIn) * (1 + .055 * (confirmed - phase(time, 3.1, .28))) + ")" });
     hub.classList.toggle("ready", time >= 3.1);
 
     const inStart = reverse ? 1.9 : .43;
     const outStart = reverse ? .47 : 1.71;
     sources.forEach(({ node }, index) => {
-      const enter = beat(time, .18 + index * .09, .33);
+      const enter = snap(time, .18 + index * .07, .24);
       set(node, { opacity: enter, transform: "translateX(" + -20 * (1 - enter) + "px)" });
-      const progress = flow(phase(time, inStart + index * .22, .6));
+      const progress = flow(phase(time, inStart + index * .22, .48));
       draw(incoming[index], progress, reverse);
     });
     draw(trunk, flow(phase(time, outStart + (reverse ? .46 : 0), .2)), reverse);
     outputs.forEach(({ node }, index) => {
       const start = outStart + (reverse ? 0 : .16) + index * .12;
-      const progress = flow(phase(time, start, .55));
+      const progress = flow(phase(time, start, .43));
       draw(outgoing[index], progress, reverse);
-      const enter = beat(time, start + (reverse ? .1 : .3), .34);
-      set(node, { opacity: enter, transform: "translateX(" + -18 * (1 - enter) + "px)" });
+      const enter = spring(time, start + (reverse ? .1 : .3), .27);
+      set(node, { opacity: clamp(enter), transform: "translateX(" + -24 * (1 - enter) + "px)" });
     });
   };
   window.renderMotion(0);

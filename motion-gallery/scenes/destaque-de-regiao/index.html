@@ -62,17 +62,18 @@ if (inputs.region) {
 }
 window.renderMotion = time => {
   const restore = flow(phase(time,6.42,.67));
-  const focus = flow(phase(time,.47,.46)) * (1-restore);
-  const link = flow(phase(time,1.05,.56));
-  const note = beat(time,1.29,.59);
-  const push = flow(phase(time,1.25,.83)) * (1-restore);
+  const focus = snap(time,.47,.29) * (1-restore);
+  const link = snap(time,.90,.28);
+  const note = snap(time,1.16,.25);
+  const seat = spring(time,1.16,.29);
+  const push = flow(phase(time,1.16,.55)) * (1-restore);
   set(one(".camera"),{transform:"translate("+(-8*push)+"px,"+(-10*push)+"px) scale("+mix(1,1.068,push)+")"});
   set(one(".mask"),{opacity:focus});
   set(one(".leader"),{opacity:focus});
   set(line,{strokeDashoffset:1-link});
   set(one(".leader circle"),{opacity:link});
   set(one(".callout small"),{opacity:note});
-  set(one(".callout p"),{opacity:note*(1-restore),clipPath:"inset(0 "+(100-100*note)+"% 0 0)",transform:"translateX("+(-9*(1-note))+"px)"});
+  set(one(".callout p"),{opacity:note*(1-restore),clipPath:"inset(0 "+(100-100*note)+"% 0 0)",transform:"translateX("+(-14*(1-seat))+"px)"});
 };
 window.renderMotion(0);
 </script>

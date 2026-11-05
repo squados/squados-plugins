@@ -11,44 +11,28 @@ main { background:#161618; color:#f6f6f6; }
 .camera :is(video,img), .cutout :is(video,img) { transform:scale(1.10); transform-origin:50% 48%; }
 .cutout { position:absolute; inset:0; }
 .cutout :is(video,img) { width:100%; height:100%; display:block; object-fit:cover; }
-.wordmark { position:absolute; inset:303px 92px auto; display:flex; justify-content:space-between; gap:52px; color:#f7f7f8; line-height:.86; font-size:clamp(65px,var(--size),220px); letter-spacing:-.06em; white-space:nowrap; transform-origin:50% 50%; text-shadow:0 10px 35px #10101475; }
-.wordmark span { flex:none; }
-.wordmark span:last-child { color:#f1e0bf; }
+.wordmark { position:absolute; inset:300px 0 auto; text-align:center; color:#fff; line-height:.86; font-size:var(--size, 250px); font-weight:740; letter-spacing:-.068em; white-space:nowrap; transform-origin:50% 50%; text-shadow:0 8px 32px #0007; }
 </style>
 </head>
 <body>
 <main data-composition-id="titulo-atras-do-apresentador" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
 <div class="camera"><!-- motion-media:presenter:0:6.8:0 --></div>
-<h1 class="wordmark display"><span></span><span></span></h1>
+<h1 class="wordmark display"><span></span></h1>
 <div class="cutout"><!-- motion-media:matte:0:6.8:1 --></div>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
-const words=String(inputs.title ?? "MAIS CONTEXTO").trim().split(/\s+/);
-let left=words.join(" ");
-let right="";
-for(let split=1;split<words.length;split++){
-  const before=words.slice(0,split).join(" ");
-  const after=words.slice(split).join(" ");
-  if(Math.max(before.length,after.length)<Math.max(left.length,right.length)){
-    left=before;
-    right=after;
-  }
-}
 const headline=one(".wordmark");
-const cells=all(".wordmark span");
-cells[0].textContent=left;
-cells[1].textContent=right;
-const initialSize=Math.min(194,1250/Math.max(6,left.length,right.length));
-headline.style.setProperty("--size",initialSize+"px");
+const text=one(".wordmark span");
+text.textContent=String(inputs.title ?? "MAIS CONTEXTO").trim().replace(/\s+/g," ");
 document.fonts.ready.then(()=>{
-  const width=Math.max(...cells.map(cell=>cell.offsetWidth));
-  if(width) headline.style.setProperty("--size",Math.min(194,initialSize*630/width)+"px");
+  if(text.offsetWidth) headline.style.setProperty("--size",Math.min(330,250*1832/text.offsetWidth)+"px");
 });
 window.renderMotion = time => {
-  const push=beat(time,.87,.43);
-  const release=flow(phase(time,5.20,.31));
-  set(headline,{opacity:push*(1-release),transform:"translateY("+(1-push)*28+"px) scale("+mix(.90,1,push)+")"});
+  const push=spring(time,.86,.34);
+  const show=snap(time,.86,.17);
+  const release=flow(phase(time,5.32,.22));
+  set(headline,{opacity:show*(1-release),transform:"translateY("+((1-push)*68-release*22)+"px) scale("+mix(.93,1,push)+")"});
 };
 window.renderMotion(0);
 </script>

@@ -60,15 +60,16 @@ const parts = milestones.map(([dateText, captionText]) => {
   return { date, tick, pin, caption };
 });
 window.renderMotion = time => {
-  one(".track").style.transform = "scaleX(" + beat(time, .10, .79) + ")";
+  one(".track").style.transform = "scaleX(" + snap(time, .10, .56) + ")";
   const spacing = parts.length > 3 ? .61 : .82;
   parts.forEach(({ date, tick, pin, caption }, i) => {
     const start = .76 + spacing * i;
-    const dot = beat(time, start, .36);
-    const dateIn = beat(time, start + .07, .48);
-    const captionIn = beat(time, start + .23, .46);
+    const dot = snap(time, start, .19);
+    const land = spring(time, start, .29);
+    const dateIn = snap(time, start + .07, .28);
+    const captionIn = snap(time, start + .20, .27);
     set(tick, { opacity: dot, transform: "scaleY(" + dot + ")" });
-    set(pin, { opacity: dot, transform: "scale(" + (mix(.44, 1, dot) + .11 * Math.sin(dot * Math.PI)) + ")" });
+    set(pin, { opacity: dot, transform: "scale(" + mix(.35, 1, land) + ")" });
     set(date, { opacity: dateIn, transform: "translateY(" + (1 - dateIn) * 28 + "px)" });
     set(caption, { opacity: captionIn, transform: "translateY(" + (1 - captionIn) * -19 + "px)" });
   });

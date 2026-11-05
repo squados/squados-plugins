@@ -73,20 +73,20 @@ const rows = lines.map((line, index) => {
 const paths = all(".links path");
 window.renderMotion = time => {
   sources.forEach((source, index) => {
-    const enter = beat(time,.10+index*.17,.45);
+    const enter = snap(time,.10+index*.14,.26);
     set(source,{opacity:enter,transform:"translateY(" + (1-enter)*26 + "px)"});
-    const draw = flow(phase(time,.42+index*.16,.53));
+    const draw = flow(phase(time,.39+index*.16,.43));
     set(paths[index],{opacity:draw>0 ? 1 : 0,strokeDasharray:"1",strokeDashoffset:1-draw});
   });
-  const output = beat(time,.78,.46);
+  const output = snap(time,.78,.27);
   set(one(".sheet"),{opacity:output,transform:"translateY(" + (1-output)*20 + "px)"});
   rows.forEach((row, index) => {
-    const reveal = beat(time,1.42+index*.56,.38);
+    const reveal = snap(time,1.42+index*.56,.26);
     set(row,{opacity:reveal,clipPath:"inset(0 " + (1-reveal)*100 + "% 0 0)"});
   });
-  const conflict = beat(time,3.28,.46);
+  const conflict = spring(time,3.28,.30);
   rows[2].classList.toggle("conflict",conflict>.12);
-  set(one(".warning"),{opacity:conflict,transform:"translateY(" + (1-conflict)*12 + "px)"});
+  set(one(".warning"),{opacity:clamp(conflict),transform:"translateY(" + (1-conflict)*21 + "px) scale("+mix(.94,1,conflict)+")"});
 };
 window.renderMotion(0);
 </script>

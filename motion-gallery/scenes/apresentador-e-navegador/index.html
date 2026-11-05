@@ -65,21 +65,21 @@ const answer = one(".answer");
 const typing = one(".typing");
 const dots = all(".typing i");
 window.renderMotion = time => {
-  const open = beat(time, .04, .52);
+  const open = snap(time, .04, .27);
   set(browser, { opacity: open, transform: "translateY(" + 22 * (1 - open) + "px)" });
-  const ask = beat(time, .64, .39);
+  const ask = snap(time, .64, .23);
   set(question, {
     opacity: ask,
     clipPath: "inset(0 0 " + 100 * (1 - ask) + "% 0)",
     transform: "translateY(" + -11 * (1 - ask) + "px)"
   });
-  const waiting = beat(time, 1.05, .28) * (1 - beat(time, 2.35, .21));
+  const waiting = snap(time, 1.05, .20) * (1 - snap(time, 2.35, .18));
   typing.style.opacity = waiting;
   dots.forEach((dot, index) => {
     const bounce = Math.max(0, Math.sin((time * 2.45 - index * .30) * Math.PI));
     set(dot, { opacity: .48 + .52 * bounce, transform: "translateY(" + -8 * bounce + "px)" });
   });
-  const reply = beat(time, 2.43, .49);
+  const reply = snap(time, 2.43, .26);
   set(answer, {
     opacity: reply,
     clipPath: "inset(0 0 " + 100 * (1 - reply) + "% 0)",

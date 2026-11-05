@@ -1,10 +1,28 @@
 import assert from 'node:assert/strict'
 import { readFileSync, readdirSync } from 'node:fs'
 import test from 'node:test'
+import { runInNewContext } from 'node:vm'
 
 const gallery = new URL('../motion-gallery/', import.meta.url)
 const read = name => readFileSync(new URL(name, gallery), 'utf8')
 const catalog = JSON.parse(read('catalog.json'))
+
+test('curvas rápidas chegam ao estado final e a mola assenta após o rebote', () => {
+  const { snap, spring } = runInNewContext(read('scenes/motion-assets/time.js') + '\n;({ snap, spring })', {
+    window: {},
+    document: { querySelector: () => null },
+  })
+  const samples = Array.from({ length: 31 }, (_, frame) => frame / 30)
+  assert.equal(snap(-1, 0, 1), 0)
+  assert.ok(snap(.3, 0, 1) > .8)
+  assert.ok(samples.every((t, i) => i === 0 || snap(t, 0, 1) >= snap(samples[i - 1], 0, 1)))
+  assert.equal(snap(1, 0, 1), 1)
+  assert.equal(spring(0, 0, 1), 0)
+  const peak = Math.max(...samples.map(t => spring(t, 0, 1)))
+  assert.ok(peak > 1.06 && peak < 1.10)
+  assert.ok(Math.abs(spring(.9, 0, 1) - 1) < .005)
+  assert.equal(spring(1, 0, 1), 1)
+})
 
 test('catálogo indexa o benchmark Skillry com slugs e páginas oficiais', () => {
   const { version, entries } = catalog

@@ -38,10 +38,10 @@ for (const match of matches) {
 }
 one(".excerpt").append(excerpt.slice(end));
 window.renderMotion = time => {
-  const entry = beat(time,.55,.63);
-  const push = flow(phase(time,1.16,.40)) * (1-flow(phase(time,1.67,.53)));
+  const entry = snap(time,.55,.28);
+  const push = flow(phase(time,1.10,.32)) * (1-flow(phase(time,1.57,.41)));
   set(one(".excerpt"),{opacity:entry,transform:"translateY("+(16*(1-entry))+"px) scale("+mix(1,1.058,push)+")"});
-  all("mark").forEach(mark => mark.style.setProperty("--swipe",beat(time,2.15+Number(mark.dataset.order)*1.29,.58)));
+  all("mark").forEach(mark => mark.style.setProperty("--swipe",snap(time,1.96+Number(mark.dataset.order)*1.29,.28)));
 };
 window.renderMotion(0);
 </script>

@@ -7,28 +7,33 @@
 <style>
 main { color:#f9f9fa; }
 .camera,.camera :is(video,img) { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.identification { position:absolute; left:116px; bottom:113px; width:fit-content; min-width:390px; max-width:805px; display:grid; grid-template-columns:7px 1fr; align-items:stretch; border-radius:14px; overflow:hidden; border:1px solid #666b7794; background:linear-gradient(148deg,#35363deb,#1a1c22f5); box-shadow:0 17px 62px #0c0d135e; }
-.bar { background:#b9d9ff; transform-origin:top; }
-.copy { padding:24px 45px 25px 27px; }
-.name { font-size:57px; letter-spacing:-.04em; font-weight:660; line-height:1.05; }
-.role { margin-top:9px; color:#c8d0de; font-size:34px; line-height:1.13; }
+.scrim { position:absolute; bottom:0; left:0; width:1370px; height:440px; background:radial-gradient(ellipse 86% 92% at 9% 91%,#101118d9 8%,#1011189c 48%,#10111800 83%); }
+.identification { position:absolute; left:124px; bottom:128px; max-width:1130px; isolation:isolate; text-shadow:0 2px 11px #0008; }
+.bar { display:block; width:100px; height:5px; margin-bottom:23px; background:#d5c1ff; transform-origin:left; }
+.name { font-size:100px; letter-spacing:-.046em; font-weight:660; line-height:1; overflow-wrap:anywhere; }
+.role { margin-top:15px; color:#e4d7fc; font-size:43px; font-weight:450; line-height:1.12; }
 </style>
 </head>
 <body>
 <main data-composition-id="identificacao-do-apresentador" data-start="0" data-duration="6" data-width="1920" data-height="1080">
 <div class="camera"><!-- motion-media:presenter:0:6:0 --></div>
-<section class="identification"><i class="bar" aria-hidden="true"></i><div class="copy"><h1 class="name"></h1><p class="role"></p></div></section>
+<div class="scrim" aria-hidden="true"></div>
+<section class="identification"><i class="bar" aria-hidden="true"></i><h1 class="name"></h1><p class="role"></p></section>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
-copy(".name","name","Apresentador");
-copy(".role","role","Aula de IA");
+copy(".name","name","Renato");
+copy(".role","role","Aula de agentes de IA");
 window.renderMotion = time => {
-  const enter=flow(phase(time,.72,.42));
-  const exit=flow(phase(time,5.07,.46));
-  const shown=enter*(1-exit);
-  set(one(".identification"),{opacity:shown,transform:"translateX("+(mix(-36,0,enter)-16*exit)+"px)",clipPath:"inset(0 "+(1-shown)*100+"% 0 0)"});
-  one(".bar").style.transform="scaleY("+beat(time,.61,.25)+")";
+  const exit=flow(phase(time,5.20,.24));
+  const line=spring(time,.51,.28);
+  const name=snap(time,.58,.27);
+  const role=snap(time,.75,.24);
+  one(".scrim").style.opacity=snap(time,.48,.28)*(1-exit);
+  one(".identification").style.opacity=1-exit;
+  set(one(".bar"),{opacity:clamp(line),transform:"scaleX("+line+")"});
+  set(one(".name"),{opacity:name,transform:"translateX("+((1-name)*-31+exit*-14)+"px)"});
+  set(one(".role"),{opacity:role,transform:"translateY("+((1-role)*15+exit*9)+"px)"});
 };
 window.renderMotion(0);
 </script>

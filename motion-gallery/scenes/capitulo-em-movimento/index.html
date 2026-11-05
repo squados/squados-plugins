@@ -70,14 +70,14 @@ main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 
   });
 
   window.renderMotion = time => {
-    const move = flow(phase(time, .16, 1.15));
+    const move = snap(time, .20, .77);
     const x = mix(710 - start.x, 1480 - destination.x, move);
     const y = mix(197 - start.y, 540 - destination.y, move);
     atlas.style.transform = "translate(" + x + "px," + y + "px)";
-    tiles[active].classList.toggle("active", time >= .95);
-    const focus = beat(time, 1.05, .4);
+    tiles[active].classList.toggle("active", time >= .75);
+    const focus = snap(time, .80, .25);
     title.style.opacity = focus;
-    title.style.filter = "blur(" + 13 * (1 - focus) + "px)";
+    title.style.filter = "blur(" + 7 * (1 - focus) + "px)";
   };
   window.renderMotion(0);
 </script>

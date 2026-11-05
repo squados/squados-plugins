@@ -67,17 +67,17 @@ h1 { font-size: 99px; }
   });
 
   window.renderMotion = time => {
-    const opening = beat(time, .16, .4);
+    const opening = snap(time, .16, .24);
     set(panel, { opacity: opening, transform: "translateY(" + 17 * (1 - opening) + "px)" });
     const spacing = Math.min(1.11, 5 / Math.max(1, parts.length - 1));
     parts.forEach(({ piece, entry }, index) => {
       const start = .85 + index * spacing;
-      const fill = flow(phase(time, start, .64));
+      const fill = beat(time, start, .37);
       piece.style.transform = "scaleX(" + fill + ")";
-      const reveal = beat(time, start + .86, .32);
+      const reveal = snap(time, start + .46, .23);
       set(entry, { opacity: reveal, transform: "translateY(" + 13 * (1 - reveal) + "px)" });
     });
-    whole.style.opacity = beat(time, Math.max(5.5, .85 + (parts.length - 1) * spacing + 1.09), .41);
+    whole.style.opacity = snap(time, Math.max(5.5, .85 + (parts.length - 1) * spacing + .74), .24);
   };
   window.renderMotion(0);
 </script>

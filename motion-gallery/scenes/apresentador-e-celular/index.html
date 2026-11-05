@@ -5,22 +5,22 @@
 <title>Apresentador e Celular</title>
 <link rel="stylesheet" href="../motion-assets/base.css">
 <style>
-main { color: #f2f5fb; background: #171b22; }
-.right { position: absolute; inset: 0 0 0 50%; background: radial-gradient(ellipse at 52% 46%, #2f333c, #1c1f26 63%, #121418); }
-.right::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.presenter { position: absolute; inset: 0 50% 0 0; overflow: hidden; background: #171b22; }
-.presenter img, .presenter video { width: 100%; height: 100%; object-fit: cover; object-position: 51% center; }
-.phone { position: absolute; left: 237px; top: 87px; width: 468px; height: 762px; border: 3px solid #a7b3c5; border-radius: 57px; overflow: hidden; padding: 14px; background: #151821; box-shadow: 0 38px 80px #070a12bb; }
+main { color: #f2f5fb; background: #111318; }
+.presenter, .shade { position: absolute; inset: 0; }
+.presenter > :is(img,video) { display:block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 44%; transform-origin: 50% 0; }
+.shade { background: linear-gradient(270deg,#080c15dd 0%,#080c15a8 23%,#080c154d 43%,transparent 58%); }
+.right { position: absolute; inset: 0; }
+.phone { position: absolute; left: 1216px; top: 103px; width: 505px; height: 874px; border: 3px solid #a7b3c5; border-radius: 63px; overflow: hidden; padding: 14px; background: #151821; box-shadow: 0 38px 80px #070a12bb; }
 .screen { position: relative; height: 100%; overflow: hidden; padding: 61px 26px 21px; border: 1px solid #657187; border-radius: 41px; background: #303846; }
 .island { position: absolute; left: 50%; top: 15px; width: 124px; height: 15px; border-radius: 99px; background: #0c0f16; transform: translateX(-50%); }
 .head { display: flex; align-items: center; gap: 10px; color: #d3e0f2; font-size: 22px; }
 .head i { display: grid; place-items: center; width: 33px; height: 33px; border: 1px solid #93b7ea; border-radius: 11px; color: #d4e8ff; background: #3d5e8d; font-style: normal; }
-.screen h1 { margin: 14px 0 19px; font-size: 56px; line-height: 1.04; }
-.cover { position: relative; height: 208px; overflow: hidden; border: 1px solid #7d92b0; border-radius: 16px; background: #253247; }
+.screen h1 { margin: 17px 0 24px; font-size: 64px; line-height: 1.04; }
+.cover { position: relative; height: 269px; overflow: hidden; border: 1px solid #7d92b0; border-radius: 16px; background: #253247; }
 .cover img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.73); }
-.capture { position: absolute; left: 11px; right: 11px; bottom: 15px; padding: 12px 15px; color: #f2f7ff; background: #202a3bef; border: 1px solid #7e97bc; border-radius: 12px; font-size: 30px; line-height: 1.22; }
-.callouts { display: flex; flex-direction: column; align-items: start; gap: 11px; margin-top: 17px; }
-.callout { max-width: 100%; padding: 8px 12px; border: 1px solid #c9e4ff; border-radius: 10px; color: #182a45; background: #a7cdff; font-size: 27px; font-weight: 630; }
+.capture { position: absolute; left: 11px; right: 11px; bottom: 15px; padding: 12px 15px; color: #f2f7ff; background: #202a3bef; border: 1px solid #7e97bc; border-radius: 12px; font-size: 34px; line-height: 1.18; }
+.callouts { display: flex; flex-direction: column; align-items: start; gap: 15px; margin-top: 20px; }
+.callout { max-width: 100%; padding: 8px 12px; border: 1px solid #c9e4ff; border-radius: 10px; color: #182a45; background: #b8d7ff; font-size: 32px; font-weight: 630; transform-origin: left center; }
 .compose { position: absolute; bottom: 27px; left: 26px; right: 26px; padding: 13px 14px; border: 1px solid #6c7c95; border-radius: 13px; color: #d1def1; background: #263244; font-size: 25px; }
 </style>
 </head>
@@ -29,6 +29,7 @@ main { color: #f2f5fb; background: #171b22; }
   <div class="presenter">
     <!-- motion-media:presenter:0:6.8:0 -->
   </div>
+  <div class="shade" aria-hidden="true"></div>
   <section class="right">
     <div class="phone">
       <div class="screen">
@@ -51,23 +52,27 @@ const labels = Array.isArray(inputs.callouts) && inputs.callouts.length === 2
 const phone = one(".phone");
 const capture = one(".capture");
 const callouts = all(".callout");
+const camera = one(".presenter > :is(img,video)");
 callouts.forEach((callout, index) => callout.textContent = labels[index]);
 if (typeof inputs.cover === "string" && inputs.cover) one(".cover img").src = inputs.cover;
 window.renderMotion = time => {
-  const settle = beat(time, .09, .51);
+  const reframe = flow(phase(time, 0, .65));
+  if (camera) camera.style.transform = "translateX(" + -326 * reframe + "px) scale(" + mix(1, 1.39, reframe) + ")";
+  one(".shade").style.opacity = reframe;
+  const settle = spring(time, .33, .32);
   set(phone, {
-    opacity: settle,
-    transform: "translateY(" + 43 * (1 - settle) + "px) scale(" + mix(.96, 1, settle) + ")"
+    opacity: snap(time, .33, .24),
+    transform: "translateY(" + 42 * (1 - settle) + "px) scale(" + mix(.91, 1, settle) + ")"
   });
-  const reveal = beat(time, .87, .34);
+  const reveal = snap(time, .83, .22);
   capture.style.opacity = reveal;
-  capture.textContent = chars.slice(0, Math.ceil(chars.length * phase(time, .97, .64))).join("");
+  capture.textContent = chars.slice(0, Math.ceil(chars.length * phase(time, .88, .42))).join("");
   callouts.forEach((callout, index) => {
-    const pop = beat(time, 2.16 + index * .79, .29);
-    const bounce = .035 * Math.sin(Math.PI * phase(time, 2.16 + index * .79, .40));
+    const start = 1.84 + index * .75;
+    const pop = spring(time, start, .29);
     set(callout, {
-      opacity: pop,
-      transform: "translateY(" + 14 * (1 - pop) + "px) scale(" + (mix(.91, 1, pop) + bounce) + ")"
+      opacity: snap(time, start, .22),
+      transform: "translateY(" + 14 * (1 - pop) + "px) scale(" + mix(.88, 1, pop) + ")"
     });
   });
 };

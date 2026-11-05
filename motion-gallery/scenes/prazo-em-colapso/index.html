@@ -124,8 +124,8 @@
   const before = positiveInteger(inputs.previousDays, 14);
   const after = Math.min(before, positiveInteger(inputs.currentDays, 2));
   const trackWidth = 1210;
-  const beforeUnit = before > 7 && before % 7 === 0 ? "semanas" : "dias";
-  const beforeCount = beforeUnit === "semanas" ? before / 7 : before;
+  const beforeInWeeks = before > 7 && before % 7 === 0;
+  const beforeCount = beforeInWeeks ? before / 7 : before;
   const savedDays = before - after;
   const pluralDays = value => value === 1 ? "dia" : "dias";
   copy(".setup .measure-label", "setupLabel", "Configuração do agente");
@@ -146,8 +146,8 @@
     const sequence = time < second ? 0 : time < third ? 1 : 2;
     const changed = [0, second, third][sequence];
     const next = [second, third, 20][sequence];
-    const headlineIn = beat(time, changed + .08, .57);
-    const headlineOut = flow(phase(time, next - .34, .32));
+    const headlineIn = snap(time, changed + .07, .27);
+    const headlineOut = flow(phase(time, next - .21, .20));
     const current = headlines[sequence];
     if (sequence === 2 && current === defaults[2]) title.replaceChildren(...formattedLast);
     else title.textContent = String(current);
@@ -156,39 +156,42 @@
       transform: "translateY(" + ((1 - headlineIn) * 43 - headlineOut * 36) + "px)",
       filter: "blur(" + ((1 - headlineIn) * 10 + headlineOut * 8) + "px)"
     });
-    const badgeIn = beat(time, sequence === 2 ? third + .06 : .08, .49);
-    const badgeOut = sequence === 2 ? 0 : flow(phase(time, third - .36, .28));
+    const badgeIn = snap(time, sequence === 2 ? third + .06 : .08, .23);
+    const badgeOut = sequence === 2 ? 0 : flow(phase(time, third - .24, .21));
     one(".badge-text").textContent = sequence === 2 ? "Com agente de IA" : "Fluxo de produção";
     set(one(".badge"), {
       opacity: badgeIn * (1 - badgeOut),
       transform: "translate(-50%," + ((1 - badgeIn) * 19 - badgeOut * 22) + "px)"
     });
-    const plotIn = beat(time, .75, .70);
+    const plotIn = snap(time, .75, .40);
     set(one(".plot"), {
       opacity: plotIn,
       transform: "translateY(" + (1 - plotIn) * 80 + "px) scale(" + mix(.95, 1, plotIn) + ")",
       filter: "blur(" + (1 - plotIn) * 10 + "px)"
     });
-    const setupRow = beat(time, 1.04, .50);
+    const setupRow = snap(time, 1.02, .24);
     set(one(".setup"), { opacity: setupRow, transform: "translateY(" + (1 - setupRow) * 20 + "px)" });
-    const setupFill = flow(phase(time, 1.25, 1.31));
-    const normalize = flow(phase(time, 3.37, .83));
+    const setupFill = beat(time, 1.20, .73);
+    const normalize = flow(phase(time, 3.32, .54));
     const setupCompareWidth = Math.max(12, trackWidth * setup / (before * 1440));
     one(".setup .bar").style.width = mix(trackWidth * .36 * setupFill, setupCompareWidth, normalize) + "px";
     one(".setup .value strong").textContent = Math.round(setup * setupFill);
-    const reviewRow = beat(time, 3.15, .52);
+    const reviewRow = snap(time, 3.15, .24);
     set(one(".review"), { opacity: reviewRow, transform: "translateY(" + (1 - reviewRow) * 20 + "px)" });
-    const grow = flow(phase(time, 3.43, 1.88));
-    const collapse = flow(phase(time, 5.94, 1.39));
+    const grow = beat(time, 3.39, .89);
+    const collapse = beat(time, 5.88, .58);
     const width = trackWidth * mix(grow, after / before, collapse);
     one(".review .bar").style.width = width + "px";
     one(".review .bar").classList.toggle("before", time < 5.82);
-    one(".review .ghost").style.opacity = beat(time, 5.85, .38);
+    one(".review .ghost").style.opacity = snap(time, 5.85, .25);
     const elapsed = time < 5.82 ? Math.round(beforeCount * grow) : Math.round(mix(before, after, collapse));
     one(".review .value strong").textContent = elapsed;
-    one(".review .unit").textContent = time < 5.82 ? beforeUnit : pluralDays(elapsed);
+    one(".review .unit").textContent = time < 5.82 && beforeInWeeks
+      ? (elapsed === 1 ? "semana" : "semanas")
+      : pluralDays(elapsed);
 
-    const saved = beat(time, 7.33, .54);
+    const saved = snap(time, 6.83, .24);
+    const land = spring(time, 6.83, .30);
     const finalWidth = trackWidth * after / before;
     const available = trackWidth - finalWidth;
     const center = available >= 280 ? finalWidth + available * .5 : trackWidth * .5;
@@ -196,9 +199,9 @@
       left: center + "px",
       top: available >= 280 ? "101px" : "144px",
       opacity: savedDays ? saved : 0,
-      transform: "translate(-50%,-50%) scale(" + mix(.68, 1, saved) + ")"
+      transform: "translate(-50%,-50%) scale(" + mix(.65, 1, land) + ")"
     });
-    const note = beat(time, 3.7, .45);
+    const note = snap(time, 3.7, .24);
     set(one(".source-note"), { opacity: note, transform: "translateY(" + (1 - note) * 14 + "px)" });
     const scale = 1 + .015 * flow(phase(time, 3.2, 2.1)) + .035 * flow(phase(time, 5.65, 3.65));
     one(".camera").style.transform = "scale(" + scale + ")";

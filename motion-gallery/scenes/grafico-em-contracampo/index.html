@@ -8,37 +8,44 @@
   * { box-sizing:border-box }
   html,body { margin:0; width:1920px; height:1080px; overflow:hidden }
   #stage {
-    --paper:#f6f5f9; --ink:#171423; --muted:#514b60; --rule:#d7d3e0; --accent:#6543cf;
+    --ink:#f4f6fd; --muted:#c4cedd; --rule:#c3d6ef45; --accent:#a9caff;
     position:relative; width:1920px; height:1080px; overflow:hidden;
-    background:var(--paper); color:var(--ink); font:500 52px/1.15 Outfit,sans-serif;
+    color:var(--ink); font:500 44px/1.15 Outfit,sans-serif;
   }
-  #chart { position:absolute; inset:0 0 0 828px; padding:0 88px; display:flex; flex-direction:column; justify-content:center; background:var(--paper); }
-  h1 { margin:0 0 91px; font:700 78px/1.05 Outfit,sans-serif; letter-spacing:-.045em; }
-  #bars { display:grid; gap:72px; }
-  .bar-row { display:grid; gap:21px; }
-  .bar-label { display:flex; justify-content:space-between; align-items:baseline; gap:24px; min-height:64px; }
-  .bar-label strong { font-size:66px; font-weight:650; line-height:1; letter-spacing:-.045em; font-variant-numeric:tabular-nums; }
-  .bar { height:32px; border-radius:6px; background:var(--ink); transform-origin:left; }
+  #speaker { position:absolute; inset:0; overflow:hidden; }
+  #speaker > :is(img,video) { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 44%; transform-origin:50% 0; }
+  #chart {
+    position:absolute; top:50%; left:1030px; width:785px; padding:50px 53px 56px;
+    display:flex; flex-direction:column; justify-content:center; border-radius:34px;
+    background:linear-gradient(150deg,#202936a6,#121925cb); backdrop-filter:blur(24px) saturate(.78);
+    border:1px solid #dceaff68; box-shadow:0 30px 70px #0005,inset 0 1px #edf4ff23;
+  }
+  h1 { margin:0 0 58px; font:680 69px/1.04 Outfit,sans-serif; letter-spacing:-.045em; }
+  #bars { display:grid; gap:42px; }
+  .bar-row { display:grid; gap:15px; }
+  .bar-label { display:flex; justify-content:space-between; align-items:baseline; gap:24px; min-height:59px; }
+  .bar-label strong { font-size:57px; font-weight:630; line-height:1; letter-spacing:-.045em; font-variant-numeric:tabular-nums; }
+  .bar { height:19px; border-radius:12px; background:var(--ink); transform-origin:left; }
   .bar-row:nth-child(2) .bar { background:var(--accent); }
   #series { display:none; }
-  .legacy h1 { margin-bottom:30px; font-size:60px; }
+  .legacy h1 { margin-bottom:23px; font-size:61px; }
   .legacy #bars { display:none; }
   .legacy #series { display:block; }
-  #legend { display:flex; gap:32px; font-size:29px; margin:0 0 20px; }
+  #legend { display:flex; gap:32px; font-size:29px; margin:0 0 13px; }
   #legend span:last-child { color:var(--accent); }
   #plot { display:block; width:100%; overflow:visible; }
-  #plot text { fill:var(--muted); font:25px Outfit,sans-serif; }
+  #plot text { fill:var(--muted); font:34px Outfit,sans-serif; }
   #plot .grid { stroke:var(--rule); stroke-width:1.5; }
   #plot .curve { fill:none; stroke:var(--ink); stroke-width:6; stroke-linejoin:round; stroke-linecap:round; }
   #plot .curve.second { stroke:var(--accent); }
-  #note { margin:15px 0 0 52px; color:var(--muted); font-size:28px; }
-  #speaker { position:absolute; z-index:2; inset:0 auto 0 0; width:828px; overflow:hidden; background:#151319; }
-  #speaker > img,#speaker > video { display:block; width:100%; height:100%; object-fit:cover; object-position:44% 48%; }
-  #speaker > img { filter:contrast(.98) saturate(.89); }
+  #note { margin:14px 0 0 49px; color:var(--muted); font-size:27px; }
 </style>
 </head>
 <body>
 <main id="stage" data-composition-id="grafico-em-contracampo" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+  <div id="speaker">
+    <!-- motion-media:presenter:0:6.8:0 -->
+  </div>
   <section id="chart" aria-label="Gráfico de comparação">
     <h1 id="headline"></h1>
     <div id="bars"></div>
@@ -48,14 +55,11 @@
       <p id="note" hidden></p>
     </div>
   </section>
-  <div id="speaker">
-    <!-- motion-media:presenter:0:6.8:0 -->
-  </div>
 </main>
+<script src="../motion-assets/time.js"></script>
 <script>
-  const inputs = window.motionInputs ?? {}
   const chart = document.getElementById('chart')
-  const speaker = document.getElementById('speaker')
+  const camera = document.querySelector('#speaker > :is(img,video)')
   const header = document.getElementById('headline')
   const legacy = Object.hasOwn(inputs, 'series')
   const names = [inputs.labelA ?? (legacy ? 'Série A' : 'Histórico completo'),
@@ -143,18 +147,19 @@
   }
 
   const reveal = legacy ? makeLines() : makeBars()
-  const clamp = value => Math.max(0, Math.min(1, value))
-  const progress = (time, start, end) => clamp((time - start) / (end - start))
-  const ease = value => value < .5 ? 4 * value ** 3 : 1 - (-2 * value + 2) ** 3 / 2
-  const out = value => 1 - (1 - value) ** 3
-
   window.renderMotion = time => {
-    const exchange = ease(progress(time, 1.93, 2.48)) - ease(progress(time, 4.51, 5.06))
-    chart.style.transform = 'translateX(' + (-828 * exchange) + 'px)'
-    speaker.style.transform = 'translateX(' + (1092 * exchange) + 'px)'
-    header.style.opacity = progress(time, .07, .34)
-    reveal[0](out(progress(time, .35, 1.56)))
-    reveal[1](out(progress(time, 2.64, 3.78)))
+    const enter = flow(phase(time, .02, .58))
+    const show = snap(time, .32, .29)
+    const exchange = flow(phase(time, 1.91, .65)) - flow(phase(time, 4.49, .65))
+    const crossing = Math.sin(Math.PI * exchange) ** 1.35
+    const clearFace = 1 - flow(clamp(Math.min(exchange, 1 - exchange) / .20))
+    if (camera) camera.style.transform = 'translateX(' + enter * (-326 + 652 * exchange) + 'px) scale(' + mix(1, 1.39, enter) + ')'
+    set(chart, {
+      opacity: show * (camera ? clearFace : 1 - .15 * crossing),
+      transform: 'translate(' + (-925 * exchange) + 'px,calc(-50% + ' + (19 * (1 - show) + 126 * crossing) + 'px)) scale(' + (1 - .095 * crossing) + ')',
+    })
+    reveal[0](snap(time, .57, .62))
+    reveal[1](snap(time, 2.60, .55))
   }
   window.renderMotion(0)
 </script>

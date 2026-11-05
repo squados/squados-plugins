@@ -4,20 +4,25 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../motion-assets/base.css">
 <style>
-main { background: #f6f1e6; color: #241d1a; }
-.conversation { position: absolute; inset: 108px 310px 106px; border-top: 2px solid #baaa94; border-bottom: 2px solid #baaa94; }
-.header { display: flex; align-items: center; gap: 22px; height: 128px; font-size: 35px; font-weight: 650; }
-.mark { display: grid; place-items: center; width: 51px; height: 51px; border-radius: 16px; background: #572f25; color: #f4d8a2; font-size: 32px; }
-.messages { position: absolute; top: 167px; left: 0; right: 0; display: flex; flex-direction: column; gap: 36px; }
-.bubble { width: fit-content; max-width: 900px; padding: 31px 46px; border-radius: 37px 37px 37px 8px; background: #eadfc9; color: #3b2921; transform-origin: 8% 100%; font-size: 43px; }
-.bubble:first-child { align-self: flex-end; border-radius: 37px 37px 8px 37px; background: #572f25; color: #fff0d3; transform-origin: 92% 100%; }
-.bubble:last-child { font-size: 77px; padding: 36px 46px 43px; color: #2e201a; background: #f0cf83; max-width: 970px; }
+main { background: radial-gradient(ellipse at 45% 29%, #383941, #222328 48%, #111216 92%); color: #f4f1f7; }
+.grain { position: absolute; inset: 0; opacity: .22; mix-blend-mode: soft-light; pointer-events: none; }
+.conversation { position: absolute; left: 262px; right: 241px; top: 193px; }
+.header { display: flex; align-items: center; gap: 19px; margin-bottom: 44px; color: #cfccda; font-size: 37px; font-weight: 530; letter-spacing: -.022em; }
+.header svg { width: 36px; height: 36px; }
+.messages { display: flex; flex-direction: column; gap: 23px; margin-left: 82px; }
+.avatar { position: absolute; top: 87px; left: 0; width: 61px; height: 61px; display: grid; place-items: center; border: 1px solid #9f96d4; border-radius: 50%; color: #dcd4ff; background: linear-gradient(145deg,#605c7c,#37354d); }
+.avatar svg { width: 31px; height: 31px; }
+.bubble { width: fit-content; max-width: 100%; padding: 23px 35px 25px; border: 1px solid #565763; border-radius: 8px 23px 23px 23px; background: #30323b; color: #f2f0f6; transform-origin: 0 35%; font-size: 54px; line-height: 1.12; letter-spacing: -.024em; text-wrap: pretty; box-shadow: 0 16px 36px #0d0e1450; }
+.question { background: #3c3a4a; border-color: #69647c; }
+.result { font-size: 66px; font-weight: 640; padding: 22px 35px 27px; background: #e1d9ff; color: #292443; border-color: #f2edff; }
 </style>
 </head>
 <body>
 <main data-composition-id="conversa-em-camadas" data-start="0" data-duration="6.3" data-width="1920" data-height="1080">
+<svg class="grain" width="1920" height="1080" aria-hidden="true"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".69" numOctaves="3" seed="66"/></filter><rect width="100%" height="100%" filter="url(#noise)"/></svg>
 <section class="conversation">
-  <header class="header"><span class="mark" aria-hidden="true">↳</span><span class="topic"></span></header>
+  <header class="header"><svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M7 8h22v16H15l-6 5v-5H7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span class="topic"></span></header>
+  <div class="avatar" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2v28M2 16h28M6 6l20 20M26 6 6 26" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
   <div class="messages">
     <p class="bubble question"></p>
     <p class="bubble followup"></p>
@@ -27,17 +32,21 @@ main { background: #f6f1e6; color: #241d1a; }
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
-copy(".topic", "topic", "Copiloto de escrita");
-copy(".question", "question", "Como deixo esse pedido mais claro?");
-copy(".followup", "followup", "Diga quem vai ler e qual decisão precisa tomar.");
-copy(".result", "result", "Escreva para a decisão.");
+copy(".topic", "topic", "Conversa com o agente");
+copy(".question", "question", "Onde começo a revisar?");
+copy(".followup", "followup", "Compare a resposta com a fonte original.");
+copy(".result", "result", "Abra a fonte antes de aprovar.");
 const bubbles = all(".bubble");
+const cues = [.40, 1.46, 2.88];
 window.renderMotion = time => {
-  const shell = beat(time, 0, .52);
-  set(one(".conversation"), { opacity: shell, transform: "translateY(" + (1 - shell) * 24 + "px)" });
+  const shell = snap(time, 0, .26);
+  set(one(".conversation"), { opacity: shell, transform: "translateY(" + (1 - shell) * 12 + "px)" });
+  const avatar = snap(time, .33, .19);
+  set(one(".avatar"), { opacity: avatar, transform: "scale(" + mix(.94, 1, avatar) + ")" });
   bubbles.forEach((bubble, index) => {
-    const value = beat(time, [.47, 1.37, 2.58][index], .55);
-    set(bubble, { opacity: value, transform: "translateY(" + (1 - value) * 37 + "px) scale(" + mix(.92, 1, value) + ")" });
+    const arrive = spring(time, cues[index], .28);
+    const visible = snap(time, cues[index], .23);
+    set(bubble, { opacity: visible, transform: "translate(" + (-18 * (1 - arrive)) + "px," + (24 * (1 - arrive)) + "px) scale(" + mix(.91, 1, arrive) + ")" });
   });
 };
 window.renderMotion(0);

@@ -69,20 +69,20 @@ main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 
   });
 
   window.renderMotion = time => {
-    const enter = beat(time, .16, .55);
+    const enter = snap(time, .16, .26);
     set(title, { opacity: enter, transform: "translateY(" + 21 * (1 - enter) + "px)" });
-    measure.style.opacity = beat(time, .35, .48);
-    axis.style.transform = "scaleX(" + beat(time, .32, .88) + ")";
+    measure.style.opacity = snap(time, .29, .22);
+    axis.style.transform = "scaleX(" + snap(time, .29, .41) + ")";
     const spacing = Math.min(1.23, 4.05 / Math.max(1, values.length - 1));
     columns.forEach(({ number, bar, label, category }, index) => {
       const start = .98 + index * spacing;
-      const progress = beat(time, start, .92);
-      category.style.opacity = beat(time, start - .13, .33);
+      const progress = beat(time, start, .52);
+      category.style.opacity = snap(time, start - .13, .22);
       bar.style.height = 330 * (number / ceiling) * progress + "px";
-      label.style.opacity = beat(time, start + .06, .35);
+      label.style.opacity = snap(time, start + .06, .23);
       label.textContent = amount.format(number * progress) + (unit === "%" ? "%" : "");
     });
-    const exit = inputs.exitMode === "slide" ? flow(phase(time, 8, .7)) : 0;
+    const exit = inputs.exitMode === "slide" ? snap(time, 8.20, .39) : 0;
     chart.style.transform = "translateY(" + -780 * exit + "px)";
     chart.style.opacity = 1 - exit;
   };

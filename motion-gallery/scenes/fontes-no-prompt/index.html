@@ -174,20 +174,21 @@ const pointerTargets = selected.map(index => [tileOrigin + tileSpacing * index +
 const sendTarget = [1606, 615];
 
 window.renderMotion = time => {
-  const first = beat(time, .13, .57);
+  const first = snap(time, .13, .28);
   const switchScene = flow(phase(time, 3.03, .43));
-  const composing = beat(time, 3.35, .57);
+  const composing = snap(time, 3.35, .26);
   const composeExit = flow(phase(time, 5.32, .42));
-  const ending = beat(time, 7.15, .54);
+  const ending = snap(time, 7.15, .29);
   set(heading, { opacity: first * (1 - switchScene), transform: "translateY(" + (29 * (1 - first) - 32 * switchScene) + "px)" });
   set(compose, { opacity: composing * (1 - composeExit), transform: "translateY(" + (25 * (1 - composing) - 44 * composeExit) + "px)" });
   set(closing, { opacity: ending, transform: "translateY(" + 26 * (1 - ending) + "px)" });
 
   tiles.forEach(({ tile, badge, rank }, index) => {
-    const entry = beat(time, .42 + index * .06, .70);
+    const entry = snap(time, .42 + index * .06, .29);
     const marked = rank >= 0 ? beat(time, tapTimes[rank], .20) : 0;
-    const tap = rank >= 0 ? Math.sin(Math.PI * phase(time, tapTimes[rank], .23)) : 0;
-    const travel = rank >= 0 ? flow(phase(time, 3.08 + rank * .065, .81)) : 0;
+    const tap = rank >= 0 ? Math.sin(Math.PI * phase(time, tapTimes[rank], .18)) : 0;
+    const seat = rank >= 0 ? spring(time, tapTimes[rank], .27) : 0;
+    const travel = rank >= 0 ? beat(time, 3.08 + rank * .065, .63) : 0;
     const vanish = rank >= 0 ? beat(time, 3.62 + rank * .065, .29) : beat(time, 3.03 + index * .025, .38);
     const fromX = tileOrigin + tileSpacing * index + 113;
     const intoX = 248 + 26 + 80 + 171 * rank;
@@ -200,14 +201,15 @@ window.renderMotion = time => {
       borderColor: "rgba(159, 202, 255, " + mix(.23, .93, marked) + ")",
       zIndex: rank >= 0 ? "2" : "1"
     });
-    set(badge, { opacity: marked, transform: "scale(" + mix(.63, 1, marked) + ")" });
+    set(badge, { opacity: marked, transform: "scale(" + mix(.63, 1, seat) + ")" });
   });
 
-  const composerIn = beat(time, 3.13, .71);
+  const composerIn = snap(time, 3.13, .31);
   set(composer, { opacity: composerIn, transform: "translateY(" + 65 * (1 - composerIn) + "px) scale(" + mix(.97, 1, composerIn) + ")" });
   chips.forEach((chip, rank) => {
-    const join = beat(time, 3.72 + rank * .065, .35);
-    set(chip, { opacity: join, transform: "scale(" + mix(.83, 1, join) + ")" });
+    const join = snap(time, 3.72 + rank * .065, .22);
+    const dock = spring(time, 3.72 + rank * .065, .28);
+    set(chip, { opacity: join, transform: "scale(" + mix(.83, 1, dock) + ")" });
   });
 
   const typed = Math.floor(glyphs.length * flow(phase(time, 3.88, 1.39)));
@@ -218,7 +220,7 @@ window.renderMotion = time => {
   let py = 905;
   let tap = 0;
   for (const [rank, [targetX, targetY]] of pointerTargets.entries()) {
-    const go = flow(phase(time, tapTimes[rank] - .44, .44));
+    const go = beat(time, tapTimes[rank] - .34, .34);
     px = mix(px, targetX, go);
     py = mix(py, targetY, go);
     tap += Math.sin(Math.PI * phase(time, tapTimes[rank], .21));
@@ -226,7 +228,7 @@ window.renderMotion = time => {
   const firstPointer = beat(time, 1.06, .19) * (1 - beat(time, 2.92, .29));
   const secondPointer = beat(time, 5.02, .22) * (1 - beat(time, 6.54, .18));
   if (time >= 5.02) {
-    const returnToSend = flow(phase(time, 5.05, .60));
+    const returnToSend = snap(time, 5.05, .42);
     px = mix(1690, sendTarget[0], returnToSend);
     py = mix(905, sendTarget[1], returnToSend);
     tap = Math.sin(Math.PI * phase(time, 6.29, .22));
@@ -241,7 +243,7 @@ window.renderMotion = time => {
   const wave = beat(time, 6.34, .57);
   set(ripple, { opacity: time >= 6.34 ? .83 * (1 - wave) : 0, transform: "scale(" + mix(.95, 2.15, wave) + ")" });
 
-  const processing = beat(time, 7.04, .53);
+  const processing = snap(time, 7.04, .25);
   set(status, { opacity: processing, transform: "translate(-50%," + 35 * (1 - processing) + "px)" });
   spinner.style.transform = "rotate(" + 510 * phase(time, 7.04, .96) + "deg)";
   progress.style.transform = "scaleX(" + .53 * beat(time, 7.15, .85) + ")";

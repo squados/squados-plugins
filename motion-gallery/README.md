@@ -22,9 +22,12 @@ use as fontes e as entradas em `demo`. Para uma referência da Skillry,
 siga o `SKILL.md` do pacote `source.package` instalado e use o ID do efeito.
 A página oficial em `source.url` reúne a prévia e a instalação.
 
-Para **Gráfico em Contracampo**, prepare um JSON com `presenter` apontando
-para uma foto ou um take de 6,8 s ou mais. Caminhos relativos são resolvidos
-a partir da pasta do JSON. Use `values` com dois valores não negativos para
+Para **Gráfico em Contracampo**, informe uma foto ou um take de pelo menos
+6,8 s em `presenter` para ver o painel de vidro sobre a câmera. Para exportar
+somente o gráfico e o painel translúcido, omita `presenter` e use
+`--out grafico.mov`. A desfocagem da câmera é calculada quando o take faz
+parte da composição. Caminhos relativos são resolvidos a partir da pasta do
+JSON. Use `values` com dois valores não negativos para
 comparar duas barras. O exemplo de tokens usa números ilustrativos. A
 composição também aceita duas séries de 2 a 6 números de 0 a 100 em
 `series`, com o mesmo número de pontos e os rótulos em `axisLabels`.
@@ -44,11 +47,11 @@ efeitos usam estruturas de dados específicas.
 | Colagem em Torno da Câmera | `presenter`, com uma foto ou take de pelo menos 4,45 s, e `sheet` |
 | Roteiro em Pastas | `title`, `summary`, `folders` com três nomes e `sheet` com nove fotos numa grade de 3 × 3 em 16:9 |
 | Roteiro em Papel | `titles` e `details`, com uma posição por cena, da primeira à oitava |
-| Legenda com Ênfase | `presenter`, `lines`, `accentWords` e `wordTimings`, com o segundo de entrada de cada palavra |
+| Legenda com Ênfase | `presenter`, `lines` com frases pontuadas, `accentWords` com candidatas à ênfase e `wordTimings` com o segundo de entrada de cada palavra. A palavra selecionada aparece sozinha, no máximo uma vez a cada duas frases |
 | Título Atrás do Apresentador | `presenter`, `matte` e `title`. Use um WebM com transparência e mantenha o enquadramento e a duração do take em `matte` |
 | Transição em Mosaico | `presenter`, `statement` e `markText` |
 | Identificação do Apresentador | `name`, `role` e `presenter` opcional. Para sobrepor na edição, omita `presenter` e exporte com `--out identificacao.mov` |
-| Apresentador e Citação | `portrait` com foto ou take, `quote`, `emphasis` e `attribution` |
+| Apresentador e Citação | `portrait` com foto ou take em tela cheia, `quote`, `emphasis` e `attribution` |
 
 Em Parede em Perspectiva e Colagem em Torno da Câmera, `sheet` é uma
 imagem 3:2 com seis fotos em três colunas e duas linhas, sem margens.
@@ -60,8 +63,9 @@ local e sua licença OFL acompanham as composições. [Outfit](https://github.co
 
 A **Parede em Perspectiva** e o **Roteiro em Pastas** usam
 [fotografias licenciadas de Portugal](scenes/parede-em-perspectiva/art/CREDITOS.md).
-O [atlas](scenes/motion-assets/field-atlas.webp) da **Colagem em Torno da Câmera**
-foi gerado com o ImageGen do Codex para essa demonstração.
+A **Colagem em Torno da Câmera** usa quatro
+[fotos licenciadas de Portugal](scenes/colagem-em-torno-da-camera/art/CREDITOS.md)
+na demonstração e aceita um atlas personalizado em `sheet`.
 
 ```powershell
 node scripts/render-motion.mjs "Gráfico em Contracampo" --inputs dados.json --out cena.mp4

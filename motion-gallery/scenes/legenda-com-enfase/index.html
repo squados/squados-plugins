@@ -8,12 +8,11 @@
 main { background:#161618; color:#f6f6f6; }
 .camera { position:absolute; inset:0; }
 .camera :is(video,img) { display:block; width:100%; height:100%; object-fit:cover; }
-.shade { position:absolute; inset:57% 0 0; background:linear-gradient(transparent,#0707099c); }
-.caption { position:absolute; inset:646px 260px auto; text-align:center; font-size:63px; font-weight:570; line-height:1.13; text-shadow:0 3px 12px #0b0b0c; }
-.line { min-height:71px; }
-.word { display:inline-block; padding:0 .10em; position:relative; }
-.word.emphasis { color:#e8d5ab; font-weight:720; }
-.word.emphasis::after { content:""; position:absolute; bottom:-.02em; left:.11em; right:.11em; height:3px; background:currentColor; border-radius:2px; }
+.shade { position:absolute; inset:56% 0 0; background:linear-gradient(transparent,#070709bf); }
+.caption { position:absolute; inset:auto 180px 126px; text-align:center; font-size:72px; font-weight:570; line-height:1.05; text-shadow:0 4px 13px #0b0b0c; }
+.sentence { margin:0; text-wrap:balance; }
+.word { display:inline-block; }
+.emphasis { position:absolute; inset:auto 92px 101px; width:auto; color:#e9d9ff; text-align:center; font-size:170px; line-height:1; font-weight:730; letter-spacing:-.04em; white-space:nowrap; text-shadow:0 6px 30px #08070bbf; }
 </style>
 </head>
 <body>
@@ -21,31 +20,74 @@ main { background:#161618; color:#f6f6f6; }
 <div class="camera"><!-- motion-media:presenter:0:6.8:0 --></div>
 <div class="shade"></div>
 <section class="caption" aria-label="Legenda"></section>
+<p class="emphasis" aria-hidden="true"></p>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
 const lines = Array.isArray(inputs.lines) && inputs.lines.length
-  ? inputs.lines : ["Um bom prompt dá", "contexto ao agente."];
-const canonical = word => word.normalize("NFD").replace(/[^a-z0-9]/gi,"").toLowerCase();
-const accents = new Set((Array.isArray(inputs.accentWords) ? inputs.accentWords : ["bom","contexto"]).map(canonical));
+  ? inputs.lines : ["Um agente precisa de contexto.", "Mostre de onde vêm os dados."];
+const canonical = word => String(word).normalize("NFD").replace(/\p{Diacritic}|[^\p{L}\p{N}]/gu,"").toLowerCase();
+const accents = new Set((Array.isArray(inputs.accentWords) ? inputs.accentWords : ["contexto"]).map(canonical));
 const words = [];
-for (const line of lines) {
-  const row = document.createElement("p");
-  row.className = "line";
-  for (const word of String(line).trim().split(/\s+/).filter(Boolean)) {
-    const span = document.createElement("span");
-    span.className = "word";
-    span.classList.toggle("emphasis",accents.has(canonical(word)));
-    span.textContent=word;
-    words.push(span);
-    row.append(span);
+const sentences = [];
+let sentence;
+lines.forEach((line,rowIndex) => {
+  const tokens = String(line).trim().split(/\s+/).filter(Boolean);
+  tokens.forEach((text,index) => {
+    if (!sentence) {
+      const node = document.createElement("p");
+      node.className = "sentence";
+      one(".caption").append(node);
+      sentence = {node,words:[]};
+      sentences.push(sentence);
+    }
+    const node = document.createElement("span");
+    node.className = "word";
+    node.textContent = text;
+    if (sentence.words.length) sentence.node.append(index===0 && rowIndex ? document.createElement("br") : " ");
+    sentence.node.append(node);
+    const word = {text,node,index:words.length};
+    words.push(word);
+    sentence.words.push(word);
+    if (/[.!?…]["'”’)]?$/.test(text)) sentence = undefined;
+  });
+});
+const step = Math.min(.43, 5.5 / Math.max(words.length-1,1));
+const timings = Array.isArray(inputs.wordTimings) && inputs.wordTimings.length === words.length && inputs.wordTimings.every(Number.isFinite)
+  ? inputs.wordTimings : words.map((_,index)=>.38+index*step);
+const effects = [];
+let lastEmphasis=-2;
+for (let i=0;i<sentences.length;i++) {
+  if (i-lastEmphasis<2) continue;
+  const candidate=sentences[i].words.find(word=>accents.has(canonical(word.text)));
+  if (!candidate) continue;
+  const start=timings[candidate.index];
+  const text=candidate.text.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu,"");
+  if (text && start<6.60) {
+    effects.push({start,text});
+    lastEmphasis=i;
   }
-  one(".caption").append(row);
 }
-const timings = Array.isArray(inputs.wordTimings) && inputs.wordTimings.length === words.length
-  ? inputs.wordTimings : words.map((_,index)=>1.06+index*.51);
+const emphasis=one(".emphasis");
 window.renderMotion = time => {
-  words.forEach((word,index) => word.style.visibility = time >= timings[index] ? "visible" : "hidden");
+  const effect=effects.find(({start})=>time>=start && time<start+.54);
+  one(".caption").style.visibility=effect ? "hidden" : "visible";
+  const active=sentences.findLast(sentence=>time>=timings[sentence.words[0].index]);
+  sentences.forEach(sentence=>sentence.node.hidden=sentence!==active || Boolean(effect));
+  active?.words.forEach(({node,index})=>node.style.visibility=time>=timings[index] ? "visible" : "hidden");
+  if (!effect) {
+    emphasis.style.visibility="hidden";
+    return;
+  }
+  if (emphasis.textContent!==effect.text) emphasis.textContent=effect.text;
+  const elapsed=time-effect.start;
+  const alpha=snap(elapsed,0,.20)*(1-flow(phase(elapsed,.43,.11)));
+  const scale=spring(elapsed,0,.24);
+  emphasis.style.visibility="visible";
+  emphasis.style.fontSize="170px";
+  const width=emphasis.scrollWidth;
+  if (width>1736) emphasis.style.fontSize=(170*1736/width)+"px";
+  set(emphasis,{opacity:clamp(alpha),transform:"translateY("+(1-scale)*24+"px) scale("+mix(.85,1,scale)+")"});
 };
 window.renderMotion(0);
 </script>

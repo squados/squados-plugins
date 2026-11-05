@@ -151,15 +151,15 @@ const checkTimes = [2.44, 3.02, 3.57, 4.27];
 let currentShot = -1;
 
 window.renderMotion = time => {
-  const intro = beat(time, .10, .70);
+  const intro = snap(time, .10, .28);
   const introExit = flow(phase(time, 1.40, .50));
   set(opening, {
     opacity: intro * (1 - introExit),
     transform: "translateY(" + (30 * (1 - intro) - 34 * introExit) + "px)",
     filter: "blur(" + (11 * (1 - intro) + 9 * introExit) + "px)"
   });
-  const begin = beat(time, 1.64, .59);
-  const dock = flow(phase(time, 4.82, .53));
+  const begin = snap(time, 1.64, .30);
+  const dock = beat(time, 4.82, .48);
   const editorFocus = flow(phase(time, 7.62, .64));
   set(card, {
     opacity: begin * (1 - editorFocus),
@@ -170,33 +170,34 @@ window.renderMotion = time => {
   percent.textContent = Math.round(complete * 100) + "%";
   title.textContent = time >= 4.44 ? done : working;
   steps.forEach(({ row, mark }, index) => {
-    const ready = beat(time, 1.96 + index * .14, .39);
-    const check = beat(time, checkTimes[index], .33);
+    const ready = snap(time, 1.96 + index * .14, .25);
+    const check = snap(time, checkTimes[index], .21);
+    const seat = spring(time, checkTimes[index], .28);
     const active = time >= (index ? checkTimes[index - 1] : 1.85) && time < checkTimes[index];
     set(row, { opacity: ready * (active || check > .01 ? 1 : .62), transform: "translateY(" + 17 * (1 - ready) + "px)" });
     row.classList.toggle("step-current", active);
     row.classList.toggle("step-done", check > .1);
-    set(mark, { opacity: check, transform: "scale(" + mix(.50, 1, check) + ")" });
+    set(mark, { opacity: check, transform: "scale(" + mix(.50, 1, seat) + ")" });
   });
 
-  const shell = beat(time, 4.83, .53);
+  const shell = snap(time, 4.83, .33);
   set(workspace, {
     opacity: shell,
     transform: "translate(" + -277 * editorFocus + "px," + (31 * (1 - shell) - 13 * editorFocus) + "px) scale(" + (mix(.965, 1, shell) * mix(1, 1.14, editorFocus)) + ")"
   });
   editorHead.style.opacity = 1 - editorFocus;
   side.style.opacity = 1 - editorFocus;
-  const timeIn = beat(time, 5.43, .43);
+  const timeIn = snap(time, 5.43, .26);
   set(timeline, { opacity: timeIn, transform: "translateY(" + 24 * (1 - timeIn) + "px)" });
   clips.forEach((clip, index) => {
-    const show = beat(time, 5.54 + index * .14, .29);
+    const show = snap(time, 5.54 + index * .14, .24);
     set(clip, { opacity: show, transform: "translateY(" + 11 * (1 - show) + "px)" });
   });
   const play = phase(time, 5.81, 3.50);
   const seconds = Math.round(play * 30);
   timecode.textContent = "00:" + String(seconds).padStart(2, "0") + " / 00:30";
   playhead.style.left = play * 100 + "%";
-  audioTrack.style.opacity = beat(time, 5.88, .43);
+  audioTrack.style.opacity = snap(time, 5.88, .26);
   const grading = flow(phase(time, 5.99, .61));
   set(scan, { opacity: grading > 0 && grading < 1 ? 1 : 0, transform: "translateY(" + mix(-94, 589, grading) + "px)" });
   matchLabel.style.opacity = beat(time, 6.45, .30);
@@ -216,8 +217,9 @@ window.renderMotion = time => {
     graded.style.transform = raw.style.transform;
     graded.style.clipPath = "inset(0 0 " + (100 * (1 - grading)) + "% 0)";
   }
-  const completeToast = beat(time, 7.97, .44);
-  set(toast, { opacity: completeToast, transform: "translate(" + 28 * (1 - completeToast) + "px," + -11 * (1 - completeToast) + "px)" });
+  const completeToast = snap(time, 7.97, .23);
+  const toastSeat = spring(time, 7.97, .29);
+  set(toast, { opacity: completeToast, transform: "translate(" + 28 * (1 - toastSeat) + "px," + -11 * (1 - toastSeat) + "px)" });
 };
 window.renderMotion(0);
 </script>

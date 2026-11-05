@@ -87,20 +87,20 @@ main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 
   });
 
   window.renderMotion = time => {
-    const open = beat(time, .12, .46);
+    const open = snap(time, .12, .28);
     set(workbench, { opacity: open, transform: "translateY(" + 19 * (1 - open) + "px) scale(" + mix(.985, 1, open) + ")" });
-    const focus = flow(phase(time, .72, .36));
-    const handoff = flow(phase(time, 5.02, .58));
+    const focus = flow(phase(time, .72, .24));
+    const handoff = flow(phase(time, 5.02, .38));
     backdrop.style.opacity = focus * (1 - handoff);
-    const recorderIn = beat(time, .84, .31);
-    const recorderOut = flow(phase(time, 4.92, .28));
-    set(recorder, { opacity: recorderIn * (1 - recorderOut), transform: "translateX(-50%) scale(" + mix(.91, 1, recorderIn) + ")" });
+    const recorderIn = spring(time, .81, .30);
+    const recorderOut = flow(phase(time, 4.94, .20));
+    set(recorder, { opacity: clamp(recorderIn) * (1 - recorderOut), transform: "translateX(-50%) scale(" + mix(.88, 1, recorderIn) + ")" });
     recorder.classList.toggle("accepted", time >= 4.57);
     waves.forEach((bar, index) => {
       const motion = .24 + .7 * Math.abs(Math.sin(time * (5.7 + .27 * index) + index * 1.41));
       bar.style.transform = "scaleY(" + motion + ")";
     });
-    const stripIn = beat(time, 1.28, .39);
+    const stripIn = snap(time, 1.28, .24);
     const spoken = timings.filter(at => at <= time - 1.42).length;
     text.textContent = words.slice(0, spoken).join(" ");
     text.style.opacity = stripIn;

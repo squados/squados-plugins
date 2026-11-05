@@ -83,21 +83,22 @@ const markers = points.map(([x, y]) => draw(".markers", "circle", { class: "mark
 const segments = points.slice(1).map(([x, y], i) => draw(".segments", "path", { class: "actual", pathLength: 1, d: "M" + atX(points[i][0]) + " " + atY(points[i][1]) + " L" + atX(x) + " " + atY(y), "stroke-dasharray": "1 1" }));
 one(".trend").setAttribute("points", trend.map(([x, y]) => atX(x) + "," + atY(y)).join(" "));
 window.renderMotion = time => {
-  const heading = beat(time, .09, .66);
-  const chart = beat(time, .52, .72);
+  const heading = snap(time, .09, .27);
+  const chart = snap(time, .46, .29);
   const focus = flow(phase(time, 1, 5.5));
   set(one("h1"), { opacity: heading, transform: "translateY(" + (1 - heading) * 22 + "px)" });
-  set(one(".present"), { opacity: beat(time, .60, .62) });
+  set(one(".present"), { opacity: snap(time, .60, .24) });
   set(one(".chart"), { opacity: chart, transform: "scale(" + mix(.985, 1.012, focus) + ")" });
   const stride = 4.1 / (points.length - 1);
-  segments.forEach((el, i) => el.setAttribute("stroke-dashoffset", 1 - beat(time, 1.24 + i * stride, stride)));
+  segments.forEach((el, i) => el.setAttribute("stroke-dashoffset", 1 - flow(phase(time, 1.24 + i * stride, stride))));
   markers.forEach((el, i) => {
-    const p = beat(time, 1.12 + i * stride, .24);
-    el.setAttribute("opacity", p);
+    const start = 1.18 + i * stride;
+    const p = spring(time, start, .25);
+    el.setAttribute("opacity", snap(time, start, .19));
     el.setAttribute("r", mix(4, i === markers.length - 1 ? 13 : 9, p));
   });
   one("#trend-reveal rect").setAttribute("width", 1435 * flow(phase(time, 4.75, 1.55)));
-  const close = beat(time, 6.52, .7);
+  const close = snap(time, 6.47, .28);
   set(one(".conclusion"), { opacity: close, transform: "translateX(" + (1 - close) * -16 + "px)" });
 };
 window.renderMotion(0);

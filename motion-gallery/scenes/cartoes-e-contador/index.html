@@ -76,14 +76,14 @@ main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 
     let totalValue = 0;
     cards.forEach((card, index) => {
       const start = .09 + .43 * index;
-      const arrive = beat(time, start, .39);
-      set(card, { opacity: arrive, transform: "translateY(" + 23 * (1 - arrive) + "px) scale(" + mix(.95, 1, arrive) + ")" });
-      if (time >= start + .22) visibleCount++;
-      totalValue += stepValue * flow(phase(time, start + .15, .27));
+      const arrive = spring(time, start, .28);
+      set(card, { opacity: snap(time, start, .20), transform: "translateY(" + 26 * (1 - arrive) + "px) scale(" + mix(.92, 1, arrive) + ")" });
+      if (time >= start + .14) visibleCount++;
+      totalValue += stepValue * snap(time, start + .14, .22);
     });
     count.textContent = String(visibleCount);
     total.textContent = format.format(totalValue);
-    const show = beat(time, 4.25, .48);
+    const show = snap(time, 3.56, .26);
     set(summary, { opacity: show, transform: "translateY(" + 17 * (1 - show) + "px)" });
   };
   window.renderMotion(0);

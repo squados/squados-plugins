@@ -197,7 +197,7 @@
     if (nextPoint===-1) return path[path.length-1].slice(1);
     const to = path[nextPoint];
     const from = path[nextPoint-1] ?? to;
-    const progress = flow(phase(time,from[0],Math.max(.01,to[0]-from[0])));
+    const progress = flow(phase(time,from[0],Math.max(.01,to[0]-from[0]))) ** .78;
     return [mix(from[1],to[1],progress),mix(from[2],to[2],progress)];
   }
 
@@ -205,12 +205,12 @@
     const introOut = flow(phase(time,2.03,.48));
     set(one(".intro"),{opacity:1-introOut,transform:"translateY(" + introOut*-125 + "px) scale(" + mix(1,.82,introOut) + ")"});
     wordElements.forEach((word,index)=>{
-      const appear=beat(time,.08+index*.095,.52);
+      const appear=snap(time,.08+index*.095,.28);
       set(word,{opacity:appear,transform:"translateY(" + (1-appear)*25 + "px) scale(" + mix(1.17,1,appear) + ")",filter:"blur(" + (1-appear)*10 + "px)"});
     });
-    const report = beat(time,2.22,.63);
+    const report = snap(time,2.22,.40);
     set(one(".workspace"),{opacity:report,transform:"translateY(" + (1-report)*50 + "px) scale(" + (mix(1.09,1,report)+.025*flow(phase(time,2.8,5.2))) + ")",filter:"blur(" + (1-report)*13 + "px)"});
-    const startTitle=beat(time,2.45,.44);
+    const startTitle=snap(time,2.45,.26);
     set(one(".report-title"),{opacity:startTitle,transform:"translateY(" + (1-startTitle)*17 + "px)"});
     const selected=time>=5.79&&time<6.02;
     const end=one(".title-end");
@@ -218,12 +218,12 @@
     end.classList.toggle("selection",selected);
     one(".caret").style.opacity=(time>=6.02&&(time<6.82||Math.floor((time-6.8)*4)%2===1)) ? 1 : 0;
     one(".edited").textContent=time>=6.78 ? "Atualizado agora" : "Editando agora";
-    one(".edited").style.opacity=beat(time,2.57,.39);
+    one(".edited").style.opacity=snap(time,2.57,.23);
 
     const take = beat(time,3.45,.25)*(1-beat(time,4.34,.35));
     metrics.forEach((el,index)=>{
-      const entry=beat(time,2.49+index*.07,.49);
-      const movement=flow(phase(time,index===2?3.59:3.70+(index*.04),.70));
+      const entry=snap(time,2.49+index*.07,.25);
+      const movement=beat(time,index===2?3.59:3.70+(index*.04),.66);
       const lifted=index===2 ? take : 0;
       const destination=index===2 ? -980 : 490;
       set(el,{
@@ -234,25 +234,26 @@
         zIndex:index===2&&lifted>.15 ? "2" : "1"
       });
     });
-    const chart=beat(time,2.65,.55);
+    const chart=snap(time,2.65,.29);
     set(one(".chart"),{opacity:chart,transform:"translateY("+(1-chart)*26+"px)"});
     bars.forEach((bar,index)=>{
       const rise=beat(time,2.78+index*.055,.55);
-      const accent=index<4 ? 0 : beat(time,4.55+(index-4)*.63,.25);
+      const accent=index<4 ? 0 : snap(time,4.55+(index-4)*.63,.22);
       bar.style.transform="scaleY("+rise+")";
       bar.style.background=index<4 ? "#647487" : "color-mix(in srgb,#647487,#a4d1ff "+accent*100+"%)";
     });
-    const tip=beat(time,5.28,.34);
+    const tip=snap(time,5.28,.23);
     set(one(".value-label"),{bottom:96+points[5]/maximum*198+"px",opacity:tip,transform:"translateY("+(1-tip)*12+"px)"});
     cursor.forEach((el,index)=>{
       const pose=cursorPose(route[index],time);
       const enter=beat(time,route[index][0][0],.25);
       const interaction=[3.48,4.55,5.8][index];
-      const click=Math.sin(Math.PI*phase(time,interaction,.22));
+      const click=Math.sin(Math.PI*phase(time,interaction,.16));
       set(el,{opacity:enter,transform:"translate("+pose[0]+"px,"+(pose[1]+(1-enter)*34)+"px) scale("+mix(.82,1,enter)*(1-click*.14)+")"});
     });
-    const saved=beat(time,6.82,.40);
-    set(one(".saved"),{opacity:saved,transform:"translate(-50%,"+(1-saved)*-23+"px)"});
+    const saved=snap(time,6.82,.23);
+    const savedSeat=spring(time,6.82,.29);
+    set(one(".saved"),{opacity:saved,transform:"translate(-50%,"+(1-savedSeat)*-23+"px)"});
   };
   window.renderMotion(0);
 </script>

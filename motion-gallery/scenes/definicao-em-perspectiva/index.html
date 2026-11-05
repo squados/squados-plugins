@@ -55,19 +55,20 @@ main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 
   });
 
   window.renderMotion = time => {
-    const opening = beat(time, .16, .39);
-    const clear = flow(phase(time, 1.72, .25));
+    const opening = snap(time, .16, .24);
+    const clear = flow(phase(time, 1.72, .20));
     set(oldGroup, { opacity: opening * (1 - clear),
       transform: "translateY(" + (25 * (1 - opening) - 17 * clear) + "px)" });
-    strike.style.transform = "scaleX(" + flow(phase(time, .9, .24)) + ")";
-    const picture = beat(time, 1.93, .65);
+    strike.style.transform = "scaleX(" + snap(time, .9, .19) + ")";
+    const picture = snap(time, 1.91, .43);
     set(context, { opacity: picture, transform: "translateY(" + 808 * (1 - picture) + "px)" });
-    const explain = beat(time, 2.28, .37);
+    const explain = snap(time, 2.25, .25);
     set(newGroup, { opacity: explain, transform: "translateY(" + 22 * (1 - explain) + "px)" });
     terms.forEach((term, index) => {
-      const enter = beat(time, 3.05 + index * .22, .33);
+      const start = 2.96 + index * .16;
+      const enter = spring(time, start, .28);
       const distance = (index % 2 === 0 ? -1 : 1) * 24 * (1 - enter);
-      set(term, { opacity: enter, transform: "translateX(" + distance + "px)" });
+      set(term, { opacity: snap(time, start, .20), transform: "translateX(" + distance + "px)" });
     });
   };
   window.renderMotion(0);

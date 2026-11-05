@@ -95,25 +95,25 @@ const traces=Array.from({length:17},(_,index)=>{
 copy(".caption","caption","Tudo começa com uma ideia.");
 copy(".close","headline","Uma pauta, vários formatos.");
 window.renderMotion = time => {
-  const flash=beat(time,.70,.31);
-  const iris=flow(phase(time,1.04,.32));
-  const burst=1-flow(phase(time,1.09,.29));
+  const flash=spring(time,.70,.28);
+  const iris=flow(phase(time,1.04,.22));
+  const burst=1-flow(phase(time,1.06,.25));
   picture.style.opacity=1-iris;
-  set(one(".spark"),{opacity:flash*burst,transform:"translate(1030px,455px) scale("+mix(.18,1.65,flash)+") translate(-1030px,-455px)"});
-  const branches=beat(time,1.10,.43);
+  set(one(".spark"),{opacity:clamp(flash)*burst,transform:"translate(1030px,455px) scale("+mix(.18,1.65,flash)+") translate(-1030px,-455px)"});
+  const branches=snap(time,1.10,.29);
   const weather=flow(phase(time,2.79,.24))*(1-flow(phase(time,3.40,.27)));
-  const pull=flow(phase(time,1.45,1.19));
+  const pull=flow(phase(time,1.45,.91));
   set(one(".network"),{opacity:branches*(1-flow(phase(time,2.76,.34))),transform:"translate(960px,440px) scale("+mix(1.56,.93,pull)+") translate(-960px,-440px)"});
   traces.forEach((line,index)=>{
-    const drawn=beat(time,1.09+(index%4)*.04,.45);
+    const drawn=snap(time,1.09+(index%4)*.04,.32);
     set(line,{strokeDasharray:"1",strokeDashoffset:1-drawn});
   });
   one(".weather").style.opacity=weather;
-  one(".caption").style.opacity=beat(time,1.76,.31)*(1-flow(phase(time,3.38,.25)));
-  const optics=beat(time,3.59,.45);
-  const flatten=flow(phase(time,5.55,.58));
-  const split=flow(phase(time,4.11,.44));
-  const laser="M0 566 H"+1020*beat(time,3.66,.45);
+  one(".caption").style.opacity=snap(time,1.76,.23)*(1-flow(phase(time,3.38,.25)));
+  const optics=snap(time,3.59,.30);
+  const flatten=flow(phase(time,5.55,.47));
+  const split=flow(phase(time,4.11,.33));
+  const laser="M0 566 H"+1020*snap(time,3.66,.32);
   one(".ray").setAttribute("d",laser);
   one(".ray-glow").setAttribute("d",laser);
   set(one(".optics"),{opacity:optics*(1-flow(phase(time,6.12,.27)))});
@@ -126,9 +126,9 @@ window.renderMotion = time => {
     const top=mix(566,500+index*67,flatten);
     const bottom=mix(566,500+(index+1)*67,flatten);
     beam.setAttribute("d","M"+left+" "+top+" L"+right+" "+mix(y1,top,flatten)+" L"+right+" "+mix(y2,bottom,flatten)+" L"+left+" "+bottom+"z");
-    label.style.opacity=beat(time,6.15+index*.035,.37);
+    label.style.opacity=snap(time,6.15+index*.035,.23);
   });
-  one(".close").style.opacity=beat(time,6.08,.5);
+  one(".close").style.opacity=snap(time,6.08,.32);
 };
 window.renderMotion(0);
 </script>

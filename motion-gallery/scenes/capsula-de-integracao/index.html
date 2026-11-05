@@ -102,14 +102,14 @@ const final = one(".final-copy");
 const doneAt = [3.05, 7.65, 9.00];
 
 window.renderMotion = time => {
-  const title = beat(time, .10, .67);
+  const title = snap(time, .10, .29);
   const titleExit = flow(phase(time, 1.55, .47));
   set(intro, { opacity: title * (1 - titleExit), transform: "translateY(" + (27 * (1 - title) - 39 * titleExit) + "px)" });
 
   const stroke = flow(phase(time, 1.90, .69));
-  const inFrame = beat(time, 2.26, .44);
-  const inflate = flow(phase(time, 4.23, .61));
-  const deflate = flow(phase(time, 7.14, .57));
+  const inFrame = snap(time, 2.26, .27);
+  const inflate = beat(time, 4.23, .54);
+  const deflate = beat(time, 7.14, .49);
   const expanded = inflate * (1 - deflate);
   const pinch = flow(phase(time, 9.64, .61));
   const lift = flow(phase(time, 10.25, .54));
@@ -125,20 +125,21 @@ window.renderMotion = time => {
   surface.classList.toggle("final", pinch > .82);
   set(trace, { strokeDashoffset: 100 * (1 - stroke), opacity: (1 - expanded) * (1 - pinch) * (time >= 1.90 ? 1 : 0) });
 
-  const scroll = flow(phase(time, 3.54, .54)) + flow(phase(time, 8.03, .56));
+  const scroll = beat(time, 3.54, .46) + beat(time, 8.03, .46);
   const listOn = beat(time, 2.31, .44)
     * (1 - beat(time, 4.27, .26) * (1 - beat(time, 7.49, .37)))
     * (1 - beat(time, 9.62, .39));
   steps.forEach(({ row, state, mark }, index) => {
     const offset = index - scroll;
-    const enter = beat(time, 2.30 + index * .18, .50);
+    const enter = snap(time, 2.30 + index * .18, .25);
     set(row, {
       opacity: listOn * enter * (1 - .56 * Math.min(1, Math.abs(offset))),
       transform: "translateY(" + (offset * 125 + 20 * (1 - enter)) + "px)"
     });
-    const completed = beat(time, doneAt[index], .26);
+    const completed = snap(time, doneAt[index], .21);
+    const seated = spring(time, doneAt[index], .29);
     state.classList.toggle("checked", completed > .10);
-    set(mark, { opacity: completed, transform: "scale(" + mix(.55, 1, completed) + ")" });
+    set(mark, { opacity: completed, transform: "scale(" + mix(.55, 1, seated) + ")" });
   });
 
   const mapIn = beat(time, 7.23, .87);
@@ -146,20 +147,21 @@ window.renderMotion = time => {
   set(map, { opacity: .8 * mapIn * (1 - .70 * mapExit), transform: "scale(" + mix(.94, 1.03, mapIn) + ")" });
   const line = flow(phase(time, 7.97, 1.66));
   route.style.strokeDashoffset = 100 * (1 - line);
-  dots.forEach((dot, index) => dot.style.opacity = beat(time, 7.90 + index * .27, .40));
+  dots.forEach((dot, index) => dot.style.opacity = snap(time, 7.90 + index * .27, .24));
 
-  const formIn = beat(time, 4.80, .46);
+  const formIn = snap(time, 4.80, .27);
   const formOut = flow(phase(time, 6.96, .27));
   set(modal, { opacity: formIn * (1 - formOut), transform: "translateY(" + (24 * (1 - formIn) - 22 * formOut) + "px)" });
   field.textContent = mask.slice(0, Math.floor(mask.length * flow(phase(time, 5.28, .95)))).join("");
   caret.style.opacity = time >= 5.14 && time < 6.36 && Math.floor(time * 4) % 2 === 0 ? 1 : 0;
-  const press = Math.sin(Math.PI * phase(time, 6.30, .28));
+  const press = Math.sin(Math.PI * phase(time, 6.30, .19));
   connect.style.transform = "scale(" + (1 - .11 * press) + ")";
   connect.textContent = time >= 6.42 ? "✓" : button;
 
-  const check = beat(time, 10.06, .40);
-  set(finalCheck, { left: "903.5px", top: middleY - 56.5 + "px", opacity: check, transform: "scale(" + mix(.63, 1, check) + ")" });
-  const close = beat(time, 10.56, .73);
+  const check = snap(time, 10.06, .23);
+  const checkSeat = spring(time, 10.06, .29);
+  set(finalCheck, { left: "903.5px", top: middleY - 56.5 + "px", opacity: check, transform: "scale(" + mix(.63, 1, checkSeat) + ")" });
+  const close = snap(time, 10.56, .29);
   set(final, { opacity: close, transform: "translateY(" + 34 * (1 - close) + "px)" });
 };
 window.renderMotion(0);
