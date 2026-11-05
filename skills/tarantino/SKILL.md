@@ -19,13 +19,23 @@ Quando o contexto confirmar que o apresentador fala com o editor, interprete “
 Escolha as ferramentas pelo trabalho. FFmpeg e ffprobe ajudam a inspecionar, cortar, montar, mixar e exportar. Para composições animadas, consulte o [guia oficial do HyperFrames](https://hyperframes.app/docs/1-startup/2-quickstart) ou siga a ferramenta do projeto, como Remotion.
 
 Quando a pessoa mencionar um efeito da galeria, consulte o [catálogo de motion do SquadOS](https://raw.githubusercontent.com/squados/squados-plugins/main/motion-gallery/catalog.json). Se o checkout do catálogo estiver disponível no workspace, use o arquivo local `squados-plugins/motion-gallery/catalog.json`. Resolva cada efeito pelo nome exato ou ID. Consulte `title`, `aliases` e `id`.
-Para aplicar a animação da galeria, use a função `window.motionDemos[demo.key]`
-do arquivo `demo.file`, relativo ao catálogo. Limpe o quadro e isole o
-estado do contexto antes de desenhar em 480 × 270. Calcule o progresso de 0
-a 1 a partir de `demo.seconds`. Use o alpha para sobrepor o efeito. Quando
-`demo.background` for preto ou branco, dimensione o efeito para a região
-prevista na montagem. Para uma transição entre takes, aplique a coreografia
-de `prompt` às imagens do projeto.
+Use `source.package` para localizar a skill original da Skillry na instalação
+local ou em `ibeia-videoskills/benchmark/skillry/` no workspace. Abra o
+`SKILL.md` do pacote e use o gerador correspondente com o `id` do catálogo.
+
+- CreatorMotion (`bs-creatormotion`): `node "<pasta-do-pacote>/scripts/create.mjs" --skill <id> --out <cena>`.
+- LaunchMotion (`bs-launchmotion`): `node "<pasta-do-pacote>/scripts/create.mjs" --effect <id> --out <cena>`.
+- Paper Cutout (`bs-paper-cutout-story-video`): prepare o storyboard e rode
+  `node "<pasta-do-pacote>/scripts/build.mjs" --storyboard <arquivo.json> --out <cena>`.
+  No Windows, se o Paper Cutout 1.0.0 gerar um caminho inválido, use uma
+  cópia de trabalho do pacote. Em `build.mjs` e `lib/browser.mjs`, importe
+  `fileURLToPath` de `node:url` e use `fileURLToPath(import.meta.url)` no
+  lugar de `new URL(import.meta.url).pathname`.
+
+Passe a mídia e os textos do projeto conforme as instruções do efeito,
+preserve a coreografia e renderize pelo fluxo do pacote. A prévia oficial
+está em `source.url`. Se o pacote estiver ausente, indique ao usuário essa
+página para obter acesso à skill original.
 
 Use os exemplos e a identidade indicados. Escolha como movimento, tipografia e som ajudam a contar a história. Em tela com câmera no canto, preserve a ação, o cursor e a leitura. Para um logo acompanhando a mão, use tracking disponível ou marque posições ao longo do take e confira as passagens rápidas. Para uma notícia, use a fonte ou o print real e destaque o trecho relevante. Componha uma simulação de interface para o momento da fala em que ela ajuda a explicar.
 

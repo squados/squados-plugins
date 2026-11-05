@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Animações isoladas de motion design, edição e transições, com o nome e o prompt de cada efeito.">
+  <meta name="description" content="Efeitos de motion da Skillry com nomes, prompts de uso e links para as prévias oficiais.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='9' width='40' height='30' rx='5' fill='%23b9a9fa'/%3E%3Cpath d='m20 16 12 8-12 8Z' fill='%23262234'/%3E%3C/svg%3E">
   <title>Galeria de motion | SquadOS</title>
   <link rel="stylesheet" href="gallery.css">
@@ -19,7 +19,7 @@
     <div class="intro">
       <div>
         <h1>Galeria de motion</h1>
-        <p>Animações isoladas para edição, motion design e transições. Reproduza o efeito e cite o nome ao pedir para usar no vídeo.</p>
+        <p>Encontre efeitos do CreatorMotion e cenas do LaunchMotion. Abra a prévia oficial na Skillry e cite o nome ao pedir para usar no vídeo.</p>
       </div>
       <div class="intro-frames" aria-hidden="true">
         <span></span><span></span><span></span><span></span>
@@ -28,7 +28,7 @@
     <div class="toolbar" aria-label="Filtros do catálogo">
       <label class="field field-search">
         <span>Buscar efeito</span>
-        <input type="search" id="query" placeholder="Nome ou ID" autocomplete="off">
+        <input type="search" id="query" placeholder="Nome, coleção ou ID" autocomplete="off">
       </label>
       <label class="field">
         <span>Categoria</span>
@@ -36,16 +36,12 @@
       </label>
       <output id="total" aria-live="polite"></output>
     </div>
-    <noscript>Ative o JavaScript do navegador para ver as demonstrações.</noscript>
+    <noscript>Ative o JavaScript do navegador para consultar o catálogo.</noscript>
     <div id="groups"></div>
     <p class="empty" id="empty" hidden>Nenhum efeito encontrado. Tente outro nome ou categoria.</p>
     <footer>Galeria de motion do SquadOS <a href="catalog.json">Catálogo JSON</a></footer>
   </main>
   <script id="catalog" type="application/json"><!-- CATALOG --></script>
-  <script src="demos-house-a.js" defer></script>
-  <script src="demos-house-b.js" defer></script>
-  <script src="demos-iart.js" defer></script>
-  <script src="demos-editing.js" defer></script>
   <script src="gallery.js" defer></script>
 </body>
 </html>

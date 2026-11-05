@@ -24,10 +24,10 @@ one only pastes its text into the message bar; the person still submits it.
 
 ## Galeria de motion
 
-A [galeria de motion](motion-gallery/README.md) reúne demonstrações de edição,
-motion design, b-roll e transições. Abra [motion-gallery/index.html](motion-gallery/index.html)
-no navegador para ver os efeitos por categoria. A Tarantino consulta o
-[catálogo JSON](motion-gallery/catalog.json) quando você pede um efeito pelo nome.
+A [galeria de motion](motion-gallery/README.md) indexa efeitos do CreatorMotion,
+cenas do LaunchMotion e o fluxo Paper Cutout. Abra [motion-gallery/index.html](motion-gallery/index.html)
+para buscar por nome e abrir a prévia oficial da Skillry. A Tarantino consulta o
+[catálogo JSON](motion-gallery/catalog.json) e usa o gerador do pacote original.
 
 ## Biblioteca de especialistas
 

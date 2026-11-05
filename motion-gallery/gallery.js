@@ -10,13 +10,12 @@
   const categories = new Map()
   const cards = new Map()
   const normalize = text => text.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()
-  const stageWidth = 480
-  const stageHeight = 270
-  const firstCategories = ['Transições de cena', 'Tipografia e legendas']
-  const collator = new Intl.Collator('pt-BR')
-  const preferredOrder = title => firstCategories.includes(title) ? firstCategories.indexOf(title) : firstCategories.length
-  let playing = null
-  let frameId = 0
+  const collectionLabels = {
+    'bs-creatormotion': 'CreatorMotion',
+    'bs-launchmotion': 'LaunchMotion',
+    'bs-paper-cutout-story-video': 'Paper Cutout',
+  }
+  const seconds = new Intl.NumberFormat('pt-BR')
 
   function element(tag, className, text) {
     const node = document.createElement(tag)
@@ -25,154 +24,43 @@
     return node
   }
 
-  function setPlayLabel(card, label) {
-    card.label.textContent = label
-    card.button.setAttribute('aria-label', label + ' ' + card.entry.title)
-    card.icon.setAttribute('d', label === 'Pausar' ? 'M4 3h3v10H4zM9 3h3v10H9z' : 'M5 2.5 13 8l-8 5.5z')
-  }
-
   function makeCard(entry) {
     const article = element('article', 'card')
     article.id = entry.id
-    const preview = element('div', 'preview')
-    preview.dataset.background = entry.demo.background
-    const controls = element('div', 'preview-controls')
-    const button = element('button', 'play')
-    button.type = 'button'
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-    svg.setAttribute('viewBox', '0 0 16 16')
-    svg.setAttribute('aria-hidden', 'true')
-    const icon = document.createElementNS(svg.namespaceURI, 'path')
-    svg.append(icon)
-    const label = element('span')
-    button.append(svg, label)
+    const collection = collectionLabels[entry.source.package]
+    const meta = entry.seconds ? collection + ' · ' + seconds.format(entry.seconds) + ' s' : collection + ' · Fluxo de vídeo'
+    const heading = element('h3', null, entry.title)
+    const permalink = element('a', 'card-id', entry.id)
+    permalink.href = '#' + entry.id
+    permalink.setAttribute('aria-label', 'Link para ' + entry.title + ', ' + entry.id)
 
-    const progress = element('progress')
-    progress.max = 1
-    progress.value = 0
-    progress.setAttribute('aria-hidden', 'true')
-    progress.hidden = true
-    controls.append(button, progress)
+    const preview = element('a', 'preview-link', 'Ver prévia na Skillry ↗')
+    preview.href = entry.source.url
+    preview.target = '_blank'
+    preview.rel = 'noopener noreferrer'
+    preview.setAttribute('aria-label', 'Ver prévia de ' + entry.title + ' na Skillry (nova aba)')
 
     const copy = element('div', 'card-copy')
-    const name = element('div', 'card-name')
-    const link = element('a', 'card-id', entry.id)
-    link.href = '#' + entry.id
-    link.setAttribute('aria-label', 'Link para ' + entry.title + ', ' + entry.id)
-    const heading = element('h3', null, entry.title)
-    name.append(link, heading)
-    copy.append(name, controls)
-
+    copy.append(element('p', 'card-meta', meta), heading, permalink, preview)
     const details = element('details')
     details.append(element('summary', null, 'Ver prompt'), element('p', 'prompt', entry.prompt))
-    if (entry.source.url) {
-      const source = element('a', 'source', 'Referência original')
-      source.href = entry.source.url
-      details.append(source)
-    }
-
-    article.append(preview, copy, details)
-    const card = {
-      article, preview, button, icon, label, progress, entry,
-      search: normalize([entry.title, entry.id, ...(entry.aliases ?? [])].join(' ')),
-      canvas: null, ctx: null, time: 0, started: false
-    }
-    setPlayLabel(card, 'Reproduzir')
-    button.addEventListener('click', () => toggle(card))
-    cards.set(entry.id, card)
-    return card
-  }
-
-  function unavailable(card, error) {
-    if (playing === card) stop()
-    card.button.disabled = true
-    card.canvas?.remove()
-    card.preview.append(element('span', 'preview-error', 'Prévia indisponível'))
-    console.error('Falha na demo ' + card.entry.id, error)
-  }
-
-  function draw(card, time) {
-    try {
-      if (!card.canvas) {
-        card.canvas = element('canvas')
-        card.density = Math.min(2, window.devicePixelRatio || 1)
-        card.canvas.width = Math.round(stageWidth * card.density)
-        card.canvas.height = Math.round(stageHeight * card.density)
-        card.canvas.setAttribute('aria-hidden', 'true')
-        card.ctx = card.canvas.getContext('2d')
-        card.preview.prepend(card.canvas)
-      }
-      const ctx = card.ctx
-      ctx.save()
-      try {
-        ctx.clearRect(0, 0, card.canvas.width, card.canvas.height)
-        ctx.scale(card.canvas.width / stageWidth, card.canvas.height / stageHeight)
-        window.motionDemos[card.entry.demo.key](ctx, time)
-      } finally {
-        ctx.restore()
-      }
-      return true
-    } catch (error) {
-      unavailable(card, error)
-      return false
+    article.append(copy, details)
+    return {
+      article,
+      search: normalize([entry.title, entry.category, collection, entry.id, ...(entry.aliases ?? [])].join(' ')),
     }
   }
-
-  function stop() {
-    if (!playing) return
-    cancelAnimationFrame(frameId)
-    setPlayLabel(playing, playing.time >= 1 ? 'Repetir' : 'Continuar')
-    playing = null
-  }
-
-  function toggle(card) {
-    if (playing === card) {
-      stop()
-      return
-    }
-    stop()
-    if (card.time >= 1) card.time = 0
-    if (!draw(card, card.time)) return
-    playing = card
-    card.started = true
-    card.progress.hidden = false
-    card.progress.value = card.time
-    setPlayLabel(card, 'Pausar')
-    const duration = card.entry.demo.seconds * 1000
-    const startedAt = performance.now() - card.time * duration
-    function tick(now) {
-      card.time = Math.min(1, Math.max(0, (now - startedAt) / duration))
-      if (!draw(card, card.time)) return
-      card.progress.value = card.time
-      if (card.time < 1) frameId = requestAnimationFrame(tick)
-      else stop()
-    }
-    frameId = requestAnimationFrame(tick)
-  }
-
-  const observer = new IntersectionObserver(records => {
-    for (const record of records) {
-      const card = cards.get(record.target.id)
-      if (record.isIntersecting) {
-        if (!card.canvas && !card.button.disabled) {
-          draw(card, card.started ? card.time : (card.entry.demo.posterAt ?? 0.45))
-        }
-      } else if (card.canvas) {
-        if (playing === card) stop()
-        card.canvas.remove()
-        card.canvas = null
-        card.ctx = null
-      }
-    }
-  }, { rootMargin: '180px' })
 
   for (const entry of entries) {
     if (!categories.has(entry.category)) categories.set(entry.category, { cards: [] })
-    categories.get(entry.category).cards.push(makeCard(entry))
+    const card = makeCard(entry)
+    categories.get(entry.category).cards.push(card)
+    cards.set(entry.id, card)
   }
 
-  const orderedCategories = [...categories.keys()].sort((a, b) =>
-    preferredOrder(a) - preferredOrder(b) || collator.compare(a, b))
+  const firstCategories = ['Transições de cena', 'Tipografia e legendas']
+  const orderedCategories = [...firstCategories.filter(title => categories.has(title)),
+    ...[...categories.keys()].filter(title => !firstCategories.includes(title)).sort((a, b) => a.localeCompare(b, 'pt-BR'))]
   orderedCategories.forEach((title, index) => {
     const category = categories.get(title)
     const section = element('section', 'group')
@@ -184,14 +72,7 @@
     category.count = element('span')
     header.append(heading, category.count)
     const grid = element('div', 'grid')
-    if (title === 'Transições de cena') {
-      category.cards.sort((a, b) =>
-        Number(b.entry.source.collection === 'showcase') - Number(a.entry.source.collection === 'showcase'))
-    }
-    for (const card of category.cards) {
-      grid.append(card.article)
-      observer.observe(card.article)
-    }
+    grid.append(...category.cards.map(card => card.article))
     section.append(header, grid)
     groups.append(section)
     categoryField.add(new Option(title, title))
@@ -207,13 +88,12 @@
         const matches = inCategory && words.every(word => card.search.includes(word))
         card.article.hidden = !matches
         if (matches) count++
-        else if (playing === card) stop()
       }
-      category.count.textContent = count === 1 ? '1 demo' : count + ' demos'
+      category.count.textContent = count === 1 ? '1 resultado' : count + ' resultados'
       category.section.hidden = count === 0
       visible += count
     }
-    total.value = visible + (visible === 1 ? ' efeito' : ' efeitos')
+    total.value = visible + (visible === 1 ? ' resultado' : ' resultados')
     empty.hidden = visible !== 0
   }
 
@@ -234,7 +114,6 @@
   queryField.addEventListener('input', applyFilters)
   categoryField.addEventListener('change', applyFilters)
   window.addEventListener('hashchange', revealLinkedCard)
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stop() })
   applyFilters()
   revealLinkedCard()
 })()
