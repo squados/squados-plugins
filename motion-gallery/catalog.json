@@ -5716,7 +5716,7 @@
         "karaokê por palavra",
         "tarja de legenda"
       ],
-      "seconds": 7.1,
+      "seconds": 4.4,
       "prompt": "Use Legenda de Palavra Ativa neste trecho. Mantenha o bloco de legenda na mesma posição e destaque uma palavra por vez, seguindo os tempos do take.",
       "demo": {
         "composition": "scenes/legenda-palavra-ativa/index.html",

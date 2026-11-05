@@ -16,6 +16,6 @@ Abra a raiz do checkout `squados-plugins`, crie um JSON com as entradas da cena 
 node scripts/render-motion.mjs "legenda-palavra-ativa" --inputs dados.json --out cena.mp4
 ```
 
-O JSON aceita `presenter`, `layout`, `cues`. Caminhos de mídia são relativos ao JSON. A [composição](index.html) dura 7,1 s. Sem `--inputs`, a composição usa a amostra genérica. O preview do cartão usa um take em movimento.
+O JSON aceita `presenter`, `layout`, `cues`. Caminhos de mídia são relativos ao JSON. A [composição](index.html) dura 4,4 s. Sem `--inputs`, a composição usa a amostra genérica. O preview do cartão usa um take em movimento.
 
 Confira o começo de cada palavra na fala, a posição das linhas nas trocas de bloco e o fim da legenda dentro da área segura.

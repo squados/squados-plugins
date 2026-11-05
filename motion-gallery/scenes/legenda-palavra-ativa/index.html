@@ -15,17 +15,16 @@
 </style>
 </head>
 <body>
-<main data-composition-id="legenda-palavra-ativa" data-start="0" data-duration="7.1" data-width="1920" data-height="1080">
-<div class="take"><!-- motion-media:presenter:0:7.1:0 --></div>
+<main data-composition-id="legenda-palavra-ativa" data-start="0" data-duration="4.4" data-width="1920" data-height="1080">
+<div class="take"><!-- motion-media:presenter:0:4.4:0 --></div>
 <p class="caption"></p>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
 stage.dataset.layout=inputs.layout==="quente"?"quente":"tarja";
 const cues=inputs.cues ?? [
-  {start:.15,end:1.78,words:["A","IA","monta","o","corte."],times:[.15,.34,.65,1.1,1.32]},
-  {start:1.82,end:3.56,words:["Você","escolhe","o","ritmo."],times:[1.82,2.21,2.72,3.03]},
-  {start:3.64,end:5.75,words:["E","o","vídeo","ganha","vida."],times:[3.64,3.91,4.17,4.68,5.12]}
+  {start:.12,end:2.03,words:["A","IA","monta","o","corte."],times:[.12,.34,.65,1.1,1.32]},
+  {start:2.13,end:4.22,words:["Você","escolhe","o","ritmo."],times:[2.13,2.51,3.12,3.4]}
 ];
 const caption=one(".caption");
 const lines=cues.map(cue => cue.words.map(word => {

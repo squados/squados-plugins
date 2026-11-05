@@ -9,8 +9,8 @@ vídeos do **Acervo complementar** e as 271 entradas em **Referências da Skillr
 A busca respeita o filtro ativo. Os vídeos próprios são lidos de `previews/`. A categoria **Edição comparada**
 reúne as sete cenas do [comparativo de edições](comparativo-de-edicoes.md).
 Abra pelo atalho no topo para ver os previews e os links de reutilização.
-**Legenda de Palavra Ativa** e **Cena em Vidros** usam trechos em movimento
-do apresentador com o áudio do vídeo de referência.
+**Legenda de Palavra Ativa** e **Cena em Vidros** usam o take de boas-vindas
+de Renato que já faz parte dos previews locais da galeria.
 
 O [catálogo JSON](catalog.json) cobre 122 efeitos de CreatorMotion 1.0.1,
 208 cenas de LaunchMotion 1.0.4 e o fluxo Paper Cutout Story Video 1.0.0.

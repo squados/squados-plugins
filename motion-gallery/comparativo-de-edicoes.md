@@ -16,11 +16,11 @@ abrem as demonstrações da galeria.
 | 00:73,3–00:78,8 | A marca e a assinatura entram à direita. | Lettering editorial à esquerda permanece no quadro e ganha um selo de chamada menta depois. | [Assinatura com Chamada](index.html#assinatura-com-chamada), versões `marca` e `editorial`. |
 | 00:76,3–00:78,8 | Pequena interface de comentário entra à direita, mostra a palavra-chave e indica a conversa privada. | A instrução de comentário aparece sob a assinatura e segura no fim. | [Do Comentário ao Direct](index.html#do-comentario-ao-direct). Na faixa inferior, o selo já faz parte de [Assinatura com Chamada](index.html#assinatura-com-chamada). |
 
-Os previews de **Legenda de Palavra Ativa** e **Cena em Vidros** incluem o
-take em movimento e o áudio da gravação. Na legenda, o novo enquadramento
-mantém o texto anterior fora do quadro. Na cena em vidros, o apresentador
-recortado em movimento ocupa a camada da frente. As outras demonstrações
-usam um retrato gerado no ImageGen do Codex e conteúdo ilustrativo.
+Os previews de **Legenda de Palavra Ativa** e **Cena em Vidros** usam o
+take de boas-vindas de Renato da galeria. A legenda destaca a frase
+“Olá, seja muito bem-vindo!”. Na cena em vidros, Renato aparece em movimento
+na camada da frente. As outras demonstrações usam um retrato gerado no
+ImageGen do Codex e conteúdo ilustrativo.
 
 [Retrato de demonstração](scenes/motion-assets/duelo-apresentador.webp) ·
 [Documentação de composições do HyperFrames](https://hyperframes.heygen.com/concepts/compositions) ·
