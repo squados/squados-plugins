@@ -5586,6 +5586,12 @@
           "secondName": "text",
           "firstResult": "text",
           "secondResult": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/duelo-em-dois-takes.mp4",
+          "lane": "both",
+          "start": 0,
+          "end": 78.8
         }
       }
     },
@@ -5610,6 +5616,12 @@
           "firstName": "text",
           "secondName": "text",
           "layout": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/pergunta-e-confronto.mp4",
+          "lane": "upper",
+          "start": 1.4,
+          "end": 7.4
         }
       }
     },
@@ -5634,6 +5646,12 @@
           "rightMark": "image",
           "leftTrack": "array",
           "rightTrack": "array"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/icones-da-mao-ao-fundo.mp4",
+          "lane": "upper",
+          "start": 7.5,
+          "end": 22.7
         }
       }
     },
@@ -5657,6 +5675,12 @@
           "title": "text",
           "labels": "array",
           "layout": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/cena-em-vidros.mp4",
+          "lane": "upper",
+          "start": 22.8,
+          "end": 32.8
         }
       }
     },
@@ -5681,6 +5705,12 @@
           "title": "text",
           "detail": "text",
           "layout": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/camera-encaixa-na-moldura.mp4",
+          "lane": "upper",
+          "start": 33.4,
+          "end": 36.6
         }
       }
     },
@@ -5705,6 +5735,12 @@
           "ingredients": "array",
           "steps": "array",
           "layout": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/receita-em-movimento.mp4",
+          "lane": "upper",
+          "start": 35.6,
+          "end": 49.9
         }
       }
     },
@@ -5730,6 +5766,12 @@
           "third": "media",
           "titles": "array",
           "direction": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/reels-atras-da-camera.mp4",
+          "lane": "upper",
+          "start": 51.4,
+          "end": 60.6
         }
       }
     },
@@ -5753,6 +5795,12 @@
           "title": "text",
           "labels": "array",
           "layout": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/casa-em-vista-explodida.mp4",
+          "lane": "upper",
+          "start": 60.7,
+          "end": 72.8
         }
       }
     },
@@ -5775,6 +5823,12 @@
           "title": "text",
           "tasks": "array",
           "unit": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/balanco-em-contagem.mp4",
+          "lane": "upper",
+          "start": 72.6,
+          "end": 74.1
         }
       }
     },
@@ -5800,6 +5854,12 @@
           "emphasis": "text",
           "action": "text",
           "layout": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/assinatura-com-chamada.mp4",
+          "lane": "upper",
+          "start": 73.8,
+          "end": 76.6
         }
       }
     },
@@ -5823,6 +5883,12 @@
           "comment": "text",
           "keyword": "text",
           "message": "text"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/do-comentario-ao-direct.mp4",
+          "lane": "upper",
+          "start": 76.3,
+          "end": 78.8
         }
       }
     },
@@ -5845,6 +5911,12 @@
           "presenter": "media",
           "layout": "text",
           "cues": "array"
+        },
+        "reference": {
+          "preview": "previews/referencias-edicao/legenda-palavra-ativa.mp4",
+          "lane": "lower",
+          "start": 0,
+          "end": 6.4
         }
       }
     }

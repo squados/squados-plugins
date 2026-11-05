@@ -77,7 +77,14 @@ test('edição comparada tem um guia de reutilização e uma composição por ef
   const entries = catalog.entries.filter(entry => entry.category === 'Edição comparada')
   assert.equal(entries.length, 12)
   const inventory = read('comparativo-de-edicoes.md')
+  const references = catalog.entries.filter(entry => entry.demo?.reference)
+  assert.deepEqual(references.map(entry => entry.id), entries.map(entry => entry.id))
   for (const { id, demo, seconds } of entries) {
+    const { preview, start, end, lane } = demo.reference
+    assert.equal(preview, 'previews/referencias-edicao/' + id + '.mp4')
+    assert.ok(Number.isFinite(start) && Number.isFinite(end) && 0 <= start && start < end && end <= 78.8, id)
+    assert.ok(['upper', 'lower', 'both'].includes(lane), id)
+    assert.equal(lane === 'both', id === 'duelo-em-dois-takes')
     assert.equal(demo.skill, 'scenes/' + id + '/SKILL.md')
     assert.ok(read(demo.skill).split(/\r?\n/).includes('name: ' + id), id)
     const composition = read(demo.composition)

@@ -7,8 +7,12 @@ A galeria funciona por arquivo local e abre em **Seleção principal**, com
 50 efeitos próprios em seis categorias. Use o filtro para consultar os 23
 vídeos do **Acervo complementar** e as 271 entradas em **Referências da Skillry**.
 A busca respeita o filtro ativo. Os vídeos próprios são lidos de `previews/`. A categoria **Edição comparada**
-reúne as 12 cenas do [comparativo de edições](comparativo-de-edicoes.md), com
-um link para a skill de cada efeito no cartão.
+reúne as 12 cenas do [comparativo de edições](comparativo-de-edicoes.md). Os
+cartões mostram o **Vídeo original** à esquerda e a **Recriação** à direita, com
+controles independentes e um link para a skill. Abra pela opção **Edição comparada**
+no topo. O primeiro cartão mostra o original completo. Nos demais, a legenda
+do player indica a faixa e o intervalo no vídeo original. Esses trechos ficam
+em `previews/referencias-edicao/` no checkout local.
 
 O [catálogo JSON](catalog.json) cobre 122 efeitos de CreatorMotion 1.0.1,
 208 cenas de LaunchMotion 1.0.4 e o fluxo Paper Cutout Story Video 1.0.0.
