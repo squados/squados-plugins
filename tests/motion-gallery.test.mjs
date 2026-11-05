@@ -19,12 +19,19 @@ test('catálogo indexa o benchmark Skillry com slugs e páginas oficiais', () =>
   for (const [packageName, count] of collections) {
     assert.equal(entries.filter(entry => entry.source.package === packageName).length, count)
   }
+  const originals = entries.filter(entry => entry.demo)
+  assert.deepEqual(originals.map(entry => entry.id), ['grafico-em-contracampo'])
   for (const entry of entries) {
     assert.ok(collections.has(entry.source.package), entry.id)
-    assert.match(entry.id, new RegExp('^' + entry.source.package + '(?:-[a-z0-9-]+)?$'))
+    const sourceId = entry.source.id ?? entry.id
+    assert.match(sourceId, new RegExp('^' + entry.source.package + '(?:-[a-z0-9-]+)?$'))
     assert.ok(entry.title && entry.category && entry.prompt.includes(entry.title), entry.id)
-    assert.equal(entry.source.url, 'https://skillry.dev/skills/' + entry.id)
-    assert.equal(entry.demo, undefined)
+    assert.equal(entry.source.url, 'https://skillry.dev/skills/' + sourceId)
+    if (entry.demo) {
+      assert.ok(entry.aliases.includes(sourceId))
+      assert.equal(entry.demo.preview, 'previews/' + entry.id + '.mp4')
+      assert.match(read(entry.demo.composition), /data-composition-id="grafico-em-contracampo"/)
+    }
   }
   const spectrum = entries.find(entry => entry.title === 'Light Spectrum')
   assert.equal(spectrum.id, 'bs-launchmotion-ui-star-flash-irises')
@@ -44,6 +51,7 @@ test('Tarantino resolve a referência e usa os geradores Skillry', () => {
   const skill = readFileSync(new URL('../skills/tarantino/SKILL.md', import.meta.url), 'utf8')
   assert.match(skill, /https:\/\/raw\.githubusercontent\.com\/squados\/squados-plugins\/main\/motion-gallery\/catalog\.json/)
   assert.match(skill, /nome exato ou ID/)
+  assert.match(skill, /render-motion\.mjs/)
   assert.match(skill, /--skill/)
   assert.match(skill, /--effect/)
   assert.match(skill, /--storyboard/)

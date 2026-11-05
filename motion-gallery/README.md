@@ -3,7 +3,9 @@
 Abra [index.html](index.html) no navegador. Busque pelo nome, alias, coleção ou
 ID do efeito. **Ver prévia na Skillry** abre a página do efeito no catálogo
 oficial. **Ver prompt** mostra um pedido que você pode usar numa edição.
-A busca funciona por arquivo local. As prévias são abertas no site da Skillry.
+A busca funciona por arquivo local. A galeria abre em **Motions próprios**.
+O player desse cartão usa o vídeo local em `previews/`. As entradas de
+referência abrem suas prévias no site da Skillry.
 
 O [catálogo JSON](catalog.json) contém 122 efeitos de CreatorMotion 1.0.1,
 208 cenas de LaunchMotion 1.0.4 e o fluxo Paper Cutout Story Video 1.0.0.
@@ -17,6 +19,21 @@ A Tarantino e a ibeia-video-edit resolvem `title`, `aliases` ou `id` e leem
 `source.package`. Com o pacote original instalado ou acessível no benchmark,
 siga o `SKILL.md` do pacote para criar e renderizar a cena usando o ID.
 A página oficial em `source.url` é a referência de prévia e instalação.
+
+Para **Gráfico em Contracampo**, prepare um JSON com `presenter` apontando
+para uma foto ou um take de 6,8 s ou mais. Caminhos relativos são resolvidos
+a partir da pasta do JSON. Você pode enviar duas séries de 2 a 6 números de
+0 a 100 em `series`, com o mesmo número de pontos, e os rótulos em
+`axisLabels`. Use `title`, `labelA`, `labelB`, `note` e `accent` para
+adaptar o texto e a cor do gráfico. Os dados padrão são ilustrativos.
+
+```powershell
+node scripts/render-motion.mjs "Gráfico em Contracampo" --inputs dados.json --out cena.mp4
+```
+
+O comando gera 1920 × 1080 a 30 fps com HyperFrames 0.8.33. Sem `--out`,
+atualiza o vídeo do cartão. Os vídeos, fotos e entradas da demonstração
+ficam em `previews/` no checkout local.
 
 Ao editar o catálogo, atualize o HTML com `node scripts/build-motion-gallery.mjs`
 a partir da raiz. Valide com `node scripts/build-motion-gallery.mjs --check` e

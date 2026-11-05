@@ -27,26 +27,44 @@
   function makeCard(entry) {
     const article = element('article', 'card')
     article.id = entry.id
-    const collection = collectionLabels[entry.source.package]
+    const collection = entry.demo ? 'Motion próprio' : collectionLabels[entry.source.package] + ' · Referência'
     const meta = entry.seconds ? collection + ' · ' + seconds.format(entry.seconds) + ' s' : collection + ' · Fluxo de vídeo'
     const heading = element('h3', null, entry.title)
     const permalink = element('a', 'card-id', entry.id)
     permalink.href = '#' + entry.id
     permalink.setAttribute('aria-label', 'Link para ' + entry.title + ', ' + entry.id)
 
-    const preview = element('a', 'preview-link', 'Ver prévia na Skillry ↗')
-    preview.href = entry.source.url
-    preview.target = '_blank'
-    preview.rel = 'noopener noreferrer'
-    preview.setAttribute('aria-label', 'Ver prévia de ' + entry.title + ' na Skillry (nova aba)')
-
     const copy = element('div', 'card-copy')
-    copy.append(element('p', 'card-meta', meta), heading, permalink, preview)
+    copy.append(element('p', 'card-meta', meta), heading, permalink)
+    if (entry.demo) {
+      const video = element('video', 'motion-video')
+      video.controls = true
+      video.playsInline = true
+      video.preload = 'metadata'
+      video.src = entry.demo.preview
+      video.setAttribute('aria-label', entry.title)
+      video.addEventListener('error', () => {
+        video.hidden = true
+        copy.prepend(element('p', 'card-meta', 'Vídeo indisponível neste checkout.'))
+      }, { once: true })
+      copy.prepend(video)
+      const source = element('a', 'preview-link', 'Fonte da composição')
+      source.href = entry.demo.composition
+      copy.append(source)
+    } else {
+      const preview = element('a', 'preview-link', 'Ver prévia na Skillry ↗')
+      preview.href = entry.source.url
+      preview.target = '_blank'
+      preview.rel = 'noopener noreferrer'
+      preview.setAttribute('aria-label', 'Ver prévia de ' + entry.title + ' na Skillry (nova aba)')
+      copy.append(preview)
+    }
     const details = element('details')
     details.append(element('summary', null, 'Ver prompt'), element('p', 'prompt', entry.prompt))
     article.append(copy, details)
     return {
       article,
+      own: Boolean(entry.demo),
       search: normalize([entry.title, entry.category, collection, entry.id, ...(entry.aliases ?? [])].join(' ')),
     }
   }
@@ -78,14 +96,18 @@
     categoryField.add(new Option(title, title))
   })
 
+  const ownOption = new Option('Motions próprios', 'own')
+  if (entries.some(entry => entry.demo)) categoryField.add(ownOption, 0)
+
   function applyFilters() {
     const words = normalize(queryField.value.trim()).split(/\s+/).filter(Boolean)
+    groups.dataset.own = String(categoryField.value === 'own')
     let visible = 0
     for (const [title, category] of categories) {
-      const inCategory = !categoryField.value || title === categoryField.value
+      const inCategory = !categoryField.value || title === categoryField.value || categoryField.value === 'own'
       let count = 0
       for (const card of category.cards) {
-        const matches = inCategory && words.every(word => card.search.includes(word))
+        const matches = inCategory && (categoryField.value !== 'own' || card.own) && words.every(word => card.search.includes(word))
         card.article.hidden = !matches
         if (matches) count++
       }
@@ -111,9 +133,13 @@
     card.article.scrollIntoView({ block: 'start' })
   }
 
-  queryField.addEventListener('input', applyFilters)
+  queryField.addEventListener('input', () => {
+    if (categoryField.value === 'own') categoryField.value = ''
+    applyFilters()
+  })
   categoryField.addEventListener('change', applyFilters)
   window.addEventListener('hashchange', revealLinkedCard)
+  if (ownOption.parentNode) categoryField.value = 'own'
   applyFilters()
   revealLinkedCard()
 })()

@@ -1276,17 +1276,37 @@
       }
     },
     {
-      "id": "bs-creatormotion-split-chart-swap",
-      "title": "Chart Presenter Swap",
+      "id": "grafico-em-contracampo",
+      "title": "Gráfico em Contracampo",
       "category": "Apresentador e tela dividida",
       "aliases": [
+        "Chart Presenter Swap",
+        "bs-creatormotion-split-chart-swap",
         "bs-split-chart-swap"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Chart Presenter Swap (bs-creatormotion-split-chart-swap) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo. Use o take do apresentador para esta cena.",
+      "prompt": "Use Gráfico em Contracampo para comparar as duas séries. Mantenha o apresentador visível enquanto o gráfico e o take trocam de lado.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-split-chart-swap"
+        "url": "https://skillry.dev/skills/bs-creatormotion-split-chart-swap",
+        "id": "bs-creatormotion-split-chart-swap"
+      },
+      "demo": {
+        "composition": "scenes/grafico-em-contracampo/index.html",
+        "preview": "previews/grafico-em-contracampo.mp4",
+        "inputs": {
+          "presenter": "media",
+          "title": "text",
+          "series": "array",
+          "axisLabels": "array",
+          "labelA": "text",
+          "labelB": "text",
+          "note": "text",
+          "accent": "color"
+        },
+        "required": [
+          "presenter"
+        ]
       }
     },
     {

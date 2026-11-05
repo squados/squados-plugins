@@ -19,7 +19,14 @@ Quando o contexto confirmar que o apresentador fala com o editor, interprete “
 Escolha as ferramentas pelo trabalho. FFmpeg e ffprobe ajudam a inspecionar, cortar, montar, mixar e exportar. Para composições animadas, consulte o [guia oficial do HyperFrames](https://hyperframes.app/docs/1-startup/2-quickstart) ou siga a ferramenta do projeto, como Remotion.
 
 Quando a pessoa mencionar um efeito da galeria, consulte o [catálogo de motion do SquadOS](https://raw.githubusercontent.com/squados/squados-plugins/main/motion-gallery/catalog.json). Se o checkout do catálogo estiver disponível no workspace, use o arquivo local `squados-plugins/motion-gallery/catalog.json`. Resolva cada efeito pelo nome exato ou ID. Consulte `title`, `aliases` e `id`.
-Use `source.package` para localizar a skill original da Skillry na instalação
+Quando a entrada tiver `demo`, abra `demo.composition` para conferir as entradas
+da peça e prepare um JSON com os campos de `demo.inputs`. No checkout local,
+execute `node "<checkout>/scripts/render-motion.mjs" "<nome ou ID>" --inputs "<dados.json>" --out "<cena.mp4>"`.
+Em **Gráfico em Contracampo**, forneça o take ou retrato em `presenter` e
+as duas séries em `series`. Com um take, use 6,8 s contínuos e preserve a
+sincronia da fala na montagem.
+
+Para uma entrada de referência da Skillry, use `source.package` para localizar a skill original da Skillry na instalação
 local ou em `ibeia-videoskills/benchmark/skillry/` no workspace. Abra o
 `SKILL.md` do pacote e use o gerador correspondente com o `id` do catálogo.
 

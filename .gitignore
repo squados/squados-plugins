@@ -13,3 +13,4 @@ doctor.json
 .env.*
 !.env.example
 !.env.*.example
+/motion-gallery/previews/

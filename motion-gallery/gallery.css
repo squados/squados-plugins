@@ -121,3 +121,6 @@ footer {
   #total { font-size: .73rem; padding-right: 0; }
   .group { margin-top: 25px; }
 }
+
+.motion-video { display: block; width: 100%; aspect-ratio: 16 / 9; margin-bottom: 12px; background: #08080a; }
+#groups[data-own="true"] .grid { grid-template-columns: minmax(0, 900px); }
