@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Mensagens entre Sistemas</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f4f3f7; background: radial-gradient(ellipse at 54% 70%, #303034, #202024 56%, #111114); }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .29; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.lane, .message, .wait { position: absolute; }
+.lane { top: 105px; bottom: 123px; width: 340px; margin-left: -170px; text-align: center; }
+.lane h2 { margin: 14px auto 0; color: #f1edf8; font-size: 48px; }
+.lane svg { width: 64px; height: 64px; padding: 14px; color: #d6c4ff; border-radius: 20px; background: #a98bdf24; }
+.lane-rule { position: absolute; top: 151px; bottom: 0; left: calc(50% - .5px); width: 1px; background: linear-gradient(#cab3f471 55%, #c0aef512); transform-origin: top; }
+.message { height: 3px; --stroke: #d1b9ff; }
+.message.reply { --stroke: #a7d8c5; }
+.line { position: absolute; inset: 0 auto 0 0; background: var(--stroke); }
+.line::after { content: ""; position: absolute; top: -7px; right: 0; width: 17px; height: 17px; background: var(--stroke); clip-path: polygon(0 0,100% 50%,0 100%); }
+.reply .line { right: 0; left: auto; }
+.reply .line::after { right: auto; left: 0; transform: rotate(180deg); }
+.label { position: absolute; left: 50%; bottom: 14px; padding: 0 12px; color: #f1e8ff; font-size: 37px; line-height: 1.06; text-align: center; transform: translateX(-50%); }
+.reply .label { color: #d9eee6; }
+.first .label { bottom: 15px; padding: 10px 21px 12px; border-radius: 11px; background: #c7adff28; }
+.wait { display: flex; align-items: center; justify-content: center; gap: 12px; width: 270px; margin-left: -135px; padding: 7px 15px; border-radius: 12px; color: #decdfb; background: #393040; font-size: 31px; }
+.wait svg { width: 25px; height: 25px; }
+</style>
+</head>
+<body>
+<main data-composition-id="mensagens-entre-sistemas" data-start="0" data-duration="7.3" data-width="1920" data-height="1080">
+  <div class="lanes"></div>
+  <div class="messages"></div>
+  <div class="wait"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span></span></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const defaultParticipants = ["Pessoa", "Agente", "Base de fontes"];
+const defaultMessages = [[0, 1, "Faz uma pergunta"], [1, 2, "Busca fontes"], [2, 1, "Devolve evidências"], [1, 0, "Entrega a resposta"]];
+const people = Array.isArray(inputs.participants) ? inputs.participants.filter(label => typeof label === "string" && label.trim()).slice(0, 4) : [];
+const participants = people.length >= 2 ? people : defaultParticipants;
+const validMessage = item => Array.isArray(item) && item.length >= 3 && Number.isInteger(item[0]) && Number.isInteger(item[1]) && item[0] >= 0 && item[1] >= 0 && item[0] < participants.length && item[1] < participants.length && item[0] !== item[1];
+const proposed = Array.isArray(inputs.messages) ? inputs.messages.filter(validMessage).slice(0, 5) : [];
+const messages = proposed.length ? proposed : defaultMessages.filter(validMessage);
+const icons = [
+  '<circle cx="12" cy="7" r="3.4"/><path d="M5 20v-1.3a7 7 0 0 1 14 0V20"/>',
+  '<rect x="4.5" y="7" width="15" height="12" rx="3"/><path d="M12 7V3.5M8.5 12.5h.01m7 0h.01m-5.5 3.2h4"/>',
+  '<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/>',
+  '<rect x="4.5" y="4.5" width="15" height="15" rx="2"/><path d="M7.5 9h9m-9 3h9m-9 3h5"/>'
+];
+const centers = participants.map((_, i) => mix(320, 1600, i / (participants.length - 1)));
+const lanes = participants.map((label, i) => {
+  const lane = document.createElement("div");
+  lane.className = "lane";
+  lane.style.left = centers[i] + "px";
+  lane.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round">' + icons[i] + '</svg><h2 class="display"></h2><div class="lane-rule"></div>';
+  lane.querySelector("h2").textContent = label;
+  one(".lanes").append(lane);
+  return lane;
+});
+const hasWait = messages.length >= 3 && inputs.waitLabel !== "";
+const steps = messages.map(([from, to, text], i) => {
+  const message = document.createElement("div");
+  const label = document.createElement("p");
+  const line = document.createElement("div");
+  const reverse = from > to;
+  const width = Math.abs(centers[to] - centers[from]) - 18;
+  const y = 362 + i * (messages.length === 5 ? 136 : 168);
+  const time = .91 + i * .91 + (hasWait && i >= 2 ? .73 : 0);
+  message.className = "message" + (reverse ? " reply" : "") + (i === 0 ? " first" : "");
+  label.className = "label";
+  label.textContent = text;
+  line.className = "line";
+  set(message, { top: y + "px", left: (Math.min(centers[from], centers[to]) + 9) + "px", width: width + "px" });
+  label.style.width = Math.min(485, width - 12) + "px";
+  message.append(label, line);
+  one(".messages").append(message);
+  return { y, time, to, message, label, line };
+});
+copy(".wait span", "waitLabel", "Consultando");
+if (hasWait) set(one(".wait"), { left: centers[steps[1].to] + "px", top: (steps[1].y + 37) + "px" });
+window.renderMotion = time => {
+  lanes.forEach((lane, i) => {
+    const show = beat(time, .13 + i * .075, .46);
+    lane.style.opacity = show;
+    lane.querySelector(".lane-rule").style.transform = "scaleY(" + beat(time, .25 + i * .075, .53) + ")";
+  });
+  steps.forEach(({ time: start, message, label, line }) => {
+    const draw = beat(time, start, .54);
+    message.style.visibility = draw ? "visible" : "hidden";
+    set(line, { width: (draw * 100) + "%", opacity: Math.min(1, draw * 10) });
+    const labelIn = beat(time, start + .13, .38);
+    set(label, { opacity: labelIn, transform: "translate(-50%," + (1 - labelIn) * 12 + "px)" });
+  });
+  const waiting = hasWait ? beat(time, steps[1].time + .61, .29) * (1 - flow(phase(time, steps[2].time - .32, .26))) : 0;
+  set(one(".wait"), { opacity: waiting, transform: "translateY(" + (1 - waiting) * 9 + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

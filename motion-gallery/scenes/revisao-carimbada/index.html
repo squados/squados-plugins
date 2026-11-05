@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Revisão Carimbada</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 45% 80%, #323237, #1c1c20 56%, #111113 100%); color: #f7f7f7; }
+main::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.strip { position: absolute; left: 168px; right: 168px; top: 406px; height: 268px; display: grid; place-items: center; border-radius: 23px; border: 1px solid #767987; background: linear-gradient(150deg,#35353d,#25262d); box-shadow: 9px 14px 0 #0b0b0d, 0 24px 68px #07070860; }
+.message { position: relative; display: inline-block; max-width: 91%; padding: 0 13px; font-size: 80px; line-height: 1.05; text-align: center; letter-spacing: -.036em; }
+.strike { position: absolute; left: 0; top: 54%; width: 100%; height: 6px; border-radius: 9px; background: #f4a6a0; transform-origin: left; }
+.stamp { position: absolute; right: -16px; top: -29px; width: 89px; height: 89px; display: grid; place-items: center; border: 5px solid #1d1d22; border-radius: 50%; color: #241818; background: #f4a6a0; }
+.stamp svg { width: 47px; height: 47px; fill: none; stroke: currentColor; stroke-width: 3.7; stroke-linecap: round; stroke-linejoin: round; }
+.correct .stamp { background: #bce0ff; color: #172130; }
+</style>
+</head>
+<body>
+<main data-composition-id="revisao-carimbada" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+  <section class="strip rejected">
+    <h1 class="message"><span></span><i class="strike" aria-hidden="true"></i></h1>
+    <span class="stamp" aria-label="Reprovado"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M12 12l16 16m0-16L12 28"/></svg></span>
+  </section>
+  <section class="strip correct">
+    <h2 class="message"></h2>
+    <span class="stamp" aria-label="Aprovado"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 21l7 7 13-15"/></svg></span>
+  </section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".rejected .message span","before","Faça um resumo.");
+copy(".correct .message","after","Extraia três decisões e cite as fontes.");
+const rejected = one(".rejected");
+const corrected = one(".correct");
+window.renderMotion = time => {
+  const appear = beat(time,.04,.30);
+  const reject = flow(phase(time,1.04,.25));
+  const fall = phase(time,2.12,.33) ** 2.4;
+  set(rejected,{opacity:appear*(1-fall),transform:"translate(" + 170*fall + "px," + (20*(1-appear)+630*fall) + "px) rotate(" + 10*fall + "deg)"});
+  one(".strike").style.transform = "scaleX(" + reject + ")";
+  const bad = beat(time,1.18,.24);
+  set(one(".rejected .stamp"),{opacity:bad,transform:"scale(" + mix(1.27,1,bad) + ")"});
+  const land = beat(time,2.40,.34);
+  set(corrected,{opacity:land,transform:"translateY(" + (1-land)*-53 + "px) rotate(" + (1-land)*-1.7 + "deg)"});
+  const good = beat(time,3.06,.22);
+  set(one(".correct .stamp"),{opacity:good,transform:"scale(" + mix(1.28,1,good) + ") rotate(" + (1-good)*-18 + "deg)"});
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

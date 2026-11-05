@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Roteiro em Papel</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 50% 78%,#39383d,#202024 52%,#141416); color:#f5eee1; }
+main::after { content:""; position:absolute; inset:0; z-index:4; pointer-events:none; opacity:.27; mix-blend-mode:soft-light; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h150v150H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.world { position:absolute; inset:0; }
+.world svg { width:100%; height:100%; overflow:visible; }
+.layer { transform-box:fill-box; transform-origin:center; }
+.paper { position:absolute; padding:22px 42px 28px; text-align:center; border-radius:3px 7px 3px 9px; background:#efe2ca; color:#28282b; box-shadow:8px 14px 0 #0e0e1270; font-size:91px; line-height:1; }
+.story-title { left:188px; right:auto; max-width:1500px; top:151px; transform-origin:18% 50%; }
+.story-title.central { left:230px; right:230px; top:245px; transform-origin:center; }
+.icons { position:absolute; inset:0; pointer-events:none; }
+.piece { position:absolute; width:245px; height:239px; border-radius:36px 42px 39px 32px; filter:drop-shadow(9px 13px 0 #10101472); transform-origin:center; }
+.piece svg { width:100%; height:100%; overflow:visible; }
+.labels { position:absolute; left:215px; right:215px; top:744px; display:flex; justify-content:space-around; gap:22px; }
+.label { display:block; width:420px; text-align:center; padding:16px 19px; border-radius:5px 4px 8px 4px; background:#d0dbe0; color:#252a30; box-shadow:6px 9px 0 #141416; font-size:46px; font-weight:600; }
+.detail { position:absolute; left:231px; right:231px; top:832px; color:#f2e9dc; font-size:54px; line-height:1.17; text-align:center; }
+.detail.pushed { top:924px; font-size:39px; }
+</style>
+</head>
+<body>
+<main data-composition-id="roteiro-em-papel" data-start="0" data-duration="36" data-width="1920" data-height="1080">
+  <div class="world" aria-hidden="true">
+    <svg viewBox="0 0 1920 1080">
+      <defs>
+        <filter id="edge"><feTurbulence type="fractalNoise" baseFrequency=".037" numOctaves="3" seed="11"/><feDisplacementMap in="SourceGraphic" scale="8"/></filter>
+      </defs>
+      <g class="layer" filter="url(#edge)">
+        <circle cx="1579" cy="241" r="94" fill="#e3b97c"/>
+        <path fill="#4e5462" d="M-78 876 240 518l173 151 301-300 163 154 156 227 290-279 170 200 211-161 290 210v423H-78z"/>
+      </g>
+      <g class="layer" filter="url(#edge)">
+        <path fill="#606e70" d="M-95 836c235-139 400-155 585-27s394 45 508-17 317-117 480-36 311 21 537-67v458H-95z"/>
+        <path fill="#394b53" d="M-83 923c258-91 469-9 650 16 171 24 309-75 468-96 183-24 370 55 540 43 145-10 255-33 405-87v351H-83z"/>
+        <path fill="#9fb8cb" d="M-15 1006c256-50 361-39 553 11 188 49 299 16 512-40 206-54 331-58 489-27 143 28 271 41 394 10v139H-15z"/>
+      </g>
+    </svg>
+  </div>
+  <div class="icons" aria-hidden="true"></div>
+  <h1 class="paper story-title display"></h1>
+  <div class="labels"></div>
+  <p class="detail"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const scenes = [
+  { title:"Da ideia ao roteiro", art:["map","pin","compass"], layout:"central" },
+  { title:"Um pedido abre o mapa", detail:"Encontre um mirante para o pôr do sol.", art:["pin"], landscape:true },
+  { title:"O agente cruza as fontes", art:["guide","note","compass"], labels:["Guias","Anotações","Mapa"] },
+  { title:"O roteiro ganha forma", art:["pin","map","sun"], labels:["Chegada","Caminhada","Pôr do sol"] },
+  { title:"Confira antes de sair", art:["compass","check"], detail:"Revise o acesso e os horários." },
+  { title:"Você escolhe o que fica", art:["guide","pin","note"], labels:["Trocar","Manter","Guardar"] },
+  { title:"A última palavra é sua", art:["map"], detail:"Ajuste o roteiro ao seu ritmo.", landscape:true },
+  { title:"Revise. Ajuste. Vá.", art:["check"], layout:"central" },
+];
+const forms = {
+  map:'<path fill="#bfd1d7" d="m25 61 62-25 67 27 61-24v143l-61 29-67-28-62 23z"/><path fill="#8ea7ae" d="m87 36 67 27v148l-67-28z"/><path fill="none" stroke="#546879" stroke-width="11" stroke-linecap="round" stroke-dasharray="9 17" d="M53 152c42-11 13-65 62-45s49 48 73-24"/>',
+  pin:'<path fill="#dbad8d" d="M122 21c-44 0-75 31-75 75 0 52 75 119 75 119s75-67 75-119c0-44-31-75-75-75z"/><circle cx="122" cy="94" r="29" fill="#f5dfb8"/>',
+  compass:'<circle cx="122" cy="119" r="98" fill="#b7a795"/><circle cx="122" cy="119" r="78" fill="#f0e0c6"/><path fill="#607c93" d="m160 67-24 67-62 33 26-69z"/><circle cx="119" cy="119" r="8" fill="#dfae85"/>',
+  guide:'<path fill="#efdcc3" d="M40 18h129l37 36v167H40z"/><path fill="#c6ad98" d="M168 18v38h38z"/><path fill="none" stroke="#73888d" stroke-width="8" stroke-linecap="round" d="M66 83h107M66 108h91m-91 24h82"/><path fill="#9eafb6" d="M66 153h108v43H66z"/>',
+  note:'<path fill="#dfbda6" d="m45 23 158 8-4 184-159-5z"/><path fill="none" stroke="#846a63" stroke-width="8" stroke-linecap="round" d="m69 78 98 4m-98 25 90 5m-90 20 80 5"/><path fill="#f0d7af" d="m95 16 57 4-4 30-57-4z"/>',
+  sun:'<circle cx="122" cy="119" r="74" fill="#e9bf83"/><path fill="none" stroke="#e9bf83" stroke-width="12" stroke-linecap="round" d="M122 22v18m0 158v20M22 119h19m158 0h22M48 47l13 13m121 122 14 14m0-149-14 14M61 181l-13 13"/>',
+  check:'<path fill="#a9c7c5" d="M122 20 147 30 175 26 189 47 211 59 211 86 226 109 215 133 217 159 196 174 187 199 162 203 144 221 119 213 94 222 75 204 50 202 40 177 19 162 22 137 10 112 23 89 22 61 45 49 58 26 87 30z"/><path fill="none" stroke="#344e55" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" d="m72 120 31 33 65-75"/>',
+};
+const title = one(".story-title");
+const detail = one(".detail");
+const world = one(".world");
+const pieces = Array.from({length:3},() => {
+  const element = document.createElement("div");
+  element.className = "piece";
+  one(".icons").append(element);
+  return element;
+});
+const labels = Array.from({length:3},() => {
+  const element = document.createElement("span");
+  element.className = "label";
+  one(".labels").append(element);
+  return element;
+});
+const duration = 4.5;
+let active = -1;
+window.renderMotion = time => {
+  const index = Math.min(scenes.length-1,Math.floor(time/duration));
+  const scene = scenes[index];
+  const local = time-index*duration;
+  const size = scene.art.length;
+  if(active!==index){
+    active=index;
+    title.textContent=inputs.titles?.[index] ?? scene.title;
+    title.classList.toggle("central",scene.layout==="central");
+    detail.textContent=inputs.details?.[index] ?? scene.detail ?? "";
+    detail.classList.toggle("pushed",Boolean(scene.labels));
+    pieces.forEach((element,n) => element.innerHTML=scene.art[n] ? '<svg viewBox="0 0 245 239">'+forms[scene.art[n]]+'</svg>' : "");
+    labels.forEach((label,n)=>label.textContent=scene.labels?.[n] ?? "");
+  }
+  const entrance=beat(local,.12,.53);
+  const cut=scene.landscape ? 0 : flow(phase(local,4.21,.27));
+  set(title,{opacity:entrance*(1-cut),transform:"translateY(" + (1-entrance)*35 + "px) rotate(" + (1-entrance)*-5 + "deg)"});
+  const drift = phase(local,0,duration);
+  set(world,{opacity:scene.landscape ? 1 : 0,transform:"translateX(" + (-58+drift*89) + "px) scale(1.10)"});
+  pieces.forEach((element,n)=>{
+    const rise=beat(local,.45+n*.29,.58);
+    const roll=Math.sin(Math.PI*phase(local,.45+n*.29,.56))*9;
+    const x=scene.landscape ? 1230 : size===1 ? 835 : size===2 ? 646+n*388 : 380+n*459;
+    const y=scene.landscape ? 512 : index===7 ? 550 : 450;
+    set(element,{opacity:scene.art[n] ? rise*(1-cut) : 0,transform:"translate("+x+"px,"+(y+(1-rise)*58-roll)+"px) rotate("+(n-1)*8+"deg) scale("+mix(.72,1,rise)+")"});
+  });
+  labels.forEach((label,n)=>{
+    const shown=beat(local,.97+n*.29,.38);
+    set(label,{opacity:label.textContent ? shown*(1-cut) : 0,transform:"translateY("+(1-shown)*24+"px) rotate("+(n-1)*2+"deg)"});
+  });
+  const note=beat(local,1.17,.46);
+  set(detail,{opacity:note*(1-cut),transform:"translateY("+(1-note)*21+"px)"});
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

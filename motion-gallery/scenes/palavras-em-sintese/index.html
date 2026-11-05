@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Palavras em Síntese</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 49% 72%, #333338 0%, #202025 53%, #111113 100%); color: #f5f5fa; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.anchor { position: absolute; z-index: 4; left: 960px; max-width: 1040px; padding: 22px 58px 25px; border: 1px solid #ffffff5c; border-radius: 90px; background: #d5caff; color: #2d2348; box-shadow: 0 15px 40px #0e0d175f; font-size: 55px; font-weight: 640; line-height: 1.03; text-align: center; white-space: nowrap; }
+.keyword { position: absolute; z-index: 1; padding: 15px 37px 17px; border: 1px solid #ffffff34; border-radius: 75px; background: linear-gradient(140deg,#373640,#26262e); box-shadow: 0 14px 28px #1414195f; font-size: 43px; line-height: 1.05; white-space: nowrap; }
+.conclusion { position: absolute; z-index: 3; left: 283px; right: 283px; top: 263px; min-height: 116px; display: grid; place-items: center; padding: 19px 29px 24px; border-radius: 12px; border: 1px solid #e0d9fb; background: #e9e2fc; color: #2c2440; box-shadow: 0 16px 36px #0d0c1a45; font-size: 61px; font-weight: 620; text-align: center; }
+.evidence { position: absolute; z-index: 2; left: 300px; top: 393px; width: 1320px; min-height: 478px; padding: 31px 34px 34px; border: 1px solid #ffffff39; border-radius: 28px; background: linear-gradient(145deg, #38383f, #24242a 68%); box-shadow: 0 28px 64px #0a0a0d8c; }
+.evidence h2 { margin: 0 0 23px; font-size: 53px; }
+.detail { display: grid; grid-template-columns: 526px minmax(0,1fr); align-items: center; gap: 40px; }
+.detail img { display: block; width: 526px; height: 325px; object-fit: cover; border: 1px solid #ffffff22; border-radius: 17px; }
+.detail ol { margin: 0; padding: 0; list-style: none; counter-reset: checks; }
+.detail li { display: flex; align-items: baseline; gap: 19px; padding: 17px 0; font-size: 37px; line-height: 1.1; border-top: 1px solid #ffffff26; counter-increment: checks; }
+.detail li:first-child { border-top: 0; }
+.detail li::before { content: counter(checks, decimal-leading-zero); flex: none; color: #ccbbfa; font-size: 31px; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<main data-composition-id="palavras-em-sintese" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+  <p class="anchor"></p>
+  <div class="cloud" aria-label="Ideias relacionadas"></div>
+  <h1 class="conclusion display"></h1>
+  <section class="evidence">
+    <h2 class="display"></h2>
+    <div class="detail">
+      <img src="assets/cabo-da-roca.webp" alt="Falésias do Cabo da Roca">
+      <ol></ol>
+    </div>
+  </section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const anchors = [[491,335], [1423,317], [407,532], [1519,520], [636,734], [1284,727]];
+  const defaultKeywords = ["Trajeto", "Horário", "Fontes", "Distância", "Clima", "Acessos"];
+  const defaultEvidence = ["Verifique o horário do pôr do sol", "Cheque se o acesso está aberto", "Confirme a previsão para o dia"];
+  const list = (value, fallback, limit) => Array.isArray(value) && value.length > 0 && value.length <= limit &&
+    value.every(item => typeof item === "string" && item.trim()) ? value : fallback;
+  const keywords = list(inputs.keywords, defaultKeywords, anchors.length);
+  const evidenceLines = list(inputs.evidenceLines, defaultEvidence, 4);
+  const anchor = one(".anchor");
+  const conclusion = one(".conclusion");
+  const evidence = one(".evidence");
+  copy(".anchor", "main", "Roteiro com IA");
+  copy(".conclusion", "conclusion", "Confira o roteiro antes de sair");
+  copy(".evidence h2", "evidenceTitle", "Checagem rápida");
+  if (inputs.evidenceImage) {
+    const image = one(".detail img");
+    image.src = inputs.evidenceImage;
+    image.alt = "";
+  }
+  const chips = keywords.map((label, index) => {
+    const element = document.createElement("p");
+    element.className = "keyword";
+    element.textContent = label;
+    one(".cloud").append(element);
+    return { element, point: anchors[index] };
+  });
+  evidenceLines.forEach(line => {
+    const row = document.createElement("li");
+    row.textContent = line;
+    one(".detail ol").append(row);
+  });
+
+  window.renderMotion = time => {
+    const mainEnter = beat(time, .06, .27);
+    const lift = flow(phase(time, .45, .5));
+    set(anchor, { top: mix(538, 143, lift) + "px", opacity: mainEnter,
+      transform: "translate(-50%,-50%) scale(" + mix(.93 + .07 * mainEnter, .84, lift) + ")" });
+    const recede = flow(phase(time, 3, .405));
+    chips.forEach(({ element, point: [x, y] }, index) => {
+      const spread = beat(time, .95 + index * .11, .43);
+      set(element, { left: mix(960, x, spread) + "px", top: mix(455, y, spread) - 18 * recede + "px",
+        opacity: spread * (1 - recede), transform: "translate(-50%,-50%) scale(" + mix(.84, 1, spread) + ")" });
+    });
+    const resolve = beat(time, 2.7, .41);
+    set(conclusion, { opacity: resolve, clipPath: "inset(0 " + 45 * (1 - resolve) + "% 0 " + 45 * (1 - resolve) + "% round 12px)",
+      transform: "translateY(" + 17 * (1 - resolve) + "px)" });
+    const sheet = beat(time, 3.6, .52);
+    set(evidence, { opacity: sheet, transform: "translateY(" + 71 * (1 - sheet) + "px)" });
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

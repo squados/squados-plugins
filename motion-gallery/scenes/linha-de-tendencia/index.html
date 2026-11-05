@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Linha de Tendência</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f4f3f7; background: radial-gradient(ellipse at 54% 70%, #303034, #202024 56%, #111114); }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .29; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+h1 { position: absolute; left: 132px; top: 116px; max-width: 1330px; font-size: 96px; }
+.present { position: absolute; z-index: 2; top: 56px; right: 130px; width: 232px; height: 232px; border: 2px solid #f1edff3a; border-radius: 50%; overflow: hidden; background: #2b2a32; }
+.present :is(video, img) { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.present:empty { display: none; }
+.chart { position: absolute; inset: 0; transform-origin: 50% 57%; overflow: visible; }
+.tick { fill: #c2becb; font: 450 35px Outfit; }
+.grid { stroke: #eee8ff22; stroke-width: 1; }
+.axis { stroke: #eee8ff50; stroke-width: 1.5; }
+.actual { stroke: #c6b4ff; stroke-width: 8; stroke-linecap: round; fill: none; }
+.marker { fill: #232227; stroke: #dbcfff; stroke-width: 5; }
+.trend { stroke: #a7d9c5; stroke-width: 5; stroke-dasharray: 11 15; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.conclusion { position: absolute; left: 229px; top: 915px; width: 1470px; border-left: 3px solid #c6b4ff; padding-left: 24px; color: #e1dbf2; font-size: 37px; }
+</style>
+</head>
+<body>
+<main data-composition-id="linha-de-tendencia" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+  <h1 class="display"></h1>
+  <div class="present"><!-- motion-media:presenter:0:10:0 --></div>
+  <svg class="chart" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs><clipPath id="trend-reveal"><rect x="205" y="286" width="0" height="510"></rect></clipPath></defs>
+    <g class="rules"></g>
+    <g class="segments"></g>
+    <polyline class="trend" clip-path="url(#trend-reveal)"></polyline>
+    <g class="markers"></g>
+  </svg>
+  <p class="conclusion"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy("h1", "title", "Precisão do agente");
+copy(".conclusion", "conclusion", "A taxa de acerto sobe mesmo depois do primeiro salto.");
+const defaultPoints = [[1, 46], [2, 51], [3, 68], [4, 63], [5, 77], [6, 83]];
+const defaultTrend = [[1, 47], [6, 82]];
+function readPoints(value) {
+  return Array.isArray(value) ? value.filter(pair => Array.isArray(pair) && Number.isFinite(pair[0]) && Number.isFinite(pair[1])).slice(0, 12) : [];
+}
+const supplied = readPoints(inputs.points);
+const points = supplied.length >= 2 ? supplied : defaultPoints;
+const suppliedTrend = readPoints(inputs.trend);
+const trend = suppliedTrend.length >= 2 ? suppliedTrend : supplied.length >= 2 ? [points[0], points.at(-1)] : defaultTrend;
+const labels = Array.isArray(inputs.axisLabels) ? inputs.axisLabels : [];
+const bounds = { left: 228, right: 1618, top: 329, bottom: 744 };
+const xs = [...points, ...trend].map(([x]) => x);
+const ys = [...points, ...trend].map(([, y]) => y);
+const minX = Math.min(...xs);
+const spanX = Math.max(...xs) - minX || 1;
+const minY = Math.min(...ys);
+const spanY = Math.max(...ys) - minY || 10;
+const step = 10 ** Math.floor(Math.log10(spanY / 3)) * (spanY / 3 / (10 ** Math.floor(Math.log10(spanY / 3))) > 5 ? 5 : 2);
+const lowY = Math.floor((minY - spanY * .09) / step) * step;
+const highY = Math.ceil((Math.max(...ys) + spanY * .09) / step) * step;
+const atX = x => mix(bounds.left, bounds.right, (x - minX) / spanX);
+const atY = y => mix(bounds.bottom, bounds.top, (y - lowY) / (highY - lowY));
+const fmt = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 4 });
+const svgNS = "http://www.w3.org/2000/svg";
+function draw(parent, type, attributes, label) {
+  const el = document.createElementNS(svgNS, type);
+  for (const [name, value] of Object.entries(attributes)) el.setAttribute(name, value);
+  if (label !== undefined) el.textContent = label;
+  one(parent).append(el);
+  return el;
+}
+for (let i = 0; i <= 4; i++) {
+  const value = mix(lowY, highY, i / 4);
+  const y = atY(value);
+  draw(".rules", "line", { x1: bounds.left, x2: bounds.right, y1: y, y2: y, class: i ? "grid" : "axis" });
+  draw(".rules", "text", { x: bounds.left - 25, y: y + 12, class: "tick", "text-anchor": "end" }, fmt.format(value) + (points === defaultPoints ? "%" : ""));
+}
+points.forEach(([x], i) => {
+  if (points.length > 7 && i % 2 && i !== points.length - 1) return;
+  draw(".rules", "text", { x: atX(x), y: bounds.bottom + 56, class: "tick", "text-anchor": "middle" }, labels[i] ?? (points === defaultPoints ? "Rodada " + (i + 1) : fmt.format(x)));
+});
+const markers = points.map(([x, y]) => draw(".markers", "circle", { class: "marker", cx: atX(x), cy: atY(y), r: 9 }));
+const segments = points.slice(1).map(([x, y], i) => draw(".segments", "path", { class: "actual", pathLength: 1, d: "M" + atX(points[i][0]) + " " + atY(points[i][1]) + " L" + atX(x) + " " + atY(y), "stroke-dasharray": "1 1" }));
+one(".trend").setAttribute("points", trend.map(([x, y]) => atX(x) + "," + atY(y)).join(" "));
+window.renderMotion = time => {
+  const heading = beat(time, .09, .66);
+  const chart = beat(time, .52, .72);
+  const focus = flow(phase(time, 1, 5.5));
+  set(one("h1"), { opacity: heading, transform: "translateY(" + (1 - heading) * 22 + "px)" });
+  set(one(".present"), { opacity: beat(time, .60, .62) });
+  set(one(".chart"), { opacity: chart, transform: "scale(" + mix(.985, 1.012, focus) + ")" });
+  const stride = 4.1 / (points.length - 1);
+  segments.forEach((el, i) => el.setAttribute("stroke-dashoffset", 1 - beat(time, 1.24 + i * stride, stride)));
+  markers.forEach((el, i) => {
+    const p = beat(time, 1.12 + i * stride, .24);
+    el.setAttribute("opacity", p);
+    el.setAttribute("r", mix(4, i === markers.length - 1 ? 13 : 9, p));
+  });
+  one("#trend-reveal rect").setAttribute("width", 1435 * flow(phase(time, 4.75, 1.55)));
+  const close = beat(time, 6.52, .7);
+  set(one(".conclusion"), { opacity: close, transform: "translateX(" + (1 - close) * -16 + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

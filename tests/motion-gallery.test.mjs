@@ -9,36 +9,50 @@ const catalog = JSON.parse(read('catalog.json'))
 test('catálogo indexa o benchmark Skillry com slugs e páginas oficiais', () => {
   const { version, entries } = catalog
   assert.equal(version, 2)
-  assert.equal(entries.length, 331)
+  assert.equal(entries.length, 332)
   assert.equal(new Set(entries.map(entry => entry.id)).size, entries.length)
+  const sourced = entries.filter(entry => entry.source)
+  assert.equal(sourced.length, 331)
+  assert.equal(new Set(sourced.map(entry => entry.source.id ?? entry.id)).size, sourced.length)
   const collections = new Map([
     ['bs-creatormotion', 122],
     ['bs-launchmotion', 208],
     ['bs-paper-cutout-story-video', 1],
   ])
   for (const [packageName, count] of collections) {
-    assert.equal(entries.filter(entry => entry.source.package === packageName).length, count)
+    assert.equal(sourced.filter(entry => entry.source.package === packageName).length, count)
   }
-  const originals = entries.filter(entry => entry.demo)
-  assert.deepEqual(originals.map(entry => entry.id).sort(), [
-    'ciclo-em-duas-voltas', 'colagem-em-torno-da-camera', 'conversa-em-camadas',
-    'grafico-em-contracampo', 'parede-em-perspectiva', 'radar-de-sinais', 'resposta-revelada',
-  ])
+  assert.ok(entries.find(entry => entry.id === 'parede-em-perspectiva')?.demo)
   for (const entry of entries) {
-    assert.ok(collections.has(entry.source.package), entry.id)
-    const sourceId = entry.source.id ?? entry.id
-    assert.match(sourceId, new RegExp('^' + entry.source.package + '(?:-[a-z0-9-]+)?$'))
     assert.ok(entry.title && entry.category && entry.prompt.includes(entry.title), entry.id)
-    assert.equal(entry.source.url, 'https://skillry.dev/skills/' + sourceId)
+    if (entry.source) {
+      assert.ok(collections.has(entry.source.package), entry.id)
+      const sourceId = entry.source.id ?? entry.id
+      assert.match(sourceId, new RegExp('^' + entry.source.package + '(?:-[a-z0-9-]+)?$'))
+      assert.equal(entry.source.url, 'https://skillry.dev/skills/' + sourceId)
+      if (entry.demo) assert.ok(entry.aliases.includes(sourceId), entry.id)
+    } else {
+      assert.ok(entry.demo, entry.id)
+    }
     if (entry.demo) {
-      assert.ok(entry.aliases.includes(sourceId))
       assert.equal(entry.demo.preview, 'previews/' + entry.id + '.mp4')
       assert.ok(read(entry.demo.composition).includes(`data-composition-id="${entry.id}"`), entry.id)
     }
   }
-  const spectrum = entries.find(entry => entry.title === 'Light Spectrum')
-  assert.equal(spectrum.id, 'bs-launchmotion-ui-star-flash-irises')
-  assert.deepEqual(spectrum.aliases, ['lm-ui-star-flash-irises'])
+  const spectrum = sourced.find(entry => (entry.source.id ?? entry.id) === 'bs-launchmotion-ui-star-flash-irises')
+  assert.ok(spectrum.aliases.includes('lm-ui-star-flash-irises'))
+  assert.ok(spectrum.title === 'Light Spectrum' || spectrum.aliases.includes('Light Spectrum'))
+})
+
+test('seleção principal contém 50 composições próprias em seis categorias', () => {
+  const { core, entries } = catalog
+  const ids = core.flatMap(group => group.ids)
+  const originals = new Set(entries.filter(entry => entry.demo).map(entry => entry.id))
+  assert.equal(new Set(core.map(group => group.title)).size, 6)
+  assert.deepEqual(core.map(group => group.ids.length), [9, 8, 10, 8, 9, 6])
+  assert.equal(new Set(ids).size, 50)
+  for (const id of ids) assert.ok(originals.has(id), id)
+  assert.equal(originals.size - ids.length, 11)
 })
 
 test('HTML offline inclui o catálogo e carrega apenas o script da interface', () => {

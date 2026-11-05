@@ -2,74 +2,283 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<title>Radar de Sinais</title>
 <link rel="stylesheet" href="../motion-assets/base.css">
 <style>
-main { background: #e8eddd; color: #1c2d21; }
-.heading { position: absolute; left: 128px; top: 294px; width: 730px; font-size: 135px; }
-.heading::before { content: ""; display: block; width: 78px; height: 12px; border-radius: 20px; margin-bottom: 44px; background: #548337; }
-.posts { position: absolute; inset: 200px 115px 140px 965px; }
-.post { position: absolute; inset: 105px 0 auto; min-height: 357px; padding: 56px 57px 47px; border-radius: 28px; background: #f9faef; border: 2px solid #bdcbb2; box-shadow: 0 20px 56px #233e1c21; }
-.post p { font-size: 52px; letter-spacing: -.04em; }
-.author { display: flex; align-items: center; gap: 18px; font-size: 29px; font-weight: 650; margin-bottom: 32px; color: #53644d; }
-.avatar { width: 42px; height: 42px; border-radius: 50%; background: #b9cd9a; display: grid; place-items: center; color: #344824; }
-.tag { position: relative; display: inline-block; overflow: hidden; padding: 10px 22px; margin-top: 26px; border-radius: 999px; background: #d4e9b4; font-size: 30px; font-weight: 650; }
-.scan { position: absolute; top: 95px; bottom: 155px; width: 5px; pointer-events: none; background: #7da34a; box-shadow: 0 0 32px 12px #8cb85c55; border-radius: 10px; z-index: 5; }
-.summary { position: absolute; left: 920px; top: 240px; width: 840px; }
-.summary h2 { font-size: 89px; margin-bottom: 43px; }
-.summary p { border-top: 2px solid #a6b29a; padding: 28px 0; display: flex; align-items: center; gap: 33px; font-size: 50px; letter-spacing: -.04em; }
-.summary p span { color: #43692e; font-size: 28px; font-variant-numeric: tabular-nums; }
+main {
+  color: #f6f7f9;
+  background: radial-gradient(ellipse at 48% 82%, #303136 0%, #1c1d20 57%, #101012 100%);
+}
+main::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .26; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.definitions { position: absolute; width: 0; height: 0; }
+.agent-mark {
+  display: grid; place-items: center; flex: none; width: 57px; height: 57px;
+  border-radius: 17px; border: 1px solid #8bc5ff; color: #f5fbff;
+  background: linear-gradient(145deg, #488ce8, #285cc9); box-shadow: 0 8px 22px #07142f73;
+}
+.agent-mark svg { width: 33px; height: 33px; }
+.ask, .feed, .answer { position: absolute; inset: 0; }
+.question {
+  position: absolute; right: 353px; top: 402px; max-width: 1060px; min-height: 103px;
+  display: flex; align-items: center; padding: 19px 36px;
+  border: 1px solid #87bcff; border-radius: 28px 28px 8px 28px;
+  background: linear-gradient(135deg, #3d79da, #2c57b8); box-shadow: 0 15px 45px #070e2590;
+  font-size: 49px; font-weight: 580; letter-spacing: -.026em; transform-origin: right bottom;
+}
+.status, .feed-head, .suggestion { display: flex; align-items: center; gap: 18px; }
+.status {
+  position: absolute; left: 354px; top: 580px;
+  font-size: 36px; color: #d7e3f2; font-weight: 480;
+}
+.status-text { position: relative; }
+.status-text::after {
+  content: "Agente lendo o feed"; position: absolute; inset: 0;
+  color: transparent; background: linear-gradient(100deg, transparent 22%, #fff 49%, transparent 76%);
+  background-size: 280% 100%; background-position: var(--shine, 130%) 0;
+  background-clip: text;
+}
+.feed-head {
+  position: absolute; top: 270px; left: 100px; right: 100px;
+  color: #e3e9f3; font-size: 35px; font-weight: 560;
+}
+.feed-head .agent-mark { width: 48px; height: 48px; border-radius: 14px; }
+.feed-head .agent-mark svg { width: 29px; height: 29px; }
+.counter {
+  margin-left: 10px; min-width: 190px;
+  color: #b2bfce; font-size: 30px; font-weight: 470; font-variant-numeric: tabular-nums;
+}
+.posts {
+  position: absolute; top: 354px; left: 100px; right: 100px; display: grid; gap: 24px;
+  grid-template-columns: repeat(var(--post-count), minmax(0, 1fr));
+}
+.post {
+  position: relative; height: 340px; padding: 29px 29px 75px;
+  overflow: hidden; border: 1px solid #51545d; border-radius: 28px;
+  background: linear-gradient(160deg, #30343c, #24262d 73%);
+  box-shadow: 0 24px 55px #0a0b0f6b;
+}
+.author { display: flex; align-items: center; gap: 13px; margin-bottom: 24px; font-size: 29px; font-weight: 590; }
+.author > span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.avatar {
+  display: grid; place-items: center; flex: none; width: 46px; height: 46px;
+  border: 1px solid #ffffff30; border-radius: 50%; font-size: 23px; font-weight: 630;
+  background: var(--avatar, #4a6188);
+}
+.post-text {
+  display: -webkit-box; overflow: hidden; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+  color: #e9eaf0; font-size: 36px; line-height: 1.14; letter-spacing: -.02em;
+}
+.tag {
+  position: absolute; bottom: 28px; left: 29px; max-width: calc(100% - 58px); overflow: hidden;
+  border: 1px solid #6389bc77; border-radius: 999px; padding: 6px 14px;
+  background: #8bc5ff1f; color: #bedcff; white-space: nowrap; text-overflow: ellipsis;
+  font-size: 23px; font-weight: 570; line-height: 1.1; transform-origin: left center;
+}
+.scan {
+  position: absolute; top: 0; left: 0; right: 0; height: 72px; pointer-events: none;
+  background: linear-gradient(transparent, #78b5ff2d 79%, #91caff7a 100%);
+  box-shadow: 0 2px 0 #a9d5ff;
+}
+.answer-panel {
+  position: absolute; left: 350px; right: 350px; top: 264px; min-height: 432px; padding: 40px;
+  border: 1px solid #565b67; border-radius: 34px 34px 34px 11px;
+  background: linear-gradient(155deg, #2b2f37, #202228 74%);
+  box-shadow: 0 32px 76px #08090d80;
+}
+.answer-panel h2 { font-size: 54px; margin: 0 0 25px; }
+.ranks { display: grid; gap: 12px; }
+.rank {
+  display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 360px) 80px;
+  align-items: center; gap: 18px; padding: 15px 20px;
+  border: 1px solid #4b505a; border-radius: 16px; background: #16181e58;
+  font-size: 31px; line-height: 1.1;
+}
+.rank-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.32; }
+.ordinal {
+  display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
+  color: #c6dcff; background: #3a5072; font-size: 23px; font-weight: 560;
+}
+.track { height: 10px; overflow: hidden; border-radius: 999px; background: #4b5666; }
+.fill { display: block; width: 100%; height: 100%; border-radius: inherit; transform-origin: left; background: linear-gradient(90deg, #5793ec, #97ceff); }
+.value { justify-self: end; color: #d7e4f6; font-size: 27px; font-weight: 560; font-variant-numeric: tabular-nums; }
+.suggestion { position: absolute; left: 350px; top: 741px; }
+.next {
+  display: flex; align-items: center; gap: 12px; max-width: 1000px;
+  min-height: 55px; padding: 10px 19px; border: 1px solid #63758a; border-radius: 16px;
+  background: #272e39; color: #dfedff; font-size: 29px; font-weight: 510;
+}
+.next svg { width: 25px; height: 25px; flex: none; color: #b8d9ff; }
 </style>
 </head>
 <body>
-<main data-composition-id="radar-de-sinais" data-start="0" data-duration="7.6" data-width="1920" data-height="1080">
-<h1 class="heading display"></h1>
-<section class="posts"><div class="scan"></div></section>
-<section class="summary"><h2 class="display"></h2><div class="ranks"></div></section>
+<main data-composition-id="radar-de-sinais" data-start="0" data-duration="9" data-width="1920" data-height="1080">
+  <svg class="definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="agent-icon" viewBox="0 0 32 32">
+      <path d="M5.5 16c0-5.5 4.7-9.5 10.5-9.5s10.5 4 10.5 9.5-4.7 9.5-10.5 9.5H8.5L10 23a8.9 8.9 0 0 1-4.5-7Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M12.5 14.8v2.4m7-2.4v2.4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+  <section class="ask">
+    <h1 class="question"></h1>
+    <div class="status">
+      <span class="agent-mark" aria-hidden="true"><svg><use href="#agent-icon"/></svg></span>
+      <span class="status-text">Agente lendo o feed</span>
+    </div>
+  </section>
+  <section class="feed">
+    <div class="feed-head">
+      <span class="agent-mark" aria-hidden="true"><svg><use href="#agent-icon"/></svg></span>
+      <span>Lendo publicações</span>
+      <span class="counter"></span>
+    </div>
+    <div class="posts"></div>
+  </section>
+  <section class="answer">
+    <div class="answer-panel" data-layout-allow-overflow>
+      <h2 class="display"></h2>
+      <div class="ranks"></div>
+    </div>
+    <div class="suggestion" data-layout-allow-overflow>
+      <span class="agent-mark" aria-hidden="true"><svg><use href="#agent-icon"/></svg></span>
+      <p class="next">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span></span>
+      </p>
+    </div>
+  </section>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
-copy(".heading", "question", "O que travou no piloto?");
-copy(".summary h2", "result", "Onde agir primeiro");
+copy(".question", "question", "O que acharam do modo Agente?");
+copy(".answer-panel h2", "result", "Os temas mais citados");
+
 const samples = [
-  { author: "Lia", text: "O resumo é ótimo. Onde eu confiro as fontes?", tag: "Fontes" },
-  { author: "Caio", text: "Queria mandar o resultado para a equipe.", tag: "Compartilhar" },
-  { author: "Iara", text: "Como uso o mesmo pedido amanhã?", tag: "Histórico" }
+  { author: "Lia Torres", text: "Quero saber de onde vieram as respostas.", tag: "Fontes" },
+  { author: "Caio Lima", text: "Abrir uma tarefa pelo chat facilitou o meu dia.", tag: "Atalhos" },
+  { author: "Iara Prado", text: "No celular, o agente demora para responder.", tag: "Velocidade" },
+  { author: "Davi Melo", text: "Seria ótimo ver a fonte sem sair da conversa.", tag: "Fontes" }
 ];
-const list = Array.isArray(inputs.posts) && inputs.posts.length === 3 ? inputs.posts : samples;
-const posts = list.map((item, index) => {
+const customPosts = Array.isArray(inputs.posts) && [3, 4].includes(inputs.posts.length)
+  && inputs.posts.every(post => post && ["author", "text", "tag"].every(key => typeof post[key] === "string"));
+const posts = customPosts ? inputs.posts : samples;
+const total = Number.isInteger(inputs.total) && inputs.total >= posts.length ? inputs.total : posts.length;
+const frequencies = new Map();
+for (const post of posts) frequencies.set(post.tag, (frequencies.get(post.tag) ?? 0) + 1);
+const inferred = [...frequencies].sort((a, b) => b[1] - a[1]).slice(0, 3)
+  .map(([label, count]) => ({ label, percent: Math.round(count * 100 / posts.length) }));
+const customThemes = Array.isArray(inputs.themes) && inputs.themes.length === 3
+  && inputs.themes.every(theme => theme && typeof theme.label === "string" && Number.isFinite(theme.percent));
+const themes = customThemes
+  ? inputs.themes.map(theme => ({ label: theme.label, percent: Math.round(Math.max(0, Math.min(100, theme.percent))) }))
+  : inferred;
+copy(".next span", "nextStep", customPosts ? "Preparar respostas ao feed" : "Responder com links para as fontes");
+
+const avatars = ["#475f87", "#6a546f", "#3e6a68", "#785b49"];
+const board = one(".posts");
+board.style.setProperty("--post-count", posts.length);
+const cards = posts.map((post, index) => {
   const card = document.createElement("article");
   card.className = "post";
-  card.innerHTML = '<div class="author"><span class="avatar"></span><span class="name"></span></div><p></p><span class="tag"></span>';
-  card.querySelector(".name").textContent = item.author;
-  card.querySelector(".avatar").textContent = item.author?.[0] ?? "";
-  card.querySelector("p").textContent = item.text;
-  card.querySelector(".tag").textContent = item.tag;
-  one(".posts").prepend(card);
-  const rank = document.createElement("p");
-  const number = document.createElement("span");
-  number.textContent = String(index + 1).padStart(2, "0");
-  rank.append(number, document.createTextNode(item.tag));
-  one(".ranks").append(rank);
-  return card;
+  card.setAttribute("data-layout-allow-overflow", "");
+  card.innerHTML = '<div class="author"><span class="avatar"></span><span></span></div><p class="post-text"></p><span class="tag"></span><i class="scan" aria-hidden="true" data-layout-allow-overflow></i>';
+  const avatar = card.querySelector(".avatar");
+  avatar.textContent = post.author.trim().split(/\s+/).slice(0, 2).map(name => name[0] ?? "").join("").toUpperCase();
+  avatar.style.setProperty("--avatar", avatars[index]);
+  card.querySelector(".author > span:last-child").textContent = post.author;
+  card.querySelector(".post-text").textContent = post.text;
+  const tag = card.querySelector(".tag");
+  tag.textContent = post.tag;
+  board.append(card);
+  return { card, tag, scan: card.querySelector(".scan") };
 });
+
+const rows = themes.map((theme, index) => {
+  const row = document.createElement("div");
+  row.className = "rank";
+  row.innerHTML = '<span class="ordinal"></span><span class="rank-label"></span><span class="track"><i class="fill"></i></span><span class="value"></span>';
+  row.querySelector(".ordinal").textContent = index + 1;
+  row.querySelector(".rank-label").textContent = theme.label;
+  one(".ranks").append(row);
+  return { row, percent: theme.percent, fill: row.querySelector(".fill"), value: row.querySelector(".value") };
+});
+
+const ask = one(".ask");
+const question = one(".question");
+const status = one(".status");
+const statusText = one(".status-text");
+const feed = one(".feed");
+const head = one(".feed-head");
+const counter = one(".counter");
+const answer = one(".answer");
+const panel = one(".answer-panel");
+const suggestion = one(".suggestion");
+const next = one(".next");
+
 window.renderMotion = time => {
-  const collapse = beat(time, 4.92, .58);
-  const start = beat(time, .08, .65);
-  set(one(".heading"), { opacity: start, transform: "translateY(" + (1 - start) * 55 + "px)" });
-  set(one(".posts"), { opacity: 1 - collapse, transform: "translateX(" + -120 * collapse + "px) scale(" + mix(1, .91, collapse) + ")" });
-  posts.forEach((post, index) => {
-    const position = .42 + index * 1.32;
-    const appear = beat(time, position, .54);
-    const exit = index === posts.length - 1 ? 0 : beat(time, position + 1.3, .49);
-    set(post, { opacity: appear * (1 - exit), transform: "translate(" + (mix(260, 0, appear) - 150 * exit) + "px," + (-32 * exit) + "px) rotate(" + (mix(7, 0, appear) - 7 * exit) + "deg)" });
-    post.querySelector(".tag").style.clipPath = "inset(0 " + (1 - beat(time, position + .73, .34)) * 100 + "% 0 0)";
+  ask.style.visibility = time < 2.29 ? "visible" : "hidden";
+  const questionIn = beat(time, .15, .67);
+  const questionOut = phase(time, 1.75, .49) ** 3;
+  const statusIn = beat(time, .58, .59);
+  const statusOut = phase(time, 1.80, .49) ** 3;
+  const askDrift = -24 * phase(time, .42, 1.48);
+  set(question, {
+    opacity: questionIn * (1 - questionOut),
+    transform: "translateY(" + (40 * (1 - questionIn) + askDrift - 265 * questionOut) + "px) scale(" + mix(.96, 1, questionIn) + ")",
+    filter: "blur(" + 7 * questionOut + "px)"
   });
-  const scan = ((time - .83) % 1.32 + 1.32) % 1.32;
-  set(one(".scan"), { opacity: time > .83 && time < 4.2 ? Math.sin(Math.PI * clamp(scan / .72)) * .9 : 0, left: mix(6, 98, clamp(scan / .72)) + "%" });
-  const show = beat(time, 5.08, .62);
-  set(one(".summary"), { opacity: show, transform: "translateY(" + (1 - show) * 56 + "px)" });
-  all(".ranks p").forEach((row, i) => row.style.clipPath = "inset(0 " + (1 - beat(time, 5.42 + i * .22, .44)) * 100 + "% 0 0)");
+  set(status, {
+    opacity: statusIn * (1 - statusOut),
+    transform: "translate(" + (-38 * (1 - statusIn)) + "px," + (askDrift - 250 * statusOut) + "px)",
+    filter: "blur(" + 7 * statusOut + "px)"
+  });
+  statusText.style.setProperty("--shine", mix(130, -38, phase(time, .70, 1.1)) + "%");
+
+  feed.style.visibility = time >= 2.10 && time < 5.72 ? "visible" : "hidden";
+  const headIn = beat(time, 2.10, .58);
+  const headOut = phase(time, 4.94, .43) ** 3;
+  set(head, { opacity: headIn * (1 - headOut), transform: "translateY(" + (16 * (1 - headIn) - 60 * headOut) + "px)" });
+  counter.textContent = Math.round(total * flow(phase(time, 2.20, 2.60))) + " / " + total;
+  cards.forEach(({ card, tag, scan }, index) => {
+    const start = 2.14 + index * .28;
+    const entry = beat(time, start, .68);
+    const leave = phase(time, 4.99 + index * .065, .52) ** 3;
+    const sweep = flow(phase(time, start + .51, .66));
+    const scanned = beat(time, start + 1.05, .31);
+    const drift = 11 * phase(time, 4.12, .87);
+    set(card, {
+      opacity: entry,
+      transform: "translateY(" + (100 * (1 - entry) - drift - 1110 * leave) + "px) rotate(" + 1.7 * (1 - entry) + "deg)",
+      borderColor: "rgba(145, 185, 235, " + mix(.23, .62, scanned) + ")"
+    });
+    set(scan, {
+      opacity: sweep > 0 && sweep < 1 ? Math.min(1, sweep * 18, (1 - sweep) * 18) : 0,
+      transform: "translateY(" + mix(-75, 349, sweep) + "px)"
+    });
+    const tick = Math.sin(Math.PI * phase(time, start + 1.06, .34));
+    set(tag, { opacity: scanned, transform: "scale(" + (mix(.79, 1, scanned) + .07 * tick) + ")" });
+  });
+
+  answer.style.visibility = time >= 5.45 ? "visible" : "hidden";
+  const panelIn = beat(time, 5.45, .82);
+  panel.style.transform = "translateY(" + 845 * (1 - panelIn) + "px)";
+  const agentIn = beat(time, 5.66, .83);
+  suggestion.style.transform = "translateY(" + 510 * (1 - agentIn) + "px)";
+  rows.forEach(({ row, percent, fill, value }, index) => {
+    const start = 6.08 + index * .24;
+    const appear = beat(time, start, .48);
+    const filled = beat(time, start + .14, .75);
+    set(row, { opacity: appear, transform: "translateY(" + 23 * (1 - appear) + "px)" });
+    fill.style.transform = "scaleX(" + filled * percent / 100 + ")";
+    value.textContent = Math.round(filled * percent) + "%";
+  });
+  if (rows.length) rows[0].row.style.borderColor = "rgba(153, 194, 255, " + mix(.25, .65, beat(time, 7.34, .40)) + ")";
+  const action = beat(time, 7.58, .64);
+  set(next, { opacity: action, transform: "translateX(" + -28 * (1 - action) + "px) scale(" + mix(.96, 1, action) + ")" });
 };
+
 window.renderMotion(0);
 </script>
 </body>

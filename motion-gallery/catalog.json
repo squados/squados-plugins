@@ -2,31 +2,67 @@
   "version": 2,
   "entries": [
     {
-      "id": "bs-creatormotion-cards-action-checklist",
-      "title": "Synchronized Action Checklist",
+      "id": "checklist-em-acao",
+      "title": "Checklist em Ação",
       "category": "Cartões e listas",
       "aliases": [
+        "Synchronized Action Checklist",
+        "bs-creatormotion-cards-action-checklist",
         "bs-cards-action-checklist"
       ],
       "seconds": 7,
-      "prompt": "Use o efeito Synchronized Action Checklist (bs-creatormotion-cards-action-checklist) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Checklist em Ação neste trecho. Mantenha a lista ao lado do celular e desenhe cada marca no instante em que a etapa correspondente terminar. Deixe o estado concluído visível no final.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-cards-action-checklist"
+        "url": "https://skillry.dev/skills/bs-creatormotion-cards-action-checklist",
+        "id": "bs-creatormotion-cards-action-checklist"
+      },
+      "demo": {
+        "composition": "scenes/checklist-em-acao/index.html",
+        "preview": "previews/checklist-em-acao.mp4",
+        "inputs": {
+          "title": "text",
+          "screenTitle": "text",
+          "request": "text",
+          "workTitle": "text",
+          "completion": "text",
+          "tasks": "array",
+          "screen": "media"
+        }
       }
     },
     {
-      "id": "bs-creatormotion-cards-card-counter",
-      "title": "Accumulating Cards and Counter",
+      "id": "cartoes-e-contador",
+      "title": "Cartões e Contador",
       "category": "Cartões e listas",
       "aliases": [
+        "Accumulating Cards and Counter",
+        "bs-creatormotion-cards-card-counter",
         "bs-cards-card-counter"
       ],
       "seconds": 7,
-      "prompt": "Use o efeito Accumulating Cards and Counter (bs-creatormotion-cards-card-counter) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Cartões e Contador neste trecho. Acumule os itens na grade, sincronize a contagem e o valor somado com cada chegada e revele a conclusão abaixo dos cartões.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-cards-card-counter"
+        "url": "https://skillry.dev/skills/bs-creatormotion-cards-card-counter",
+        "id": "bs-creatormotion-cards-card-counter"
+      },
+      "demo": {
+        "composition": "scenes/cartoes-e-contador/index.html",
+        "preview": "previews/cartoes-e-contador.mp4",
+        "inputs": {
+          "items": "array",
+          "valuePerItem": "number",
+          "countLabel": "text",
+          "unit": "text",
+          "summary": "text",
+          "imageOne": "image",
+          "imageTwo": "image",
+          "imageThree": "image",
+          "imageFour": "image",
+          "imageFive": "image",
+          "imageSix": "image"
+        }
       }
     },
     {
@@ -71,17 +107,30 @@
       }
     },
     {
-      "id": "bs-creatormotion-cards-context-conflict",
-      "title": "Shared Context Conflict",
+      "id": "contexto-em-conflito",
+      "title": "Contexto em Conflito",
       "category": "Cartões e listas",
       "aliases": [
+        "Shared Context Conflict",
+        "bs-creatormotion-cards-context-conflict",
         "bs-cards-context-conflict"
       ],
       "seconds": 7,
-      "prompt": "Use o efeito Shared Context Conflict (bs-creatormotion-cards-context-conflict) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Contexto em Conflito neste trecho. Conecte três fontes a um documento compartilhado, revele os itens em sequência e marque o conflito na própria linha que contém o dado privado.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-cards-context-conflict"
+        "url": "https://skillry.dev/skills/bs-creatormotion-cards-context-conflict",
+        "id": "bs-creatormotion-cards-context-conflict"
+      },
+      "demo": {
+        "composition": "scenes/contexto-em-conflito/index.html",
+        "preview": "previews/contexto-em-conflito.mp4",
+        "inputs": {
+          "roles": "array",
+          "contextTitle": "text",
+          "lines": "array",
+          "warning": "text"
+        }
       }
     },
     {
@@ -169,17 +218,32 @@
       }
     },
     {
-      "id": "bs-creatormotion-cards-keyword-resolve",
-      "title": "Keyword Cloud to Conclusion",
+      "id": "palavras-em-sintese",
+      "title": "Palavras em Síntese",
       "category": "Cartões e listas",
       "aliases": [
+        "Keyword Cloud to Conclusion",
+        "bs-creatormotion-cards-keyword-resolve",
         "bs-cards-keyword-resolve"
       ],
       "seconds": 7,
-      "prompt": "Use o efeito Keyword Cloud to Conclusion (bs-creatormotion-cards-keyword-resolve) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Palavras em Síntese neste trecho. Suba a ideia principal, espalhe as palavras, apresente a conclusão e faça a folha de evidência subir depois que a nuvem desaparecer.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-cards-keyword-resolve"
+        "url": "https://skillry.dev/skills/bs-creatormotion-cards-keyword-resolve",
+        "id": "bs-creatormotion-cards-keyword-resolve"
+      },
+      "demo": {
+        "composition": "scenes/palavras-em-sintese/index.html",
+        "preview": "previews/palavras-em-sintese.mp4",
+        "inputs": {
+          "main": "text",
+          "keywords": "array",
+          "conclusion": "text",
+          "evidenceTitle": "text",
+          "evidenceLines": "array",
+          "evidenceImage": "image"
+        }
       }
     },
     {
@@ -337,17 +401,29 @@
       }
     },
     {
-      "id": "bs-creatormotion-chapter-grid-pan",
-      "title": "Chapter Grid Pan",
+      "id": "capitulo-em-movimento",
+      "title": "Capítulo em Movimento",
       "category": "Capítulos",
       "aliases": [
+        "Chapter Grid Pan",
+        "bs-creatormotion-chapter-grid-pan",
         "bs-chapter-grid-pan"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Chapter Grid Pan (bs-creatormotion-chapter-grid-pan) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Capítulo em Movimento para abrir a próxima seção. Mova o enquadramento em dois eixos sobre uma grade contínua e deixe o título ficar nítido ao lado do ícone selecionado.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-chapter-grid-pan"
+        "url": "https://skillry.dev/skills/bs-creatormotion-chapter-grid-pan",
+        "id": "bs-creatormotion-chapter-grid-pan"
+      },
+      "demo": {
+        "composition": "scenes/capitulo-em-movimento/index.html",
+        "preview": "previews/capitulo-em-movimento.mp4",
+        "inputs": {
+          "chapters": "array",
+          "activeIndex": "number",
+          "headline": "text"
+        }
       }
     },
     {
@@ -548,17 +624,28 @@
       }
     },
     {
-      "id": "bs-creatormotion-comparison-composition-strip",
-      "title": "Composition Strip",
+      "id": "faixa-de-composicao",
+      "title": "Faixa de Composição",
       "category": "Comparações",
       "aliases": [
+        "Composition Strip",
+        "bs-creatormotion-comparison-composition-strip",
         "bs-comparison-composition-strip"
       ],
       "seconds": 10,
-      "prompt": "Use o efeito Composition Strip (bs-creatormotion-comparison-composition-strip) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Faixa de Composição neste trecho. Construa uma faixa de 100% com segmentos proporcionais aos pesos informados e apresente cada categoria e percentual abaixo, na ordem em que o segmento aparece.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-composition-strip"
+        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-composition-strip",
+        "id": "bs-creatormotion-comparison-composition-strip"
+      },
+      "demo": {
+        "composition": "scenes/faixa-de-composicao/index.html",
+        "preview": "previews/faixa-de-composicao.mp4",
+        "inputs": {
+          "title": "text",
+          "segments": "array"
+        }
       }
     },
     {
@@ -590,17 +677,32 @@
       }
     },
     {
-      "id": "bs-creatormotion-comparison-document-collapse",
-      "title": "Document Collapse Contrast",
+      "id": "documentos-em-sintese",
+      "title": "Documentos em Síntese",
       "category": "Comparações",
       "aliases": [
+        "Document Collapse Contrast",
+        "bs-creatormotion-comparison-document-collapse",
         "bs-comparison-document-collapse"
       ],
       "seconds": 8,
-      "prompt": "Use o efeito Document Collapse Contrast (bs-creatormotion-comparison-document-collapse) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Documentos em Síntese neste trecho. Mostre os dois documentos em destaque, comprima o conjunto para um lado e revele ao lado um resultado curto e estruturado.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-document-collapse"
+        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-document-collapse",
+        "id": "bs-creatormotion-comparison-document-collapse"
+      },
+      "demo": {
+        "composition": "scenes/documentos-em-sintese/index.html",
+        "preview": "previews/documentos-em-sintese.mp4",
+        "inputs": {
+          "labels": "array",
+          "steps": "array",
+          "resultTitle": "text",
+          "pageOne": "image",
+          "pageTwo": "image",
+          "shortResult": "image"
+        }
       }
     },
     {
@@ -618,17 +720,28 @@
       }
     },
     {
-      "id": "bs-creatormotion-comparison-feature-matrix",
-      "title": "Feature Matrix Reveal",
+      "id": "matriz-de-comparacao",
+      "title": "Matriz de Comparação",
       "category": "Comparações",
       "aliases": [
+        "Feature Matrix Reveal",
+        "bs-creatormotion-comparison-feature-matrix",
         "bs-comparison-feature-matrix"
       ],
       "seconds": 10,
-      "prompt": "Use o efeito Feature Matrix Reveal (bs-creatormotion-comparison-feature-matrix) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Matriz de Comparação neste trecho. Fixe os dois cabeçalhos, mostre cada dimensão e revele as duas células correspondentes antes de passar para a próxima linha.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-feature-matrix"
+        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-feature-matrix",
+        "id": "bs-creatormotion-comparison-feature-matrix"
+      },
+      "demo": {
+        "composition": "scenes/matriz-de-comparacao/index.html",
+        "preview": "previews/matriz-de-comparacao.mp4",
+        "inputs": {
+          "options": "array",
+          "rows": "array"
+        }
       }
     },
     {
@@ -688,17 +801,32 @@
       }
     },
     {
-      "id": "bs-creatormotion-comparison-line-trend",
-      "title": "Line and Trend Draw",
+      "id": "linha-de-tendencia",
+      "title": "Linha de Tendência",
       "category": "Comparações",
       "aliases": [
+        "Line and Trend Draw",
+        "bs-creatormotion-comparison-line-trend",
         "bs-comparison-line-trend"
       ],
       "seconds": 10,
-      "prompt": "Use o efeito Line and Trend Draw (bs-creatormotion-comparison-line-trend) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Linha de Tendência neste trecho. Aproxime do gráfico, desenhe os pontos observados e depois a tendência tracejada, mantendo os dados legíveis no final.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-line-trend"
+        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-line-trend",
+        "id": "bs-creatormotion-comparison-line-trend"
+      },
+      "demo": {
+        "composition": "scenes/linha-de-tendencia/index.html",
+        "preview": "previews/linha-de-tendencia.mp4",
+        "inputs": {
+          "title": "text",
+          "points": "array",
+          "trend": "array",
+          "axisLabels": "array",
+          "conclusion": "text",
+          "presenter": "media"
+        }
       }
     },
     {
@@ -800,17 +928,31 @@
       }
     },
     {
-      "id": "bs-creatormotion-comparison-ratio-bars",
-      "title": "Ratio Bars",
+      "id": "barras-em-proporcao",
+      "title": "Barras em Proporção",
       "category": "Comparações",
       "aliases": [
+        "Ratio Bars",
+        "bs-creatormotion-comparison-ratio-bars",
         "bs-comparison-ratio-bars"
       ],
       "seconds": 9,
-      "prompt": "Use o efeito Ratio Bars (bs-creatormotion-comparison-ratio-bars) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Barras em Proporção neste trecho. Faça os dois valores crescerem em sequência na mesma escala, mantenha os contadores nas pontas e revele a proporção ao lado.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-ratio-bars"
+        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-ratio-bars",
+        "id": "bs-creatormotion-comparison-ratio-bars"
+      },
+      "demo": {
+        "composition": "scenes/barras-em-proporcao/index.html",
+        "preview": "previews/barras-em-proporcao.mp4",
+        "inputs": {
+          "title": "text",
+          "labels": "array",
+          "values": "array",
+          "unit": "text",
+          "ratioPrecision": "number"
+        }
       }
     },
     {
@@ -842,17 +984,32 @@
       }
     },
     {
-      "id": "bs-creatormotion-comparison-sequential-bars",
-      "title": "Sequential Bars",
+      "id": "barras-em-sequencia",
+      "title": "Barras em Sequência",
       "category": "Comparações",
       "aliases": [
+        "Sequential Bars",
+        "bs-creatormotion-comparison-sequential-bars",
         "bs-comparison-sequential-bars"
       ],
       "seconds": 9,
-      "prompt": "Use o efeito Sequential Bars (bs-creatormotion-comparison-sequential-bars) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Barras em Sequência neste trecho. Mantenha uma única linha de base e faça cada barra crescer junto com o número em sua extremidade. Preserve todas as barras concluídas até o fim.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-sequential-bars"
+        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-sequential-bars",
+        "id": "bs-creatormotion-comparison-sequential-bars"
+      },
+      "demo": {
+        "composition": "scenes/barras-em-sequencia/index.html",
+        "preview": "previews/barras-em-sequencia.mp4",
+        "inputs": {
+          "title": "text",
+          "categories": "array",
+          "values": "array",
+          "unit": "text",
+          "exitMode": "text",
+          "presenter": "media"
+        }
       }
     },
     {
@@ -870,17 +1027,30 @@
       }
     },
     {
-      "id": "bs-creatormotion-comparison-target-overrun",
-      "title": "Target Overrun",
+      "id": "meta-superada",
+      "title": "Meta Superada",
       "category": "Comparações",
       "aliases": [
+        "Target Overrun",
+        "bs-creatormotion-comparison-target-overrun",
         "bs-comparison-target-overrun"
       ],
       "seconds": 9,
-      "prompt": "Use o efeito Target Overrun (bs-creatormotion-comparison-target-overrun) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Meta Superada neste trecho. Faça o preenchimento avançar junto com o percentual até a marca de 100%, diferencie o trecho que ultrapassa a meta e mantenha o valor final visível.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-target-overrun"
+        "url": "https://skillry.dev/skills/bs-creatormotion-comparison-target-overrun",
+        "id": "bs-creatormotion-comparison-target-overrun"
+      },
+      "demo": {
+        "composition": "scenes/meta-superada/index.html",
+        "preview": "previews/meta-superada.mp4",
+        "inputs": {
+          "label": "text",
+          "value": "number",
+          "target": "number",
+          "unit": "text"
+        }
       }
     },
     {
@@ -1066,17 +1236,33 @@
       }
     },
     {
-      "id": "bs-creatormotion-diagram-hub-routing",
-      "title": "Hub Routing",
+      "id": "roteamento-por-agente",
+      "title": "Roteamento por Agente",
       "category": "Diagramas e processos",
       "aliases": [
+        "Hub Routing",
+        "bs-creatormotion-diagram-hub-routing",
         "bs-diagram-hub-routing"
       ],
       "seconds": 6.4,
-      "prompt": "Use o efeito Hub Routing (bs-creatormotion-diagram-hub-routing) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Roteamento por Agente neste trecho. Mostre as entradas chegando ao agente central e desenhe depois a bifurcação para as saídas. Preserve o quadro final com todas as conexões.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-diagram-hub-routing"
+        "url": "https://skillry.dev/skills/bs-creatormotion-diagram-hub-routing",
+        "id": "bs-creatormotion-diagram-hub-routing"
+      },
+      "demo": {
+        "composition": "scenes/roteamento-por-agente/index.html",
+        "preview": "previews/roteamento-por-agente.mp4",
+        "inputs": {
+          "sources": "array",
+          "hub": "text",
+          "outputs": "array",
+          "reverseOrder": "boolean",
+          "hubImage": "image",
+          "outputOne": "image",
+          "outputTwo": "image"
+        }
       }
     },
     {
@@ -1206,17 +1392,29 @@
       }
     },
     {
-      "id": "bs-creatormotion-diagram-sequence-lanes",
-      "title": "Message Sequence Lanes",
+      "id": "mensagens-entre-sistemas",
+      "title": "Mensagens entre Sistemas",
       "category": "Diagramas e processos",
       "aliases": [
+        "Message Sequence Lanes",
+        "bs-creatormotion-diagram-sequence-lanes",
         "bs-diagram-sequence-lanes"
       ],
       "seconds": 7.3,
-      "prompt": "Use o efeito Message Sequence Lanes (bs-creatormotion-diagram-sequence-lanes) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Mensagens entre Sistemas neste trecho. Fixe as três raias, mostre a solicitação e a busca, dê tempo para a espera e desenhe as respostas no sentido inverso.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-diagram-sequence-lanes"
+        "url": "https://skillry.dev/skills/bs-creatormotion-diagram-sequence-lanes",
+        "id": "bs-creatormotion-diagram-sequence-lanes"
+      },
+      "demo": {
+        "composition": "scenes/mensagens-entre-sistemas/index.html",
+        "preview": "previews/mensagens-entre-sistemas.mp4",
+        "inputs": {
+          "participants": "array",
+          "messages": "array",
+          "waitLabel": "text"
+        }
       }
     },
     {
@@ -1234,17 +1432,27 @@
       }
     },
     {
-      "id": "bs-creatormotion-diagram-timeline-nodes",
-      "title": "Timeline Node Reveal",
+      "id": "linha-do-tempo",
+      "title": "Linha do Tempo",
       "category": "Diagramas e processos",
       "aliases": [
+        "Timeline Node Reveal",
+        "bs-creatormotion-diagram-timeline-nodes",
         "bs-diagram-timeline-nodes"
       ],
       "seconds": 6.6,
-      "prompt": "Use o efeito Timeline Node Reveal (bs-creatormotion-diagram-timeline-nodes) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Linha do Tempo neste trecho. Trace uma linha horizontal e apresente, em ordem, cada ponto, data e legenda. Mantenha a cronologia completa visível no final.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-diagram-timeline-nodes"
+        "url": "https://skillry.dev/skills/bs-creatormotion-diagram-timeline-nodes",
+        "id": "bs-creatormotion-diagram-timeline-nodes"
+      },
+      "demo": {
+        "composition": "scenes/linha-do-tempo/index.html",
+        "preview": "previews/linha-do-tempo.mp4",
+        "inputs": {
+          "milestones": "array"
+        }
       }
     },
     {
@@ -1262,17 +1470,36 @@
       }
     },
     {
-      "id": "bs-creatormotion-pip-chat-response",
-      "title": "Chat Response Presenter",
+      "id": "apresentador-e-navegador",
+      "title": "Apresentador e Navegador",
       "category": "Vídeo sobreposto",
       "aliases": [
+        "Chat Response Presenter",
+        "bs-creatormotion-pip-chat-response",
         "bs-pip-chat-response"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Chat Response Presenter (bs-creatormotion-pip-chat-response) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo. Use o take do apresentador para esta cena.",
+      "prompt": "Use Apresentador e Navegador neste trecho. Mostre o navegador com a nota à esquerda e o chat à direita. Faça a pergunta chegar, anime a espera e revele a resposta. Mantenha o apresentador no canto superior direito.",
       "source": {
         "package": "bs-creatormotion",
+        "id": "bs-creatormotion-pip-chat-response",
         "url": "https://skillry.dev/skills/bs-creatormotion-pip-chat-response"
+      },
+      "demo": {
+        "composition": "scenes/apresentador-e-navegador/index.html",
+        "preview": "previews/apresentador-e-navegador.mp4",
+        "inputs": {
+          "presenter": "media",
+          "heading": "text",
+          "description": "text",
+          "document": "text",
+          "question": "text",
+          "response": "text",
+          "image": "image"
+        },
+        "required": [
+          "presenter"
+        ]
       }
     },
     {
@@ -1290,17 +1517,32 @@
       }
     },
     {
-      "id": "bs-creatormotion-pip-slides-focus",
-      "title": "Slide Focus Presenter",
+      "id": "apresentador-e-slides",
+      "title": "Apresentador e Slides",
       "category": "Vídeo sobreposto",
       "aliases": [
+        "Slide Focus Presenter",
+        "bs-creatormotion-pip-slides-focus",
         "bs-pip-slides-focus"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Slide Focus Presenter (bs-creatormotion-pip-slides-focus) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo. Use o take do apresentador para esta cena.",
+      "prompt": "Use Apresentador e Slides neste trecho. Passe pelos três slides em foco e recue no terceiro até enquadrar as miniaturas à esquerda. Mantenha o apresentador no canto superior direito durante toda a demonstração.",
       "source": {
         "package": "bs-creatormotion",
+        "id": "bs-creatormotion-pip-slides-focus",
         "url": "https://skillry.dev/skills/bs-creatormotion-pip-slides-focus"
+      },
+      "demo": {
+        "composition": "scenes/apresentador-e-slides/index.html",
+        "preview": "previews/apresentador-e-slides.mp4",
+        "inputs": {
+          "presenter": "media",
+          "deck": "text",
+          "slides": "array"
+        },
+        "required": [
+          "presenter"
+        ]
       }
     },
     {
@@ -1353,17 +1595,34 @@
       }
     },
     {
-      "id": "bs-creatormotion-split-phone-callouts",
-      "title": "Phone Feature Callouts",
+      "id": "apresentador-e-celular",
+      "title": "Apresentador e Celular",
       "category": "Apresentador e tela dividida",
       "aliases": [
+        "Phone Feature Callouts",
+        "bs-creatormotion-split-phone-callouts",
         "bs-split-phone-callouts"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Phone Feature Callouts (bs-creatormotion-split-phone-callouts) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo. Use o take do apresentador para esta cena.",
+      "prompt": "Use Apresentador e Celular neste trecho. Mantenha o apresentador à esquerda, revele o celular à direita e escreva a captura sobre a imagem. Apresente as duas chamadas em sequência dentro da tela.",
       "source": {
         "package": "bs-creatormotion",
+        "id": "bs-creatormotion-split-phone-callouts",
         "url": "https://skillry.dev/skills/bs-creatormotion-split-phone-callouts"
+      },
+      "demo": {
+        "composition": "scenes/apresentador-e-celular/index.html",
+        "preview": "previews/apresentador-e-celular.mp4",
+        "inputs": {
+          "presenter": "media",
+          "title": "text",
+          "capture": "text",
+          "callouts": "array",
+          "cover": "image"
+        },
+        "required": [
+          "presenter"
+        ]
       }
     },
     {
@@ -1381,31 +1640,62 @@
       }
     },
     {
-      "id": "bs-creatormotion-split-progressive-list",
-      "title": "Progressive Presenter List",
+      "id": "apresentador-e-lista",
+      "title": "Apresentador e Lista",
       "category": "Apresentador e tela dividida",
       "aliases": [
+        "Progressive Presenter List",
+        "bs-creatormotion-split-progressive-list",
         "bs-split-progressive-list"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Progressive Presenter List (bs-creatormotion-split-progressive-list) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo. Use o take do apresentador para esta cena.",
+      "prompt": "Use Apresentador e Lista neste trecho. Mantenha o apresentador à direita. Revele cinco linhas à esquerda, escrevendo uma por vez e deslocando o destaque para o número do item atual.",
       "source": {
         "package": "bs-creatormotion",
+        "id": "bs-creatormotion-split-progressive-list",
         "url": "https://skillry.dev/skills/bs-creatormotion-split-progressive-list"
+      },
+      "demo": {
+        "composition": "scenes/apresentador-e-lista/index.html",
+        "preview": "previews/apresentador-e-lista.mp4",
+        "inputs": {
+          "presenter": "media",
+          "heading": "text",
+          "items": "array"
+        },
+        "required": [
+          "presenter"
+        ]
       }
     },
     {
-      "id": "bs-creatormotion-split-quote-underline",
-      "title": "Quote Underline Portrait",
+      "id": "apresentador-e-citacao",
+      "title": "Apresentador e Citação",
       "category": "Apresentador e tela dividida",
       "aliases": [
+        "Quote Underline Portrait",
+        "bs-creatormotion-split-quote-underline",
         "bs-split-quote-underline"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Quote Underline Portrait (bs-creatormotion-split-quote-underline) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo. Use um recorte do apresentador ou um retrato autorizado.",
+      "prompt": "Use Apresentador e Citação neste trecho. Mantenha o apresentador de um lado, revele a citação e sublinhe o trecho decisivo sem mover o texto.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-split-quote-underline"
+        "url": "https://skillry.dev/skills/bs-creatormotion-split-quote-underline",
+        "id": "bs-creatormotion-split-quote-underline"
+      },
+      "demo": {
+        "composition": "scenes/apresentador-e-citacao/index.html",
+        "preview": "previews/apresentador-e-citacao.mp4",
+        "inputs": {
+          "portrait": "media",
+          "quote": "text",
+          "emphasis": "text",
+          "attribution": "text"
+        },
+        "required": [
+          "portrait"
+        ]
       }
     },
     {
@@ -1507,101 +1797,213 @@
       }
     },
     {
-      "id": "bs-creatormotion-spotlight-quote-evidence",
-      "title": "Source Quote Evidence",
+      "id": "citacao-com-fonte",
+      "title": "Citação com Fonte",
       "category": "Destaques e evidências",
       "aliases": [
+        "Source Quote Evidence",
+        "bs-creatormotion-spotlight-quote-evidence",
         "bs-spotlight-quote-evidence"
       ],
       "seconds": 10,
-      "prompt": "Use o efeito Source Quote Evidence (bs-creatormotion-spotlight-quote-evidence) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Citação com Fonte para identificar um documento e exibir um trecho dele. Mantenha a fonte no quadro, dê destaque ao excerto e marque até três frases em sequência.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-spotlight-quote-evidence"
+        "url": "https://skillry.dev/skills/bs-creatormotion-spotlight-quote-evidence",
+        "id": "bs-creatormotion-spotlight-quote-evidence"
+      },
+      "demo": {
+        "composition": "scenes/citacao-com-fonte/index.html",
+        "preview": "previews/citacao-com-fonte.mp4",
+        "inputs": {
+          "sourceLabel": "text",
+          "sourceTitle": "text",
+          "excerpt": "text",
+          "highlights": "array",
+          "photo": "image"
+        }
       }
     },
     {
-      "id": "bs-creatormotion-spotlight-region-callout",
-      "title": "Region Callout",
+      "id": "destaque-de-regiao",
+      "title": "Destaque de Região",
       "category": "Destaques e evidências",
       "aliases": [
+        "Region Callout",
+        "bs-creatormotion-spotlight-region-callout",
         "bs-spotlight-region-callout"
       ],
       "seconds": 9,
-      "prompt": "Use o efeito Region Callout (bs-creatormotion-spotlight-region-callout) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Destaque de Região para chamar a atenção para uma seção do documento. Escureça o entorno, ligue a região a uma nota curta, aproxime os dois elementos juntos e retorne ao quadro completo.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-spotlight-region-callout"
+        "url": "https://skillry.dev/skills/bs-creatormotion-spotlight-region-callout",
+        "id": "bs-creatormotion-spotlight-region-callout"
+      },
+      "demo": {
+        "composition": "scenes/destaque-de-regiao/index.html",
+        "preview": "previews/destaque-de-regiao.mp4",
+        "inputs": {
+          "documentTitle": "text",
+          "intro": "text",
+          "sectionTitle": "text",
+          "rules": "array",
+          "step": "text",
+          "callout": "text",
+          "documentImage": "image",
+          "region": "object"
+        }
       }
     },
     {
-      "id": "bs-creatormotion-spotlight-shortcut-target",
-      "title": "Shortcut Target",
+      "id": "atalho-e-resultado",
+      "title": "Atalho e Resultado",
       "category": "Destaques e evidências",
       "aliases": [
+        "Shortcut Target",
+        "bs-creatormotion-spotlight-shortcut-target",
         "bs-spotlight-shortcut-target"
       ],
       "seconds": 9,
-      "prompt": "Use o efeito Shortcut Target (bs-creatormotion-spotlight-shortcut-target) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Atalho e Resultado para ensinar uma combinação de teclas. Enquadre o comando, escureça o entorno, pressione as teclas e revele o resultado na mesma área.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-spotlight-shortcut-target"
+        "url": "https://skillry.dev/skills/bs-creatormotion-spotlight-shortcut-target",
+        "id": "bs-creatormotion-spotlight-shortcut-target"
+      },
+      "demo": {
+        "composition": "scenes/atalho-e-resultado/index.html",
+        "preview": "previews/atalho-e-resultado.mp4",
+        "inputs": {
+          "title": "text",
+          "instruction": "text",
+          "action": "text",
+          "keys": "array",
+          "result": "text",
+          "summary": "text",
+          "steps": "array",
+          "editorImage": "image",
+          "resultImage": "image",
+          "target": "object"
+        }
       }
     },
     {
-      "id": "bs-creatormotion-spotlight-voice-transcript",
-      "title": "Voice Transcript Handoff",
+      "id": "voz-em-texto",
+      "title": "Voz em Texto",
       "category": "Destaques e evidências",
       "aliases": [
+        "Voice Transcript Handoff",
+        "bs-creatormotion-spotlight-voice-transcript",
         "bs-spotlight-voice-transcript"
       ],
       "seconds": 10,
-      "prompt": "Use o efeito Voice Transcript Handoff (bs-creatormotion-spotlight-voice-transcript) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Voz em Texto neste trecho. Diminua a luz do espaço de trabalho, mostre as palavras nos tempos da fala e mova o texto confirmado para o campo de destino.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-spotlight-voice-transcript"
+        "url": "https://skillry.dev/skills/bs-creatormotion-spotlight-voice-transcript",
+        "id": "bs-creatormotion-spotlight-voice-transcript"
+      },
+      "demo": {
+        "composition": "scenes/voz-em-texto/index.html",
+        "preview": "previews/voz-em-texto.mp4",
+        "inputs": {
+          "workspaceTitle": "text",
+          "transcript": "text",
+          "wordTimings": "array",
+          "destination": "array",
+          "background": "image"
+        }
       }
     },
     {
-      "id": "bs-creatormotion-transition-polygon-wipe",
-      "title": "Polygon Scene Wipe",
+      "id": "virada-angular",
+      "title": "Virada Angular",
       "category": "Transições de cena",
       "aliases": [
+        "Polygon Scene Wipe",
+        "bs-creatormotion-transition-polygon-wipe",
         "bs-transition-polygon-wipe"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Polygon Scene Wipe (bs-creatormotion-transition-polygon-wipe) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Virada Angular neste trecho. Cruze o quadro com dois planos diagonais, revele a chamada intermediária e repita a passagem para abrir a cena seguinte. Faça cada corte sob a cobertura completa.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-transition-polygon-wipe"
+        "url": "https://skillry.dev/skills/bs-creatormotion-transition-polygon-wipe",
+        "id": "bs-creatormotion-transition-polygon-wipe"
+      },
+      "demo": {
+        "composition": "scenes/virada-angular/index.html",
+        "preview": "previews/virada-angular.mp4",
+        "inputs": {
+          "beforeTitle": "text",
+          "beforeLabel": "text",
+          "interstitialTitle": "text",
+          "ordinal": "text",
+          "afterTitle": "text",
+          "afterLabel": "text",
+          "beforeImage": "image",
+          "afterImage": "image"
+        }
       }
     },
     {
-      "id": "bs-creatormotion-transition-tile-dissolve",
-      "title": "Tile Scene Dissolve",
+      "id": "transicao-em-mosaico",
+      "title": "Transição em Mosaico",
       "category": "Transições de cena",
       "aliases": [
+        "Tile Scene Dissolve",
+        "bs-creatormotion-transition-tile-dissolve",
         "bs-transition-tile-dissolve"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Tile Scene Dissolve (bs-creatormotion-transition-tile-dissolve) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo. Use o take do apresentador para esta cena.",
+      "prompt": "Use Transição em Mosaico na pausa entre duas falas. Feche a câmera com uma grade que avança do centro para as bordas, revele uma frase e abra de volta ao mesmo take.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-transition-tile-dissolve"
+        "url": "https://skillry.dev/skills/bs-creatormotion-transition-tile-dissolve",
+        "id": "bs-creatormotion-transition-tile-dissolve"
+      },
+      "demo": {
+        "composition": "scenes/transicao-em-mosaico/index.html",
+        "preview": "previews/transicao-em-mosaico.mp4",
+        "inputs": {
+          "presenter": "media",
+          "statement": "text",
+          "markText": "text"
+        },
+        "required": [
+          "presenter"
+        ]
       }
     },
     {
-      "id": "bs-creatormotion-type-behind-subject",
-      "title": "Title Behind Subject",
+      "id": "titulo-atras-do-apresentador",
+      "title": "Título Atrás do Apresentador",
       "category": "Tipografia e legendas",
       "aliases": [
+        "Title Behind Subject",
+        "bs-creatormotion-type-behind-subject",
         "bs-type-behind-subject"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Title Behind Subject (bs-creatormotion-type-behind-subject) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo. Use o take do apresentador para esta cena.",
+      "prompt": "Use Título Atrás do Apresentador neste trecho. Faça um título entrar atrás do apresentador, com a mesma câmera contínua e o recorte alinhado ao take.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-type-behind-subject"
+        "url": "https://skillry.dev/skills/bs-creatormotion-type-behind-subject",
+        "id": "bs-creatormotion-type-behind-subject"
+      },
+      "demo": {
+        "composition": "scenes/titulo-atras-do-apresentador/index.html",
+        "preview": "previews/titulo-atras-do-apresentador.mp4",
+        "inputs": {
+          "presenter": "media",
+          "matte": "media",
+          "title": "text"
+        },
+        "required": [
+          "presenter",
+          "matte"
+        ]
       }
     },
     {
@@ -1619,45 +2021,86 @@
       }
     },
     {
-      "id": "bs-creatormotion-type-copy-correction",
-      "title": "Copy Card Correction",
+      "id": "revisao-carimbada",
+      "title": "Revisão Carimbada",
       "category": "Tipografia e legendas",
       "aliases": [
+        "Copy Card Correction",
+        "bs-creatormotion-type-copy-correction",
         "bs-type-copy-correction"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Copy Card Correction (bs-creatormotion-type-copy-correction) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Revisão Carimbada neste trecho. Risque o primeiro texto, retire a tira com uma queda inclinada e encaixe a revisão no mesmo lugar. Finalize com a marca de aprovação.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-type-copy-correction"
+        "url": "https://skillry.dev/skills/bs-creatormotion-type-copy-correction",
+        "id": "bs-creatormotion-type-copy-correction"
+      },
+      "demo": {
+        "composition": "scenes/revisao-carimbada/index.html",
+        "preview": "previews/revisao-carimbada.mp4",
+        "inputs": {
+          "before": "text",
+          "after": "text"
+        }
       }
     },
     {
-      "id": "bs-creatormotion-type-definition-reframe",
-      "title": "Definition Reframe",
+      "id": "definicao-em-perspectiva",
+      "title": "Definição em Perspectiva",
       "category": "Tipografia e legendas",
       "aliases": [
+        "Definition Reframe",
+        "bs-creatormotion-type-definition-reframe",
         "bs-type-definition-reframe"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Definition Reframe (bs-creatormotion-type-definition-reframe) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Definição em Perspectiva neste trecho. Risque a definição anterior, abra espaço para a fotografia e revele a nova definição com termos ao redor.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-type-definition-reframe"
+        "url": "https://skillry.dev/skills/bs-creatormotion-type-definition-reframe",
+        "id": "bs-creatormotion-type-definition-reframe"
+      },
+      "demo": {
+        "composition": "scenes/definicao-em-perspectiva/index.html",
+        "preview": "previews/definicao-em-perspectiva.mp4",
+        "inputs": {
+          "headline": "text",
+          "oldDefinition": "text",
+          "newDefinition": "text",
+          "relatedTerms": "array",
+          "contextImage": "image"
+        }
       }
     },
     {
-      "id": "bs-creatormotion-type-keyword-caption",
-      "title": "Keyword Caption Build",
+      "id": "legenda-com-enfase",
+      "title": "Legenda com Ênfase",
       "category": "Tipografia e legendas",
       "aliases": [
+        "Keyword Caption Build",
+        "bs-creatormotion-type-keyword-caption",
         "bs-type-keyword-caption"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Keyword Caption Build (bs-creatormotion-type-keyword-caption) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo. Use o take do apresentador para esta cena.",
+      "prompt": "Use Legenda com Ênfase neste trecho. Faça a legenda aparecer palavra por palavra em posições fixas e sublinhe os termos da fala que merecem destaque.",
       "source": {
         "package": "bs-creatormotion",
-        "url": "https://skillry.dev/skills/bs-creatormotion-type-keyword-caption"
+        "url": "https://skillry.dev/skills/bs-creatormotion-type-keyword-caption",
+        "id": "bs-creatormotion-type-keyword-caption"
+      },
+      "demo": {
+        "composition": "scenes/legenda-com-enfase/index.html",
+        "preview": "previews/legenda-com-enfase.mp4",
+        "inputs": {
+          "presenter": "media",
+          "lines": "array",
+          "accentWords": "array",
+          "wordTimings": "array"
+        },
+        "required": [
+          "presenter"
+        ]
       }
     },
     {
@@ -1773,17 +2216,35 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-agent-completes-checklist",
-      "title": "Agent Checklist",
+      "id": "edicao-em-andamento",
+      "title": "Edição em Andamento",
       "category": "Interfaces de produto",
       "aliases": [
+        "Agent Checklist",
+        "bs-launchmotion-ui-agent-completes-checklist",
         "lm-ui-agent-completes-checklist"
       ],
       "seconds": 9.4,
-      "prompt": "Use o efeito Agent Checklist (bs-launchmotion-ui-agent-completes-checklist) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Edição em Andamento neste trecho. Mostre quatro etapas sendo concluídas no cartão do agente, encaixe o cartão no editor, revele a prévia vertical e faça a linha do tempo correr até a confirmação da edição.",
       "source": {
         "package": "bs-launchmotion",
+        "id": "bs-launchmotion-ui-agent-completes-checklist",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-agent-completes-checklist"
+      },
+      "demo": {
+        "composition": "scenes/edicao-em-andamento/index.html",
+        "preview": "previews/edicao-em-andamento.mp4",
+        "inputs": {
+          "headline": "text",
+          "project": "text",
+          "request": "text",
+          "working": "text",
+          "done": "text",
+          "steps": "array",
+          "clips": "array",
+          "result": "text",
+          "footage": "media"
+        }
       }
     },
     {
@@ -1899,17 +2360,31 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-set-values-complete",
-      "title": "Limit Order",
+      "id": "revisao-agendada",
+      "title": "Revisão Agendada",
       "category": "Interfaces de produto",
       "aliases": [
+        "Limit Order",
+        "bs-launchmotion-ui-set-values-complete",
         "lm-ui-set-values-complete"
       ],
       "seconds": 8.2,
-      "prompt": "Use o efeito Limit Order (bs-launchmotion-ui-set-values-complete) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Revisão Agendada neste trecho. Aproxime a câmera do campo enquanto o tamanho do lote é digitado. Recue, deslize a seleção da fila, atualize os totais e termine com a confirmação de agendamento.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-ui-set-values-complete"
+        "url": "https://skillry.dev/skills/bs-launchmotion-ui-set-values-complete",
+        "id": "bs-launchmotion-ui-set-values-complete"
+      },
+      "demo": {
+        "composition": "scenes/revisao-agendada/index.html",
+        "preview": "previews/revisao-agendada.mp4",
+        "inputs": {
+          "headline": "text",
+          "title": "text",
+          "batchSize": "number",
+          "total": "number",
+          "portion": "number"
+        }
       }
     },
     {
@@ -1927,31 +2402,65 @@
       }
     },
     {
-      "id": "bs-launchmotion-flow-files-organize-themselves",
-      "title": "Photo Folders",
+      "id": "roteiro-em-pastas",
+      "title": "Roteiro em Pastas",
       "category": "Agentes e fluxos",
       "aliases": [
+        "Photo Folders",
+        "bs-launchmotion-flow-files-organize-themselves",
         "lm-flow-files-organize-themselves"
       ],
       "seconds": 8.8,
-      "prompt": "Use o efeito Photo Folders (bs-launchmotion-flow-files-organize-themselves) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Roteiro em Pastas neste trecho. Monte uma pilha de fotos, abra três pastas e distribua as imagens em ondas. Atualize o contador no instante em que cada foto chegar.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-flow-files-organize-themselves"
+        "url": "https://skillry.dev/skills/bs-launchmotion-flow-files-organize-themselves",
+        "id": "bs-launchmotion-flow-files-organize-themselves"
+      },
+      "demo": {
+        "composition": "scenes/roteiro-em-pastas/index.html",
+        "preview": "previews/roteiro-em-pastas.mp4",
+        "inputs": {
+          "title": "text",
+          "summary": "text",
+          "folders": "array",
+          "sheet": "image"
+        }
       }
     },
     {
-      "id": "bs-launchmotion-flow-question-transforms-product",
-      "title": "Photo Answer",
+      "id": "memoria-em-foco",
+      "title": "Memória em Foco",
       "category": "Agentes e fluxos",
       "aliases": [
+        "Photo Answer",
+        "bs-launchmotion-flow-question-transforms-product",
         "lm-flow-question-transforms-product"
       ],
       "seconds": 7.8,
-      "prompt": "Use o efeito Photo Answer (bs-launchmotion-flow-question-transforms-product) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Memória em Foco para apresentar um agente de roteiro. Faça seis fotos se reunirem em um ícone, revele uma pergunta ao lado dele e passe uma faixa de luz para trocar a pergunta pelo nome.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-flow-question-transforms-product"
+        "url": "https://skillry.dev/skills/bs-launchmotion-flow-question-transforms-product",
+        "id": "bs-launchmotion-flow-question-transforms-product"
+      },
+      "demo": {
+        "composition": "scenes/memoria-em-foco/index.html",
+        "preview": "previews/memoria-em-foco.mp4",
+        "inputs": {
+          "places": "array",
+          "intro": "text",
+          "question": "text",
+          "name": "text",
+          "tagline": "text",
+          "action": "text",
+          "photo1": "image",
+          "photo2": "image",
+          "photo3": "image",
+          "photo4": "image",
+          "photo5": "image",
+          "photo6": "image"
+        }
       }
     },
     {
@@ -1969,17 +2478,31 @@
       }
     },
     {
-      "id": "bs-launchmotion-prompt-whip-submit-smear",
-      "title": "Prompt Whip-Pan",
+      "id": "pergunta-em-disparo",
+      "title": "Pergunta em Disparo",
       "category": "Caixas de prompt",
       "aliases": [
+        "Prompt Whip-Pan",
+        "bs-launchmotion-prompt-whip-submit-smear",
         "lm-prompt-whip-submit-smear"
       ],
       "seconds": 7.4,
-      "prompt": "Use o efeito Prompt Whip-Pan (bs-launchmotion-prompt-whip-submit-smear) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Pergunta em Disparo neste trecho. Digite uma pergunta ao agente, aproxime a câmera do botão de envio, confirme o clique e faça o campo sair com um rastro. Mostre três passos na resposta e marque um de cada vez.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-prompt-whip-submit-smear"
+        "url": "https://skillry.dev/skills/bs-launchmotion-prompt-whip-submit-smear",
+        "id": "bs-launchmotion-prompt-whip-submit-smear"
+      },
+      "demo": {
+        "composition": "scenes/pergunta-em-disparo/index.html",
+        "preview": "previews/pergunta-em-disparo.mp4",
+        "inputs": {
+          "headline": "text",
+          "lead": "text",
+          "prompt": "text",
+          "title": "text",
+          "steps": "array"
+        }
       }
     },
     {
@@ -2081,17 +2604,32 @@
       }
     },
     {
-      "id": "bs-launchmotion-data-opening-promise-measurable",
-      "title": "Weeks to Days",
+      "id": "prazo-em-colapso",
+      "title": "Prazo em Colapso",
       "category": "Números e dados",
       "aliases": [
+        "Weeks to Days",
+        "bs-launchmotion-data-opening-promise-measurable",
         "lm-data-opening-promise-measurable"
       ],
       "seconds": 10,
-      "prompt": "Use o efeito Weeks to Days (bs-launchmotion-data-opening-promise-measurable) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Prazo em Colapso neste trecho. Compare dois prazos, mantenha a extensão anterior visível quando a barra maior encolher e mostre os dias economizados no espaço que se abriu.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-data-opening-promise-measurable"
+        "url": "https://skillry.dev/skills/bs-launchmotion-data-opening-promise-measurable",
+        "id": "bs-launchmotion-data-opening-promise-measurable"
+      },
+      "demo": {
+        "composition": "scenes/prazo-em-colapso/index.html",
+        "preview": "previews/prazo-em-colapso.mp4",
+        "inputs": {
+          "setupMinutes": "number",
+          "previousDays": "number",
+          "currentDays": "number",
+          "setupLabel": "text",
+          "reviewLabel": "text",
+          "headlines": "array"
+        }
       }
     },
     {
@@ -2277,17 +2815,35 @@
       }
     },
     {
-      "id": "bs-launchmotion-data-headline-lands-over",
-      "title": "Live Co-editing",
+      "id": "edicao-em-conjunto",
+      "title": "Edição em Conjunto",
       "category": "Números e dados",
       "aliases": [
+        "Live Co-editing",
+        "bs-launchmotion-data-headline-lands-over",
         "lm-data-headline-lands-over"
       ],
       "seconds": 8,
-      "prompt": "Use o efeito Live Co-editing (bs-launchmotion-data-headline-lands-over) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Edição em Conjunto neste trecho. Faça três cursores abrirem o painel, mudarem a ordem de um indicador, destacarem as barras do gráfico e reescreverem o título. Termine com a confirmação de que o trabalho foi salvo.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-data-headline-lands-over"
+        "url": "https://skillry.dev/skills/bs-launchmotion-data-headline-lands-over",
+        "id": "bs-launchmotion-data-headline-lands-over"
+      },
+      "demo": {
+        "composition": "scenes/edicao-em-conjunto/index.html",
+        "preview": "previews/edicao-em-conjunto.mp4",
+        "inputs": {
+          "headline": "text",
+          "names": "array",
+          "days": "array",
+          "values": "array",
+          "metrics": "array",
+          "workspace": "text",
+          "titleBase": "text",
+          "previousTitle": "text",
+          "nextTitle": "text"
+        }
       }
     },
     {
@@ -2319,17 +2875,33 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-token-choices-become",
-      "title": "Source Chips",
+      "id": "fontes-no-prompt",
+      "title": "Fontes no Prompt",
       "category": "Interfaces de produto",
       "aliases": [
+        "Source Chips",
+        "bs-launchmotion-ui-token-choices-become",
         "lm-ui-token-choices-become"
       ],
       "seconds": 8,
-      "prompt": "Use o efeito Source Chips (bs-launchmotion-ui-token-choices-become) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Fontes no Prompt neste trecho. Selecione três fontes de uma fileira, transforme os cartões marcados em chips dentro do campo e digite um pedido. Aproxime a câmera do botão ao enviar e recue para mostrar o agente processando.",
       "source": {
         "package": "bs-launchmotion",
+        "id": "bs-launchmotion-ui-token-choices-become",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-token-choices-become"
+      },
+      "demo": {
+        "composition": "scenes/fontes-no-prompt/index.html",
+        "preview": "previews/fontes-no-prompt.mp4",
+        "inputs": {
+          "opening": "text",
+          "compose": "text",
+          "closing": "text",
+          "prompt": "text",
+          "status": "text",
+          "sources": "array",
+          "selected": "array"
+        }
       }
     },
     {
@@ -2501,17 +3073,38 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-enter-product-type",
-      "title": "Icon Dive",
+      "id": "do-icone-ao-produto",
+      "title": "Do Ícone ao Produto",
       "category": "Interfaces de produto",
       "aliases": [
+        "Icon Dive",
+        "bs-launchmotion-ui-enter-product-type",
         "lm-ui-enter-product-type"
       ],
       "seconds": 7.8,
-      "prompt": "Use o efeito Icon Dive (bs-launchmotion-ui-enter-product-type) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Do Ícone ao Produto neste trecho. Mergulhe no ícone até a cor tomar o quadro, transforme a cor no botão de envio, digite e envie o pedido. Mostre o agente montando a interface e revele o resultado pronto.",
       "source": {
         "package": "bs-launchmotion",
+        "id": "bs-launchmotion-ui-enter-product-type",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-enter-product-type"
+      },
+      "demo": {
+        "composition": "scenes/do-icone-ao-produto/index.html",
+        "preview": "previews/do-icone-ao-produto.mp4",
+        "inputs": {
+          "brand": "text",
+          "tagline": "text",
+          "headline": "text",
+          "placeholder": "text",
+          "prompt": "text",
+          "agent": "text",
+          "working": "text",
+          "done": "text",
+          "url": "text",
+          "pageTitle": "text",
+          "cta": "text",
+          "agenda": "array"
+        }
       }
     },
     {
@@ -2529,17 +3122,32 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-warp-tunnel-verbs",
-      "title": "Warp Tunnel",
+      "id": "tunel-de-tarefas",
+      "title": "Túnel de Tarefas",
       "category": "Interfaces de produto",
       "aliases": [
+        "Warp Tunnel",
+        "bs-launchmotion-ui-warp-tunnel-verbs",
         "lm-ui-warp-tunnel-verbs"
       ],
       "seconds": 9.2,
-      "prompt": "Use o efeito Warp Tunnel (bs-launchmotion-ui-warp-tunnel-verbs) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Túnel de Tarefas neste trecho. Abra um portal, acelere por três túneis com um verbo por vez e feche em uma esfera acima do nome e das funções do agente.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-ui-warp-tunnel-verbs"
+        "url": "https://skillry.dev/skills/bs-launchmotion-ui-warp-tunnel-verbs",
+        "id": "bs-launchmotion-ui-warp-tunnel-verbs"
+      },
+      "demo": {
+        "composition": "scenes/tunel-de-tarefas/index.html",
+        "preview": "previews/tunel-de-tarefas.mp4",
+        "inputs": {
+          "intro": "text",
+          "verbs": "array",
+          "roles": "array",
+          "title": "text",
+          "accent": "text",
+          "tools": "text"
+        }
       }
     },
     {
@@ -2580,7 +3188,7 @@
         "lm-ui-prompt-sent-loader"
       ],
       "seconds": 6.8,
-      "prompt": "Use Resposta Revelada neste trecho. Digite a pergunta, encaixe o campo abaixo, encha as barras de carregamento e use um wipe horizontal para revelar a resposta.",
+      "prompt": "Use Resposta Revelada neste trecho. Digite e envie a pergunta, mantenha a mensagem acima e encaixe o campo abaixo. Use as barras de carregamento para revelar a resposta com um wipe horizontal e termine com ações sugeridas.",
       "source": {
         "package": "bs-launchmotion",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-prompt-sent-loader",
@@ -2592,7 +3200,8 @@
         "inputs": {
           "question": "text",
           "answer": "text",
-          "detail": "text"
+          "detail": "text",
+          "suggestions": "array"
         }
       }
     },
@@ -2625,17 +3234,33 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-capsule-menu-syncs",
-      "title": "Setup Capsule",
+      "id": "capsula-de-integracao",
+      "title": "Cápsula de Integração",
       "category": "Interfaces de produto",
       "aliases": [
+        "Setup Capsule",
+        "bs-launchmotion-ui-capsule-menu-syncs",
         "lm-ui-capsule-menu-syncs"
       ],
       "seconds": 12,
-      "prompt": "Use o efeito Setup Capsule (bs-launchmotion-ui-capsule-menu-syncs) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Cápsula de Integração neste trecho. Desenhe o contorno da primeira etapa, faça as linhas avançarem na cápsula, transforme a segunda etapa em um formulário e confirme a conexão. Volte à lista com o mapa pontilhado, conclua a terceira etapa e comprima a cápsula num selo de confirmação.",
       "source": {
         "package": "bs-launchmotion",
+        "id": "bs-launchmotion-ui-capsule-menu-syncs",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-capsule-menu-syncs"
+      },
+      "demo": {
+        "composition": "scenes/capsula-de-integracao/index.html",
+        "preview": "previews/capsula-de-integracao.mp4",
+        "inputs": {
+          "headline": "text",
+          "steps": "array",
+          "modalTitle": "text",
+          "fieldLabel": "text",
+          "connect": "text",
+          "closing": "text",
+          "status": "text"
+        }
       }
     },
     {
@@ -2765,17 +3390,32 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-hand-drawn-box",
-      "title": "Box Buddy",
+      "id": "do-esboco-a-cidade",
+      "title": "Do Esboço à Cidade",
       "category": "Interfaces de produto",
       "aliases": [
+        "Box Buddy",
+        "bs-launchmotion-ui-hand-drawn-box",
         "lm-ui-hand-drawn-box"
       ],
       "seconds": 11.5,
-      "prompt": "Use o efeito Box Buddy (bs-launchmotion-ui-hand-drawn-box) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Do Esboço à Cidade neste trecho. Faça o personagem entrar caminhando na janela de animação, piscar e sorrir, aproxime a câmera até a pupila preencher o quadro e abra a fotografia em um círculo. Encaixe a foto em uma janela com a frase final.",
       "source": {
         "package": "bs-launchmotion",
+        "id": "bs-launchmotion-ui-hand-drawn-box",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-hand-drawn-box"
+      },
+      "demo": {
+        "composition": "scenes/do-esboco-a-cidade/index.html",
+        "preview": "previews/do-esboco-a-cidade.mp4",
+        "inputs": {
+          "headline": "text",
+          "character": "text",
+          "chip": "text",
+          "worldTag": "text",
+          "closing": "text",
+          "world": "image"
+        }
       }
     },
     {
@@ -2948,17 +3588,30 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-checklist-scrolls-through",
-      "title": "Five-Step Focus",
+      "id": "fluxo-em-cinco-etapas",
+      "title": "Fluxo em Cinco Etapas",
       "category": "Interfaces de produto",
       "aliases": [
+        "Five-Step Focus",
+        "bs-launchmotion-ui-checklist-scrolls-through",
         "lm-ui-checklist-scrolls-through"
       ],
       "seconds": 11,
-      "prompt": "Use o efeito Five-Step Focus (bs-launchmotion-ui-checklist-scrolls-through) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Fluxo em Cinco Etapas neste trecho. Apresente o fluxo, avance pelos cinco passos numa janela fixa, mostre o detalhe de cada passo e confirme sua conclusão. Use o painel final para revelar o resultado.",
       "source": {
         "package": "bs-launchmotion",
+        "id": "bs-launchmotion-ui-checklist-scrolls-through",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-checklist-scrolls-through"
+      },
+      "demo": {
+        "composition": "scenes/fluxo-em-cinco-etapas/index.html",
+        "preview": "previews/fluxo-em-cinco-etapas.mp4",
+        "inputs": {
+          "intro": "text",
+          "steps": "array",
+          "closing": "text",
+          "product": "text"
+        }
       }
     },
     {
@@ -3046,17 +3699,32 @@
       }
     },
     {
-      "id": "bs-launchmotion-prompt-waiting-guessing-forgetting",
-      "title": "Pain Words Crossed",
+      "id": "cortando-ruido",
+      "title": "Cortando Ruído",
       "category": "Caixas de prompt",
       "aliases": [
+        "Pain Words Crossed",
+        "bs-launchmotion-prompt-waiting-guessing-forgetting",
         "lm-prompt-waiting-guessing-forgetting"
       ],
       "seconds": 7.2,
-      "prompt": "Use o efeito Pain Words Crossed (bs-launchmotion-prompt-waiting-guessing-forgetting) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Cortando Ruído para apresentar três tarefas manuais que se acumulam e são riscadas. Em seguida, digite um único pedido e mostre a confirmação do agente.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-prompt-waiting-guessing-forgetting"
+        "url": "https://skillry.dev/skills/bs-launchmotion-prompt-waiting-guessing-forgetting",
+        "id": "bs-launchmotion-prompt-waiting-guessing-forgetting"
+      },
+      "demo": {
+        "composition": "scenes/cortando-ruido/index.html",
+        "preview": "previews/cortando-ruido.mp4",
+        "inputs": {
+          "lead": "text",
+          "terms": "array",
+          "titleLead": "text",
+          "titleAccent": "text",
+          "request": "text",
+          "reply": "text"
+        }
       }
     },
     {
@@ -3186,17 +3854,32 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-knob-slider-bounce",
-      "title": "Focus Knob",
+      "id": "tempo-de-foco",
+      "title": "Tempo de Foco",
       "category": "Interfaces de produto",
       "aliases": [
+        "Focus Knob",
+        "bs-launchmotion-ui-knob-slider-bounce",
         "lm-ui-knob-slider-bounce"
       ],
       "seconds": 7.4,
-      "prompt": "Use o efeito Focus Knob (bs-launchmotion-ui-knob-slider-bounce) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Tempo de Foco neste trecho. Ative o botão, faça a esfera sair do interruptor e virar o seletor de tempo. Depois, leve a esfera pelas notificações que saem da tela e encaixe-a no selo de foco.",
       "source": {
         "package": "bs-launchmotion",
+        "id": "bs-launchmotion-ui-knob-slider-bounce",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-knob-slider-bounce"
+      },
+      "demo": {
+        "composition": "scenes/tempo-de-foco/index.html",
+        "preview": "previews/tempo-de-foco.mp4",
+        "inputs": {
+          "toggle": "text",
+          "question": "text",
+          "minutes": "number",
+          "notes": "array",
+          "closing": "text",
+          "badge": "text"
+        }
       }
     },
     {
@@ -3606,17 +4289,44 @@
       }
     },
     {
-      "id": "bs-launchmotion-grid-what-will-you",
-      "title": "Hard-Cut Montage",
+      "id": "montagem-de-b-roll-em-cortes",
+      "title": "Montagem de B-roll em Cortes",
       "category": "Galerias e grades",
       "aliases": [
+        "Hard-Cut Montage",
+        "bs-launchmotion-grid-what-will-you",
         "lm-grid-what-will-you"
       ],
       "seconds": 7.2,
-      "prompt": "Use o efeito Hard-Cut Montage (bs-launchmotion-grid-what-will-you) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Montagem de B-roll em Cortes para abrir com uma pergunta e cortar entre quinze imagens no mesmo quadro. Atualize o contador a cada corte e marque dois elementos da última imagem.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-grid-what-will-you"
+        "url": "https://skillry.dev/skills/bs-launchmotion-grid-what-will-you",
+        "id": "bs-launchmotion-grid-what-will-you"
+      },
+      "demo": {
+        "composition": "scenes/montagem-de-b-roll-em-cortes/index.html",
+        "preview": "previews/montagem-de-b-roll-em-cortes.mp4",
+        "inputs": {
+          "title": "text",
+          "labels": "array",
+          "detections": "array",
+          "shot01": "image",
+          "shot02": "image",
+          "shot03": "image",
+          "shot04": "image",
+          "shot05": "image",
+          "shot06": "image",
+          "shot07": "image",
+          "shot08": "image",
+          "shot09": "image",
+          "shot10": "image",
+          "shot11": "image",
+          "shot12": "image",
+          "shot13": "image",
+          "shot14": "image",
+          "shot15": "image"
+        }
       }
     },
     {
@@ -3712,8 +4422,8 @@
         "bs-launchmotion-ui-signal-agent-scans",
         "lm-ui-signal-agent-scans"
       ],
-      "seconds": 7.6,
-      "prompt": "Use Radar de Sinais neste trecho. Mostre três comentários fictícios. Varra cada post, destaque seu tema e reúna os três assuntos numa lista de prioridades.",
+      "seconds": 9,
+      "prompt": "Use Radar de Sinais neste trecho. Abra com uma pergunta no chat, mostre o agente varrendo os posts lado a lado e etiquetando cada um. Troque a fileira pelo ranking de temas com barras animadas e termine com a ação sugerida.",
       "source": {
         "package": "bs-launchmotion",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-signal-agent-scans",
@@ -3725,22 +4435,39 @@
         "inputs": {
           "question": "text",
           "result": "text",
-          "posts": "array"
+          "posts": "array",
+          "total": "number",
+          "themes": "array",
+          "nextStep": "text"
         }
       }
     },
     {
-      "id": "bs-launchmotion-type-headline-builds-word",
-      "title": "Verb Swap",
+      "id": "verbo-em-virada",
+      "title": "Verbo em Virada",
       "category": "Tipografia e legendas",
       "aliases": [
+        "Verb Swap",
+        "bs-launchmotion-type-headline-builds-word",
         "lm-type-headline-builds-word"
       ],
       "seconds": 7,
-      "prompt": "Use o efeito Verb Swap (bs-launchmotion-type-headline-builds-word) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Verbo em Virada neste trecho. Faça a frase entrar palavra por palavra, centralize o conjunto a cada entrada e troque o verbo duas vezes com compressão e sublinhado. Eleve a frase para revelar a linha de apoio.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-type-headline-builds-word"
+        "url": "https://skillry.dev/skills/bs-launchmotion-type-headline-builds-word",
+        "id": "bs-launchmotion-type-headline-builds-word"
+      },
+      "demo": {
+        "composition": "scenes/verbo-em-virada/index.html",
+        "preview": "previews/verbo-em-virada.mp4",
+        "inputs": {
+          "lead": "text",
+          "verbs": "array",
+          "target": "text",
+          "subline": "text",
+          "contexts": "array"
+        }
       }
     },
     {
@@ -3912,17 +4639,35 @@
       }
     },
     {
-      "id": "bs-launchmotion-reveal-multiple-agents-logo",
-      "title": "Agent Engine",
+      "id": "orbita-de-agentes",
+      "title": "Órbita de Agentes",
       "category": "Revelações",
       "aliases": [
+        "Agent Engine",
+        "bs-launchmotion-reveal-multiple-agents-logo",
         "lm-reveal-multiple-agents-logo"
       ],
       "seconds": 7.8,
-      "prompt": "Use o efeito Agent Engine (bs-launchmotion-reveal-multiple-agents-logo) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Órbita de Agentes para apresentar um fluxo de IA. Faça sete ícones orbitarem o título, junte-os em um núcleo e termine com três etapas ligadas que recebem confirmação em sequência.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-reveal-multiple-agents-logo"
+        "url": "https://skillry.dev/skills/bs-launchmotion-reveal-multiple-agents-logo",
+        "id": "bs-launchmotion-reveal-multiple-agents-logo"
+      },
+      "demo": {
+        "composition": "scenes/orbita-de-agentes/index.html",
+        "preview": "previews/orbita-de-agentes.mp4",
+        "inputs": {
+          "agents": "array",
+          "steps": "array",
+          "firstLead": "text",
+          "firstAccent": "text",
+          "middleLead": "text",
+          "middleAccent": "text",
+          "lastLead": "text",
+          "lastAccent": "text",
+          "subline": "text"
+        }
       }
     },
     {
@@ -3940,17 +4685,34 @@
       }
     },
     {
-      "id": "bs-launchmotion-data-integration-cards-drop",
-      "title": "Connect and Launch",
+      "id": "conexoes-em-serie",
+      "title": "Conexões em Série",
       "category": "Números e dados",
       "aliases": [
+        "Connect and Launch",
+        "bs-launchmotion-data-integration-cards-drop",
         "lm-data-integration-cards-drop"
       ],
       "seconds": 7.6,
-      "prompt": "Use o efeito Connect and Launch (bs-launchmotion-data-integration-cards-drop) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Conexões em Série para mostrar seis fontes se conectando. Revele o progresso, reúna os cartões no centro e mostre o agente iniciar com as seis fontes ligadas.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-data-integration-cards-drop"
+        "url": "https://skillry.dev/skills/bs-launchmotion-data-integration-cards-drop",
+        "id": "bs-launchmotion-data-integration-cards-drop"
+      },
+      "demo": {
+        "composition": "scenes/conexoes-em-serie/index.html",
+        "preview": "previews/conexoes-em-serie.mp4",
+        "inputs": {
+          "sources": "array",
+          "firstLead": "text",
+          "firstFocus": "text",
+          "lastLead": "text",
+          "lastFocus": "text",
+          "action": "text",
+          "confirmed": "text",
+          "summary": "text"
+        }
       }
     },
     {
@@ -4024,17 +4786,30 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-exploded-security-chip",
-      "title": "Exploded Chip",
+      "id": "nucleo-em-camadas",
+      "title": "Núcleo em Camadas",
       "category": "Interfaces de produto",
       "aliases": [
+        "Exploded Chip",
+        "bs-launchmotion-ui-exploded-security-chip",
         "lm-ui-exploded-security-chip"
       ],
       "seconds": 7.4,
-      "prompt": "Use o efeito Exploded Chip (bs-launchmotion-ui-exploded-security-chip) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Núcleo em Camadas para explicar quatro proteções de um sistema de IA. Revele a pilha em perspectiva, identifique as camadas, feche o núcleo e recue para mostrar os quatro módulos assentarem na placa.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-ui-exploded-security-chip"
+        "url": "https://skillry.dev/skills/bs-launchmotion-ui-exploded-security-chip",
+        "id": "bs-launchmotion-ui-exploded-security-chip"
+      },
+      "demo": {
+        "composition": "scenes/nucleo-em-camadas/index.html",
+        "preview": "previews/nucleo-em-camadas.mp4",
+        "inputs": {
+          "headlines": "array",
+          "layers": "array",
+          "sealed": "text",
+          "caption": "text"
+        }
       }
     },
     {
@@ -4192,17 +4967,29 @@
       }
     },
     {
-      "id": "bs-launchmotion-cta-orb-sweeps-shrinks",
-      "title": "Orb to Logo",
+      "id": "esfera-em-assinatura",
+      "title": "Esfera em Assinatura",
       "category": "Chamadas para ação",
       "aliases": [
+        "Orb to Logo",
+        "bs-launchmotion-cta-orb-sweeps-shrinks",
         "lm-cta-orb-sweeps-shrinks"
       ],
       "seconds": 6.8,
-      "prompt": "Use o efeito Orb to Logo (bs-launchmotion-cta-orb-sweeps-shrinks) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Esfera em Assinatura neste trecho. Forme um círculo de pontos, faça a esfera cruzar o quadro e encolher até completar o símbolo da marca. Revele o nome, a frase e o botão em sequência.",
       "source": {
         "package": "bs-launchmotion",
+        "id": "bs-launchmotion-cta-orb-sweeps-shrinks",
         "url": "https://skillry.dev/skills/bs-launchmotion-cta-orb-sweeps-shrinks"
+      },
+      "demo": {
+        "composition": "scenes/esfera-em-assinatura/index.html",
+        "preview": "previews/esfera-em-assinatura.mp4",
+        "inputs": {
+          "brand": "text",
+          "tagline": "text",
+          "cta": "text"
+        }
       }
     },
     {
@@ -4584,17 +5371,30 @@
       }
     },
     {
-      "id": "bs-launchmotion-ui-star-flash-irises",
-      "title": "Light Spectrum",
+      "id": "ideia-em-espectro",
+      "title": "Ideia em Espectro",
       "category": "Interfaces de produto",
       "aliases": [
+        "Light Spectrum",
+        "bs-launchmotion-ui-star-flash-irises",
         "lm-ui-star-flash-irises"
       ],
       "seconds": 7.8,
-      "prompt": "Use o efeito Light Spectrum (bs-launchmotion-ui-star-flash-irises) neste trecho. Adapte os textos e a mídia ao meu vídeo e mantenha a coreografia do modelo.",
+      "prompt": "Use Ideia em Espectro neste trecho. Faça um clarão abrir a passagem da foto para a rede e o relâmpago. Divida um feixe no prisma e transforme as sete faixas nos formatos de saída.",
       "source": {
         "package": "bs-launchmotion",
-        "url": "https://skillry.dev/skills/bs-launchmotion-ui-star-flash-irises"
+        "url": "https://skillry.dev/skills/bs-launchmotion-ui-star-flash-irises",
+        "id": "bs-launchmotion-ui-star-flash-irises"
+      },
+      "demo": {
+        "composition": "scenes/ideia-em-espectro/index.html",
+        "preview": "previews/ideia-em-espectro.mp4",
+        "inputs": {
+          "caption": "text",
+          "headline": "text",
+          "formats": "array",
+          "photo": "image"
+        }
       }
     },
     {
@@ -4724,14 +5524,130 @@
       }
     },
     {
-      "id": "bs-paper-cutout-story-video",
-      "title": "Paper Cutout Story Video",
+      "id": "roteiro-em-papel",
+      "title": "Roteiro em Papel",
       "category": "Estilos de vídeo",
-      "prompt": "Use Paper Cutout Story Video para transformar meu roteiro em uma história animada com recortes de papel. Crie as cenas a partir do meu texto e mantenha a linguagem visual do modelo.",
+      "aliases": [
+        "Paper Cutout Story Video",
+        "bs-paper-cutout-story-video"
+      ],
+      "seconds": 36,
+      "prompt": "Use Roteiro em Papel para contar uma história em oito cenas de papel recortado. Alterne títulos em tiras, paisagens em camadas, objetos que entram em sequência e um selo de fechamento.",
       "source": {
         "package": "bs-paper-cutout-story-video",
-        "url": "https://skillry.dev/skills/bs-paper-cutout-story-video"
+        "url": "https://skillry.dev/skills/bs-paper-cutout-story-video",
+        "id": "bs-paper-cutout-story-video"
+      },
+      "demo": {
+        "composition": "scenes/roteiro-em-papel/index.html",
+        "preview": "previews/roteiro-em-papel.mp4",
+        "inputs": {
+          "titles": "array",
+          "details": "array"
+        }
       }
+    },
+    {
+      "id": "identificacao-do-apresentador",
+      "title": "Identificação do Apresentador",
+      "category": "Tipografia e legendas",
+      "aliases": [
+        "Lower Third",
+        "Tarja de identificação"
+      ],
+      "seconds": 6,
+      "prompt": "Use Identificação do Apresentador neste trecho. Apresente o nome e a função numa tarja curta no terço inferior. Use o próprio take ou renderize a tarja separadamente para sobrepor.",
+      "demo": {
+        "composition": "scenes/identificacao-do-apresentador/index.html",
+        "preview": "previews/identificacao-do-apresentador.mp4",
+        "inputs": {
+          "presenter": "media",
+          "name": "text",
+          "role": "text"
+        }
+      }
+    }
+  ],
+  "core": [
+    {
+      "title": "Corte, abertura e tipografia",
+      "ids": [
+        "capitulo-em-movimento",
+        "virada-angular",
+        "revisao-carimbada",
+        "verbo-em-virada",
+        "definicao-em-perspectiva",
+        "legenda-com-enfase",
+        "titulo-atras-do-apresentador",
+        "transicao-em-mosaico",
+        "identificacao-do-apresentador"
+      ]
+    },
+    {
+      "title": "Apresentador e demonstração",
+      "ids": [
+        "grafico-em-contracampo",
+        "colagem-em-torno-da-camera",
+        "checklist-em-acao",
+        "apresentador-e-navegador",
+        "apresentador-e-slides",
+        "apresentador-e-lista",
+        "apresentador-e-celular",
+        "apresentador-e-citacao"
+      ]
+    },
+    {
+      "title": "Produto, chat e interação",
+      "ids": [
+        "radar-de-sinais",
+        "resposta-revelada",
+        "conversa-em-camadas",
+        "fontes-no-prompt",
+        "do-icone-ao-produto",
+        "fluxo-em-cinco-etapas",
+        "edicao-em-andamento",
+        "edicao-em-conjunto",
+        "capsula-de-integracao",
+        "atalho-e-resultado"
+      ]
+    },
+    {
+      "title": "Dados e comparações",
+      "ids": [
+        "barras-em-proporcao",
+        "barras-em-sequencia",
+        "faixa-de-composicao",
+        "meta-superada",
+        "prazo-em-colapso",
+        "cartoes-e-contador",
+        "linha-de-tendencia",
+        "matriz-de-comparacao"
+      ]
+    },
+    {
+      "title": "Processos e evidências",
+      "ids": [
+        "roteamento-por-agente",
+        "ciclo-em-duas-voltas",
+        "contexto-em-conflito",
+        "documentos-em-sintese",
+        "voz-em-texto",
+        "citacao-com-fonte",
+        "destaque-de-regiao",
+        "linha-do-tempo",
+        "mensagens-entre-sistemas"
+      ]
+    },
+    {
+      "title": "Imagens, revelações e encerramento",
+      "ids": [
+        "parede-em-perspectiva",
+        "roteiro-em-pastas",
+        "ideia-em-espectro",
+        "esfera-em-assinatura",
+        "orbita-de-agentes",
+        "montagem-de-b-roll-em-cortes"
+      ]
     }
   ]
 }

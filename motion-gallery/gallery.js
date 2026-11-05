@@ -1,7 +1,7 @@
 (() => {
   'use strict'
 
-  const { entries } = JSON.parse(document.getElementById('catalog').textContent)
+  const { entries, core = [] } = JSON.parse(document.getElementById('catalog').textContent)
   const groups = document.getElementById('groups')
   const categoryField = document.getElementById('category')
   const queryField = document.getElementById('query')
@@ -9,6 +9,8 @@
   const empty = document.getElementById('empty')
   const categories = new Map()
   const cards = new Map()
+  const links = new Map()
+  const coreCategory = new Map(core.flatMap(group => group.ids.map(id => [id, group.title])))
   const normalize = text => text.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()
   const collectionLabels = {
     'bs-creatormotion': 'CreatorMotion',
@@ -24,7 +26,7 @@
     return node
   }
 
-  function makeCard(entry) {
+  function makeCard(entry, title, scope) {
     const article = element('article', 'card')
     article.id = entry.id
     const collection = entry.demo ? 'Motion próprio' : collectionLabels[entry.source.package] + ' · Referência'
@@ -64,19 +66,38 @@
     article.append(copy, details)
     return {
       article,
-      own: Boolean(entry.demo),
-      search: normalize([entry.title, entry.category, collection, entry.id, ...(entry.aliases ?? [])].join(' ')),
+      scope,
+      search: normalize([entry.title, title, entry.category, collection, entry.id, ...(entry.aliases ?? [])].join(' ')),
     }
   }
 
-  for (const entry of entries) {
-    if (!categories.has(entry.category)) categories.set(entry.category, { cards: [] })
-    const card = makeCard(entry)
-    categories.get(entry.category).cards.push(card)
+  const entriesById = new Map(entries.map(entry => [entry.id, entry]))
+  const orderedEntries = [
+    ...core.flatMap(group => group.ids.map(id => entriesById.get(id))).filter(Boolean),
+    ...entries.filter(entry => !coreCategory.has(entry.id)),
+  ]
+  for (const entry of orderedEntries) {
+    const title = coreCategory.get(entry.id) ?? entry.category
+    const scope = coreCategory.has(entry.id) ? 'core' : entry.demo ? 'complement' : 'reference'
+    if (!categories.has(title)) categories.set(title, { cards: [] })
+    const card = makeCard(entry, title, scope)
+    categories.get(title).cards.push(card)
     cards.set(entry.id, card)
+    for (const alias of entry.aliases ?? []) {
+      if (/^[a-z0-9-]+$/.test(alias)) links.set(alias, card)
+    }
   }
 
-  const firstCategories = ['Transições de cena', 'Tipografia e legendas']
+  const scopes = new Map([
+    ['core', 'Seleção principal'],
+    ['complement', 'Acervo complementar'],
+    ['reference', 'Referências da Skillry'],
+  ])
+  for (const [scope, label] of scopes) {
+    if ([...cards.values()].some(card => card.scope === scope)) categoryField.add(new Option(label, scope))
+  }
+
+  const firstCategories = core.map(group => group.title)
   const orderedCategories = [...firstCategories.filter(title => categories.has(title)),
     ...[...categories.keys()].filter(title => !firstCategories.includes(title)).sort((a, b) => a.localeCompare(b, 'pt-BR'))]
   orderedCategories.forEach((title, index) => {
@@ -96,18 +117,17 @@
     categoryField.add(new Option(title, title))
   })
 
-  const ownOption = new Option('Motions próprios', 'own')
-  if (entries.some(entry => entry.demo)) categoryField.add(ownOption, 0)
-
   function applyFilters() {
     const words = normalize(queryField.value.trim()).split(/\s+/).filter(Boolean)
-    groups.dataset.own = String(categoryField.value === 'own')
+    const filter = categoryField.value
+    const scopeFilter = scopes.has(filter)
     let visible = 0
     for (const [title, category] of categories) {
-      const inCategory = !categoryField.value || title === categoryField.value || categoryField.value === 'own'
+      const inCategory = !filter || scopeFilter || title === filter
       let count = 0
       for (const card of category.cards) {
-        const matches = inCategory && (categoryField.value !== 'own' || card.own) && words.every(word => card.search.includes(word))
+        const matches = inCategory && (!scopeFilter || card.scope === filter) && words.every(word => card.search.includes(word))
+        if (!matches && !card.article.hidden) card.article.querySelector('video')?.pause()
         card.article.hidden = !matches
         if (matches) count++
       }
@@ -123,23 +143,22 @@
     let id
     try { id = decodeURIComponent(location.hash.slice(1)) }
     catch { return }
-    const card = cards.get(id)
+    const card = cards.get(id) ?? links.get(id)
     if (!card) return
+    if (id !== card.article.id) history.replaceState(null, '', '#' + card.article.id)
     if (card.article.hidden) {
-      categoryField.value = ''
+      categoryField.value = card.scope
       queryField.value = ''
       applyFilters()
     }
     card.article.scrollIntoView({ block: 'start' })
   }
 
-  queryField.addEventListener('input', () => {
-    if (categoryField.value === 'own') categoryField.value = ''
-    applyFilters()
-  })
+  queryField.addEventListener('input', applyFilters)
   categoryField.addEventListener('change', applyFilters)
   window.addEventListener('hashchange', revealLinkedCard)
-  if (ownOption.parentNode) categoryField.value = 'own'
+  if (coreCategory.size) categoryField.value = 'core'
+  else if (entries.some(entry => entry.demo)) categoryField.value = 'complement'
   applyFilters()
   revealLinkedCard()
 })()

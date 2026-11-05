@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Órbita de Agentes</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+  main { color:#f1f5fa; background:radial-gradient(ellipse at 50% 54%,#353a43,#1d2026 54%,#111316); }
+  main::before { content:""; position:absolute; inset:0; z-index:-1; opacity:.26; mix-blend-mode:soft-light; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='148' height='148'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .orbits { position:absolute; inset:0; width:100%; height:100%; }
+  .node { position:absolute; left:960px; top:510px; text-align:center; white-space:nowrap; }
+  .tile { display:grid; place-items:center; margin:auto; width:111px; height:111px; border-radius:30px; border:1px solid #657080; background:linear-gradient(145deg,#3d4753,#29303a); box-shadow:0 12px 26px #0006,inset 0 1px 0 #fff2; }
+  .tile svg { width:59px; height:59px; }
+  .node span { display:block; color:#e2eaf6; font-size:27px; margin-top:9px; }
+  .headline { position:absolute; left:70px; width:1780px; text-align:center; font-size:108px; }
+  .headline em { color:#b6ddff; font-style:normal; }
+  .first { top:467px; }
+  .engine { position:absolute; left:853px; top:314px; width:214px; height:214px; display:grid; place-items:center; border-radius:53px; border:1px solid #dcedff; color:#213851; background:linear-gradient(138deg,#e2f3ff,#8abded 69%,#6da8e5); box-shadow:0 20px 60px #0008,0 0 51px #8fcaff70,inset 0 1px 1px white; }
+  .engine svg { width:120px; height:120px; }
+  .pulse { position:absolute; left:50%; top:50%; width:219px; height:219px; border:2px solid #9dcdfd; border-radius:57px; }
+  .middle { top:572px; }
+  .subline { position:absolute; top:701px; width:100%; text-align:center; color:#c4cfdc; font-size:40px; }
+  .last { top:293px; }
+  .stages { position:absolute; left:169px; top:560px; display:flex; gap:38px; }
+  .stage { position:relative; width:502px; height:200px; padding:28px 31px; border-radius:25px; border:1px solid #627082; background:linear-gradient(150deg,#3a4350,#2b323d); box-shadow:0 19px 50px #0007,inset 0 1px 0 #fff2; }
+  .stage .stage-icon { display:grid; place-items:center; width:61px; height:61px; border-radius:16px; background:#4e6074; color:#cce6ff; }
+  .stage-icon svg { width:34px; height:34px; }
+  .stage p { margin-top:15px; font-size:46px; }
+  .done { position:absolute; right:28px; top:29px; display:grid; place-items:center; width:52px; height:52px; border-radius:50%; color:#1c3652; background:#bcdeff; font-size:32px; font-weight:650; }
+  .flowline { position:absolute; left:658px; top:655px; width:60px; height:3px; border-radius:3px; background:#b5d9ff; transform-origin:left; }
+  .flowline.next { left:1198px; }
+</style>
+</head>
+<body>
+<main data-composition-id="orbita-de-agentes" data-start="0" data-duration="7.8" data-width="1920" data-height="1080">
+  <svg class="orbits" viewBox="0 0 1920 1080" fill="none" aria-hidden="true">
+    <ellipse cx="960" cy="510" rx="582" ry="296" stroke="#8dacc5" stroke-width="1.4" stroke-dasharray="2 9"/>
+    <ellipse cx="960" cy="510" rx="659" ry="328" stroke="#8dacc5" stroke-width="1.0" opacity=".42"/>
+  </svg>
+  <h1 class="first headline display"></h1>
+  <div class="nodes"></div>
+  <div class="engine" aria-hidden="true">
+    <div class="pulse"></div>
+    <svg viewBox="0 0 84 84" fill="none" stroke="currentColor" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M42 12 68 27v30L42 72 16 57V27z"/>
+      <path d="m16 27 26 15 26-15M42 42v30"/>
+      <path d="M30 19l26 16"/>
+      <circle cx="42" cy="42" r="5" fill="currentColor" stroke="none"/>
+    </svg>
+  </div>
+  <h2 class="middle headline display"></h2>
+  <p class="subline"></p>
+  <h2 class="last headline display"></h2>
+  <div class="flowline" aria-hidden="true"></div><div class="flowline next" aria-hidden="true"></div>
+  <div class="stages"></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const names=Array.isArray(inputs.agents)&&inputs.agents.length===7 ? inputs.agents : ["Pesquisa","Fontes","Dados","Redação","Revisão","Imagem","Publicação"];
+  const actions=Array.isArray(inputs.steps)&&inputs.steps.length===3 ? inputs.steps : ["Escreve","Revisa","Publica"];
+  const paths=[
+    '<circle cx="12" cy="12" r="6"/><path d="m16.5 16.5 5 5"/>',
+    '<path d="M6 4h13v16H6a2 2 0 0 1 0-4h13M6 4a2 2 0 0 0-2 2v12"/>',
+    '<path d="M5 19v-5m5 5V9m5 10V5m5 14v-8"/>',
+    '<path d="m5 16 11-11 4 4-11 11H5zm9-9 4 4"/>',
+    '<path d="m4 13 4 4 6-8m1 6 2 2 5-7"/>',
+    '<rect x="4" y="5" width="16" height="14" rx="3"/><circle cx="9" cy="10" r="1.5"/><path d="m4 16 5-4 4 3 3-4 4 3"/>',
+    '<path d="m4 11 16-7-4 16-4-6zm8 3 8-10"/>'
+  ];
+  const colors=["#b6ddff","#a6dac9","#ddd0ff","#b5d6fa","#b8e5d2","#d7c6f4","#bce7f1"];
+  const svg=(path,color)=>'<svg viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+path+'</svg>';
+  function heading(selector,lead,accent){
+    const element=one(selector);
+    const emphasis=document.createElement("em");
+    emphasis.textContent=String(accent);
+    element.append(document.createTextNode(String(lead).trimEnd()+" "),emphasis);
+  }
+  heading(".first",inputs.firstLead??"Sete",inputs.firstAccent??"agentes.");
+  heading(".middle",inputs.middleLead??"Um único",inputs.middleAccent??"fluxo.");
+  heading(".last",inputs.lastLead??"Do rascunho",inputs.lastAccent??"à publicação.");
+  copy(".subline","subline","Cada um cuida de uma parte.");
+  const nodes=names.map((text,index)=>{
+    const item=document.createElement("div");
+    item.className="node";
+    item.innerHTML='<div class="tile">'+svg(paths[index],colors[index])+'</div><span></span>';
+    item.querySelector("span").textContent=String(text);
+    one(".nodes").append(item);
+    return item;
+  });
+  const stages=actions.map((text,index)=>{
+    const item=document.createElement("section");
+    item.className="stage";
+    item.innerHTML='<div class="stage-icon">'+svg(paths[[3,4,6][index]],"#cce6ff")+'</div><p></p><span class="done">✓</span>';
+    item.querySelector("p").textContent=String(text);
+    one(".stages").append(item);
+    return item;
+  });
+  function floatIn(selector,amount,distance=40){
+    set(one(selector),{opacity:amount,transform:"translateY("+(1-amount)*distance+"px)",filter:"blur("+(1-amount)*7+"px)"});
+  }
+
+  window.renderMotion=time=>{
+    const appear=beat(time,.08,.63);
+    const collect=flow(phase(time,2.70,.53));
+    floatIn(".first",appear*(1-collect));
+    set(one(".orbits"),{opacity:beat(time,.29,.85)*(1-collect)*.24,transform:"rotate("+time*.58+"deg)"});
+    nodes.forEach((node,i)=>{
+      const inTime=beat(time,.34+i*.13,.51);
+      const fold=flow(phase(time,2.68+i*.045,.53));
+      const angle=i/7*Math.PI*2 - Math.PI/2 + time*.23 + fold*.35;
+      const x=Math.cos(angle)*586*(1-fold);
+      const y=Math.sin(angle)*299*(1-fold)-(1-inTime)*18-fold*67;
+      set(node,{
+        opacity:inTime*(1-beat(time,3.05+i*.035,.23)),
+        transform:"translate(calc(-50% + "+x+"px),calc(-50% + "+y+"px)) scale("+mix(.67,1,inTime)*mix(1,.42,fold)+")"
+      });
+    });
+    const engine=beat(time,3.07,.40);
+    const disappear=flow(phase(time,4.44,.36));
+    const spark=Math.sin(Math.PI*phase(time,3.16,.34))*.09;
+    set(one(".engine"),{opacity:engine*(1-disappear),transform:"translateY("+disappear*-36+"px) scale("+(mix(.58,1,engine)+spark)*(1-disappear*.19)+")"});
+    const pulse=phase(time,3.15,.55);
+    set(one(".pulse"),{opacity:pulse>0 ? (1-pulse)*.66 : 0,transform:"translate(-50%,-50%) scale("+mix(1,1.67,pulse)+")"});
+    const statement=beat(time,3.34,.52)*(1-disappear);
+    floatIn(".middle",statement);
+    floatIn(".subline",beat(time,3.79,.41)*(1-disappear),22);
+    floatIn(".last",beat(time,4.66,.58));
+    stages.forEach((stage,i)=>{
+      const rise=beat(time,5.33+i*.14,.44);
+      const done=beat(time,6.01+i*.39,.34);
+      const bounce=Math.sin(Math.PI*phase(time,6.04+i*.39,.26));
+      set(stage,{opacity:rise,transform:"translateY("+(1-rise)*59+"px) scale("+(1+bounce*.026)+")",borderColor:done>.85 ? "#a0c9ee" : ""});
+      set(stage.querySelector(".done"),{opacity:done,transform:"scale("+mix(.62,1,done)+")"});
+    });
+    all(".flowline").forEach((line,i)=>{
+      const travel=beat(time,6.19+i*.39,.31);
+      set(line,{opacity:travel,transform:"scaleX("+travel+")"});
+    });
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

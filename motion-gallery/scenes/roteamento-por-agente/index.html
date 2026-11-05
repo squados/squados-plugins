@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Roteamento por Agente</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 53% 56%, #2d2d33 0%, #1a1a1e 53%, #111113 100%); color: #f4f3f6; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+#wires { position: absolute; inset: 0; }
+.wire { fill: none; stroke: #9fb8d2; stroke-width: 4.5; stroke-linecap: round; }
+.wire.outbound { stroke: #a4edcb; }
+.node { position: absolute; top: 0; display: flex; align-items: center; gap: 21px; width: 385px; min-height: 96px; font-size: 44px; letter-spacing: -.025em; line-height: 1.05; }
+.node.source { left: 140px; }
+.node.output { left: 1390px; width: 390px; }
+.mark { flex: none; width: 78px; height: 78px; display: grid; place-items: center; border-radius: 19px; border: 1px solid #ffffff2f; background: #22252d; color: #c5dfff; }
+.output .mark { color: #a4edcb; background: #242f2c; }
+.mark svg { width: 40px; height: 40px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.mark img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
+.hub { position: absolute; z-index: 1; left: 760px; top: 325px; width: 400px; height: 370px; display: grid; align-content: center; justify-items: center; gap: 32px; padding: 25px; text-align: center; border: 1.5px solid #b9d8fcbf; border-radius: 37px; background: linear-gradient(145deg,#313945,#262a33); box-shadow: 0 26px 64px #0b0d1280, inset 0 0 0 1px #ffffff12; }
+.hub h1 { font-size: 58px; }
+.hub .mark { width: 150px; height: 150px; border-radius: 37px; background: #d6e8fc; color: #263446; border: 0; }
+.hub .mark svg { width: 86px; height: 86px; stroke-width: 1.3; }
+.hub.ready { border-color: #a4edcbd9; }
+</style>
+</head>
+<body>
+<main data-composition-id="roteamento-por-agente" data-start="0" data-duration="6.4" data-width="1920" data-height="1080">
+  <svg id="wires" viewBox="0 0 1920 1080" width="1920" height="1080" aria-hidden="true"></svg>
+  <div class="sources"></div>
+  <section class="hub">
+    <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 8V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3m0 8v3a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-3M3 12h4m10 0h4M12 8v8M8 12h8"/><circle cx="12" cy="12" r="4"/></svg></span>
+    <h1 class="display"></h1>
+  </section>
+  <div class="outputs"></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const glyphs = {
+    document: "M6 3h8l4 4v14H6z M14 3v5h4 M9 12h6 M9 16h6",
+    voice: "M3 10v4 M7 7v10 M12 4v16 M17 7v10 M21 10v4",
+    link: "M10 14l4-4 M8 16l-2 2a3 3 0 0 1-4-4l4-4a3 3 0 0 1 4 0 M14 8l2-2a3 3 0 0 1 4 4l-4 4a3 3 0 0 1-4 0",
+    list: "M4 7h3 M10 7h10 M4 12h3 M10 12h10 M4 17h3 M10 17h10",
+    brief: "M6 5h12v15H6z M9 5V3h6v2 M9 11h6 M9 15h4",
+    next: "M6 12l4 4 8-8 M4 4h16v16H4z",
+    send: "M4 4l17 8-17 8 3-8z M7 12h14",
+  };
+  const labels = (value, fallback, max) => Array.isArray(value) && value.length > 0 && value.length <= max &&
+    value.every(label => typeof label === "string" && label.trim()) ? value : fallback;
+  const sourceNames = labels(inputs.sources, ["Notas", "Áudios", "Links"], 4);
+  const outputNames = labels(inputs.outputs, ["Briefing", "Tarefas"], 3);
+  const outputImages = [inputs.outputOne, inputs.outputTwo];
+  const hub = one(".hub");
+  const reverse = inputs.reverseOrder === true;
+  const center = 510;
+  copy(".hub h1", "hub", "Agente de projetos");
+
+  function replaceMark(mark, imagePath) {
+    if (!imagePath) return;
+    const image = document.createElement("img");
+    image.src = new URL(imagePath, document.baseURI).href;
+    image.alt = "";
+    mark.replaceChildren(image);
+  }
+
+  function makeNodes(names, kind, icons, spacing) {
+    return names.map((label, index) => {
+      const y = center + (index - (names.length - 1) / 2) * spacing;
+      const node = document.createElement("p");
+      node.className = "node " + kind;
+      node.style.top = y - 48 + "px";
+      node.innerHTML = '<span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path/></svg></span>';
+      node.querySelector("path").setAttribute("d", glyphs[icons[index]]);
+      node.append(document.createTextNode(label));
+      if (kind === "output") replaceMark(node.querySelector(".mark"), outputImages[index]);
+      one(kind === "source" ? ".sources" : ".outputs").append(node);
+      return { node, y };
+    });
+  }
+
+  function makeWire(data, outbound = false) {
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("class", "wire" + (outbound ? " outbound" : ""));
+    path.setAttribute("pathLength", "1");
+    path.setAttribute("d", data);
+    path.style.strokeDasharray = "1";
+    one("#wires").append(path);
+    return path;
+  }
+
+  function draw(path, progress, backwards = false) {
+    path.style.strokeDashoffset = backwards ? progress - 1 : 1 - progress;
+    path.style.opacity = progress > 0 ? 1 : 0;
+  }
+
+  replaceMark(one(".hub .mark"), inputs.hubImage);
+  const sources = makeNodes(sourceNames, "source", ["document", "voice", "link", "list"], 155);
+  const outputs = makeNodes(outputNames, "output", ["brief", "next", "send"], 175);
+  const incoming = sources.map(({ y }) => makeWire("M 523 " + y + " C 673 " + y + " 584 " + center + " 760 " + center));
+  const trunk = makeWire("M 1160 " + center + " H 1215", true);
+  const outgoing = outputs.map(({ y }) => makeWire("M 1215 " + center + " C 1307 " + center + " 1240 " + y + " 1370 " + y, true));
+
+  window.renderMotion = time => {
+    const hubIn = beat(time, .15, .42);
+    set(hub, { opacity: hubIn, transform: "scale(" + mix(.93, 1, hubIn) + ")" });
+    hub.classList.toggle("ready", time >= 3.1);
+
+    const inStart = reverse ? 1.9 : .43;
+    const outStart = reverse ? .47 : 1.71;
+    sources.forEach(({ node }, index) => {
+      const enter = beat(time, .18 + index * .09, .33);
+      set(node, { opacity: enter, transform: "translateX(" + -20 * (1 - enter) + "px)" });
+      const progress = flow(phase(time, inStart + index * .22, .6));
+      draw(incoming[index], progress, reverse);
+    });
+    draw(trunk, flow(phase(time, outStart + (reverse ? .46 : 0), .2)), reverse);
+    outputs.forEach(({ node }, index) => {
+      const start = outStart + (reverse ? 0 : .16) + index * .12;
+      const progress = flow(phase(time, start, .55));
+      draw(outgoing[index], progress, reverse);
+      const enter = beat(time, start + (reverse ? .1 : .3), .34);
+      set(node, { opacity: enter, transform: "translateX(" + -18 * (1 - enter) + "px)" });
+    });
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

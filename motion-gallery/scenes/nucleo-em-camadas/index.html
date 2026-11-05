@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Núcleo em Camadas</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+  main { color: #f1f5fa; background: radial-gradient(ellipse at 46% 60%, #32343a, #1c1d22 56%, #111215); }
+  main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .28;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='148' height='148'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  }
+  .headline { position: absolute; left: 100px; top: 105px; width: 1720px; text-align: center; font-size: 102px; }
+  .field { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .plate { filter: drop-shadow(0 19px 13px #0005); }
+  .face, .edge { stroke-linejoin: round; stroke-width: 2; }
+  .face { stroke: #a7bad077; }
+  .edge { stroke: #263142; }
+  .seal-rim { fill: none; stroke: #9fd5ff; stroke-width: 4; stroke-linejoin: round; }
+  .layers { position: absolute; inset: 0; }
+  .callout { position: absolute; width: 330px; color: #e2eaf5; font-size: 35px; line-height: 1.05; }
+  .callout::before { content: ""; position: absolute; top: .5em; left: -157px; width: 136px; border-top: 1px solid #829bb3; }
+  .callout::after { content: ""; position: absolute; top: calc(.5em - 4px); left: -162px; width: 8px; height: 8px; border-radius: 50%; background: #abd8ff; box-shadow: 0 0 13px #b7dcff96; }
+  .status {
+    position: absolute;
+    left: 960px;
+    bottom: 108px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 21px;
+    border-radius: 100px;
+    border: 1px solid #5b677a;
+    background: #282f3b;
+    box-shadow: 0 9px 32px #0006;
+    color: #dcecff;
+    font-size: 32px;
+    white-space: nowrap;
+  }
+  .status b { color: #a6d6ff; font-weight: 610; font-variant-numeric: tabular-nums; }
+  .status .dot { width: 10px; height: 10px; border-radius: 50%; background: #a6d6ff; }
+</style>
+</head>
+<body>
+<main data-composition-id="nucleo-em-camadas" data-start="0" data-duration="7.4" data-width="1920" data-height="1080">
+  <svg class="field" viewBox="0 0 1920 1080" aria-hidden="true">
+    <defs>
+      <linearGradient id="metal" x1="0" y1="0" x2=".68" y2="1">
+        <stop stop-color="#f0f5ff"/><stop offset=".36" stop-color="#c3d3e5"/><stop offset="1" stop-color="#7e9bb9"/>
+      </linearGradient>
+      <linearGradient id="silicon" x1="0" y1="0" x2="1" y2="1">
+        <stop stop-color="#558ed7"/><stop offset=".54" stop-color="#26528b"/><stop offset="1" stop-color="#173256"/>
+      </linearGradient>
+      <linearGradient id="base" x1="0" y1="0" x2=".78" y2="1">
+        <stop stop-color="#5d6c82"/><stop offset="1" stop-color="#293445"/>
+      </linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+        <stop stop-color="#d7ecff" stop-opacity=".48"/><stop offset=".49" stop-color="#94bce2" stop-opacity=".16"/><stop offset="1" stop-color="#afd5fa" stop-opacity=".32"/>
+      </linearGradient>
+      <radialGradient id="bloom">
+        <stop stop-color="#89c0ff" stop-opacity=".22"/><stop offset="1" stop-color="#89c0ff" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="board-fill" x1="0" y1="0" x2="1" y2="1">
+        <stop stop-color="#344155"/><stop offset="1" stop-color="#1b2331"/>
+      </linearGradient>
+    </defs>
+    <ellipse class="bloom" cx="910" cy="663" rx="555" ry="345" fill="url(#bloom)"/>
+    <g class="board"></g>
+    <g class="rails"></g>
+    <g class="chips"></g>
+  </svg>
+  <h1 class="headline display"></h1>
+  <div class="layers"></div>
+  <p class="status"><span class="dot"></span><span class="status-text"></span><b class="count"></b></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const svg = (name, attrs = {}, parent) => {
+    const el = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+    parent?.append(el);
+    return el;
+  };
+  const titles = Array.isArray(inputs.headlines) && inputs.headlines.length === 2
+    ? inputs.headlines : ["Proteção em cada camada.", "Quatro núcleos isolados."];
+  const names = Array.isArray(inputs.layers) && inputs.layers.length === 4
+    ? inputs.layers : ["Auditoria", "Execução", "Memória local", "Permissões"];
+  const heading = one(".headline");
+  const labels = names.map(name => {
+    const label = document.createElement("span");
+    label.className = "callout";
+    label.textContent = String(name);
+    one(".layers").append(label);
+    return label;
+  });
+
+  function iso(a, b, x, y, angle) {
+    const theta = angle * Math.PI / 180;
+    return [x + a * Math.cos(theta) - b * Math.sin(theta), y + (a * Math.sin(theta) + b * Math.cos(theta)) * .50];
+  }
+  const vertices = [[-1,-1],[1,-1],[1,1],[-1,1]];
+  const poly = points => points.map(([x,y]) => x.toFixed(2) + "," + y.toFixed(2)).join(" ");
+  function pathThrough(points) {
+    return points.map(([x,y],i) => (i ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2)).join("");
+  }
+  function makePlate(fill, mark = false) {
+    const group = svg("g", { class: "plate" }, one(".chips"));
+    const shadow = svg("polygon", { fill:"#101725" }, group);
+    const edge = svg("polygon", { class:"edge", fill:"#4e627d" }, group);
+    const face = svg("polygon", { class:"face", fill:"url(#" + fill + ")" }, group);
+    const border = svg("polygon", { class:"seal-rim", opacity:0 }, group);
+    const texture = svg("g", { fill:"none", stroke:mark ? "#304e70" : "#a8c9ef", "stroke-width":mark ? 2.8 : 1.2, opacity:mark ? .72 : .42 }, group);
+    const motif = mark ? [
+      [[-19,2],[-19,-12],[0,-22],[19,-12],[19,2],[0,14],[-19,2]],
+      [[-7,0],[-1,6],[11,-7]]
+    ] : [
+      [[-52,-32],[-18,-32],[-18,-7],[16,-7],[16,35],[56,35]],
+      [[-49,-11],[-28,-11],[-28,26],[1,26],[1,51],[44,51]],
+      [[-52,22],[-43,22],[-43,45],[-21,45],[-21,61],[20,61]]
+    ];
+    const drawn = motif.map(() => svg("path", {}, texture));
+    return { group, shadow, edge, face, border, drawn, motif };
+  }
+  const base = makePlate("base");
+  const core = makePlate("silicon");
+  const lid = makePlate("metal", true);
+  const glass = makePlate("glass");
+  const extra = Array.from({length: 3}, () => makePlate("metal", true));
+  const floor = one(".board");
+  svg("polygon", { points: poly(vertices.map(([a,b]) => iso(a*576,b*576,1010,730,41))), fill:"url(#board-fill)", stroke:"#56627a", "stroke-width":2 }, floor);
+  svg("polygon", { points:poly(vertices.map(([a,b]) => iso(a*453,b*453,1010,730,41))), fill:"none", stroke:"#63768c", "stroke-width":2, opacity:.47 }, floor);
+  for (let lane = -5; lane <= 5; lane++) {
+    const bend = lane < 0 ? -265 : 265;
+    const track = [[lane*36,-420],[lane*36,-300],[bend,-175],[bend,280],[lane*52,420]];
+    svg("path", { d:pathThrough(track.map(([a,b]) => iso(a,b,1010,730,41))), stroke:"#657c98", "stroke-width":2, fill:"none", opacity:.32 }, floor);
+  }
+  const rails = Array.from({length: 6}, (_, index) => {
+    const x = 990 + index * 17;
+    const y = 649 + index * 12;
+    const d = "M" + x + " " + y + " L" + (x+400) + " " + (y-242) + " L" + (x+700) + " " + (y-355);
+    svg("path", {d, fill:"none", stroke:"#667c9a", opacity:.37}, one(".rails"));
+    return svg("path", {d, fill:"none", stroke:"#b9e2ff", "stroke-width":3, "stroke-dasharray":"90 900", opacity:0}, one(".rails"));
+  });
+  function pose(item, x, y, size, angle, depth, alpha = 1, highlight = 0) {
+    const pts = vertices.map(([a,b]) => iso(a*size,b*size,x,y,angle));
+    const lower = pts.map(([px,py]) => [px,py+depth]);
+    item.group.setAttribute("opacity", alpha);
+    item.shadow.setAttribute("points", poly(lower));
+    item.edge.setAttribute("points", poly([pts[3],pts[2],pts[1],lower[1],lower[2],lower[3]]));
+    item.face.setAttribute("points", poly(pts));
+    item.border.setAttribute("points", poly(pts));
+    item.border.setAttribute("opacity", highlight);
+    item.drawn.forEach((line,i) => line.setAttribute("d",pathThrough(item.motif[i].map(([a,b]) => iso(a*size/88,b*size/88,x,y,angle)))));
+  }
+
+  window.renderMotion = time => {
+    const titleIndex = time >= 4.38 ? 1 : 0;
+    const intro = beat(time, titleIndex ? 4.4 : .27, .56);
+    const titleOut = titleIndex ? 0 : flow(phase(time,4.04,.30));
+    heading.textContent = String(titles[titleIndex]);
+    set(heading, {opacity:intro*(1-titleOut),transform:"translateY(" + ((1-intro)*28-titleOut*32) + "px)",filter:"blur(" + ((1-intro)*7+titleOut*5) + "px)"});
+    const assemble = flow(phase(time, 2.5, .86));
+    const pull = flow(phase(time, 4.16, .94));
+    const angle = mix(53, 39, flow(phase(time, 0, 7.4)));
+    const x = mix(788, 1006, pull);
+    const y = mix(747, 581, pull);
+    const size = mix(201, 117, pull);
+    const appear = beat(time,.10,.86);
+    const seal = beat(time, 3.31, .40) * (1-pull);
+    [base,core,lid,glass].forEach((item,index)=>{
+      const show = beat(time,.10 + index*.09,.76);
+      const gap = mix(index*112, index*8, assemble);
+      const fade = index === 2 ? 1 : 1 - .86 * pull;
+      const alpha = show*fade*(index === 3 ? mix(.89,.32,assemble) : 1);
+      pose(item,x,y+(1-appear)*62-gap,size*(index===1 ? .86 : 1),angle,index===3 ? 4 : 13,alpha,index===2 ? seal*.93 : 0);
+      const label = labels[index];
+      const inLabel = beat(time,.79+index*.13,.40);
+      const outLabel = flow(phase(time,2.41+index*.025,.27));
+      set(label,{
+        opacity:inLabel*(1-outLabel),
+        left:(x + size*1.48 + 177 - 16*(1-inLabel))+"px",
+        top:(y-gap-16)+"px"
+      });
+    });
+    one(".board").setAttribute("opacity",beat(time,4.14,1.08)*.90);
+    one(".rails").setAttribute("opacity",appear*(1-pull));
+    rails.forEach((rail,index) => {
+      const phaseIn = phase(time,1.97+index*.044,.78);
+      const phaseOut = phase(time,3.37+index*.035,.72);
+      rail.setAttribute("stroke-dashoffset", mix(850,-35,phaseIn)+mix(0,930,phaseOut));
+      rail.setAttribute("opacity", Math.max(Math.sin(Math.PI*phaseIn),Math.sin(Math.PI*phaseOut))*.9);
+    });
+    const slots = [[-178,0],[178,0],[0,94]];
+    extra.forEach((plate,index)=>{
+      const arrival = beat(time,4.76+index*.13,.69);
+      const [ox,oy] = slots[index];
+      const highlight = beat(time,5.53+index*.16,.31);
+      pose(plate,1006+ox,670+oy-(1-arrival)*410,117,angle,13,arrival,highlight*.86);
+    });
+    one(".bloom").setAttribute("opacity",.6+.4*seal);
+    const badge = one(".status");
+    const complete = beat(time,3.38,.37)*(1-flow(phase(time,4.01,.26)));
+    const counts = beat(time,5.52,.51);
+    const label = time < 4.4 ? (inputs.sealed ?? "Núcleo protegido") : (inputs.caption ?? "Núcleos verificados");
+    one(".status-text").textContent = label;
+    one(".count").textContent = time < 4.4 ? "" : Math.min(4,Math.max(1,1+Math.floor((time-5.55)/.18)))+" / 4";
+    set(badge,{opacity:Math.max(complete,counts),transform:"translate(-50%,"+(1-Math.max(complete,counts))*16+"px)"});
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

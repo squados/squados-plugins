@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Documentos em Síntese</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 53% 76%, #333338 0%, #202025 53%, #111113 100%); color: #f5f5fa; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.stack { position: absolute; left: 0; top: 0; transform-origin: top left; }
+.page { position: absolute; top: 0; left: 0; width: 660px; height: 816px; padding: 39px 44px; overflow: hidden; border: 1px solid #e3ddf2; border-radius: 19px; background: #e8e5ef; color: #302d40; box-shadow: 0 27px 69px #0c0b12a8; }
+.page + .page { left: 696px; }
+.page h2 { font-size: 54px; padding-bottom: 26px; border-bottom: 1px solid #302d4040; }
+.page p { margin-top: 22px; font-size: 27px; line-height: 1.24; color: #454154; }
+.page img, .compact img { width: 100%; height: 100%; display: block; object-fit: contain; }
+.has-image { padding: 0; }
+.label { position: absolute; top: 252px; width: max-content; max-width: 790px; padding: 9px 18px 12px; border-radius: 9px; background: #d5caff; color: #29213e; font-size: 41px; line-height: 1.04; font-weight: 630; letter-spacing: -.02em; }
+.label.before { left: 155px; }
+.label.after { left: 1090px; }
+.compact { position: absolute; left: 1090px; top: 338px; width: 670px; min-height: 385px; padding: 38px 45px 33px; overflow: hidden; border: 1px solid #ffffff35; border-radius: 25px; background: linear-gradient(145deg, #3a3943, #2b2a32); box-shadow: 0 24px 58px #0b0b12a5; }
+.compact.has-image { padding: 0; height: 385px; }
+.compact h2 { font-size: 54px; }
+.compact ol { margin: 22px 0 0; padding-left: 30px; }
+.compact li { padding: 11px 0 12px 9px; border-top: 1px solid #ffffff26; font-size: 37px; line-height: 1.08; }
+.compact li::marker { color: #d5caff; }
+</style>
+</head>
+<body>
+<main data-composition-id="documentos-em-sintese" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <div class="stack">
+    <article class="page first">
+      <h2 class="display">Notas do atendimento</h2>
+      <p>Na primeira conversa, a equipe explicou que parte dos pedidos chega pelo chat e parte por e-mail. Em alguns casos, o mesmo cliente envia a mesma pergunta pelos dois canais.</p>
+      <p>Quando uma solicitação fica sem categoria, o atendimento repassa o assunto no grupo e espera alguém confirmar quem pode assumir. O histórico se espalha entre as ferramentas.</p>
+      <p>Alguns pedidos recorrentes podem ser respondidos com orientações que já existem na central de ajuda. A equipe prefere conferir a fonte antes de reutilizar uma resposta pronta.</p>
+      <p>Há também pedidos urgentes que precisam de encaminhamento humano. A próxima revisão vai definir os critérios e o ponto de passagem.</p>
+    </article>
+    <article class="page second">
+      <h2 class="display">Resumo da reunião</h2>
+      <p>Foram discutidas duas formas de organizar a chegada dos chamados. A primeira centraliza o histórico e mantém a revisão manual. A segunda usa um agente para propor uma categoria.</p>
+      <p>Para o teste, a equipe sugeriu usar somente mensagens autorizadas e retirar dados pessoais. Cada classificação deve trazer uma justificativa curta e uma referência quando houver.</p>
+      <p>O agente deve saber quando pedir mais informações e como encaminhar as exceções. A equipe vai comparar a classificação proposta com a revisão feita por uma pessoa.</p>
+      <p>O resultado do piloto deve separar casos simples, dúvidas recorrentes e solicitações que exigem uma decisão.</p>
+    </article>
+  </div>
+  <p class="label before"></p>
+  <p class="label after"></p>
+  <article class="compact"><h2 class="display"></h2><ol></ol></article>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const fallbackLabels = ["Anotações brutas", "Plano com IA"];
+  const labels = Array.isArray(inputs.labels) && inputs.labels.length === 2 &&
+    inputs.labels.every(label => typeof label === "string" && label.trim()) ? inputs.labels : fallbackLabels;
+  const defaultSteps = ["Centralizar os chamados", "Testar a classificação", "Revisar as exceções"];
+  const steps = Array.isArray(inputs.steps) && inputs.steps.length > 0 && inputs.steps.length <= 4 &&
+    inputs.steps.every(step => typeof step === "string" && step.trim()) ? inputs.steps : defaultSteps;
+  const stack = one(".stack");
+  const first = one(".page.first");
+  const second = one(".page.second");
+  const compact = one(".compact");
+  const before = one(".label.before");
+  const after = one(".label.after");
+  before.textContent = labels[0];
+  after.textContent = labels[1];
+  copy(".compact h2", "resultTitle", "Piloto de triagem");
+  steps.forEach(step => {
+    const line = document.createElement("li");
+    line.textContent = step;
+    one(".compact ol").append(line);
+  });
+
+  function replacePage(page, imagePath) {
+    if (!imagePath) return;
+    const image = document.createElement("img");
+    image.src = imagePath;
+    image.alt = "";
+    page.classList.add("has-image");
+    page.replaceChildren(image);
+  }
+  replacePage(first, inputs.pageOne);
+  replacePage(second, inputs.pageTwo);
+  replacePage(compact, inputs.shortResult);
+
+  window.renderMotion = time => {
+    const showFirst = beat(time, .16, .45);
+    const showSecond = beat(time, 1.85, .49);
+    const spread = flow(phase(time, 2.05, .73));
+    const compress = flow(phase(time, 3.48, .97));
+    const x = mix(mix(630, 282, spread), 155, compress);
+    const y = mix(100, 338, compress);
+    stack.style.transform = "translate(" + x + "px," + y + "px) scale(" + mix(1, .562, compress) + ")";
+    set(first, { opacity: showFirst, transform: "translateY(" + 25 * (1 - showFirst) + "px)" });
+    set(second, { opacity: showSecond, transform: "translateX(" + 91 * (1 - showSecond) + "px)" });
+    const labelEnter = beat(time, 4.35, .31);
+    set(before, { opacity: labelEnter, transform: "translateY(" + 10 * (1 - labelEnter) + "px)" });
+    const result = beat(time, 4.14, .51);
+    set(after, { opacity: result, transform: "translateY(" + 12 * (1 - result) + "px)" });
+    set(compact, { opacity: result, transform: "translate(" + 26 * (1 - result) + "px," + 24 * (1 - result) + "px)" });
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

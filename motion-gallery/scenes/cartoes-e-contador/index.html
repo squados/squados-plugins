@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Cartões e Contador</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 58% 78%, #303035 0%, #1d1d22 51%, #111113 100%); color: #f5f5fa; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.board { position: absolute; inset: 152px 142px 163px; display: grid; grid-template-columns: 1092px 1fr; gap: 88px; }
+.grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-auto-rows: 135px; align-content: start; gap: 17px; }
+.slot { border: 1px dashed #ffffff38; border-radius: 19px; }
+.receipt { height: 100%; display: grid; grid-template-columns: 121px 1fr auto; align-items: center; gap: 17px; padding: 12px 19px 12px 12px; border: 1px solid #ffffff36; border-radius: 19px; background: linear-gradient(140deg,#34343d,#23232a); box-shadow: 0 9px 28px #08080a5e; }
+.receipt img { width: 121px; height: 108px; object-fit: cover; border-radius: 10px; }
+.receipt p { font-size: 37px; line-height: 1.03; letter-spacing: -.022em; }
+.delta { font-size: 34px; color: #d9ceff; font-variant-numeric: tabular-nums; }
+.counter { height: 452px; padding: 29px 40px 32px; border-left: 1px solid #ffffff2f; }
+.label { font-size: 34px; color: #c2c1cc; }
+.number { margin-top: 2px; font-size: 147px; line-height: 1.03; font-weight: 620; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+.number.total { color: #dcd2ff; }
+.separator { height: 1px; background: #ffffff31; margin: 25px 0 25px; }
+.summary { position: absolute; left: 0; top: 498px; max-width: 1090px; font-size: 60px; }
+</style>
+</head>
+<body>
+<main data-composition-id="cartoes-e-contador" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+  <div class="board">
+    <section class="grid" aria-label="Itens acumulados"></section>
+    <section class="counter">
+      <p class="label count-label"></p>
+      <p class="number count"></p>
+      <div class="separator" aria-hidden="true"></div>
+      <p class="label unit"></p>
+      <p class="number total"></p>
+    </section>
+    <h1 class="summary display"></h1>
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const defaults = ["Marinha", "Cabo da Roca", "Ponta da Piedade", "Palácio da Pena", "Porto", "Douro"];
+  const items = Array.isArray(inputs.items) && inputs.items.length >= 1 && inputs.items.length <= 6 &&
+    inputs.items.every(item => typeof item === "string" && item.trim()) ? inputs.items : defaults;
+  const stepValue = Number.isFinite(inputs.valuePerItem) && inputs.valuePerItem >= 0 ? inputs.valuePerItem : 3;
+  const pictures = ["marinha", "cabo-da-roca", "piedade", "pena", "porto", "douro"];
+  const suppliedPictures = [inputs.imageOne, inputs.imageTwo, inputs.imageThree, inputs.imageFour, inputs.imageFive, inputs.imageSix];
+  const format = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: Number.isInteger(stepValue) ? 0 : 2 });
+  const count = one(".number.count");
+  const total = one(".number.total");
+  const summary = one(".summary");
+  copy(".count-label", "countLabel", "Fotos analisadas por IA");
+  copy(".unit", "unit", "Tags sugeridas");
+  copy(".summary", "summary", "Acervo pronto para buscar");
+
+  const cards = items.map((label, index) => {
+    const slot = document.createElement("div");
+    slot.className = "slot";
+    const receipt = document.createElement("article");
+    receipt.className = "receipt";
+    const image = document.createElement("img");
+    image.src = suppliedPictures[index] ?? "assets/" + pictures[index] + ".webp";
+    image.alt = "";
+    const title = document.createElement("p");
+    title.textContent = label;
+    const amount = document.createElement("span");
+    amount.className = "delta";
+    amount.textContent = "+" + format.format(stepValue);
+    receipt.append(image, title, amount);
+    slot.append(receipt);
+    one(".grid").append(slot);
+    return receipt;
+  });
+
+  window.renderMotion = time => {
+    let visibleCount = 0;
+    let totalValue = 0;
+    cards.forEach((card, index) => {
+      const start = .09 + .43 * index;
+      const arrive = beat(time, start, .39);
+      set(card, { opacity: arrive, transform: "translateY(" + 23 * (1 - arrive) + "px) scale(" + mix(.95, 1, arrive) + ")" });
+      if (time >= start + .22) visibleCount++;
+      totalValue += stepValue * flow(phase(time, start + .15, .27));
+    });
+    count.textContent = String(visibleCount);
+    total.textContent = format.format(totalValue);
+    const show = beat(time, 4.25, .48);
+    set(summary, { opacity: show, transform: "translateY(" + 17 * (1 - show) + "px)" });
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

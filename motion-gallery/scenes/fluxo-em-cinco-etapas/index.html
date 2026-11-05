@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Fluxo em Cinco Etapas</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f4f6fb; background: radial-gradient(ellipse at 48% 81%, #2c2d33 0%, #1b1c21 57%, #101014 100%); }
+main::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .24; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.intro, .final { position: absolute; left: 155px; right: 155px; text-align: center; }
+.intro { top: 491px; font-size: 90px; }
+.flow { position: absolute; inset: 0; }
+.list { position: absolute; left: 126px; top: 275px; width: 800px; height: 540px; }
+.focus {
+  position: absolute; left: 42px; top: 213px; width: 748px; height: 114px;
+  border: 1px solid #6e7e9b; border-radius: 23px;
+  background: linear-gradient(145deg, #3a4354, #282e3a);
+  box-shadow: 0 22px 61px #080b13b8;
+}
+.active-dot { position: absolute; left: 0; top: 262px; width: 17px; height: 17px; border-radius: 50%; background: #9dcaff; box-shadow: 0 0 17px #6ba5fba6; }
+.row {
+  position: absolute; left: 67px; right: 35px; top: 215px; height: 110px;
+  display: flex; align-items: center; gap: 22px; font-size: 56px; font-weight: 570; letter-spacing: -.027em;
+}
+.row span:last-child { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; line-height: 1.30; }
+.row.complete { color: #a8c9fc; }
+.check {
+  width: 49px; height: 49px; flex: none; display: grid; place-items: center;
+  border: 1px solid #a7caff; border-radius: 50%; background: #3b6dc7; color: #f5faff;
+}
+.check svg, .result-icon svg, .product svg {
+  fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round;
+}
+.check svg { width: 27px; height: 27px; }
+.result {
+  position: absolute; right: 143px; top: 313px; width: 739px; height: 457px; padding: 34px 42px;
+  border: 1px solid #667184; border-radius: 30px;
+  background: linear-gradient(150deg, #333945, #242833 78%);
+  box-shadow: 0 27px 65px #0a0c14b5;
+}
+.progress { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.segment { height: 7px; overflow: hidden; border-radius: 99px; background: #556073; }
+.segment i { display: block; width: 100%; height: 100%; border-radius: inherit; transform-origin: left; background: linear-gradient(90deg, #588de4, #a0ceff); }
+.detail { position: absolute; left: 42px; right: 42px; top: 62px; }
+.position { color: #d0d9e8; font-size: 25px; font-weight: 510; }
+.result-icon {
+  width: 59px; height: 59px; display: grid; place-items: center; margin: 25px 0 21px;
+  border: 1px solid #6389c1; border-radius: 17px; background: #365482; color: #c5dfff;
+}
+.result-icon svg { width: 35px; height: 35px; }
+.detail h2 { font-size: 49px; line-height: 1.08; }
+.detail-status {
+  display: flex; align-items: center; gap: 9px; width: fit-content; max-width: 100%;
+  margin-top: 21px; padding: 5px 12px; border: 1px solid #7a97c05e; border-radius: 11px;
+  background: #293a51; color: #d9e8fc; font-size: 25px; line-height: 1.3;
+}
+.detail-status::before { content: ""; width: 8px; height: 8px; flex: none; border-radius: 50%; background: #99c6ff; }
+.final { top: 453px; }
+.final h2 { font-size: 89px; }
+.product {
+  display: flex; align-items: center; justify-content: center; gap: 10px; width: fit-content;
+  margin: 31px auto 0; padding: 7px 15px; border: 1px solid #677b9a; border-radius: 14px;
+  color: #d7e5f9; background: #263245; font-size: 26px;
+}
+.product svg { width: 24px; height: 24px; color: #a5ccff; }
+</style>
+</head>
+<body>
+<main data-composition-id="fluxo-em-cinco-etapas" data-start="0" data-duration="11" data-width="1920" data-height="1080">
+  <h1 class="intro display"></h1>
+  <div class="flow">
+    <div class="list" data-layout-allow-overflow>
+      <div class="focus"></div><div class="active-dot"></div><div class="rows"></div>
+    </div>
+    <section class="result">
+      <div class="progress" aria-hidden="true"></div>
+      <div class="details"></div>
+    </section>
+  </div>
+  <section class="final">
+    <h2 class="display"></h2>
+    <p class="product"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h6m6 0h6M9 6h6v12H9z"/></svg><span></span></p>
+  </section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".intro", "intro", "Do pedido à resposta.");
+copy(".final h2", "closing", "O fluxo seguiu até o fim.");
+copy(".product span", "product", "Central de Agentes");
+
+const defaults = [
+  { label: "Pedido", title: "A equipe solicita ajuda", status: "Recebido no canal de suporte" },
+  { label: "Triagem", title: "O agente separa os casos", status: "Dúvida de integração" },
+  { label: "Aprovação", title: "O time confirma a ação", status: "Resposta autorizada" },
+  { label: "Execução", title: "O agente consulta as fontes", status: "3 referências encontradas" },
+  { label: "Entrega", title: "A resposta volta ao chat", status: "Resumo e links enviados" }
+];
+const steps = Array.isArray(inputs.steps) && inputs.steps.length === 5 && inputs.steps.every(step => step
+  && ["label", "title", "status"].every(field => typeof step[field] === "string")) ? inputs.steps : defaults;
+const icons = [
+  "M4 4h16v13H9l-5 4V4z M8 8h8 M8 12h6",
+  "M4 6h16l-6 7v6l-4 2v-8L4 6z",
+  "M4 12l4 4L20 5",
+  "M12 3v18M3 12h18 M5.5 5.5l13 13m0-13-13 13",
+  "m3 8 9-5 9 5-9 5-9-5z M3 13l9 5 9-5 M3 17l9 5 9-5"
+];
+const rows = [];
+const details = [];
+const fills = [];
+for (const [index, step] of steps.entries()) {
+  const row = document.createElement("div");
+  row.className = "row";
+  row.innerHTML = '<span class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><span></span>';
+  row.lastElementChild.textContent = step.label;
+  one(".rows").append(row);
+  rows.push({ row, check: row.firstElementChild });
+
+  const detail = document.createElement("div");
+  detail.className = "detail";
+  detail.innerHTML = '<p class="position"></p><span class="result-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path/></svg></span><h2 class="display"></h2><p class="detail-status"></p>';
+  detail.querySelector(".position").textContent = "Etapa " + (index + 1) + " de 5";
+  detail.querySelector("path").setAttribute("d", icons[index]);
+  detail.querySelector("h2").textContent = step.title;
+  detail.querySelector(".detail-status").textContent = step.status;
+  one(".details").append(detail);
+  details.push({ detail, status: detail.querySelector(".detail-status") });
+
+  const segment = document.createElement("span");
+  segment.className = "segment";
+  const fill = document.createElement("i");
+  segment.append(fill);
+  one(".progress").append(segment);
+  fills.push(fill);
+}
+
+const intro = one(".intro");
+const flowView = one(".flow");
+const focus = one(".focus");
+const activeDot = one(".active-dot");
+const final = one(".final");
+const product = one(".product");
+const start = [2.00, 3.49, 4.80, 6.10, 7.41];
+const finish = [3.21, 4.38, 5.68, 6.97, 8.29];
+
+window.renderMotion = time => {
+  const opening = beat(time, .12, .65);
+  const openingExit = flow(phase(time, 1.48, .48));
+  set(intro, {
+    opacity: opening * (1 - openingExit),
+    filter: "blur(" + (10 * (1 - opening) + 11 * openingExit) + "px)",
+    transform: "translateY(" + (32 * (1 - opening) - 41 * openingExit) + "px)"
+  });
+
+  const entered = beat(time, 1.87, .57);
+  const leaving = flow(phase(time, 8.67, .65));
+  set(flowView, {
+    opacity: entered * (1 - leaving),
+    filter: "blur(" + 12 * leaving + "px)",
+    transform: "translateY(" + (42 * (1 - entered) - 49 * leaving) + "px) scale(" + mix(1, 1.035, leaving) + ")"
+  });
+
+  let scroll = 0;
+  let pulse = 0;
+  for (const boundary of start.slice(1)) {
+    scroll += flow(phase(time, boundary - .18, .43));
+    pulse += Math.sin(Math.PI * phase(time, boundary - .09, .32));
+  }
+  focus.style.transform = "scale(" + (1 - .022 * pulse) + ")";
+  activeDot.style.transform = "scale(" + (1 + .18 * pulse) + ")";
+  rows.forEach(({ row, check }, index) => {
+    const distance = index - scroll;
+    const checked = beat(time, finish[index], .30);
+    set(row, {
+      opacity: Math.max(0, 1 - Math.abs(distance) * .34) * (distance > 0 ? .79 : 1),
+      transform: "translateY(" + distance * 132 + "px)"
+    });
+    row.classList.toggle("complete", checked > .40);
+    set(check, { opacity: checked, transform: "scale(" + mix(.63, 1, checked) + ")" });
+  });
+
+  details.forEach(({ detail, status }, index) => {
+    const inStart = start[index] - (index ? .06 : 0);
+    const show = beat(time, inStart, .44);
+    const hide = index < details.length - 1 ? flow(phase(time, start[index + 1] - .27, .28)) : 0;
+    set(detail, {
+      opacity: show * (1 - hide),
+      filter: "blur(" + (8 * (1 - show) + 8 * hide) + "px)",
+      transform: "translateY(" + (23 * (1 - show) - 17 * hide) + "px)"
+    });
+    const log = beat(time, start[index] + .41, .34);
+    set(status, { opacity: log, transform: "translateY(" + 14 * (1 - log) + "px)" });
+    const fill = flow(phase(time, start[index] + .23, finish[index] - start[index] - .06));
+    fills[index].style.transform = "scaleX(" + fill + ")";
+  });
+
+  const close = beat(time, 9.11, .76);
+  set(final, { opacity: close, filter: "blur(" + 10 * (1 - close) + "px)", transform: "translateY(" + 32 * (1 - close) + "px)" });
+  const brand = beat(time, 9.72, .40);
+  set(product, { opacity: brand, transform: "translateY(" + 14 * (1 - brand) + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

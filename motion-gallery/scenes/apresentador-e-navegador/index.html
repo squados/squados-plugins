@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Apresentador e Navegador</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f2f5fb; background: radial-gradient(ellipse at 42% 79%, #2d3037, #1b1d23 58%, #101116); }
+main::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.browser { position: absolute; left: 73px; top: 75px; width: 1473px; height: 758px; border: 1px solid #626c80; border-radius: 29px; overflow: hidden; background: #262a32; box-shadow: 0 32px 72px #080a11af; }
+.bar { height: 62px; display: flex; align-items: center; gap: 10px; padding: 0 23px; background: #2c313b; border-bottom: 1px solid #525d70; }
+.bar i { width: 11px; height: 11px; border-radius: 50%; background: #8996aa; }
+.bar span { margin-left: 13px; color: #cbd6e7; font-size: 21px; }
+.columns { height: calc(100% - 62px); display: grid; grid-template-columns: 48% 52%; }
+.notes { min-width: 0; padding: 47px 43px; background: #252932; }
+.notes h1 { margin: 0 0 13px; font-size: 69px; line-height: 1.02; }
+.description { font-size: 30px; color: #c6d1e1; }
+.document { margin-top: 34px; width: 540px; max-width: 100%; overflow: hidden; border: 1px solid #61718a; border-radius: 19px; background: #313b4c; }
+.document img { display: block; width: 100%; height: 197px; object-fit: cover; }
+.document p { padding: 13px 17px; font-size: 28px; font-weight: 560; }
+.chat { position: relative; min-width: 0; padding: 41px 42px; border-left: 1px solid #525d70; background: #252b35; }
+.agent { display: flex; align-items: center; gap: 12px; color: #dae8fb; font-size: 27px; }
+.agent i { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #8eb9f1; border-radius: 12px; background: #41699f; color: #e7f3ff; font-size: 26px; font-style: normal; }
+.question, .answer { width: fit-content; max-width: 100%; padding: 15px 20px; border-radius: 18px; font-size: 34px; line-height: 1.22; }
+.question { margin: 26px 0 0 auto; color: #eef5ff; background: #3c69b1; border: 1px solid #78a4ed; border-bottom-right-radius: 5px; }
+.answer-wrap { position: relative; min-height: 150px; margin-top: 30px; }
+.answer { background: #384458; color: #eef4ff; border: 1px solid #61738e; border-bottom-left-radius: 5px; }
+.typing { position: absolute; top: 12px; left: 3px; display: flex; gap: 11px; height: 39px; align-items: center; }
+.typing i { width: 12px; height: 12px; border-radius: 50%; background: #abcfff; }
+.presenter { position: absolute; left: 1600px; top: 76px; width: 254px; height: 337px; overflow: hidden; border-radius: 24px; border: 1px solid #8493aa; background: #161a20; box-shadow: 0 26px 56px #080b12b8; }
+.presenter img, .presenter video { width: 100%; height: 100%; object-fit: cover; object-position: 51% center; }
+</style>
+</head>
+<body>
+<main data-composition-id="apresentador-e-navegador" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+  <section class="browser">
+    <div class="bar"><i></i><i></i><i></i><span>Área de pesquisa</span></div>
+    <div class="columns">
+      <section class="notes">
+        <h1 class="display"></h1><p class="description"></p>
+        <article class="document"><img src="art/cabo-da-roca.webp" alt=""><p></p></article>
+      </section>
+      <section class="chat">
+        <div class="agent"><i aria-hidden="true">✦</i><span>Agente de roteiro</span></div>
+        <p class="question"></p>
+        <div class="answer-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><p class="answer"></p></div>
+      </section>
+    </div>
+  </section>
+  <div class="presenter">
+    <!-- motion-media:presenter:0:6.8:0 -->
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".notes h1", "heading", "Roteiro de viagem");
+copy(".description", "description", "Use o mapa para escolher uma parada.");
+copy(".document p", "document", "Cabo da Roca");
+copy(".question", "question", "Onde vale parar no fim da tarde?");
+copy(".answer", "response", "Escolha o Cabo da Roca. Reserve tempo para chegar antes do pôr do sol.");
+if (typeof inputs.image === "string" && inputs.image) one(".document img").src = inputs.image;
+const browser = one(".browser");
+const question = one(".question");
+const answer = one(".answer");
+const typing = one(".typing");
+const dots = all(".typing i");
+window.renderMotion = time => {
+  const open = beat(time, .04, .52);
+  set(browser, { opacity: open, transform: "translateY(" + 22 * (1 - open) + "px)" });
+  const ask = beat(time, .64, .39);
+  set(question, {
+    opacity: ask,
+    clipPath: "inset(0 0 " + 100 * (1 - ask) + "% 0)",
+    transform: "translateY(" + -11 * (1 - ask) + "px)"
+  });
+  const waiting = beat(time, 1.05, .28) * (1 - beat(time, 2.35, .21));
+  typing.style.opacity = waiting;
+  dots.forEach((dot, index) => {
+    const bounce = Math.max(0, Math.sin((time * 2.45 - index * .30) * Math.PI));
+    set(dot, { opacity: .48 + .52 * bounce, transform: "translateY(" + -8 * bounce + "px)" });
+  });
+  const reply = beat(time, 2.43, .49);
+  set(answer, {
+    opacity: reply,
+    clipPath: "inset(0 0 " + 100 * (1 - reply) + "% 0)",
+    transform: "translateY(" + 13 * (1 - reply) + "px)"
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

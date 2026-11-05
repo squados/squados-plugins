@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Túnel de Tarefas</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+  main { color:#f2f6fa; background:radial-gradient(ellipse at 50% 56%,#2b3037,#1b1e24 50%,#111316); }
+  main::before { content:""; position:absolute; inset:0; z-index:-1; opacity:.24; mix-blend-mode:soft-light; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='145' height='145'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .portal { position:absolute; left:960px; top:540px; overflow:hidden; transform:translate(-50%,-50%); background:#11151b; }
+  .portal canvas { width:100%; height:100%; display:block; }
+  .eyebrow { position:absolute; top:322px; width:100%; text-align:center; color:#c3cfde; font-size:31px; }
+  .verb { position:absolute; inset:0; display:grid; place-items:center; text-align:center; font-size:180px; text-shadow:0 8px 22px #000b; }
+  .indicator { position:absolute; left:50%; top:920px; display:flex; gap:9px; transform:translateX(-50%); }
+  .indicator span { width:68px; height:4px; border-radius:4px; background:#7990ac77; }
+  .indicator .active { background:#e2f1ff; box-shadow:0 0 13px #b2d5ff66; }
+  .orb { position:absolute; top:540px; left:960px; width:780px; height:780px; transform:translate(-50%,-50%); }
+  .orb canvas { width:100%; height:100%; display:block; }
+  .brand { position:absolute; top:505px; left:0; width:100%; text-align:center; font-size:105px; }
+  .brand em { font-style:normal; color:#c3e4ff; }
+  .roles { position:absolute; top:667px; width:100%; display:flex; justify-content:center; gap:18px; }
+  .roles span { display:flex; align-items:center; gap:11px; padding:7px 17px; border:1px solid #7b8ea68c; border-radius:30px; background:#2e3745; color:#e3effe; font-size:33px; }
+  .roles span::before { content:""; width:9px; height:9px; border-radius:50%; background:#acd8ff; }
+  .works { position:absolute; top:773px; width:100%; text-align:center; color:#c2cbd8; font-size:29px; letter-spacing:.015em; }
+</style>
+</head>
+<body>
+<main data-composition-id="tunel-de-tarefas" data-start="0" data-duration="9.2" data-width="1920" data-height="1080">
+  <div class="portal"><canvas class="tunnel" width="1920" height="1080"></canvas></div>
+  <p class="eyebrow"></p>
+  <h1 class="verb display"></h1>
+  <div class="indicator" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="orb"><canvas width="780" height="780" aria-hidden="true"></canvas></div>
+  <h2 class="brand display"></h2>
+  <div class="roles"></div>
+  <p class="works"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const verbs=Array.isArray(inputs.verbs)&&inputs.verbs.length===3 ? inputs.verbs : ["Pesquise","Escreva","Revise"];
+  const roles=Array.isArray(inputs.roles)&&inputs.roles.length===3 ? inputs.roles : ["Busca fontes","Estrutura o texto","Confere a entrega"];
+  copy(".eyebrow","intro","Três etapas em uma sessão");
+  const brand=one(".brand");
+  brand.append(document.createTextNode(String(inputs.title ?? "Seu agente de").trimEnd()+" "));
+  const focus=document.createElement("em");
+  focus.textContent=String(inputs.accent ?? "produção");
+  brand.append(focus);
+  copy(".works","tools","Arquivos  ·  Tarefas  ·  Projetos");
+  const roleElements=roles.map(text=>{
+    const label=document.createElement("span");
+    label.textContent=String(text);
+    one(".roles").append(label);
+    return label;
+  });
+  const tunnel=one(".tunnel").getContext("2d");
+  const orb=one(".orb canvas").getContext("2d");
+  const TAU=Math.PI*2;
+  const fraction=value=>value-Math.floor(value);
+  const noise=seed=>fraction(Math.sin(seed*90.283+16.814)*42137.974);
+  const colors=[[164,193,222],[130,172,217],[185,204,232]];
+
+  function polar(angle,radius,stretch=1){
+    return [960+Math.cos(angle)*radius,540+Math.sin(angle)*radius*stretch];
+  }
+  function ring(ctx,mode,radius,time,turn){
+    const angular=mode===0 ? 8 : 92;
+    ctx.beginPath();
+    for(let k=0;k<=angular;k++){
+      const a=k/angular*TAU+turn;
+      const wave=mode===0 ? 1 : 1 + (mode===1 ? .13 : .065)*Math.sin(a*(mode===1 ? 7 : 4)+time*2+radius/86)
+        + .045*Math.sin(a*13-time*1.4-radius/47);
+      const [x,y]=polar(a,radius*wave,mode===2 ? .79 : .87);
+      if(k===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+  }
+  function drawPassage(mode,time){
+    const [r,g,b]=colors[mode];
+    const glow=tunnel.createRadialGradient(960,540,55,960,540,1060);
+    glow.addColorStop(0,"#10131a");
+    glow.addColorStop(.29,"#1b2330");
+    glow.addColorStop(.62,"#252c36");
+    glow.addColorStop(1,"#10151c");
+    tunnel.fillStyle=glow;
+    tunnel.fillRect(0,0,1920,1080);
+    const speed=[1.85,1.28,1.05][mode];
+    const spin=[.11,.26,.71][mode];
+    const turn=time*spin;
+    const count=mode===0 ? 29 : 24;
+    for(let i=0;i<count;i++){
+      const depth=fraction(i/count-time*speed*.23);
+      const radius=74/(depth+.053);
+      const fall=clamp((radius-56)/190)*clamp((1470-radius)/180);
+      if(fall===0)continue;
+      ring(tunnel,mode,radius,time,turn + (mode===2 ? depth*3.9 : depth*.39));
+      const alpha=fall*(mode===0 ? .18 : .32)*(i%3===0 ? 1 : .55);
+      tunnel.strokeStyle="rgba("+r+","+g+","+b+","+alpha+")";
+      tunnel.lineWidth=mode===0 ? 2+3*fall : 2+12*fall*(i%4===0 ? 1 : .18);
+      if(mode===1&&i%4===0){
+        tunnel.shadowBlur=21;
+        tunnel.shadowColor="#8fb7e8a0";
+        tunnel.lineWidth=6+23*fall;
+      }
+      tunnel.stroke();
+      tunnel.shadowBlur=0;
+    }
+    if(mode===2){
+      for(let arm=0;arm<5;arm++){
+        tunnel.beginPath();
+        for(let k=0;k<=100;k++){
+          const radius=106+k*13.1;
+          const angle=arm/5*TAU+turn+k*.031+Math.sin(k*.12+time)*.066;
+          const [x,y]=polar(angle,radius,.81);
+          if(k===0)tunnel.moveTo(x,y);else tunnel.lineTo(x,y);
+        }
+        tunnel.strokeStyle="rgba(166,191,222,.19)";
+        tunnel.shadowBlur=29;
+        tunnel.shadowColor="#aac9f2b0";
+        tunnel.lineWidth=14+arm*3;
+        tunnel.stroke();
+        tunnel.shadowBlur=0;
+      }
+    }
+    for(let i=0;i<118;i++){
+      const offset=noise(i+11);
+      const depth=fraction(noise(i+319)-time*(.58+offset*.36));
+      const radius=74/(depth+.05);
+      if(radius>1530)continue;
+      const angle=noise(i+56)*TAU+turn*(mode===0 ? .35 : .85);
+      const length=(8+offset*88+(i%6===0 ? 155 : 0))*clamp(radius/420);
+      const start=polar(angle,radius,.86);
+      const end=polar(angle+(mode===2 ? .09 : 0),radius+length,.86);
+      const alpha=clamp(radius/260)*clamp((1500-radius)/240)*(.07+.53*offset+(i%6===0 ? .16 : 0));
+      const beam=tunnel.createLinearGradient(start[0],start[1],end[0],end[1]);
+      beam.addColorStop(0,"rgba("+r+","+g+","+b+",0)");
+      beam.addColorStop(1,"rgba("+r+","+g+","+b+","+alpha+")");
+      tunnel.beginPath();
+      tunnel.moveTo(start[0],start[1]);
+      tunnel.lineTo(end[0],end[1]);
+      tunnel.strokeStyle=beam;
+      tunnel.lineWidth=1+offset*offset*radius/(i%6===0 ? 71 : 167);
+      tunnel.stroke();
+      if(mode===0&&i%3===0&&radius>150){
+        const block=8+radius*.095;
+        tunnel.save();
+        tunnel.translate(end[0],end[1]);
+        tunnel.rotate(angle);
+        tunnel.fillStyle="rgba(180,200,224,"+alpha*.36+")";
+        tunnel.fillRect(-block*.3,-block*.45,block,block*.65);
+        tunnel.strokeStyle="rgba(213,231,252,"+alpha*.36+")";
+        tunnel.strokeRect(-block*.3,-block*.45,block,block*.65);
+        tunnel.restore();
+      }
+    }
+  }
+
+  function drawOrb(time){
+    const size=780;
+    const c=size/2;
+    const radius=318;
+    orb.clearRect(0,0,size,size);
+    const light=orb.createRadialGradient(305,292,48,c,c,radius);
+    light.addColorStop(0,"#34465c");
+    light.addColorStop(.51,"#243042");
+    light.addColorStop(.87,"#151e2a");
+    light.addColorStop(1,"#7798bf");
+    orb.beginPath();
+    orb.arc(c,c,radius,0,TAU);
+    orb.fillStyle=light;
+    orb.fill();
+    orb.save();
+    orb.clip();
+    for(let lane=0;lane<31;lane++){
+      orb.beginPath();
+      for(let k=0;k<=120;k++){
+        const t=k/120*TAU;
+        const turn=lane/31*TAU+time*.67;
+        const a=Math.cos(t);
+        const wave=Math.sin(t);
+        const x=c+radius*(a*Math.cos(turn)+Math.sin(t*6+turn)*.044);
+        const y=c+radius*(wave*.93+Math.sin(t*4-turn)*.055);
+        if(k===0)orb.moveTo(x,y);else orb.lineTo(x,y);
+      }
+      orb.strokeStyle=lane%6===0 ? "#b2d2f69c" : "#9bb9de44";
+      orb.lineWidth=lane%6===0 ? 3.6 : 1.8;
+      orb.stroke();
+    }
+    orb.restore();
+    orb.beginPath();
+    orb.arc(c,c,radius,0,TAU);
+    orb.strokeStyle="#bddaff8c";
+    orb.lineWidth=3;
+    orb.stroke();
+    const pulse=phase(time,7.48,.86);
+    if(pulse>0&&pulse<1){
+      orb.beginPath();
+      orb.arc(c,c,radius+pulse*64,0,TAU);
+      orb.strokeStyle="rgba(178,216,253,"+.48*(1-pulse)+")";
+      orb.lineWidth=3;
+      orb.stroke();
+    }
+  }
+
+  window.renderMotion=time=>{
+    const portalIn=beat(time,.08,.42);
+    const plunge=flow(phase(time,.51,.61));
+    const wipe=flow(phase(time,4.49,.37));
+    const width=mix(544,1920,plunge);
+    set(one(".portal"),{width:width+"px",height:width*9/16+"px",borderRadius:mix(28,0,plunge)+"px",opacity:portalIn*(1-wipe)});
+    const label=beat(time,.13,.38)*(1-flow(phase(time,.56,.26)));
+    set(one(".eyebrow"),{opacity:label,transform:"translateY("+(1-label)*12+"px)"});
+    const mode=time<1.83 ? 0 : time<3.31 ? 1 : 2;
+    const change=[.70,1.83,3.31][mode];
+    const next=[1.83,3.31,4.53][mode];
+    if(time<4.87)drawPassage(mode,time);
+    const read=beat(time,change,.32);
+    const pass=flow(phase(time,next-.17,.16));
+    const word=one(".verb");
+    word.textContent=String(verbs[mode]);
+    set(word,{opacity:read*(1-pass)*(1-wipe),transform:"scale("+mix(.80,1,read)*(1+.1*pass)+")",filter:"blur("+((1-read)*15+pass*11)+"px)"});
+    all(".indicator span").forEach((segment,i)=>segment.classList.toggle("active",i<=mode));
+    one(".indicator").style.opacity=beat(time,1.03,.28)*(1-wipe);
+
+    const core=beat(time,4.56,.32);
+    const resolve=flow(phase(time,4.71,1.13));
+    const rise=flow(phase(time,5.54,.57));
+    if(core>0)drawOrb(time);
+    set(one(".orb"),{opacity:core,transform:"translate(-50%,"+(-50-rise*31)+"%) scale("+mix(1.34,.24,resolve)+")"});
+    const brandIn=beat(time,5.79,.53);
+    set(brand,{opacity:brandIn,transform:"translateY("+(1-brandIn)*29+"px)",filter:"blur("+(1-brandIn)*9+"px)"});
+    roleElements.forEach((role,i)=>{
+      const show=beat(time,6.38+i*.15,.37);
+      set(role,{opacity:show,transform:"translateY("+(1-show)*23+"px) scale("+mix(.94,1,show)+")"});
+    });
+    one(".works").style.opacity=beat(time,7.05,.44);
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Edição em Conjunto</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+  main { color: #f1f3f7; background: radial-gradient(ellipse at 50% 55%, #33363c, #1b1d21 57%, #111214); }
+  main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .27;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='149' height='149'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  }
+  .intro { position: absolute; inset: 0; display: grid; place-items: center; }
+  .intro h1 { display: flex; gap: 25px; justify-content: center; font-size: 119px; }
+  .intro .word { display: inline-block; }
+  .intro .word.accent { color: #b2d9ff; }
+  .workspace {
+    position: absolute;
+    left: 190px;
+    top: 175px;
+    width: 1540px;
+    height: 776px;
+    overflow: hidden;
+    border: 1px solid #555962;
+    border-radius: 33px;
+    background: linear-gradient(150deg, #30333b, #222428 72%);
+    box-shadow: 0 30px 90px #0008, inset 0 1px 0 #fff2;
+  }
+  .toolbar { position: absolute; inset: 0 0 auto; height: 68px; border-bottom: 1px solid #525560; display: grid; place-items: center; color: #d3d7df; font-size: 28px; }
+  .avatars { position: absolute; right: 32px; display: flex; gap: 8px; }
+  .avatar { display: grid; place-items: center; width: 33px; height: 33px; border-radius: 50%; color: #16202a; font-size: 21px; font-weight: 650; }
+  .report-title { position: absolute; left: 48px; top: 104px; font-size: 68px; white-space: pre; }
+  .edited { position: absolute; right: 49px; top: 123px; color: #b9c2cc; font-size: 27px; }
+  .report-title .selection { background: #8fc7ff55; border-radius: 8px; outline: 1px solid #8fc7ff; }
+  .caret { display: inline-block; width: 2px; height: .82em; margin-left: 5px; background: #d9b8ff; }
+  .metric {
+    position: absolute;
+    top: 202px;
+    width: 465px;
+    height: 145px;
+    padding: 23px 26px;
+    border: 1px solid #535761;
+    border-radius: 24px;
+    background: #343740;
+  }
+  .metric p { color: #d0d5e0; font-size: 29px; }
+  .metric strong { font-size: 51px; font-weight: 620; line-height: 1.18; }
+  .chart {
+    position: absolute;
+    left: 48px;
+    right: 48px;
+    top: 381px;
+    bottom: 39px;
+    border: 1px solid #535761;
+    border-radius: 24px;
+    background: #282b32;
+  }
+  .chart h3 { position: absolute; top: 24px; left: 28px; margin: 0; font-size: 32px; font-weight: 540; }
+  .columns { position: absolute; inset: 79px 54px 37px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 45px; }
+  .column { position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 34px; }
+  .bar {
+    width: 96px;
+    border-radius: 12px 12px 4px 4px;
+    background: #647487;
+    box-shadow: inset 0 1px 0 #fff3;
+    transform-origin: 50% 100%;
+  }
+  .column span { position: absolute; bottom: 0; font-size: 26px; color: #d1d6e0; }
+  .value-label {
+    position: absolute;
+    right: 91px;
+    padding: 3px 14px;
+    border-radius: 11px;
+    background: #acd7ff;
+    color: #132235;
+    font-size: 28px;
+    font-weight: 650;
+  }
+  .cursor { position: absolute; left: 0; top: 0; pointer-events: none; }
+  .cursor svg { width: 40px; height: 45px; overflow: visible; }
+  .cursor path { stroke: #222832; stroke-width: 1.7; stroke-linejoin: round; }
+  .cursor span {
+    position: absolute;
+    left: 29px;
+    top: 34px;
+    padding: 4px 12px;
+    border-radius: 25px;
+    color: #182235;
+    white-space: nowrap;
+    font-size: 25px;
+    font-weight: 620;
+    box-shadow: 0 5px 13px #0007;
+  }
+  .saved {
+    position: absolute;
+    left: 960px;
+    top: 103px;
+    padding: 8px 20px;
+    border: 1px solid #576470;
+    border-radius: 40px;
+    background: #313941;
+    color: #ecf5ff;
+    font-size: 32px;
+    white-space: nowrap;
+  }
+  .saved strong { color: #a2d9c6; margin-right: 11px; }
+</style>
+</head>
+<body>
+<main data-composition-id="edicao-em-conjunto" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <div class="intro"><h1 class="display"></h1></div>
+  <div class="workspace">
+    <header class="toolbar"><p></p><div class="avatars"></div></header>
+    <h2 class="report-title display"><span class="title-base"></span><span class="title-end"></span><i class="caret"></i></h2>
+    <p class="edited">Editando agora</p>
+    <div class="metrics"></div>
+    <div class="chart">
+      <h3>Notas revisadas</h3>
+      <div class="columns"></div>
+      <b class="value-label"></b>
+    </div>
+  </div>
+  <div class="people"></div>
+  <p class="saved"><strong>✓</strong>Salvo no projeto</p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const headline = String(inputs.headline ?? "Edite em equipe, com IA.").trim().split(/\s+/);
+  const colors = ["#b8dcff","#aedfcb","#dcc4fb"];
+  const people = Array.isArray(inputs.names) && inputs.names.length === 3 ? inputs.names : ["Lia","Agente","Rui"];
+  const labels = Array.isArray(inputs.days) && inputs.days.length === 6 ? inputs.days : ["Seg","Ter","Qua","Qui","Sex","Sáb"];
+  const points = Array.isArray(inputs.values) && inputs.values.length === 6 && inputs.values.every(Number.isFinite)
+    ? inputs.values.map(value => Math.max(0,value)) : [32,47,42,61,72,85];
+  const inputMetrics = Array.isArray(inputs.metrics) && inputs.metrics.length === 3
+    ? inputs.metrics : [{label:"Com fonte",value:"92%"},{label:"Sugestões",value:"36"},{label:"Fila de revisão",value:"8"}];
+  const previous = String(inputs.previousTitle ?? "relatório");
+  const next = [...String(inputs.nextTitle ?? "prioridades")];
+  const wordElements = headline.map((text,index) => {
+    const word = document.createElement("span");
+    word.className = index >= headline.length - 2 ? "word accent" : "word";
+    word.textContent = text;
+    one(".intro h1").append(word);
+    return word;
+  });
+  copy(".toolbar p","workspace","SquadOS · Revisão com IA");
+  one(".title-base").textContent = String(inputs.titleBase ?? "Base de conhecimento") + " · ";
+  const cursor = people.map((name,index) => {
+    const icon = document.createElement("div");
+    icon.className = "cursor";
+    icon.innerHTML = '<svg viewBox="0 0 29 33" aria-hidden="true"><path d="m3 2 23 17-9 1.1 5.3 8.2-4.4 2.8-5.4-8.8-6.8 5.6z"/></svg><span></span>';
+    icon.querySelector("path").setAttribute("fill",colors[index]);
+    icon.querySelector("span").textContent = String(name);
+    icon.querySelector("span").style.background = colors[index];
+    const initial = document.createElement("span");
+    initial.className = "avatar";
+    initial.textContent = [...String(name)][0] ?? "";
+    initial.style.background = colors[index];
+    one(".avatars").append(initial);
+    one(".people").append(icon);
+    return icon;
+  });
+  const metrics = inputMetrics.map((record,index) => {
+    const el = document.createElement("section");
+    el.className = "metric";
+    el.style.left = 48 + index*490 + "px";
+    el.innerHTML = "<p></p><strong></strong>";
+    el.querySelector("p").textContent = String(record.label);
+    el.querySelector("strong").textContent = String(record.value);
+    one(".metrics").append(el);
+    return el;
+  });
+  const maximum = Math.max(1,...points);
+  const bars = points.map((point,index) => {
+    const cell = document.createElement("div");
+    cell.className = "column";
+    cell.innerHTML = '<div class="bar"></div><span></span>';
+    cell.querySelector("span").textContent = String(labels[index]);
+    const bar = cell.querySelector(".bar");
+    bar.style.height = Math.min(202,point/maximum*198) + "px";
+    one(".columns").append(cell);
+    return bar;
+  });
+  one(".value-label").textContent = points[5];
+
+  const route = [
+    [[.50,380,335],[1.32,527,420],[2.55,1250,422],[3.42,1530,433],[4.37,460,433],[5.4,405,635],[8,430,651]],
+    [[.63,1556,345],[1.5,1310,387],[2.55,1570,689],[3.54,1656,895],[4.54,1308,781],[5.2,1550,747],[8,1566,756]],
+    [[.84,1035,868],[1.63,990,603],[2.63,820,286],[4.5,802,284],[5.83,1000,303],[6.72,1110,327],[8,1118,333]]
+  ];
+  function cursorPose(path,time) {
+    const nextPoint = path.findIndex(point => point[0]>time);
+    if (nextPoint===-1) return path[path.length-1].slice(1);
+    const to = path[nextPoint];
+    const from = path[nextPoint-1] ?? to;
+    const progress = flow(phase(time,from[0],Math.max(.01,to[0]-from[0])));
+    return [mix(from[1],to[1],progress),mix(from[2],to[2],progress)];
+  }
+
+  window.renderMotion = time => {
+    const introOut = flow(phase(time,2.03,.48));
+    set(one(".intro"),{opacity:1-introOut,transform:"translateY(" + introOut*-125 + "px) scale(" + mix(1,.82,introOut) + ")"});
+    wordElements.forEach((word,index)=>{
+      const appear=beat(time,.08+index*.095,.52);
+      set(word,{opacity:appear,transform:"translateY(" + (1-appear)*25 + "px) scale(" + mix(1.17,1,appear) + ")",filter:"blur(" + (1-appear)*10 + "px)"});
+    });
+    const report = beat(time,2.22,.63);
+    set(one(".workspace"),{opacity:report,transform:"translateY(" + (1-report)*50 + "px) scale(" + (mix(1.09,1,report)+.025*flow(phase(time,2.8,5.2))) + ")",filter:"blur(" + (1-report)*13 + "px)"});
+    const startTitle=beat(time,2.45,.44);
+    set(one(".report-title"),{opacity:startTitle,transform:"translateY(" + (1-startTitle)*17 + "px)"});
+    const selected=time>=5.79&&time<6.02;
+    const end=one(".title-end");
+    end.textContent=time<6.02 ? previous : next.slice(0,Math.floor(next.length*phase(time,6.06,.65))).join("");
+    end.classList.toggle("selection",selected);
+    one(".caret").style.opacity=(time>=6.02&&(time<6.82||Math.floor((time-6.8)*4)%2===1)) ? 1 : 0;
+    one(".edited").textContent=time>=6.78 ? "Atualizado agora" : "Editando agora";
+    one(".edited").style.opacity=beat(time,2.57,.39);
+
+    const take = beat(time,3.45,.25)*(1-beat(time,4.34,.35));
+    metrics.forEach((el,index)=>{
+      const entry=beat(time,2.49+index*.07,.49);
+      const movement=flow(phase(time,index===2?3.59:3.70+(index*.04),.70));
+      const lifted=index===2 ? take : 0;
+      const destination=index===2 ? -980 : 490;
+      set(el,{
+        opacity:entry,
+        transform:"translate("+destination*movement+"px,"+((1-entry)*26-lifted*18)+"px) scale("+mix(1,1.045,lifted)+")",
+        borderColor:lifted>.2 ? "#97caff" : "",
+        boxShadow:lifted>.2 ? "0 15px 32px #0007" : "",
+        zIndex:index===2&&lifted>.15 ? "2" : "1"
+      });
+    });
+    const chart=beat(time,2.65,.55);
+    set(one(".chart"),{opacity:chart,transform:"translateY("+(1-chart)*26+"px)"});
+    bars.forEach((bar,index)=>{
+      const rise=beat(time,2.78+index*.055,.55);
+      const accent=index<4 ? 0 : beat(time,4.55+(index-4)*.63,.25);
+      bar.style.transform="scaleY("+rise+")";
+      bar.style.background=index<4 ? "#647487" : "color-mix(in srgb,#647487,#a4d1ff "+accent*100+"%)";
+    });
+    const tip=beat(time,5.28,.34);
+    set(one(".value-label"),{bottom:96+points[5]/maximum*198+"px",opacity:tip,transform:"translateY("+(1-tip)*12+"px)"});
+    cursor.forEach((el,index)=>{
+      const pose=cursorPose(route[index],time);
+      const enter=beat(time,route[index][0][0],.25);
+      const interaction=[3.48,4.55,5.8][index];
+      const click=Math.sin(Math.PI*phase(time,interaction,.22));
+      set(el,{opacity:enter,transform:"translate("+pose[0]+"px,"+(pose[1]+(1-enter)*34)+"px) scale("+mix(.82,1,enter)*(1-click*.14)+")"});
+    });
+    const saved=beat(time,6.82,.40);
+    set(one(".saved"),{opacity:saved,transform:"translate(-50%,"+(1-saved)*-23+"px)"});
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

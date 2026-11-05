@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Checklist em Ação</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 63% 75%, #323238 0%, #1e1e22 48%, #111113 100%); color: #f4f3f6; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.checklist { position: absolute; left: 218px; top: 285px; width: 785px; }
+.checklist h1 { font-size: 93px; margin-bottom: 45px; }
+.steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid #ffffff2b; }
+.step { display: flex; gap: 24px; align-items: center; min-height: 88px; padding: 13px 0; color: #c7c5cd; border-bottom: 1px solid #ffffff2b; font-size: 43px; line-height: 1.08; }
+.step.done { color: #fbfbfc; }
+.box { flex: none; position: relative; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid #777782; border-radius: 11px; }
+.step.done .box { border-color: #c4c8ff; background: #c4c8ff; }
+.box svg { width: 29px; height: 29px; fill: none; stroke: #27264c; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.phone { position: absolute; left: 1212px; top: 105px; width: 420px; height: 813px; border-radius: 59px; padding: 12px; background: linear-gradient(150deg, #55555b, #161619 44%, #33333a 84%, #6e6e75); box-shadow: 0 43px 90px #080809a0, inset 0 0 0 2px #696970; }
+.screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 49px; background: #15151a; }
+.screen video, .screen img { width: 100%; height: 100%; object-fit: contain; background: #101012; }
+.phone .sensor { position: absolute; z-index: 2; top: 23px; left: 163px; width: 94px; height: 18px; background: #0c0c0f; border: 1px solid #fff1; border-radius: 100px; }
+.demo { position: absolute; inset: 0; padding: 69px 29px 34px; display: flex; flex-direction: column; }
+.demo[hidden] { display: none; }
+.screen-header { display: flex; gap: 12px; align-items: center; font-size: 27px; font-weight: 580; padding-bottom: 24px; border-bottom: 1px solid #ffffff24; }
+.agent { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 12px; background: #c4c8ff; color: #2b2a4e; }
+.agent svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.screen-question { align-self: flex-end; margin-top: 30px; padding: 16px 20px; border-radius: 19px 19px 4px 19px; background: #30313e; font-size: 29px; line-height: 1.13; max-width: 296px; }
+.screen-report { margin-top: 28px; padding: 24px 19px; border: 1px solid #ffffff25; border-radius: 22px; background: #21212a; }
+.screen-report h2 { font-size: 34px; margin-bottom: 22px; }
+.screen-report ol { margin: 0; padding: 0; list-style: none; }
+.phone-step { display: flex; align-items: center; gap: 12px; min-height: 53px; font-size: 23px; color: #c6c6d1; border-top: 1px solid #ffffff1d; }
+.phone-step b { width: 21px; height: 21px; border-radius: 50%; flex: none; border: 1px solid #77778c; font-weight: 650; text-align: center; font-size: 16px; line-height: 18px; }
+.phone-step.done { color: #f3f3fb; }
+.phone-step.done b { border-color: #c4c8ff; background: #c4c8ff; color: #27264c; }
+.deliverable { margin: auto 0 0; padding: 14px 16px; min-height: 57px; background: #c4c8ff; color: #24233d; border-radius: 15px; font-size: 23px; font-weight: 600; text-align: center; }
+</style>
+</head>
+<body>
+<main data-composition-id="checklist-em-acao" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+  <section class="checklist">
+    <h1 class="display"></h1>
+    <ol class="steps"></ol>
+  </section>
+  <section class="phone">
+    <div class="screen">
+      <!-- motion-media:screen:0:7:0 -->
+      <div class="demo">
+        <div class="screen-header"><span class="agent" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M6 6l12 12M18 6 6 18"/></svg></span><p class="screen-title"></p></div>
+        <p class="screen-question"></p>
+        <section class="screen-report"><h2 class="display"></h2><ol></ol></section>
+        <p class="deliverable"></p>
+      </div>
+    </div>
+    <div class="sensor" aria-hidden="true"></div>
+  </section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const defaultTasks = [
+    { label: "Ler o pedido", at: 1.4 },
+    { label: "Verificar as fontes", at: 3.1 },
+    { label: "Gerar o briefing", at: 4.8 },
+  ];
+  const suppliedTasks = Array.isArray(inputs.tasks) ? inputs.tasks : [];
+  const tasks = suppliedTasks.length && suppliedTasks.length <= 4 && suppliedTasks.every(task =>
+    task && typeof task.label === "string" && task.label.trim() && Number.isFinite(task.at)
+  ) ? suppliedTasks : defaultTasks;
+  copy(".checklist h1", "title", "Do pedido ao briefing");
+  copy(".screen-title", "screenTitle", "Agente de projetos");
+  copy(".screen-question", "request", "Prepare o briefing do projeto.");
+  copy(".screen-report h2", "workTitle", "Preparando briefing");
+  copy(".deliverable", "completion", "Briefing pronto");
+  one(".demo").hidden = Boolean(inputs.screen);
+  const taskViews = tasks.map(task => {
+    const row = document.createElement("li");
+    row.className = "step";
+    row.innerHTML = '<span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path pathLength="1" d="m4 12 5 5L20 6"/></svg></span>';
+    row.append(document.createTextNode(task.label));
+    one(".steps").append(row);
+
+    const phoneStep = document.createElement("li");
+    phoneStep.className = "phone-step";
+    const icon = document.createElement("b");
+    phoneStep.append(icon, document.createTextNode(task.label));
+    one(".screen-report ol").append(phoneStep);
+    return { task, row, check: row.querySelector("path"), phoneStep, icon };
+  });
+
+  const lastCheck = Math.max(...tasks.map(task => task.at));
+  const deliverable = one(".deliverable");
+  window.renderMotion = time => {
+    for (const { task, row, check, phoneStep, icon } of taskViews) {
+      const checked = time >= task.at;
+      const stroke = phase(time, task.at, .2);
+      row.classList.toggle("done", checked);
+      check.style.strokeDasharray = "1";
+      check.style.strokeDashoffset = 1 - stroke;
+      check.style.opacity = stroke > 0 ? 1 : 0;
+      phoneStep.classList.toggle("done", checked);
+      icon.textContent = checked ? "✓" : "";
+    }
+    const visible = beat(time, lastCheck, .3);
+    set(deliverable, { opacity: visible, transform: "translateY(" + 15 * (1 - visible) + "px)" });
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

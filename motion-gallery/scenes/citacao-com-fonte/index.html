@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main{background:radial-gradient(ellipse at 56% 28%,#353940,#24272d 56%,#111317 100%);color:#f1f0ec}
+.grain{position:absolute;inset:0;opacity:.25;mix-blend-mode:soft-light;pointer-events:none}
+.photo-card{position:absolute;left:170px;top:166px;width:533px;height:739px;padding:11px;background:#ccc6b8;box-shadow:0 38px 95px #08090cc9;transform:rotate(-4deg)}
+.photo-card img{width:100%;height:100%;display:block;object-fit:cover;object-position:54% center}
+.paper{position:absolute;left:810px;top:257px;width:930px}
+.header{padding-bottom:28px;border-bottom:1px solid #5d6166}
+.header p{font-size:27px;color:#aab3b7;margin-bottom:12px;font-weight:525}
+.header h1{font-size:56px;letter-spacing:-.042em;line-height:1.05;font-weight:625}
+.excerpt{position:relative;padding:0 5px 7px 27px;border-left:2px solid #92a6a0;margin-top:35px;line-height:1.25;font-size:49px;font-weight:490;letter-spacing:-.019em;transform-origin:left top;text-wrap:pretty}
+mark{position:relative;display:inline-block;isolation:isolate;color:inherit;background:transparent;white-space:nowrap}
+mark::before{content:"";position:absolute;z-index:-1;inset:12% -2px 3%;background:var(--ink,#c4b26a);opacity:.36;transform:skewX(-3deg) scaleX(var(--swipe,0));transform-origin:left center;border-radius:2px 7px 3px 5px}
+</style></head><body>
+<main data-composition-id="citacao-com-fonte" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+<svg class="grain" width="1920" height="1080" aria-hidden="true"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".69" numOctaves="3" seed="62"/></filter><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+<div class="photo-card"><img alt=""></div><section class="paper"><header class="header"><p></p><h1></h1></header><div class="excerpt"></div></section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".header p","sourceLabel","Caderno de campo  /  Agentes de IA");
+copy(".header h1","sourceTitle","Antes de delegar ao agente");
+one(".photo-card img").src = inputs.photo ?? "art/porto.webp";
+const excerpt = inputs.excerpt ?? "Defina as fontes permitidas, indique quem valida a resposta e guarde o histórico de cada decisão.";
+const phrases = inputs.highlights ?? ["fontes permitidas","quem valida a resposta","histórico de cada decisão"];
+const swatches = ["#f1cd78","#a1d3b9","#9dc4f0"];
+const matches = phrases.slice(0,3).map((text,index) => ({text,index,start:excerpt.indexOf(text)})).filter(match => match.text && match.start >= 0).sort((left,right) => left.start-right.start);
+let end = 0;
+for (const match of matches) {
+  if (match.start < end) continue;
+  one(".excerpt").append(excerpt.slice(end,match.start));
+  const mark = document.createElement("mark");
+  mark.textContent = match.text; mark.dataset.order = match.index;
+  mark.style.setProperty("--ink",swatches[match.index]);
+  one(".excerpt").append(mark);
+  end = match.start + match.text.length;
+}
+one(".excerpt").append(excerpt.slice(end));
+window.renderMotion = time => {
+  const entry = beat(time,.55,.63);
+  const push = flow(phase(time,1.16,.40)) * (1-flow(phase(time,1.67,.53)));
+  set(one(".excerpt"),{opacity:entry,transform:"translateY("+(16*(1-entry))+"px) scale("+mix(1,1.058,push)+")"});
+  all("mark").forEach(mark => mark.style.setProperty("--swipe",beat(time,2.15+Number(mark.dataset.order)*1.29,.58)));
+};
+window.renderMotion(0);
+</script>
+</body></html>

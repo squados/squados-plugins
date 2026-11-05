@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main{background:radial-gradient(ellipse at 45% 27%,#373a41,#24262b 55%,#111317 96%);color:#f2f1ed}
+.grain{position:absolute;inset:0;opacity:.23;mix-blend-mode:soft-light;pointer-events:none}
+.camera{position:absolute;left:138px;top:170px;width:1642px;height:740px;transform-origin:45% 44%}
+.document{position:absolute;left:0;top:0;width:1132px;height:740px;background:#262a30;border:1px solid #555b64;border-radius:18px;overflow:hidden;box-shadow:0 36px 90px #090a0ea9}
+.head{height:77px;display:flex;align-items:center;gap:18px;border-bottom:1px solid #414650;padding:0 36px;color:#bbc0c9;font-size:27px}
+.head svg{width:26px;height:27px;color:#93bce7}
+.body{padding:43px 46px 0}
+h1{font-size:64px;font-weight:645;line-height:1.03;letter-spacing:-.043em}
+.intro{color:#b4bac5;font-size:29px;margin-top:10px}
+.focus{position:absolute;left:46px;right:46px;top:252px;height:222px;padding:22px 27px;background:#303844;border:1px solid #4d657d;border-radius:10px}
+.focus h2{font-size:35px;font-weight:630;margin-bottom:12px;letter-spacing:-.02em}
+.focus ul{margin:0;padding:0;list-style:none;color:#e2e6ed;font-size:28px;display:grid;gap:7px}
+.focus li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#a5cef1;margin:0 13px 5px 0}
+.under{position:absolute;left:46px;right:46px;top:514px;display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.under article{min-height:160px;background:#2a2f36;border:1px solid #3c444f;border-radius:10px;padding:21px 23px;color:#bdc3cf;font-size:26px}
+.under b{display:block;margin-bottom:9px;font-size:29px;color:#e8e9eb}
+.mask{position:absolute;left:46px;right:46px;top:252px;height:222px;border:2px solid #afd8ff;border-radius:10px;box-shadow:0 0 0 1000px #10131caa,0 0 25px #72afe82f}
+.document-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#262a30}
+.leader{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.callout{position:absolute;left:1242px;top:256px;width:377px}
+.callout small{display:block;color:#b5d8f4;font-size:26px;margin-bottom:13px}
+.callout p{background:#303d4b;border:1px solid #91b5d5;border-left:4px solid #b2d9ff;border-radius:8px;padding:18px 20px;font-size:36px;line-height:1.11;box-shadow:0 16px 44px #11151ec5;letter-spacing:-.021em}
+</style></head><body>
+<main data-composition-id="destaque-de-regiao" data-start="0" data-duration="9" data-width="1920" data-height="1080">
+<svg class="grain" width="1920" height="1080" aria-hidden="true"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" seed="41"/></filter><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+<div class="camera"><section class="document">
+<div class="head"><svg viewBox="0 0 26 27" fill="none" aria-hidden="true"><path d="M5 2h11l5 5v17H5zM16 2v6h5M9 13h8M9 18h8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Caderno de operação</div>
+<header class="body"><h1></h1><p class="intro"></p></header>
+<div class="focus"><h2></h2><ul></ul></div>
+<div class="under"><article><b>Entrada</b>Pedido do cliente e histórico recente</article><article><b>Saída</b>Rascunho pronto para revisão</article></div><img class="document-media" alt="" hidden><div class="mask"></div>
+</section>
+<svg class="leader" viewBox="0 0 1642 740" fill="none" aria-hidden="true"><path d="M1085 361h73l32-40h52" stroke="#acd7fe" stroke-width="2" pathLength="1"/><circle cx="1085" cy="361" r="5" fill="#acd7fe"/></svg>
+<aside class="callout"><small></small><p></p></aside></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".body h1","documentTitle","Política do agente de suporte");
+copy(".intro","intro","O que o agente pode fazer por conta própria");
+copy(".focus h2","sectionTitle","Limites do agente");
+copy(".callout small","step","01  /  Limite de autonomia");
+copy(".callout p","callout","A decisão final passa por uma pessoa.");
+const rules = inputs.rules?.slice(0,3) ?? ["Consultar a base aprovada","Preparar uma resposta","Pedir aprovação antes do envio"];
+for (const rule of rules) {
+  const item = document.createElement("li"); item.textContent = rule; one(".focus ul").append(item);
+}
+const line = one(".leader path");
+line.style.strokeDasharray = "1";
+if (inputs.documentImage) {
+  one(".document-media").src = inputs.documentImage; one(".document-media").hidden = false;
+}
+if (inputs.region) {
+  const { x, y, width, height } = inputs.region;
+  const anchorX = 1132*(x+width)/100;
+  const anchorY = 740*(y+height/2)/100;
+  set(one(".mask"),{left:x+"%",right:"auto",top:y+"%",width:width+"%",height:height+"%"});
+  line.setAttribute("d","M"+anchorX+" "+anchorY+" H1158 L1190 321 H1242");
+  one(".leader circle").setAttribute("cx",anchorX);
+  one(".leader circle").setAttribute("cy",anchorY);
+}
+window.renderMotion = time => {
+  const restore = flow(phase(time,6.42,.67));
+  const focus = flow(phase(time,.47,.46)) * (1-restore);
+  const link = flow(phase(time,1.05,.56));
+  const note = beat(time,1.29,.59);
+  const push = flow(phase(time,1.25,.83)) * (1-restore);
+  set(one(".camera"),{transform:"translate("+(-8*push)+"px,"+(-10*push)+"px) scale("+mix(1,1.068,push)+")"});
+  set(one(".mask"),{opacity:focus});
+  set(one(".leader"),{opacity:focus});
+  set(line,{strokeDashoffset:1-link});
+  set(one(".leader circle"),{opacity:link});
+  set(one(".callout small"),{opacity:note});
+  set(one(".callout p"),{opacity:note*(1-restore),clipPath:"inset(0 "+(100-100*note)+"% 0 0)",transform:"translateX("+(-9*(1-note))+"px)"});
+};
+window.renderMotion(0);
+</script>
+</body></html>

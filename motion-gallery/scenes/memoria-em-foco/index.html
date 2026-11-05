@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Memória em Foco</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+  main { color:#f1f5f8; background:radial-gradient(ellipse at 48% 55%, #363a41, #1d2025 56%, #121417); }
+  main::before { content:""; position:absolute; inset:0; z-index:-1; opacity:.27; mix-blend-mode:soft-light; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .card { position:absolute; left:840px; top:315px; width:240px; height:356px; overflow:hidden; border-radius:27px; border:1px solid #dfe8fc57; background:#283441; box-shadow:0 19px 45px #0007; }
+  .card img { width:100%; height:100%; object-fit:cover; object-position:var(--focus); }
+  .card::after { content:""; position:absolute; inset:54% 0 0; background:linear-gradient(transparent,#101722dc); }
+  .card span { position:absolute; bottom:15px; left:17px; z-index:1; padding:4px 12px; border-radius:40px; color:#eff6ff; background:#202a3be0; border:1px solid #c7dcff43; font-size:22px; white-space:nowrap; }
+  .intro { position:absolute; left:100px; top:749px; width:1720px; text-align:center; font-size:75px; }
+  .icon { position:absolute; top:457px; left:877px; display:grid; place-items:center; width:166px; height:166px; border-radius:41px; color:#172c42; border:1px solid #d2e9ff; background:linear-gradient(145deg,#dbedff,#86bbef 67%,#669bd7); box-shadow:inset 0 1px 2px #fff,0 15px 40px #0009,0 0 36px #6db6ff5a; }
+  .icon svg { width:102px; height:102px; }
+  .text-window { position:absolute; left:615px; top:459px; width:1080px; height:166px; display:grid; align-items:center; }
+  .question,.name { position:absolute; left:0; width:1050px; font-size:107px; text-wrap:nowrap; }
+  .name { color:#bce0ff; }
+  .sweep { position:absolute; top:9px; width:13px; height:148px; border-radius:20px; background:#daedff; box-shadow:0 0 26px 6px #9bceffcf; }
+  .footer { position:absolute; top:663px; width:100%; text-align:center; font-size:42px; color:#d1dae8; }
+  .cta { display:inline-block; margin-top:24px; padding:8px 22px; border-radius:90px; color:#18293d; background:#b6ddff; font-size:31px; font-weight:620; }
+</style>
+</head>
+<body>
+<main data-composition-id="memoria-em-foco" data-start="0" data-duration="7.8" data-width="1920" data-height="1080">
+  <div class="photos"></div>
+  <h1 class="intro display"></h1>
+  <div class="icon" aria-hidden="true">
+    <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m8 45 13-18 9 10 9-15 13 23"/>
+      <path d="M14 48h33"/>
+      <circle cx="39" cy="16" r="4.5" fill="currentColor" stroke="none"/>
+      <path d="M8 13h10M13 8v10"/>
+    </svg>
+  </div>
+  <div class="text-window"><h2 class="question display"></h2><h2 class="name display"></h2><i class="sweep"></i></div>
+  <div class="footer"><p></p><span class="cta"></span></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const assets=["porto","sintra","cabo-da-roca","piedade","marinha","douro"];
+  const places=Array.isArray(inputs.places)&&inputs.places.length===6 ? inputs.places : ["Porto","Sintra","Cabo da Roca","Ponta da Piedade","Praia da Marinha","Douro"];
+  const focus=["53%","43%","61%","58%","62%","48%"];
+  const directions=[-7,-3,1,-1,3,7];
+  const cards=assets.map((slug,index)=>{
+    const card=document.createElement("div");
+    card.className="card";
+    card.style.setProperty("--focus",focus[index]);
+    const img=document.createElement("img");
+    img.src=inputs["photo"+(index+1)] ?? "art/"+slug+".webp";
+    img.alt="";
+    const label=document.createElement("span");
+    label.textContent=String(places[index]);
+    card.append(img,label);
+    one(".photos").append(card);
+    return {card,label};
+  });
+  copy(".intro","intro","Seis paradas. Um roteiro.");
+  copy(".question","question","Por onde começar?");
+  copy(".name","name","Roteiro com IA");
+  copy(".footer p","tagline","Organize as paradas pelo tempo que você tem.");
+  copy(".cta","action","Montar roteiro");
+  window.renderMotion=time=>{
+    const fold=flow(phase(time,2.54,.53));
+    const flash=beat(time,3.21,.31);
+    cards.forEach(({card,label},index)=>{
+      const reveal=beat(time,.05+index*.075,.52);
+      const x=(index-2.5)*274;
+      const rock=Math.sin(time*1.6+index*.8)*2;
+      const travel=mix(x,(index-2.5)*10,fold);
+      const y=mix((1-reveal)*76+Math.abs(index-2.5)*10+rock,47,fold);
+      set(card,{
+        opacity:reveal*(1-flash),
+        transform:"translate("+travel+"px,"+y+"px) rotate("+mix(directions[index],(index-2.5)*5,fold)+"deg) scale("+mix(mix(.92,1,reveal),.50,fold)+")",
+        filter:"blur("+(1-reveal)*12+"px)"
+      });
+      label.style.opacity=1-beat(time,2.34,.28);
+    });
+    const statement=beat(time,.55,.48)*(1-flow(phase(time,2.34,.40)));
+    set(one(".intro"),{opacity:statement,transform:"translateY("+(1-statement)*23+"px)"});
+    const iconIn=beat(time,3.21,.36);
+    const dock=flow(phase(time,4.12,.49));
+    const recoil=Math.sin(Math.PI*phase(time,3.37,.39))*.075;
+    set(one(".icon"),{opacity:iconIn,transform:"translateX("+(-455*dock)+"px) scale("+(mix(.83,1,iconIn)+recoil)+")"});
+    const queryIn=beat(time,4.47,.32);
+    const sweep=flow(phase(time,5.16,.54));
+    const question=one(".question");
+    const width=Math.max(question.scrollWidth,one(".name").scrollWidth);
+    const textX=Math.min(1050,width);
+    set(question,{opacity:queryIn,clipPath:"inset(0 "+(1-queryIn)*100+"% 0 "+sweep*100+"%)"});
+    set(one(".name"),{opacity:time<5.16 ? 0 : 1,clipPath:"inset(0 "+(1-sweep)*100+"% 0 0)"});
+    set(one(".sweep"),{opacity:Math.sin(Math.PI*phase(time,5.10,.64)),left:mix(-16,textX,sweep)+"px"});
+    const secondary=beat(time,5.87,.59);
+    set(one(".footer"),{opacity:secondary,transform:"translateY("+(1-secondary)*29+"px)"});
+    one(".cta").style.opacity=beat(time,6.21,.38);
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

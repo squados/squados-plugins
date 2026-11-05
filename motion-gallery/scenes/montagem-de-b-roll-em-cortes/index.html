@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main{background:radial-gradient(ellipse at 49% 23%,#353940,#22252a 53%,#111317 95%);color:#f4f2eb}
+.grain{position:absolute;inset:0;opacity:.24;mix-blend-mode:soft-light;pointer-events:none}
+h1{position:absolute;left:190px;right:190px;top:81px;text-align:center;font-size:84px;font-weight:635;letter-spacing:-.051em;line-height:1.05}
+h1 span{display:inline-block;white-space:pre}h1 span:last-child{color:#accaf6}
+.viewport{position:absolute;left:244px;top:219px;width:1432px;height:720px;border:1px solid #555964;border-radius:19px;background:#15191f;box-shadow:0 46px 120px #08090eaf;overflow:hidden}
+.shots{position:absolute;inset:0;overflow:hidden}
+.shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.film-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#161b2319 45%,#080c1364 100%)}
+.corners{position:absolute;inset:24px;border:0;pointer-events:none}
+.corners i{position:absolute;width:19px;height:19px;border:solid #dae7f7a8;border-width:0;top:0;left:0}
+.corners i:first-child{border-width:1px 0 0 1px}.corners i:nth-child(2){left:auto;right:0;border-width:1px 1px 0 0}
+.counter{position:absolute;left:25px;right:25px;bottom:20px;height:47px;padding:0 15px;display:flex;align-items:center;gap:20px;color:#e9edf9;background:#0c1019d9;border:1px solid #d9e2fa30;border-radius:8px;font-size:24px;font-variant-numeric:tabular-nums}
+.counter .segments{width:610px;display:grid;grid-template-columns:repeat(15,1fr);gap:4px}
+.counter i{height:3px;background:#a2acc151;border-radius:1px}
+.counter .label{margin-left:auto;color:#dae2f1}
+.box{position:absolute;border:2px solid #8cc9ff;border-radius:5px;background:#2f89ff21;box-shadow:0 0 16px #2588ff25;transform-origin:left top}
+.box span{position:absolute;left:-2px;bottom:100%;background:#abd6ff;color:#112136;padding:4px 9px;border-radius:4px 4px 0 0;font-size:25px;font-weight:600;white-space:nowrap}
+.signal{position:absolute;pointer-events:none;width:38px;height:38px;border:1px solid #a3caff9d;background:#8bc0ff45;mix-blend-mode:screen}
+</style></head><body>
+<main data-composition-id="montagem-de-b-roll-em-cortes" data-start="0" data-duration="7.2" data-width="1920" data-height="1080">
+<svg class="grain" width="1920" height="1080" aria-hidden="true"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".70" numOctaves="3" seed="75"/></filter><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+<h1></h1>
+<div class="viewport"><div class="shots"></div><div class="film-shade"></div><div class="corners"><i></i><i></i></div><div class="signal"></div><div class="signal"></div><div class="boxes"></div>
+<div class="counter"><span class="number"></span><div class="segments"></div><span class="label"></span></div></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const photoLibrary = {
+  douro:["Douro","center"], lagos:["Lagos","center 57%"], pena:["Palácio da Pena","center"], marinha:["Praia da Marinha","center 45%"],
+  sintra:["Sintra","center"], piedade:["Ponta da Piedade","center 52%"], porto:["Porto","center 56%"], algarve:["Algarve","center"],
+  "cabo-da-roca":["Cabo da Roca","center"]
+};
+const vectors = {
+  mesh:["Malha","#0d1924","#75a0d6",i=>'<path d="M0 '+(510-i*28)+' Q 390 '+(53+i*31)+' 745 '+(360-i*9)+' T 1440 '+(75+i*29)+'"/>'],
+  lens:["Lente","#0c1822","#9dc6f4",i=>'<ellipse cx="704" cy="361" rx="'+(52+i*40)+'" ry="'+(31+i*21)+'" transform="rotate(-17 704 361)"/>'],
+  orbit:["Órbita","#1c172b","#c0a9de",i=>'<ellipse cx="700" cy="362" rx="595" ry="'+(76+i*4)+'" transform="rotate('+(-70+i*11)+' 700 362)"/>'],
+  prism:["Prisma","#151b23","#78d2cd",i=>'<path d="M'+(94+i*34)+' 630 L'+(745-i*12)+' '+(64+i*20)+' L'+(1370-i*28)+' 630 Z"/>'],
+  terrain:["Relevo","#16202b","#8db6d6",i=>'<path d="M-60 '+(200+i*29)+' C300 '+(640-i*24)+' 540 '+(50+i*13)+' 740 '+(300-i*16)+' S1050 '+(830-i*28)+' 1490 '+(160+i*24)+'"/>'],
+  wave:["Onda","#20191f","#e3bd9a",i=>'<path d="M-80 '+(265+i*22)+' C290 '+(110+i*26)+' 395 '+(713-i*29)+' 780 '+(305+i*8)+' S1140 '+(10+i*28)+' 1510 '+(310+i*19)+'"/>']
+};
+const sequence = ["douro","mesh","lagos","lens","pena","marinha","orbit","sintra","piedade","prism","porto","terrain","algarve","wave","cabo-da-roca"];
+const labels = sequence.map((key,index) => {
+  const shot = document.createElement("img");
+  shot.className = "shot"; shot.alt = "";
+  const override = inputs["shot"+String(index+1).padStart(2,"0")];
+  if (override) {
+    shot.src = override;
+  } else if (Object.hasOwn(photoLibrary,key)) {
+    shot.src = "art/"+key+".webp";
+    shot.style.objectPosition = photoLibrary[key][1];
+  } else {
+    const [,background,ink,shape] = vectors[key];
+    const paths = Array.from({length:18},(_,step)=>shape(step)).join("");
+    const illustration = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 720"><defs><radialGradient id="g"><stop stop-color="'+ink+'" stop-opacity=".2"/><stop offset="1" stop-color="'+background+'"/></radialGradient></defs><rect width="1440" height="720" fill="'+background+'"/><rect width="1440" height="720" fill="url(#g)"/><g fill="none" stroke="'+ink+'" stroke-width="2" opacity=".62">'+paths+'</g></svg>';
+    shot.src = "data:image/svg+xml," + encodeURIComponent(illustration);
+  }
+  one(".shots").append(shot);
+  one(".segments").append(document.createElement("i"));
+  return inputs.labels?.[index] ?? (override ? "Plano "+String(index+1).padStart(2,"0") : (photoLibrary[key] ?? vectors[key])[0]);
+});
+const words = (inputs.title ?? "O que a IA enxerga?").trim().split(/\s+/).filter(Boolean);
+for (const [index,word] of words.entries()) {
+  const part = document.createElement("span");
+  part.textContent = word + (index === words.length-1 ? "" : " "); one("h1").append(part);
+}
+const labelsForDetections = inputs.detections ?? [
+  {label:"Farol",x:77.3,y:0.8,width:6.0,height:18.1},
+  {label:"Falésia",x:42,y:38,width:45,height:49}
+];
+for (const box of labelsForDetections.slice(0,3)) {
+  const rectangle = document.createElement("div");
+  rectangle.className = "box";
+  set(rectangle,{left:box.x+"%",top:box.y+"%",width:box.width+"%",height:box.height+"%"});
+  const label = document.createElement("span"); label.textContent = box.label;
+  if (box.y < 8) set(label,{bottom:"auto",top:"100%",borderRadius:"0 0 4px 4px"});
+  rectangle.append(label); one(".boxes").append(rectangle);
+}
+const cuts = [.76,1.00,1.22,1.47,1.73,2.03,2.32,2.56,2.85,3.14,3.48,3.78,4.11,4.42,4.85];
+const shots = all(".shot"), segments = all(".segments i"), boxes = all(".box"), signals = all(".signal");
+window.renderMotion = time => {
+  const entry = beat(time,.42,.40);
+  const shotIndex = Math.max(0,cuts.findLastIndex(cut=>time>=cut));
+  const since = time-cuts[shotIndex];
+  set(one(".viewport"),{opacity:entry,clipPath:"inset("+((1-entry)*32)+"% 0 round 19px)",transform:"translateY("+((1-entry)*22)+"px)"});
+  all("h1 span").forEach((word,index) => {
+    const position = beat(time,.26+index*Math.min(.245,1.2/Math.max(1,words.length-1)),.43);
+    set(word,{opacity:position,transform:"translateY("+((1-position)*23)+"px)"});
+  });
+  shots.forEach((shot,index) => { shot.style.visibility = index === shotIndex ? "visible" : "hidden"; });
+  segments.forEach((segment,index) => {segment.style.background = index <= shotIndex ? "#92b9f0" : "#a2acc151";});
+  one(".number").textContent = String(shotIndex+1).padStart(2,"0")+" / 15";
+  one(".label").textContent = labels[shotIndex];
+  signals.forEach((signal,index) => {
+    const pulse = [3,7,11,13].includes(shotIndex) ? beat(since,.01,.055)*(1-flow(phase(since,.075,.105))) : 0;
+    set(signal,{left:(18+(shotIndex*9+index*23)%61)+"%",top:(21+(shotIndex*11+index*9)%49)+"%",opacity:pulse});
+  });
+  boxes.forEach((box,index) => {
+    const detect = beat(time,5.29+index*.23,.35);
+    set(box,{opacity:detect,clipPath:"inset(0 "+(100-100*detect)+"% "+(100-100*detect)+"% 0)"});
+    if(detect === 1) box.style.clipPath = "none";
+  });
+};
+window.renderMotion(0);
+</script>
+</body></html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main{background:radial-gradient(ellipse at 44% 27%,#373a41 0%,#22242a 45%,#111217 93%);color:#eef0f4}
+.grain{position:absolute;inset:0;opacity:.2;mix-blend-mode:soft-light;pointer-events:none}
+.camera{position:absolute;left:278px;top:144px;width:1364px;height:776px;transform-origin:53% 49%}
+.shell{position:absolute;inset:0;overflow:hidden;border:1px solid #4c4e58;border-radius:23px;background:#1b1d23;box-shadow:0 42px 110px #07080caa}
+.editor-media,.result-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#1b1d23}
+.top{height:87px;display:flex;align-items:center;padding:0 35px;gap:14px;border-bottom:1px solid #363841;color:#cfd0db;font-size:28px}
+.logo{width:25px;height:25px;display:grid;place-items:center;color:#c2bcff}.top .dots{margin-left:auto;letter-spacing:.2em;color:#a8aab5}
+.rail{position:absolute;inset:88px auto 0 0;width:234px;padding:38px 24px;background:#202228;border-right:1px solid #363841;font-size:23px;color:#a3a6b1}
+.rail p{padding:13px 15px;margin-bottom:12px}.rail p:first-child{background:#353347;color:#e0dcff;border-radius:10px}
+.editor{position:absolute;left:286px;right:53px;top:134px}
+h1{font-size:64px;letter-spacing:-.043em;font-weight:625;line-height:1.05}
+.sub{margin-top:17px;color:#b6b8c5;font-size:28px}
+.context{position:absolute;left:286px;right:53px;top:294px;height:222px;padding:26px 29px;background:#282b34;border:1px solid #424550;border-radius:15px;color:#e2e3ed;font-size:38px;line-height:1.2}
+.context small{display:block;margin-bottom:21px;font-size:24px;color:#bab8d4}
+.run{position:absolute;right:53px;top:555px;min-width:272px;height:74px;display:grid;place-items:center;padding:0 24px;background:#c6c1ff;color:#1d1840;border-radius:11px;font-size:33px;font-weight:650}
+.target{position:absolute;right:40px;top:542px;width:298px;height:100px;border:2px solid #ddd5ff;border-radius:17px;box-shadow:0 0 0 1000px #080913ac,0 0 28px #8e7aff80;pointer-events:none}
+.keys{position:absolute;bottom:-37px;left:50%;display:flex;align-items:center;gap:22px;color:#ece7ff;white-space:nowrap}
+kbd{font:630 34px/1 Outfit,sans-serif;display:grid;min-width:105px;height:67px;place-items:center;padding:0 23px;border-radius:12px;background:#ece8ff;color:#29223f;border:1px solid #fbf8ff;box-shadow:0 8px 0 #7d729e,0 18px 30px #0809159c}
+.keys span{font-size:30px;color:#d5d0e7}
+.result{position:absolute;inset:88px 0 0;background:linear-gradient(133deg,#272733,#1a1c23 71%);padding:76px 88px;overflow:hidden}
+.result .tag{color:#cfcbfd;font-size:28px;margin-bottom:25px}.result h2{font-size:81px;letter-spacing:-.047em;font-weight:645;line-height:1}
+.result p{font-size:32px;color:#babccb;margin:24px 0 45px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.steps article{display:flex;flex-direction:column;justify-content:space-between;min-height:177px;border:1px solid #4c4d5b;border-radius:13px;padding:21px;background:linear-gradient(145deg,#373746,#262733);font-size:29px}
+.steps b{font-size:23px;color:#c6c2f6;font-weight:530}.steps span{line-height:1.1}
+</style></head><body>
+<main data-composition-id="atalho-e-resultado" data-start="0" data-duration="9" data-width="1920" data-height="1080">
+<svg class="grain" width="1920" height="1080" aria-hidden="true"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" seed="34"/></filter><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+<div class="camera"><div class="shell">
+<div class="top"><svg class="logo" viewBox="0 0 25 25" aria-hidden="true"><path d="M12.5 1v23M1 12.5h23M4 4l17 17M21 4 4 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Bancada de agentes<span class="dots" aria-hidden="true">•••</span></div>
+<div class="rail"><p>Rascunho</p><p>Fluxos salvos</p></div>
+<header class="editor"><h1></h1><p class="sub">Transforme uma instrução em um fluxo.</p></header>
+<div class="context"><small>Instrução do agente</small><p></p></div><div class="run"></div><img class="editor-media" alt="" hidden><div class="target"></div>
+<section class="result"><div class="tag">✓ Fluxo criado</div><h2></h2><p class="summary"></p><div class="steps"></div><img class="result-media" alt="" hidden></section>
+</div><div class="keys"></div></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".editor h1","title","Triagem com IA");
+copy(".context p","instruction","Leia cada chamado e separe o que pode ser resolvido pelo agente do que precisa de revisão.");
+copy(".run","action","Executar fluxo");
+copy(".result h2","result","Triagem pronta");
+copy(".summary","summary","O agente já tem uma rota para cada chamado.");
+for (const [input,selector] of [["editorImage",".editor-media"],["resultImage",".result-media"]]) {
+  if (!inputs[input]) continue;
+  one(selector).src = inputs[input]; one(selector).hidden = false;
+}
+if (inputs.resultImage) one(".result").style.top = 0;
+if (inputs.target) {
+  const { x, y, width, height } = inputs.target;
+  set(one(".target"),{left:x+"%",right:"auto",top:y+"%",width:width+"%",height:height+"%"});
+}
+const keys = inputs.keys?.slice(0,3) ?? ["Shift","Enter"];
+const names = inputs.steps?.slice(0,4) ?? ["Ler chamado","Definir prioridade","Encaminhar revisão"];
+const keyboard = one(".keys");
+const cards = one(".steps");
+cards.style.gridTemplateColumns = "repeat(" + Math.max(1,names.length) + ",1fr)";
+keys.forEach((name,index) => {
+  if (index) { const join = document.createElement("span"); join.textContent = "+"; keyboard.append(join); }
+  const key = document.createElement("kbd"); key.textContent = name; keyboard.append(key);
+});
+names.forEach((name,index) => {
+  const card = document.createElement("article");
+  const number = document.createElement("b");
+  const label = document.createElement("span");
+  number.textContent = String(index+1).padStart(2,"0"); label.textContent = name;
+  card.append(number,label); cards.append(card);
+});
+window.renderMotion = time => {
+  const focus = flow(phase(time,1.60,.55)) * (1-flow(phase(time,5.43,.39)));
+  const camera = flow(phase(time,1.74,.92)) * (1-flow(phase(time,5.33,.56)));
+  const strike = flow(phase(time,5.04,.105)) * (1-flow(phase(time,5.22,.17)));
+  const keysIn = beat(time,.69,.43);
+  const keysOut = 1-flow(phase(time,5.48,.25));
+  const reveal = flow(phase(time,5.92,.74));
+  set(one(".camera"),{transform:"translate("+(-44*camera)+"px,"+(-12*camera)+"px) scale("+mix(1,1.047,camera)+")"});
+  set(one(".target"),{opacity:focus});
+  set(one(".keys"),{opacity:keysIn*keysOut,transform:"translate(-50%,"+(15*(1-keysIn))+"px)"});
+  all("kbd").forEach(key => set(key,{transform:"translateY("+(7*strike)+"px)",boxShadow:"0 "+mix(8,1,strike)+"px 0 #7d729e,0 18px 30px #0809159c"}));
+  set(one(".run"),{filter:"brightness("+mix(1,1.23,strike)+")"});
+  set(one(".result"),{clipPath:"inset(0 0 "+(100-100*reveal)+"% 0)",opacity:Number(reveal>0)});
+  all(".steps article").forEach((card,index) => {
+    const progress = beat(time,6.27+index*.10,.55);
+    set(card,{opacity:progress,transform:"translateY("+(28*(1-progress))+"px)"});
+  });
+};
+window.renderMotion(0);
+</script>
+</body></html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Cápsula de Integração</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f4f6fb; background: radial-gradient(ellipse at 48% 81%, #2c2d33 0%, #1b1c21 57%, #101014 100%); }
+main::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .24; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.intro, .final-copy { position: absolute; left: 150px; right: 150px; text-align: center; }
+.intro { top: 486px; font-size: 86px; }
+.final-copy { top: 523px; }
+.final-copy h2 { font-size: 84px; }
+.final-copy p { margin-top: 22px; color: #d2dfed; font-size: 29px; }
+.map { position: absolute; left: 212px; top: 131px; width: 1496px; height: 815px; }
+.route { fill: none; stroke: #80adf3; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 100; }
+.map-dot { fill: #c9dfff; stroke: #90b9fb; stroke-width: 5; }
+.surface {
+  position: absolute; border: 1px solid #6983aa; border-radius: 60px;
+  background: linear-gradient(149deg, #333946, #222630);
+  box-shadow: 0 26px 74px #090b14a8, inset 0 1px 0 #e0edff1f;
+}
+.surface.final { background: linear-gradient(145deg, #508ce9, #305dc1); border-color: #a3c9ff; }
+.trace { position: absolute; left: 512px; top: 473px; width: 896px; height: 122px; }
+.trace rect { fill: none; stroke: #9bc6ff; stroke-width: 2; stroke-dasharray: 100; }
+.steps { position: absolute; left: 548px; right: 548px; top: 473px; }
+.step { position: absolute; left: 0; right: 0; height: 122px; display: flex; align-items: center; justify-content: space-between; gap: 19px; font-size: 41px; font-weight: 580; }
+.step span:first-child { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; line-height: 1.31; }
+.step-state { display: grid; place-items: center; width: 46px; height: 46px; flex: none; border: 2px solid #9fbbde; border-radius: 16px; color: #f1f7ff; }
+.step-state.checked { border-color: #a5caff; background: #386cc7; }
+.step-state svg, .final-check svg { width: 58%; height: 58%; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+.modal { position: absolute; left: 402px; right: 402px; top: 267px; height: 534px; padding: 47px 55px; }
+.modal h2 { display: flex; align-items: center; gap: 17px; font-size: 56px; font-weight: 630; }
+.modal h2 svg { flex: none; width: 51px; height: 51px; padding: 11px; border: 1px solid #8ab4ed; border-radius: 15px; color: #cde5ff; fill: none; stroke: currentColor; stroke-width: 2; }
+.field-label { margin-top: 69px; margin-bottom: 13px; color: #d9e3f1; font-size: 30px; }
+.field { display: flex; align-items: center; gap: 6px; height: 88px; padding: 0 24px; border: 1px solid #7289ab; border-radius: 16px; background: #171c26; font-size: 38px; letter-spacing: .11em; }
+.caret { width: 3px; height: 39px; background: #9fceff; }
+.connect { position: absolute; right: 55px; bottom: 51px; min-width: 213px; min-height: 70px; display: grid; place-items: center; padding: 9px 25px; border: 1px solid #9ac2fc; border-radius: 17px; background: linear-gradient(130deg, #467be1, #2d60c8); font-size: 31px; font-weight: 610; }
+.final-check { position: absolute; width: 113px; height: 113px; display: grid; place-items: center; color: #f5faff; }
+</style>
+</head>
+<body>
+<main data-composition-id="capsula-de-integracao" data-start="0" data-duration="12" data-width="1920" data-height="1080">
+  <h1 class="intro display"></h1>
+  <svg class="map" viewBox="0 0 1496 815" aria-hidden="true" data-layout-allow-overflow>
+    <defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2.1" fill="#7894b9" opacity=".57"/></pattern></defs>
+    <g fill="url(#dots)">
+      <path d="M82 263l58-84 75-27 57-49 171 15 90 34 64 61-69 52-95 17-29 57-46 43 38 77-39 37-46-43-24-101-68-32-63-17zM445 488l90-34 92 47 38 60-27 96-58 64-39 58-47-75 6-96-35-53z"/>
+      <path d="M652 276l-12-58 87-46 111-10 69-39 127 24 84 43 104-2 103 57 54 81-51 40-88-13-58 50-42-29-62 7-46-52-65 2-31-41-74 11-14-40-60 15-54 45-49-14zM775 381l94-37 97 38 33 76-37 66-24 99-54 37-47-47-39-117-55-54zM1113 425l72-27 52 69-30 53-35-18-35-43zM1203 594l92-27 79 55-13 62-47 19-111-22-36-45z"/>
+    </g>
+    <path class="route" pathLength="100" d="m105 702 130-106 99 32 118-144 109 35 119-139 135 51 119-137 101 41 134-150 119 27 98-105"/>
+    <circle class="map-dot" cx="334" cy="628" r="8"/><circle class="map-dot" cx="815" cy="431" r="8"/><circle class="map-dot" cx="1169" cy="185" r="8"/>
+  </svg>
+  <div class="surface"></div>
+  <svg class="trace" viewBox="0 0 896 122" aria-hidden="true"><rect x="1" y="1" width="894" height="120" rx="60" pathLength="100"/></svg>
+  <div class="steps"></div>
+  <section class="modal">
+    <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 15l8-8m-6 7 3 3m-5-1 2 2M8 17a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z" stroke-linecap="round" stroke-linejoin="round"/></svg><span></span></h2>
+    <p class="field-label"></p>
+    <div class="field"><span></span><i class="caret" aria-hidden="true"></i></div>
+    <div class="connect"></div>
+  </section>
+  <div class="final-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></div>
+  <section class="final-copy"><h2 class="display"></h2><p></p></section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".intro", "headline", "Conecte o agente aos seus dados.");
+copy(".modal h2 span", "modalTitle", "Autorizar o conector");
+copy(".field-label", "fieldLabel", "Chave do conector");
+copy(".final-copy h2", "closing", "Seu agente está pronto.");
+copy(".final-copy p", "status", "3 etapas concluídas");
+const button = typeof inputs.connect === "string" ? inputs.connect : "Conectar";
+const mask = Array.from("•••• •••• •••• 9K2M");
+const defaults = ["Escolher a base de conhecimento", "Autorizar o conector", "Sincronizar as fontes"];
+const labels = Array.isArray(inputs.steps) && inputs.steps.length === 3
+  && inputs.steps.every(label => typeof label === "string") ? inputs.steps : defaults;
+const steps = labels.map(label => {
+  const row = document.createElement("div");
+  row.className = "step";
+  row.innerHTML = '<span></span><span class="step-state" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span>';
+  row.firstElementChild.textContent = label;
+  one(".steps").append(row);
+  return { row, state: row.lastElementChild, mark: row.lastElementChild.firstElementChild };
+});
+
+const intro = one(".intro");
+const surface = one(".surface");
+const trace = one(".trace rect");
+const map = one(".map");
+const route = one(".route");
+const dots = all(".map-dot");
+const modal = one(".modal");
+const field = one(".field span");
+const caret = one(".caret");
+const connect = one(".connect");
+const finalCheck = one(".final-check");
+const final = one(".final-copy");
+const doneAt = [3.05, 7.65, 9.00];
+
+window.renderMotion = time => {
+  const title = beat(time, .10, .67);
+  const titleExit = flow(phase(time, 1.55, .47));
+  set(intro, { opacity: title * (1 - titleExit), transform: "translateY(" + (27 * (1 - title) - 39 * titleExit) + "px)" });
+
+  const stroke = flow(phase(time, 1.90, .69));
+  const inFrame = beat(time, 2.26, .44);
+  const inflate = flow(phase(time, 4.23, .61));
+  const deflate = flow(phase(time, 7.14, .57));
+  const expanded = inflate * (1 - deflate);
+  const pinch = flow(phase(time, 9.64, .61));
+  const lift = flow(phase(time, 10.25, .54));
+  const width = mix(896 + 220 * expanded, 113, pinch);
+  const height = mix(122 + 412 * expanded, 113, pinch);
+  const middleY = 534 - 104 * lift;
+  const surfaceX = 960 - width / 2;
+  const surfaceY = middleY - height / 2;
+  set(surface, {
+    left: surfaceX + "px", top: surfaceY + "px", width: width + "px", height: height + "px",
+    opacity: inFrame, borderRadius: mix(mix(61, 28, expanded), 57, pinch) + "px"
+  });
+  surface.classList.toggle("final", pinch > .82);
+  set(trace, { strokeDashoffset: 100 * (1 - stroke), opacity: (1 - expanded) * (1 - pinch) * (time >= 1.90 ? 1 : 0) });
+
+  const scroll = flow(phase(time, 3.54, .54)) + flow(phase(time, 8.03, .56));
+  const listOn = beat(time, 2.31, .44)
+    * (1 - beat(time, 4.27, .26) * (1 - beat(time, 7.49, .37)))
+    * (1 - beat(time, 9.62, .39));
+  steps.forEach(({ row, state, mark }, index) => {
+    const offset = index - scroll;
+    const enter = beat(time, 2.30 + index * .18, .50);
+    set(row, {
+      opacity: listOn * enter * (1 - .56 * Math.min(1, Math.abs(offset))),
+      transform: "translateY(" + (offset * 125 + 20 * (1 - enter)) + "px)"
+    });
+    const completed = beat(time, doneAt[index], .26);
+    state.classList.toggle("checked", completed > .10);
+    set(mark, { opacity: completed, transform: "scale(" + mix(.55, 1, completed) + ")" });
+  });
+
+  const mapIn = beat(time, 7.23, .87);
+  const mapExit = flow(phase(time, 10.02, .91));
+  set(map, { opacity: .8 * mapIn * (1 - .70 * mapExit), transform: "scale(" + mix(.94, 1.03, mapIn) + ")" });
+  const line = flow(phase(time, 7.97, 1.66));
+  route.style.strokeDashoffset = 100 * (1 - line);
+  dots.forEach((dot, index) => dot.style.opacity = beat(time, 7.90 + index * .27, .40));
+
+  const formIn = beat(time, 4.80, .46);
+  const formOut = flow(phase(time, 6.96, .27));
+  set(modal, { opacity: formIn * (1 - formOut), transform: "translateY(" + (24 * (1 - formIn) - 22 * formOut) + "px)" });
+  field.textContent = mask.slice(0, Math.floor(mask.length * flow(phase(time, 5.28, .95)))).join("");
+  caret.style.opacity = time >= 5.14 && time < 6.36 && Math.floor(time * 4) % 2 === 0 ? 1 : 0;
+  const press = Math.sin(Math.PI * phase(time, 6.30, .28));
+  connect.style.transform = "scale(" + (1 - .11 * press) + ")";
+  connect.textContent = time >= 6.42 ? "✓" : button;
+
+  const check = beat(time, 10.06, .40);
+  set(finalCheck, { left: "903.5px", top: middleY - 56.5 + "px", opacity: check, transform: "scale(" + mix(.63, 1, check) + ")" });
+  const close = beat(time, 10.56, .73);
+  set(final, { opacity: close, transform: "translateY(" + 34 * (1 - close) + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

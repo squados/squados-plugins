@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Legenda com Ênfase</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#161618; color:#f6f6f6; }
+.camera { position:absolute; inset:0; }
+.camera :is(video,img) { display:block; width:100%; height:100%; object-fit:cover; }
+.shade { position:absolute; inset:57% 0 0; background:linear-gradient(transparent,#0707099c); }
+.caption { position:absolute; inset:646px 260px auto; text-align:center; font-size:63px; font-weight:570; line-height:1.13; text-shadow:0 3px 12px #0b0b0c; }
+.line { min-height:71px; }
+.word { display:inline-block; padding:0 .10em; position:relative; }
+.word.emphasis { color:#e8d5ab; font-weight:720; }
+.word.emphasis::after { content:""; position:absolute; bottom:-.02em; left:.11em; right:.11em; height:3px; background:currentColor; border-radius:2px; }
+</style>
+</head>
+<body>
+<main data-composition-id="legenda-com-enfase" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+<div class="camera"><!-- motion-media:presenter:0:6.8:0 --></div>
+<div class="shade"></div>
+<section class="caption" aria-label="Legenda"></section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const lines = Array.isArray(inputs.lines) && inputs.lines.length
+  ? inputs.lines : ["Um bom prompt dá", "contexto ao agente."];
+const canonical = word => word.normalize("NFD").replace(/[^a-z0-9]/gi,"").toLowerCase();
+const accents = new Set((Array.isArray(inputs.accentWords) ? inputs.accentWords : ["bom","contexto"]).map(canonical));
+const words = [];
+for (const line of lines) {
+  const row = document.createElement("p");
+  row.className = "line";
+  for (const word of String(line).trim().split(/\s+/).filter(Boolean)) {
+    const span = document.createElement("span");
+    span.className = "word";
+    span.classList.toggle("emphasis",accents.has(canonical(word)));
+    span.textContent=word;
+    words.push(span);
+    row.append(span);
+  }
+  one(".caption").append(row);
+}
+const timings = Array.isArray(inputs.wordTimings) && inputs.wordTimings.length === words.length
+  ? inputs.wordTimings : words.map((_,index)=>1.06+index*.51);
+window.renderMotion = time => {
+  words.forEach((word,index) => word.style.visibility = time >= timings[index] ? "visible" : "hidden");
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

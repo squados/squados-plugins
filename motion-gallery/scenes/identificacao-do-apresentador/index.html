@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Identificação do Apresentador</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color:#f9f9fa; }
+.camera,.camera :is(video,img) { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.identification { position:absolute; left:116px; bottom:113px; width:fit-content; min-width:390px; max-width:805px; display:grid; grid-template-columns:7px 1fr; align-items:stretch; border-radius:14px; overflow:hidden; border:1px solid #666b7794; background:linear-gradient(148deg,#35363deb,#1a1c22f5); box-shadow:0 17px 62px #0c0d135e; }
+.bar { background:#b9d9ff; transform-origin:top; }
+.copy { padding:24px 45px 25px 27px; }
+.name { font-size:57px; letter-spacing:-.04em; font-weight:660; line-height:1.05; }
+.role { margin-top:9px; color:#c8d0de; font-size:34px; line-height:1.13; }
+</style>
+</head>
+<body>
+<main data-composition-id="identificacao-do-apresentador" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+<div class="camera"><!-- motion-media:presenter:0:6:0 --></div>
+<section class="identification"><i class="bar" aria-hidden="true"></i><div class="copy"><h1 class="name"></h1><p class="role"></p></div></section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".name","name","Apresentador");
+copy(".role","role","Aula de IA");
+window.renderMotion = time => {
+  const enter=flow(phase(time,.72,.42));
+  const exit=flow(phase(time,5.07,.46));
+  const shown=enter*(1-exit);
+  set(one(".identification"),{opacity:shown,transform:"translateX("+(mix(-36,0,enter)-16*exit)+"px)",clipPath:"inset(0 "+(1-shown)*100+"% 0 0)"});
+  one(".bar").style.transform="scaleY("+beat(time,.61,.25)+")";
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Prazo em Colapso</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+  main {
+    color: #f2f4f6;
+    background: radial-gradient(ellipse at 50% 58%, #303238 0%, #1b1c20 56%, #121315 100%);
+  }
+  main::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: .25;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.83' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  }
+  .camera { position: absolute; inset: 0; }
+  .headline {
+    position: absolute;
+    top: 184px;
+    width: 1720px;
+    left: 100px;
+    font-size: 92px;
+    text-align: center;
+    text-wrap: balance;
+  }
+  .headline .accent { color: #add8ff; }
+  .badge {
+    position: absolute;
+    left: 960px;
+    top: 105px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(-50%);
+    padding: 8px 19px;
+    border: 1px solid #555960;
+    border-radius: 60px;
+    color: #e0e4ec;
+    background: #282b30;
+    font-size: 29px;
+    white-space: nowrap;
+  }
+  .badge-dot { width: 10px; height: 10px; border-radius: 50%; background: #acd7ff; }
+  .plot {
+    position: absolute;
+    top: 365px;
+    left: 300px;
+    width: 1320px;
+    height: 462px;
+    border: 1px solid #50535c;
+    border-radius: 40px;
+    background: linear-gradient(140deg, #34363b, #24252a 72%);
+    box-shadow: 0 29px 80px #0008, inset 0 1px 0 #fff1;
+  }
+  .measure { position: absolute; left: 55px; right: 55px; height: 133px; }
+  .setup { top: 47px; }
+  .review { top: 236px; }
+  .measure-top { display: flex; justify-content: space-between; align-items: baseline; min-height: 70px; gap: 24px; }
+  .measure-label { font-size: 41px; letter-spacing: -.025em; }
+  .value { display: flex; align-items: baseline; gap: 10px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .value strong { font-size: 65px; font-weight: 610; letter-spacing: -.04em; line-height: 1; }
+  .value .unit { font-size: 32px; color: #bfc3cd; }
+  .track { position: relative; height: 32px; border-radius: 24px; background: #14161a; overflow: hidden; }
+  .bar, .ghost { position: absolute; inset: 0 auto 0 0; border-radius: inherit; }
+  .bar { background: linear-gradient(90deg, #76b5ed, #badfff); }
+  .review .bar.before { background: linear-gradient(90deg, #949ba9, #b7bdc9); }
+  .ghost {
+    width: 100%;
+    border: 1px solid #a8cffb82;
+    background: repeating-linear-gradient(120deg, #8097b44c, #8097b44c 7px, #37414f60 7px, #37414f60 15px);
+  }
+  .saved {
+    position: absolute;
+    top: 107px;
+    padding: 8px 20px;
+    white-space: nowrap;
+    color: #16212e;
+    border-radius: 60px;
+    background: #c1e3ff;
+    box-shadow: 0 7px 18px #0005;
+    font-size: 31px;
+    font-weight: 620;
+  }
+  .source-note {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    color: #b9bec9;
+    font-size: 29px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<main data-composition-id="prazo-em-colapso" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+  <div class="camera">
+    <p class="badge"><span class="badge-dot"></span><span class="badge-text"></span></p>
+    <h1 class="headline display"></h1>
+    <div class="plot">
+      <div class="measure setup">
+        <div class="measure-top"><span class="measure-label"></span><span class="value"><strong></strong><span class="unit">min</span></span></div>
+        <div class="track"><div class="bar"></div></div>
+      </div>
+      <div class="measure review">
+        <div class="measure-top"><span class="measure-label"></span><span class="value"><strong></strong><span class="unit"></span></span></div>
+        <div class="track"><div class="ghost"></div><div class="bar"></div></div>
+        <p class="saved"></p>
+      </div>
+    </div>
+    <p class="source-note">Prazos ilustrativos</p>
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  function positiveInteger(value, fallback) {
+    return Number.isFinite(value) ? Math.min(999, Math.max(1, Math.round(value))) : fallback;
+  }
+  const setup = positiveInteger(inputs.setupMinutes, 20);
+  const before = positiveInteger(inputs.previousDays, 14);
+  const after = Math.min(before, positiveInteger(inputs.currentDays, 2));
+  const trackWidth = 1210;
+  const beforeUnit = before > 7 && before % 7 === 0 ? "semanas" : "dias";
+  const beforeCount = beforeUnit === "semanas" ? before / 7 : before;
+  const savedDays = before - after;
+  const pluralDays = value => value === 1 ? "dia" : "dias";
+  copy(".setup .measure-label", "setupLabel", "Configuração do agente");
+  copy(".review .measure-label", "reviewLabel", "Revisão de conteúdo");
+  one(".saved").textContent = savedDays + " " + pluralDays(savedDays) + " a menos";
+  const afterWords = after + " " + pluralDays(after);
+  const defaults = ["O agente começa em minutos.", "A revisão ainda leva " + (before > 7 ? "semanas." : "dias."), "Agora a revisão leva " + afterWords + "."];
+  const headlines = Array.isArray(inputs.headlines) && inputs.headlines.length === 3 ? inputs.headlines : defaults;
+  const title = one(".headline");
+  const titleAccent = document.createElement("span");
+  titleAccent.className = "accent";
+  titleAccent.textContent = afterWords;
+  const formattedLast = ["Agora a revisão leva ", titleAccent, "."];
+
+  window.renderMotion = time => {
+    const second = 3.08;
+    const third = 5.67;
+    const sequence = time < second ? 0 : time < third ? 1 : 2;
+    const changed = [0, second, third][sequence];
+    const next = [second, third, 20][sequence];
+    const headlineIn = beat(time, changed + .08, .57);
+    const headlineOut = flow(phase(time, next - .34, .32));
+    const current = headlines[sequence];
+    if (sequence === 2 && current === defaults[2]) title.replaceChildren(...formattedLast);
+    else title.textContent = String(current);
+    set(title, {
+      opacity: headlineIn * (1 - headlineOut),
+      transform: "translateY(" + ((1 - headlineIn) * 43 - headlineOut * 36) + "px)",
+      filter: "blur(" + ((1 - headlineIn) * 10 + headlineOut * 8) + "px)"
+    });
+    const badgeIn = beat(time, sequence === 2 ? third + .06 : .08, .49);
+    const badgeOut = sequence === 2 ? 0 : flow(phase(time, third - .36, .28));
+    one(".badge-text").textContent = sequence === 2 ? "Com agente de IA" : "Fluxo de produção";
+    set(one(".badge"), {
+      opacity: badgeIn * (1 - badgeOut),
+      transform: "translate(-50%," + ((1 - badgeIn) * 19 - badgeOut * 22) + "px)"
+    });
+    const plotIn = beat(time, .75, .70);
+    set(one(".plot"), {
+      opacity: plotIn,
+      transform: "translateY(" + (1 - plotIn) * 80 + "px) scale(" + mix(.95, 1, plotIn) + ")",
+      filter: "blur(" + (1 - plotIn) * 10 + "px)"
+    });
+    const setupRow = beat(time, 1.04, .50);
+    set(one(".setup"), { opacity: setupRow, transform: "translateY(" + (1 - setupRow) * 20 + "px)" });
+    const setupFill = flow(phase(time, 1.25, 1.31));
+    const normalize = flow(phase(time, 3.37, .83));
+    const setupCompareWidth = Math.max(12, trackWidth * setup / (before * 1440));
+    one(".setup .bar").style.width = mix(trackWidth * .36 * setupFill, setupCompareWidth, normalize) + "px";
+    one(".setup .value strong").textContent = Math.round(setup * setupFill);
+    const reviewRow = beat(time, 3.15, .52);
+    set(one(".review"), { opacity: reviewRow, transform: "translateY(" + (1 - reviewRow) * 20 + "px)" });
+    const grow = flow(phase(time, 3.43, 1.88));
+    const collapse = flow(phase(time, 5.94, 1.39));
+    const width = trackWidth * mix(grow, after / before, collapse);
+    one(".review .bar").style.width = width + "px";
+    one(".review .bar").classList.toggle("before", time < 5.82);
+    one(".review .ghost").style.opacity = beat(time, 5.85, .38);
+    const elapsed = time < 5.82 ? Math.round(beforeCount * grow) : Math.round(mix(before, after, collapse));
+    one(".review .value strong").textContent = elapsed;
+    one(".review .unit").textContent = time < 5.82 ? beforeUnit : pluralDays(elapsed);
+
+    const saved = beat(time, 7.33, .54);
+    const finalWidth = trackWidth * after / before;
+    const available = trackWidth - finalWidth;
+    const center = available >= 280 ? finalWidth + available * .5 : trackWidth * .5;
+    set(one(".saved"), {
+      left: center + "px",
+      top: available >= 280 ? "101px" : "144px",
+      opacity: savedDays ? saved : 0,
+      transform: "translate(-50%,-50%) scale(" + mix(.68, 1, saved) + ")"
+    });
+    const note = beat(time, 3.7, .45);
+    set(one(".source-note"), { opacity: note, transform: "translateY(" + (1 - note) * 14 + "px)" });
+    const scale = 1 + .015 * flow(phase(time, 3.2, 2.1)) + .035 * flow(phase(time, 5.65, 3.65));
+    one(".camera").style.transform = "scale(" + scale + ")";
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

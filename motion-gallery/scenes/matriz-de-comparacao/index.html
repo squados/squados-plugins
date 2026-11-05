@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Matriz de Comparação</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f4f3f7; background: radial-gradient(ellipse at 54% 70%, #303034, #202024 56%, #111114); }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .29; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.table { position: absolute; inset: 152px 122px 122px; display: flex; flex-direction: column; --columns: 330px 1fr 1fr; }
+.head, .row { display: grid; grid-template-columns: var(--columns); column-gap: 45px; }
+.head { align-items: end; min-height: 140px; margin-bottom: 29px; }
+.option { padding-bottom: 22px; border-bottom: 2px solid #c3afff8a; font-size: 60px; }
+.option:last-child { color: #d8cbff; border-color: #d2beffb0; }
+.rows { position: relative; display: grid; grid-auto-rows: 1fr; height: 100%; }
+.spine { position: absolute; left: 0; top: 0; width: 4px; height: 100%; border-radius: 3px; background: #c6b2ff; transform-origin: top; }
+.row { min-height: 98px; align-items: stretch; }
+.row > div { display: flex; align-items: center; padding-bottom: 3px; border-bottom: 1px solid rgb(222 215 240 / var(--rule, 0)); }
+.row:last-child > div { border-bottom: none; }
+.key { padding-left: 27px; padding-right: 8px; color: #d4c1ff; font-size: 41px; font-weight: 650; }
+.value { padding-right: 15px; font-size: 49px; font-weight: 475; line-height: 1.08; }
+.row span, .option { will-change: opacity, transform; }
+</style>
+</head>
+<body>
+<main data-composition-id="matriz-de-comparacao" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+  <div class="table">
+    <div class="head"><div></div><h2 class="option display"></h2><h2 class="option display"></h2></div>
+    <div class="rows"><div class="spine"></div></div>
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const defaults = [
+  ["Contexto", "Um fluxo e suas fontes", "Contexto partilhado"],
+  ["Execução", "Segue etapas em sequência", "Divide tarefas por papel"],
+  ["Revisão", "Revisa a própria resposta", "Confere com outro agente"]
+];
+const options = Array.isArray(inputs.options) ? inputs.options : [];
+const sourceRows = Array.isArray(inputs.rows) ? inputs.rows.filter(row => Array.isArray(row) && row.length >= 3).slice(0, 5) : [];
+const rows = sourceRows.length ? sourceRows : defaults;
+const headings = all(".option");
+headings[0].textContent = options[0] ?? "Agente individual";
+headings[1].textContent = options[1] ?? "Equipe de agentes";
+const compact = rows.length > 3;
+const cells = rows.map(row => {
+  const line = document.createElement("div");
+  line.className = "row";
+  one(".rows").append(line);
+  return row.slice(0, 3).map((label, column) => {
+    const container = document.createElement("div");
+    container.className = column === 0 ? "key" : "value";
+    const cell = document.createElement("span");
+    cell.textContent = label;
+    if (compact) container.style.fontSize = column === 0 ? "38px" : "44px";
+    container.append(cell);
+    line.append(container);
+    return cell;
+  });
+});
+window.renderMotion = time => {
+  headings.forEach((el, i) => {
+    const p = beat(time, .15 + i * .12, .49);
+    set(el, { opacity: p, transform: "translateY(" + (1 - p) * 21 + "px)" });
+  });
+  const spacing = rows.length > 3 ? 1.12 : 1.44;
+  const extent = Math.min(1, (1 + Math.max(0, (time - 1.15) / spacing)) / rows.length);
+  set(one(".spine"), { opacity: beat(time, .69, .37), transform: "scaleY(" + beat(time, .76, .4) * extent + ")" });
+  cells.forEach((row, i) => {
+    const start = 1.12 + spacing * i;
+    row[0].closest(".row").style.setProperty("--rule", beat(time, start + .10, .5) * .19);
+    row.forEach((el, column) => {
+      const p = beat(time, start + column * .19, .5);
+      set(el, { opacity: p, transform: "translateY(" + (1 - p) * 20 + "px)", clipPath: "inset(0 0 " + (1 - p) * 40 + "% 0)" });
+    });
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

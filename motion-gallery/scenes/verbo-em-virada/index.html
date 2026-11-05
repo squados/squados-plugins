@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Verbo em Virada</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+  main { color:#f2f5f8; background:radial-gradient(ellipse at 48% 50%,#373a41,#202227 54%,#111316); }
+  main::before { content:""; position:absolute; inset:0; z-index:-1; opacity:.26; mix-blend-mode:soft-light; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='148' height='148'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .line { position:absolute; top:540px; left:960px; display:flex; align-items:center; transform:translate(-50%,-50%); font-size:106px; white-space:nowrap; }
+  .token { display:block; flex:0 0 auto; }
+  .ink { display:inline-block; position:relative; }
+  .token.verb .ink { color:#b2dbff; }
+  .token.verb .ink::after { content:""; position:absolute; left:1px; right:1px; bottom:-16px; height:5px; border-radius:5px; background:#afd8ff; box-shadow:0 0 12px #8ac6fb78; transform-origin:left; transform:scaleX(var(--underline,0)); }
+  .symbol { display:grid; place-items:center; width:80px; height:80px; border-radius:23px; border:1px solid #dbedff; color:#1b3550; background:linear-gradient(142deg,#d6ecff,#7cb4ef); box-shadow:0 12px 32px #0007,0 0 21px #a6d6ff42,inset 0 1px 0 #fff; }
+  .symbol svg { width:45px; height:45px; }
+  .token.source .symbol { width:56px; height:56px; border-radius:13px; background:#35404c; color:#d9ecff; border-color:#758ba5; box-shadow:0 4px 13px #0005; }
+  .token.source svg { width:31px; height:31px; }
+  .footer { position:absolute; top:608px; width:100%; text-align:center; color:#d2d9e4; }
+  .footer p { font-size:45px; }
+  .contexts { display:flex; align-items:center; justify-content:center; gap:13px; margin-top:24px; }
+  .context { display:flex; align-items:center; gap:9px; padding:5px 14px; border-radius:40px; border:1px solid #65768b; background:#2c3540; color:#e1edfa; font-size:27px; }
+  .context i { width:8px; height:8px; border-radius:50%; background:#badbff; }
+</style>
+</head>
+<body>
+<main data-composition-id="verbo-em-virada" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+  <h1 class="line display"></h1>
+  <div class="footer"><p></p><div class="contexts"></div></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const lead=String(inputs.lead ?? "Seu agente pode").trim().split(/\s+/).filter(Boolean);
+  const actions=Array.isArray(inputs.verbs)&&inputs.verbs.length===3 ? inputs.verbs.map(String) : ["buscar","resumir","citar"];
+  const integrations=Array.isArray(inputs.contexts)&&inputs.contexts.length===2 ? inputs.contexts : ["Documentos","Anotações"];
+  const emblem='<span class="symbol"><svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 3v10m0 12v10M3 19h10m12 0h10M8 8l7 7m8 8 7 7m0-22-7 7m-8 8-7 7"/><circle cx="19" cy="19" r="4"/></svg></span>';
+  const documentIcon='<span class="symbol"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="20" height="22" rx="4"/><path d="M9 10h10m-10 4h10m-10 4h6"/></svg></span>';
+  const config=[["identity",emblem],...lead.map(word=>["word",word]),["verb",actions[0]],["source",documentIcon],["word",String(inputs.target ?? "as fontes.")]];
+  const line=one(".line");
+  const tokens=config.map(([type,content],index)=>{
+    const holder=document.createElement("span");
+    holder.className="token "+type;
+    const ink=document.createElement("span");
+    ink.className="ink";
+    if(type==="identity"||type==="source") ink.innerHTML=content; else ink.textContent=content;
+    holder.append(ink);
+    line.append(holder);
+    return {holder,ink,type,start:index===0 ? .12 : .38+(index-1)*.18};
+  });
+  const verb=tokens.find(token=>token.type==="verb").ink;
+  const foot=one(".footer");
+  copy(".footer p","subline","Peça em linguagem natural.");
+  const chips=integrations.map(text=>{
+    const element=document.createElement("span");
+    element.className="context";
+    const dot=document.createElement("i");
+    element.append(dot,document.createTextNode(String(text)));
+    one(".contexts").append(element);
+    return element;
+  });
+
+  window.renderMotion=time=>{
+    const index=time<2.50 ? 0 : time<3.58 ? 1 : 2;
+    const swap=index===0 ? 0 : index===1 ? 2.50 : 3.58;
+    verb.textContent=actions[index];
+    const squeeze=[2.50,3.58].reduce((max,mark)=>Math.max(max,Math.max(0,1-Math.abs(time-mark)/.11)),0);
+    const lift=flow(phase(time,4.44,.55));
+    tokens.forEach(({holder,ink,type,start},i)=>{
+      const show=beat(time,start,.46);
+      const natural=ink.offsetWidth;
+      const room=i===tokens.length-1 ? 0 : (type==="source" ? 14 : 22);
+      holder.style.width=(natural+room)*show+"px";
+      set(ink,{
+        opacity:show,
+        transform:"translateY("+(1-show)*34+"px) scale("+mix(type==="identity"?.82:.94,1,show)+","+(type==="verb"?1-squeeze*.68:1)+")",
+        filter:"blur("+((1-show)*8+(type==="verb"?squeeze*1.5:0))+"px)"
+      });
+      if(type==="verb"){
+        const lineIn=beat(time,index===0 ? start+.15 : swap+.04,.28);
+        ink.style.setProperty("--underline",lineIn*(1-squeeze*.72));
+      }
+    });
+    const scale=Math.min(1,1760/Math.max(1,line.offsetWidth));
+    line.style.transform="translate(-50%,"+(-50-lift*52)+"%) scale("+scale+")";
+    const subtitle=beat(time,4.97,.40);
+    set(foot,{opacity:subtitle,transform:"translateY("+(1-subtitle)*23+"px)",filter:"blur("+(1-subtitle)*5+"px)"});
+    chips.forEach((chip,i)=>{
+      const reveal=beat(time,5.34+i*.13,.34);
+      set(chip,{opacity:reveal,transform:"translateY("+(1-reveal)*20+"px) scale("+mix(.95,1,reveal)+")"});
+    });
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

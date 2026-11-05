@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Virada Angular</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 54% 74%, #333338 0%, #202025 53%, #111113 100%); color: #f5f5fa; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.scene { position: absolute; inset: 0; }
+.scene[hidden] { display: none; }
+.scene-photo { position: absolute; top: 0; width: 50%; height: 100%; display: block; object-fit: cover; object-position: 56% center; }
+.before .scene-photo { right: 0; }
+.after .scene-photo { left: 0; }
+.split-copy { position: absolute; top: 50%; width: 50%; padding: 0 112px; transform: translateY(-50%); }
+.before .split-copy { left: 0; }
+.after .split-copy { right: 0; }
+.split-copy h2 { font-size: 95px; max-width: 740px; line-height: .99; }
+.split-copy p, .ordinal { font-size: 35px; color: #cfc4fa; margin-bottom: 25px; font-weight: 540; letter-spacing: .015em; }
+.middle { display: grid; place-items: center; text-align: center; }
+.middle-copy { width: 1400px; }
+.middle h1 { font-size: 126px; text-transform: uppercase; }
+.ordinal { margin: 38px 0 0; text-transform: uppercase; letter-spacing: .15em; }
+.masks { position: absolute; z-index: 8; inset: 0; pointer-events: none; }
+.masks.reverse { transform: rotate(180deg); }
+.polygon { position: absolute; inset: 0; }
+.upper { background: #d9ceff; }
+.lower { background: #6b52a9; }
+</style>
+</head>
+<body>
+<main data-composition-id="virada-angular" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+  <section class="scene before">
+    <img class="scene-photo" src="assets/piedade.webp" alt="Falésias da Ponta da Piedade">
+    <div class="split-copy"><p></p><h2 class="display"></h2></div>
+  </section>
+  <section class="scene middle" hidden>
+    <div class="middle-copy"><h1 class="display"></h1><p class="ordinal"></p></div>
+  </section>
+  <section class="scene after" hidden>
+    <img class="scene-photo" src="assets/cabo-da-roca.webp" alt="Cabo da Roca">
+    <div class="split-copy"><p></p><h2 class="display"></h2></div>
+  </section>
+  <div class="masks" aria-hidden="true"><div class="polygon upper"></div><div class="polygon lower"></div></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  copy(".before h2", "beforeTitle", "Muitos destinos, pouca direção");
+  copy(".before p", "beforeLabel", "Antes");
+  copy(".middle h1", "interstitialTitle", "Defina um critério");
+  copy(".ordinal", "ordinal", "Planejamento");
+  copy(".after h2", "afterTitle", "Um roteiro de mirantes com IA");
+  copy(".after p", "afterLabel", "Depois");
+  function replacePhoto(selector, media) {
+    if (!media) return;
+    const image = one(selector);
+    image.src = media;
+    image.alt = "";
+  }
+  replacePhoto(".before img", inputs.beforeImage);
+  replacePhoto(".after img", inputs.afterImage);
+
+  const scenes = all(".scene");
+  const masks = one(".masks");
+  const upper = one(".upper");
+  const lower = one(".lower");
+  const title = one(".middle h1");
+  const ordinal = one(".ordinal");
+
+  window.renderMotion = time => {
+    const secondPass = time >= 3.94;
+    const start = secondPass ? 3.94 : .94;
+    const cover = flow(phase(time, start, .28));
+    const reveal = flow(phase(time, start + .30, secondPass ? .32 : .30));
+    const reach = 104 * cover * (1 - reveal);
+    masks.classList.toggle("reverse", secondPass);
+    upper.style.clipPath = "polygon(0 0," + reach + "% 0,0 " + reach + "%)";
+    lower.style.clipPath = "polygon(100% 100%," + (100 - reach) + "% 100%,100% " + (100 - reach) + "%)";
+
+    const currentScene = time < 1.22 ? 0 : time < 4.22 ? 1 : 2;
+    scenes.forEach((scene, index) => { scene.hidden = currentScene !== index; });
+    const stamp = beat(time, 1.31, .34);
+    set(title, { opacity: stamp, transform: "translateY(" + 27 * (1 - stamp) + "px) scale(" + mix(.95, 1, stamp) + ")" });
+    ordinal.style.opacity = beat(time, 1.55, .28);
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

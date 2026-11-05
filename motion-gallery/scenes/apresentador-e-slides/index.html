@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Apresentador e Slides</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f3f6fc; background: radial-gradient(ellipse at 44% 76%, #2e3138, #1b1d23 58%, #111216); }
+main::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.slide, .deck { position: absolute; left: 57px; top: 73px; width: 1434px; height: 753px; border: 1px solid #657288; border-radius: 25px; background: #272d37; box-shadow: 0 30px 65px #0b0d16b5; overflow: hidden; }
+.slide { transform-origin: top left; }
+.slide-content { position: absolute; inset: 0 0 170px; padding: 37px; background: #2b323e; }
+.slide-content h2 { font-size: 64px; line-height: 1.04; }
+.slide-footer { position: absolute; inset: auto 0 0; height: 170px; padding: 22px 38px 24px; border-top: 1px solid #657288; background: #242a34; }
+.slide-footer .number { color: #acc8f0; font-size: 23px; font-variant-numeric: tabular-nums; }
+.slide-footer h3 { margin: 4px 0; font-size: 48px; line-height: 1; }
+.slide-footer .caption { color: #d3dbea; font-size: 25px; line-height: 1.26; }
+.slide-content img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.slide-photo { min-width: 0; min-height: 0; background: center / cover no-repeat; }
+.feature { display: grid; grid-template-columns: .69fr 1.31fr; align-items: center; gap: 24px; }
+.feature > div { height: 100%; min-width: 0; overflow: hidden; border-radius: 16px; }
+.tiles { display: grid; grid-template-rows: 72px minmax(0, 1fr); gap: 15px; }
+.tiles .visuals { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)) minmax(230px,.9fr); gap: 13px; min-height: 0; }
+.visuals .slide-photo { border-radius: 13px; }
+.bars { display: flex; align-items: end; justify-content: center; gap: 15px; padding: 41px 17px; border-radius: 13px; background: #3b4657; }
+.bars i { width: 27px; border-radius: 6px 6px 0 0; background: #a2c8fc; transform-origin: bottom; }
+.bars i:nth-child(1){ height: 29%; }.bars i:nth-child(2){ height: 45%; }.bars i:nth-child(3){ height: 64%; }.bars i:nth-child(4){ height: 80%; }
+.mosaic { display: grid; grid-template-columns: .94fr 1.06fr; align-items: center; gap: 22px; }
+.mosaic-grid { display: grid; height: 100%; min-height: 0; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
+.mosaic-grid .slide-photo { border-radius: 11px; }
+.mosaic-text { display: grid; grid-template-rows: auto 1fr; gap: 16px; height: 100%; min-height: 0; }
+.mosaic-text .slide-photo { border-radius: 15px; }
+.deck { padding: 23px 27px; }
+.deck > p { margin: 0 0 14px; color: #d4e4fa; font-size: 26px; }
+.thumbs { display: grid; gap: 12px; width: 213px; }
+.thumb { padding: 7px; border: 1px solid #5e6d84; border-radius: 12px; background: #333e4f; }
+.thumb:last-child { border-color: #9fcbff; }
+.thumb img { display: block; width: 100%; height: 86px; object-fit: cover; border-radius: 7px; }
+.thumb span { display: block; margin: 4px 2px 0; color: #e3ecf8; font-size: 20px; }
+.presenter { position: absolute; left: 1534px; top: 75px; width: 329px; height: 436px; overflow: hidden; border-radius: 24px; border: 1px solid #8493aa; background: #181b22; box-shadow: 0 26px 56px #080b12b8; }
+.presenter img, .presenter video { width: 100%; height: 100%; object-fit: cover; object-position: 51% center; }
+</style>
+</head>
+<body>
+<main data-composition-id="apresentador-e-slides" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+  <section class="deck"><p></p><div class="thumbs"></div></section>
+  <article class="slide">
+    <div class="slide-content feature"><h2 class="display"></h2><div><img src="art/cabo-da-roca.webp" alt=""></div></div>
+    <footer class="slide-footer"><p class="number"></p><h3></h3><p class="caption"></p></footer>
+  </article>
+  <article class="slide">
+    <div class="slide-content tiles"><h2 class="display"></h2><div class="visuals"><div class="slide-photo" data-photo="cabo-da-roca"></div><div class="slide-photo" data-photo="marinha"></div><div class="slide-photo" data-photo="sintra"></div><div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div></div>
+    <footer class="slide-footer"><p class="number"></p><h3></h3><p class="caption"></p></footer>
+  </article>
+  <article class="slide">
+    <div class="slide-content mosaic">
+      <div class="mosaic-grid"><div class="slide-photo" data-photo="cabo-da-roca"></div><div class="slide-photo" data-photo="marinha"></div><div class="slide-photo" data-photo="sintra"></div><div class="slide-photo" data-photo="porto"></div></div>
+      <div class="mosaic-text"><h2 class="display"></h2><div class="slide-photo" data-photo="porto"></div></div>
+    </div>
+    <footer class="slide-footer"><p class="number"></p><h3></h3><p class="caption"></p></footer>
+  </article>
+  <div class="presenter">
+    <!-- motion-media:presenter:0:6.8:0 -->
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".deck > p", "deck", "Roteiro com o agente");
+const defaults = [
+  { heading: "Uma aula em Portugal", title: "Pesquisar", caption: "Peça ao agente opções com fontes." },
+  { heading: "Compare os lugares", title: "Comparar", caption: "Organize as opções pelo tempo disponível." },
+  { heading: "Monte o roteiro", title: "Revisar", caption: "Confira os pontos antes de compartilhar." }
+];
+const content = Array.isArray(inputs.slides) && inputs.slides.length === 3 && inputs.slides.every(slide => slide
+  && ["heading", "title", "caption"].every(key => typeof slide[key] === "string")) ? inputs.slides : defaults;
+const previewImages = ["cabo-da-roca", "marinha", "porto"];
+const slides = all(".slide");
+const deck = one(".deck");
+const bars = all(".bars i");
+all("[data-photo]").forEach(photo => photo.style.backgroundImage = "url(art/" + photo.dataset.photo + ".webp)");
+slides.forEach((slide, index) => {
+  const copy = content[index];
+  slide.querySelector("h2").textContent = copy.heading;
+  slide.querySelector("h3").textContent = copy.title;
+  slide.querySelector(".caption").textContent = copy.caption;
+  slide.querySelector(".number").textContent = "0" + (index + 1) + " / 03";
+  const thumb = document.createElement("div");
+  thumb.className = "thumb";
+  thumb.innerHTML = '<img alt=""><span></span>';
+  thumb.firstElementChild.src = "art/" + previewImages[index] + ".webp";
+  thumb.lastElementChild.textContent = copy.title;
+  one(".thumbs").append(thumb);
+});
+window.renderMotion = time => {
+  const starts = [.04, 1.62, 3.07];
+  const overview = flow(phase(time, 4.48, .69));
+  deck.style.opacity = beat(time, 4.44, .43);
+  slides.forEach((slide, index) => {
+    const enter = beat(time, starts[index], index ? .23 : .42);
+    const exit = index < 2 ? beat(time, starts[index + 1] - .07, .17) : 0;
+    const zoom = index === 2 ? overview : 0;
+    set(slide, {
+      opacity: enter * (1 - exit),
+      transform: "translate(" + 259 * zoom + "px," + (92 * zoom + 13 * (1 - enter) - 9 * exit) + "px) scale(" + mix(1, .79, zoom) + ")"
+    });
+  });
+  bars.forEach((bar, index) => bar.style.transform = "scaleY(" + beat(time, 1.70 + index * .065, .37) + ")");
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

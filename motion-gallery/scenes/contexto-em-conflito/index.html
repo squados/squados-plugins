@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Contexto em Conflito</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 50% 78%, #313137, #1c1c20 52%, #111113 100%); color: #f5f5f7; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .24; mix-blend-mode: soft-light; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h150v150H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.sources { position: absolute; left: 110px; right: 110px; top: 148px; display: grid; grid-template-columns: repeat(3,1fr); gap: 55px; }
+.source, .sheet { border: 1px solid #5a5c68; background: linear-gradient(145deg, #2d2e36, #202127); box-shadow: 0 18px 49px #0005; }
+.source { height: 211px; border-radius: 24px; display: flex; align-items: center; gap: 27px; padding: 24px; }
+.source strong { font-size: 39px; line-height: 1.06; font-weight: 560; }
+.thumbnail { width: 112px; height: 142px; flex: none; border-radius: 12px; background: #373b49; display: grid; place-items: center; }
+.thumbnail svg { width: 69px; height: 69px; stroke: #c8d9fc; fill: none; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+.links { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
+.links path { stroke: #94b8f1; stroke-width: 3; fill: none; }
+.sheet { position: absolute; left: 353px; right: 353px; top: 466px; height: 436px; padding: 35px 48px; border-radius: 31px; }
+.sheet h1 { font-size: 63px; margin-bottom: 30px; }
+.rows { display: grid; gap: 9px; }
+.row { display: flex; align-items: center; gap: 21px; min-height: 56px; padding: 7px 13px; border-bottom: 1px solid #4d505c; font-size: 37px; }
+.row i { font-style: normal; font-size: 26px; color: #abc6ef; font-variant-numeric: tabular-nums; }
+.row.conflict { background: #493a24; color: #f8deb1; border-color: #ad8050; border-radius: 9px; }
+.row.conflict i { color: #ecc692; }
+.warning { position: relative; display: flex; gap: 13px; align-items: center; margin-top: 18px; color: #f1c98b; font-size: 33px; }
+.warning i { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #edc58b; color: #2b2017; font-style: normal; font-size: 25px; font-weight: 700; }
+</style>
+</head>
+<body>
+<main data-composition-id="contexto-em-conflito" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+  <svg class="links" viewBox="0 0 1920 1080" aria-hidden="true">
+    <path pathLength="1" d="M375 359 C375 404 960 400 960 466"/>
+    <path pathLength="1" d="M960 359 V466"/>
+    <path pathLength="1" d="M1545 359 C1545 404 960 400 960 466"/>
+  </svg>
+  <div class="sources"></div>
+  <section class="sheet">
+    <h1 class="display"></h1>
+    <div class="rows"></div>
+    <p class="warning"><i aria-hidden="true">!</i><span></span></p>
+  </section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const roles = Array.isArray(inputs.roles) && inputs.roles.length === 3
+  ? inputs.roles : ["Guia local", "Preferências de viagem", "Orçamento interno"];
+const lines = Array.isArray(inputs.lines) && inputs.lines.length === 3
+  ? inputs.lines : ["Pontos de visita", "Perfil do viajante", "Verba da equipe"];
+const icons = [
+  '<path d="M9 14 22 9l13 5 12-5v33l-12 5-13-5-13 5zM22 9v33m13-28v33"/>',
+  '<path d="M13 9h24l8 8v30H13zM36 9v9h9M19 28h19m-19 8h15"/>',
+  '<rect x="10" y="18" width="36" height="26" rx="5"/><path d="M18 18v-5a10 10 0 0 1 20 0v5m-10 12v5"/>'
+];
+copy(".sheet h1", "contextTitle", "Roteiro compartilhado");
+copy(".warning span", "warning", "Mantenha o orçamento privado.");
+const sources = roles.map((title, index) => {
+  const source = document.createElement("div");
+  source.className = "source";
+  source.innerHTML = '<span class="thumbnail" aria-hidden="true"><svg viewBox="0 0 56 56">' + icons[index] + '</svg></span><strong></strong>';
+  source.querySelector("strong").textContent = title;
+  one(".sources").append(source);
+  return source;
+});
+const rows = lines.map((line, index) => {
+  const row = document.createElement("div");
+  row.className = "row";
+  const number = document.createElement("i");
+  number.textContent = "0" + (index + 1);
+  row.append(number, document.createTextNode(line));
+  one(".rows").append(row);
+  return row;
+});
+const paths = all(".links path");
+window.renderMotion = time => {
+  sources.forEach((source, index) => {
+    const enter = beat(time,.10+index*.17,.45);
+    set(source,{opacity:enter,transform:"translateY(" + (1-enter)*26 + "px)"});
+    const draw = flow(phase(time,.42+index*.16,.53));
+    set(paths[index],{opacity:draw>0 ? 1 : 0,strokeDasharray:"1",strokeDashoffset:1-draw});
+  });
+  const output = beat(time,.78,.46);
+  set(one(".sheet"),{opacity:output,transform:"translateY(" + (1-output)*20 + "px)"});
+  rows.forEach((row, index) => {
+    const reveal = beat(time,1.42+index*.56,.38);
+    set(row,{opacity:reveal,clipPath:"inset(0 " + (1-reveal)*100 + "% 0 0)"});
+  });
+  const conflict = beat(time,3.28,.46);
+  rows[2].classList.toggle("conflict",conflict>.12);
+  set(one(".warning"),{opacity:conflict,transform:"translateY(" + (1-conflict)*12 + "px)"});
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

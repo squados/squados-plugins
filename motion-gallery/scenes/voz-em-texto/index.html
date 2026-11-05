@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Voz em Texto</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 53% 72%, #333338 0%, #202025 53%, #111113 100%); color: #f5f5fa; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.workbench { position: absolute; left: 170px; top: 143px; width: 1580px; height: 795px; overflow: hidden; border-radius: 28px; border: 1px solid #ffffff3b; background: #29292f; box-shadow: 0 42px 87px #0a0a0dd0; }
+.workspace, .background, .dim { position: absolute; inset: 0; }
+.workspace { display: grid; grid-template-columns: 247px 1fr; }
+.workspace[hidden], .background[hidden] { display: none; }
+.background { width: 100%; height: 100%; object-fit: cover; }
+.sidebar { padding: 45px 24px; background: #232328; border-right: 1px solid #ffffff19; color: #c4c1cf; }
+.sidebar p { margin: 19px 0; padding: 11px 16px; border-radius: 9px; font-size: 30px; }
+.sidebar p:first-child { margin-top: 0; font-weight: 620; color: #f2eefc; }
+.sidebar .selected { background: #c9bbef24; color: #e3d6ff; }
+.editor { min-width: 0; padding: 45px 52px; background: #303036; }
+.editor h1 { font-size: 66px; }
+.editor p { margin-top: 16px; font-size: 33px; color: #cfccd8; }
+.editor img { display: block; width: 100%; height: 326px; margin-top: 49px; object-fit: cover; object-position: center 53%; border-radius: 16px; }
+.placeholder, .text-box { position: absolute; border: 1px solid #d9cdf95b; border-radius: 13px; padding: 23px 30px; text-align: left; }
+.placeholder { display: flex; align-items: start; background: #24232b; color: #c9c5d6; font-size: 43px; }
+.dim { z-index: 1; background: #111114af; }
+.recorder { position: absolute; z-index: 3; top: 27%; left: 50%; width: 315px; height: 76px; display: flex; justify-content: center; align-items: center; gap: 27px; border: 1px solid #cabaf654; border-radius: 90px; background: #27242e; box-shadow: 0 17px 47px #0b0b10a8; }
+.indicator { flex: none; width: 17px; height: 17px; border-radius: 50%; background: #d2c4fc; }
+.wave { display: flex; gap: 5px; align-items: center; height: 42px; }
+.wave i { display: block; width: 6px; height: 35px; border-radius: 20px; background: #d4c7ff; transform-origin: center; }
+.confirm { display: none; font-size: 36px; color: #d5c8fb; }
+.recorder.accepted .indicator, .recorder.accepted .wave { display: none; }
+.recorder.accepted .confirm { display: block; }
+.text-box { z-index: 2; background: #eae3fc; color: #2e2642; box-shadow: 0 16px 44px #10101592; font-size: 48px; line-height: 1.09; }
+</style>
+</head>
+<body>
+<main data-composition-id="voz-em-texto" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+  <section class="workbench">
+    <div class="workspace">
+      <aside class="sidebar"><p>Projetos</p><p class="selected">Roteiros</p><p>Fontes</p></aside>
+      <div class="editor"><h1 class="display"></h1><p>Notas da equipe</p><img src="assets/piedade.webp" alt="Falésias da Ponta da Piedade"></div>
+    </div>
+    <img class="background" alt="" hidden>
+    <p class="placeholder">O que você quer montar?</p>
+    <div class="dim" aria-hidden="true"></div>
+    <div class="recorder" aria-hidden="true"><span class="indicator"></span><span class="wave"></span><span class="confirm">✓</span></div>
+    <p class="text-box"></p>
+  </section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const defaults = "Transforme estas notas em um plano de três passos.";
+  const transcript = typeof inputs.transcript === "string" && inputs.transcript.trim() ? inputs.transcript.trim() : defaults;
+  const words = transcript.split(/\s+/);
+  const suppliedTimings = inputs.wordTimings;
+  const timings = Array.isArray(suppliedTimings) && suppliedTimings.length === words.length &&
+    suppliedTimings.every((value, index) => Number.isFinite(value) && value >= 0 && value <= 3.1 &&
+      (index === 0 || value >= suppliedTimings[index - 1])) ? suppliedTimings :
+    words.map((_, index) => index * 2.17 / Math.max(1, words.length - 1));
+  const suppliedDestination = inputs.destination;
+  const normalized = Array.isArray(suppliedDestination) && suppliedDestination.length === 4 &&
+    suppliedDestination.every(value => Number.isFinite(value) && value >= 0 && value <= 1) &&
+    suppliedDestination[2] >= .3 && suppliedDestination[3] >= .12 &&
+    suppliedDestination[0] + suppliedDestination[2] <= 1 && suppliedDestination[1] + suppliedDestination[3] <= 1 ?
+    suppliedDestination : [.04, .40, .92, .27];
+  const workbench = one(".workbench");
+  const placeholder = one(".placeholder");
+  const backdrop = one(".dim");
+  const recorder = one(".recorder");
+  const text = one(".text-box");
+  const destination = normalized.map((value, index) => value * (index % 2 === 0 ? 1580 : 795));
+  const startBox = [63, 611, 1453, 136];
+  const names = ["left", "top", "width", "height"];
+  names.forEach((name, index) => { placeholder.style[name] = destination[index] + "px"; });
+  text.style.fontSize = Math.min(48, Math.max(31, Math.floor(5250 / transcript.length))) + "px";
+  copy(".editor h1", "workspaceTitle", "Roteiro do litoral");
+  if (inputs.background) {
+    one(".workspace").hidden = true;
+    const image = one(".background");
+    image.src = inputs.background;
+    image.hidden = false;
+  }
+  const waves = Array.from({ length: 16 }, () => {
+    const bar = document.createElement("i");
+    one(".wave").append(bar);
+    return bar;
+  });
+
+  window.renderMotion = time => {
+    const open = beat(time, .12, .46);
+    set(workbench, { opacity: open, transform: "translateY(" + 19 * (1 - open) + "px) scale(" + mix(.985, 1, open) + ")" });
+    const focus = flow(phase(time, .72, .36));
+    const handoff = flow(phase(time, 5.02, .58));
+    backdrop.style.opacity = focus * (1 - handoff);
+    const recorderIn = beat(time, .84, .31);
+    const recorderOut = flow(phase(time, 4.92, .28));
+    set(recorder, { opacity: recorderIn * (1 - recorderOut), transform: "translateX(-50%) scale(" + mix(.91, 1, recorderIn) + ")" });
+    recorder.classList.toggle("accepted", time >= 4.57);
+    waves.forEach((bar, index) => {
+      const motion = .24 + .7 * Math.abs(Math.sin(time * (5.7 + .27 * index) + index * 1.41));
+      bar.style.transform = "scaleY(" + motion + ")";
+    });
+    const stripIn = beat(time, 1.28, .39);
+    const spoken = timings.filter(at => at <= time - 1.42).length;
+    text.textContent = words.slice(0, spoken).join(" ");
+    text.style.opacity = stripIn;
+    text.style.transform = "translateY(" + 24 * (1 - stripIn) + "px)";
+    names.forEach((name, index) => { text.style[name] = mix(startBox[index], destination[index], handoff) + "px"; });
+    placeholder.style.opacity = 1 - handoff;
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

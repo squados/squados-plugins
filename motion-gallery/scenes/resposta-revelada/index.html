@@ -2,47 +2,76 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<title>Resposta Revelada</title>
 <link rel="stylesheet" href="../motion-assets/base.css">
 <style>
-main { background: #17151d; color: #f9eedf; }
-main::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 95%, #382c43, transparent 67%); }
-.composer { position: absolute; left: 381px; top: 445px; width: 1158px; height: 130px; display: flex; gap: 40px; align-items: center; justify-content: space-between; background: #272331; border: 2px solid #5f5069; border-radius: 36px; padding: 20px 25px 20px 48px; transform-origin: center; }
-.prompt { font-size: 49px; letter-spacing: -.035em; }
-.send { flex: none; display: grid; place-items: center; background: #ffd0ad; color: #231a23; width: 78px; height: 78px; border-radius: 22px; font-size: 47px; }
-.answer { position: absolute; left: 299px; right: 299px; top: 261px; }
-.answer h1 { font-size: 132px; max-width: 1300px; }
-.answer p { font-size: 43px; letter-spacing: -.035em; margin-top: 34px; color: #dccec9; }
-.progress { position: absolute; top: 300px; left: 300px; width: 1080px; display: grid; gap: 38px; }
-.progress i { display: block; height: 28px; border-radius: 15px; background: linear-gradient(90deg, #8b668e, #f8b695); transform-origin: left; }
-.progress i:nth-child(2) { width: 83%; }
-.progress i:nth-child(3) { width: 61%; }
+main { background: radial-gradient(ellipse at 45% 78%, #313137, #1b1b1e 53%, #111113 100%); color: #f5f5f7; }
+main::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.91' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h150v150H0z' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: .26; mix-blend-mode: soft-light; }
+.composer { position: absolute; left: 406px; top: 438px; width: 1108px; height: 195px; padding: 29px 95px 29px 36px; border: 1px solid #575963; border-radius: 29px; background: linear-gradient(150deg,#34363e,#222329); box-shadow: 0 20px 72px #09090b67; transform-origin: center; }
+.prompt { font-size: 47px; line-height: 1.12; }
+.prompt.empty { color: #a8a9b5; }
+.model { display: flex; align-items: center; gap: 10px; position: absolute; left: 35px; bottom: 25px; padding: 6px 14px; border-radius: 99px; border: 1px solid #535762; color: #dadbe3; font-size: 25px; }
+.model::before { content: ""; width: 9px; height: 9px; border-radius: 100%; background: #a9ccff; }
+.send { display: grid; place-items: center; position: absolute; right: 23px; bottom: 22px; width: 64px; height: 64px; border-radius: 23px; background: #a8cdff; color: #111827; font-size: 37px; }
+.sent { position: absolute; right: 410px; top: 117px; width: max-content; max-width: 1000px; padding: 19px 27px; border-radius: 23px 23px 5px 23px; border: 1px solid #575a67; background: #2d303a; color: #f1f2f6; font-size: 37px; }
+.agent { position: absolute; left: 406px; top: 288px; display: flex; align-items: center; gap: 14px; font-size: 29px; }
+.mark { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: #a8cdff; color: #131f35; font-size: 28px; }
+.status { color: #b1b6c2; font-size: 25px; }
+.reply, .loader { position: absolute; left: 406px; top: 363px; width: 1060px; }
+.reply h1 { font-size: 74px; }
+.reply p { margin-top: 17px; font-size: 41px; line-height: 1.18; color: #e4e6ec; }
+.loader { display: grid; align-content: start; gap: 20px; }
+.loader i { display: block; height: 26px; border-radius: 9px; background: linear-gradient(90deg,#5477c9,#a8ccff 76%,#edf4ff); transform-origin: left; }
+.loader i:nth-child(1) { width: 67%; }
+.loader i:nth-child(2) { width: 86%; }
+.loader i:nth-child(3) { width: 58%; }
+.actions { position: absolute; left: 406px; top: 583px; display: flex; gap: 14px; }
+.actions span { display: block; padding: 10px 19px; border-radius: 99px; border: 1px solid #606572; color: #eef0f7; font-size: 28px; }
+.actions span:first-child { background: #a8cdff; border-color: #a8cdff; color: #111827; }
 </style>
 </head>
 <body>
 <main data-composition-id="resposta-revelada" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
-<section class="answer"><h1 class="display"></h1><p></p></section>
-<div class="progress" aria-hidden="true"><i></i><i></i><i></i></div>
-<div class="composer"><span class="prompt"></span><span class="send" aria-hidden="true">↑</span></div>
+  <p class="sent"></p>
+  <div class="agent"><span class="mark" aria-hidden="true">✦</span><span>Agente de revisão</span><span class="status">Preparando resposta</span></div>
+  <section class="reply"><h1 class="display"></h1><p></p></section>
+  <div class="loader" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="actions"><span></span><span></span></div>
+  <div class="composer"><p class="prompt"></p><span class="model">Contexto</span><span class="send" aria-hidden="true">↑</span></div>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
-const question = Array.from(inputs.question ?? "Como testo se a IA está inventando?");
-copy(".answer h1", "answer", "Peça a origem.");
-copy(".answer p", "detail", "Confira a resposta no documento que ela citou.");
+const question = Array.from(inputs.question ?? "Como sei se a IA inventou a resposta?");
 const prompt = one(".prompt");
+const suggestions = Array.isArray(inputs.suggestions) && inputs.suggestions.length === 2
+  ? inputs.suggestions : ["Pedir a fonte", "Revisar a resposta"];
+copy(".sent", "question", question.join(""));
+copy(".reply h1", "answer", "Peça a origem.");
+copy(".reply p", "detail", "Confira se o documento citado sustenta a resposta.");
+all(".actions span").forEach((chip, index) => chip.textContent = suggestions[index]);
 window.renderMotion = time => {
-  const enter = beat(time, 0, .48);
-  const dock = flow(phase(time, 1.68, .78));
-  const typed = Math.floor(question.length * phase(time, .23, 1.24));
-  prompt.textContent = question.slice(0, typed).join("");
-  set(one(".composer"), { opacity: enter, transform: "translateY(" + mix(28 * (1 - enter), 319, dock) + "px) scale(" + mix(1, .81, dock) + ")" });
-  const press = Math.sin(Math.PI * phase(time, 1.52, .26));
-  set(one(".send"), { transform: "scale(" + (1 - .15 * press) + ")", opacity: 1 - .26 * dock });
-  const wipe = flow(phase(time, 3.13, .91));
-  // As barras e a resposta encontram a mesma fronteira no quadro.
-  one(".progress").style.clipPath = "inset(0 0 0 " + Math.min(1080, wipe * 1322) + "px)";
-  all(".progress i").forEach((line, index) => line.style.transform = "scaleX(" + beat(time, 2.02 + index * .19, .83) + ")");
-  set(one(".answer"), { clipPath: "inset(0 " + (1 - wipe) * 100 + "% 0 0)", transform: "translateX(" + (1 - wipe) * -27 + "px)" });
+  const enter = beat(time, .10, .47);
+  const typed = Math.floor(question.length * phase(time, .50, 1.22));
+  const sent = beat(time, 2.12, .55);
+  const dock = flow(phase(time, 2.26, .61));
+  const clear = time >= 2.17;
+  prompt.textContent = clear || typed === 0 ? "Pergunte ao agente" : question.slice(0, typed).join("");
+  prompt.classList.toggle("empty", clear || typed === 0);
+  set(one(".composer"), {opacity:enter, transform:"translateY(" + mix((1-enter)*27,352,dock) + "px) scale(" + mix(1,.88,dock) + ")"});
+  const press = Math.sin(Math.PI * phase(time, 1.96, .25));
+  one(".send").style.transform = "scale(" + (1 - .16 * press) + ")";
+  set(one(".sent"), {opacity:sent, transform:"translate(" + (1-sent)*-42 + "px," + (1-sent)*44 + "px) scale(" + mix(.88,1,sent) + ")"});
+  const thinking = beat(time, 2.65, .40);
+  set(one(".agent"), {opacity:thinking, transform:"translateY(" + (1-thinking)*18 + "px)"});
+  one(".status").style.opacity = 1 - flow(phase(time, 4.27, .35));
+  const wipe = flow(phase(time, 3.79, .83));
+  one(".loader").style.clipPath = "inset(0 0 0 " + wipe*100 + "%)";
+  one(".reply").style.clipPath = "inset(0 " + (1-wipe)*100 + "% 0 0)";
+  all(".loader i").forEach((line, index) => line.style.transform = "scaleX(" + beat(time, 2.91 + index*.12, .52) + ")");
+  all(".actions span").forEach((chip, index) => {
+    const shown = beat(time, 4.78 + index*.13, .43);
+    set(chip, {opacity:shown, transform:"translateY(" + (1-shown)*16 + "px) scale(" + mix(.92,1,shown) + ")"});
+  });
 };
 window.renderMotion(0);
 </script>

@@ -3,13 +3,16 @@
 Abra [index.html](index.html) no navegador. Busque pelo nome, alias, coleção ou
 ID do efeito. **Ver prévia na Skillry** abre a página do efeito no catálogo
 oficial. **Ver prompt** mostra um pedido que você pode usar numa edição.
-A busca funciona por arquivo local. A galeria abre em **Motions próprios**.
-Os cartões próprios usam os vídeos locais em `previews/`. As entradas de
-referência abrem suas prévias no site da Skillry.
+A galeria funciona por arquivo local e abre em **Seleção principal**, com
+50 efeitos próprios em seis categorias. Use o filtro para consultar os 11
+vídeos do **Acervo complementar** e as 271 entradas em **Referências da Skillry**.
+A busca respeita o filtro ativo. Os vídeos próprios são lidos de `previews/`.
 
-O [catálogo JSON](catalog.json) contém 122 efeitos de CreatorMotion 1.0.1,
+O [catálogo JSON](catalog.json) cobre 122 efeitos de CreatorMotion 1.0.1,
 208 cenas de LaunchMotion 1.0.4 e o fluxo Paper Cutout Story Video 1.0.0.
-Os nomes, IDs, categorias e links identificam o material original da Skillry.
+Quando uma composição própria deriva de uma referência, ela ocupa a mesma
+entrada e preserva o nome e os IDs anteriores como aliases. O campo `source`
+identifica a referência. Identificação do Apresentador é uma peça adicional.
 Os pacotes e seus assets são distribuídos pela Skillry. [Termos de uso](https://skillry.dev/terms)
 
 ## Usar um efeito em vídeo
@@ -28,26 +31,34 @@ composição também aceita duas séries de 2 a 6 números de 0 a 100 em
 Use `title`, `labelA`, `labelB` e `accent` para adaptar o gráfico. `note` é
 opcional na visualização com linhas.
 
-As seis composições seguintes aceitam seus nomes próprios e os aliases do benchmark.
+O catálogo lista as entradas de cada composição em `demo.inputs`. Alguns
+efeitos usam estruturas de dados específicas.
 
 | Efeito | Entradas editáveis |
 | --- | --- |
 | Conversa em Camadas | `topic`, `question`, `followup`, `result` |
-| Radar de Sinais | `question`, `result` e `posts`, com três objetos contendo `author`, `text` e `tag`, na ordem da síntese |
+| Radar de Sinais | `question`, `result`, `posts` com três ou quatro objetos (`author`, `text`, `tag`), `total`, `themes` com três objetos (`label`, `percent`) e `nextStep` |
 | Parede em Perspectiva | `title`, `filter`, `feature`, `detail`, `selected` de 0 a 5 e `sheet` |
-| Resposta Revelada | `question`, `answer`, `detail` |
+| Resposta Revelada | `question`, `answer`, `detail` e `suggestions` com dois rótulos curtos |
 | Ciclo em Duas Voltas | `topic`, `roundone`, `roundtwo` e `steps`, com quatro nomes curtos |
 | Colagem em Torno da Câmera | `presenter`, com uma foto ou take de pelo menos 4,45 s, e `sheet` |
+| Roteiro em Pastas | `title`, `summary`, `folders` com três nomes e `sheet` com nove fotos numa grade de 3 × 3 em 16:9 |
+| Roteiro em Papel | `titles` e `details`, com uma posição por cena, da primeira à oitava |
+| Legenda com Ênfase | `presenter`, `lines`, `accentWords` e `wordTimings`, com o segundo de entrada de cada palavra |
+| Título Atrás do Apresentador | `presenter`, `matte` e `title`. Use um WebM com transparência e mantenha o enquadramento e a duração do take em `matte` |
+| Transição em Mosaico | `presenter`, `statement` e `markText` |
+| Identificação do Apresentador | `name`, `role` e `presenter` opcional. Para sobrepor na edição, omita `presenter` e exporte com `--out identificacao.mov` |
+| Apresentador e Citação | `portrait` com foto ou take, `quote`, `emphasis` e `attribution` |
 
-`sheet` substitui a imagem de exemplo nas duas peças com fotos. Use uma
-imagem 3:2 com seis fotos em uma grade de três colunas por duas linhas,
-sem margens. Conte os índices por linha, da esquerda para a direita.
+Em Parede em Perspectiva e Colagem em Torno da Câmera, `sheet` é uma
+imagem 3:2 com seis fotos em três colunas e duas linhas, sem margens.
+Conte os índices por linha, da esquerda para a direita.
 Os caminhos de imagem e vídeo são relativos ao arquivo de entradas.
 
 As composições próprias usam Outfit em títulos, corpo e interface. A fonte
 local e sua licença OFL acompanham as composições. [Outfit](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/outfit)
 
-A **Parede em Perspectiva** demonstra uma busca de viagem com IA e usa
+A **Parede em Perspectiva** e o **Roteiro em Pastas** usam
 [fotografias licenciadas de Portugal](scenes/parede-em-perspectiva/art/CREDITOS.md).
 O [atlas](scenes/motion-assets/field-atlas.webp) da **Colagem em Torno da Câmera**
 foi gerado com o ImageGen do Codex para essa demonstração.
@@ -72,7 +83,9 @@ Pages, inclua um `.nojekyll` na raiz e, em **Settings → Pages**, selecione
 **Deploy from a branch**, a branch **main** e a pasta **/(root)**. Essa
 configuração publica a raiz do repositório. Antes de publicar o acervo,
 separe a seleção gratuita e confira o histórico do branch público.
-Mídia privada e peças pagas ficam em uma fonte separada.
+Mídia privada e peças pagas ficam em uma fonte separada. Os MP4s de
+`previews/` são locais. Uma publicação dos vídeos exige incluir as versões
+autorizadas no artefato publicado.
 [Configuração do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
 O endereço esperado é [squados.github.io/squados-plugins/motion-gallery/](https://squados.github.io/squados-plugins/motion-gallery/).

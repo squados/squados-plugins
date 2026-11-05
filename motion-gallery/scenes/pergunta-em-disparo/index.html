@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Pergunta em Disparo</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+  main {
+    color: #f2f4f6;
+    background: radial-gradient(ellipse at 48% 62%, #303237 0%, #191a1d 58%, #111214 100%);
+  }
+  main::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: .28;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='148' height='148'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  }
+  .opening, .answer { position: absolute; inset: 0; }
+  .opening { display: grid; align-content: center; justify-items: center; gap: 28px; }
+  .opening h1 { font-size: 111px; }
+  .opening p { color: #a5d5ff; font-size: 94px; font-weight: 560; letter-spacing: -.04em; }
+  .camera { position: absolute; inset: 0; transform-origin: 0 0; }
+  .composer {
+    position: absolute;
+    left: 210px;
+    top: 406px;
+    width: 1500px;
+    border: 1px solid #61646a;
+    border-radius: 41px;
+    padding: 34px 44px;
+    background: linear-gradient(155deg, #35363b, #232428 75%);
+    box-shadow: 0 31px 74px #0009, inset 0 1px 0 #fff2;
+  }
+  .prompt { white-space: pre-line; font-size: 52px; line-height: 1.08; letter-spacing: -.018em; }
+  .placeholder { color: #b7b9c2; }
+  .caret { display: inline-block; width: 3px; height: .9em; margin-left: 4px; background: #a5d5ff; vertical-align: -.06em; }
+  .agent {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #e2e5ed;
+    font-size: 31px;
+    font-weight: 500;
+  }
+  .agent svg { width: 26px; height: 26px; color: #b1d9ff; }
+  .composer .agent { position: absolute; bottom: 37px; left: 45px; }
+  .send {
+    position: absolute;
+    right: 30px;
+    bottom: 28px;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #13243d;
+    background: linear-gradient(155deg, #c0e6ff, #87b9f6);
+    box-shadow: 0 8px 28px #6299e04a, inset 0 1px 1px #fffc;
+  }
+  .send svg { width: 42px; height: 42px; }
+  .ripple { position: absolute; inset: -3px; border: 2px solid #b4dfff; border-radius: 50%; }
+  .pointer { position: absolute; width: 48px; height: 48px; overflow: visible; }
+  .pointer path { fill: #f1f4f6; stroke: #14171c; stroke-width: 1.6; stroke-linejoin: round; }
+  .answer { display: grid; align-content: center; justify-items: center; gap: 30px; }
+  .answer h2 { font-size: 86px; text-align: center; }
+  .checklist {
+    width: 1232px;
+    padding: 15px 45px;
+    border-radius: 30px;
+    border: 1px solid #50525a;
+    background: linear-gradient(148deg, #303237, #212226);
+    box-shadow: 0 25px 72px #0008;
+  }
+  .step { display: flex; align-items: center; gap: 26px; min-height: 107px; font-size: 46px; }
+  .step + .step { border-top: 1px solid #44474d; }
+  .number {
+    position: relative;
+    flex: 0 0 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    background: #383b43;
+    color: #ebf0f8;
+    border-radius: 13px;
+    font-size: 34px;
+  }
+  .check {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: inherit;
+    color: #15263f;
+    background: #a9d5fc;
+  }
+  .check svg { width: 31px; height: 31px; }
+</style>
+</head>
+<body>
+<main data-composition-id="pergunta-em-disparo" data-start="0" data-duration="7.4" data-width="1920" data-height="1080">
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <symbol id="agent-mark" viewBox="0 0 32 32"><path d="M16 0c1.9 10.7 5.3 14.1 16 16-10.7 1.9-14.1 5.3-16 16C14.1 21.3 10.7 17.9 0 16 10.7 14.1 14.1 10.7 16 0Z" fill="currentColor"/></symbol>
+    </defs>
+  </svg>
+  <div class="opening">
+    <h1 class="display"></h1>
+    <p></p>
+  </div>
+  <div class="camera">
+    <div class="composer">
+      <p class="prompt"><span class="typed"></span><span class="caret"></span></p>
+      <span class="agent"><svg aria-hidden="true"><use href="#agent-mark"/></svg>Agente de roteiro</span>
+      <div class="send" aria-label="Enviar">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 28V8m-8 8 8-8 8 8"/></svg>
+        <span class="ripple"></span>
+      </div>
+    </div>
+    <svg class="pointer" viewBox="0 0 27 27" aria-hidden="true"><path d="m4 2 17 13-8 1.2 3.9 7-4.1 2.2-3.9-7.3-5.4 5.3L4 2z"/></svg>
+  </div>
+  <div class="answer">
+    <span class="agent"><svg aria-hidden="true"><use href="#agent-mark"/></svg>Agente de roteiro</span>
+    <h2 class="display"></h2>
+    <div class="checklist"></div>
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  copy(".opening h1", "headline", "Vai gravar hoje?");
+  copy(".opening p", "lead", "Revise com IA.");
+  copy(".answer h2", "title", "Três checagens antes de gravar");
+  const prompt = typeof inputs.prompt === "string" ? inputs.prompt : "Vou gravar uma aula sobre IA.\nComo valido o roteiro antes de gravar?";
+  const lines = prompt.split("\n");
+  const firstLine = [...lines[0]];
+  const rest = lines.length > 1 ? ["\n", ...lines.slice(1).join(" ").trim()] : [];
+  const items = Array.isArray(inputs.steps) && inputs.steps.length === 3
+    ? inputs.steps
+    : ["Confirme a ideia central", "Cheque as fontes citadas", "Corte o que desvia do assunto"];
+  const rows = items.map((item, index) => {
+    const row = document.createElement("div");
+    row.className = "step";
+    row.innerHTML = '<span class="number"><span></span><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 4.8 4.8 10.2-10.5"/></svg></span></span><span class="step-text"></span>';
+    row.querySelector(".number > span").textContent = String(index + 1);
+    row.querySelector(".step-text").textContent = String(item);
+    one(".checklist").append(row);
+    return { row, check: row.querySelector(".check"), mark: row.querySelector(".check path") };
+  });
+
+  window.renderMotion = time => {
+    const leave = flow(phase(time, 1.17, .43));
+    [one(".opening h1"), one(".opening p")].forEach((element, index) => {
+      const appear = beat(time, .03 + index * .36, .64);
+      set(element, {
+        opacity: appear * (1 - leave),
+        transform: "translateY(" + ((1 - appear) * 40 - leave * 50) + "px)",
+        filter: "blur(" + ((1 - appear) * 10 + leave * 9) + "px)"
+      });
+    });
+    const compose = beat(time, 1.35, .54);
+    const expand = rest.length ? beat(time, 2.51, .42) : 0;
+    const height = mix(218, 277, expand);
+    const primary = firstLine.slice(0, Math.floor(firstLine.length * flow(phase(time, 1.71, .79))));
+    const secondary = rest.slice(0, Math.floor(rest.length * flow(phase(time, 2.57, .76))));
+    const content = [...primary, ...secondary].join("");
+    one(".typed").textContent = time < 1.71 ? "Escreva seu pedido" : content;
+    one(".typed").classList.toggle("placeholder", time < 1.71);
+    one(".caret").style.opacity = time >= 1.71 && time < 3.40 ? 1 : 0;
+    const sendX = 1636;
+    const sendY = 406 + height - 72;
+    const drift = phase(time, 1.47, 2);
+    const whip = flow(phase(time, 3.40, .54));
+    const smear = flow(phase(time, 4.33, .37));
+    const clear = flow(phase(time, 4.51, .19));
+    const zoom = mix(1 + .025 * drift, 2.78, whip);
+    const verticalZoom = zoom * (1 + smear * .64);
+    const cameraX = mix(37 - drift * 54, 960 - sendX * zoom, whip);
+    const cameraY = mix(0, 535 - sendY * verticalZoom, whip);
+    const whipBlur = 11 * Math.sin(Math.PI * whip);
+    set(one(".camera"), {
+      opacity: compose * (1 - clear),
+      visibility: time >= 4.70 ? "hidden" : "visible",
+      transform: "translate(" + cameraX + "px," + (cameraY + smear * 800 + (1 - compose) * 86) + "px) scale(" + zoom + "," + verticalZoom + ")",
+      filter: "blur(" + (whipBlur + smear * 26) + "px)"
+    });
+    one(".composer").style.height = height + "px";
+    const aim = flow(phase(time, 2.90, .91));
+    const press = Math.sin(Math.PI * phase(time, 4.04, .19));
+    set(one(".pointer"), {
+      opacity: time < 2.90 ? 0 : beat(time, 2.90, .16),
+      left: mix(1820, sendX + 7, aim) + "px",
+      top: (mix(904, sendY + 5, aim) + press * 6) + "px",
+      transform: "scale(" + (1 - press * .16) + ")"
+    });
+    one(".send").style.transform = "scale(" + (1 - press * .21) + ")";
+    const ripple = beat(time, 4.09, .42);
+    set(one(".ripple"), { opacity: time < 4.09 ? 0 : (1 - ripple) * .82, transform: "scale(" + mix(1, 2.37, ripple) + ")" });
+
+    const answer = beat(time, 4.63, .63);
+    set(one(".answer"), {
+      opacity: answer,
+      transform: "translateY(" + (1 - answer) * 85 + "px)",
+      filter: "blur(" + (1 - answer) * 5 + "px)"
+    });
+    rows.forEach(({ row, check, mark }, index) => {
+      const entry = beat(time, 5.02 + index * .26, .49);
+      const checked = beat(time, 5.68 + index * .33, .34);
+      set(row, { opacity: entry, transform: "translateX(" + (1 - entry) * -28 + "px)" });
+      set(check, { opacity: checked, transform: "scale(" + mix(.65, 1, checked) + ")" });
+      mark.style.strokeDasharray = "26";
+      mark.style.strokeDashoffset = 26 * (1 - checked);
+    });
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

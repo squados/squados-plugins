@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Do Esboço à Cidade</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="preload" href="art/porto.webp" as="image">
+<style>
+main { color: #f4f6fb; background: radial-gradient(ellipse at 48% 81%, #2c2e34, #1b1c21 57%, #101014); }
+main::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .24; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.title, .closing { position: absolute; left: 130px; right: 130px; text-align: center; font-size: 85px; }
+.title { top: 483px; }
+.closing { top: 919px; font-size: 69px; }
+.editor-layer { position: absolute; inset: 0; transform-origin: 888px 456px; }
+.frame { position: absolute; left: 210px; top: 158px; width: 1500px; height: 780px; border: 1px solid #697382; border-radius: 31px; background: linear-gradient(150deg, #2e323b, #22252d); box-shadow: 0 34px 73px #0c0e16bf; }
+.frame-head { position: absolute; top: 30px; left: 35px; right: 35px; display: flex; justify-content: space-between; align-items: center; }
+.frame-head p { display: flex; align-items: center; gap: 11px; font-size: 28px; font-weight: 610; }
+.frame-head svg { width: 27px; height: 27px; stroke: #9ac3fc; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.playing { padding: 6px 13px; border: 1px solid #6280a8; border-radius: 10px; background: #33445e; color: #e0edff; font-size: 22px; }
+.floor { position: absolute; left: 385px; right: 385px; top: 527px; height: 2px; background: #74829a; opacity: .58; }
+.timeline { position: absolute; left: 34px; right: 33px; bottom: 28px; display: flex; align-items: center; gap: 22px; }
+.clock { min-width: 75px; color: #c4d1e4; font-size: 25px; font-variant-numeric: tabular-nums; }
+.track { position: relative; flex: 1; height: 5px; border-radius: 99px; background: #5b6678; }
+.track::before, .track::after, .track .mark { content: ""; position: absolute; top: -5px; width: 15px; height: 15px; border: 2px solid #9aacc6; border-radius: 50%; background: #303b4d; }
+.track::before { left: 10%; }.track::after { left: 84%; }
+.track .mark:nth-child(2) { left: 34%; }.track .mark:nth-child(3) { left: 59%; }
+.track-fill { position: absolute; left: 0; top: 0; width: 100%; height: 5px; border-radius: 99px; background: #85b7ff; transform-origin: left; }
+.timeline-cursor { position: absolute; top: -7px; left: 0; width: 19px; height: 19px; border: 3px solid #c7e2ff; border-radius: 50%; background: #417bd9; transform: translateX(-50%); }
+.masked-character { position: absolute; inset: 0; clip-path: inset(159px 211px 248px 211px round 30px); }
+.character { position: absolute; left: 741px; top: 275px; width: 450px; height: 420px; overflow: visible; }
+.eye-base { position: absolute; inset: 0; background: #111925; }
+.portal { position: absolute; overflow: hidden; border-radius: 0; background: #121922; box-shadow: 0 27px 61px #080b13b5; }
+.portal img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 52%; }
+.portal-caption { position: absolute; top: 27px; left: 33px; padding: 7px 15px; border: 1px solid #93afd2; border-radius: 11px; background: #18263cec; color: #e5f1ff; font-size: 24px; }
+</style>
+</head>
+<body>
+<main data-composition-id="do-esboco-a-cidade" data-start="0" data-duration="11.5" data-width="1920" data-height="1080">
+  <h1 class="title display"></h1>
+  <div class="editor-layer" data-layout-allow-overflow>
+    <section class="frame">
+      <header class="frame-head"><p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 2.5 4 4-1.5L21 8l-4-4L5 16z m11-9 4 4"/></svg><span></span></p><span class="playing"></span></header>
+      <div class="floor"></div>
+      <div class="timeline"><span class="clock"></span><div class="track" aria-hidden="true"><i class="track-fill"></i><i class="mark"></i><i class="mark"></i><i class="timeline-cursor"></i></div></div>
+    </section>
+    <div class="masked-character" aria-hidden="true" data-layout-allow-overflow>
+      <svg class="character" viewBox="0 0 450 420" data-layout-allow-overflow>
+        <defs>
+          <linearGradient id="body-tone" x1="0" y1="0" x2=".2" y2="1"><stop stop-color="#f1f5fc"/><stop offset="1" stop-color="#b2c5e2"/></linearGradient>
+          <linearGradient id="leg-tone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5489e6"/><stop offset="1" stop-color="#2855b5"/></linearGradient>
+        </defs>
+        <ellipse class="shadow" cx="223" cy="402" rx="167" ry="12" fill="#141a2790"/>
+        <g fill="url(#leg-tone)">
+          <g class="leg" data-x="100"><path d="M82 295h36v82a18 18 0 0 1-36 0z"/></g>
+          <g class="leg" data-x="146"><path d="M128 295h36v82a18 18 0 0 1-36 0z"/></g>
+          <g class="leg" data-x="305"><path d="M287 295h36v82a18 18 0 0 1-36 0z"/></g>
+          <g class="leg" data-x="351"><path d="M333 295h36v82a18 18 0 0 1-36 0z"/></g>
+        </g>
+        <g class="body">
+          <path class="antenna" d="M333 91l34-42h31" stroke="#4e81da" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle class="tip" cx="400" cy="49" r="13" fill="#93bdff"/>
+          <rect x="1" y="155" width="56" height="45" rx="19" fill="#376ac8"/><rect x="390" y="155" width="59" height="45" rx="19" fill="#376ac8"/>
+          <rect x="29" y="79" width="393" height="250" rx="52" fill="url(#body-tone)" stroke="#e1ebfc" stroke-width="3"/>
+          <path d="M68 130q0-14 16-14h49" fill="none" stroke="#f7faff" stroke-width="5" stroke-linecap="round" opacity=".86"/>
+          <g class="eye" data-x="147"><rect x="123" y="143" width="48" height="76" rx="23" fill="#111925"/><circle cx="155" cy="161" r="8" fill="#f4faff"/></g>
+          <g class="eye" data-x="281"><rect x="257" y="143" width="48" height="76" rx="23" fill="#111925"/><circle cx="289" cy="161" r="8" fill="#f4faff"/></g>
+          <path class="smile-eyes" d="m130 182 17-18 17 18m100 0 17-18 17 18" fill="none" stroke="#142137" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="smile" d="M199 239q24 26 49 0" fill="none" stroke="#1a2d4f" stroke-width="7" stroke-linecap="round"/>
+          <g class="sight" fill="none" stroke="#2869d7" stroke-width="4" stroke-linecap="round">
+            <circle cx="147" cy="181" r="63"/>
+            <path d="M147 101v-15m64 40 11-11m7 65h16m-163-53-10-11m-6 65H51"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="eye-base" aria-hidden="true"></div>
+  <div class="portal" data-layout-allow-overflow>
+    <img src="art/porto.webp" alt=""><span class="portal-caption"></span>
+  </div>
+  <h2 class="closing display"></h2>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".title", "headline", "O desenho ganha vida.");
+copy(".frame-head p span", "character", "Cubo");
+copy(".playing", "chip", "Em reprodução");
+copy(".portal-caption", "worldTag", "Cena 2 · Porto à noite");
+copy(".closing", "closing", "Do esboço a um mundo inteiro.");
+const city = one(".portal img");
+if (typeof inputs.world === "string" && inputs.world) city.src = inputs.world;
+const title = one(".title");
+const layer = one(".editor-layer");
+const character = one(".character");
+const floor = one(".floor");
+const legs = all(".leg").map((element, index) => ({ element, x: Number(element.dataset.x), offset: [0, 2.15, 3.45, 5.60][index] }));
+const eyes = all(".eye").map(element => ({ element, x: Number(element.dataset.x) }));
+const eyeSmile = one(".smile-eyes");
+const smile = one(".smile");
+const sight = one(".sight");
+const shadow = one(".shadow");
+const cursor = one(".timeline-cursor");
+const track = one(".track-fill");
+const clock = one(".clock");
+const base = one(".eye-base");
+const portal = one(".portal");
+const caption = one(".portal-caption");
+const closing = one(".closing");
+
+window.renderMotion = time => {
+  const intro = beat(time, .12, .66);
+  const titleExit = flow(phase(time, 1.35, .50));
+  set(title, {
+    opacity: intro * (1 - titleExit),
+    filter: "blur(" + (12 * (1 - intro) + 8 * titleExit) + "px)",
+    transform: "translateY(" + (27 * (1 - intro) - 33 * titleExit) + "px)"
+  });
+
+  const editor = beat(time, 1.64, .60);
+  const dive = flow(phase(time, 7.73, .91));
+  const zoom = Math.exp(Math.log(58) * dive);
+  const centerX = 72 * dive;
+  const centerY = 84 * dive + 29 * (1 - editor);
+  set(layer, {
+    opacity: editor * (1 - flow(phase(time, 8.59, .10))),
+    transform: "translate(" + centerX + "px," + centerY + "px) scale(" + (mix(.96, 1, editor) * zoom) + ")"
+  });
+  floor.style.opacity = .58 * editor;
+
+  const walking = 1 - (1 - phase(time, 2.43, 3.22)) ** 2;
+  const gait = phase(time, 2.39, .43) * (1 - flow(phase(time, 5.28, .43)));
+  const cycle = (time - 2.35) * Math.PI * 4.3;
+  const bob = -16 * gait * Math.abs(Math.sin(cycle));
+  character.style.transform = "translate(" + 965 * (1 - walking) + "px," + bob + "px)";
+  legs.forEach(({ element, x, offset }) => element.setAttribute("transform", "rotate(" + (24 * gait * Math.sin(cycle + offset)) + " " + x + " 306)"));
+  shadow.style.opacity = mix(.78, 1, gait * Math.abs(Math.cos(cycle)));
+
+  const blink = Math.sin(Math.PI * phase(time, 6.12, .21));
+  const grin = beat(time, 6.48, .25) * (1 - beat(time, 6.94, .22));
+  eyes.forEach(({ element, x }) => {
+    const squeeze = 1 - .90 * blink;
+    element.setAttribute("transform", "translate(" + x + " 181) scale(1 " + squeeze + ") translate(" + -x + " -181)");
+    element.style.opacity = 1 - grin;
+  });
+  eyeSmile.style.opacity = grin;
+  smile.style.opacity = grin;
+  const identify = beat(time, 7.12, .16) * (1 - beat(time, 7.47, .22));
+  sight.style.opacity = identify;
+  sight.setAttribute("transform", "translate(147 181) scale(" + mix(1.15, 1, identify) + ") translate(-147 -181)");
+
+  const play = phase(time, 2.11, 5.70);
+  track.style.transform = "scaleX(" + play + ")";
+  cursor.style.left = play * 100 + "%";
+  clock.textContent = "00:" + String(Math.floor(play * 5.8)).padStart(2, "0");
+
+  base.style.opacity = flow(phase(time, 8.51, .18)) * (1 - flow(phase(time, 9.83, .46)));
+  const iris = flow(phase(time, 8.66, .60));
+  const frame = flow(phase(time, 9.82, .64));
+  const width = mix(1920, 1580, frame);
+  const height = mix(1080, 776, frame);
+  set(portal, {
+    left: (1920 - width) / 2 + "px", top: mix(0, 126, frame) + "px",
+    width: width + "px", height: height + "px", borderRadius: mix(0, 25, frame) + "px",
+    opacity: time >= 8.66 ? 1 : 0, clipPath: iris < 1 ? "circle(" + 1130 * iris + "px at center)" : "none"
+  });
+  const photoMotion = phase(time, 8.63, 2.35);
+  city.style.transform = "scale(" + mix(1.045, 1, photoMotion) + ")";
+  caption.style.opacity = beat(time, 10.14, .42);
+
+  const end = beat(time, 10.18, .65);
+  set(closing, { opacity: end, filter: "blur(" + 8 * (1 - end) + "px)", transform: "translateY(" + 27 * (1 - end) + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

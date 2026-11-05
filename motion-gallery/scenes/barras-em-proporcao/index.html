@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Barras em Proporção</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 56% 75%, #333338 0%, #202025 53%, #111113 100%); color: #f5f5fa; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.content { position: absolute; inset: 160px 135px; }
+h1 { font-size: 100px; }
+.rows { position: absolute; top: 298px; left: 0; width: 1320px; display: grid; gap: 89px; }
+.row h2 { margin-bottom: 18px; font-size: 42px; font-weight: 540; }
+.measurement { position: relative; height: 73px; }
+.bar { height: 100%; border-radius: 10px; background: linear-gradient(180deg, #eee8ff, #bca5ed); }
+.row.secondary .bar { background: linear-gradient(180deg,#a8a5b1,#797581); }
+.value { position: absolute; top: 50%; transform: translateY(-50%); font-size: 48px; font-weight: 580; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.comparison { position: absolute; top: 297px; right: 0; width: 344px; height: 348px; display: grid; align-content: center; padding-left: 60px; }
+.comparison svg { position: absolute; left: 0; top: 0; width: 35px; height: 100%; overflow: visible; }
+.comparison path { fill: none; stroke: #c6b9f0; stroke-width: 2.5; }
+.factor { color: #efe8ff; font-size: 110px; line-height: 1; font-weight: 620; letter-spacing: -.04em; white-space: nowrap; }
+.unit { margin-top: 14px; font-size: 33px; color: #d0c9e1; }
+</style>
+</head>
+<body>
+<main data-composition-id="barras-em-proporcao" data-start="0" data-duration="9" data-width="1920" data-height="1080">
+  <section class="content">
+    <h1 class="display"></h1>
+    <div class="rows">
+      <article class="row primary"><h2></h2><div class="measurement"><div class="bar"></div><p class="value"></p></div></article>
+      <article class="row secondary"><h2></h2><div class="measurement"><div class="bar"></div><p class="value"></p></div></article>
+    </div>
+    <div class="comparison">
+      <svg viewBox="0 0 35 348" aria-hidden="true"><path pathLength="1" d="M30 2H4v344h26"/></svg>
+      <p class="factor"></p><p class="unit"></p>
+    </div>
+  </section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const labels = Array.isArray(inputs.labels) && inputs.labels.length === 2 &&
+    inputs.labels.every(label => typeof label === "string" && label.trim()) ? inputs.labels : ["Com triagem por IA", "Triagem manual"];
+  const values = Array.isArray(inputs.values) && inputs.values.length === 2 &&
+    inputs.values.every(value => Number.isFinite(value) && value >= 0) ? inputs.values : [72, 24];
+  const precision = Number.isInteger(inputs.ratioPrecision) ? Math.max(0, Math.min(3, inputs.ratioPrecision)) : 1;
+  const unit = typeof inputs.unit === "string" && inputs.unit.trim() ? inputs.unit.trim() : "chamados por hora";
+  const largest = Math.max(...values);
+  const smallest = Math.min(...values);
+  const number = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: values.every(Number.isInteger) ? 0 : 2 });
+  const decimal = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: precision });
+  const content = one(".content");
+  const bracket = one(".comparison path");
+  const factor = one(".factor");
+  const unitLabel = one(".unit");
+  copy("h1", "title", "Revisão de chamados por hora");
+  factor.textContent = smallest > 0 ? decimal.format(largest / smallest) + "×" : "—";
+  unitLabel.textContent = smallest > 0 ? "em " + unit : "Base igual a zero";
+  bracket.style.strokeDasharray = "1";
+  const rows = all(".row").map((element, index) => {
+    element.querySelector("h2").textContent = labels[index];
+    return { element, bar: element.querySelector(".bar"), label: element.querySelector(".value") };
+  });
+
+  window.renderMotion = time => {
+    const opening = beat(time, .16, .43);
+    set(content, { opacity: opening, transform: "translateY(" + 21 * (1 - opening) + "px)" });
+    rows.forEach(({ element, bar, label }, index) => {
+      const show = beat(time, .29 + index * .08, .36);
+      const start = index === 0 ? .78 : 2.92;
+      const progress = flow(phase(time, start, index === 0 ? 1.32 : 1.56));
+      const measured = values[index] * progress;
+      const width = measured * 1000 / (largest || 1);
+      element.style.opacity = show;
+      bar.style.width = width + "px";
+      label.style.left = width + 22 + "px";
+      label.textContent = number.format(measured);
+    });
+    const compare = flow(phase(time, 5, .53));
+    bracket.style.opacity = compare > 0 ? 1 : 0;
+    bracket.style.strokeDashoffset = 1 - compare;
+    const reveal = beat(time, 5.24, .38);
+    set(factor, { opacity: reveal, transform: "translateX(" + 14 * (1 - reveal) + "px)" });
+    unitLabel.style.opacity = reveal;
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

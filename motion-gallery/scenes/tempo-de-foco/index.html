@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Tempo de Foco</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f1f5fc; background: radial-gradient(ellipse at 48% 81%, #2c2e34, #1b1c21 57%, #101014); }
+main::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .24; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.toggle {
+  position: absolute; left: 421px; top: 433px; width: 1078px; height: 214px;
+  display: flex; align-items: center; gap: 20px; padding: 0 42px;
+  border: 1px solid #627084; border-radius: 27px; background: linear-gradient(145deg, #333743, #252830);
+  box-shadow: 0 33px 72px #080a10a1; font-size: 54px; font-weight: 590;
+}
+.mark, .note-icon {
+  display: grid; place-items: center; flex: none; width: 68px; height: 68px;
+  border: 1px solid #6d96d5; border-radius: 18px; background: #344e77; color: #b9d8ff;
+}
+.mark svg, .note-icon svg { width: 42px; height: 42px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.track-toggle {
+  position: absolute; right: 43px; top: 39px; width: 235px; height: 136px; border-radius: 99px;
+  border: 1px solid #78869b; background: #414957;
+}
+.knob {
+  position: absolute; left: 0; top: 0; width: 110px; height: 110px; z-index: 8;
+  border-radius: 50%; border: 2px solid #f7faff; background: linear-gradient(140deg, #f5f9ff, #b9d7ff);
+  box-shadow: 0 13px 34px #0c162d8f, 0 0 24px #8bbaff60;
+}
+.pointer { position: absolute; left: 0; top: 0; width: 50px; height: 50px; z-index: 9; filter: drop-shadow(0 5px 6px #141519aa); }
+.slider { position: absolute; inset: 0; }
+.question { position: absolute; left: 197px; top: 469px; font-size: 85px; }
+.rail { position: absolute; left: 1109px; width: 8px; height: 1510px; border-radius: 10px; background: #5b6879; }
+.ticks { position: absolute; left: 1059px; width: 38px; }
+.ticks i { position: absolute; right: 0; width: 20px; height: 3px; border-radius: 99px; background: #8895aa; }
+.ticks i:nth-child(4n + 1) { width: 34px; height: 4px; background: #a2bee9; }
+.fill { position: absolute; left: 1109px; top: 630px; width: 8px; border-radius: 10px; background: #73a8f6; box-shadow: 0 0 19px #7eaff276; }
+.value {
+  position: absolute; left: 1190px; top: 587px; display: flex; align-items: baseline; gap: 9px;
+  padding: 13px 23px; border: 1px solid #7389ad; border-radius: 15px;
+  background: #263549; color: #e4f0ff; font-size: 49px; font-variant-numeric: tabular-nums;
+}
+.value small { font-size: 28px; }
+.notes { position: absolute; left: 370px; top: 288px; width: 1180px; display: grid; gap: 18px; }
+.note {
+  display: flex; align-items: center; gap: 19px; min-height: 152px; padding: 19px 23px;
+  border: 1px solid #616d81; border-radius: 24px; background: linear-gradient(145deg, #363c48, #252a33);
+  box-shadow: 0 24px 54px #090c14a9; transform-origin: 80% center;
+}
+.note-icon { width: 77px; height: 77px; border-radius: 19px; }
+.note-label { font-size: 32px; font-weight: 630; }
+.note-text { margin-top: 3px; color: #cdd6e7; font-size: 29px; }
+.closing { position: absolute; left: 130px; right: 130px; top: 432px; text-align: center; font-size: 84px; }
+.badge {
+  position: absolute; left: 696px; top: 619px; min-width: 527px; min-height: 85px;
+  display: flex; align-items: center; padding: 9px 27px 9px 79px;
+  border: 1px solid #6d82a1; border-radius: 99px; background: linear-gradient(150deg, #3d485b, #273142);
+  box-shadow: 0 20px 48px #0d111bc7; color: #dceaff; font-size: 33px;
+}
+</style>
+</head>
+<body>
+<main data-composition-id="tempo-de-foco" data-start="0" data-duration="7.4" data-width="1920" data-height="1080">
+  <div class="toggle">
+    <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.8 14.5a8.6 8.6 0 0 1-11.3-11A8.8 8.8 0 1 0 20.8 14.5Z"/></svg></span>
+    <span class="toggle-label"></span><i class="track-toggle" aria-hidden="true"></i>
+  </div>
+  <div class="slider" data-layout-allow-overflow>
+    <h1 class="question display"></h1><i class="rail" aria-hidden="true"></i><div class="ticks" aria-hidden="true"></div>
+    <i class="fill" aria-hidden="true"></i><p class="value"><span></span><small>min</small></p>
+  </div>
+  <div class="notes" data-layout-allow-overflow></div>
+  <h2 class="closing display"></h2><div class="badge"></div>
+  <i class="knob" aria-hidden="true"></i>
+  <svg class="pointer" viewBox="0 0 50 50" aria-hidden="true"><path d="m7 4 30 23-14 1-7 12L7 4Z" fill="#f0f7ff" stroke="#1a2638" stroke-width="3" stroke-linejoin="round"/></svg>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".toggle-label", "toggle", "Modo de foco");
+copy(".question", "question", "Quanto tempo?");
+copy(".closing", "closing", "Agora, só o que importa.");
+const limit = Number.isFinite(inputs.minutes) ? Math.round(Math.max(1, Math.min(600, inputs.minutes))) : 45;
+copy(".badge", "badge", "Foco por " + limit + " min");
+const defaults = [
+  { label: "Chat", text: "Nova mensagem no grupo" },
+  { label: "Workspace", text: "Chegou um pedido de revisão" },
+  { label: "Agenda", text: "Reunião em 20 minutos" }
+];
+const messages = Array.isArray(inputs.notes) && inputs.notes.length === 3 && inputs.notes.every(note => note
+  && typeof note.label === "string" && typeof note.text === "string") ? inputs.notes : defaults;
+const icons = [
+  "M4 4h16v13H9l-5 4V4z M8 8h8 M8 12h5",
+  "M3 6h7l2 3h9v11H3V6z M8 14h8 M8 17h5",
+  "M4 5h16v16H4z M4 10h16M8 3v4m8-4v4m-7 8h6"
+];
+const notifications = messages.map((note, index) => {
+  const row = document.createElement("article");
+  row.className = "note";
+  row.innerHTML = '<span class="note-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path/></svg></span><div><p class="note-label"></p><p class="note-text"></p></div>';
+  row.querySelector("path").setAttribute("d", icons[index]);
+  row.querySelector(".note-label").textContent = note.label;
+  row.querySelector(".note-text").textContent = note.text;
+  one(".notes").append(row);
+  return row;
+});
+const ticks = one(".ticks");
+for (let index = 0; index < 25; index++) {
+  const tick = document.createElement("i");
+  tick.style.top = index * 62 + "px";
+  ticks.append(tick);
+}
+
+const toggle = one(".toggle");
+const track = one(".track-toggle");
+const pointer = one(".pointer");
+const slider = one(".slider");
+const rail = one(".rail");
+const fill = one(".fill");
+const number = one(".value");
+const value = one(".value span");
+const knob = one(".knob");
+const closing = one(".closing");
+const badge = one(".badge");
+
+window.renderMotion = time => {
+  const toggleIn = beat(time, .08, .57);
+  const toggleOut = flow(phase(time, 1.20, .33));
+  set(toggle, { opacity: toggleIn * (1 - toggleOut), transform: "translateY(" + (28 * (1 - toggleIn) - 39 * toggleOut) + "px)" });
+  const switched = flow(phase(time, .63, .31));
+  track.style.backgroundColor = "rgb(" + Math.round(mix(65, 56, switched)) + "," + Math.round(mix(73, 105, switched)) + "," + Math.round(mix(87, 207, switched)) + ")";
+  const cursorIn = beat(time, .24, .28);
+  const cursorTap = Math.sin(Math.PI * phase(time, .63, .23));
+  set(pointer, {
+    opacity: cursorIn * (1 - beat(time, .88, .21)),
+    transform: "translate(" + mix(1395, 1285, flow(phase(time, .31, .34))) + "px," + mix(668, 555, flow(phase(time, .31, .34))) + "px) scale(" + (1 - .18 * cursorTap) + ")"
+  });
+
+  const sliderIn = beat(time, 1.47, .43);
+  const sliderOut = flow(phase(time, 3.98, .38));
+  const amount = flow(phase(time, 2.11, 1.41));
+  set(slider, { opacity: sliderIn * (1 - sliderOut), transform: "translateY(" + (42 * (1 - sliderIn) - 221 * sliderOut) + "px)" });
+  const bottom = 630 + 685 * amount;
+  rail.style.top = bottom - 1510 + "px";
+  ticks.style.top = bottom - 1488 + "px";
+  fill.style.height = 685 * amount + "px";
+  number.style.opacity = beat(time, 1.90, .42);
+  value.textContent = Math.round(amount * limit);
+
+  const lift = flow(phase(time, .92, .27));
+  const toSlider = flow(phase(time, 1.17, .54));
+  const fromSlider = flow(phase(time, 3.99, .53));
+  const firstX = mix(1282, 1386, switched) + 66 * lift;
+  const firstY = 540 - 120 * lift;
+  const bounce = Math.sin(Math.PI * phase(time, 3.41, .30));
+  const sweepX = 1464 - 205 * flow(phase(time, 4.50, 1.28));
+  const sweepY = 180 + 309 * flow(phase(time, 4.39, 1.35));
+  const x = mix(mix(firstX, 1113, toSlider), sweepX, fromSlider);
+  const y = mix(mix(firstY, 630 - 10 * bounce, toSlider), sweepY, fromSlider);
+  const settle = flow(phase(time, 5.73, .64));
+  const width = mix(1 + .11 * bounce, .53, settle);
+  const height = mix(1 - .13 * bounce, .53, settle);
+  set(knob, {
+    opacity: beat(time, .16, .45),
+    transform: "translate(" + (mix(x, 741, settle) - 55) + "px," + (mix(y, 662, settle) - 55) + "px) scale(" + width + "," + height + ")"
+  });
+
+  const dismiss = [4.76, 5.13, 5.60];
+  notifications.forEach((note, index) => {
+    const show = beat(time, 4.14 + index * .09, .38);
+    const exit = flow(phase(time, dismiss[index], .50));
+    set(note, {
+      opacity: show * (1 - .87 * exit),
+      transform: "translate(" + (-1560 * exit) + "px," + (34 * (1 - show) - 36 * exit) + "px) rotate(" + -9 * exit + "deg)"
+    });
+  });
+  const end = beat(time, 5.72, .59);
+  set(closing, { opacity: end, transform: "translateY(" + 27 * (1 - end) + "px)", filter: "blur(" + 9 * (1 - end) + "px)" });
+  const badgeIn = beat(time, 5.90, .46);
+  set(badge, { opacity: badgeIn, transform: "translateY(" + 23 * (1 - badgeIn) + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

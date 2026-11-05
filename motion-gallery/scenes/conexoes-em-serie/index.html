@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Conexões em Série</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+  main { color:#f1f5f9; background:radial-gradient(ellipse at 50% 55%,#373a42,#1f2126 57%,#111316); }
+  main::before { content:""; position:absolute; inset:0; z-index:-1; opacity:.27; mix-blend-mode:soft-light; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='148' height='148'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .heading { position:absolute; width:1760px; left:80px; text-align:center; font-size:104px; }
+  .opening { top:100px; }
+  .closing { top:136px; }
+  .heading em { color:#b9dfff; font-style:normal; }
+  .source {
+    position:absolute;
+    left:720px;
+    top:420px;
+    width:480px;
+    height:185px;
+    padding:27px 24px;
+    border:1px solid #616873;
+    border-radius:25px;
+    background:linear-gradient(150deg,#3b424c,#2c323b);
+    box-shadow:0 15px 35px #0007,inset 0 1px 0 #fff1;
+  }
+  .label { display:flex; align-items:center; gap:15px; font-size:44px; }
+  .badge { display:grid; place-items:center; width:58px; height:58px; border-radius:15px; background:#465461; }
+  .badge svg { width:33px; height:33px; }
+  .state { position:absolute; right:24px; bottom:24px; padding:5px 12px; border:1px solid #626d7c; border-radius:28px; color:#c5cfde; font-size:26px; background:#282e38; }
+  .state.on { background:#405a6d; color:#d6edff; border-color:#91bad9; }
+  .progress {
+    position:absolute;
+    left:960px;
+    top:797px;
+    display:flex;
+    align-items:center;
+    gap:17px;
+    padding:7px 17px;
+    border:1px solid #626b78;
+    border-radius:25px;
+    color:#dce7f3;
+    background:#2e3540;
+    font-size:28px;
+    white-space:nowrap;
+  }
+  .progress i { position:relative; width:156px; height:5px; border-radius:6px; overflow:hidden; background:#526173; }
+  .progress i span { position:absolute; inset:0; background:#b8ddff; transform-origin:left; }
+  .button {
+    position:absolute;
+    left:576px;
+    top:413px;
+    width:768px;
+    height:164px;
+    display:grid;
+    place-items:center;
+    border-radius:110px;
+    border:1px solid #7c8da2;
+    color:#e1efff;
+    background:#262f3c;
+    box-shadow:0 18px 50px #0008;
+    font-size:58px;
+    font-weight:620;
+  }
+  .button.live { color:#152f47; background:linear-gradient(135deg,#dbf0ff,#92c5fa); border-color:#d3eaff; box-shadow:0 16px 60px #0009,0 0 43px #84c3ff68; }
+  .pulse { position:absolute; left:50%; top:50%; width:320px; height:320px; border:1px solid #a8d7ff; border-radius:50%; pointer-events:none; }
+  .sources { position:absolute; top:636px; width:100%; display:flex; justify-content:center; gap:18px; }
+  .mini { position:relative; display:grid; place-items:center; width:72px; height:72px; border:1px solid #77869a; border-radius:18px; background:#3b4655; }
+  .mini svg { width:38px; height:38px; }
+  .mini b { position:absolute; bottom:-5px; right:-5px; width:23px; height:23px; display:grid; place-items:center; border-radius:50%; color:#193653; background:#b9dfff; font-size:17px; }
+  .summary { position:absolute; top:755px; width:100%; text-align:center; color:#d0dbea; font-size:32px; }
+</style>
+</head>
+<body>
+<main data-composition-id="conexoes-em-serie" data-start="0" data-duration="7.6" data-width="1920" data-height="1080">
+  <h1 class="heading opening display"></h1>
+  <div class="grid"></div>
+  <div class="progress"><span></span><i><span></span></i></div>
+  <h2 class="heading closing display"></h2>
+  <div class="button"><span></span><div class="pulse"></div></div>
+  <div class="sources"></div>
+  <p class="summary"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const names=Array.isArray(inputs.sources)&&inputs.sources.length===6 ? inputs.sources : ["Documentos","Calendário","Mensagens","Arquivos","Tarefas","Base de notas"];
+  const paths=[
+    '<rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 9h6m-6 5h6"/>',
+    '<rect x="4" y="6" width="16" height="14" rx="3"/><path d="M4 11h16M8 4v4m8-4v4"/>',
+    '<path d="M20 13a3 3 0 0 1-3 3h-6l-4 4v-4a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3z"/>',
+    '<path d="M4 7a2 2 0 0 1 2-2h4l2 3h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>',
+    '<path d="m5 8 2 2 3-4m-5 9 2 2 3-4m3-5h6m-6 7h6"/>',
+    '<ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v9c0 4 14 4 14 0V7M5 12c0 4 14 4 14 0"/>'
+  ];
+  const palette=["#b8ddff","#b8e4d3","#d5c8f4","#bad7ff","#9fddd3","#dce7fa"];
+  const symbol=i=>'<svg viewBox="0 0 24 24" fill="none" stroke="'+palette[i]+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[i]+'</svg>';
+  function heading(selector,lead,focus){
+    const emphasis=document.createElement("em");
+    emphasis.textContent=String(focus);
+    one(selector).append(document.createTextNode(String(lead).trimEnd()+" "),emphasis);
+  }
+  heading(".opening",inputs.firstLead??"Conecte suas",inputs.firstFocus??"fontes.");
+  heading(".closing",inputs.lastLead??"Rode o agente",inputs.lastFocus??"em um clique.");
+  copy(".summary","summary","Seis fontes prontas para usar.");
+  const sources=names.map((name,i)=>{
+    const card=document.createElement("div");
+    card.className="source";
+    card.innerHTML='<p class="label"><span class="badge">'+symbol(i)+'</span><span></span></p><span class="state"></span>';
+    card.querySelector(".label span:last-child").textContent=String(name);
+    one(".grid").append(card);
+    const miniature=document.createElement("span");
+    miniature.className="mini";
+    miniature.innerHTML=symbol(i)+'<b>✓</b>';
+    one(".sources").append(miniature);
+    return {card,state:card.querySelector(".state"),miniature};
+  });
+
+  window.renderMotion=time=>{
+    const open=beat(time,.06,.52)*(1-flow(phase(time,3.38,.40)));
+    set(one(".opening"),{opacity:open,transform:"translateY("+(1-open)*18+"px)",filter:"blur("+(1-open)*9+"px)"});
+    let count=0;
+    sources.forEach(({card,state,miniature},i)=>{
+      const drop=beat(time,.43+i*.082,.39);
+      const gather=flow(phase(time,3.49+i*.018,.49));
+      const signal=beat(time,1.42+i*.25,.18);
+      const connected=signal>.5;
+      if(connected)count++;
+      const x=((i%3)-1)*527*(1-gather);
+      const y=((i<3?-1:1)*111+(1-drop)*-82)*(1-gather);
+      const press=Math.sin(Math.PI*phase(time,1.37+i*.25,.27));
+      set(card,{opacity:drop*(1-gather),transform:"translate("+x+"px,"+y+"px) scale("+mix(.94,1,drop)*mix(1,.54,gather)*(1-press*.027)+")",filter:"blur("+gather*10+"px)"});
+      state.textContent=connected ? "✓ Conectado" : "Conectar";
+      state.classList.toggle("on",connected);
+      const logoIn=beat(time,5.04+i*.085,.34);
+      set(miniature,{opacity:logoIn,transform:"translateY("+(1-logoIn)*24+"px) scale("+mix(.85,1,logoIn)+")"});
+    });
+    const meter=beat(time,.96,.33)*(1-flow(phase(time,3.23,.29)));
+    set(one(".progress"),{opacity:meter,transform:"translate(-50%,"+(1-meter)*16+"px)"});
+    one(".progress>span").textContent=count+" / 6 conectadas";
+    one(".progress i span").style.transform="scaleX("+(count/6)+")";
+    const close=beat(time,3.92,.54);
+    set(one(".closing"),{opacity:close,transform:"translateY("+(1-close)*30+"px)",filter:"blur("+(1-close)*7+"px)"});
+    const button=one(".button");
+    const buttonIn=beat(time,3.91,.39);
+    const click=Math.sin(Math.PI*phase(time,4.81,.27));
+    const live=time>=4.98;
+    button.querySelector("span").textContent=live ? String(inputs.confirmed??"✓ Agente em execução") : String(inputs.action??"Iniciar agente");
+    button.classList.toggle("live",live);
+    set(button,{opacity:buttonIn,transform:"scale("+mix(.88,1,buttonIn)*(1-click*.055)+")"});
+    const pulse=phase(time,4.99,.65);
+    set(one(".pulse"),{opacity:pulse>0 ? (1-pulse)*.75 : 0,transform:"translate(-50%,-50%) scale("+mix(.8,2.1,pulse)+")"});
+    const note=beat(time,5.61,.35);
+    set(one(".summary"),{opacity:note,transform:"translateY("+(1-note)*14+"px)"});
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

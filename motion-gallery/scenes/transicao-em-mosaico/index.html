@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Transição em Mosaico</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#161618; color:#f6f6f6; }
+.camera { position:absolute; inset:0; }
+.camera :is(video,img) { display:block; width:100%; height:100%; object-fit:cover; }
+.screen { position:absolute; inset:0; display:grid; grid-template-rows:repeat(6,1fr); grid-template-columns:repeat(10,1fr); }
+.tile { background:#29292d; border:1px solid #5c5c665c; }
+.title-panel { position:absolute; inset:0; display:grid; place-content:center; gap:22px; text-align:center; background:radial-gradient(ellipse at 48% 75%,#33333a,#19191d 73%); }
+.title-panel::before { content:""; position:absolute; inset:0; opacity:.23; mix-blend-mode:soft-light; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath d='M0 0h150v150H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.title-panel h1 { max-width:1570px; font-size:132px; }
+.mark { color:#c4cee1; font-size:33px; letter-spacing:.12em; text-transform:uppercase; }
+</style>
+</head>
+<body>
+<main data-composition-id="transicao-em-mosaico" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+<div class="camera"><!-- motion-media:presenter:0:6.8:0 --></div>
+<div class="screen" aria-hidden="true"></div>
+<section class="title-panel"><p class="mark"></p><h1 class="display"></h1></section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".title-panel h1","statement","Dê contexto ao agente.");
+copy(".mark","markText","Prompt");
+const panel=one(".title-panel");
+const tiles=Array.from({length:60},(_,index)=>{
+  const tile=document.createElement("i");
+  tile.className="tile";
+  one(".screen").append(tile);
+  const d=Math.abs(index%10-4.5)+Math.abs(Math.floor(index/10)-2.5);
+  return {tile,d};
+});
+window.renderMotion = time => {
+  const show=flow(phase(time,1.56,.24));
+  const dismiss=flow(phase(time,3.35,.30));
+  set(panel,{opacity:show*(1-dismiss),visibility:time<1.56||time>=3.65?"hidden":"visible"});
+  tiles.forEach(({tile,d})=>{
+    const inbound=flow(phase(time,.91+d*.071,.16));
+    const outbound=flow(phase(time,3.51+(7-d)*.072,.25));
+    tile.style.opacity=inbound*(1-outbound);
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

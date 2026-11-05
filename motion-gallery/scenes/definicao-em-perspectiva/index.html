@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Definição em Perspectiva</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 48% 68%, #333338 0%, #202025 53%, #111113 100%); color: #f5f5fa; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.old-group { position: absolute; top: 246px; left: 100px; right: 100px; text-align: center; }
+.old-group h1 { font-size: 144px; text-transform: uppercase; }
+.old { position: relative; display: inline-block; max-width: 1500px; margin-top: 31px; font-size: 65px; line-height: 1.1; color: #dedbe9; }
+.strike { position: absolute; inset: 51% 0 auto; height: 6px; border-radius: 12px; transform-origin: left center; background: #c8b6fd; box-shadow: 0 0 14px #c8b6fd5a; }
+.context { position: absolute; left: 389px; top: 283px; width: 1142px; height: 647px; display: block; object-fit: cover; object-position: center; border: 1px solid #e7ddff75; border-radius: 572px 572px 15px 15px / 345px 345px 15px 15px; box-shadow: 0 23px 62px #0a0a0cbf; }
+.new-group { position: absolute; top: 118px; left: 100px; right: 100px; text-align: center; }
+.eyebrow { margin-bottom: 16px; color: #c7b7f4; font-size: 27px; font-weight: 590; text-transform: uppercase; letter-spacing: .16em; }
+.new-group h2 { font-size: 84px; line-height: .99; }
+.term { position: absolute; top: 0; min-width: 122px; max-width: 365px; padding: 11px 21px 13px; border: 1px solid #e4d7ff7c; border-radius: 11px; background: #332e41; color: #f5efff; font-size: 40px; font-weight: 560; line-height: 1.08; box-shadow: 0 13px 27px #0b0a12a5; }
+</style>
+</head>
+<body>
+<main data-composition-id="definicao-em-perspectiva" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+  <div class="old-group">
+    <h1 class="display"></h1><p class="old"><span class="old-copy"></span><span class="strike" aria-hidden="true"></span></p>
+  </div>
+  <img class="context" src="assets/sintra.webp" alt="Paisagem de Sintra e Palácio da Pena">
+  <div class="new-group"><p class="eyebrow">Nova definição</p><h2 class="display"></h2></div>
+  <div class="terms"></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+  const oldGroup = one(".old-group");
+  const newGroup = one(".new-group");
+  const strike = one(".strike");
+  const context = one(".context");
+  copy("h1", "headline", "Pesquisa com IA");
+  copy(".old-copy", "oldDefinition", "Encontrar uma resposta");
+  copy(".new-group h2", "newDefinition", "Construir uma resposta verificável");
+  if (inputs.contextImage) {
+    context.src = inputs.contextImage;
+    context.alt = "";
+  }
+  const labels = Array.isArray(inputs.relatedTerms) && inputs.relatedTerms.length <= 4 &&
+    inputs.relatedTerms.every(label => typeof label === "string" && label.trim()) ? inputs.relatedTerms :
+    ["Fonte", "Data", "Contexto", "Evidência"];
+  const anchors = [[338, 455], [1488, 492], [316, 720], [1455, 751]];
+  const terms = labels.map((label, index) => {
+    const node = document.createElement("p");
+    node.className = "term";
+    node.textContent = label;
+    node.style.left = anchors[index][0] + "px";
+    node.style.top = anchors[index][1] + "px";
+    one(".terms").append(node);
+    return node;
+  });
+
+  window.renderMotion = time => {
+    const opening = beat(time, .16, .39);
+    const clear = flow(phase(time, 1.72, .25));
+    set(oldGroup, { opacity: opening * (1 - clear),
+      transform: "translateY(" + (25 * (1 - opening) - 17 * clear) + "px)" });
+    strike.style.transform = "scaleX(" + flow(phase(time, .9, .24)) + ")";
+    const picture = beat(time, 1.93, .65);
+    set(context, { opacity: picture, transform: "translateY(" + 808 * (1 - picture) + "px)" });
+    const explain = beat(time, 2.28, .37);
+    set(newGroup, { opacity: explain, transform: "translateY(" + 22 * (1 - explain) + "px)" });
+    terms.forEach((term, index) => {
+      const enter = beat(time, 3.05 + index * .22, .33);
+      const distance = (index % 2 === 0 ? -1 : 1) * 24 * (1 - enter);
+      set(term, { opacity: enter, transform: "translateX(" + distance + "px)" });
+    });
+  };
+  window.renderMotion(0);
+</script>
+</body>
+</html>

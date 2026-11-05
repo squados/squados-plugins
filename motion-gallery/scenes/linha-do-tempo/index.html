@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Linha do Tempo</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f4f3f7; background: radial-gradient(ellipse at 54% 70%, #303034, #202024 56%, #111114); }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .29; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h144v144H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.timeline { position: absolute; inset: 0 110px; }
+.track { position: absolute; left: 0; right: 0; top: 535px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, #a394c843, #cabaffba 22%, #d0bfffbb 77%, #a394c838); transform-origin: left; }
+.list { position: absolute; inset: 0 24px; display: grid; }
+.milestone { position: relative; text-align: center; }
+.date, .caption { position: absolute; left: 18px; right: 18px; }
+.date { bottom: 601px; color: #f4efff; font-size: var(--date, 100px); }
+.caption { top: 596px; color: #dbd5e8; font-size: var(--caption, 42px); line-height: 1.08; }
+.pin { position: absolute; left: 50%; top: 536px; width: 52px; height: 52px; margin: -26px; transform-origin: center; }
+.pin::before, .pin::after { content: ""; position: absolute; border-radius: 50%; }
+.pin::before { inset: 0; border: 1px solid #d3bfff52; background: #c6a9ff1a; box-shadow: 0 0 36px #ac81e850; }
+.pin::after { inset: 15px; border: 3px solid #e4d7ff; background: #9b77d4; }
+.tick { position: absolute; left: calc(50% - .5px); top: 495px; width: 1px; height: 82px; background: #cbb5ef66; }
+</style>
+</head>
+<body>
+<main data-composition-id="linha-do-tempo" data-start="0" data-duration="6.6" data-width="1920" data-height="1080">
+  <div class="timeline">
+    <div class="track"></div>
+    <div class="list"></div>
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const defaults = [
+  ["Dia 1", "Protótipo do agente"],
+  ["Dia 7", "Piloto com a equipe"],
+  ["Dia 21", "Publicação do fluxo"]
+];
+const proposed = Array.isArray(inputs.milestones) ? inputs.milestones.filter(item => Array.isArray(item) && item.length >= 2).slice(0, 5) : [];
+const milestones = proposed.length ? proposed : defaults;
+one(".list").style.gridTemplateColumns = "repeat(" + milestones.length + ", minmax(0, 1fr))";
+if (milestones.length > 3) {
+  stage.style.setProperty("--date", milestones.length === 5 ? "64px" : "78px");
+  stage.style.setProperty("--caption", "35px");
+}
+const parts = milestones.map(([dateText, captionText]) => {
+  const item = document.createElement("div");
+  item.className = "milestone";
+  const date = document.createElement("h2");
+  date.className = "date display";
+  date.textContent = dateText;
+  const tick = document.createElement("div");
+  tick.className = "tick";
+  const pin = document.createElement("div");
+  pin.className = "pin";
+  const caption = document.createElement("p");
+  caption.className = "caption";
+  caption.textContent = captionText;
+  item.append(date, tick, pin, caption);
+  one(".list").append(item);
+  return { date, tick, pin, caption };
+});
+window.renderMotion = time => {
+  one(".track").style.transform = "scaleX(" + beat(time, .10, .79) + ")";
+  const spacing = parts.length > 3 ? .61 : .82;
+  parts.forEach(({ date, tick, pin, caption }, i) => {
+    const start = .76 + spacing * i;
+    const dot = beat(time, start, .36);
+    const dateIn = beat(time, start + .07, .48);
+    const captionIn = beat(time, start + .23, .46);
+    set(tick, { opacity: dot, transform: "scaleY(" + dot + ")" });
+    set(pin, { opacity: dot, transform: "scale(" + (mix(.44, 1, dot) + .11 * Math.sin(dot * Math.PI)) + ")" });
+    set(date, { opacity: dateIn, transform: "translateY(" + (1 - dateIn) * 28 + "px)" });
+    set(caption, { opacity: captionIn, transform: "translateY(" + (1 - captionIn) * -19 + "px)" });
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

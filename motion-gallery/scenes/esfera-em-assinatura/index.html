@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Esfera em Assinatura</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #f4f7fb; background: radial-gradient(ellipse at 48% 81%, #2c2e34, #1b1c21 57%, #101014); }
+main::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .24; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.ring { position: absolute; inset: 0; }
+.dot {
+  position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%;
+  background: linear-gradient(155deg, #b0d5ff, #5d94e7 66%, #4076c6); box-shadow: 0 0 20px #85b7f844;
+}
+.orb {
+  position: absolute; left: 0; top: 0; width: 400px; height: 400px; overflow: hidden; border-radius: 50%;
+  background: radial-gradient(circle at 28% 19%, #f6fbff 0%, #dce8f9 16%, #aebbd3 39%, #717e97 67%, #3f4b64 84%, #8299be 100%);
+  border: 2px solid #cad8ec; box-shadow: inset 0 0 55px #c6dfff37, 0 22px 61px #080b14b8;
+}
+.orb svg { display: block; width: 100%; height: 100%; }
+.wordmark { position: absolute; left: 884px; top: 355px; right: 175px; font-size: 184px; font-weight: 680; letter-spacing: -.054em; }
+.tagline { position: absolute; left: 210px; right: 210px; top: 657px; text-align: center; font-size: 55px; letter-spacing: -.025em; }
+.action {
+  position: absolute; top: 784px; left: 50%; display: flex; align-items: center; justify-content: center; gap: 14px;
+  min-height: 73px; padding: 0 25px; border: 1px solid #a7ccff; border-radius: 99px;
+  color: #f5faff; background: linear-gradient(150deg, #4b83df, #315fc4);
+  box-shadow: 0 22px 54px #0a1536ad; font-size: 29px; font-weight: 610;
+}
+.action svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+</head>
+<body>
+<main data-composition-id="esfera-em-assinatura" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+  <div class="ring" aria-hidden="true"></div>
+  <div class="orb" aria-hidden="true" data-layout-allow-overflow>
+    <svg viewBox="0 0 400 400">
+      <g class="orb-grid" fill="none" stroke="#e1eaff" stroke-width="3" opacity=".56">
+        <ellipse cx="200" cy="200" rx="111" ry="198"/><ellipse cx="200" cy="200" rx="55" ry="198"/>
+        <path d="M2 200h396M22 109q178 101 356 0M22 290q178-101 356 0M70 46q130 70 260 0M70 354q130-70 260 0"/>
+      </g>
+      <g class="orb-reflection" fill="#6494db">
+        <rect x="204" y="101" width="62" height="51" rx="9" opacity=".67"/>
+        <rect x="95" y="232" width="47" height="42" rx="8" opacity=".62"/>
+        <rect x="276" y="252" width="40" height="34" rx="6" opacity=".39"/>
+      </g>
+    </svg>
+  </div>
+  <h1 class="wordmark display"></h1>
+  <p class="tagline"></p>
+  <div class="action"><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".wordmark", "brand", "sinal");
+copy(".tagline", "tagline", "Dê contexto às suas ideias.");
+copy(".action span", "cta", "Abrir o agente");
+const ring = one(".ring");
+const total = 12;
+const center = [688, 456];
+const radius = 115;
+const joiningIndex = 7;
+const dots = Array.from({ length: total }, (_, index) => {
+  const dot = document.createElement("i");
+  dot.className = "dot";
+  ring.append(dot);
+  return { dot, angle: index * (2 * Math.PI / total) - Math.PI / 2 };
+});
+const orb = one(".orb");
+const grid = one(".orb-grid");
+const reflection = one(".orb-reflection");
+const wordmark = one(".wordmark");
+const tagline = one(".tagline");
+const action = one(".action");
+
+function curve(a, b, c, t) {
+  return (1 - t) ** 2 * a + 2 * (1 - t) * t * b + t ** 2 * c;
+}
+
+window.renderMotion = time => {
+  const join = beat(time, 1.54, .29);
+  dots.forEach(({ dot, angle }, index) => {
+    const show = beat(time, .13 + index * .031, .37);
+    const pulse = .045 * Math.sin((time * 2 + index) * Math.PI / 3);
+    const theta = angle - .47 * (1 - beat(time, .10, 1.10));
+    const spread = mix(radius + 39, radius, show);
+    const dotScale = (.83 + (index % 3) * .095 + pulse) * mix(.38, 1, show);
+    const x = center[0] + Math.cos(theta) * spread;
+    const y = center[1] + Math.sin(theta) * spread;
+    set(dot, {
+      opacity: index === joiningIndex ? show * join : show,
+      transform: "translate(" + (x - 15) + "px," + (y - 15) + "px) scale(" + dotScale + ")"
+    });
+  });
+
+  const destination = dots[joiningIndex].angle;
+  const endX = center[0] + Math.cos(destination) * radius;
+  const endY = center[1] + Math.sin(destination) * radius;
+  const enter = phase(time, .39, .76);
+  const settle = flow(phase(time, 1.15, .58));
+  const orbX = time < 1.15 ? curve(-313, -161, 358, enter) : curve(358, 512, endX, settle);
+  const orbY = time < 1.15 ? curve(-362, 293, 700, enter) : curve(700, 671, endY, settle);
+  const shrink = mix(2.13, .87, flow(enter)) * mix(1, .082, settle);
+  set(orb, {
+    opacity: time >= .39 ? 1 - beat(time, 1.63, .18) : 0,
+    transform: "translate(" + (orbX - 200) + "px," + (orbY - 200) + "px) scale(" + shrink + ")"
+  });
+  grid.setAttribute("transform", "rotate(" + mix(-26, 22, enter) + " 200 200)");
+  reflection.setAttribute("transform", "translate(" + mix(25, 1, settle) + " " + mix(-10, 8, enter) + ")");
+
+  const brandIn = beat(time, 1.45, .60);
+  set(wordmark, {
+    opacity: brandIn,
+    clipPath: "inset(-12% " + 100 * (1 - brandIn) + "% -13% -8%)",
+    transform: "translateX(" + -29 * (1 - brandIn) + "px)"
+  });
+  const lineIn = beat(time, 3.59, .72);
+  set(tagline, { opacity: lineIn, transform: "translateY(" + 23 * (1 - lineIn) + "px)", filter: "blur(" + 10 * (1 - lineIn) + "px)" });
+  const buttonIn = beat(time, 4.09, .56);
+  set(action, { opacity: buttonIn, transform: "translate(-50%," + 18 * (1 - buttonIn) + "px) scale(" + mix(.93, 1, buttonIn) + ")" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

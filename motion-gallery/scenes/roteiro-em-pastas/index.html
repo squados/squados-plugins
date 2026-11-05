@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Roteiro em Pastas</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: radial-gradient(ellipse at 48% 81%,#323237,#1d1d20 54%,#111113 100%); color:#f6f6f7; }
+main::before { content:""; position:absolute; inset:0; z-index:-1; opacity:.26; mix-blend-mode:soft-light; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h150v150H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.title,.closing { position:absolute; inset:0; display:grid; place-items:center; text-align:center; font-size:94px; pointer-events:none; }
+.closing { bottom:auto; top:162px; font-size:78px; }
+.status { position:absolute; z-index:6; left:50%; top:112px; transform:translateX(-50%); display:flex; align-items:center; gap:12px; padding:11px 22px; border:1px solid #646978; border-radius:99px; background:#282b34; color:#e9eef8; font-size:30px; }
+.status::before { content:""; width:12px; height:12px; border-radius:100%; background:#b6d7fb; }
+.folders { position:absolute; inset:0; pointer-events:none; }
+.folder { position:absolute; width:446px; height:245px; left:calc(204px + var(--col)*533px); top:597px; }
+.back,.front { position:absolute; inset:0; border-radius:25px; border:1px solid #606575; }
+.back { background:linear-gradient(150deg,#414754,#30333d); }
+.back::before { content:""; position:absolute; width:156px; height:43px; left:-1px; top:-30px; border-radius:17px 22px 0 0; border:1px solid #606575; border-bottom:0; background:#414754; }
+.front { z-index:4; top:62px; background:linear-gradient(160deg,#4a515f,#30343f 77%); box-shadow:0 18px 46px #0a0a0b74; }
+.caption { position:absolute; left:0; right:0; top:268px; text-align:center; font-size:39px; }
+.caption strong { display:block; font-weight:560; }
+.caption small { display:block; color:#b5c9e1; font-size:27px; margin-top:6px; font-variant-numeric:tabular-nums; }
+.cards { position:absolute; inset:0; z-index:3; pointer-events:none; }
+.card { position:absolute; left:0; top:0; width:245px; height:138px; border:1px solid #d2def19e; border-radius:13px; background-position:var(--x) var(--y); background-size:300% 300%; background-repeat:no-repeat; box-shadow:0 11px 24px #0007; transform-origin:center; }
+</style>
+</head>
+<body>
+<main data-composition-id="roteiro-em-pastas" data-start="0" data-duration="8.8" data-width="1920" data-height="1080" data-atlas="../motion-assets/portugal-thumbnails.webp">
+  <h1 class="title display"></h1>
+  <p class="closing display"></p>
+  <p class="status"></p>
+  <div class="folders"></div>
+  <div class="cards"></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".title","title","Organize as fotos da viagem.");
+copy(".closing","summary","Roteiro pronto para revisar.");
+const folderNames = Array.isArray(inputs.folders) && inputs.folders.length === 3 ? inputs.folders : ["Praias","Mirantes","Cidades"];
+const art = new URL(inputs.sheet ?? stage.dataset.atlas,document.baseURI).href;
+const photoIndices = [0,1,2,0,3,4,5,3,6,7,8,6];
+const pile = [[575,244,-12],[761,332,9],[957,202,7],[1124,290,12],[550,405,5],[761,175,-6],[915,331,-11],[1137,416,6],[632,518,4],[826,465,-9],[1000,487,8],[1199,246,-11]];
+const order = [4,0,8,5,1,9,6,2,10,3,7,11];
+const tiles = photoIndices.map(artIndex => {
+  const tile = document.createElement("div");
+  tile.className="card";
+  tile.style.setProperty("--x",(artIndex%3)*50+"%");
+  tile.style.setProperty("--y",Math.floor(artIndex/3)*50+"%");
+  tile.style.backgroundImage='url("' + art + '")';
+  one(".cards").append(tile);
+  return tile;
+});
+const folders = folderNames.map((label,index) => {
+  const folder = document.createElement("div");
+  folder.className="folder";
+  folder.style.setProperty("--col",index);
+  folder.innerHTML='<div class="back"></div><div class="front"></div><div class="caption"><strong></strong><small></small></div>';
+  folder.querySelector("strong").textContent=label;
+  one(".folders").append(folder);
+  return {back:folder.querySelector(".back"),front:folder.querySelector(".front"),caption:folder.querySelector(".caption"),count:folder.querySelector("small")};
+});
+const departures = [3.65,4.62,5.60];
+window.renderMotion = time => {
+  const showTitle=beat(time,.12,.45);
+  const clearTitle=flow(phase(time,1.28,.41));
+  set(one(".title"),{opacity:showTitle*(1-clearTitle),transform:"translateY(" + ((1-showTitle)*30-clearTitle*65) + "px)"});
+  const finish=beat(time,6.98,.52);
+  set(one(".closing"),{opacity:finish,transform:"translateY(" + (1-finish)*23 + "px)"});
+  const status=one(".status");
+  status.textContent=time<3.3 ? "12 fotos recebidas" : "Separando por lugar";
+  status.style.opacity=beat(time,1.70,.35)*(1-flow(phase(time,6.58,.30)));
+  const filled = [0,0,0];
+  tiles.forEach((tile,index) => {
+    const group=Math.floor(index/4);
+    const within=index%4;
+    const [pileX,pileY,pileTilt]=pile[order[index]];
+    const pop=beat(time,1.53+(index%7)*.081,.49);
+    const flight=flow(phase(time,departures[group]+within*.115,.55));
+    const rise=Math.sin(Math.PI*flight);
+    const packedX=210+group*533+within*89;
+    const packedY=544+(within%2)*11;
+    const x=mix(pileX+(1-pop)*44,packedX,flight);
+    const y=mix(pileY+(1-pop)*83,packedY,flight)-85*rise;
+    const size=mix(mix(.79,1,pop),.70,flight);
+    const angle=mix(pileTilt+(1-pop)*16,[-13,-5,5,12][within],flight);
+    tile.style.opacity=pop;
+    tile.style.transform="translate(" + x + "px," + y + "px) rotate(" + angle + "deg) scale(" + size + ")";
+    if(flight>=1) filled[group]++;
+  });
+  folders.forEach(({back,front,caption,count},index)=>{
+    const show=beat(time,3.01+index*.11,.47);
+    const move="translateY(" + (1-show)*51 + "px)";
+    set(back,{opacity:show,transform:move});
+    set(front,{opacity:show,transform:move});
+    set(caption,{opacity:show,transform:move});
+    count.textContent=filled[index]===1 ? "1 foto" : filled[index]+" fotos";
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

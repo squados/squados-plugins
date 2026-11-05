@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Ideia em Espectro</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:radial-gradient(ellipse at 50% 76%,#26262b,#101013 76%); color:#f4f5f8; }
+.picture { position:absolute; width:100%; height:100%; object-fit:cover; filter:brightness(.68) saturate(.91); }
+.stage-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+.caption,.close { position:absolute; left:100px; right:100px; text-align:center; }
+.caption { bottom:108px; font-size:53px; }
+.close { top:172px; font-size:100px; }
+.formats { position:absolute; inset:500px 0 auto; }
+.format { display:flex; align-items:center; height:67px; padding:0 175px; font-size:35px; color:#161d2a; font-weight:640; }
+.format:nth-last-child(-n+3) { color:#f6f8fd; }
+</style>
+</head>
+<body>
+<main data-composition-id="ideia-em-espectro" data-start="0" data-duration="7.8" data-width="1920" data-height="1080">
+  <img class="picture" src="porto.webp" alt="">
+  <!-- motion-media:photo:0:1.45:0 -->
+  <svg class="stage-svg" viewBox="0 0 1920 1080" aria-hidden="true">
+    <defs>
+      <radialGradient id="starLight"><stop stop-color="#fbfdff"/><stop offset=".16" stop-color="#d4e4ff"/><stop offset="1" stop-color="#a2bdff" stop-opacity="0"/></radialGradient>
+      <linearGradient id="prismGlass" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#c9d9ff" stop-opacity=".24"/><stop offset="1" stop-color="#9bb3fa" stop-opacity=".02"/></linearGradient>
+      <filter id="beamBlur"><feGaussianBlur stdDeviation="11"/></filter>
+    </defs>
+    <g class="spark">
+      <circle cx="1030" cy="455" r="260" fill="url(#starLight)"/>
+      <path d="M1030 354q14 82 87 101-75 18-87 101-14-82-87-101 73-19 87-101z" fill="#fff"/>
+    </g>
+    <g class="network">
+      <g class="traces"></g>
+      <circle cx="960" cy="440" r="129" fill="url(#starLight)"/>
+      <circle cx="960" cy="440" r="28" fill="#e2ecfd"/>
+      <path class="branch" d="M960 440q-32 76-4 137l-22 91 44 68-48 85 34 72-27 72" fill="none" stroke="#b8d2fc" stroke-width="15" stroke-linecap="round"/>
+    </g>
+    <g class="weather">
+      <path fill="#363b49" d="M0 451q148-88 274-10 68-92 187-59 99-154 273-50 99-112 265-87 142 11 200 121 142-111 287-13 97-68 204 15 90-43 230 17v635H0z"/>
+      <path fill="#292d37" d="M0 691q213-153 372-78 122-87 246-9 174-152 340-8 116-101 300-22 165-120 357-9 174-55 305 39v416H0z"/>
+      <path d="m990 320-68 182 96 77-48 112 90 106-58 168" fill="none" stroke="#81aaff" stroke-width="17" stroke-linejoin="round" filter="url(#beamBlur)"/>
+      <path d="m990 320-68 182 96 77-48 112 90 106-58 168" fill="none" stroke="#e8eeff" stroke-width="6" stroke-linejoin="round"/>
+    </g>
+    <g class="optics">
+      <path class="ray-glow" fill="none" stroke="#a4c7ff" stroke-width="22" filter="url(#beamBlur)"/>
+      <path class="ray" fill="none" stroke="#f4f6ff" stroke-width="5"/>
+      <path class="glass" d="m970 284-259 462h518z" fill="url(#prismGlass)" stroke="#c2d3f7" stroke-width="3"/>
+      <g class="colors"></g>
+    </g>
+  </svg>
+  <p class="caption"></p>
+  <h1 class="close display"></h1>
+  <div class="formats"></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const overlay = document.querySelector("#motion-media-photo");
+const picture = overlay ?? one(".picture");
+if (overlay) {
+  one(".picture").style.display="none";
+  overlay.classList.add("picture");
+}
+const words = Array.isArray(inputs.formats) && inputs.formats.length===7
+  ? inputs.formats : ["Post","Roteiro","Vídeo","Aula","E-mail","Artigo","Anúncio"];
+const palette=["#eaf2fa","#d2dfec","#b9c7db","#a5caff","#667f9e","#445771","#29364b"];
+const path = d => {
+  const el=document.createElementNS("http://www.w3.org/2000/svg","path");
+  el.setAttribute("d",d);
+  return el;
+};
+const spectrum=palette.map((color,index)=>{
+  const beam=path("");
+  beam.setAttribute("fill",color);
+  one(".colors").append(beam);
+  const label=document.createElement("p");
+  label.className="format";
+  label.style.background=color;
+  label.textContent=words[index];
+  one(".formats").append(label);
+  return {beam,label};
+});
+const traces=Array.from({length:17},(_,index)=>{
+  const a=(index-8)*.249-1.58;
+  const x=960+Math.cos(a)*470;
+  const y=440+Math.sin(a)*340;
+  const branch=path("M960 440 Q "+(960+Math.cos(a+.19)*140)+" "+(440+Math.sin(a+.19)*135)+" "+x+" "+y+" m0 0l"+(Math.cos(a+.4)*130)+" "+(Math.sin(a+.4)*96));
+  branch.setAttribute("fill","none");
+  branch.setAttribute("stroke","#c4d2e8");
+  branch.setAttribute("stroke-width",String(1.8+(index%4)));
+  branch.setAttribute("pathLength","1");
+  one(".traces").append(branch);
+  return branch;
+});
+copy(".caption","caption","Tudo começa com uma ideia.");
+copy(".close","headline","Uma pauta, vários formatos.");
+window.renderMotion = time => {
+  const flash=beat(time,.70,.31);
+  const iris=flow(phase(time,1.04,.32));
+  const burst=1-flow(phase(time,1.09,.29));
+  picture.style.opacity=1-iris;
+  set(one(".spark"),{opacity:flash*burst,transform:"translate(1030px,455px) scale("+mix(.18,1.65,flash)+") translate(-1030px,-455px)"});
+  const branches=beat(time,1.10,.43);
+  const weather=flow(phase(time,2.79,.24))*(1-flow(phase(time,3.40,.27)));
+  const pull=flow(phase(time,1.45,1.19));
+  set(one(".network"),{opacity:branches*(1-flow(phase(time,2.76,.34))),transform:"translate(960px,440px) scale("+mix(1.56,.93,pull)+") translate(-960px,-440px)"});
+  traces.forEach((line,index)=>{
+    const drawn=beat(time,1.09+(index%4)*.04,.45);
+    set(line,{strokeDasharray:"1",strokeDashoffset:1-drawn});
+  });
+  one(".weather").style.opacity=weather;
+  one(".caption").style.opacity=beat(time,1.76,.31)*(1-flow(phase(time,3.38,.25)));
+  const optics=beat(time,3.59,.45);
+  const flatten=flow(phase(time,5.55,.58));
+  const split=flow(phase(time,4.11,.44));
+  const laser="M0 566 H"+1020*beat(time,3.66,.45);
+  one(".ray").setAttribute("d",laser);
+  one(".ray-glow").setAttribute("d",laser);
+  set(one(".optics"),{opacity:optics*(1-flow(phase(time,6.12,.27)))});
+  one(".glass").style.opacity=1-flatten;
+  spectrum.forEach(({beam,label},index)=>{
+    const y1=mix(566,421+index*67,split);
+    const y2=mix(566,421+(index+1)*67,split);
+    const left=mix(1020,0,flatten);
+    const right=mix(1020,1920,split);
+    const top=mix(566,500+index*67,flatten);
+    const bottom=mix(566,500+(index+1)*67,flatten);
+    beam.setAttribute("d","M"+left+" "+top+" L"+right+" "+mix(y1,top,flatten)+" L"+right+" "+mix(y2,bottom,flatten)+" L"+left+" "+bottom+"z");
+    label.style.opacity=beat(time,6.15+index*.035,.37);
+  });
+  one(".close").style.opacity=beat(time,6.08,.5);
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

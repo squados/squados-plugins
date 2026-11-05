@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Edição em Andamento</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="preload" href="art/cabo-da-roca.webp" as="image">
+<link rel="preload" href="art/marinha.webp" as="image">
+<link rel="preload" href="art/sintra.webp" as="image">
+<link rel="preload" href="art/porto.webp" as="image">
+<style>
+main { color: #f5f7fb; background: radial-gradient(ellipse at 48% 80%, #2c2e34, #1b1c21 58%, #101014); }
+main::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .24; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.opening { position: absolute; inset: 438px 100px auto; text-align: center; }
+.opening h1 { font-size: 83px; margin-top: 19px; }
+.opening span { display: inline-block; font-size: 26px; border: 1px solid #677b99; background: #273346; color: #d5e6ff; padding: 8px 19px; border-radius: 99px; }
+.task-card, .workspace, .toast { border: 1px solid #596574; background: linear-gradient(146deg, #31353e, #22252d); box-shadow: 0 32px 74px #07090fb5; }
+.task-card { position: absolute; z-index: 5; left: 436px; top: 219px; width: 1048px; height: 630px; border-radius: 32px; padding: 31px 38px; transform-origin: left top; }
+.task-top { display: flex; align-items: center; gap: 21px; }
+.task-top h2 { min-width: 0; flex: 1; font-size: 45px; font-weight: 630; }
+.task-top .percent { font-size: 39px; color: #c7dfff; font-variant-numeric: tabular-nums; }
+.bot-mark, .toast-mark { display: grid; place-items: center; flex: none; border: 1px solid #a2cbff; background: #396ecc; color: #f1f8ff; }
+.bot-mark { width: 61px; height: 61px; border-radius: 16px; }
+.bot-mark svg, .toast-mark svg, .step-mark svg { fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+.bot-mark svg { width: 36px; height: 36px; }
+.progress { height: 10px; margin: 27px 0 30px; overflow: hidden; border-radius: 99px; background: #566073; }
+.progress i { display: block; width: 100%; height: 100%; transform-origin: left; background: linear-gradient(90deg, #5489e8, #abd5ff); border-radius: inherit; }
+.steps { display: grid; gap: 23px; }
+.step { display: flex; align-items: center; gap: 21px; min-height: 69px; color: #c4ccda; font-size: 39px; line-height: 1.25; }
+.step-current { color: #c6e0ff; }
+.step-done { color: #f0f4ff; }
+.step-mark { display: grid; place-items: center; width: 52px; height: 52px; flex: none; border: 2px solid #8291a9; border-radius: 50%; color: #edf7ff; }
+.step-done .step-mark { border-color: #a2cbff; background: #3d73cf; }
+.step-mark svg { width: 30px; height: 30px; }
+.workspace { position: absolute; left: 70px; top: 52px; width: 1780px; height: 976px; overflow: hidden; border-radius: 28px; transform-origin: 1140px 535px; background: #24272e; }
+.editor-head { position: absolute; inset: 0 0 auto; height: 85px; display: flex; align-items: center; gap: 13px; padding: 0 27px; border-bottom: 1px solid #515968; font-size: 29px; background: #2d3039; }
+.editor-head .bot-mark { width: 39px; height: 39px; border-radius: 11px; }
+.editor-head .bot-mark svg { width: 23px; height: 23px; }
+.export { margin-left: auto; padding: 5px 16px; border: 1px solid #8cb8f7; border-radius: 10px; background: #396dcd; font-size: 24px; }
+.side { position: absolute; left: 0; top: 85px; bottom: 0; width: 555px; padding: 26px 31px; border-right: 1px solid #4a5261; background: #23262e; }
+.request { display: inline-block; padding: 13px 17px; border: 1px solid #606d81; border-radius: 15px; background: #323c4f; font-size: 27px; line-height: 1.25; }
+.ask-more { position: absolute; bottom: 25px; left: 31px; right: 31px; padding: 11px 16px; border: 1px solid #586477; border-radius: 13px; color: #c2ccda; background: #2b3340; font-size: 23px; }
+.preview { position: absolute; left: 1064px; top: 102px; width: 333px; height: 592px; overflow: hidden; border: 1px solid #7793b9; border-radius: 22px; background: #232b38; box-shadow: 0 20px 42px #0c0e15b8; }
+.preview img, .preview video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.preview .raw { filter: saturate(.45) brightness(.85); }
+.preview .graded { position: absolute; inset: 0; background: center / cover no-repeat; }
+.match-scan { position: absolute; top: 0; left: 0; right: 0; height: 91px; border-bottom: 2px solid #a7d2ff; background: linear-gradient(transparent, #74b2ff42); }
+.match-label { position: absolute; bottom: 19px; left: 15px; padding: 6px 11px; border-radius: 8px; background: #3268c8; color: #fff; font-size: 21px; }
+.timeline { position: absolute; left: 595px; right: 34px; top: 723px; }
+.timeline-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; color: #e3ebf8; font-size: 26px; }
+.timecode { font-size: 22px; font-variant-numeric: tabular-nums; color: #bccce3; }
+.clip-strip { display: grid; grid-template-columns: .9fr 1.18fr 1.08fr .92fr; gap: 6px; }
+.clip-card { min-width: 0; display: flex; align-items: center; gap: 10px; height: 60px; overflow: hidden; padding: 0 8px; border: 1px solid #5c6d89; border-radius: 10px; background: #303b50; color: #eaf1ff; font-size: 24px; }
+.clip-card img { width: 63px; height: 47px; flex: none; border-radius: 5px; object-fit: cover; }
+.clip-card .dummy { width: 57px; height: 45px; flex: none; border-radius: 5px; background: linear-gradient(145deg, #9ebeed, #365988); }
+.clip-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.audio-track { display: block; width: 100%; height: 56px; margin-top: 8px; padding: 6px; border-radius: 8px; background: #263754; }
+.audio-track path { fill: none; stroke: #82aeed; stroke-width: 2; stroke-linecap: round; }
+.playhead { position: absolute; top: 46px; bottom: -3px; left: 0; width: 3px; background: #b8deff; box-shadow: 0 0 10px #84c2ff9c; }
+.playhead::before { content: ""; position: absolute; top: -7px; left: -4px; width: 11px; height: 11px; border-radius: 50%; background: #c9e7ff; }
+.toast { position: absolute; z-index: 6; top: 115px; right: 107px; display: flex; align-items: center; gap: 12px; padding: 11px 18px 11px 11px; border-radius: 17px; color: #eaf3ff; font-size: 29px; }
+.toast-mark { width: 38px; height: 38px; border-radius: 50%; }
+.toast-mark svg { width: 24px; height: 24px; }
+</style>
+</head>
+<body>
+<main data-composition-id="edicao-em-andamento" data-start="0" data-duration="9.4" data-width="1920" data-height="1080">
+  <section class="opening"><span>Agente de edição</span><h1 class="display"></h1></section>
+  <section class="task-card" data-layout-allow-overflow>
+    <div class="task-top"><span class="bot-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z M8 10v4m8-4v4M8 6l2-3h4l2 3"/></svg></span><h2></h2><span class="percent"></span></div>
+    <div class="progress" aria-hidden="true"><i></i></div>
+    <div class="steps"></div>
+  </section>
+  <section class="workspace" data-layout-allow-overflow>
+    <div class="editor-head"><span class="bot-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z M8 10v4m8-4v4M8 6l2-3h4l2 3"/></svg></span><span class="project"></span><span class="export">Exportar</span></div>
+    <div class="side"><p class="request"></p><p class="ask-more">Pedir um ajuste…</p></div>
+    <div class="preview">
+      <img class="raw" src="art/cabo-da-roca.webp" alt=""><div class="graded" aria-hidden="true"></div>
+      <!-- motion-media:footage:5.02:4.38:0 -->
+      <i class="match-scan" aria-hidden="true"></i><span class="match-label">Cor ajustada</span>
+    </div>
+    <section class="timeline" data-layout-allow-overflow>
+      <div class="timeline-head"><span>Linha do tempo</span><span class="timecode"></span></div>
+      <div class="clip-strip"></div>
+      <svg class="audio-track" viewBox="0 0 1100 50" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+      <i class="playhead" aria-hidden="true"></i>
+    </section>
+  </section>
+  <div class="toast"><span class="toast-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><span></span></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".opening h1", "headline", "Peça o corte. O agente edita.");
+copy(".project", "project", "Viagem em 30 segundos");
+copy(".request", "request", "Monte um teaser vertical de 30 segundos.");
+copy(".toast span:last-child", "result", "Sua edição está pronta");
+const working = typeof inputs.working === "string" ? inputs.working : "Editando o vídeo";
+const done = typeof inputs.done === "string" ? inputs.done : "Edição concluída";
+const defaultSteps = ["Lendo o material", "Selecionando os trechos", "Ajustando o ritmo", "Corrigindo as cores"];
+const defaultClips = ["Abertura", "Praia", "Sintra", "Porto"];
+function list(input, fallback) {
+  return Array.isArray(input) && input.length === 4 && input.every(value => typeof value === "string") ? input : fallback;
+}
+const shots = ["cabo-da-roca", "marinha", "sintra", "porto"].map(name => "art/" + name + ".webp");
+const footage = one("#motion-media-footage");
+const steps = list(inputs.steps, defaultSteps).map(text => {
+  const row = document.createElement("div");
+  row.className = "step";
+  row.innerHTML = '<span class="step-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><span></span>';
+  row.lastElementChild.textContent = text;
+  one(".steps").append(row);
+  return { row, mark: row.querySelector("svg") };
+});
+const clips = list(inputs.clips, defaultClips).map((name, index) => {
+  const item = document.createElement("div");
+  item.className = "clip-card";
+  item.innerHTML = footage ? '<i class="dummy" aria-hidden="true"></i><span class="clip-name"></span>' : '<img alt=""><span class="clip-name"></span>';
+  if (!footage) item.firstElementChild.src = shots[index];
+  item.lastElementChild.textContent = name;
+  one(".clip-strip").append(item);
+  return item;
+});
+
+const waveform = Array.from({ length: 164 }, (_, index) => {
+  const height = 3 + 19 * Math.abs(Math.sin(index * 2.45) * Math.cos(index * .17));
+  return "M" + (index * 6.70 + 4) + " " + (25 - height) + "v" + height * 2;
+}).join(" ");
+one(".audio-track path").setAttribute("d", waveform);
+
+const opening = one(".opening");
+const card = one(".task-card");
+const title = one(".task-top h2");
+const percent = one(".percent");
+const progress = one(".progress i");
+const workspace = one(".workspace");
+const editorHead = one(".editor-head");
+const side = one(".side");
+const timeline = one(".timeline");
+const audioTrack = one(".audio-track");
+const timecode = one(".timecode");
+const playhead = one(".playhead");
+const raw = one(".raw");
+const graded = one(".graded");
+const scan = one(".match-scan");
+const matchLabel = one(".match-label");
+const toast = one(".toast");
+const checkTimes = [2.44, 3.02, 3.57, 4.27];
+let currentShot = -1;
+
+window.renderMotion = time => {
+  const intro = beat(time, .10, .70);
+  const introExit = flow(phase(time, 1.40, .50));
+  set(opening, {
+    opacity: intro * (1 - introExit),
+    transform: "translateY(" + (30 * (1 - intro) - 34 * introExit) + "px)",
+    filter: "blur(" + (11 * (1 - intro) + 9 * introExit) + "px)"
+  });
+  const begin = beat(time, 1.64, .59);
+  const dock = flow(phase(time, 4.82, .53));
+  const editorFocus = flow(phase(time, 7.62, .64));
+  set(card, {
+    opacity: begin * (1 - editorFocus),
+    transform: "translate(" + (-332 * dock) + "px," + (42 * (1 - begin) + 74 * dock) + "px) scale(" + (mix(.92, 1, begin) * mix(1, .47, dock)) + ")"
+  });
+  const complete = flow(phase(time, 1.84, 2.60));
+  progress.style.transform = "scaleX(" + complete + ")";
+  percent.textContent = Math.round(complete * 100) + "%";
+  title.textContent = time >= 4.44 ? done : working;
+  steps.forEach(({ row, mark }, index) => {
+    const ready = beat(time, 1.96 + index * .14, .39);
+    const check = beat(time, checkTimes[index], .33);
+    const active = time >= (index ? checkTimes[index - 1] : 1.85) && time < checkTimes[index];
+    set(row, { opacity: ready * (active || check > .01 ? 1 : .62), transform: "translateY(" + 17 * (1 - ready) + "px)" });
+    row.classList.toggle("step-current", active);
+    row.classList.toggle("step-done", check > .1);
+    set(mark, { opacity: check, transform: "scale(" + mix(.50, 1, check) + ")" });
+  });
+
+  const shell = beat(time, 4.83, .53);
+  set(workspace, {
+    opacity: shell,
+    transform: "translate(" + -277 * editorFocus + "px," + (31 * (1 - shell) - 13 * editorFocus) + "px) scale(" + (mix(.965, 1, shell) * mix(1, 1.14, editorFocus)) + ")"
+  });
+  editorHead.style.opacity = 1 - editorFocus;
+  side.style.opacity = 1 - editorFocus;
+  const timeIn = beat(time, 5.43, .43);
+  set(timeline, { opacity: timeIn, transform: "translateY(" + 24 * (1 - timeIn) + "px)" });
+  clips.forEach((clip, index) => {
+    const show = beat(time, 5.54 + index * .14, .29);
+    set(clip, { opacity: show, transform: "translateY(" + 11 * (1 - show) + "px)" });
+  });
+  const play = phase(time, 5.81, 3.50);
+  const seconds = Math.round(play * 30);
+  timecode.textContent = "00:" + String(seconds).padStart(2, "0") + " / 00:30";
+  playhead.style.left = play * 100 + "%";
+  audioTrack.style.opacity = beat(time, 5.88, .43);
+  const grading = flow(phase(time, 5.99, .61));
+  set(scan, { opacity: grading > 0 && grading < 1 ? 1 : 0, transform: "translateY(" + mix(-94, 589, grading) + "px)" });
+  matchLabel.style.opacity = beat(time, 6.45, .30);
+  if (footage) {
+    raw.style.visibility = "hidden";
+    graded.style.visibility = "hidden";
+    footage.style.filter = "saturate(" + mix(.46, 1, grading) + ") brightness(" + mix(.87, 1, grading) + ")";
+  } else {
+    const shot = Math.min(shots.length - 1, Math.floor(play * shots.length));
+    if (shot !== currentShot) {
+      raw.src = shots[shot];
+      graded.style.backgroundImage = "url(" + shots[shot] + ")";
+      currentShot = shot;
+    }
+    const shift = (play * 4 - shot) * 13;
+    raw.style.transform = "translateX(" + shift + "px) scale(1.09)";
+    graded.style.transform = raw.style.transform;
+    graded.style.clipPath = "inset(0 0 " + (100 * (1 - grading)) + "% 0)";
+  }
+  const completeToast = beat(time, 7.97, .44);
+  set(toast, { opacity: completeToast, transform: "translate(" + 28 * (1 - completeToast) + "px," + -11 * (1 - completeToast) + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

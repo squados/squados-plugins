@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Fontes no Prompt</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main {
+  color: #f4f6fa;
+  background: radial-gradient(ellipse at 49% 80%, #303136 0%, #1c1d20 57%, #101012 100%);
+}
+main::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .26; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.symbols { position: absolute; width: 0; height: 0; }
+.heading { position: absolute; inset: 160px 120px auto; text-align: center; font-size: 89px; }
+.world { position: absolute; inset: 0; transform-origin: 1609px 619px; }
+.tile {
+  position: absolute; top: 407px; width: 226px; height: 214px; padding: 30px 13px;
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px;
+  border: 2px solid #565d68; border-radius: 30px; color: #e7eaf2;
+  background: linear-gradient(150deg, #343944, #22252c);
+  box-shadow: 0 25px 54px #080a116b;
+  font-size: 31px; font-weight: 565;
+}
+.tile-name { max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.tile > svg, .chip > svg {
+  width: 64px; height: 64px; padding: 13px; border-radius: 19px;
+  color: var(--ink); background: var(--icon-bg); fill: none; stroke: currentColor;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+}
+.badge {
+  position: absolute; top: -18px; right: -18px; display: grid; place-items: center;
+  width: 46px; height: 46px; border-radius: 50%; border: 3px solid #d6e9ff;
+  background: #3a77d3; box-shadow: 0 6px 17px #1a437c9c;
+}
+.badge svg { width: 25px; height: 25px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.composer {
+  position: absolute; left: 248px; top: 400px; width: 1424px; height: 283px;
+  border: 2px solid #626a79; border-radius: 35px; color: #eef4ff;
+  background: linear-gradient(145deg, #2c303a, #23252d 80%);
+  box-shadow: 0 26px 70px #090b11a1;
+}
+.chip {
+  position: absolute; top: 26px; width: 160px; height: 50px; padding: 0 12px;
+  display: flex; align-items: center; gap: 9px; border-radius: 13px;
+  background: #8cbcff26; color: #dceaff; border: 1px solid #86b6fc59; font-size: 23px; font-weight: 560;
+}
+.chip > svg { flex: none; width: 26px; height: 26px; padding: 4px; border-radius: 7px; }
+.chip-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.prompt { position: absolute; top: 113px; left: 28px; right: 110px; font-size: 42px; line-height: 1.15; }
+.caret { display: inline-block; width: 3px; height: 39px; margin-left: 3px; vertical-align: -.14em; background: #a5ccff; }
+.send {
+  position: absolute; right: 24px; bottom: 25px; display: grid; place-items: center;
+  width: 78px; height: 78px; border-radius: 21px; border: 1px solid #99c8ff;
+  color: #f6fbff; background: linear-gradient(150deg, #4c8dee, #2859c1);
+  box-shadow: 0 10px 25px #111c3b8c;
+}
+.send svg { width: 42px; height: 42px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.ripple { position: absolute; inset: -5px; border: 2px solid #8abdff; border-radius: 25px; pointer-events: none; }
+.pointer {
+  position: absolute; top: 0; left: 0; width: 54px; height: 54px; z-index: 5;
+  overflow: visible; transform-origin: 8px 5px; filter: drop-shadow(0 6px 8px #0b0b0ec0);
+}
+.status {
+  position: absolute; left: 50%; top: 724px; width: max-content; max-width: 860px; min-height: 61px;
+  display: flex; align-items: center; gap: 14px; padding: 0 21px;
+  border: 1px solid #67778d; border-radius: 17px; background: #252c37;
+  font-size: 26px; font-weight: 510; color: #dceaff;
+}
+.spinner { width: 21px; height: 21px; border: 2px solid #7c9abc70; border-top-color: #b8dcff; border-radius: 50%; flex: none; }
+.progress { width: 112px; height: 7px; border-radius: 99px; background: #4b5669; overflow: hidden; }
+.progress i { display: block; width: 100%; height: 100%; border-radius: inherit; background: #94c3ff; transform-origin: left; }
+</style>
+</head>
+<body>
+<main data-composition-id="fontes-no-prompt" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="source-0" viewBox="0 0 24 24"><path d="M3 5.5 12 2l9 3.5L12 9 3 5.5Z M6 8v7c3.5 2 8.5 2 12 0V8 M21 5.5v8"/></symbol>
+    <symbol id="source-1" viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H5V3h2Z M14 3v5h5 M8 12h8 M8 16h6"/></symbol>
+    <symbol id="source-2" viewBox="0 0 24 24"><path d="M3 4h15v12H9l-4 3v-3H3V4Z M18 8h3v11h-3v2l-4-2h-3"/></symbol>
+    <symbol id="source-3" viewBox="0 0 24 24"><path d="M3 5c3-1 6-1 9 2 3-3 6-3 9-2v13c-3-1-6-1-9 2-3-3-6-3-9-2V5Z M12 7v13"/></symbol>
+    <symbol id="source-4" viewBox="0 0 24 24"><path d="M3 6h7l2 3h9v11H3V6Z M8 14h8 M8 17h5"/></symbol>
+    <symbol id="source-5" viewBox="0 0 24 24"><path d="M4 5h16v14H4V5Z M10 9l5 3-5 3V9Z"/></symbol>
+  </svg>
+  <h1 class="heading opening display"></h1>
+  <h2 class="heading compose display"></h2>
+  <h2 class="heading closing display"></h2>
+  <div class="world" data-layout-allow-overflow>
+    <div class="composer">
+      <p class="prompt"><span></span><i class="caret" aria-hidden="true"></i></p>
+      <span class="send" aria-hidden="true">
+        <i class="ripple"></i>
+        <svg viewBox="0 0 24 24"><path d="M12 18V6m-5 5 5-5 5 5"/></svg>
+      </span>
+    </div>
+    <div class="tiles"></div>
+    <svg class="pointer" aria-hidden="true" viewBox="0 0 50 50"><path d="m7 4 30 23-14 1-7 12L7 4Z" fill="#edf6ff" stroke="#152336" stroke-width="3" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="status">
+    <i class="spinner" aria-hidden="true"></i><span></span><i class="progress" aria-hidden="true"><i></i></i>
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".opening", "opening", "Escolha as fontes.");
+copy(".compose", "compose", "Agora, faça o pedido.");
+copy(".closing", "closing", "Um pedido, várias fontes.");
+copy(".status span", "status", "Organizando o plano de aula");
+
+const defaultSources = ["Aulas", "Notas", "Fórum", "Guias", "Projetos", "Vídeos"];
+const validSources = Array.isArray(inputs.sources) && inputs.sources.length === 6
+  && inputs.sources.every(name => typeof name === "string" && name.trim());
+const sources = validSources ? inputs.sources : defaultSources;
+const validSelected = Array.isArray(inputs.selected) && inputs.selected.length === 3
+  && new Set(inputs.selected).size === 3
+  && inputs.selected.every(index => Number.isInteger(index) && index >= 0 && index < sources.length);
+const selected = validSelected ? inputs.selected : [0, 2, 4];
+const prompt = typeof inputs.prompt === "string" ? inputs.prompt : "Monte um plano de aula sobre agentes de IA.";
+const glyphs = Array.from(prompt);
+const colors = [
+  ["#acd5ff", "#30486b"], ["#e6b8ff", "#4e3b5d"], ["#93ded5", "#254e50"],
+  ["#ffcb9f", "#5b4133"], ["#b9d9ff", "#364b6b"], ["#f8b9d4", "#523949"]
+];
+const tileOrigin = 202;
+const tileSpacing = 258;
+const tileCenterY = 514;
+const tapTimes = [1.57, 2.15, 2.73];
+
+function icon(index) {
+  return '<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#source-' + index + '"/></svg>';
+}
+function colorize(element, index) {
+  element.style.setProperty("--ink", colors[index][0]);
+  element.style.setProperty("--icon-bg", colors[index][1]);
+}
+
+const tiles = sources.map((name, index) => {
+  const tile = document.createElement("article");
+  tile.className = "tile";
+  tile.style.left = tileOrigin + tileSpacing * index + "px";
+  tile.innerHTML = icon(index) + '<span class="tile-name"></span><span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span>';
+  tile.querySelector(".tile-name").textContent = name;
+  colorize(tile, index);
+  one(".tiles").append(tile);
+  return { tile, badge: tile.querySelector(".badge"), rank: selected.indexOf(index) };
+});
+const chips = selected.map((index, rank) => {
+  const chip = document.createElement("span");
+  chip.className = "chip";
+  chip.style.left = 26 + 171 * rank + "px";
+  chip.innerHTML = icon(index) + '<span class="chip-name"></span>';
+  chip.querySelector(".chip-name").textContent = sources[index];
+  colorize(chip, index);
+  one(".composer").append(chip);
+  return chip;
+});
+
+const heading = one(".opening");
+const compose = one(".compose");
+const closing = one(".closing");
+const composer = one(".composer");
+const world = one(".world");
+const pointer = one(".pointer");
+const send = one(".send");
+const ripple = one(".ripple");
+const status = one(".status");
+const progress = one(".progress i");
+const spinner = one(".spinner");
+const promptText = one(".prompt span");
+const caret = one(".caret");
+const pointerTargets = selected.map(index => [tileOrigin + tileSpacing * index + 128, tileCenterY + 19]);
+const sendTarget = [1606, 615];
+
+window.renderMotion = time => {
+  const first = beat(time, .13, .57);
+  const switchScene = flow(phase(time, 3.03, .43));
+  const composing = beat(time, 3.35, .57);
+  const composeExit = flow(phase(time, 5.32, .42));
+  const ending = beat(time, 7.15, .54);
+  set(heading, { opacity: first * (1 - switchScene), transform: "translateY(" + (29 * (1 - first) - 32 * switchScene) + "px)" });
+  set(compose, { opacity: composing * (1 - composeExit), transform: "translateY(" + (25 * (1 - composing) - 44 * composeExit) + "px)" });
+  set(closing, { opacity: ending, transform: "translateY(" + 26 * (1 - ending) + "px)" });
+
+  tiles.forEach(({ tile, badge, rank }, index) => {
+    const entry = beat(time, .42 + index * .06, .70);
+    const marked = rank >= 0 ? beat(time, tapTimes[rank], .20) : 0;
+    const tap = rank >= 0 ? Math.sin(Math.PI * phase(time, tapTimes[rank], .23)) : 0;
+    const travel = rank >= 0 ? flow(phase(time, 3.08 + rank * .065, .81)) : 0;
+    const vanish = rank >= 0 ? beat(time, 3.62 + rank * .065, .29) : beat(time, 3.03 + index * .025, .38);
+    const fromX = tileOrigin + tileSpacing * index + 113;
+    const intoX = 248 + 26 + 80 + 171 * rank;
+    const travelX = rank >= 0 ? (intoX - fromX) * travel : 0;
+    const travelY = (451 - tileCenterY) * travel;
+    const scale = mix(.92, 1, entry) * mix(1, .30, travel) * (1 - .065 * tap);
+    set(tile, {
+      opacity: entry * (1 - vanish),
+      transform: "translate(" + travelX + "px," + (53 * (1 - entry) + travelY + (rank < 0 ? vanish * 29 : 0)) + "px) scale(" + scale + ")",
+      borderColor: "rgba(159, 202, 255, " + mix(.23, .93, marked) + ")",
+      zIndex: rank >= 0 ? "2" : "1"
+    });
+    set(badge, { opacity: marked, transform: "scale(" + mix(.63, 1, marked) + ")" });
+  });
+
+  const composerIn = beat(time, 3.13, .71);
+  set(composer, { opacity: composerIn, transform: "translateY(" + 65 * (1 - composerIn) + "px) scale(" + mix(.97, 1, composerIn) + ")" });
+  chips.forEach((chip, rank) => {
+    const join = beat(time, 3.72 + rank * .065, .35);
+    set(chip, { opacity: join, transform: "scale(" + mix(.83, 1, join) + ")" });
+  });
+
+  const typed = Math.floor(glyphs.length * flow(phase(time, 3.88, 1.39)));
+  promptText.textContent = glyphs.slice(0, typed).join("");
+  caret.style.opacity = time >= 3.83 && time < 5.42 && Math.floor((time - 3.83) * 4) % 2 === 0 ? 1 : 0;
+
+  let px = 1690;
+  let py = 905;
+  let tap = 0;
+  for (const [rank, [targetX, targetY]] of pointerTargets.entries()) {
+    const go = flow(phase(time, tapTimes[rank] - .44, .44));
+    px = mix(px, targetX, go);
+    py = mix(py, targetY, go);
+    tap += Math.sin(Math.PI * phase(time, tapTimes[rank], .21));
+  }
+  const firstPointer = beat(time, 1.06, .19) * (1 - beat(time, 2.92, .29));
+  const secondPointer = beat(time, 5.02, .22) * (1 - beat(time, 6.54, .18));
+  if (time >= 5.02) {
+    const returnToSend = flow(phase(time, 5.05, .60));
+    px = mix(1690, sendTarget[0], returnToSend);
+    py = mix(905, sendTarget[1], returnToSend);
+    tap = Math.sin(Math.PI * phase(time, 6.29, .22));
+  }
+  set(pointer, { opacity: Math.max(firstPointer, secondPointer), transform: "translate(" + px + "px," + py + "px) scale(" + (1 - .18 * tap) + ")" });
+
+  const zoom = flow(phase(time, 5.34, .90)) * (1 - flow(phase(time, 6.57, .87)));
+  const raise = -53 * flow(phase(time, 6.60, .86));
+  world.style.transform = "translate(" + -649 * zoom + "px," + (-79 * zoom + raise) + "px) scale(" + mix(1, 2.5, zoom) + ")";
+  const press = Math.sin(Math.PI * phase(time, 6.31, .28));
+  send.style.transform = "scale(" + (1 - .13 * press) + ")";
+  const wave = beat(time, 6.34, .57);
+  set(ripple, { opacity: time >= 6.34 ? .83 * (1 - wave) : 0, transform: "scale(" + mix(.95, 2.15, wave) + ")" });
+
+  const processing = beat(time, 7.04, .53);
+  set(status, { opacity: processing, transform: "translate(-50%," + 35 * (1 - processing) + "px)" });
+  spinner.style.transform = "rotate(" + 510 * phase(time, 7.04, .96) + "deg)";
+  progress.style.transform = "scaleX(" + .53 * beat(time, 7.15, .85) + ")";
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>
