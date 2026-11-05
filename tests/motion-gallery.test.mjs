@@ -27,7 +27,7 @@ test('curvas rápidas chegam ao estado final e a mola assenta após o rebote', (
 test('catálogo indexa o benchmark Skillry com slugs e páginas oficiais', () => {
   const { version, entries } = catalog
   assert.equal(version, 2)
-  assert.equal(entries.length, 332)
+  assert.equal(entries.length, 344)
   assert.equal(new Set(entries.map(entry => entry.id)).size, entries.length)
   const sourced = entries.filter(entry => entry.source)
   assert.equal(sourced.length, 331)
@@ -70,7 +70,20 @@ test('seleção principal contém 50 composições próprias em seis categorias'
   assert.deepEqual(core.map(group => group.ids.length), [9, 8, 10, 8, 9, 6])
   assert.equal(new Set(ids).size, 50)
   for (const id of ids) assert.ok(originals.has(id), id)
-  assert.equal(originals.size - ids.length, 11)
+  assert.equal(originals.size - ids.length, 23)
+})
+
+test('edição comparada tem um guia de reutilização e uma composição por efeito', () => {
+  const entries = catalog.entries.filter(entry => entry.category === 'Edição comparada')
+  assert.equal(entries.length, 12)
+  const inventory = read('comparativo-de-edicoes.md')
+  for (const { id, demo, seconds } of entries) {
+    assert.equal(demo.skill, 'scenes/' + id + '/SKILL.md')
+    assert.ok(read(demo.skill).split(/\r?\n/).includes('name: ' + id), id)
+    const composition = read(demo.composition)
+    assert.ok(composition.includes('data-duration="' + seconds + '"'), id)
+    assert.ok(inventory.includes('index.html#' + id + ')'), id)
+  }
 })
 
 test('HTML offline inclui o catálogo e carrega apenas o script da interface', () => {

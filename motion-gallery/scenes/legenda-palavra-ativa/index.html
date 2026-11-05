@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Legenda de Palavra Ativa</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/duelo.css">
+<style>
+.take { inset:0; }
+.caption { position:absolute; left:50%; bottom:122px; width:max-content; max-width:1500px; padding:15px 29px 17px; transform:translateX(-50%); border-radius:14px; text-align:center; background:#101316e8; color:#f7fbf8; font-size:62px; font-weight:660; line-height:1.09; text-shadow:0 3px 13px #0007; }
+.caption span { display:inline-block; margin:0 .14em; transform-origin:center 80%; }
+.caption [aria-current="true"] { color:var(--mint); }
+[data-layout="quente"] .caption { background:none; text-shadow:0 3px 4px #08080d,0 0 17px #08080d; }
+[data-layout="quente"] .caption [aria-current="true"] { color:var(--peach); }
+</style>
+</head>
+<body>
+<main data-composition-id="legenda-palavra-ativa" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+<div class="take"><!-- motion-media:presenter:0:6:0 --></div>
+<p class="caption"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+stage.dataset.layout=inputs.layout==="quente"?"quente":"tarja";
+const cues=inputs.cues ?? [
+  {start:.15,end:1.78,words:["A","IA","monta","o","corte."],times:[.15,.34,.65,1.1,1.32]},
+  {start:1.82,end:3.56,words:["Você","escolhe","o","ritmo."],times:[1.82,2.21,2.72,3.03]},
+  {start:3.64,end:5.75,words:["E","o","vídeo","ganha","vida."],times:[3.64,3.91,4.17,4.68,5.12]}
+];
+const caption=one(".caption");
+const lines=cues.map(cue => cue.words.map(word => {
+  const span=document.createElement("span");
+  span.textContent=word;
+  return span;
+}));
+let previousCue=-1;
+window.renderMotion=time => {
+  const index=cues.findIndex(cue=>time>=cue.start && time<cue.end);
+  caption.hidden=index<0;
+  if (index<0) return;
+  if (index!==previousCue) {
+    caption.replaceChildren(...lines[index]);
+    previousCue=index;
+  }
+  const times=cues[index].times;
+  const active=times.findLastIndex(start=>time>=start);
+  lines[index].forEach((span,word) => {
+    span.setAttribute("aria-current",String(word===active));
+    const pop=word===active ? Math.sin(Math.PI*phase(time,times[word],.23)) : 0;
+    span.style.transform="scale(" + (1+pop*.085) + ")";
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

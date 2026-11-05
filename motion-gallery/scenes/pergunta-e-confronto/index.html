@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Pergunta e Confronto</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/duelo.css">
+<style>
+.take { inset:0; }
+.scrim { position:absolute; inset:0; background:linear-gradient(0deg,#101014da,transparent 42%); }
+h1 { position:absolute; bottom:148px; left:170px; width:1580px; text-align:center; }
+h1 strong { color:var(--peach); font-weight:inherit; margin-inline-start:.11em; }
+.contender { position:absolute; top:334px; width:360px; padding:30px 24px; border-radius:25px; text-align:center; }
+.first { right:124px; color:var(--peach); }
+.second { left:124px; color:var(--mint); }
+.mark { display:block; margin-bottom:4px; font-size:102px; line-height:1; text-shadow:0 0 35px currentColor; }
+.vs { position:absolute; left:892px; top:780px; width:136px; padding:15px; border-radius:50px; text-align:center; font-size:38px; font-weight:750; }
+[data-layout="lateral"] h1 { top:356px; bottom:auto; left:115px; width:440px; text-align:left; font-size:82px; }
+[data-layout="lateral"] h1 strong { color:var(--mint); }
+[data-layout="lateral"] .contender { right:115px; left:auto; padding:19px 22px; width:338px; text-align:left; font-size:35px; border-radius:10px; }
+[data-layout="lateral"] .first { top:350px; }
+[data-layout="lateral"] .second { top:532px; }
+[data-layout="lateral"] .mark { display:inline; margin-right:16px; font-size:39px; }
+[data-layout="lateral"] .vs { left:auto; right:337px; top:447px; width:85px; padding:8px; font-size:28px; }
+</style>
+</head>
+<body>
+<main data-composition-id="pergunta-e-confronto" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+<div class="take"><!-- motion-media:presenter:0:6:0 --></div>
+<div class="scrim"></div>
+<h1 class="duel-title"><span></span> <strong></strong></h1>
+<div class="contender first glass"><span class="mark" aria-hidden="true">✳</span><span class="name"></span></div>
+<div class="contender second glass"><span class="mark" aria-hidden="true">◈</span><span class="name"></span></div>
+<p class="vs glass">×</p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const lateral = inputs.layout === "lateral";
+stage.dataset.layout = lateral ? "lateral" : "cartoes";
+copy("h1 span", "question", "Qual IA");
+copy("h1 strong", "emphasis", "entrega melhor?");
+copy(".first .name", "firstName", "Agente Atlas");
+copy(".second .name", "secondName", "Agente Órbita");
+window.renderMotion = time => {
+  const question = beat(time, .25, .36) * (lateral ? 1 : 1 - beat(time, 1.88, .28));
+  set(one("h1"), { opacity: question, transform: "translateY(" + 26 * (1 - question) + "px)" });
+  const emphasis = beat(time, .48, .3);
+  set(one("h1 strong"), { opacity: emphasis, filter: "blur(" + 9 * (1 - emphasis) + "px)" });
+  all(".contender").forEach((card, index) => {
+    const shown = beat(time, 1.85 + index * .62, .46);
+    set(card, { opacity: shown, transform: "translateY(" + 42 * (1 - shown) + "px) scale(" + mix(.92, 1, shown) + ")" });
+  });
+  const versus = beat(time, 2.69, .28);
+  set(one(".vs"), { opacity: versus, transform: "scale(" + mix(.55, 1, versus) + ")" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

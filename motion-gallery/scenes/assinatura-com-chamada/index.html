@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Assinatura com Chamada</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/duelo.css">
+<style>
+.take { inset:0; }
+.signature { position:absolute; right:106px; top:262px; width:500px; }
+.mark { width:116px; height:116px; color:var(--mint); filter:drop-shadow(0 0 22px #93e9cd60); }
+.mark img { width:100%; height:100%; object-fit:contain; }
+h1 { display:grid; gap:13px; font-size:79px; margin:18px 0; color:#fffdf3; text-shadow:0 10px 40px #101013; }
+h1 strong { color:var(--mint); font-weight:inherit; }
+.signature strong:empty { display:none; }
+.action { display:inline-block; margin-top:20px; padding:13px 19px; border-radius:9px; background:var(--mint); color:#172b26; font-size:31px; font-weight:720; }
+[data-layout="editorial"] .signature { left:109px; right:auto; top:301px; width:590px; }
+[data-layout="editorial"] .mark { display:none; }
+</style>
+</head>
+<body>
+<main data-composition-id="assinatura-com-chamada" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+<div class="take"><!-- motion-media:presenter:0:6:0 --></div>
+<section class="signature">
+  <div class="mark">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M14 74V26l35 23 36-23v48L49 92Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/><path d="M49 15v34m-13-22h26" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg>
+  </div>
+  <h1 class="duel-title"><span></span> <strong></strong></h1>
+  <p class="action"></p>
+</section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+stage.dataset.layout=inputs.layout==="editorial"?"editorial":"marca";
+copy("h1 span","title","Estúdio");
+copy("h1 strong","emphasis","com IA");
+copy(".action","action","Comente GUIA");
+if (inputs.mark) {
+  const mark = document.createElement("img");
+  mark.src = inputs.mark;
+  mark.alt = "Marca do produto";
+  one(".mark").replaceChildren(mark);
+}
+window.renderMotion = time => {
+  const mark=beat(time,.2,.46);
+  const title=beat(time,.48,.41);
+  const action=beat(time,2.36,.3);
+  set(one(".mark"),{ opacity:mark, transform:"rotateY(" + 72*(1-mark) + "deg) scale(" + mix(.68,1,mark) + ")" });
+  set(one("h1"),{ opacity:title, transform:"translateY(" + 23*(1-title) + "px)", clipPath:"inset(0 " + 100*(1-title) + "% 0 0)" });
+  set(one(".action"),{ opacity:action, transform:"translateY(" + 16*(1-action) + "px) scale(" + mix(.92,1,action) + ")" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

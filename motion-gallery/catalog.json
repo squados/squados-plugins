@@ -5563,6 +5563,290 @@
           "role": "text"
         }
       }
+    },
+    {
+      "id": "duelo-em-dois-takes",
+      "title": "Duelo em Dois Takes",
+      "category": "Edição comparada",
+      "aliases": [
+        "comparativo vertical",
+        "split screen 9:16"
+      ],
+      "seconds": 5,
+      "prompt": "Use Duelo em Dois Takes neste trecho. Empilhe dois takes 16:9 com a mesma escala, no mesmo ponto de sincronização. Mantenha os nomes acima das respectivas janelas.",
+      "demo": {
+        "composition": "scenes/duelo-em-dois-takes/index.html",
+        "preview": "previews/duelo-em-dois-takes.mp4",
+        "skill": "scenes/duelo-em-dois-takes/SKILL.md",
+        "inputs": {
+          "title": "text",
+          "first": "media",
+          "second": "media",
+          "firstName": "text",
+          "secondName": "text",
+          "firstResult": "text",
+          "secondResult": "text"
+        }
+      }
+    },
+    {
+      "id": "pergunta-e-confronto",
+      "title": "Pergunta e Confronto",
+      "category": "Edição comparada",
+      "aliases": [
+        "duelo de modelos",
+        "pergunta com versus"
+      ],
+      "seconds": 6,
+      "prompt": "Use Pergunta e Confronto neste trecho. Revele a pergunta em dois tempos, mostre os dois candidatos no ritmo da fala e feche com o confronto.",
+      "demo": {
+        "composition": "scenes/pergunta-e-confronto/index.html",
+        "preview": "previews/pergunta-e-confronto.mp4",
+        "skill": "scenes/pergunta-e-confronto/SKILL.md",
+        "inputs": {
+          "presenter": "media",
+          "question": "text",
+          "emphasis": "text",
+          "firstName": "text",
+          "secondName": "text",
+          "layout": "text"
+        }
+      }
+    },
+    {
+      "id": "icones-da-mao-ao-fundo",
+      "title": "Ícones da Mão ao Fundo",
+      "category": "Edição comparada",
+      "aliases": [
+        "logo na mão",
+        "rastreamento de mãos",
+        "objeto atrás do apresentador"
+      ],
+      "seconds": 7,
+      "prompt": "Use Ícones da Mão ao Fundo neste trecho. Aproxime o quadro de cada palma, prenda um ícone ao gesto, depois solte os dois em arco atrás do apresentador.",
+      "demo": {
+        "composition": "scenes/icones-da-mao-ao-fundo/index.html",
+        "preview": "previews/icones-da-mao-ao-fundo.mp4",
+        "skill": "scenes/icones-da-mao-ao-fundo/SKILL.md",
+        "inputs": {
+          "matte": "media",
+          "leftMark": "image",
+          "rightMark": "image",
+          "leftTrack": "array",
+          "rightTrack": "array"
+        }
+      }
+    },
+    {
+      "id": "cena-em-vidros",
+      "title": "Cena em Vidros",
+      "category": "Edição comparada",
+      "aliases": [
+        "camadas de vidro",
+        "paralaxe do apresentador",
+        "vista explodida de vídeo"
+      ],
+      "seconds": 8,
+      "prompt": "Use Cena em Vidros neste trecho. Separe o fundo, os ícones e o apresentador em três planos de vidro, gire o conjunto e reúna as camadas.",
+      "demo": {
+        "composition": "scenes/cena-em-vidros/index.html",
+        "preview": "previews/cena-em-vidros.mp4",
+        "skill": "scenes/cena-em-vidros/SKILL.md",
+        "inputs": {
+          "matte": "media",
+          "title": "text",
+          "labels": "array",
+          "layout": "text"
+        }
+      }
+    },
+    {
+      "id": "camera-encaixa-na-moldura",
+      "title": "Câmera Encaixa na Moldura",
+      "category": "Edição comparada",
+      "aliases": [
+        "picture-in-picture",
+        "reenquadramento lateral",
+        "moldura lateral"
+      ],
+      "seconds": 6,
+      "prompt": "Use Câmera Encaixa na Moldura neste trecho. Reduza, recorte e deslize a câmera atual para a moldura da direita. Revele a demonstração à esquerda e retorne ao quadro inteiro.",
+      "demo": {
+        "composition": "scenes/camera-encaixa-na-moldura/index.html",
+        "preview": "previews/camera-encaixa-na-moldura.mp4",
+        "skill": "scenes/camera-encaixa-na-moldura/SKILL.md",
+        "inputs": {
+          "presenter": "media",
+          "label": "text",
+          "title": "text",
+          "detail": "text",
+          "layout": "text"
+        }
+      }
+    },
+    {
+      "id": "receita-em-movimento",
+      "title": "Receita em Movimento",
+      "category": "Edição comparada",
+      "aliases": [
+        "ingredientes no liquidificador",
+        "despejo da massa",
+        "forno e revelação"
+      ],
+      "seconds": 10,
+      "prompt": "Use Receita em Movimento neste trecho. Revele os ingredientes, derrube-os no copo, suba a mistura, despeje na forma e passe do forno ao resultado com vapor.",
+      "demo": {
+        "composition": "scenes/receita-em-movimento/index.html",
+        "preview": "previews/receita-em-movimento.mp4",
+        "skill": "scenes/receita-em-movimento/SKILL.md",
+        "inputs": {
+          "presenter": "media",
+          "title": "text",
+          "ingredients": "array",
+          "steps": "array",
+          "layout": "text"
+        }
+      }
+    },
+    {
+      "id": "reels-atras-da-camera",
+      "title": "Reels Atrás da Câmera",
+      "category": "Edição comparada",
+      "aliases": [
+        "carrossel de reels",
+        "vídeos atrás do apresentador",
+        "telas flutuantes"
+      ],
+      "seconds": 8,
+      "prompt": "Use Reels Atrás da Câmera neste trecho. Faça três telas verticais percorrerem uma pista em perspectiva atrás do recorte da câmera. Mantenha a passagem pelo meio ocluída pela silhueta.",
+      "demo": {
+        "composition": "scenes/reels-atras-da-camera/index.html",
+        "preview": "previews/reels-atras-da-camera.mp4",
+        "skill": "scenes/reels-atras-da-camera/SKILL.md",
+        "inputs": {
+          "matte": "media",
+          "first": "media",
+          "second": "media",
+          "third": "media",
+          "titles": "array",
+          "direction": "text"
+        }
+      }
+    },
+    {
+      "id": "casa-em-vista-explodida",
+      "title": "Casa em Vista Explodida",
+      "category": "Edição comparada",
+      "aliases": [
+        "maquete 3d",
+        "casa desmontando",
+        "exploded view"
+      ],
+      "seconds": 9,
+      "prompt": "Use Casa em Vista Explodida neste trecho. Mostre a maquete montada, tire o telhado, abra paredes e andares, deixe as partes flutuarem e encaixe tudo de novo.",
+      "demo": {
+        "composition": "scenes/casa-em-vista-explodida/index.html",
+        "preview": "previews/casa-em-vista-explodida.mp4",
+        "skill": "scenes/casa-em-vista-explodida/SKILL.md",
+        "inputs": {
+          "presenter": "media",
+          "title": "text",
+          "labels": "array",
+          "layout": "text"
+        }
+      }
+    },
+    {
+      "id": "balanco-em-contagem",
+      "title": "Balanço em Contagem",
+      "category": "Edição comparada",
+      "aliases": [
+        "placar de tarefas",
+        "recapitulação com contador"
+      ],
+      "seconds": 6,
+      "prompt": "Use Balanço em Contagem neste trecho. Abra um painel de balanço, escreva as confirmações em cascata e some cada tarefa no contador quando o traço terminar.",
+      "demo": {
+        "composition": "scenes/balanco-em-contagem/index.html",
+        "preview": "previews/balanco-em-contagem.mp4",
+        "skill": "scenes/balanco-em-contagem/SKILL.md",
+        "inputs": {
+          "presenter": "media",
+          "title": "text",
+          "tasks": "array",
+          "unit": "text"
+        }
+      }
+    },
+    {
+      "id": "assinatura-com-chamada",
+      "title": "Assinatura com Chamada",
+      "category": "Edição comparada",
+      "aliases": [
+        "encerramento com marca",
+        "slogan com chamada",
+        "CTA sobre o take"
+      ],
+      "seconds": 6,
+      "prompt": "Use Assinatura com Chamada neste trecho. Revele a assinatura ao lado da câmera e atrase a entrada da chamada até a deixa da fala.",
+      "demo": {
+        "composition": "scenes/assinatura-com-chamada/index.html",
+        "preview": "previews/assinatura-com-chamada.mp4",
+        "skill": "scenes/assinatura-com-chamada/SKILL.md",
+        "inputs": {
+          "presenter": "media",
+          "mark": "image",
+          "title": "text",
+          "emphasis": "text",
+          "action": "text",
+          "layout": "text"
+        }
+      }
+    },
+    {
+      "id": "do-comentario-ao-direct",
+      "title": "Do Comentário ao Direct",
+      "category": "Edição comparada",
+      "aliases": [
+        "CTA de palavra-chave",
+        "comentário animado",
+        "mensagem direta"
+      ],
+      "seconds": 6,
+      "prompt": "Use Do Comentário ao Direct neste trecho. Abra a interface de comentários, digite a palavra, confirme o envio e revele a entrega pelo direct.",
+      "demo": {
+        "composition": "scenes/do-comentario-ao-direct/index.html",
+        "preview": "previews/do-comentario-ao-direct.mp4",
+        "skill": "scenes/do-comentario-ao-direct/SKILL.md",
+        "inputs": {
+          "presenter": "media",
+          "comment": "text",
+          "keyword": "text",
+          "message": "text"
+        }
+      }
+    },
+    {
+      "id": "legenda-palavra-ativa",
+      "title": "Legenda de Palavra Ativa",
+      "category": "Edição comparada",
+      "aliases": [
+        "legenda karaoke",
+        "karaokê por palavra",
+        "tarja de legenda"
+      ],
+      "seconds": 6,
+      "prompt": "Use Legenda de Palavra Ativa neste trecho. Mantenha o bloco de legenda na mesma posição e destaque uma palavra por vez, seguindo os tempos do take.",
+      "demo": {
+        "composition": "scenes/legenda-palavra-ativa/index.html",
+        "preview": "previews/legenda-palavra-ativa.mp4",
+        "skill": "scenes/legenda-palavra-ativa/SKILL.md",
+        "inputs": {
+          "presenter": "media",
+          "layout": "text",
+          "cues": "array"
+        }
+      }
     }
   ],
   "core": [

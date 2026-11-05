@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Do Comentário ao Direct</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/duelo.css">
+<style>
+.take { inset:0; }
+.panel { position:absolute; right:104px; top:219px; width:552px; padding:30px; border-radius:22px; }
+.panel h1 { font-size:42px; margin:0 0 28px; }
+.line { display:flex; gap:15px; align-items:center; margin-bottom:22px; color:#d8dfdf; font-size:31px; }
+.avatar { flex:none; width:43px; height:43px; border:2px solid #fff5; border-radius:50%; background:radial-gradient(circle at 33% 30%,#f5dbb6,#b6754d); }
+.composer { display:flex; align-items:center; justify-content:space-between; padding:15px 18px; border-radius:12px; background:#121519; border:1px solid #c8e1d23a; font-size:35px; }
+.send { width:51px; height:51px; border-radius:11px; color:#1a2b25; background:var(--mint); display:grid; place-items:center; font-weight:720; }
+.message { margin-top:20px; padding:17px 18px; border-radius:11px; background:#94e9cd1d; border-left:4px solid var(--mint); color:#e6faf1; font-size:30px; }
+.keyword { display:inline-block; font-weight:680; color:#f1f7f6; min-height:1em; }
+</style>
+</head>
+<body>
+<main data-composition-id="do-comentario-ao-direct" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+<div class="take"><!-- motion-media:presenter:0:6:0 --></div>
+<section class="panel glass">
+  <h1>Comentários</h1>
+  <p class="line"><span class="avatar" aria-hidden="true"></span><span class="example"></span></p>
+  <div class="composer"><span class="keyword"></span><span class="send" aria-label="Enviar">↑</span></div>
+  <p class="message"></p>
+</section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".example","comment","Tem o roteiro da aula?");
+copy(".message","message","Direct · Seu guia de edição com IA chegou.");
+const letters=Array.from(String(inputs.keyword ?? "GUIA"));
+window.renderMotion = time => {
+  const panel=beat(time,.28,.43);
+  const typed=Math.floor(letters.length*phase(time,.91,.95));
+  const send=beat(time,2.06,.13)*(1-beat(time,2.19,.19));
+  const delivery=beat(time,2.42,.35);
+  one(".keyword").textContent=letters.slice(0,typed).join("") + (typed===0?"…":"");
+  set(one(".panel"),{ opacity:panel, transform:"translateX(" + 54*(1-panel) + "px)" });
+  set(one(".send"),{ transform:"scale(" + (1-.18*send) + ")" });
+  set(one(".message"),{ opacity:delivery, transform:"translateY(" + 16*(1-delivery) + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Casa em Vista Explodida</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/duelo.css">
+<style>
+.take { inset:0 790px 0 0; mask-image:linear-gradient(90deg,#000 75%,transparent); }
+.take :is(img,video) { object-position:50% 50%; }
+.panel { position:absolute; left:1010px; right:60px; top:112px; bottom:95px; }
+h1 { position:absolute; left:16px; top:0; font-size:65px; color:var(--mint); }
+.model { position:absolute; left:0; right:0; top:55px; width:100%; height:calc(100% - 55px); }
+.model polygon { stroke:#22252c; stroke-width:1.5; stroke-linejoin:round; }
+.base { fill:none; stroke:#d9e7e564; stroke-width:2; }
+.callout { position:absolute; left:10px; bottom:0; padding:14px 22px; border-left:4px solid var(--mint); background:#13181bd6; font-size:32px; }
+</style>
+</head>
+<body>
+<main data-composition-id="casa-em-vista-explodida" data-start="0" data-duration="9" data-width="1920" data-height="1080">
+<div class="take"><!-- motion-media:presenter:0:9:0 --></div>
+<section class="panel">
+  <h1 class="duel-title"></h1>
+  <svg class="model" viewBox="0 0 880 820" aria-label="Maquete em perspectiva que desmonta e se recompõe">
+    <ellipse class="base" cx="446" cy="681" rx="283" ry="83"/>
+    <ellipse class="base" cx="446" cy="681" rx="302" ry="94" opacity=".34"/>
+    <g class="floor"></g><g class="lower"></g><g class="upper"></g><g class="roof"></g>
+  </svg>
+  <p class="callout"></p>
+</section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy("h1","title","Do todo às partes");
+const labels = inputs.labels ?? ["Cobertura removida","Paredes e cômodos","Dois pavimentos","Maquete recomposta"];
+const layout = inputs.layout === "fixo" ? "fixo" : "orbita";
+const wood = ["#f2ddbf","#ac8c6a","#d2ac86","#c39874","#b58d6a"];
+const plaster = ["#d6e7d6","#7cafa5","#a2c9ba","#90baaa","#83ac9a"];
+const base = ["#8ba196","#536f65","#6a8b7e","#668579","#536f65"];
+const roof = ["#f8bc83","#b77b51","#d3905f","#d6a079"];
+const ns = "http://www.w3.org/2000/svg";
+const groups = [".floor",".lower",".upper",".roof"].map(selector => ({ element:one(selector), faces:[] }));
+function face(group, points, color, drift=0) {
+  const polygon = document.createElementNS(ns,"polygon");
+  polygon.setAttribute("fill",color);
+  groups[group].element.append(polygon);
+  groups[group].faces.push({polygon, points, drift});
+}
+function box(group, x, y, width, depth, z, height, palette, drift=0) {
+  const a=[x,y,z+height], b=[x+width,y,z+height], c=[x+width,y+depth,z+height], d=[x,y+depth,z+height];
+  face(group,[a,b,c,d],palette[0],drift);
+  [a,b,c,d].forEach((point,index,ring) => {
+    const next=ring[(index+1)%4];
+    face(group,[point,next,[next[0],next[1],z],[point[0],point[1],z]],palette[index+1],drift);
+  });
+}
+box(0,-248,-187,496,374,0,22,base);
+for (const [group,z,width,depth] of [[1,22,428,312],[2,143,343,276]]) {
+  const x=-width/2, y=-depth/2;
+  box(group,x,y,width,depth,z,18,wood);
+  box(group,x,y,width,14,z+18,99,plaster,-1);
+  box(group,x,y,14,depth,z+18,99,plaster,-1);
+  box(group,-14,y,18,depth*.66,z+18,87,plaster);
+  box(group,-width*.36,28,width*.36,14,z+18,76,plaster);
+  box(group,x+width-14,y,14,depth, z+18,99,plaster,1);
+  box(group,x,y+depth-13,width*.32,13,z+18,99,plaster,1);
+  box(group,x+width*.70,y+depth-13,width*.30,13,z+18,99,plaster,1);
+  box(group,x+26,y+31,73,95,z+18,24,wood);
+  box(group,27,39,98,53,z+18,30,wood);
+}
+const a=[-195,-155,258], b=[195,-155,258], c=[195,155,258], d=[-195,155,258], e=[-195,0,365], f=[195,0,365];
+face(3,[a,b,f,e],roof[0]); face(3,[d,e,f,c],roof[2]);
+face(3,[a,e,d],roof[1]); face(3,[b,c,f],roof[3]);
+window.renderMotion = time => {
+  const shown=beat(time,.20,.5);
+  const closing=flow(phase(time,6.66,1.17));
+  const coverage=flow(phase(time,1.09,1.04))*(1-closing);
+  const walls=flow(phase(time,2.35,1.0))*(1-closing);
+  const levels=flow(phase(time,3.28,.97))*(1-closing);
+  const azimuth=layout==="fixo" ? .53 : .32+.59*flow(phase(time,1.49,2.56))*(1-closing);
+  const sin=Math.sin(azimuth), cos=Math.cos(azimuth);
+  const hover=Math.sin((time-3.28)*3.4)*7*levels;
+  const lift=[0,0,129*levels+hover,105*coverage+146*levels-hover];
+  groups.forEach(({element,faces},group) => {
+    const projected=faces.map(({polygon,points,drift}) => {
+      const transformed=points.map(([x,y,z]) => {
+        x+=drift*walls*74;
+        const depth=x*sin+y*cos;
+        return [446+x*cos-y*sin,673+depth*.45-(z+lift[group])*.87,depth+z*.54];
+      });
+      polygon.setAttribute("points",transformed.map(([x,y]) => x.toFixed(1)+","+y.toFixed(1)).join(" "));
+      return {polygon, depth:transformed.reduce((sum,point) => sum+point[2],0)/transformed.length};
+    });
+    projected.sort((a,b) => a.depth-b.depth).forEach(({polygon}) => element.append(polygon));
+  });
+  set(one(".panel"),{ opacity:shown, transform:"translateY(" + 32*(1-shown) + "px)" });
+  const step=time>=6.66?3:time>=3.28?2:time>=2.35?1:0;
+  one(".callout").textContent=labels[step] ?? "";
+  one(".callout").style.opacity=beat(time,1.09,.4);
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

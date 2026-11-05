@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Ícones da Mão ao Fundo</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/duelo.css">
+<style>
+.world, .matte { position:absolute; inset:0; }
+.world { background:radial-gradient(ellipse at 45% 20%,#414047,#232329 55%,#101014); }
+.world::before { content:""; position:absolute; inset:0; background:repeating-linear-gradient(0deg,transparent 0 157px,#9597a512 158px 160px); }
+.matte { z-index:2; }
+.token { position:absolute; top:-74px; left:-74px; z-index:3; width:148px; height:148px; display:grid; place-items:center; border-radius:50%; color:var(--mint); }
+.token:nth-of-type(4) { color:var(--peach); }
+.token svg { width:100%; height:100%; overflow:visible; filter:drop-shadow(0 0 22px currentColor); }
+.token svg path { stroke-dasharray:1; }
+.token img { max-width:80%; max-height:80%; object-fit:contain; }
+.shadow { position:absolute; top:-15px; left:-55px; width:110px; height:30px; border-radius:100%; background:#060606; filter:blur(13px); z-index:3; }
+</style>
+</head>
+<body>
+<main data-composition-id="icones-da-mao-ao-fundo" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+<div class="world"></div>
+<div class="matte"><!-- motion-media:matte:0:7:0 --></div>
+<div class="token first">
+  <svg viewBox="0 0 120 120" aria-label="Marca do primeiro agente">
+    <defs><linearGradient id="mint-edge" x2="1" y2="1"><stop stop-color="#edfff7"/><stop offset="1" stop-color="#32ab94"/></linearGradient></defs>
+    <path d="M60 10 109 38v44l-49 28L11 82V38Z" fill="#183a3a" stroke="currentColor" stroke-width="5"/>
+    <path d="M60 18 100 43 60 67 20 43ZM60 68v32L20 77V45M60 68l40-23v32l-40 23" fill="none" stroke="url(#mint-edge)" stroke-width="6" stroke-linejoin="round"/>
+  </svg>
+</div>
+<div class="token second">
+  <svg viewBox="0 0 120 120" aria-label="Marca do segundo agente">
+    <path d="M60 7 72 43l37-13-22 31 25 28-37-8-15 32-15-32-37 8 25-28L11 30l37 13Z" fill="#573622" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M60 24v74M24 37l71 48M94 37 24 85" stroke="#ffe7bf" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+</div>
+<div class="shadow"></div><div class="shadow"></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const tracks = [inputs.leftTrack, inputs.rightTrack];
+const fallbacks = [
+  [[0,345,653],[2,352,641],[4.7,343,650]],
+  [[0,1578,648],[2,1581,637],[4.7,1573,642]]
+];
+const tokens = all(".token");
+const shadows = all(".shadow");
+for (const path of all(".token svg path")) path.setAttribute("pathLength",1);
+for (const [index, key] of ["leftMark", "rightMark"].entries()) {
+  if (!inputs[key]) continue;
+  const image = document.createElement("img");
+  image.src = inputs[key];
+  image.alt = "Marca do agente";
+  tokens[index].replaceChildren(image);
+}
+function trackAt(points, time) {
+  const next = points.findIndex(point => point[0] > time);
+  if (next === 0) return points[0].slice(1);
+  if (next === -1) return points.at(-1).slice(1);
+  const [start, x, y] = points[next - 1];
+  const [end, nextX, nextY] = points[next];
+  const progress = phase(time, start, end - start);
+  return [mix(x, nextX, progress), mix(y, nextY, progress)];
+}
+window.renderMotion = time => {
+  const reveal = beat(time,.18,.55) * (1 - beat(time,1.36,.72));
+  const secondFocus = beat(time,2,.48) * (1 - beat(time,3.12,.63));
+  const shift = 68 * reveal - 70 * secondFocus;
+  const scale = 1 + .16 * (reveal + secondFocus);
+  const zoom = "translateX(" + shift + "px) scale(" + scale + ")";
+  const screenX = x => 960 + (x - 960) * scale + shift;
+  const screenY = y => 540 + (y - 540) * scale;
+  set(one(".world"), { transform:zoom });
+  set(one(".matte"), { transform:zoom });
+  tokens.forEach((token, index) => {
+    const [x, y] = trackAt(Array.isArray(tracks[index]) && tracks[index].length ? tracks[index] : fallbacks[index], time);
+    const shown = beat(time, .62 + 1.44 * index, .47);
+    const trace = flow(phase(time,.60 + 1.44*index,.58));
+    for (const path of token.querySelectorAll("svg path")) {
+      path.style.strokeDashoffset = 1-trace;
+      path.style.fillOpacity = flow(phase(trace,.44,.56));
+    }
+    const flight = flow(phase(time, 4.35, 1.44));
+    const lift = Math.sin(Math.PI * flight) * 260;
+    const iconX = mix(x, index ? 1142 : 780, flight);
+    const iconY = mix(y - 105, 355, flight) - lift + Math.sin(time * 4 + index) * 8;
+    set(token, {
+      opacity:shown, zIndex: flight > .53 ? 1 : 4,
+      transform:"translate3d(" + screenX(iconX) + "px," + screenY(iconY) + "px,0) rotateY(" + Math.sin(time * 2 + index) * 33 + "deg) scale(" + mix(.58,1,shown) * mix(1,.82,flight) * scale + ")"
+    });
+    set(shadows[index], { opacity:.55 * shown * (1-flight), transform:"translate(" + screenX(x) + "px," + screenY(y-6) + "px) scale(" + scale + ")" });
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

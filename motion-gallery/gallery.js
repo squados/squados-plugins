@@ -53,6 +53,11 @@
       const source = element('a', 'preview-link', 'Fonte da composição')
       source.href = entry.demo.composition
       copy.append(source)
+      if (entry.demo.skill) {
+        const skill = element('a', 'preview-link', 'Ver skill')
+        skill.href = entry.demo.skill
+        copy.append(skill)
+      }
     } else {
       const preview = element('a', 'preview-link', 'Ver prévia na Skillry ↗')
       preview.href = entry.source.url

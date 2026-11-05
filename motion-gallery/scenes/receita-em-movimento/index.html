@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Receita em Movimento</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/duelo.css">
+<style>
+.take { left:1180px; top:115px; width:630px; height:850px; border-radius:26px; border:2px solid #fff4; }
+.take img, .take video { object-position:50% 45%; }
+.left { position:absolute; inset:0 800px 0 0; }
+[data-layout="papel"] .left { color:#282923; background:linear-gradient(125deg,#f2eddf,#e4d9c3); }
+[data-layout="papel"] .duel-tag { color:#11604f; }
+h1 { position:absolute; left:100px; top:128px; width:920px; }
+.duel-tag { position:absolute; top:78px; left:103px; }
+.ingredients { position:absolute; left:103px; top:282px; width:920px; display:flex; gap:15px; padding:0; margin:0; list-style:none; }
+.ingredients li { flex:1; min-width:0; padding:12px 4px 15px; text-align:center; font-size:36px; line-height:1.05; overflow-wrap:anywhere; border-top:2px solid currentColor; }
+.ingredients span { display:block; height:66px; width:66px; margin:0 auto 12px; border-radius:48% 52% 46% 54%; background:var(--food); box-shadow:inset -9px -9px 0 #31220e29; }
+.art { position:absolute; inset:400px 100px 100px; }
+.art svg { width:100%; height:100%; position:absolute; overflow:visible; }
+.feed { fill:#f7c173; }
+.progress { position:absolute; left:103px; bottom:82px; width:908px; border-top:1px solid #84897a88; padding-top:15px; display:flex; justify-content:space-between; gap:18px; font-size:31px; font-weight:640; }
+</style>
+</head>
+<body>
+<main data-composition-id="receita-em-movimento" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+<section class="left">
+  <p class="duel-tag">Receita explicada por IA</p><h1 class="duel-title"></h1>
+  <ul class="ingredients"></ul>
+  <div class="art">
+    <svg viewBox="0 0 780 465" aria-label="Ingredientes no liquidificador, forma, forno e receita pronta">
+      <defs>
+        <clipPath id="jar-clip"><path d="M295 51h175l-38 193H334z"/></clipPath>
+        <linearGradient id="oven-heat" x2="0" y2="1"><stop stop-color="#cf692e"/><stop offset="1" stop-color="#3d2b24"/></linearGradient>
+        <radialGradient id="cake-glaze"><stop stop-color="#f7ca75"/><stop offset="1" stop-color="#bd6b27"/></radialGradient>
+      </defs>
+      <g class="blender">
+        <path d="M462 70h40q30 0 26 32l-12 67q-8 35-50 35h-23" fill="none" stroke="#85b1a4" stroke-width="13"/>
+        <path d="M295 51h175l-38 193H334z" fill="#91c6bb44" stroke="#84b2a5" stroke-width="7"/>
+        <rect class="mixture" x="290" y="238" width="185" height="193" fill="#f4b765" clip-path="url(#jar-clip)"/>
+        <path d="M287 50h187" stroke="#a1c8bc" stroke-width="18" stroke-linecap="round"/>
+        <path d="M328 246h110l31 73q4 18-19 18H313q-24 0-16-18z" fill="#518d7f" stroke="#355b50" stroke-width="7"/>
+        <circle cx="382" cy="289" r="17" fill="#ddedce"/>
+      </g>
+      <g class="feed"><circle r="18"/></g>
+      <g class="pour"><path d="M404 169C419 202 447 227 474 252" fill="none" stroke="#f4b765" stroke-width="16" stroke-linecap="round" pathLength="1"/></g>
+      <g class="tin">
+        <ellipse cx="492" cy="268" rx="100" ry="30" fill="#677570"/>
+        <path d="M392 269l21 51q79 33 158 0l21-51q-100 50-200 0" fill="#3c4644"/>
+        <ellipse class="tin-fill" cx="492" cy="270" rx="83" ry="17" fill="#f4b765"/>
+      </g>
+      <g class="oven">
+        <rect x="185" y="54" width="412" height="304" rx="36" fill="#47645d"/>
+        <rect x="217" y="127" width="348" height="194" rx="20" fill="#1e2a27"/>
+        <rect class="heat" x="236" y="152" width="310" height="142" rx="10" fill="url(#oven-heat)"/>
+        <path d="M246 256h292" stroke="#ffd49a70" stroke-width="5"/>
+        <path d="M324 246q8-33 66-33t66 33Z" fill="#ffbc61"/>
+        <circle cx="260" cy="93" r="11" fill="#f9e0ab"/><circle cx="294" cy="93" r="11" fill="#c5d3ad"/>
+        <path d="M434 94h103" stroke="#90b0a5" stroke-width="8" stroke-linecap="round"/>
+      </g>
+      <g class="cake">
+        <ellipse cx="390" cy="310" rx="194" ry="31" fill="#bfc7b9"/>
+        <path d="M243 225v66q148 59 295 0v-66" fill="#b9642c"/>
+        <ellipse cx="390" cy="225" rx="147" ry="66" fill="url(#cake-glaze)"/>
+        <ellipse cx="390" cy="225" rx="38" ry="17" fill="#704027"/>
+        <g class="steam" fill="none" stroke="#edca97" stroke-width="8" stroke-linecap="round">
+          <path d="M335 168q-28-29 3-67t-2-68M393 142q-22-25 2-59t0-59M449 164q-21-25 0-49t1-58"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="progress"></div>
+</section>
+<div class="take"><!-- motion-media:presenter:0:10:0 --></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+stage.dataset.layout = inputs.layout === "papel" ? "papel" : "vidro";
+copy("h1","title","Bolo de banana");
+const ingredients = (inputs.ingredients ?? ["Banana","Ovos","Aveia","Leite"]).slice(0,5);
+const steps = inputs.steps ?? ["Misturar","Despejar","Assar","Servir"];
+const colors = ["#f1cb67","#eec589","#d69259","#a9d9ce","#9caa65"];
+ingredients.forEach((name, index) => {
+  const item = document.createElement("li");
+  const icon = document.createElement("span");
+  item.style.setProperty("--food",colors[index]);
+  item.append(icon,document.createTextNode(name));
+  one(".ingredients").append(item);
+});
+steps.slice(0,4).forEach(name => {
+  const step = document.createElement("span");
+  step.textContent = name;
+  one(".progress").append(step);
+});
+const fillStarts = ingredients.map((_,index) => 1.7 + index * .54);
+window.renderMotion = time => {
+  all(".ingredients li").forEach((item,index) => {
+    const entry = beat(time,.52 + index*.14,.38);
+    const used = beat(time,fillStarts[index],.45);
+    set(item,{ opacity:entry * (1 - .56*used), transform:"translateY(" + (1-entry)*18 + "px)" });
+  });
+  const feedIndex = fillStarts.findIndex(start => time >= start && time < start+.42);
+  const falling = feedIndex < 0 ? 0 : phase(time,fillStarts[feedIndex],.42);
+  const fromX=70+Math.max(0,feedIndex)*620/Math.max(1,ingredients.length-1);
+  set(one(".feed"), { opacity:feedIndex < 0 ? 0 : Math.sin(Math.PI*falling), fill:colors[feedIndex] ?? colors[0],
+    transform:"translate(" + mix(fromX,383,beat(falling,0,.68)) + "px," + mix(-43,183,falling**1.4) + "px)" });
+  const fill = fillStarts.reduce((sum,start) => sum + flow(phase(time,start+.30,.23)),0) / Math.max(1,ingredients.length);
+  const tilt = flow(phase(time,4.48,.58));
+  const stream = flow(phase(time,4.9,.46)) * (1-flow(phase(time,5.6,.29)));
+  const retract = flow(phase(time,5.86,.48));
+  const cook = flow(phase(time,6.2,.43));
+  const serve = flow(phase(time,7.72,.65));
+  set(one(".blender"),{ opacity:1-retract, transformOrigin:"385px 143px",
+    transform:"translateX(" + (-113*tilt) + "px) rotate(" + (52*tilt) + "deg)" });
+  one(".mixture").setAttribute("y",238 - 151 * fill * (1-flow(phase(time,4.95,.88))));
+  set(one(".tin"), { opacity:tilt*(1-cook) });
+  set(one(".tin-fill"), { opacity:flow(phase(time,5.03,.64)) });
+  set(one(".pour path"), { opacity:stream > 0 ? 1 : 0, strokeDasharray:1, strokeDashoffset:1-stream });
+  set(one(".oven"), { opacity:cook*(1-serve), transform:"translateY(" + 28*(1-cook) + "px)" });
+  set(one(".heat"), { opacity:.36 + .64*flow(phase(time,6.55,.85)) });
+  set(one(".cake"), { opacity:serve, transform:"translateY(" + 36*(1-serve) + "px)" });
+  set(one(".steam"), { opacity:serve*(.53+.21*Math.sin(time*3)), transform:"translateY(" + 6*Math.sin(time*3) + "px)" });
+  const active = time >= 7.72 ? 3 : time >= 6.2 ? 2 : time >= 4.48 ? 1 : 0;
+  all(".progress span").forEach((step,index) => { step.style.opacity = index===active ? 1 : .45; });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

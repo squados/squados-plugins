@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Reels Atrás da Câmera</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/duelo.css">
+<style>
+.runway,.matte { position:absolute; inset:0; }
+.runway { perspective:1350px; }
+.matte { z-index:3; pointer-events:none; }
+.reel { position:absolute; left:-145px; top:-255px; width:290px; height:510px; border-radius:23px; overflow:hidden; border:2px solid #b1efdb96; box-shadow:0 26px 50px #05080ab3; background:#202129; }
+.reel:nth-child(2) { border-color:#ffcf9a82; }
+.reel:nth-child(3) { border-color:#d4c3f0a3; }
+.reel :is(video,img) { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.mock { position:absolute; inset:0; padding:30px 24px; background:radial-gradient(ellipse at 70% 30%,#57978c70,transparent 70%),linear-gradient(143deg,#302d38,#171a21); }
+.reel:nth-child(2) .mock { background:radial-gradient(ellipse at 60% 50%,#b77a4378,transparent 70%),#282228; }
+.reel:nth-child(3) .mock { background:radial-gradient(ellipse at 60% 40%,#7969a499,transparent 70%),#282337; }
+.mock strong { position:absolute; left:24px; right:24px; top:51px; font-size:43px; font-weight:680; line-height:.98; }
+.mock .art { position:absolute; left:28px; right:28px; height:180px; bottom:69px; border:1px solid #fff4; border-radius:20px; background:repeating-linear-gradient(0deg,#f5ecff24 0 2px,transparent 2px 39px); }
+.mock .art span { display:block; margin:52px auto 0; width:90px; height:74px; border:3px solid #e3fbf4; border-radius:17px; box-shadow:0 0 24px #9ae3d588; transform:rotate(-14deg); }
+.mock .meter { position:absolute; bottom:34px; left:29px; width:228px; height:4px; transform-origin:left; background:#97e0cf; }
+</style>
+</head>
+<body>
+<main data-composition-id="reels-atras-da-camera" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+<div class="runway" data-layout-allow-occlusion>
+  <div class="reel"><div class="mock"><strong></strong><div class="art"><span></span></div><div class="meter"></div></div><!-- motion-media:first:0:8:1 --></div>
+  <div class="reel"><div class="mock"><strong></strong><div class="art"><span></span></div><div class="meter"></div></div><!-- motion-media:second:0:8:2 --></div>
+  <div class="reel"><div class="mock"><strong></strong><div class="art"><span></span></div><div class="meter"></div></div><!-- motion-media:third:0:8:3 --></div>
+</div>
+<div class="matte"><!-- motion-media:matte:0:8:0 --></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const titles = inputs.titles ?? ["Agentes em teste","Aula em 60 s","Prompt revisado"];
+const cards = all(".reel");
+const clips = [inputs.first, inputs.second, inputs.third];
+cards.forEach((card,index) => {
+  card.querySelector(".mock").hidden = Boolean(clips[index]);
+  card.querySelector("strong").textContent = titles[index] ?? "";
+});
+window.renderMotion = time => {
+  const entry = flow(phase(time,.52,1.22));
+  const exit = flow(phase(time,6.84,.74));
+  const direction = inputs.direction === "esquerda" ? -1 : 1;
+  cards.forEach((card,index) => {
+    const angle = -.84 + index * 2.09 + direction * (time-1.8)*.66;
+    const x = 960 + 915 * Math.sin(angle);
+    const depth = -330 + 300 * Math.cos(angle);
+    const y = 553 - 74 * Math.cos(angle) + 16*Math.sin(time*1.9+index);
+    set(card,{
+      opacity:entry*(1-exit)*mix(.38,1,(Math.cos(angle)+1)/2),
+      zIndex:Math.round(340+depth),
+      transform:"translate3d(" + x + "px," + y + "px," + depth + "px) rotateY(" + -31*Math.sin(angle) + "deg) rotateZ(" + 6*Math.sin(angle) + "deg) scale(" + mix(.74,1.05,entry) + ")"
+    });
+    set(card.querySelector(".meter"), { transform:"scaleX(" + phase(time,.5,6) + ")" });
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>
