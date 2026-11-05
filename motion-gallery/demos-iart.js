@@ -2,26 +2,38 @@
   const demos = window.motionDemos ??= Object.create(null)
   const W = 480
   const H = 270
-  const tau = 2 * Math.PI
-  const ink = '#101722'
-  const paper = '#faf1df'
-  const mint = '#a3f2c6'
-  const gold = '#ffcc65'
-  const coral = '#ff806e'
-  const blue = '#92bcff'
-  const lilac = '#bdabff'
-  const muted = '#a9b6c8'
-
-  const clamp = n => Math.max(0, Math.min(1, n))
-  const mix = (a, b, p) => a + (b - a) * p
-  const stage = (t, a, b) => clamp((t - a) / (b - a))
+  const X = W / 2
+  const Y = H / 2
+  const TAU = 2 * Math.PI
+  const snow = '#fbf7ef'
+  const ink = '#121217'
+  const lime = '#d9ff5c'
+  const gold = '#ffca76'
+  const rose = '#ff667d'
+  const aqua = '#65f5dd'
+  const violet = '#b3a0ff'
+  const blue = '#638eff'
+  const serif = 'Georgia, serif'
+  const mono = 'Consolas, monospace'
+  const display = '"Arial Black", "Segoe UI", sans-serif'
+  const clamp = value => Math.max(0, Math.min(1, value))
+  const phase = (t, a, b) => clamp((t - a) / (b - a))
+  const lerp = (a, b, t) => a + (b - a) * t
+  const ease = t => t * t * (3 - 2 * t)
   const out = t => 1 - (1 - t) ** 3
-  const smooth = t => t * t * (3 - 2 * t)
-  const back = t => 1 + 2.8 * (t - 1) ** 3 + 1.8 * (t - 1) ** 2
-  const frac = n => n - Math.floor(n)
-  const random = n => frac(Math.sin(n * 87.22 + 41.38) * 43758.54)
+  const bump = t => 1 + 2.5 * (t - 1) ** 3 + 1.5 * (t - 1) ** 2
+  const fract = value => value - Math.floor(value)
+  const noise = seed => fract(Math.sin(seed * 127.1 + 74.7) * 43758.5453)
+
+  function layer(c, draw, alpha = 1) {
+    c.save()
+    c.globalAlpha *= clamp(alpha)
+    draw()
+    c.restore()
+  }
 
   function rect(c, x, y, w, h, fill, radius = 0) {
+    if (w <= 0 || h <= 0) return
     c.fillStyle = fill
     if (!radius) {
       c.fillRect(x, y, w, h)
@@ -31,1477 +43,1409 @@
     c.roundRect(x, y, w, h, radius)
     c.fill()
   }
-  function bg(c, fill = ink) { rect(c, 0, 0, W, H, fill) }
-  function circle(c, x, y, r, fill) {
-    if (r <= 0) return
+
+  function line(c, points, color, width = 1) {
+    if (!points.length) return
     c.beginPath()
-    c.arc(x, y, r, 0, tau)
-    c.fillStyle = fill
-    c.fill()
-  }
-  function ellipse(c, x, y, rx, ry, color, width = 0) {
-    if (rx <= 0 || ry <= 0) return
-    c.beginPath()
-    c.ellipse(x, y, rx, ry, 0, 0, tau)
-    if (width) {
-      c.strokeStyle = color
-      c.lineWidth = width
-      c.stroke()
-    } else {
-      c.fillStyle = color
-      c.fill()
-    }
-  }
-  function stroke(c, points, color, width = 1, progress = 1) {
-    if (points.length < 2 || progress <= 0) return points[0]
-    const lengths = points.slice(1).map(([x, y], i) => Math.hypot(x - points[i][0], y - points[i][1]))
-    let remaining = lengths.reduce((sum, length) => sum + length, 0) * progress
-    let tip = points[0]
-    c.beginPath()
-    c.moveTo(...tip)
-    for (let i = 0; i < lengths.length; i++) {
-      const step = lengths[i] ? Math.min(1, remaining / lengths[i]) : 1
-      tip = points[i].map((value, axis) => mix(value, points[i + 1][axis], step))
-      c.lineTo(...tip)
-      remaining -= lengths[i]
-      if (remaining <= 0) break
-    }
+    c.moveTo(...points[0])
+    for (const point of points.slice(1)) c.lineTo(...point)
     c.strokeStyle = color
     c.lineWidth = width
     c.lineCap = 'round'
     c.lineJoin = 'round'
     c.stroke()
-    return tip
   }
-  function poly(c, points, fill) {
+
+  function polygon(c, points, fill, edge, width = 1) {
     c.beginPath()
     c.moveTo(...points[0])
-    for (const p of points.slice(1)) c.lineTo(...p)
+    for (const point of points.slice(1)) c.lineTo(...point)
     c.closePath()
-    c.fillStyle = fill
-    c.fill()
-  }
-  function text(c, str, x, y, size = 18, color = paper, options = {}) {
-    const { align = 'left', weight = 650, family = 'system-ui', italic = false, outline = false, max = 455 } = options
-    c.font = [italic ? 'italic' : 'normal', weight, size + 'px', family].join(' ')
-    c.textAlign = align
-    c.textBaseline = 'middle'
-    if (outline) {
-      c.lineJoin = 'round'
-      c.lineWidth = 1.5
-      c.strokeStyle = color
-      c.strokeText(str, x, y, max)
-    } else {
-      c.fillStyle = color
-      c.fillText(str, x, y, max)
+    if (fill) {
+      c.fillStyle = fill
+      c.fill()
+    }
+    if (edge) {
+      c.strokeStyle = edge
+      c.lineWidth = width
+      c.stroke()
     }
   }
-  function center(c, str, x, y, size, color = paper, options = {}) {
-    text(c, str, x, y, size, color, { ...options, align: 'center' })
-  }
-  function chip(c, str, x, y, color = mint, width = 105) {
-    rect(c, x, y, width, 23, color, 11)
-    center(c, str, x + width / 2, y + 12, 10, ink, { max: width - 10 })
-  }
-  function caption(c, str, color = muted) { text(c, str, 24, 23, 11, color, { weight: 750 }) }
-  function arc(c, x, y, r, progress, color, width = 4) {
-    if (progress <= 0) return
+
+  function ellipse(c, x, y, rx, ry, color, width = 0, rotation = 0) {
+    if (rx <= 0 || ry <= 0) return
     c.beginPath()
-    c.arc(x, y, r, -Math.PI / 2, -Math.PI / 2 + tau * progress)
-    c.lineWidth = width
+    c.ellipse(x, y, rx, ry, rotation, 0, TAU)
+    if (width) {
+      c.strokeStyle = color
+      c.lineWidth = width
+      c.stroke()
+      return
+    }
+    c.fillStyle = color
+    c.fill()
+  }
+
+  function arc(c, x, y, r, from, to, color, width) {
+    if (to <= from) return
+    c.beginPath()
+    c.arc(x, y, r, from, to)
     c.strokeStyle = color
+    c.lineWidth = width
     c.lineCap = 'round'
     c.stroke()
   }
-  function layer(c, alpha, draw) {
-    c.save()
-    c.globalAlpha *= clamp(alpha)
-    draw()
-    c.restore()
+
+  function gradient(c, x, y, x2, y2, ...colors) {
+    const fill = c.createLinearGradient(x, y, x2, y2)
+    colors.forEach((color, i) => fill.addColorStop(i / (colors.length - 1), color))
+    return fill
   }
-  function pose(c, x, y, sx, sy, radians, draw) {
-    c.save()
-    c.translate(x, y)
-    c.rotate(radians)
-    c.scale(sx, sy)
-    draw()
-    c.restore()
+
+  function glow(c, x, y, radius, color) {
+    const fill = c.createRadialGradient(x, y, 0, x, y, radius)
+    fill.addColorStop(0, color)
+    fill.addColorStop(1, '#00000000')
+    ellipse(c, x, y, radius, radius, fill)
   }
-  function crop(c, x, y, w, h, draw) {
-    c.save()
-    c.beginPath()
-    c.rect(x, y, w, h)
-    c.clip()
-    draw()
-    c.restore()
+
+  function words(c, value, x, y, size, color = snow, options = {}) {
+    const { family = display, italic = false, weight = 900, align = 'center', outline = 0, max = 440 } = options
+    c.font = `${italic ? 'italic ' : ''}${weight} ${size}px ${family}`
+    c.textAlign = align
+    c.textBaseline = 'middle'
+    if (outline) {
+      c.strokeStyle = color
+      c.lineWidth = outline
+      c.lineJoin = 'round'
+      c.strokeText(value, x, y, max)
+      return
+    }
+    c.fillStyle = color
+    c.fillText(value, x, y, max)
   }
-  function grid(c, x, y, w, h, step, color) {
-    for (let i = x; i <= x + w; i += step) stroke(c, [[i, y], [i, y + h]], color)
-    for (let i = y; i <= y + h; i += step) stroke(c, [[x, i], [x + w, i]], color)
-  }
-  function cursor(c, x, y) {
-    poly(c, [[x, y], [x + 4, y + 21], [x + 8, y + 14], [x + 15, y + 15]], paper)
-  }
-  function portrait(c, x, y, scale, t, tones = ['#2e5261', '#e6a17a', '#382927']) {
-    const [shirt, skin, hair] = tones
-    pose(c, x, y, scale, scale, 0, () => {
-      ellipse(c, 0, 82, 49, 42, shirt)
-      rect(c, -11, 32, 22, 25, skin, 5)
-      circle(c, 0, 1, 31, hair)
-      ellipse(c, 0, 15, 23, 26, skin)
-      poly(c, [[-25, 13], [-22, -9], [13, -15], [23, 2], [2, -2], [-16, 9]], hair)
-      const blink = Math.abs(Math.sin(tau * t * 1.7 + 0.3)) > 0.10
-      ellipse(c, -8, 14, 2, blink ? 2 : 0.6, hair)
-      ellipse(c, 8, 14, 2, blink ? 2 : 0.6, hair)
-      ellipse(c, 1, 26, 5, 1 + 2.5 * Math.abs(Math.sin(tau * t * 11)), '#8b4944')
+
+  function letters(c, value, x, y, size, color, animate, options = {}) {
+    const { family = display, italic = false, weight = 900, tracking = 0 } = options
+    c.font = `${italic ? 'italic ' : ''}${weight} ${size}px ${family}`
+    const glyphs = [...value].map(char => ({ char, width: c.measureText(char).width }))
+    let left = x - (glyphs.reduce((width, glyph) => width + glyph.width, 0) + tracking * (glyphs.length - 1)) / 2
+    glyphs.forEach(({ char, width }, i) => {
+      if (char !== ' ') {
+        const motion = animate(i, glyphs.length)
+        layer(c, () => {
+          c.translate(left + width / 2 + (motion.x ?? 0), y + (motion.y ?? 0))
+          c.rotate(motion.rotation ?? 0)
+          c.scale(motion.sx ?? 1, motion.sy ?? 1)
+          if (motion.blur) c.filter = `blur(${motion.blur}px)`
+          words(c, char, 0, 0, size, motion.color ?? color, { ...options, outline: motion.outline ?? options.outline })
+        }, motion.alpha)
+      }
+      left += width + tracking
     })
   }
-  function vertical(c, draw) {
-    rect(c, 163, 8, 154, 254, '#566476', 9)
-    crop(c, 166, 11, 148, 248, draw)
+
+  function mask(c, x, y, w, h, draw) {
+    if (w <= 0 || h <= 0) return
+    layer(c, () => {
+      c.beginPath()
+      c.rect(x, y, w, h)
+      c.clip()
+      draw()
+    })
+  }
+
+  function trace(c, points, progress, color, width = 1) {
+    const lengths = points.slice(1).map(([x, y], i) => Math.hypot(x - points[i][0], y - points[i][1]))
+    let distance = lengths.reduce((sum, length) => sum + length, 0) * progress
+    const visible = [points[0]]
+    for (let i = 0; i < lengths.length && distance > 0; i++) {
+      const fraction = clamp(distance / lengths[i])
+      visible.push(points[i].map((value, axis) => lerp(value, points[i + 1][axis], fraction)))
+      distance -= lengths[i]
+    }
+    if (progress > 0) line(c, visible, color, width)
+    return visible.at(-1)
+  }
+
+  function spark(c, x, y, r, color, narrow = 0.23) {
+    if (r <= 0) return
+    const n = r * narrow
+    polygon(c, [[x, y - r], [x + n, y - n], [x + r, y], [x + n, y + n],
+      [x, y + r], [x - n, y + n], [x - r, y], [x - n, y - n]], color)
+  }
+
+  function cropMarks(c, x, y, w, h, length, color, width = 1.5) {
+    for (const horizontal of [-1, 1]) {
+      for (const vertical of [-1, 1]) {
+        const px = x + horizontal * w / 2
+        const py = y + vertical * h / 2
+        line(c, [[px - horizontal * length, py], [px, py], [px, py - vertical * length]], color, width)
+      }
+    }
   }
 
   demos['ms-caption-animation'] = (c, t) => {
-    bg(c, '#161e2c')
-    caption(c, 'LEGENDA / KARAOKÊ')
-    vertical(c, () => {
-      rect(c, 166, 11, 148, 248, '#314957')
-      circle(c, 245, 92, 56, '#416677')
-      portrait(c, 239, 101, 1.37, t)
-      rect(c, 172, 183, 136, 42, '#111b28', 7)
-      const beat = clamp(t * 1.05) * 3.99
-      const active = Math.floor(beat)
-      const words = ['Mude', 'o', 'ritmo', 'hoje']
-      const positions = [195, 218, 241, 279]
-      words.forEach((word, i) => {
-        const zoom = i === active ? 1 + 0.22 * Math.exp(-frac(beat) * 12) : 1
-        pose(c, positions[i], 203, zoom, zoom, 0, () => center(c, word, 0, 0, 12, i === active ? '#d4ff71' : paper))
-      })
+    const active = Math.min(2, Math.floor(t * 3.6))
+    const pop = Math.sin(Math.PI * phase(fract(t * 3.6), 0, 0.68))
+    const parts = [['MUDE', 203, 105, 52], ['O', 331, 105, 52], ['RITMO', 240, 168, 74]]
+    parts.forEach(([value, x, y, size], i) => {
+      const p = out(phase(t, i * 0.055, 0.14 + i * 0.055))
+      layer(c, () => {
+        const on = i === active
+        words(c, value, x, y + 16 * (1 - p) - (on ? 5 * pop : 0), size, on ? lime : snow)
+        if (on) {
+          const w = c.measureText(value).width * (0.66 + 0.24 * pop)
+          rect(c, x - w / 2, y + size * 0.43, w, 2.5, lime)
+        }
+      }, p)
     })
-    stroke(c, [[333, 203], [389, 203]], mint)
-    text(c, 'PALAVRA ATIVA', 333, 220, 9, mint)
   }
 
   demos['ms-countdown-video'] = (c, t) => {
-    bg(c, '#102929')
-    caption(c, 'CONTAGEM / 5 SEGUNDOS', mint)
-    const remaining = Math.max(0, 5 - t * 6)
-    arc(c, 240, 134, 85, 1, '#294b46', 5)
-    arc(c, 240, 134, 85, remaining / 5, mint, 5)
-    for (let i = 0; i < 30; i++) {
-      const a = i * tau / 30
-      circle(c, 240 + 98 * Math.cos(a), 134 + 98 * Math.sin(a), i % 6 ? 1 : 2, '#4a776d')
+    const tick = Math.min(3, Math.floor(t * 3.4))
+    const local = fract(t * 3.4)
+    ellipse(c, X, Y, 86, 86, '#ffffff2f', 1)
+    ellipse(c, X, Y, 74, 74, '#ffffff26', 4)
+    for (let i = 0; i < 60; i++) {
+      const a = i * TAU / 60
+      const inner = i % 5 === 0 ? 90 : 93
+      line(c, [[X + inner * Math.cos(a), Y + inner * Math.sin(a)],
+        [X + 96 * Math.cos(a), Y + 96 * Math.sin(a)]], '#ffffff5a')
     }
-    center(c, String(Math.ceil(remaining)).padStart(2, '0'), 240, 126, 67, paper, { family: 'monospace' })
-    center(c, remaining ? 'SEGUNDOS' : 'AGORA', 240, 179, 12, mint)
+    if (tick < 3) arc(c, X, Y, 74, -Math.PI / 2, -Math.PI / 2 + TAU * (1 - local), gold, 5)
+    const finish = phase(t, 0.88, 1)
+    if (finish > 0) layer(c, () => ellipse(c, X, Y, 74 + 32 * finish, 74 + 32 * finish, gold, 1.4), 1 - finish)
+    words(c, String(3 - tick), X, Y + 2, 106 - 13 * out(local), tick === 3 ? gold : snow, { family: mono })
   }
 
   demos['ms-lower-thirds-vertical'] = (c, t) => {
-    bg(c, '#241e29')
-    caption(c, 'GC / VÍDEO VERTICAL', gold)
-    vertical(c, () => {
-      rect(c, 166, 11, 148, 248, '#594357')
-      rect(c, 172, 29, 89, 194, '#7d5c71', 40)
-      portrait(c, 232, 99, 1.48, t, ['#713b54', '#e7b088', '#403052'])
-      for (let i = 0; i < 3; i++) circle(c, 298, 159 + 24 * i, 5, '#ca9db8')
-      const p = out(stage(t, 0.11, 0.34)) * (1 - smooth(stage(t, 0.79, 0.95)))
-      crop(c, 172, 153, p * 113, 55, () => {
-        rect(c, 172, 153, 112, 47, gold, 5)
-        text(c, 'Lia Reis', 180, 168, 16, ink)
-        text(c, 'Apresentadora', 180, 187, 10, ink)
-      })
-      stroke(c, [[178, 233], [258, 233]], '#c99caf', 2)
+    const reveal = out(phase(t, 0.05, 0.27)) * (1 - ease(phase(t, 0.76, 0.98)))
+    const bar = out(phase(t, 0, 0.19)) * (1 - ease(phase(t, 0.85, 1)))
+    const x = 118
+    const y = 162
+    rect(c, x, y, 4, 60 * bar, lime)
+    mask(c, x + 12, y - 5, 241 * reveal, 67, () => {
+      words(c, 'Lia Reis', x + 17 + 27 * (reveal - 1), y + 15, 36, snow, { align: 'left' })
+      words(c, 'DIREÇÃO CRIATIVA', x + 18 + 16 * (reveal - 1), y + 47, 12, lime, { align: 'left', family: mono })
     })
-    stroke(c, [[323, 172], [384, 172]], gold)
-    text(c, 'ÁREA SEGURA', 323, 189, 9, gold)
-  }
-
-  function landscape(c, x, y, w, h, warm) {
-    rect(c, x, y, w, h, warm ? '#bf6861' : '#3d7893')
-    circle(c, x + w * 0.69, y + h * 0.32, h * 0.15, warm ? '#fbd69b' : '#dbf0c7')
-    poly(c, [[x, y + h * .61], [x + w * .25, y + h * .28], [x + w * .51, y + h * .73], [x + w * .69, y + h * .48], [x + w, y + h * .77], [x + w, y + h], [x, y + h]], warm ? '#6a374d' : '#264c65')
-    poly(c, [[x, y + h * .77], [x + w * .4, y + h * .53], [x + w * .72, y + h * .83], [x + w, y + h * .64], [x + w, y + h], [x, y + h]], warm ? '#3e2e43' : '#172f48')
   }
 
   demos['ms-short-form-video'] = (c, t) => {
-    bg(c, '#181e2b')
-    caption(c, 'VÍDEO / 3 BATIDAS')
-    const beat = t < .34 ? 0 : t < .62 ? 1 : 2
-    vertical(c, () => {
-      const scales = [1, 1.46, 1.12]
-      pose(c, 240, 135, scales[beat], scales[beat], 0, () => landscape(c, -75, -126, 150, 252, beat !== 0))
-      if (beat === 0) rect(c, 166, 11, 148, 248, '#11172466')
-      center(c, ['Você viu?', 'Olhe o topo', 'O sol voltou'][beat], 240, beat === 1 ? 202 : 143, 18, paper, { max: 128 })
+    const cuts = [0, 0.27, 0.59]
+    const i = t < cuts[1] ? 0 : t < cuts[2] ? 1 : 2
+    const pulse = 1 + 0.22 * (1 - out(phase(t, cuts[i], cuts[i] + 0.12)))
+    layer(c, () => {
+      c.translate(X, Y)
+      c.scale(pulse, pulse)
+      if (i === 0) {
+        mask(c, -96, -67, 179, 134, () => ellipse(c, -9, 0, 99, 99, gradient(c, -90, -70, 80, 70, rose, '#dc301b')))
+        rect(c, -104, 58, 201, 2, rose)
+      } else if (i === 1) {
+        polygon(c, [[0, -105], [143, 0], [0, 105], [-143, 0]], violet)
+        polygon(c, [[0, -57], [78, 0], [0, 57], [-78, 0]], ink)
+      } else {
+        for (let arm = 0; arm < 6; arm++) {
+          c.rotate(TAU / 6)
+          rect(c, -10, 4, 20, 96, lime, 8)
+        }
+        ellipse(c, 0, 0, 18, 18, lime)
+      }
     })
-    const labels = ['Gancho', 'Virada', 'Payoff']
-    labels.forEach((label, i) => text(c, label, 339, 105 + 30 * i, 13, beat === i ? gold : muted))
   }
 
   demos['ms-text-message-animation'] = (c, t) => {
-    bg(c, '#22203a')
-    caption(c, 'CONVERSA / CENA FICTÍCIA', lilac)
-    rect(c, 118, 34, 244, 210, '#343155', 14)
-    circle(c, 143, 58, 10, lilac)
-    text(c, 'Nina e Ivo', 161, 58, 12)
-    const bubbles = [
-      ['Você viu a luz?', 202, 81, .08, blue],
-      ['Vi. Era o farol!', 137, 146, .52, mint],
-      ['Então vamos.', 202, 196, .74, blue],
-    ]
-    bubbles.forEach(([label, x, y, start, color], i) => {
-      const p = out(stage(t, start, start + .13))
-      layer(c, p, () => {
-        const offset = (i === 1 ? -16 : 16) * (1 - p)
-        rect(c, x + offset, y, 141, 33, color, 13)
-        text(c, label, x + 12 + offset, y + 17, 12, ink)
-      })
-    })
-    if (t >= .26 && t < .52) {
-      rect(c, 137, 125, 53, 23, '#5c577d', 10)
-      for (let i = 0; i < 3; i++) circle(c, 150 + i * 13, 136 + 2.5 * Math.sin(tau * t * 7 - i), 2.6, paper)
-    }
+    const intro = bump(phase(t, 0, 0.18))
+    const reveal = ease(phase(t, 0.45, 0.73))
+    const width = lerp(110, 298, reveal)
+    const x = X - width / 2
+    const y = Y - 32 + 20 * (1 - intro)
+    layer(c, () => {
+      rect(c, x, y, width, 65, violet, 32)
+      polygon(c, [[x + 18, y + 55], [x + 15, y + 72], [x + 42, y + 61]], violet)
+      layer(c, () => {
+        for (let i = 0; i < 3; i++) {
+          const wave = Math.sin(TAU * (t * 2.8 - i * 0.18))
+          ellipse(c, X - 23 + i * 23, y + 33 - Math.max(0, wave) * 8, 5.3, 5.3, ink)
+        }
+      }, 1 - phase(t, 0.42, 0.55))
+      mask(c, x + 21, y, 252 * reveal, 65, () => words(c, 'Vamos nessa.', x + 25, y + 34, 33, ink, { align: 'left', family: serif, italic: true, weight: 700 }))
+    }, intro)
   }
 
   demos['ms-audiogram'] = (c, t) => {
-    bg(c, '#242239')
-    caption(c, 'PODCAST / ONDA DE VOZ', lilac)
-    circle(c, 240, 65, 26, '#494068')
-    center(c, 'FM', 240, 65, 17, lilac)
-    const voice = .24 + .76 * Math.abs(Math.sin(tau * t * 3.4))
-    for (let i = 0; i < 39; i++) {
-      const envelope = .26 + .74 * Math.sin(Math.PI * i / 38)
-      const h = 3 + 82 * voice * envelope * (.32 + .68 * Math.abs(Math.sin(i * .61 + t * 24)))
-      rect(c, 55 + 9.6 * i, 142 - h / 2, 5, h, i < t * 39 ? lilac : '#5f577d', 2)
+    line(c, [[63, Y], [417, Y]], '#6cfce65b')
+    for (let i = 0; i < 55; i++) {
+      const x = 74 + i * 6.15
+      const band = i / 54
+      const wave = 0.4 + 0.6 * noise(i + 20)
+      const shift = 1.25 * t - 0.14
+      const center = Math.exp(-((band - shift) ** 2) * 23)
+      const satellite = 0.57 * Math.exp(-((band - shift + 0.35) ** 2) * 36) + 0.35 * Math.exp(-((band - shift - 0.27) ** 2) * 49)
+      const amplitude = (center + satellite) * (1 - 0.88 * Math.sin(Math.PI * phase(t, 0.57, 0.73)) ** 2)
+      const h = 2 + 72 * amplitude * wave * Math.sin(Math.PI * band) ** 0.55
+      rect(c, x, Y - h, 2.7, h * 2, gradient(c, x, Y - h, x, Y + h, aqua, snow, '#2778da'), 1.35)
     }
-    center(c, ['Escute', 'Escute a', 'Escute a pausa'][Math.min(2, Math.floor(t * 3))], 240, 215, 28)
   }
 
   demos['ms-youtube-intro-outro'] = (c, t) => {
-    bg(c, '#281d33')
-    if (t < .42) {
-      caption(c, '01 / VINHETA', coral)
-      const p = back(stage(t, 0, .30))
-      poly(c, [[194 - 88 * (1 - p), 104], [240 - 88 * (1 - p), 67], [240 - 88 * (1 - p), 153]], coral)
-      poly(c, [[286 + 88 * (1 - p), 104], [240 + 88 * (1 - p), 67], [240 + 88 * (1 - p), 153]], gold)
-      layer(c, stage(t, .22, .34), () => center(c, 'Oficina do Norte', 240, 185, 26))
-      return
+    const p = bump(phase(t, 0.06, 0.51))
+    const halo = out(phase(t, 0.43, 0.87))
+    for (let i = 0; i < 2; i++) {
+      const sign = i * 2 - 1
+      layer(c, () => {
+        c.translate(X + sign * (1 - p) * 162, Y + sign * (1 - p) * 52)
+        c.rotate(i * Math.PI + sign * (1 - p) * 1.4)
+        c.beginPath()
+        c.arc(0, 0, 76, -Math.PI / 2, Math.PI / 2)
+        c.quadraticCurveTo(62, 0, 0, -76)
+        c.fillStyle = i ? snow : gradient(c, 0, -72, 67, 68, '#684aff', violet)
+        c.fill()
+      }, out(phase(t, 0, 0.16)))
     }
-    caption(c, '02 / TELA FINAL', coral)
-    text(c, 'Continue por aqui', 36, 65, 26)
-    rect(c, 38, 99, 215, 123, '#543954', 10)
-    poly(c, [[130, 137], [130, 184], [176, 160]], coral)
-    circle(c, 357, 151, 43, '#543954')
-    chip(c, 'INSCREVA-SE', 302, 204, gold, 110)
+    layer(c, () => ellipse(c, X, Y, 79 + 40 * halo, 79 + 40 * halo, violet, 1.4), Math.sin(Math.PI * halo) * 0.8)
   }
 
   demos['ms-photo-slideshow'] = (c, t) => {
-    bg(c, '#25242f')
-    caption(c, 'SLIDESHOW / PAN E ZOOM', gold)
-    const fade = smooth(stage(t, .40, .59))
-    crop(c, 51, 43, 378, 184, () => {
-      pose(c, 240 - 27 * t, 135 + 13 * t, 1 + t * .28, 1 + t * .28, 0, () => landscape(c, -196, -103, 392, 206, false))
-      layer(c, fade, () => pose(c, 221 + 25 * t, 135 - 12 * (1 - t), 1.25 - t * .13, 1.25 - t * .13, 0, () => landscape(c, -196, -103, 392, 206, true)))
+    const dissolve = ease(phase(t, 0.33, 0.66))
+    layer(c, () => {
+      c.beginPath()
+      c.arc(X, Y, 103, 0, TAU)
+      c.clip()
+      const landscape = (cool, opacity) => layer(c, () => {
+        const zoom = cool ? lerp(1.4, 1.04, t) : lerp(1.02, 1.44, t)
+        c.translate(X + (cool ? 20 : -20) * t, Y)
+        c.scale(zoom, zoom)
+        rect(c, -155, -110, 310, 250, gradient(c, 0, -115, 0, 100,
+          ...(cool ? ['#18295b', '#5a77c5', '#c0bbff'] : ['#ee7752', '#ffb67f', '#ffe8bb'])))
+        ellipse(c, cool ? 36 : -33, -32, 20, 20, cool ? '#bdfaff' : '#ffe9a5')
+        for (let i = 0; i < 5; i++) {
+          const y = 5 + i * 21
+          c.beginPath()
+          c.moveTo(-153, y + 30)
+          c.bezierCurveTo(-70, y - 86 + i * 7, 17, y + 70, 155, y - 37)
+          c.lineTo(155, 151)
+          c.lineTo(-155, 151)
+          c.closePath()
+          c.fillStyle = (cool ? ['#8c91d4', '#676aaf', '#465798', '#34457c', '#243864']
+            : ['#f6b074', '#e47a5a', '#cb6049', '#a64141', '#7c3443'])[i]
+          c.fill()
+        }
+      }, opacity)
+      landscape(false, 1)
+      landscape(true, dissolve)
     })
-    text(c, fade < .5 ? '01 / Enseada fria' : '02 / Vale vermelho', 51, 245, 14)
   }
 
-  function listScreen(c, done) {
-    rect(c, 69, 60, 342, 168, '#263652', 13)
-    rect(c, 69, 60, 342, 24, '#344a70', 10)
-    for (let i = 0; i < 3; i++) circle(c, 84 + i * 13, 72, 3.5, blue)
-    text(c, 'Minhas listas', 93, 108, 19)
-    chip(c, 'Criar lista', 277, 96, mint, 103)
-    for (let i = 0; i < 3; i++) rect(c, 93, 137 + i * 22, 286, 17, '#405575', 4)
-    layer(c, done, () => {
-      rect(c, 93, 137, 286, 17, '#3c776e', 4)
-      text(c, '✓  Lista criada', 104, 146, 11)
-    })
-  }
   demos['ms-product-demo-video'] = (c, t) => {
-    bg(c, '#162435')
-    caption(c, 'DEMONSTRAÇÃO / AÇÃO E RESULTADO', blue)
-    const p = out(stage(t, .07, .46))
-    const zoom = 1 + .17 * p
-    pose(c, 240, 141, zoom, zoom, 0, () => {
-      c.translate(-240, -141)
-      listScreen(c, out(stage(t, .49, .63)))
-      const x = mix(147, 323, p)
-      const y = mix(196, 109, p)
-      const click = stage(t, .44, .61)
-      if (t >= .44 && click < 1) layer(c, 1 - click, () => ellipse(c, x, y, 5 + click * 23, 5 + click * 23, gold, 2))
-      cursor(c, x, y)
+    const p = ease(phase(t, 0.02, 0.42))
+    const x = 273 - 111 * (1 - p)
+    const y = 115 + 63 * (1 - p) ** 2
+    const strike = Math.sin(Math.PI * phase(t, 0.39, 0.51))
+    for (let i = 0; i < 3; i++) {
+      const k = phase(t, 0.43 + i * 0.053, 0.78 + i * 0.065)
+      if (k > 0) layer(c, () => ellipse(c, 273, 115, 15 + k * 64, 15 + k * 64, i === 1 ? aqua : violet, 2.3), (1 - k) * 0.9)
+    }
+    ellipse(c, 273, 115, 4.5, 4.5, violet)
+    layer(c, () => {
+      c.translate(x, y)
+      c.rotate(-0.14 - strike * 0.11)
+      c.scale(1 - 0.13 * strike, 1 - 0.13 * strike)
+      polygon(c, [[0, 0], [9, 56], [21, 42], [35, 58], [43, 51], [29, 35], [49, 29]], snow, ink, 2)
     })
   }
 
   demos['ms-promo-video'] = (c, t) => {
-    bg(c, '#632d37')
-    caption(c, 'OFERTA / SEMANA DA COR', gold)
-    rect(c, 72, 51, 336, 168, '#ffe9d5', 19)
-    center(c, 'R$ 90', 240, 88, 31, '#754854')
-    stroke(c, [[181, 95], [298, 80]], '#b03c55', 3, out(stage(t, .13, .35)))
-    const p = stage(t, .29, .56)
-    layer(c, p, () => pose(c, 240, 149, .63 + .37 * back(p), .63 + .37 * back(p), 0, () => center(c, 'R$ 62', 0, 0, 65, '#542735')))
-    const badge = out(stage(t, .53, .71))
-    layer(c, badge, () => chip(c, 'SEMANA DA COR', 178, 207 - 22 * badge, gold, 124))
+    const shift = ease(phase(t, 0.35, 0.61))
+    const scale = bump(phase(t, 0.42, 0.74))
+    layer(c, () => {
+      c.translate(X, Y - 47 * shift)
+      c.scale(1 - 0.32 * shift, 1 - 0.32 * shift)
+      words(c, 'R$ 90', 0, 0, 66, snow)
+      trace(c, [[-107, 13], [107, -10]], out(phase(t, 0.16, 0.36)), rose, 5)
+    }, 1 - 0.38 * shift)
+    layer(c, () => {
+      c.translate(X, 163)
+      c.scale(0.56 + 0.44 * scale, 0.56 + 0.44 * scale)
+      words(c, 'R$ 62', 0, 0, 87, lime)
+    }, out(phase(t, 0.42, 0.59)))
   }
 
-  function organizer(c, x, y, scale) {
-    pose(c, x, y, scale, scale, 0, () => {
-      poly(c, [[-82, -15], [-40, -41], [88, -27], [46, 0]], '#edb88a')
-      poly(c, [[-82, -15], [46, 0], [46, 48], [-82, 33]], '#b96556')
-      poly(c, [[46, 0], [88, -27], [88, 21], [46, 48]], '#8d4650')
-      for (let i = 0; i < 3; i++) stroke(c, [[-62 + i * 37, -17 + i * 4], [-31 + i * 37, -35 + i * 4]], '#a86454', 3)
-    })
-  }
   demos['ms-ad-creative-video'] = (c, t) => {
-    if (t < .30) {
-      bg(c, '#432d45')
-      caption(c, '01 / GANCHO', lilac)
-      center(c, 'Mesa sem espaço?', 240, 111, 37)
-      for (let i = 0; i < 7; i++) pose(c, 100 + i * 47, 194 + 10 * Math.sin(i * 4 + t * 7), 1, 1, i * .9, () => rect(c, -20, -9, 40, 18, i % 2 ? lilac : coral, 4))
-    } else if (t < .68) {
-      bg(c, '#623a39')
-      caption(c, '02 / BENEFÍCIO', gold)
-      text(c, 'Tudo à mão', 37, 124, 31)
-      organizer(c, 342, 143, 1)
-    } else {
-      bg(c, '#233e3c')
-      caption(c, '03 / AÇÃO', mint)
-      organizer(c, 240, 120, .86)
-      chip(c, 'VEJA AS MEDIDAS', 166, 189, mint, 148)
+    const hit = out(phase(t, 0.08, 0.48))
+    const collapse = 1 - hit
+    for (let i = 3; i > 0; i--) {
+      for (const side of [-1, 1]) {
+        layer(c, () => words(c, 'IMPACTO', X, Y + side * i * 30 * collapse, 63, rose, { outline: 1.2 }), collapse * (1 - i * 0.14))
+      }
+    }
+    words(c, 'IMPACTO', X, Y, 63 + 4 * Math.sin(Math.PI * phase(t, 0.34, 0.54)), snow)
+    const accent = out(phase(t, 0.35, 0.71))
+    for (const side of [-1, 1]) {
+      const x = X + side * (163 + 42 * accent)
+      const y = Y - 28 * side
+      line(c, [[x - 9 * side, y + 15], [x + 8 * side, y - 15]], rose, 2 + 2 * accent)
     }
   }
 
-  function lamp(c, x, y, scale) {
-    pose(c, x, y, scale, scale, 0, () => {
-      ellipse(c, 0, 69, 50, 9, '#171427')
-      stroke(c, [[0, 62], [0, -31], [-35, -31]], '#e5ad84', 7)
-      poly(c, [[-56, -44], [-17, -44], [1, -9], [-72, -9]], '#f49a70')
-      ellipse(c, -36, -8, 36, 5, '#ffe1a3')
-    })
-  }
   demos['ms-launch-video'] = (c, t) => {
-    bg(c, t < .36 ? '#332040' : '#32223e')
-    caption(c, 'LUMINÁRIA / REVELAÇÃO', coral)
-    if (t < .19) {
-      lamp(c, 300, 221, 3.4)
-    } else if (t < .36) {
-      lamp(c, 173, -32, 3.05)
-    } else {
-      const p = out(stage(t, .36, .60))
-      circle(c, 178, 131, 68 + p * 19, '#573551')
-      lamp(c, 178, 132, 1.27)
-      layer(c, p, () => {
-        text(c, 'Lume', 281, 116, 42, paper)
-        text(c, 'Uma nova luz', 283, 156, 14, gold)
-      })
-    }
+    const reveal = out(phase(t, 0.1, 0.69))
+    const points = [[240, 40], [309, 104], [285, 198], [240, 229], [195, 198], [171, 104]]
+    layer(c, () => {
+      polygon(c, points, null, '#baadff52', 1)
+      c.clip()
+      const y = 254 - 244 * reveal
+      polygon(c, [[130, y + 31], [348, y - 43], [354, 264], [120, 265]])
+      c.clip()
+      polygon(c, [[240, 40], [240, 229], [195, 198], [171, 104]], gradient(c, 170, 100, 244, 230, violet, '#342379'))
+      polygon(c, [[240, 40], [309, 104], [285, 198], [240, 229]], gradient(c, 230, 46, 301, 213, '#d6d0ff', '#5949c2', '#27124a'))
+      polygon(c, [[240, 40], [309, 104], [240, 143], [171, 104]], gradient(c, 172, 110, 305, 106, '#5224b4', '#e6d7ff', '#8467ff'))
+      line(c, [[160, y + 19], [320, y - 36]], '#fbf7fdbd', 1.8)
+    })
+    glow(c, X, 219, 46, '#7551ff38')
   }
 
   demos['ms-testimonial-video'] = (c, t) => {
-    bg(c, '#163836')
-    rect(c, 49, 43, 382, 183, '#edeee0', 17)
-    text(c, '“', 74, 88, 68, '#70aa92')
-    layer(c, out(stage(t, .08, .25)), () => text(c, 'Encontrei o arquivo', 121, 96, 24, '#173b39'))
-    const phrase = out(stage(t, .24, .46))
-    rect(c, 119, 118, 157 * phrase, 28, '#b6e8bb', 4)
-    layer(c, phrase, () => text(c, 'em segundos.', 122, 132, 23, '#173b39'))
-    layer(c, out(stage(t, .51, .69)), () => {
-      circle(c, 136, 179, 16, '#387267')
-      center(c, 'A', 136, 180, 14)
-      text(c, 'Ana / personagem fictícia', 162, 179, 13, '#2e5c54')
+    const p = out(phase(t, 0.05, 0.36))
+    const q = out(phase(t, 0.22, 0.53))
+    const mark = ease(phase(t, 0.49, 0.65))
+    const width = 290 * mark
+    layer(c, () => words(c, '“', 91, 82 - 15 * (1 - p), 104, violet, { family: serif }), p)
+    mask(c, 90, 100, 315, 54, () => words(c, 'A partir daqui,', 112, 125 + 53 * (1 - p), 40, snow, { family: serif, align: 'left', italic: true }))
+    rect(c, 107, 157, width, 43, aqua)
+    mask(c, 90, 152, 315, 55, () => {
+      words(c, 'tudo mudou.', 111, 179 + 53 * (1 - q), 41, snow, { family: serif, align: 'left', italic: true })
+      mask(c, 107, 157, width, 43, () => words(c, 'tudo mudou.', 111, 179 + 53 * (1 - q), 41, ink, { family: serif, align: 'left', italic: true }))
     })
   }
 
   demos['ms-animated-infographic'] = (c, t) => {
-    bg(c, '#172b35')
-    caption(c, 'COOPERATIVA / INDICADORES', mint)
-    const values = [12, 38, 84]
-    const names = ['Hortas', 'Canteiros', 'Voluntários']
-    const colors = [mint, blue, gold]
+    const values = [38, 64, 92]
     values.forEach((value, i) => {
-      const start = .12 + i * .13
-      const p = out(stage(t, start, start + .29))
-      const x = 28 + 144 * i
-      const y = 81 + 22 * (1 - p)
-      layer(c, p, () => {
-        rect(c, x, y, 136, 136, '#253f4a', 12)
-        poly(c, [[x + 60, y + 36], [x + 69, y + 20], [x + 78, y + 36], [x + 69, y + 42]], colors[i])
-        center(c, String(Math.round(value * p)), x + 69, y + 75, 38, colors[i])
-        center(c, names[i], x + 69, y + 112, 13)
-      })
+      const x = 111 + i * 129
+      const color = [rose, gold, aqua][i]
+      const start = 0.06 + i * 0.13
+      const p = out(phase(t, start, start + 0.48))
+      const rise = out(phase(t, start, start + 0.22))
+      layer(c, () => {
+        const y = Y + 21 * (1 - rise)
+        ellipse(c, x, y, 47, 47, '#ffffff35', 1)
+        ellipse(c, x, y, 39, 39, '#ffffff26', 4)
+        arc(c, x, y, 39, -Math.PI / 2, -Math.PI / 2 + TAU * p * value / 100, color, 4)
+        words(c, `${Math.round(value * p)}%`, x, y + 1, 24, snow, { family: mono })
+      }, rise)
     })
   }
 
   demos['ms-chart-animation'] = (c, t) => {
-    bg(c, '#1b253d')
-    caption(c, t < .50 ? 'RANKING / JANEIRO → JUNHO' : 'RANKING / JUNHO', blue)
-    const progress = smooth(t)
-    const reorder = smooth(stage(progress, .42, .65))
-    const data = [[80, 63, 0, 1, 'Norte', blue], [56, 90, 1, 0, 'Leste', mint], [38, 49, 2, 2, 'Sul', gold]]
-    data.forEach(([from, to, oldRank, newRank, name, color]) => {
-      const y = 74 + 57 * mix(oldRank, newRank, reorder)
-      const value = Math.round(mix(from, to, progress))
-      text(c, name, 33, y + 13, 15)
-      rect(c, 102, y, 295, 26, '#304064', 6)
-      rect(c, 102, y, 2.95 * value, 26, color, 6)
-      text(c, String(value), 410, y + 13, 17, color)
+    const flow = ease(phase(t, 0.08, 0.85))
+    const swap = ease(phase(t, 0.36, 0.6))
+    const rows = [[lerp(136, 93, swap), lerp(52, 95, flow), aqua],
+      [lerp(93, 136, swap), lerp(72, 78, flow), rose], [179, lerp(37, 57, flow), violet]]
+    const intro = out(phase(t, 0, 0.17))
+    line(c, [[74, 63], [74, 202]], '#ffffff56')
+    rows.forEach(([y, value, color], i) => {
+      const w = value * 2.78 * intro
+      rect(c, 81, y - 12, w, 23, gradient(c, 80, y, 81 + w, y, ['#2682a5', '#9d324b', '#5539ab'][i], color), 3)
+      layer(c, () => words(c, String(Math.round(value)), 92 + w, y + 1, 17, snow, { family: mono, align: 'left' }), intro)
     })
   }
 
   demos['ms-presentation-video'] = (c, t) => {
-    bg(c, '#253052')
-    const slide = Math.min(2, Math.floor(t * 3))
-    caption(c, 'APRESENTAÇÃO / ' + (slide + 1) + ' DE 3', blue)
-    rect(c, 45, 51, 390, 172, '#eef0f9', 12)
-    if (slide === 0) {
-      center(c, 'Onde reduzir a fila?', 240, 138, 29, '#283657')
-    } else if (slide === 1) {
-      text(c, 'Tempo de espera', 65, 80, 16, '#283657')
-      const p = out(stage(t, .34, .58))
-      rect(c, 67, 113, 245 * p, 28, '#657bd1', 4)
-      rect(c, 67, 158, 118 * p, 28, '#58b694', 4)
-      text(c, 'Padrão', 320, 128, 13, '#283657')
-      text(c, 'Piloto', 194, 171, 13, '#283657')
-    } else {
-      chip(c, 'DECISÃO', 188, 83, mint)
-      center(c, 'Ampliar o piloto', 240, 145, 31, '#283657')
-    }
-    for (let i = 0; i < 3; i++) rect(c, 45 + 132 * i, 239, 126, 4, i <= slide ? blue : '#506386', 2)
+    const p = out(phase(t, 0.08, 0.44))
+    const q = out(phase(t, 0.23, 0.57))
+    const end = ease(phase(t, 0.87, 1))
+    rect(c, 88, 79 + end * 115, 3, 115 * out(phase(t, 0, 0.32)) * (1 - end), aqua)
+    layer(c, () => {
+      mask(c, 105, 76, 270, 52, () => words(c, 'O próximo', 110, 102 + 60 * (1 - p), 42, aqua, { family: serif, italic: true, align: 'left' }))
+      mask(c, 105, 124, 276, 81, () => words(c, 'PASSO', 108, 166 + 75 * (1 - q), 71, snow, { align: 'left' }))
+    }, 1 - end)
   }
 
   demos['ms-diagram-animation'] = (c, t) => {
-    bg(c, '#263238')
-    caption(c, 'FLUXOGRAMA / PEDIDO A RESPOSTA', mint)
-    const labels = ['Pedido', 'Triagem', 'Resposta']
-    labels.forEach((label, i) => {
-      const p = i ? out(stage(t, i * .27, i * .27 + .15)) : 1
-      const x = 25 + 151 * i
-      rect(c, x, 109, 127, 55, '#3a5052', 9)
-      layer(c, p, () => {
-        rect(c, x, 109, 127, 55, mint, 9)
-        center(c, label, x + 63, 137, 16, ink)
-      })
-      if (i < 2) {
-        const end = out(stage(t, .10 + .27 * i, .27 + .27 * i))
-        stroke(c, [[x + 127, 136], [x + 149, 136]], gold, 2, end)
-        if (end >= .97) poly(c, [[x + 147, 132], [x + 147, 140], [x + 151, 136]], gold)
-      }
+    const source = [107, 135]
+    const paths = [
+      [[107, 135], [207, 135], [244, 75], [362, 75]],
+      [[107, 135], [362, 135]],
+      [[107, 135], [207, 135], [244, 195], [362, 195]],
+    ]
+    const colors = [violet, gold, aqua]
+    paths.forEach((path, i) => {
+      const p = ease(phase(t, 0.04 + i * 0.105, 0.62 + i * 0.105))
+      const tip = trace(c, path, p, colors[i], 2)
+      const [x, y] = path.at(-1)
+      const node = phase(p, 0.83, 1)
+      if (p > 0) ellipse(c, ...tip, 4.5, 4.5, colors[i])
+      ellipse(c, x, y, 12 * node, 12 * node, colors[i], 1.4)
+      ellipse(c, x, y, 5.5 * node, 5.5 * node, colors[i])
     })
+    glow(c, ...source, 36, '#ffca765d')
+    ellipse(c, ...source, 15, 15, gold, 1.3)
+    ellipse(c, ...source, 7, 7, snow)
   }
 
   demos['ms-explainer-video'] = (c, t) => {
-    bg(c, '#1d373e')
-    caption(c, 'ANALOGIA / FILTRO DE DADOS', mint)
-    rect(c, 122, 126, 236, 18, '#47707b', 4)
-    for (let i = 0; i < 18; i++) rect(c, 131 + i * 12, 132, 7, 5, '#9ccbc6', 2)
-    for (let i = 0; i < 9; i++) {
-      const p = stage(t, .05 + .025 * i, .60 + .028 * i)
-      const x = 147 + 23 * i
-      const y = mix(57 - i % 3 * 11, i % 2 ? 114 : 204, p ** 1.45)
-      if (i % 2) rect(c, x - 7, y - 7, 14, 14, coral, 2)
-      else circle(c, x, y, 6, mint)
+    const membrane = out(phase(t, 0, 0.25))
+    rect(c, X - 159 * membrane, 139, 318 * membrane, 1, '#d4edff9c')
+    for (let i = 0; i < 29; i++) {
+      const k = phase(t, i * 0.009, 0.63 + i * 0.01)
+      const x = 104 + (i * 53 % 269)
+      const top = 13 + 64 * noise(i + 39)
+      const dot = i % 3 !== 0
+      const gravity = dot ? k ** 1.25 : ease(phase(k, 0, 0.66))
+      const bounce = dot ? 0 : 34 * Math.sin(Math.PI * phase(k, 0.61, 1)) + 9 * k
+      const y = lerp(top, dot ? 219 + 16 * noise(i) : 132, gravity) - bounce
+      const radius = 3 + 5 * noise(i + 81)
+      layer(c, () => {
+        if (dot) ellipse(c, x + (y - top) * 0.068, y, radius, radius, aqua)
+        else polygon(c, [[x, y - radius], [x + radius, y], [x, y + radius], [x - radius, y]], violet)
+      }, out(phase(t, 0, 0.18)))
     }
-    stroke(c, [[116, 193], [126, 218], [355, 218], [365, 193]], '#638f95', 2)
-    layer(c, out(stage(t, .65, .84)), () => center(c, 'Só o que interessa', 240, 242, 15, mint))
   }
 
-  function tile(c, x, y, color) {
-    poly(c, [[x - 95, y], [x, y - 31], [x + 95, y], [x, y + 31]], color)
-    poly(c, [[x - 95, y], [x, y + 31], [x, y + 41], [x - 95, y + 10]], '#293454')
-    poly(c, [[x, y + 31], [x + 95, y], [x + 95, y + 10], [x, y + 41]], '#34496d')
-  }
   demos['ms-isometric-animation'] = (c, t) => {
-    bg(c, '#222944')
-    caption(c, 'ISOMÉTRICO / CAMADAS DO SISTEMA', lilac)
-    const p = smooth(stage(t, .10, .72))
-    const x = 199
-    const y = 186
-    const gap = 12 + 39 * p
-    stroke(c, [[x - 95, y], [x - 95, y - 2 * gap]], '#7e8aac', 1)
-    stroke(c, [[x + 95, y], [x + 95, y - 2 * gap]], '#7e8aac', 1)
-    ;[[blue, 'Coleta'], [lilac, 'Índice'], [mint, 'Busca']].forEach(([color, label], i) => {
-      const row = y - i * gap
-      tile(c, x, row, color)
-      layer(c, p, () => text(c, label, 319, row, 14, color))
+    const lift = out(phase(t, 0.06, 0.69))
+    const midway = out(phase(t, 0.18, 0.74))
+    const planes = [[0, '#4550ad', '#302e69'], [-47 * midway, '#7a69db', '#4a358d'], [-97 * lift, violet, '#5d43bd']]
+    const points = y => [[107, y], [240, y - 44], [373, y], [240, y + 44]]
+    const base = 176
+    for (const i of [0, 1, 2, 3]) {
+      const a = points(base)[i]
+      const b = points(base + planes[2][0])[i]
+      line(c, [a, b], '#b3a0ff69', 1)
+    }
+    planes.forEach(([dy, light, dark]) => {
+      const p = points(base + dy)
+      const down = i => [p[i][0], p[i][1] + 9]
+      polygon(c, [p[0], p[3], down(3), down(0)], dark)
+      polygon(c, [p[3], p[2], down(2), down(3)], '#3a317c')
+      polygon(c, p, gradient(c, 104, 125 + dy, 355, 202 + dy, dark, light), '#e2d8ff82')
+      for (let i = 1; i <= 3; i++) {
+        const f = i / 4
+        line(c, [[lerp(p[0][0], p[1][0], f), lerp(p[0][1], p[1][1], f)],
+          [lerp(p[3][0], p[2][0], f), lerp(p[3][1], p[2][1], f)]], '#e9dcff38')
+      }
     })
   }
 
   demos['ms-whiteboard-animation'] = (c, t) => {
-    bg(c, '#f4efe3')
-    caption(c, 'QUADRO / AVIÃO DE PAPEL', '#516c87')
-    grid(c, 0, 40, W, 216, 18, '#e5e2d9')
-    const path = [[115, 132], [351, 63], [249, 197], [205, 145], [351, 63], [177, 171], [205, 145], [115, 132]]
-    const p = out(stage(t, .06, .82))
-    const tip = stroke(c, path, '#346b96', 3.5, p)
-    layer(c, 1 - stage(t, .73, .88), () => {
-      poly(c, [tip, [tip[0] + 23, tip[1] + 5], [tip[0] + 17, tip[1] + 15]], '#346b96')
-      stroke(c, [[tip[0] + 21, tip[1] + 10], [tip[0] + 63, tip[1] + 40]], '#585367', 9)
+    const p = ease(phase(t, 0.03, 0.7))
+    const plane = [[124, 114], [349, 61], [279, 192], [217, 150], [349, 61], [193, 160], [183, 192], [217, 150], [183, 192], [176, 143], [124, 114]]
+    const tip = trace(c, plane, p, '#154bd9', 3.8)
+    const tail = Array.from({ length: 32 }, (_, i) => {
+      const f = i / 31
+      return [170 - f * 105, 188 + 29 * Math.sin(Math.PI * f)]
     })
-    layer(c, stage(t, .82, .96), () => center(c, 'Dobre na diagonal', 240, 235, 16, '#346b96'))
+    layer(c, () => {
+      c.setLineDash([3, 7])
+      trace(c, tail, out(phase(t, 0.66, 0.97)), '#154bd9', 2)
+    })
+    if (p < 1) ellipse(c, ...tip, 4.3, 4.3, '#154bd9')
   }
 
   demos['ms-wrapped-video'] = (c, t) => {
-    const beat = Math.min(2, Math.floor(t * 3))
-    const color = [gold, mint, lilac][beat]
-    bg(c, ['#50283d', '#193f3b', '#312452'][beat])
-    const p = back(clamp((t * 3 - beat) * 2.9))
-    caption(c, 'SEU ANO DE LEITURA / ' + (beat + 1), color)
-    for (let i = 0; i < 5; i++) ellipse(c, 240, 136, 63 + i * 29, 31 + i * 17, '#ffffff23', 1)
-    pose(c, 240, 116, .58 + .42 * p, .58 + .42 * p, 0, () => center(c, ['24', '8 mil', '3'][beat], 0, 0, 84, color))
-    center(c, ['livros lidos', 'páginas viradas', 'gêneros novos'][beat], 240, 201, 23)
+    const p = out(phase(t, 0.03, 0.63))
+    const q = out(phase(t, 0.46, 0.71))
+    const number = String(Math.round(128 * p)).padStart(3, '0')
+    const shift = 15 * (1 - q)
+    words(c, number, X + 8 + shift, 116 + 6 + shift, 130, violet, { outline: 1.9, family: mono })
+    words(c, number, X, 116, 130, snow, { family: mono })
+    mask(c, 139, 176, 202, 49, () => words(c, 'horas', X, 199 + 44 * (1 - q), 44, violet, { family: serif, italic: true, weight: 400 }))
   }
 
   demos['ms-map-animation'] = (c, t) => {
-    bg(c, '#3d7186')
-    const tick = Math.floor(t * 72) / 72
-    const zoom = 1 + .35 * out(stage(tick, 0, .53))
-    pose(c, 240, 136, zoom, zoom, 0, () => {
-      c.translate(-240, -136)
-      poly(c, [[-80, -70], [620, -70], [620, 330], [374, 330], [383, 220], [335, 194], [364, 139], [295, 106], [274, 51], [214, 64], [176, 19], [-80, 45]], '#ced0a3')
-      stroke(c, [[-30, 28], [117, 39], [164, 65], [214, 64], [274, 51], [295, 106], [364, 139], [335, 194], [383, 220], [374, 330]], '#e6e0ba', 3)
-      const route = [[317, 180], [294, 147], [302, 121], [251, 102], [224, 78], [188, 81]]
-      c.save()
-      c.setLineDash([5, 5])
-      stroke(c, route, '#884449', 3, out(stage(tick, .25, .79)))
-      c.restore()
-      circle(c, 317, 180, 5, '#884449')
-      text(c, 'Porto Baixo', 229, 196, 12, '#462d38')
-      layer(c, out(stage(tick, .70, .87)), () => {
-        circle(c, 188, 81, 6, '#884449')
-        text(c, 'Vila Alta', 125, 92, 12, '#462d38')
-      })
+    const land = [[77, 66], [121, 57], [156, 72], [202, 61], [231, 82], [250, 115], [294, 105], [316, 130], [339, 135],
+      [379, 165], [395, 199], [342, 210], [308, 194], [268, 218], [215, 205], [188, 183], [141, 191], [101, 161], [103, 123]]
+    const route = [[121, 110], [149, 121], [176, 102], [214, 111], [246, 147], [289, 136], [316, 155], [347, 181]]
+    const p = ease(phase(t, 0.05, 0.84))
+    polygon(c, land, gradient(c, 92, 65, 381, 219, '#354679', '#191e39'), '#768cbe')
+    layer(c, () => {
+      polygon(c, land)
+      c.clip()
+      for (let i = 0; i < 10; i++) {
+        const pts = Array.from({ length: 45 }, (_, j) => [50 + j * 9, 28 + 22 * i + 17 * Math.sin(j / 8 + i * 0.46)])
+        line(c, pts, '#9caede29')
+      }
     })
-    chip(c, 'ROTA COSTEIRA', 24, 20, paper, 112)
-  }
+    const tip = layerTip()
+    ellipse(c, ...route[0], 4, 4, gold)
+    ellipse(c, ...tip, 5, 5, snow)
+    const end = out(phase(t, 0.81, 1))
+    if (end > 0) layer(c, () => ellipse(c, ...route.at(-1), 5 + 17 * end, 5 + 17 * end, gold, 1.4), 1 - 0.75 * end)
 
+    function layerTip() {
+      c.save()
+      c.setLineDash([4, 4])
+      const point = trace(c, route, p, gold, 2.8)
+      c.restore()
+      return point
+    }
+  }
   demos['ms-60fps-animation'] = (c, t) => {
-    bg(c, '#18293c')
-    caption(c, 'CADÊNCIA / MESMO PERCURSO', blue)
-    const p = smooth(t)
-    const steps = [Math.floor(p * 6) / 6, p]
-    ;['Saltos discretos', 'Transformação contínua'].forEach((label, i) => {
-      const y = 88 + i * 93
-      const progress = steps[i]
-      text(c, label, 52, y - 24, 12)
-      stroke(c, [[52, y + 19], [428, y + 19]], '#57718a', 1)
-      for (let tick = 0; tick < 7; tick++) circle(c, 66 + 55 * tick, y + 19, 2, blue)
-      layer(c, .66 + .34 * progress, () => rect(c, 52 + 330 * progress, y - 7, 46, 29, i ? mint : coral, 5))
-    })
+    const p = phase(t, 0, 0.96)
+    const point = f => [68 + 344 * f, 135 - 58 * Math.sin(TAU * f)]
+    const start = Math.max(0, p - 0.44)
+    for (let i = 0; i < 60; i++) {
+      const a = i / 60
+      const b = (i + 1) / 60
+      const from = point(lerp(start, p, a))
+      const to = point(lerp(start, p, b))
+      layer(c, () => line(c, [from, to], i > 48 ? aqua : blue, 0.7 + 7 * a ** 2), a ** 1.5)
+    }
+    const [x, y] = point(p)
+    glow(c, x, y, 27, '#65f5dd86')
+    ellipse(c, x, y, 6, 6, snow)
   }
 
   demos['ms-accessible-animation'] = (c, t) => {
-    bg(c, '#26322e')
-    caption(c, 'ACESSIBILIDADE / DOIS MODOS', mint)
-    const p = out(stage(t, .12, .58))
-    const fade = stage(t, .25, .46)
-    ;['Padrão', 'Movimento reduzido'].forEach((label, i) => {
-      const x = 130 + i * 220
-      rect(c, x - 98, 62, 196, 152, '#354944', 12)
-      center(c, label, x, 84, 14)
-      const scale = i ? 1 : .75 + .25 * p
-      layer(c, i ? fade : p, () => pose(c, x, i ? 143 : 143 + 39 * (1 - p), scale, scale, 0, () => {
-        rect(c, -74, -22, 148, 44, mint, 7)
-        center(c, '✓  Salvo', 0, 0, 19, ink)
-      }))
-    })
+    const p = ease(phase(t, 0.14, 0.67))
+    words(c, 'Calma', X, Y - 4, 111, violet, { family: serif, italic: true, weight: 500 })
+    layer(c, () => words(c, 'Calma', X, Y - 4, 111, snow, { family: serif, italic: true, weight: 500 }), p)
+    rect(c, 171, 205, 138, 1.4, violet)
+    layer(c, () => rect(c, 171, 205, 138, 1.4, snow), p)
   }
 
   demos['ms-ascii-animation'] = (c, t) => {
-    bg(c, '#142923')
-    caption(c, 'ASCII / MAPA DE LUZ', mint)
-    const alphabet = '.:-=+*#%@'
-    for (let y = -8; y <= 8; y++) {
-      for (let x = -16; x <= 16; x++) {
-        const sx = x / 16
-        const sy = y / 8
-        const radius = sx ** 2 + sy ** 2
-        if (radius > 1) continue
-        const z = Math.sqrt(1 - radius)
-        const azimuth = tau * t
-        const value = clamp((sx * Math.cos(azimuth) + z * Math.sin(azimuth) - sy * .45 + 1) * .49)
-        center(c, alphabet[Math.floor(value * (alphabet.length - 1))], 240 + x * 8, 145 + y * 10, 12, value > .51 ? mint : '#578676', { family: 'monospace' })
+    const ramp = '·:-+*#%@'
+    const a = TAU * t
+    const light = [Math.sin(a) * 0.69, -0.31 + 0.18 * Math.cos(a), 0.63]
+    c.font = '700 10px Consolas, monospace'
+    c.textAlign = 'center'
+    c.textBaseline = 'middle'
+    for (let y = -10; y <= 10; y++) {
+      for (let x = -17; x <= 17; x++) {
+        const nx = x / 17.2
+        const ny = y / 10.7
+        if (nx ** 2 + ny ** 2 > 1) continue
+        const nz = Math.sqrt(1 - nx ** 2 - ny ** 2)
+        const bands = 0.84 + 0.16 * Math.sin(18 * (nx + ny * 0.36) - 3 * a)
+        const l = clamp((0.19 + nx * light[0] + ny * light[1] + nz * light[2]) * bands)
+        c.fillStyle = `hsl(${lerp(255, 177, l)} 92% ${lerp(47, 91, l)}%)`
+        c.fillText(ramp[Math.round(l * (ramp.length - 1))], X + x * 6.35, Y + y * 9.9)
       }
     }
   }
 
-  function glassLights(c, t, frosted = false) {
-    const colors = [coral, lilac, blue]
-    const origin = [[127, 132], [248, 171], [354, 105]]
-    origin.forEach(([x, y], i) => {
-      const phase = t * tau + i * 2.2
-      const cx = x + 32 * Math.sin(phase)
-      const cy = y + 25 * Math.cos(phase)
-      if (!frosted) {
-        ellipse(c, cx, cy, 71, 46, colors[i])
-        return
-      }
-      pose(c, cx, cy, 1, .68, 0, () => {
-        const glow = c.createRadialGradient(0, 0, 29, 0, 0, 88)
-        glow.addColorStop(0, colors[i])
-        glow.addColorStop(1, colors[i] + '00')
-        circle(c, 0, 0, 88, glow)
-      })
-    })
-  }
   demos['ms-glassmorphism'] = (c, t) => {
-    bg(c, '#272448')
-    glassLights(c, t)
-    c.save()
-    c.beginPath()
-    c.roundRect(108, 67, 264, 137, 21)
-    c.clip()
-    rect(c, 106, 66, 268, 140, '#28284e')
-    glassLights(c, t, true)
-    rect(c, 106, 66, 268, 140, '#22244891')
-    c.restore()
-    c.beginPath()
-    c.roundRect(108, 67, 264, 137, 21)
-    c.strokeStyle = '#ffffff9d'
-    c.lineWidth = 1.2
-    c.stroke()
-    stroke(c, [[146, 68], [332, 68]], '#fff6e8', 2)
-    text(c, 'VIDRO FOSCO', 136, 104, 11)
-    text(c, 'Brilho em trânsito', 136, 147, 23)
+    const x = X + 85 * Math.sin(TAU * t)
+    const a = -0.41
+    layer(c, () => {
+      c.translate(X, Y)
+      c.rotate(a)
+      layer(c, () => {
+        c.beginPath()
+        c.ellipse(0, 0, 135, 74, 0, 0, TAU)
+        c.clip()
+        rect(c, -135, -74, 270, 148, gradient(c, -135, -74, 135, 74, '#b6beff44', '#34336611', '#746ad150'))
+        for (let i = 0; i < 3; i++) {
+          const shift = x - X + i * 22 - 22
+          const points = [[shift - 90, 89], [shift - 5, 9], [shift + 92, -89]]
+          c.filter = `blur(${4 + i * 3}px)`
+          line(c, points, ['#43e9ff92', '#a985ffa5', '#ff7996ad'][i], 23)
+        }
+      })
+      ellipse(c, 0, 0, 135, 74, gradient(c, -135, 56, 135, -55, '#3f396e', '#acaeff', '#423c64'), 2.6)
+      ellipse(c, 0, 0, 131, 70, '#cfcfff50', 1.1)
+      const start = -1.9 + Math.sin(TAU * t) * 0.72
+      c.beginPath()
+      c.ellipse(0, 0, 134, 74, 0, start, start + 0.72)
+      c.strokeStyle = '#f4f2ffb8'
+      c.lineWidth = 2
+      c.stroke()
+    })
   }
 
   demos['ms-gsap-web'] = (c, t) => {
-    bg(c, '#292343')
-    caption(c, 'ROLAGEM / CABEÇALHO FIXO', lilac)
-    const p = smooth(t)
-    rect(c, 57, 54, 366, 164, '#3c345f', 12)
-    crop(c, 62, 88, 356, 125, () => {
-      const slides = [[gold, 'Estudo'], [mint, 'Protótipo'], [lilac, 'Entrega']]
-      slides.forEach(([color, name], i) => {
-        const x = 72 + (i - 2 * p) * 335
-        rect(c, x, 95, 317, 106, color, 9)
-        text(c, String(i + 1).padStart(2, '0'), x + 22, 123, 11, ink)
-        text(c, name, x + 22, 158, 32, ink)
+    const p = (ease(phase(t, 0.12, 0.46)) + ease(phase(t, 0.54, 0.86))) * 166
+    line(c, [[106, 84], [106, 191]], '#ffffff81', 1.4)
+    line(c, [[374, 84], [374, 191]], '#ffffff81', 1.4)
+    const glyphs = ['A', 'B', 'C']
+    mask(c, 109, 65, 262, 144, () => {
+      glyphs.forEach((char, i) => {
+        const x = X + 166 * i - p
+        words(c, char, x, 137, 132, [snow, violet, gold][i], { outline: Math.abs(x - X) > 100 ? 1.3 : 0 })
       })
     })
-    rect(c, 73, 72, 333, 3, '#716493', 1)
-    rect(c, 73, 72, 333 * p, 3, lilac, 1)
-    center(c, 'Progresso da rolagem', 240, 242, 12)
+    ellipse(c, X, 215, 3, 3, gold)
   }
 
   demos['ms-lottie-animation'] = (c, t) => {
-    bg(c, '#153341')
-    caption(c, 'ÍCONE / SEGMENTOS DE ANIMAÇÃO', blue)
-    const p = out(stage(t, .06, .48))
-    const check = stage(t, .43, .68)
-    const scale = 1 + .15 * Math.sin(Math.PI * stage(t, .67, .92))
-    pose(c, 240, 127, scale, scale, 0, () => {
-      arc(c, 0, 0, 63, 1, '#416473', 5)
-      arc(c, 0, 0, 63, p, blue, 5)
-      stroke(c, [[-26, 2], [-7, 21], [28, -22]], mint, 6, check)
+    const p = out(phase(t, 0.02, 0.45))
+    const q = out(phase(t, 0.35, 0.64))
+    const pulse = Math.sin(Math.PI * phase(t, 0.52, 0.75))
+    const ring = out(phase(t, 0.55, 0.98))
+    layer(c, () => ellipse(c, X, Y, 66 + 34 * ring, 66 + 34 * ring, aqua, 1.2), (1 - ring) * phase(t, 0.55, 0.63))
+    layer(c, () => {
+      c.translate(X, Y)
+      c.scale(1 + 0.12 * pulse, 1 + 0.12 * pulse)
+      arc(c, 0, 0, 64, -Math.PI / 2, -Math.PI / 2 + TAU * p, aqua, 4)
+      trace(c, [[-29, 2], [-8, 21], [30, -22]], q, snow, 10)
     })
-    center(c, check >= 1 ? 'CONCLUÍDO' : 'CARREGANDO', 240, 222, 15, check >= 1 ? mint : blue)
   }
 
-  function heart(c, x, y, fill) {
-    c.beginPath()
-    c.moveTo(x, y + 13)
-    c.bezierCurveTo(x - 18, y, x - 14, y - 15, x - 5, y - 12)
-    c.quadraticCurveTo(x, y - 11, x, y - 7)
-    c.quadraticCurveTo(x, y - 11, x + 5, y - 12)
-    c.bezierCurveTo(x + 14, y - 15, x + 18, y, x, y + 13)
-    c.closePath()
-    if (fill) {
-      c.fillStyle = coral
-      c.fill()
-    } else {
-      c.lineWidth = 2
-      c.strokeStyle = muted
-      c.stroke()
-    }
-  }
   demos['ms-micro-interaction'] = (c, t) => {
-    bg(c, '#332531')
-    caption(c, 'INTERAÇÃO / FAVORITAR', coral)
-    const p = out(stage(t, .07, .40))
-    const done = t >= .46
-    const spring = stage(t, .41, .64)
-    const scale = 1 - .13 * Math.sin(tau * spring) * (1 - spring)
-    pose(c, 240, 136, scale, scale, 0, () => {
-      rect(c, -74, -29, 148, 58, done ? '#663c4f' : '#503647', 26)
-      heart(c, -28, 0, done)
-      center(c, done ? '24' : '23', 23, 0, 28, done ? coral : paper)
+    const trigger = phase(t, 0.2, 0.65)
+    const kick = -0.19 * Math.sin(Math.PI * phase(t, 0.1, 0.26)) + 0.23 * Math.sin(Math.PI * phase(t, 0.25, 0.55))
+    layer(c, () => {
+      c.translate(X, Y - 5)
+      c.scale(1 + kick, 1 + kick)
+      c.beginPath()
+      c.moveTo(0, 67)
+      c.bezierCurveTo(-13, 59, -77, 17, -77, -25)
+      c.bezierCurveTo(-77, -72, -25, -79, 0, -43)
+      c.bezierCurveTo(25, -79, 77, -72, 77, -25)
+      c.bezierCurveTo(77, 17, 13, 59, 0, 67)
+      c.closePath()
+      const a = c.globalAlpha
+      c.globalAlpha *= out(trigger)
+      c.fillStyle = gradient(c, -45, -66, 64, 56, '#ffadc8', rose, '#df325f')
+      c.fill()
+      c.globalAlpha = a
+      c.strokeStyle = '#ff95b8'
+      c.lineWidth = 3.3
+      c.stroke()
     })
-    const burst = stage(t, .46, .78)
-    if (done && burst < 1) layer(c, 1 - burst, () => {
-      for (let i = 0; i < 8; i++) circle(c, 210 + Math.cos(i * tau / 8) * 75 * burst, 136 + Math.sin(i * tau / 8) * 59 * burst, 3, gold)
-    })
-    cursor(c, mix(352, 213, p) + 25 * stage(t, .51, .75), mix(203, 142, p) + 19 * stage(t, .51, .75))
+    for (let i = 0; i < 6; i++) {
+      const p = out(phase(t, 0.32 + i * 0.015, 0.81))
+      if (!p) continue
+      const a = i * TAU / 6 + 0.16 + p * 0.24
+      const r = 82 + 61 * p
+      layer(c, () => spark(c, X + Math.cos(a) * r, Y + Math.sin(a) * r * 0.79, 10 * (1 - p), i % 2 ? snow : rose), 1 - p)
+    }
   }
 
   demos['ms-page-transition-animation'] = (c, t) => {
-    bg(c, '#26314e')
-    caption(c, 'TRANSIÇÃO / COLEÇÃO → DETALHE', blue)
-    const p = smooth(stage(t, .15, .72))
-    layer(c, 1 - stage(t, .13, .56), () => {
-      rect(c, 49 - 28 * p, 88, 118, 103, '#446b80', 9)
-      rect(c, 313 + 28 * p, 88, 118, 103, '#7b637b', 9)
-      center(c, 'Costas', 108 - 28 * p, 165, 14)
-      center(c, 'Dunas', 371 + 28 * p, 165, 14)
+    const p = ease(phase(t, 0.09, 0.77))
+    const x = lerp(170, 237, p)
+    const y = lerp(155, 135, p)
+    const r = lerp(25, 144, p)
+    const h = lerp(25, 76, p)
+    layer(c, () => {
+      c.beginPath()
+      c.ellipse(x, y, r, h, -0.29, 0, TAU)
+      c.clip()
+      rect(c, 0, 0, W, H, gradient(c, 117, 91, 363, 192, '#382589', '#775dfe', '#d5beff'))
+      for (let i = 0; i < 10; i++) {
+        const size = i * 13 + 8
+        ellipse(c, x - r * 0.32, y + h * 0.21, size * 1.65, size, '#fbf6ff77', 1.2, -0.35)
+      }
     })
-    const x = mix(181, 45, p)
-    const y = mix(88, 54, p)
-    const w = mix(118, 390, p)
-    const h = mix(103, 127, p)
-    crop(c, x, y, w, h, () => landscape(c, x, y, w, h, false))
-    layer(c, 1 - p, () => center(c, 'Serra', 240, 167, 14))
-    layer(c, out(stage(t, .63, .86)), () => text(c, 'Serra do Poente', 47, 215, 26))
+    spark(c, x - r * 0.32, y + h * 0.21, 5.5 + 4 * p, snow)
   }
 
   demos['ms-svg-animation'] = (c, t) => {
-    bg(c, '#20263b')
-    caption(c, 'VETOR / REVELAÇÃO DO TRAÇO', gold)
-    const points = Array.from({ length: 126 }, (_, i) => {
-      const p = i / 125
-      return [72 + 334 * p + 26 * Math.sin(tau * p * 4), 134 + (1 - .64 * p) * 51 * Math.sin(tau * p * 4 + .42)]
-    })
-    const p = smooth(stage(t, .08, .70))
-    const [x, y] = stroke(c, points, gold, 3, p)
-    if (p < 1) {
-      circle(c, x, y, 9, '#ffcc6550')
-      circle(c, x, y, 3.5, paper)
+    const pts = [[90, 172], [115, 134], [161, 72], [188, 51], [185, 67], [153, 128], [123, 189], [132, 205],
+      [165, 179], [201, 131], [229, 98], [234, 116], [209, 170], [224, 173], [255, 141], [280, 119], [280, 151],
+      [302, 143], [331, 128], [338, 145], [320, 170], [337, 176], [377, 147]]
+    const knots = []
+    for (let i = 0; i < pts.length - 1; i++) {
+      const a = pts[Math.max(0, i - 1)]
+      const b = pts[i]
+      const d = pts[i + 1]
+      const e = pts[Math.min(pts.length - 1, i + 2)]
+      for (let j = 0; j < 6; j++) {
+        const u = j / 6
+        knots.push(b.map((x, k) => 0.5 * ((2 * x) + (-a[k] + d[k]) * u +
+          (2 * a[k] - 5 * x + 4 * d[k] - e[k]) * u ** 2 + (-a[k] + 3 * x - 3 * d[k] + e[k]) * u ** 3)))
+      }
     }
-    if (t >= .72) stroke(c, [[105, 191], [370, 176]], coral, 2.5)
+    knots.push(pts.at(-1))
+    const p = ease(phase(t, 0.03, 0.8))
+    const tip = trace(c, knots, p, snow, 3.7)
+    const tail = out(phase(t, 0.73, 0.92))
+    trace(c, [[190, 211], [260, 206], [332, 199], [386, 190]], tail, aqua, 2.6)
+    layer(c, () => glow(c, ...tip, 17, '#65f5ddba'), phase(t, 0, 0.12) * (1 - phase(t, 0.78, 0.94)))
   }
 
   demos['ms-after-effects'] = (c, t) => {
-    bg(c, '#2d2440')
-    caption(c, 'EXPRESSÃO / OSCILAÇÃO AMORTECIDA', lilac)
-    const p = out(stage(t, .04, .34))
-    const settle = stage(t, .32, 1)
-    const spring = x => Math.exp(-4.4 * x) * Math.sin(tau * 3.2 * x)
-    const stretch = 1 + spring(settle) * .58
-    stroke(c, [[55, 102], [425, 102]], '#594c70', 1)
-    circle(c, 240, 102, 5, '#eee1ff66')
-    pose(c, mix(58, 240, p) + 28 * spring(settle), 102, 1, stretch, 0, () => poly(c, [[-29, 0], [0, -24], [29, 0], [0, 24]], lilac))
-    stroke(c, [[55, 192], [425, 192]], '#594c70', 1)
-    const curve = Array.from({ length: 81 }, (_, i) => [55 + 4.5 * i, 192 - 42 * spring(i / 80)])
-    stroke(c, curve, '#6f6186', 1.5)
-    const [x, y] = stroke(c, curve, coral, 2.5, settle)
-    circle(c, x, y, 4, coral)
-    text(c, 'AMPLITUDE', 55, 235, 10, lilac)
+    const shape = (time, i) => {
+      const entry = out(phase(time, 0, 0.42))
+      const a = phase(time, 0.36, 1)
+      const wave = Math.sin(a * TAU * 3.4) * Math.exp(-5.4 * a)
+      const x = X - 168 * (1 - entry) + 42 * wave
+      const y = Y - 31 * (1 - entry) - 15 * wave
+      const r = 72 + 18 * wave
+      layer(c, () => {
+        polygon(c, [[x, y - r], [x + r * 1.1, y], [x, y + r], [x - r * 1.1, y]],
+          i ? null : gradient(c, x - 48, y - 59, x + 51, y + 57, '#fff0a6', gold, '#df7528'), i ? gold : null, 1.8)
+        if (!i) polygon(c, [[x, y - r], [x + r * 1.1, y], [x, y + r * 0.28], [x - r * 1.1, y]], '#ffedaf69')
+      }, i ? (1 - phase(t, 0.34, 0.76)) * (0.42 - i * 0.08) : 1)
+    }
+    for (let i = 3; i >= 0; i--) shape(t - i * 0.043, i)
   }
 
   demos['ms-animation-principles'] = (c, t) => {
-    bg(c, '#403246')
-    caption(c, 'FÍSICA / PREPARO, SALTO, IMPACTO', gold)
-    const flight = stage(t, .22, .67)
-    const anticipation = Math.sin(Math.PI * stage(t, .02, .24))
-    const bounce = Math.sin(Math.PI * stage(t, .69, .88))
-    const height = 107 * 4 * flight * (1 - flight) + bounce * 18
-    const impact = Math.sin(Math.PI * stage(t, .63, .74))
-    const stretch = 1 - anticipation * .34 + (flight > 0 && flight < .24 ? .22 * Math.sin(Math.PI * flight / .24) : 0) - impact * .33
-    const x = mix(113, 363, flight) + 14 * bounce
-    stroke(c, [[42, 224], [438, 224]], '#82718b', 2)
-    ellipse(c, x, 224, 29 - height * .14, 5 - height * .029, '#261e32')
-    ellipse(c, x, 224 - height - 26 * stretch, 26 / stretch, 26 * stretch, gold)
+    const a = phase(t, 0.18, 0.61)
+    const b = phase(t, 0.64, 0.84)
+    const lift = 114 * 4 * a * (1 - a) + 34 * 4 * b * (1 - b)
+    const squeeze = 0.25 * Math.sin(Math.PI * phase(t, 0.01, 0.18)) +
+      0.32 * Math.sin(Math.PI * phase(t, 0.565, 0.675)) +
+      0.15 * Math.sin(Math.PI * phase(t, 0.817, 0.91))
+    const stretch = 0.23 * Math.sin(Math.PI * phase(t, 0.15, 0.34))
+    const rx = 40 * (1 + squeeze - stretch * 0.58)
+    const ry = 40 * (1 - squeeze + stretch)
+    const y = 209 - lift - ry
+    ellipse(c, X, 213, 49 - 20 * lift / 114, 7 - 2 * lift / 114, `rgba(255,131,160,${0.34 - 0.24 * lift / 114})`)
+    const fill = c.createRadialGradient(X - 12, y - 16, 1, X, y, Math.max(rx, ry))
+    fill.addColorStop(0, '#ffd9df')
+    fill.addColorStop(0.36, '#ff91a6')
+    fill.addColorStop(1, '#db3d7e')
+    ellipse(c, X, y, rx, ry, fill)
   }
 
   demos['ms-beat-sync-editing'] = (c, t) => {
-    const cut = Math.min(3, Math.floor(t * 4))
-    const beat = clamp(t * 4 - cut)
-    const pulse = 1 + .24 * Math.exp(-beat * 12)
-    const color = [mint, coral, gold, blue][cut]
-    bg(c, ['#203e39', '#4d293e', '#514132', '#283c58'][cut])
-    caption(c, 'MONTAGEM / 4 BATIDAS', color)
-    pose(c, 240, 124, pulse, pulse, cut * .42, () => {
-      if (cut === 0) circle(c, 0, 0, 51, color)
-      if (cut === 1) rect(c, -43, -43, 86, 86, color, 8)
-      if (cut === 2) poly(c, [[0, -60], [56, 43], [-56, 43]], color)
-      if (cut === 3) poly(c, [[-58, 0], [0, -48], [58, 0], [0, 48]], color)
+    const beat = Math.min(3, Math.floor(t * 4))
+    const clock = fract(t * 4)
+    const colors = [gold, violet, aqua, rose]
+    const count = [3, 5, 8, 12][beat]
+    const size = 1 + 0.19 * (1 - out(phase(clock, 0, 0.36)))
+    layer(c, () => {
+      c.translate(X, Y)
+      c.scale(size, size)
+      c.rotate(beat * 0.7 + 0.13 * clock)
+      for (let i = 0; i < count; i++) {
+        c.rotate(TAU / count)
+        c.beginPath()
+        c.moveTo(0, -9)
+        c.quadraticCurveTo(-61, -28, 0, -100)
+        c.quadraticCurveTo(61, -28, 0, -9)
+        c.fillStyle = gradient(c, 0, -94, 0, -9, colors[beat], '#f7f5ff6f')
+        c.fill()
+      }
+      ellipse(c, 0, 0, 6, 6, snow)
     })
-    stroke(c, [[54, 224], [426, 224]], '#ffffff70', 1)
-    for (let i = 0; i < 4; i++) circle(c, 73 + 111 * i, 224, i === cut ? 6 + 4 * (pulse - 1) : 3, i === cut ? color : muted)
-    circle(c, mix(73, 406, t), 238, 2.5, paper)
   }
 
   demos['ms-color-motion'] = (c, t) => {
-    const p = smooth(t)
-    const hue = mix(225, 375, p)
-    const fills = [`hsl(${hue} 36% 20%)`, `hsl(${hue + 34} 83% 65%)`, `hsl(${hue + 52} 87% 76%)`]
-    bg(c, fills[0])
-    caption(c, 'COR / DO FRIO AO QUENTE', paper)
-    const gradient = c.createRadialGradient(224, 106, 8, 241, 127, 64)
-    gradient.addColorStop(0, fills[2])
-    gradient.addColorStop(1, fills[1])
-    circle(c, 240, 127, 64, gradient)
-    fills.forEach((fill, i) => {
-      rect(c, 146 + i * 68, 213, 49, 23, paper, 5)
-      rect(c, 147 + i * 68, 214, 47, 21, fill, 4)
-    })
+    const p = ease(phase(t, 0.06, 0.92))
+    const hue = lerp(241, 388, p)
+    const fill = c.createRadialGradient(209, 96, 1, X, Y, 97)
+    fill.addColorStop(0, `hsl(${hue + 26} 100% 93%)`)
+    fill.addColorStop(0.48, `hsl(${hue + 5} 96% 61%)`)
+    fill.addColorStop(1, `hsl(${hue - 27} 68% 23%)`)
+    ellipse(c, X, Y, 81, 81, fill)
+    for (let i = 0; i < 2; i++) {
+      const a = -0.36 + i * 0.28 + p * 0.21
+      const delayed = lerp(241, 388, ease(phase(t, 0.15 + i * 0.045, 1)))
+      ellipse(c, X, Y, 143 - i * 17, 26 + i * 11, `hsl(${delayed} 100% 77% / 0.68)`, 1.5, a)
+    }
   }
 
   demos['ms-logo-animation'] = (c, t) => {
-    bg(c, '#203739')
-    caption(c, 'IDENTIDADE / ENCAIXE DO SÍMBOLO', mint)
-    const parts = [[-137, -41, -27, mint], [114, -43, 27, blue], [18, 92, 0, gold]]
-    parts.forEach(([x, y, target, color], i) => {
-      const p = back(stage(t, .06 + .065 * i, .58))
-      pose(c, 240 + mix(x, target, p), 113 + mix(y, i === 2 ? 20 : -7, p), 1, 1, (1 - p) * (i - 1) * 3.2, () => poly(c, [[-26, 0], [0, -23], [26, 0], [0, 23]], color))
-    })
-    const ring = stage(t, .52, .74)
-    if (t >= .52 && ring < 1) layer(c, 1 - ring, () => ellipse(c, 240, 117, 52 + 27 * ring, 44 + 27 * ring, mint, 2))
-    layer(c, out(stage(t, .58, .80)), () => center(c, 'Orla', 240, 191, 38))
+    for (let i = 0; i < 3; i++) {
+      const p = bump(phase(t, i * 0.045, 0.54 + i * 0.05))
+      const a = i * TAU / 3
+      layer(c, () => {
+        c.translate(X + 118 * (1 - p) * Math.cos(a - Math.PI / 2), Y + 83 * (1 - p) * Math.sin(a - Math.PI / 2))
+        c.rotate(a - 1.3 * (1 - p))
+        c.beginPath()
+        c.moveTo(0, -10)
+        c.bezierCurveTo(-63, -38, -40, -92, 14, -88)
+        c.bezierCurveTo(29, -53, 26, -24, 0, -10)
+        c.fillStyle = [snow, lime, aqua][i]
+        c.fill()
+      }, out(phase(t, 0, 0.2)))
+    }
+    const p = phase(t, 0.44, 0.76)
+    spark(c, X, Y, 13 * Math.sin(Math.PI * p), snow)
   }
 
   demos['ms-motion-art-direction'] = (c, t) => {
-    bg(c, '#262838')
-    caption(c, 'DIREÇÃO / MESMA FORMA, OUTRO RITMO')
-    const names = ['Contido', 'Enérgico']
-    names.forEach((name, mode) => {
-      const x = 128 + 224 * mode
-      rect(c, x - 101, 56, 202, 167, mode ? '#512e45' : '#243d60', 10)
-      center(c, name, x, 202, 15, mode ? coral : blue)
-      for (let i = 0; i < 3; i++) {
-        const p = mode ? back(stage(t, .11 + .10 * i, .43 + .10 * i)) : smooth(stage(t, .08, .71))
-        pose(c, x + (i - 1) * 43, 122 + (1 - p) * (mode ? 51 : 19), 1, 1, mode ? (1 - p) * -.9 + .17 : 0, () => rect(c, -14, -30, 28, 61, mode ? coral : blue, 5))
-      }
-    })
+    const settle = ease(phase(t, 0.71, 1))
+    for (let i = 0; i < 7; i++) {
+      const p = out(phase(t, i * 0.038, 0.6 + i * 0.038))
+      const angle = (i - 3) * (0.235 * p - 0.03 * settle)
+      layer(c, () => {
+        c.translate(X, 211)
+        c.rotate(angle)
+        const shimmer = 87 * (0.5 + 0.5 * Math.sin(TAU * t + i * 0.48))
+        const fill = gradient(c, -8, -146 + shimmer, 34, -21 + shimmer, '#562a26', '#db8d45', '#ffe4a0', '#75402d')
+        c.beginPath()
+        c.moveTo(-17, 0)
+        c.bezierCurveTo(-41, -66, -38, -131, 9, -164)
+        c.bezierCurveTo(38, -120, 31, -57, 14, 0)
+        c.closePath()
+        c.fillStyle = fill
+        c.fill()
+        c.strokeStyle = '#ffd79ba0'
+        c.lineWidth = 0.8
+        c.stroke()
+      }, out(phase(t, 0, 0.21)))
+    }
   }
 
   demos['ms-motion-background'] = (c, t) => {
-    bg(c, '#141c33')
-    const colors = ['#5ab3a748', '#7766c166', '#9df9be38']
-    colors.forEach((color, i) => {
-      const band = Array.from({ length: 29 }, (_, k) => {
-        const x = k * 18
-        return [x, 91 + i * 23 + 26 * Math.sin(x * .016 + tau * t * (i + 1) + i)]
+    for (let i = 0; i < 3; i++) {
+      const a = i * 1.74 + TAU * t
+      const y = 127 + i * 14
+      const bend = 61 * Math.sin(a)
+      const crest = 24 * Math.cos(a * 2)
+      const fill = gradient(c, 0, 0, W, H, '#00000000', ['#6cffcc91', '#8c67edb8', '#43a0ff89'][i], '#00000000')
+      layer(c, () => {
+        c.filter = `blur(${8 + i * 2}px)`
+        c.beginPath()
+        c.moveTo(-35, y + 67)
+        c.bezierCurveTo(105, y - 130 + bend, 279, y + 72 + crest, 515, y - 75)
+        c.bezierCurveTo(290, y + 149 + crest, 117, y - 69 + bend, -35, y + 95)
+        c.fillStyle = fill
+        c.fill()
       })
-      poly(c, [...band, ...band.slice().reverse().map(([x, y]) => [x, y + 39 + 12 * Math.sin(x * .012)])], color)
-    })
-    for (let i = 0; i < 40; i++) circle(c, 480 * random(i), 270 * random(i + 97), .7, '#dcecf277')
-    text(c, 'Aurora lenta', 42, 213, 28)
+      c.beginPath()
+      c.moveTo(-35, y + 72)
+      c.bezierCurveTo(105, y - 112 + bend, 279, y + 86 + crest, 515, y - 62)
+      c.strokeStyle = fill
+      c.lineWidth = 1.6
+      c.stroke()
+    }
   }
 
   demos['ms-remotion-video'] = (c, t) => {
-    bg(c, '#183c41')
-    caption(c, 'COMPOSIÇÃO / TEMPO POR FRAME', mint)
-    const frame = Math.min(119, Math.floor(120 * t))
-    const card = back(out(stage(frame, 0, 31)))
-    const value = out(stage(frame, 18, 86))
-    pose(c, 240, 132, .70 + .30 * card, .70 + .30 * card, 0, () => {
-      rect(c, -147, -68, 294, 139, '#ddf4e8', 15)
-      text(c, 'Pedidos concluídos', -120, -39, 14, '#21484b')
-      text(c, String(Math.round(42 * value)), -120, 0, 43, '#21484b')
-      rect(c, -119, 37, 236, 11, '#abcbbf', 5)
-      rect(c, -119, 37, 236 * value, 11, '#498e79', 5)
+    const p = out(phase(t, 0.05, 0.78))
+    const columns = [4 * p, 12 * p]
+    mask(c, 120, 66, 240, 128, () => {
+      columns.forEach((index, i) => {
+        const center = Math.floor(index)
+        for (let n = center - 1; n <= center + 1; n++) {
+          if (n < 0) continue
+          const dy = (n - index) * 105
+          layer(c, () => words(c, String(n % 10), 198 + i * 83, 133 + dy, 117, snow, { family: mono }), 1 - Math.min(0.7, Math.abs(dy) / 130))
+        }
+      })
     })
-    center(c, 'FRAME ' + String(frame).padStart(3, '0') + ' / 120', 240, 238, 13, mint, { family: 'monospace' })
+    rect(c, 139, 209, 202, 2, '#ffffff3d')
+    rect(c, 139, 209, 202 * p, 2, rose)
+    ellipse(c, 139 + 202 * p, 210, 4, 4, rose)
   }
 
   demos['ms-shot-composition'] = (c, t) => {
-    bg(c, '#598aa1')
-    const p = smooth(t) - .5
-    circle(c, 123 - p * 8, 75, 31, '#ffdd99')
-    pose(c, -p * 41, 0, 1, 1, 0, () => {
-      poly(c, [[-65, 192], [121, 118], [250, 182], [365, 156], [550, 216], [550, 287], [-65, 287]], '#3d6579')
-      rect(c, 316, 96, 15, 73, '#f1e2cc', 2)
-      poly(c, [[310, 97], [324, 81], [337, 97]], '#754b59')
-      poly(c, [[320, 101], [247, 114], [247, 86]], '#ffdb885c')
-    })
-    pose(c, -p * 110, 0, 1, 1, 0, () => poly(c, [[-95, 201], [53, 171], [200, 227], [355, 211], [560, 181], [560, 288], [-95, 288]], '#23384d'))
-    caption(c, 'COMPOSIÇÃO / TRÊS PLANOS', paper)
-  }
-
-  function letters(c, word, options, animation) {
-    const { x = 240, y = 130, size = 56, gap = 2, color = paper, family = 'system-ui', italic = false, weight = 850, outline = false } = options
-    c.font = [italic ? 'italic' : 'normal', weight, size + 'px', family].join(' ')
-    const chars = [...word]
-    const widths = chars.map(char => c.measureText(char).width)
-    let left = x - (widths.reduce((sum, width) => sum + width, 0) + gap * (chars.length - 1)) / 2
-    chars.forEach((char, i) => {
-      const offset = left + widths[i] / 2 - x
-      const effect = animation(i, chars.length, char, offset)
-      const { dx = 0, dy = 0, sx = 1, sy = 1, rotation = 0, alpha = 1, filter = 'none', fill = color } = effect
-      if (char !== ' ' && alpha > 0) {
-        layer(c, alpha, () => {
-          c.filter = filter
-          pose(c, x + offset + dx, y + dy, sx, sy, rotation, () => center(c, char, 0, 0, size, fill, { family, italic, weight, outline }))
-        })
-      }
-      left += widths[i] + gap
-    })
+    const p = ease(t)
+    const colors = [['#4431ae', '#7966db'], ['#6c3fa0', '#bd70dc'], ['#ae3965', '#fb7d8c']]
+    const shift = [18, 46, 91]
+    ellipse(c, 309 - 13 * p, 100, 35, 35, gradient(c, 277, 65, 323, 135, '#fff2bd', gold))
+    for (let i = 0; i < 3; i++) {
+      const x = 46 - shift[i] * p
+      const y = 146 + i * 26
+      c.beginPath()
+      c.moveTo(x, y + 21)
+      c.bezierCurveTo(x + 103, y + 27, x + 108, y - 99, x + 221, y - 47)
+      c.bezierCurveTo(x + 277, y - 10, x + 345, y - 21, x + 442, y - 62)
+      c.bezierCurveTo(x + 339, y + 34, x + 162, y + 45, x, y + 21)
+      c.fillStyle = gradient(c, x + 94, y - 43, x + 300, y + 29, ...colors[i])
+      c.fill()
+      c.strokeStyle = '#f2d2ff50'
+      c.lineWidth = 0.9
+      c.stroke()
+    }
   }
 
   demos['ms-kinetic-typography'] = (c, t) => {
-    const beat = Math.min(2, Math.floor(t * 3))
-    const p = clamp(t * 3 - beat)
-    const palette = [gold, lilac, mint]
-    const color = palette[beat]
-    bg(c, ['#4d3338', '#352749', '#163a37'][beat])
-    caption(c, 'TIPOGRAFIA / ' + (beat + 1) + ' DE 3', color)
-    if (beat === 0) {
-      const squash = Math.sin(Math.PI * stage(p, 0, .44))
-      pose(c, 240, 131, 1 + squash * .18, 1 - squash * .29, 0, () => center(c, 'PARE', 0, 0, 76, color))
-    } else if (beat === 1) {
-      letters(c, 'OLHE', { size: 78, color }, i => {
-        const q = back(stage(p, .05 + .07 * i, .58 + .08 * i))
-        return { dy: 64 * (1 - q), alpha: q }
-      })
-    } else {
-      const q = out(stage(p, 0, .57))
-      text(c, 'SIGA', 27 + 177 * q, 131, 74, color)
-      stroke(c, [[37, 192], [403, 192]], color, 3, q)
+    const i = t < 0.28 ? 0 : t < 0.63 ? 1 : 2
+    const p = phase(t, [0, 0.28, 0.63][i], [0.28, 0.63, 1][i])
+    const value = ['PARE', 'OLHE', 'SIGA'][i]
+    const color = [rose, snow, lime][i]
+    if (i === 1) {
+      mask(c, 38, 70, 404, 128, () => letters(c, value, X, Y, 101, color, (j) => {
+        const step = out(phase(p, (j % 2 ? 0.12 : 0.02) + j * 0.052, 0.62 + j * 0.052))
+        return { y: 86 * (1 - step), alpha: step }
+      }))
+      return
     }
+    const arrive = bump(phase(p, 0, 0.37))
+    const leave = ease(phase(p, 0.63, 1))
+    layer(c, () => {
+      c.translate(X + (i === 2 ? -69 * (1 - arrive) + 262 * leave : 0), Y)
+      c.scale(i === 0 ? 1.18 - 0.18 * arrive : 1 + 0.25 * leave, i === 0 ? 0.53 + 0.47 * arrive : 1)
+      words(c, value, 0, 0, 101, color, { italic: i === 2 })
+    })
   }
 
   demos['ms-brand-motion-guidelines'] = (c, t) => {
-    bg(c, '#342d43')
-    caption(c, 'SISTEMA DE MOTION / ENTRADA DE 320 MS', lilac)
-    const p = out(stage(t, .15, .23))
-    const s = .76 + .24 * p
-    ;['Selo', 'Botão', 'Cartão'].forEach((label, i) => {
-      const x = 89 + i * 150
-      layer(c, p, () => pose(c, x, 114 + (1 - p) * 45, s, s, 0, () => {
-        if (i === 0) circle(c, 0, 0, 33, lilac)
-        if (i === 1) rect(c, -46, -19, 92, 38, lilac, 19)
-        if (i === 2) rect(c, -53, -31, 106, 62, lilac, 7)
-        center(c, label, 0, 0, 15, ink)
-      }))
-    })
-    const curve = Array.from({ length: 45 }, (_, i) => [120 + 240 * i / 44, 228 - 54 * out(i / 44)])
-    stroke(c, curve, '#695e7b', 2)
-    stroke(c, curve, lilac, 2, stage(t, .15, .60))
+    const p = bump(phase(t, 0.07, 0.53))
+    const flash = Math.sin(Math.PI * phase(t, 0.53, 0.78))
+    const scale = 1 + 0.12 * flash
+    for (let i = 0; i < 3; i++) {
+      const x = 111 + i * 129
+      const color = [snow, gold, aqua][i]
+      layer(c, () => {
+        c.translate(x + (i - 1) * 85 * (1 - p), Y + (i === 1 ? -99 : 84) * (1 - p))
+        c.rotate((1 - p) * (i - 1) * 0.95)
+        c.scale(scale, scale)
+        if (i === 0) ellipse(c, 0, 0, 42, 42, color, 7.5)
+        if (i === 1) polygon(c, [[0, -49], [46, 0], [0, 49], [-46, 0]], color)
+        if (i === 2) spark(c, 0, 0, 48, color, 0.29)
+      }, out(phase(t, 0, 0.24)))
+    }
   }
 
   demos['ms-client-revisions'] = (c, t) => {
-    bg(c, '#4a3038')
-    caption(c, 'REVISÃO / TEMPO DE LEITURA', gold)
-    const limits = [.34, .83]
-    limits.forEach((end, i) => {
-      const x = 35 + i * 215
-      text(c, i ? 'Depois' : 'Antes', x, 62, 15)
-      rect(c, x, 81, 194, 103, '#704451', 9)
-      const alpha = out(stage(t, .04, .16)) * (1 - stage(t, end, end + .10))
-      layer(c, alpha, () => center(c, 'R$ 62', x + 97, 130, 40, gold))
-      rect(c, x, 202, 194, 4, '#937180', 2)
-      rect(c, x, 202, 194 * end, 4, i ? mint : coral, 2)
-      circle(c, x + 194 * t, 204, 4.5, paper)
-      text(c, i ? 'LEITURA AMPLIADA' : 'SAÍDA ANTECIPADA', x, 226, 10, i ? mint : coral)
+    const a = out(phase(t, 0.03, 0.27))
+    const b = out(phase(t, 0.28, 0.48))
+    const cut = ease(phase(t, 0.83, 1))
+    const width = 207 * a + 176 * b
+    mask(c, 47 + cut * width, 67, width * (1 - cut), 130, () => {
+      words(c, 'TEMPO', X, Y, 108, snow, { max: 374 })
+      rect(c, 60, 190, 363, 2, violet)
     })
+    if (t < 0.49) rect(c, 47 + width, 82, 2, 103, violet)
   }
 
   demos['ms-creative-brief'] = (c, t) => {
-    bg(c, '#253944')
-    caption(c, 'BRIEFING / TRADUÇÃO EM CENAS', blue)
-    rect(c, 26, 54, 162, 169, '#3b5361', 12)
-    text(c, 'Abrir a janela', 39, 77, 18)
-    const beats = [['Objetivo', 'Descoberta', 'GANCHO'], ['Público', 'Ciclistas', 'PRODUTO'], ['Mensagem', 'Siga a luz', 'AÇÃO']]
-    beats.forEach(([label, value, scene], i) => {
-      const p = out(stage(t, .08 + .19 * i, .24 + .19 * i))
-      const y = 108 + 42 * i
-      layer(c, p, () => {
-        text(c, label, 39, y, 10, blue)
-        text(c, value, 39, y + 14, 13)
-        stroke(c, [[192, y + 8], [218, y + 8]], blue, 1, p)
-        const x = 225 + 26 * (1 - p)
-        const color = [blue, mint, gold][i]
-        rect(c, x, y - 12, 220, 35, color, 6)
-        rect(c, x + 7, y - 7, 40, 25, '#263d49', 3)
-        if (i === 0) {
-          circle(c, x + 30, y, 5, gold)
-          poly(c, [[x + 9, y + 14], [x + 23, y + 1], [x + 45, y + 14]], blue)
-        } else if (i === 1) {
-          lamp(c, x + 30, y + 3, .13)
-        } else {
-          stroke(c, [[x + 18, y + 6], [x + 35, y + 6], [x + 29, y], [x + 35, y + 6], [x + 29, y + 12]], gold, 2)
-        }
-        text(c, String(i + 1).padStart(2, '0') + '  ' + scene, x + 58, y + 6, 12, ink)
-      })
+    const p = out(phase(t, 0.03, 0.36))
+    const circle = bump(phase(t, 0.26, 0.53))
+    const star = ease(phase(t, 0.56, 0.8))
+    const path = Array.from({ length: 54 }, (_, i) => {
+      const f = i / 53
+      return [77 + 216 * f, 171 - 36 * f - 60 * Math.sin(Math.PI * f)]
     })
+    trace(c, path, p, violet, 2.7)
+    const [x, y] = path.at(-1)
+    const r = 52 * circle * (1 - star)
+    ellipse(c, x, y, r, r, gradient(c, 253, 95, 330, 170, violet, '#7656df'))
+    spark(c, x, y, 81 * star, gradient(c, 259, 82, 340, 181, snow, gold))
+    if (star > 0) ellipse(c, x, y, 98 * star, 98 * star, '#ffca7657', 1)
   }
 
   demos['ms-motion-pricing'] = (c, t) => {
-    bg(c, '#273b3e')
-    caption(c, 'ORÇAMENTO / EXEMPLO DE ESCOPO', mint)
-    for (let mode = 0; mode < 2; mode++) {
-      const x = 29 + 226 * mode
-      rect(c, x, 54, 196, 176, '#3b5354', 11)
-      text(c, mode ? 'Filme + adaptações' : 'Filme principal', x + 14, 76, 15)
-      let total = 0
-      const formats = mode ? ['16:9', '9:16', '1:1'] : ['16:9']
-      formats.forEach((format, i) => {
-        const p = out(stage(t, .12 + .19 * i, .25 + .19 * i))
-        total += Math.round((i ? 200 : 900) * p)
-        layer(c, p, () => {
-          rect(c, x + 13 + 56 * i, 103 + 10 * (1 - p), 48, 62, i ? blue : mint, 6)
-          center(c, format, x + 37 + 56 * i, 135 + 10 * (1 - p), 10, ink)
-        })
-      })
-      text(c, 'R$ ' + total.toLocaleString('pt-BR'), x + 14, 199, 26, mint)
-    }
+    const formats = [[216, 121.5, -53, -0.33, '#a18aff'], [137, 137, 4, 0.09, '#ffbc76'], [93, 165, 67, 0.37, '#65f5dd']]
+    formats.forEach(([w, h, x, a, color], i) => {
+      const p = out(phase(t, 0.07 + i * 0.074, 0.65 + i * 0.074))
+      layer(c, () => {
+        c.translate(X + x * p, Y + (i - 1) * 5 * p)
+        c.rotate(a * p)
+        const width = lerp(216, w, p)
+        const height = lerp(121.5, h, p)
+        polygon(c, [[-width / 2, -height / 2], [width / 2, -height / 2], [width / 2, height / 2], [-width / 2, height / 2]],
+          color + '24', color, 1.7)
+        ellipse(c, 0, 0, 2.5, 2.5, color)
+      }, i === 0 ? 1 : phase(t, 0.09 * i, 0.13 + 0.09 * i))
+    })
   }
 
   demos['ms-video-delivery-specs'] = (c, t) => {
-    bg(c, '#282d43')
-    caption(c, 'ENTREGA / ÁREAS SEGURAS', lilac)
-    const layouts = [[33, 79, 266, 150, '16:9'], [329, 48, 111, 197, '9:16']]
-    layouts.forEach(([x, y, w, h, format], i) => {
-      rect(c, x, y, w, h, i ? '#494067' : '#334562', 8)
-      const p = out(stage(t, .09 + .09 * i, .57))
-      const left = x + 12
-      const right = x + w - (i ? 26 : 13)
-      const bottom = y + h - (i ? 40 : 13)
-      const top = y + 14
-      c.save()
-      c.setLineDash([4, 4])
-      stroke(c, [[left, top], [right, top], [right, bottom], [left, bottom], [left, top]], '#b9b4ce', 1)
-      c.restore()
-      const centerX = (left + right) / 2
-      lamp(c, centerX, y + h * .42 + (1 - p) * 14, i ? .54 : .72)
-      layer(c, p, () => center(c, 'Lume', centerX, bottom - 20 + 12 * (1 - p), i ? 15 : 22))
-      text(c, format, x, y - 11, 10, lilac)
-      if (i) {
-        for (let j = 0; j < 3; j++) circle(c, right + 13, top + 69 + j * 20, 4.5, '#a393c2')
-        rect(c, x + 9, bottom + 13, w - 19, 3, '#a393c2', 2)
+    const p = ease(phase(t, 0.14, 0.77))
+    const w = lerp(296, 111, p)
+    const h = lerp(166.5, 197, p)
+    const y = lerp(135, 131, p)
+    mask(c, X - w / 2, y - h / 2, w, h, () => {
+      ellipse(c, X, y, 78, 78, gradient(c, 168, 57, 317, 206, '#ffceac', rose, '#813559'))
+      for (let i = 0; i < 8; i++) {
+        ellipse(c, X, y, 94 + i * 12, 47 + i * 6, '#ffbbd661', 1.2, -0.33)
       }
     })
+    cropMarks(c, X, y, w + 17, h + 16, 15, snow)
+  }
+  demos['ms-particle-system'] = (c, t) => {
+    for (let i = 0; i < 108; i++) {
+      const burst = i < 68 ? 0.07 : 0.29
+      const p = phase(t, burst + 0.11 * noise(i), burst + 0.51 + 0.2 * noise(i + 1))
+      if (p <= 0 || p >= 1) continue
+      const a = TAU * noise(i + 14)
+      const reach = 62 + 132 * noise(i + 38)
+      const r = reach * out(p)
+      const x = X + r * Math.cos(a)
+      const y = 120 + r * 0.61 * Math.sin(a) + 45 * p ** 2
+      const size = (2 + 7.5 * noise(i + 83)) * (1 - 0.78 * p)
+      layer(c, () => {
+        c.translate(x, y)
+        c.rotate(a + 2.1 * p)
+        const color = [gold, rose, snow][i % 3]
+        if (i % 7 === 0) spark(c, 0, 0, size * 2.2, color)
+        else rect(c, -size, -size * 0.35, size * 2.2, size * 0.7, color, size * 0.31)
+      }, Math.sin(Math.PI * p) ** 0.57)
+    }
+    const center = Math.sin(Math.PI * phase(t, 0.02, 0.27)) + 0.65 * Math.sin(Math.PI * phase(t, 0.24, 0.5))
+    glow(c, X, 120, 36, `rgba(255,190,107,${clamp(center) * 0.57})`)
+    spark(c, X, 120, center * 26, snow)
   }
 
-  demos['ms-particle-system'] = (c, t) => {
-    bg(c, '#27213e')
-    caption(c, 'PARTÍCULAS / DOIS PULSOS', lilac)
-    circle(c, 240, 128, 6, '#676083')
-    circle(c, 240, 128, 2.3, paper)
-    for (let wave = 0; wave < 2; wave++) {
-      const age = (t - .08 - wave * .37) * 1.66
-      if (age <= 0 || age >= 1) continue
-      for (let i = 0; i < 49; i++) {
-        const seed = i + 73 * wave
-        const angle = tau * i / 49 + .16 * random(seed)
-        const speed = 44 + 130 * random(seed + 141)
-        const radius = speed * age
-        layer(c, 1 - age, () => circle(c, 240 + Math.cos(angle) * radius, 128 + Math.sin(angle) * radius + 57 * age ** 2, (1.6 + 3 * random(seed + 289)) * (1 - .78 * age), [mint, coral, lilac][i % 3]))
-      }
-    }
+  let plasmaBuffer
+
+  function makePlasmaBuffer(c) {
+    const canvas = c.canvas.ownerDocument.createElement('canvas')
+    canvas.width = 160
+    canvas.height = 90
+    const ctx = canvas.getContext('2d')
+    return { canvas, ctx, pixels: ctx.createImageData(canvas.width, canvas.height) }
   }
 
   demos['ms-shader-glsl'] = (c, t) => {
-    const phase = tau * t
-    for (let y = 0; y < H; y += 5) {
-      for (let x = 0; x < W; x += 5) {
-        const u = x / W
-        const v = y / H
-        const waves = Math.sin(u * 14 + v * 3 + phase) + Math.sin(v * 13 - u * 5 - phase) + Math.sin(Math.hypot(u - .5, v - .5) * 17 + phase)
-        const p = smooth((waves + 3) / 6)
-        rect(c, x, y, 5, 5, `hsl(${mix(264, 388, p)} 75% ${mix(18, 67, p)}%)`)
+    plasmaBuffer ??= makePlasmaBuffer(c)
+    const { canvas, ctx, pixels } = plasmaBuffer
+    const a = TAU * t
+    const data = pixels.data
+    for (let y = 0; y < 90; y++) {
+      const v = y / 90
+      for (let x = 0; x < 160; x++) {
+        const u = x / 160
+        const fold = Math.sin(u * 7.1 + a + 0.9 * Math.cos(v * 10 - a))
+        const bend = Math.sin(v * 6.6 - a + 1.2 * Math.cos(u * 8.2 + a))
+        const radius = Math.hypot((u - 0.6) * 1.45, v - 0.39)
+        const wave = Math.sin(radius * 16.4 + a * 2 + fold * 0.9)
+        const p = clamp(0.5 + 0.22 * fold + 0.24 * bend + 0.24 * wave)
+        const i = (y * 160 + x) * 4
+        data[i] = 16 + 239 * p ** 1.45
+        data[i + 1] = 7 + 193 * p ** 4
+        data[i + 2] = 42 + 128 * Math.sin(Math.PI * p) ** 1.7
+        data[i + 3] = 255
       }
     }
-    rect(c, 14, 11, 158, 26, '#17152cca', 6)
-    caption(c, 'PLASMA / CAMPO DE ONDAS', paper)
+    ctx.putImageData(pixels, 0, 0)
+    c.imageSmoothingQuality = 'high'
+    c.drawImage(canvas, 0, 0, W, H)
   }
 
   demos['ms-threejs-animation'] = (c, t) => {
-    bg(c, '#233354')
-    caption(c, 'CENA 3D / CÂMERA EM ÓRBITA', blue)
-    const theta = tau * t
-    const rotate = ([x, y, z]) => [x * Math.cos(theta) - z * Math.sin(theta), y, x * Math.sin(theta) + z * Math.cos(theta)]
-    const camera = point => {
-      const [x, y, z] = rotate(point)
-      return [x, y * .88 - z * .475, z * .88 + y * .475]
-    }
-    const project = ([x, y, z]) => [240 + x * 330 / (z + 280), 128 + y * 330 / (z + 280)]
-    for (let i = -3; i <= 3; i++) {
-      stroke(c, [project(camera([-126, 54, 42 * i])), project(camera([126, 54, 42 * i]))], '#486083')
-      stroke(c, [project(camera([42 * i, 54, -126])), project(camera([42 * i, 54, 126]))], '#486083')
-    }
-    const coords = [[-44, -49, -44], [44, -49, -44], [44, 39, -44], [-44, 39, -44], [-44, -49, 44], [44, -49, 44], [44, 39, 44], [-44, 39, 44]].map(camera)
-    const faces = [
-      [[0, 1, 2, 3], '#7289c7'], [[7, 6, 5, 4], '#7289c7'], [[4, 0, 3, 7], '#506bad'],
-      [[1, 5, 6, 2], '#506bad'], [[4, 5, 1, 0], '#a3b9ed'], [[3, 2, 6, 7], '#a3b9ed'],
-    ]
-    const projected = faces.map(([indices, color]) => {
-      const vertices = indices.map(i => coords[i])
-      return { color, depth: vertices.reduce((sum, v) => sum + v[2], 0), points: vertices.map(project) }
+    const a = TAU * t + 0.24
+    const tilt = 0.44
+    const vertices = [[0, -102, 0], [76, 0, 0], [0, 0, 76], [-76, 0, 0], [0, 0, -76], [0, 100, 0]]
+    const positions = vertices.map(([x, y, z]) => {
+      const hx = x * Math.cos(a) + z * Math.sin(a)
+      const hz = -x * Math.sin(a) + z * Math.cos(a)
+      const hy = y * Math.cos(tilt) - hz * Math.sin(tilt)
+      const depth = y * Math.sin(tilt) + hz * Math.cos(tilt)
+      const scale = 335 / (335 - depth)
+      return [X + hx * scale, Y + hy * scale, depth]
     })
-    projected.sort((a, b) => b.depth - a.depth).forEach(({ color, points }) => {
-      const [a, b, d] = points
-      const cross = (b[0] - a[0]) * (d[1] - a[1]) - (b[1] - a[1]) * (d[0] - a[0])
-      if (cross <= 0) return
-      poly(c, points, color)
-      stroke(c, [...points, points[0]], '#b8ccf4', 1)
+    const faces = [[0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 1], [5, 2, 1], [5, 3, 2], [5, 4, 3], [5, 1, 4]]
+      .map((face, i) => ({ points: face.map(vertex => positions[vertex]), i }))
+      .sort((a, b) => a.points.reduce((sum, p) => sum + p[2], 0) - b.points.reduce((sum, p) => sum + p[2], 0))
+    glow(c, X, 215, 55, '#6962ed4a')
+    faces.forEach(({ points, i }) => {
+      const [p, q, r] = points
+      const area = (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+      if (area < 0) return
+      const brightness = 38 + 29 * (0.5 + 0.5 * Math.sin(a + i * 1.31))
+      const fill = gradient(c, p[0], p[1], q[0], q[1], `hsl(${219 + i * 7} 91% ${brightness + 20}%)`, `hsl(${225 + i * 6} 61% ${brightness - 16}%)`)
+      polygon(c, points.map(([x, y]) => [x, y]), fill, '#e1ddff92', 1.2)
     })
   }
 
   demos['ms-manim'] = (c, t) => {
-    bg(c, '#1e3337')
-    caption(c, 'MATEMÁTICA / SEN(θ)', mint)
-    const p = stage(t, .06, .95)
-    const angle = tau * p
-    const y = 139 - 58 * Math.sin(angle)
-    const x = 108 + 58 * Math.cos(angle)
-    const end = 203 + 243 * p
-    stroke(c, [[34, 139], [183, 139]], '#608787')
-    stroke(c, [[108, 65], [108, 214]], '#608787')
-    stroke(c, [[201, 139], [448, 139]], '#608787')
-    stroke(c, [[203, 65], [203, 214]], '#608787')
-    arc(c, 108, 139, 58, 1, '#739795', 2)
-    stroke(c, [[108, 139], [x, y]], mint, 2)
-    c.save()
-    c.setLineDash([3, 5])
-    stroke(c, [[x, y], [end, y]], '#78ad9f', 1)
-    c.restore()
-    const curve = Array.from({ length: 90 }, (_, i) => {
-      const phase = p * i / 89
-      return [203 + 243 * phase, 139 - 58 * Math.sin(tau * phase)]
+    const p = phase(t, 0.04, 0.96)
+    const r = 56
+    const point = [115 + r * Math.cos(TAU * p), Y - r * Math.sin(TAU * p)]
+    const target = [188 + 224 * p, point[1]]
+    ellipse(c, 115, Y, r, r, '#afa1ff9f', 1.4)
+    line(c, [[59, Y], [419, Y]], '#cbd1ec3a')
+    line(c, [[115, Y + r + 11], [115, Y - r - 11]], '#cbd1ec3a')
+    line(c, [[115, Y], point], violet, 1.6)
+    layer(c, () => {
+      c.setLineDash([3, 4])
+      line(c, [point, target], '#d2d2ff7b')
     })
-    stroke(c, curve, gold, 3)
-    circle(c, x, y, 5.5, mint)
-    circle(c, end, y, 4.5, gold)
-    text(c, 'Círculo unitário', 58, 233, 12)
-    text(c, '0', 202, 233, 11)
-    text(c, '2π', 433, 233, 11)
+    const curve = Array.from({ length: 66 }, (_, i) => {
+      const f = p * i / 65
+      return [188 + 224 * f, Y - r * Math.sin(TAU * f)]
+    })
+    line(c, curve, aqua, 2.7)
+    ellipse(c, ...point, 5.7, 5.7, violet)
+    ellipse(c, ...target, 4.5, 4.5, snow)
   }
 
   demos['ms-generative-illustration'] = (c, t) => {
-    bg(c, '#f0e5c9')
-    caption(c, 'HERBÁRIO / CRESCIMENTO GENERATIVO', '#3a6757')
-    circle(c, 241, 140, 95, '#e9d7ad')
-    const colors = ['#5e8e69', '#3c7666', '#ac7855']
-    for (let branch = 0; branch < 3; branch++) {
-      const growth = out(stage(t, .02 + branch * .12, .77 + .10 * branch))
-      const bend = (branch - 1) * 112 + 13 * Math.sin(tau * t + branch)
-      const point = p => [240 + bend * p ** 1.27, 231 - (151 - 13 * branch) * p]
-      const path = Array.from({ length: 45 }, (_, i) => point(i / 44))
-      stroke(c, path, '#466959', 2.4, growth)
-      for (let i = 1; i <= 6; i++) {
-        const pos = i * .135
-        const p = out(stage(growth, pos, pos + .18))
-        if (p <= 0) continue
+    for (let stem = 0; stem < 3; stem++) {
+      const p = out(phase(t, 0.02 + stem * 0.075, 0.65 + stem * 0.09))
+      const point = f => {
+        const sway = Math.sin(t * TAU + stem) * 7 * f ** 2
+        return [238 + (stem - 1) * (12 + 132 * f ** 1.36) + 29 * Math.sin(Math.PI * f) + sway,
+          222 - f * [147, 177, 130][stem]]
+      }
+      trace(c, Array.from({ length: 46 }, (_, i) => point(i / 45)), p, '#9dca8b', 1.7)
+      for (let i = 0; i < 8; i++) {
+        const f = 0.18 + i * 0.104
+        const open = out(phase(p, f - 0.02, f + 0.15))
+        if (open <= 0) continue
+        const [x, y] = point(f)
         const side = i % 2 ? -1 : 1
-        const [x, y] = point(pos)
-        pose(c, x, y, p, p, side * mix(.05, .87, p), () => {
+        const size = (45 - 17 * f + noise(i * stem + 14) * 8) * open
+        layer(c, () => {
+          c.translate(x, y)
+          c.rotate(side * (0.27 + 0.79 * open) + (stem - 1) * 0.54)
           c.beginPath()
           c.moveTo(0, 0)
-          c.quadraticCurveTo(-17, -18, 0, -37 + i)
-          c.quadraticCurveTo(17, -18, 0, 0)
-          c.fillStyle = colors[branch]
+          c.quadraticCurveTo(-size * 0.45, -size * 0.54, 0, -size)
+          c.quadraticCurveTo(size * 0.47, -size * 0.63, 0, 0)
+          c.fillStyle = gradient(c, 0, 0, 0, -size, '#1b6a58', ['#7ac990', '#d9f39b', '#b9dc80'][stem])
           c.fill()
-          stroke(c, [[0, -3], [0, -24]], '#d5d7aa88', .9)
+          line(c, [[0, 0], [0, -size * 0.87]], '#d4f6b463', 0.7)
         })
       }
     }
-    stroke(c, [[145, 235], [334, 235]], '#bcac8a')
   }
 
   demos['ms-javascript-animation'] = (c, t) => {
-    bg(c, '#202238')
-    const ground = 158
-    const windowColors = [gold, '#5f77a2', coral]
-    for (let i = 0; i < 12; i++) {
-      const x = i * 42 - 8
-      const h = 39 + 66 * random(i + 11)
-      rect(c, x, ground - h, 37, h, i % 2 ? '#32384e' : '#2b3046')
-      for (let k = 0; k < 3; k++) {
-        const y = ground - h + 12 + 19 * k
-        if (y + 7 < ground) rect(c, x + 13, y, 7, 9, windowColors[(i + k) % 3], 1)
+    for (let i = 0; i < 32; i++) {
+      const speed = i % 3 === 0 ? 2 : 1
+      const p = fract(t * speed + noise(i + 76))
+      const x = 55 + noise(i + 17) * 358
+      const floor = 156 + noise(i + 9) * 67
+      if (p < 0.52) {
+        const fall = p / 0.52
+        const y = lerp(26 + 58 * noise(i + 94), floor, fall)
+        const dx = -34 * (1 - fall)
+        layer(c, () => {
+          const streak = gradient(c, x + dx - 10, y - 23, x + dx, y, '#638eff00', i % 5 === 0 ? snow : '#84caff')
+          line(c, [[x + dx - 10, y - 23], [x + dx, y]], streak, 1.1 + 2.1 * noise(i + 20))
+        }, Math.sin(Math.PI * fall) ** 0.35)
+      } else {
+        const ripple = out(phase(p, 0.52, 0.99))
+        layer(c, () => {
+          ellipse(c, x, floor, 3 + 30 * ripple, 1 + 7 * ripple, '#77c5ff', 1.5)
+          ellipse(c, x, floor, 2 + 13 * ripple, 1 + 3 * ripple, '#c7b7ff', 1.2)
+        }, (1 - ripple) * 0.89)
       }
     }
-    rect(c, 0, ground, W, H - ground, '#282a42')
-    stroke(c, [[0, ground + 1], [W, ground + 1]], '#616680')
-    for (let i = 1; i < 11; i++) {
-      const color = windowColors[i % 3]
-      for (let line = 0; line < 5; line++) {
-        const y = ground + 12 + 15 * line + random(i * 3 + line) * 10
-        const x = i * 42 + 5 + Math.sin(t * tau * 2 + line + i) * (3 + line * 2)
-        layer(c, .43 - line * .06, () => stroke(c, [[x - line * 2, y], [x + 8 + line * 2, y]], color, 2))
-      }
-    }
-    for (let i = 0; i < 24; i++) {
-      const p = frac(random(i + 5) + t * 2)
-      const x = 18 + 455 * random(i + 214) + p * 18
-      const y = ground + 8 + 88 * random(i + 54)
-      layer(c, .63 * (1 - p), () => ellipse(c, x, y, 3 + 27 * p, 1 + 5 * p, windowColors[i % 3], 1))
-    }
-    for (let i = 0; i < 48; i++) {
-      const p = frac(random(i + 343) + t * (1.3 + .45 * random(i)))
-      const x = 501 * random(i + 84) - 39 * p
-      const y = 178 * p
-      stroke(c, [[x + 7, y - 18], [x, y]], '#d3e5ff51', 1.4)
-    }
-    caption(c, 'CANVAS / CHUVA NA RUA', paper)
   }
 
   demos['ms-soundtrack'] = (c, t) => {
-    bg(c, '#302946')
-    caption(c, 'TRILHA / PULSO, CONTRATEMPO E ACENTO', lilac)
-    const x0 = 104
-    const w = 334
-    const cut = Math.min(3, Math.floor(t * 4))
-    for (let i = 0; i < 4; i++) {
-      const color = [lilac, mint, coral, gold][i]
-      layer(c, i === cut ? 1 : .44, () => {
-        rect(c, x0 + w / 4 * i, 48, w / 4 - 5, 37, color, 5)
-        center(c, ['Plano A', 'Plano B', 'Plano C', 'Fecho'][i], x0 + w / 4 * (i + .5) - 2, 67, 10, ink)
-      })
+    for (let beat = 0; beat < 4; beat++) {
+      const p = phase(t, 0.04 + beat * 0.21, 0.37 + beat * 0.21)
+      const size = 13 + (beat === 3 ? 113 : 83) * out(p)
+      if (p > 0 && p < 1) layer(c, () => {
+        ellipse(c, X, Y, size, size, gold, 3.6 - 2.5 * p)
+        ellipse(c, X, Y, size * 0.68, size * 0.68, '#ffca766c', 1)
+      }, 1 - p)
     }
-    const tracks = [[0, .25, .50, .75], [.125, .375, .625, .875], [.94]]
-    tracks.forEach((events, track) => {
-      const y = 111 + 41 * track
-      text(c, ['Pulso', 'Contratempo', 'Acento'][track], 23, y + 14, 11)
-      rect(c, x0, y, w, 28, '#514564', 5)
-      events.forEach(beat => {
-        const p = (t - beat) * 14
-        const active = p >= 0 && p < 1
-        rect(c, x0 + beat * w, y + (active ? 3 : 8), track === 2 ? 16 : 8, active ? 22 : 12, [mint, lilac, gold][track], 3)
-      })
-    })
-    stroke(c, [[x0 + w * t, 92], [x0 + w * t, 228]], paper, 1.5)
+    for (let i = 0; i < 3; i++) {
+      const p = Math.sin(Math.PI * phase(t, 0.16 + i * 0.21, 0.28 + i * 0.21))
+      spark(c, i % 2 ? 344 : 133, 93 + i * 26, 26 * p, aqua)
+    }
+    const beat = fract(t / 0.21)
+    ellipse(c, X, Y, 6 + 9 * (1 - out(beat)), 6 + 9 * (1 - out(beat)), snow)
   }
 
   demos['ms-lower-thirds-alpha'] = (c, t) => {
-    for (let y = 0; y < H; y += 18) {
-      for (let x = 0; x < W; x += 18) rect(c, x, y, 18, 18, (x / 18 + y / 18) % 2 ? '#33475a' : '#3c5468')
-    }
-    chip(c, 'PRÉVIA DE ALPHA', 26, 14, blue, 119)
-    const bar = out(stage(t, .07, .29)) * (1 - smooth(stage(t, .76, .94)))
-    const reveal = out(stage(t, .15, .36)) * (1 - smooth(stage(t, .74, .90)))
-    crop(c, 29, 148, 280 * reveal, 67, () => {
-      rect(c, 29, 154, 249, 55, '#142534e8', 5)
-      text(c, 'Rui Terra', 47, 172, 21)
-      text(c, 'Curador convidado', 48, 193, 12, '#a4ecee')
-    })
-    rect(c, 30, 207, 266 * bar, 4, '#80eced', 2)
+    const a = out(phase(t, 0.03, 0.34)) * (1 - ease(phase(t, 0.81, 1)))
+    const b = out(phase(t, 0.12, 0.46)) * (1 - ease(phase(t, 0.72, 0.95)))
+    const x = 35
+    const y = 177
+    const top = (width, yy, height) => [[x, yy], [x + width, yy], [x + Math.max(0, width - 20), yy + height], [x, yy + height]]
+    if (a > 0) polygon(c, top(243 * a, y, 43), gradient(c, x, y, 272, y, '#43cfe6', aqua))
+    if (b > 0) polygon(c, top(191 * b, y + 43, 24), '#4846a8')
+    mask(c, x + 12, y, 187 * a, 42, () => words(c, 'Rui Terra', x + 14, y + 22, 26, ink, { align: 'left' }))
+    mask(c, x + 12, y + 43, 151 * b, 24, () => words(c, 'CURADORIA', x + 15, y + 56, 11, snow, { align: 'left', family: mono }))
   }
 
   demos['ms-talking-head-b-roll'] = (c, t) => {
-    const shot = t < .31 ? 0 : t < .58 ? 1 : t < .88 ? 2 : 0
-    bg(c, ['#344c5b', '#3c3151', '#203e3c'][shot])
-    caption(c, ['APRESENTADORA', 'INSERÇÃO / CAIXA', 'INSERÇÃO / TRÊS ETAPAS'][shot], paper)
-    if (shot === 0) {
-      circle(c, 243, 119, 70, '#547180')
-      portrait(c, 242, 100, 1.59, t, ['#605187', '#d9906d', '#34293d'])
-    } else if (shot === 1) {
-      const p = out(stage(t, .32, .49))
-      poly(c, [[173, 99], [242, 77], [314, 100], [245, 123]], '#b88da9')
-      poly(c, [[173, 99], [245, 123], [245, 174], [173, 145]], '#ad6d8b')
-      poly(c, [[245, 123], [314, 100], [314, 148], [245, 174]], '#d28f9d')
-      poly(c, [[173 - 17 * p, 99 - 42 * p], [242, 77 - 54 * p], [314 + 17 * p, 100 - 42 * p], [245, 123 - 30 * p]], '#f2bcaf')
-    } else {
-      for (let i = 0; i < 3; i++) {
-        const p = back(stage(t, .59 + i * .058, .72 + i * .058))
-        layer(c, p, () => {
-          rect(c, 90 + 109 * i, 80 + 22 * (1 - p), 82, 93, [mint, blue, gold][i], 7)
-          center(c, String(i + 1), 131 + 109 * i, 124 + 22 * (1 - p), 32, ink)
+    const colors = [rose, gold, violet]
+    for (let i = 0; i < 3; i++) {
+      const p = out(phase(t, i * 0.185 + 0.04, i * 0.185 + 0.37))
+      if (p <= 0) continue
+      const x = 114 + i * 126
+      const y = Y - 12 + (i % 2) * 29
+      layer(c, () => {
+        c.translate(x, y)
+        c.rotate(-0.28)
+        mask(c, -70, 60 - 122 * p, 140, 122 * p, () => {
+          c.rotate(0.28)
+          const fill = gradient(c, -50, -57, 53, 48, snow, colors[i], colors[i])
+          if (i === 0) ellipse(c, 0, 0, 52, 52, fill)
+          if (i === 1) rect(c, -49, -49, 98, 98, fill, 30)
+          if (i === 2) polygon(c, [[0, -58], [53, 0], [0, 58], [-53, 0]], fill)
         })
-      }
+        const trace = phase(p, 0, 0.84)
+        if (trace < 1) line(c, [[-58, 60 - 122 * p], [58, 60 - 122 * p]], colors[i], 2)
+      })
     }
-    rect(c, 100, 223, 280, 28, '#151c29', 7)
-    text(c, 'Uma', 139, 238, 14, t < .31 ? gold : paper)
-    text(c, 'caixa,', 184, 238, 14, shot === 1 ? gold : paper)
-    text(c, 'três etapas.', 234, 238, 14, shot === 2 ? gold : paper)
   }
 
   demos['ms-talking-head'] = (c, t) => {
-    bg(c, '#33304e')
-    caption(c, 'APRESENTADOR ILUSTRADO / APOIO GRÁFICO', lilac)
-    const p = out(stage(t, .29, .55))
-    const x = 240 - 100 * p
-    circle(c, x, 132, 81, '#544970')
-    portrait(c, x, 108, 1.50, t, ['#367176', '#c08368', '#322635'])
-    const reveal = out(stage(t, .46, .70))
-    layer(c, reveal, () => {
-      const left = 244 + 24 * (1 - reveal)
-      rect(c, left, 66, 200, 138, '#474464', 9)
-      text(c, 'Projeto piloto', left + 19, 86, 13)
-      ;[38, 61, 49].forEach((height, i) => rect(c, left + 26 + 52 * i, 181 - height * reveal, 32, height * reveal, [mint, blue, lilac][i], 4))
-      stroke(c, [[left + 20, 185], [left + 173, 185]], '#9f97bc')
-    })
-  }
-
-  // As transições têm uma origem e um destino, com cores e composições próprias.
-  const scenePairs = [
-    [['#20283e', lilac, 'PULSO'], ['#263d3b', mint, 'SINAL']],
-    [['#4b3141', gold, 'MARÉ'], ['#273952', blue, 'CÉU']],
-    [['#273e43', mint, 'PLANO'], ['#3c284c', lilac, 'CORTE']],
-    [['#4b343c', coral, 'PISTA'], ['#263e55', blue, 'META']],
-    [['#483942', gold, 'DIA'], ['#242843', lilac, 'NOITE']],
-  ]
-  function transitionScene(c, pair, index, withTitle = true) {
-    const [background, accent, label] = scenePairs[pair][index]
-    rect(c, -2, -2, W + 4, H + 4, background)
-    if (index) {
-      for (let i = 0; i < 5; i++) ellipse(c, 338, 138, 29 + i * 29, 19 + i * 25, accent + '4a', 1.5)
-    } else {
-      for (let i = 0; i < 5; i++) poly(c, [[0, 52 + 39 * i], [132, 28 + 39 * i], [132, 34 + 39 * i], [0, 58 + 39 * i]], accent + '4a')
-    }
-    caption(c, index ? 'CENA B' : 'CENA A', accent)
-    if (withTitle) center(c, label, 240, 135, 67, accent, { weight: 850 })
+    const p = bump(phase(t, 0.1, 0.42))
+    const exit = ease(phase(t, 0.78, 1))
+    const x = 346 + 108 * (1 - p) + 92 * exit
+    const y = 127
+    layer(c, () => {
+      const text = out(phase(t, 0.23, 0.51))
+      spark(c, x - 72, y, 27 * p * (1 - exit), gold)
+      mask(c, x - 43, y - 32, 137 * text, 70, () => {
+        words(c, 'FOCO', x + 26 - 14 * (1 - text), y + 1, 39, snow, { max: 134 })
+        rect(c, x - 36, y + 31, 130 * text, 1.6, gold)
+      })
+    }, 1 - exit)
   }
 
   demos['showcase-implode'] = (c, t) => {
-    const p = stage(t, .22, .61)
-    const q = out(stage(t, .59, .79))
-    transitionScene(c, 0, p >= .94 ? 1 : 0, false)
-    if (p < .94) {
-      letters(c, 'PULSO', { size: 69, color: lilac, gap: 5 }, (i, length, _char, origin) => {
-        const distance = Math.abs(i - (length - 1) / 2)
-        const k = stage(p, .10 - distance * .05, .92 - distance * .10) ** 2
-        return { dx: origin * (Math.cos(k * 2.4) * (1 - k) - 1), dy: origin * Math.sin(k * 2.4) * (1 - k), sx: 1 - k, sy: 1 - k, rotation: 2.6 * k, alpha: 1 - k, filter: 'blur(' + (4 * k) + 'px)' }
-      })
-      if (p > .58) circle(c, 240, 130, 7 * Math.sin(Math.PI * stage(p, .58, 1)), paper)
-    } else {
-      layer(c, q, () => pose(c, 240, 135, .1 + .9 * q, .1 + .9 * q, 0, () => center(c, 'SINAL', 0, 0, 67, mint, { weight: 850 })))
-    }
+    letters(c, 'PULSO', X, Y, 91, snow, (i, n) => {
+      const edge = Math.abs(i - (n - 1) / 2)
+      const p = phase(t, 0.21 - edge * 0.034, 0.61 - edge * 0.017) ** 2.25
+      return { x: (2 - i) * 64 * p, y: -Math.sin(p * Math.PI) * (i - 2) * 25,
+        rotation: 2.7 * p, sx: 1 - p, sy: 1 - p, alpha: 1 - p, blur: p * 6 }
+    }, { tracking: -3.6 })
+    const hit = phase(t, 0.48, 0.68)
+    spark(c, X, Y, 22 * Math.sin(Math.PI * hit), gold)
+    letters(c, 'NOVO', X, Y, 95, violet, (i, n) => {
+      const p = out(phase(t, 0.59 + Math.abs(i - (n - 1) / 2) * 0.035, 0.89 + i * 0.019))
+      return { x: (1.5 - i) * 65 * (1 - p), rotation: -1.2 * (1 - p), sx: p, sy: p, alpha: p }
+    }, { tracking: -3.8 })
   }
 
   demos['showcase-color-band-sweep'] = (c, t) => {
-    transitionScene(c, 1, t < .49 ? 0 : 1)
-    const colors = ['#8fe6e6', '#22283b', '#a892f4']
+    const p = ease(phase(t, 0.16, 0.81))
+    if (p < 0.5) {
+      ellipse(c, X, Y, 72, 72, rose)
+      ellipse(c, X, Y, 88, 88, '#ff667da1', 1.2)
+    } else {
+      polygon(c, [[X, 46], [350, Y], [X, 224], [130, Y]], violet)
+      polygon(c, [[X, 34], [365, Y], [X, 236], [115, Y]], null, '#b3a0ff96', 1.2)
+    }
+
+    // As três faixas cobrem os dois cantos opostos no instante da troca.
+    const top = 302 - 713 * p
+    const colors = [aqua, snow, '#7855ee']
     colors.forEach((color, i) => {
-      const p = smooth(stage(t, .20 + .043 * i, .73 + .043 * i))
-      const y = mix(382, -540, p)
-      poly(c, [[0, y + 32], [W, y - 32], [W, y + 326], [0, y + 390]], color)
+      const y = top + i * 126
+      polygon(c, [[-1, y + 31], [481, y - 30], [481, y + 97], [-1, y + 158]], color)
     })
   }
 
   demos['showcase-venetian-shutter'] = (c, t) => {
-    transitionScene(c, 2, t < .53 ? 0 : 1)
-    const colors = [lilac, gold, mint, '#405977']
-    colors.forEach((color, i) => {
-      const close = stage(t, .18 + .035 * i, .34 + .035 * i) ** 2
-      const open = out(stage(t, .55 + .039 * i, .72 + .039 * i))
-      const y = H / 4 * i + H / 4 * open
-      const h = (H / 4 + 1) * close * (1 - open)
-      rect(c, 0, y, W, h, color)
-    })
+    if (t < 0.51) {
+      const fill = gradient(c, 183, 74, 300, 204, rose, '#b642a8')
+      ellipse(c, X, Y, 78, 78, fill)
+      ellipse(c, X, Y, 49, 49, '#ffbac2b3', 1.4)
+    } else {
+      spark(c, X, Y, 88, aqua)
+      ellipse(c, X, Y, 98, 98, '#65f5dd80', 1.3)
+    }
+    const colors = ['#8b63fa', gold, aqua, snow]
+    for (let i = 0; i < 4; i++) {
+      const close = phase(t, 0.09 + i * 0.062, 0.27 + i * 0.062) ** 2
+      const open = out(phase(t, 0.52 + i * 0.064, 0.77 + i * 0.064))
+      const h = 68
+      const y = i * 67.5 + h * open
+      const visible = h * close * (1 - open)
+      rect(c, 0, y, W, visible, colors[i])
+      if (visible > 0.5) rect(c, 0, y, W, 1.2, '#ffffff95')
+    }
   }
 
   demos['showcase-whip-pan-blur'] = (c, t) => {
-    const time = stage(t, .26, .76)
-    if (time === 0 || time === 1) {
-      transitionScene(c, 3, time === 1 ? 1 : 0)
-      return
-    }
-    const progress = smooth(time)
-    const left = -W * progress
-    const right = W * (1 - progress)
-    const draw = (idx, x) => pose(c, x, 0, 1, 1, 0, () => transitionScene(c, 3, idx))
-    draw(0, left)
-    draw(1, right)
-    const blur = 76 * Math.sin(time * Math.PI) ** 2
-    for (let j = 1; j <= 6; j++) {
-      layer(c, .17, () => {
-        const trail = blur * j / 6
-        draw(0, left + trail)
-        draw(1, right + trail)
+    const leaving = phase(t, 0.2, 0.56)
+    const entering = phase(t, 0.42, 0.81)
+    const rush = Math.sin(Math.PI * phase(t, 0.35, 0.63))
+    layer(c, () => {
+      const streak = gradient(c, 45, Y, 434, Y, '#ffffff00', '#edeff27d', '#d9ff5c00')
+      rect(c, 0, Y - 29, W, 2, streak)
+      rect(c, 0, Y + 36, W, 1, streak)
+    }, rush)
+    function whip(value, x, color, strength) {
+      for (let i = 7; i > 0; i--) {
+        layer(c, () => words(c, value, x + i * 19 * strength, Y, 108, color), strength * (0.23 - i * 0.02))
+      }
+      layer(c, () => {
+        if (strength > 0.03) c.filter = `blur(${2.5 * strength}px)`
+        words(c, value, x, Y, 108, color)
       })
     }
+    if (leaving < 1) whip('VAI', X - 459 * leaving ** 2.8, snow, leaving)
+    if (entering > 0) whip('VEM', X + 443 * (1 - out(entering)), lime, (1 - entering) ** 2)
   }
 
   demos['showcase-iris'] = (c, t) => {
-    const close = 1 - smooth(stage(t, .18, .50))
-    const open = smooth(stage(t, .51, .80))
-    const radius = 279 * (t < .51 ? close : open)
-    bg(c, '#141b2b')
-    if (radius <= 0) return
-    c.save()
-    c.beginPath()
-    c.arc(240, 135, radius, 0, tau)
-    c.clip()
-    transitionScene(c, 4, t < .51 ? 0 : 1)
-    c.restore()
-    ellipse(c, 240, 135, radius, radius, '#e3dbb84a', 1)
-  }
-
-  function floatType(c, word, y, size, color, t, start, perLetter = .035, gap = 3) {
-    letters(c, word, { y, size, color, gap }, i => {
-      const time = stage(t, start + perLetter * i, start + .31 + perLetter * i)
-      const p = back(time)
-      return { dy: 49 * (1 - p), sy: Math.max(.05, Math.sin(time * Math.PI / 2)) * (1 + (p - 1) * .24), alpha: out(time) }
-    })
-  }
-  function corners(c, x, y, w, h, color, p) {
-    for (const sx of [-1, 1]) {
-      for (const sy of [-1, 1]) {
-        const reach = 14 + 7 * (1 - p)
-        const px = x + sx * (w / 2 + 24 * (1 - p))
-        const py = y + sy * (h / 2 + 24 * (1 - p))
-        stroke(c, [[px - sx * reach, py], [px, py], [px, py - sy * reach]], color, 2)
+    const open = t < 0.5 ? 1 - ease(phase(t, 0.15, 0.47)) : ease(phase(t, 0.53, 0.86))
+    const r = 131 * open
+    if (r < 0.3) return
+    layer(c, () => {
+      c.beginPath()
+      c.arc(X, Y, r, 0, TAU)
+      c.clip()
+      if (t < 0.5) {
+        ellipse(c, X, Y, 83, 83, gradient(c, 168, 65, 310, 212, '#ffad9e', '#ff537e'), 25)
+        ellipse(c, X, Y, 58, 58, '#ff96aa73', 1.2)
+      } else {
+        for (let i = 0; i < 8; i++) {
+          const a = i * TAU / 8
+          ellipse(c, X + 45 * Math.cos(a), Y + 45 * Math.sin(a), 47, 12.5, aqua, 0, a)
+        }
+        ellipse(c, X, Y, 6, 6, snow)
       }
-    }
-  }
-  function risingCredit(c, word, y, t, start, color) {
-    const p = out(stage(t, start, start + .20))
-    crop(c, 42, y - 11, 396, 22, () => layer(c, p, () => center(c, word, 240, y + 18 * (1 - p), 11, color, { weight: 750 })))
+    })
+    layer(c, () => ellipse(c, X, Y, r, r, t < 0.5 ? rose : aqua, 1.9), Math.sin(Math.PI * open))
   }
 
   demos['showcase-s1'] = (c, t) => {
-    bg(c, '#333152')
-    ellipse(c, 240, 140, 196, 81, '#b8b1ee45', 1)
-    ellipse(c, 240, 140, 185, 70, '#b8b1ee25', 1)
-    risingCredit(c, 'UM FILME DO ESTÚDIO NORTE', 83, t, .02, lilac)
-    floatType(c, 'IMPULSO', 148, 63, paper, t, .14, .046, mix(0, 5, stage(t, .62, .96)))
+    mask(c, 27, 54, 426, 151, () => {
+      letters(c, 'IMPULSO', X, Y, 79, snow, (i) => {
+        const p = bump(phase(t, 0.055 + i * 0.048, 0.38 + i * 0.046))
+        return { y: 79 * (1 - p), sy: 0.04 + 0.96 * p, alpha: out(phase(p, 0, 0.65)) }
+      }, { tracking: lerp(-4, 1.3, ease(phase(t, 0.68, 1))) })
+    })
+    const lineIn = out(phase(t, 0.59, 0.86))
+    rect(c, X - 144 * lineIn, 192, 288 * lineIn, 1.7, gold)
   }
 
   demos['showcase-s2'] = (c, t) => {
-    bg(c, '#4a3338')
-    const order = [1, 4, 0, 2, 5, 3]
-    letters(c, 'a cada', { y: 137, size: 77, color: gold, family: 'Georgia, serif', italic: true, weight: 700, gap: 1 }, (i, length) => {
-      const arrive = out(stage(t, .08 + order[i] * .043, .40 + order[i] * .047))
-      const leave = stage(t, .69 + Math.min(i, length - i - 1) * .031, .89 + Math.min(i, length - i - 1) * .031) ** 2
-      return { dy: 74 * (1 - arrive) - 59 * leave, rotation: .2 * (1 - arrive) - .10 * leave, alpha: arrive * (1 - leave), sx: 1 - .42 * leave, sy: 1 - .42 * leave }
+    const order = [1, 0, 4, 2, 3, 5]
+    mask(c, 56, 64, 368, 148, () => {
+      letters(c, 'a cada', X, 137, 111, gold, (i, n) => {
+        const p = out(phase(t, 0.03 + order[i] * 0.035, 0.36 + order[i] * 0.041))
+        const exit = phase(t, 0.72 + (2.5 - Math.abs(i - (n - 1) / 2)) * 0.033, 0.99) ** 2
+        return { y: 95 * (1 - p) - 78 * exit, rotation: (1 - p) * 0.24,
+          sx: 1 - 0.37 * exit, sy: 1 - 0.37 * exit, alpha: p * (1 - exit) }
+      }, { family: serif, italic: true, weight: 500, tracking: -5 })
     })
   }
 
   demos['showcase-s3'] = (c, t) => {
-    bg(c, '#273750')
-    const shake = stage(t, .37, .58)
-    const x = 240 + Math.sin(shake * tau * 4) * 10 * (1 - shake)
-    letters(c, 'QUADRO', { x, y: 136, size: 66, color: blue, outline: true }, (i, length) => {
-      const distance = Math.floor(Math.abs(i - (length - 1) / 2))
-      const p = out(stage(t, .08 + .061 * distance, .45 + .055 * distance))
-      const leave = stage(t, .73 + (length - i) * .013, .88 + (length - i) * .013)
-      const scale = 1 + 3.2 * (1 - p)
-      return { dx: (i - 2.5) * 18 * (1 - p), dy: 75 * leave, sx: scale, sy: scale * Math.max(.01, Math.cos(Math.PI * .5 * leave)), alpha: p * (1 - leave), filter: 'blur(' + (12 * (1 - p)) + 'px)' }
-    })
+    const hit = phase(t, 0.32, 0.54)
+    const shake = 6 * Math.sin(hit * TAU * 2) * (1 - hit)
+    letters(c, 'QUADRO', X + shake, Y, 84, snow, (i, n) => {
+      const distance = Math.abs(i - (n - 1) / 2)
+      const p = out(phase(t, 0.01 + distance * 0.052, 0.41 + distance * 0.039))
+      const exit = phase(t, 0.72 + (n - i) * 0.021, 0.99) ** 2
+      return { y: 99 * exit, sx: 1 + 2.3 * (1 - p), sy: (1 + 2.3 * (1 - p)) * (1 - 0.92 * exit),
+        alpha: p * (1 - exit), blur: 8 * (1 - p), outline: 2.1 }
+    }, { tracking: -4 })
   }
 
   demos['showcase-s4'] = (c, t) => {
-    bg(c, '#312b45')
-    const rows = [['CORTE', mint], ['MOVA', lilac], ['ENTREGUE', coral]]
-    rows.forEach(([word, color], row) => {
-      letters(c, word, { y: 74 + row * 61, size: 47, color }, i => {
-        const start = .07 + row * .16 + i * .024
-        const time = stage(t, start, start + .24)
-        const p = row === 2 ? back(time) : out(time)
-        const bounce = row === 2 ? Math.sin(Math.PI * stage(t, .66 + i * .016, .80 + i * .016)) * 10 : 0
-        return { dx: row === 1 ? -55 * (1 - p) : 0, dy: (row === 0 ? 51 * (1 - p) : 0) - bounce, sx: row === 2 ? 1 + (1 - p) * 1.05 : 1, sy: row === 2 ? 1 + (1 - p) * 1.05 : 1, alpha: out(time) }
+    const lines = [['CORTE', 77, 56, aqua], ['MOVA', 132, 64, violet], ['ENTREGUE', 188, 55, rose]]
+    lines.forEach(([value, y, size, color], row) => {
+      mask(c, 37, y - 31, 406, 61, () => {
+        letters(c, value, X, y, size, color, (i) => {
+          const begin = 0.025 + row * 0.18 + i * 0.022
+          const p = (row === 2 ? bump : out)(phase(t, begin, begin + 0.32))
+          const wave = row === 2 ? 6 * Math.sin(TAU * phase(t, 0.68 + i * 0.011, 0.93 + i * 0.008)) : 0
+          return { x: row === 1 ? -80 * (1 - p) : 0, y: row === 0 ? 62 * (1 - p) : wave,
+            sx: row === 2 ? 1 + 0.65 * (1 - p) : 1, sy: row === 2 ? 1 + 0.65 * (1 - p) : 1, alpha: p }
+        }, { tracking: -2.6 })
       })
     })
   }
 
   demos['showcase-s5'] = (c, t) => {
-    bg(c, '#313645')
-    const frame = out(stage(t, .08, .48))
-    layer(c, frame, () => corners(c, 240, 135, 339, 166, lilac, frame))
-    floatType(c, 'ESTÚDIO', 105, 47, paper, t, .08)
-    floatType(c, 'NORTE', 157, 57, gold, t, .22)
-    const rule = smooth(stage(t, .37, .66))
-    if (rule > 0) stroke(c, [[240 - 123 * rule, 190], [240 + 123 * rule, 190]], gold, 1.6)
-    risingCredit(c, 'TIPOGRAFIA E MOVIMENTO', 207, t, .49, lilac)
+    const frame = out(phase(t, 0.12, 0.6))
+    const underline = ease(phase(t, 0.5, 0.74))
+    layer(c, () => cropMarks(c, X, Y, 338 + 54 * (1 - frame), 172 + 41 * (1 - frame), 20, snow, 1.8), frame)
+    rect(c, X - 119 * underline, 193, 238 * underline, 1.65, gold)
+    const lines = [['ESTÚDIO', 106, snow], ['NORTE', 158, gold]]
+    lines.forEach(([value, y, color], row) => {
+      mask(c, 69, y - 42, 342, 71, () => {
+        letters(c, value, X, y, 58, color, (i) => {
+          const p = bump(phase(t, 0.06 + row * 0.145 + i * 0.032, 0.41 + row * 0.132 + i * 0.032))
+          return { y: 55 * (1 - p), sy: 0.09 + 0.91 * p, alpha: p }
+        }, { tracking: -2.6 })
+      })
+    })
   }
 
   demos['showcase-s6'] = (c, t) => {
-    bg(c, '#233c3a')
-    const frame = out(stage(t, .10, .55))
-    layer(c, frame, () => corners(c, 240, 133, 335, 144, mint, frame))
-    letters(c, 'norte.co', { y: 123, size: 57, weight: 800, gap: 1 }, (i, _length, char) => {
-      if (char === '.') {
-        const dot = out(stage(t, .44, .58))
-        const pulse = .32 * Math.sin(Math.PI * stage(t, .56, .79))
-        return { fill: gold, alpha: dot, sx: dot + pulse, sy: dot + pulse }
-      }
-      const p = back(stage(t, .08 + i * .031, .39 + i * .031))
-      return { dy: 40 * (1 - p), alpha: p, sy: .18 + .82 * p }
+    const p = out(phase(t, 0.12, 0.56))
+    const pulse = Math.sin(Math.PI * phase(t, 0.53, 0.69)) + 0.45 * Math.sin(Math.PI * phase(t, 0.7, 0.87))
+    layer(c, () => cropMarks(c, X, Y, 346 + 53 * (1 - p), 141 + 42 * (1 - p), 15, '#f8f3e9a8'), p)
+    mask(c, 68, 76, 344, 121, () => {
+      const x = X - 10
+      const size = 94
+      letters(c, 'norte', x, 132, size, snow, (i) => {
+        const enter = bump(phase(t, 0.09 + 0.034 * i, 0.45 + 0.031 * i))
+        return { y: 63 * (1 - enter), sy: 0.12 + 0.88 * enter, alpha: enter }
+      }, { tracking: -4 })
+      const width = [...'norte'].reduce((sum, char) => sum + c.measureText(char).width, -16)
+      const enter = bump(phase(t, 0.4, 0.59))
+      const radius = 7.6 * (enter + 0.46 * pulse)
+      ellipse(c, x + width / 2 + 11, 159 + 14 * (1 - enter), radius, radius, gold)
     })
-    const line = smooth(stage(t, .46, .71))
-    if (line > 0) stroke(c, [[240 - 120 * line, 158], [240 + 120 * line, 158]], gold, 1.6)
-    risingCredit(c, 'ESTÚDIO DE ANIMAÇÃO', 178, t, .54, mint)
+    const underline = out(phase(t, 0.44, 0.69))
+    rect(c, X - 100 * underline, 182, 200 * underline, 1.5, gold)
   }
 })()

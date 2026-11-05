@@ -46,15 +46,25 @@ test('HTML offline carrega o catálogo e todos os scripts de demonstração', ()
   const embedded = html.match(/<script id="catalog" type="application\/json">([\s\S]+?)<\/script>/)
   assert.deepEqual(JSON.parse(embedded?.[1] ?? 'null'), JSON.parse(read('catalog.json')))
   const window = {}
+  const renderers = new Map()
   const files = [...html.matchAll(/<script src="([^"]+)"[^>]*>/g)].map(match => match[1])
   assert.ok(files.includes('gallery.js'))
   for (const name of files) {
     assert.match(name, /^(?:[a-z0-9-]+\/)*[a-z0-9-]+\.js$/i)
     const source = read(name)
-    if (name.startsWith('demos-')) runInNewContext(source, { window }, { filename: name })
+    if (!name.startsWith('demos-')) continue
+    const before = { ...window.motionDemos }
+    runInNewContext(source, { window }, { filename: name })
+    for (const [key, renderer] of Object.entries(window.motionDemos)) {
+      if (key in before) assert.equal(renderer, before[key], 'registro sobrescrito: ' + key)
+      else renderers.set(key, name)
+    }
   }
   const { entries } = JSON.parse(read('catalog.json'))
-  for (const { id, demo } of entries) assert.equal(typeof window.motionDemos?.[demo.key], 'function', id)
+  for (const { id, demo } of entries) {
+    assert.equal(typeof window.motionDemos?.[demo.key], 'function', id)
+    assert.equal(renderers.get(demo.key), demo.file, id)
+  }
   const used = new Set(entries.map(entry => entry.demo.key))
   assert.deepEqual(Object.keys(window.motionDemos).filter(key => !used.has(key)), [])
 })
@@ -76,6 +86,18 @@ test('os nomes públicos já usados continuam resolvendo para os mesmos IDs', ()
     'RM26-13-02': 'IA reduz 500 candidatos a 3'
   }
   for (const [id, title] of Object.entries(existingNames)) {
-    assert.equal(entries.find(entry => entry.id === id)?.title, title, id)
+    const entry = entries.find(entry => entry.id === id)
+    assert.ok([entry.title, ...(entry.aliases ?? [])].includes(title), id)
   }
+})
+
+test('cada cartão descreve o efeito isolado e mantém a busca pelo nome anterior', () => {
+  const { entries } = JSON.parse(read('catalog.json'))
+  for (const { id, title, demo, aliases } of entries) {
+    assert.ok(['transparent', 'black', 'white'].includes(demo.background), id)
+    assert.ok(!aliases || aliases.every(alias => typeof alias === 'string' && alias !== title), id)
+  }
+  const html = read('index.html')
+  assert.match(html, /animações isoladas/i)
+  assert.match(read('gallery.js'), /entry\.aliases/)
 })

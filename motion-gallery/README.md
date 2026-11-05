@@ -1,15 +1,29 @@
 # Galeria de motion
 
 Abra [index.html](index.html) no navegador. Cada demo exibe o nome e o ID que
-você pode citar numa edição. **Ver prompt** mostra a receita para reproduzir
-o efeito. As demonstrações usam cenas e insumos fictícios. As referências de
-motion-skills e do showcase mantêm links para as fontes da iart.ai.
+você pode citar numa edição. **Ver prompt** mostra a receita da animação.
+Cada palco contém o efeito isolado. A página exibe sobre preto os efeitos
+desenhados em transparência. As referências de motion-skills e do showcase
+mantêm links para as fontes da iart.ai.
 
 [catalog.json](catalog.json) é a fonte dos cartões e das receitas consultadas
 pela Tarantino e pela ibeia-video-edit. Ao editar o catálogo, atualize o HTML
 com `node scripts/build-motion-gallery.mjs` a partir da raiz do repositório.
 Valide com `node scripts/build-motion-gallery.mjs --check` e
 `node --test tests/motion-gallery.test.mjs`.
+
+## Usar o efeito em um vídeo
+
+Localize a entrada por `title`, `aliases` ou `id`. Carregue o script indicado
+em `demo.file` e use `window.motionDemos[demo.key](contexto2d, progresso)`.
+Use um canvas HTML com contexto 2D. O desenho ocupa um palco lógico de
+480 × 270. Em resolução maior, escale o contexto antes de desenhar.
+A progressão vai de 0 a 1 ao longo de `demo.seconds`. Limpe o quadro entre
+amostras e use `save()` e `restore()` para isolar o estado do contexto.
+Use o alpha na composição. Para exportar com o mesmo fundo da galeria,
+preencha antes o canvas com branco ou preto conforme `demo.background`.
+Posicione efeitos opacos na área destinada a eles. Para aplicar uma transição
+a dois takes, o `prompt` descreve a direção e a coreografia a reproduzir.
 
 ## Hospedagem no GitHub
 

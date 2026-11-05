@@ -10,7 +10,10 @@
   const categories = new Map()
   const cards = new Map()
   const normalize = text => text.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()
-  const firstCategories = ['Efeitos de edição', 'Transições de cena']
+  const stageWidth = 480
+  const stageHeight = 270
+  const firstCategories = ['Transições de cena', 'Tipografia e legendas']
+  const collator = new Intl.Collator('pt-BR')
   const preferredOrder = title => firstCategories.includes(title) ? firstCategories.indexOf(title) : firstCategories.length
   let playing = null
   let frameId = 0
@@ -32,6 +35,7 @@
     const article = element('article', 'card')
     article.id = entry.id
     const preview = element('div', 'preview')
+    preview.dataset.background = entry.demo.background
     const controls = element('div', 'preview-controls')
     const button = element('button', 'play')
     button.type = 'button'
@@ -70,7 +74,7 @@
     article.append(preview, copy, details)
     const card = {
       article, preview, button, icon, label, progress, entry,
-      search: normalize(entry.title + ' ' + entry.id),
+      search: normalize([entry.title, entry.id, ...(entry.aliases ?? [])].join(' ')),
       canvas: null, ctx: null, time: 0, started: false
     }
     setPlayLabel(card, 'Reproduzir')
@@ -91,8 +95,9 @@
     try {
       if (!card.canvas) {
         card.canvas = element('canvas')
-        card.canvas.width = 480
-        card.canvas.height = 270
+        card.density = Math.min(2, window.devicePixelRatio || 1)
+        card.canvas.width = Math.round(stageWidth * card.density)
+        card.canvas.height = Math.round(stageHeight * card.density)
         card.canvas.setAttribute('aria-hidden', 'true')
         card.ctx = card.canvas.getContext('2d')
         card.preview.prepend(card.canvas)
@@ -100,7 +105,8 @@
       const ctx = card.ctx
       ctx.save()
       try {
-        ctx.clearRect(0, 0, 480, 270)
+        ctx.clearRect(0, 0, card.canvas.width, card.canvas.height)
+        ctx.scale(card.canvas.width / stageWidth, card.canvas.height / stageHeight)
         window.motionDemos[card.entry.demo.key](ctx, time)
       } finally {
         ctx.restore()
@@ -165,7 +171,8 @@
     categories.get(entry.category).cards.push(makeCard(entry))
   }
 
-  const orderedCategories = [...categories.keys()].sort((a, b) => preferredOrder(a) - preferredOrder(b))
+  const orderedCategories = [...categories.keys()].sort((a, b) =>
+    preferredOrder(a) - preferredOrder(b) || collator.compare(a, b))
   orderedCategories.forEach((title, index) => {
     const category = categories.get(title)
     const section = element('section', 'group')
@@ -177,6 +184,10 @@
     category.count = element('span')
     header.append(heading, category.count)
     const grid = element('div', 'grid')
+    if (title === 'Transições de cena') {
+      category.cards.sort((a, b) =>
+        Number(b.entry.source.collection === 'showcase') - Number(a.entry.source.collection === 'showcase'))
+    }
     for (const card of category.cards) {
       grid.append(card.article)
       observer.observe(card.article)

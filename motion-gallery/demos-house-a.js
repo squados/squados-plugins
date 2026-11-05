@@ -2,50 +2,60 @@
   'use strict';
 
   const demos = window.motionDemos ??= Object.create(null);
-  const ink = '#111a29';
-  const slate = '#26364d';
-  const white = '#f5f6fa';
-  const mist = '#adbbcb';
-  const blue = '#83aaff';
-  const green = '#8fe5bc';
-  const coral = '#ff917e';
-  const gold = '#f8d783';
-  const purple = '#c4adff';
-  const accents = [blue, coral, green, gold, purple];
+  const tau = 2 * Math.PI;
+  const { sin, cos, sqrt, abs, PI } = Math;
+  const white = '#fff2df';
+  const sky = '#93e5ff';
+  const teal = '#43f2c4';
+  const violet = '#b5a0ff';
+  const orchid = '#f4a2eb';
+  const coral = '#ff6d55';
+  const amber = '#ffd36b';
+  const ink = '#111427';
 
-  const clamp = value => Math.max(0, Math.min(1, value));
-  const phase = (t, from, to) => clamp((t - from) / (to - from));
-  const ease = (t, from, to) => {
-    const p = phase(t, from, to);
-    return p * p * (3 - 2 * p);
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const phase = (t, a, b) => clamp((t - a) / (b - a));
+  const ease = (t, a, b) => {
+    const u = phase(t, a, b);
+    return u * u * (3 - 2 * u);
   };
-  const mix = (a, b, p) => a + (b - a) * p;
+  const out = (t, a, b) => 1 - (1 - phase(t, a, b)) ** 4;
+  const mix = (a, b, u) => a + (b - a) * u;
+  const rand = i => {
+    const value = sin(i * 128.13 + 8.79) * 43758.5453;
+    return value - Math.floor(value);
+  };
+  const at = (x, y, radius, a) => [x + cos(a) * radius, y + sin(a) * radius];
+  const points = (count, fn) => Array.from({ length: count }, (_, i) => fn(i));
 
-  function box(ctx, x, y, w, h, color, radius = 8, stroke) {
-    if (w <= 0 || h <= 0) return;
-    ctx.beginPath();
-    ctx.roundRect(x, y, w, h, radius);
-    ctx.fillStyle = color;
-    ctx.fill();
-    if (stroke) {
-      ctx.strokeStyle = stroke;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
+  function scoped(ctx, draw) {
+    ctx.save();
+    draw();
+    ctx.restore();
   }
 
-  function label(ctx, value, x, y, size = 13, color = white, weight = 650, align = 'left') {
-    ctx.font = weight + ' ' + size + 'px system-ui, sans-serif';
-    ctx.fillStyle = color;
-    ctx.textAlign = align;
-    ctx.textBaseline = 'middle';
-    ctx.fillText(value, x, y);
+  function alpha(ctx, opacity, draw) {
+    if (opacity <= 0) return;
+    scoped(ctx, () => {
+      ctx.globalAlpha *= clamp(opacity);
+      draw();
+    });
   }
 
-  function line(ctx, points, color, width = 2) {
+  function pose(ctx, x, y, rotation, sx, sy, draw) {
+    scoped(ctx, () => {
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.scale(sx, sy);
+      draw();
+    });
+  }
+
+  function line(ctx, vertices, color, width = 2) {
+    if (vertices.length < 2) return;
     ctx.beginPath();
-    ctx.moveTo(...points[0]);
-    points.slice(1).forEach(point => ctx.lineTo(...point));
+    ctx.moveTo(...vertices[0]);
+    vertices.slice(1).forEach(v => ctx.lineTo(...v));
     ctx.lineWidth = width;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -53,1472 +63,1317 @@
     ctx.stroke();
   }
 
-  function dot(ctx, x, y, r, color) {
+  function polygon(ctx, vertices, color) {
     ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = color;
-    ctx.fill();
-  }
-
-  function outline(ctx, x, y, rx, ry, color, width = 2, from = 0, to = Math.PI * 2) {
-    ctx.beginPath();
-    ctx.ellipse(x, y, rx, ry, 0, from, to);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = width;
-    ctx.stroke();
-  }
-
-  function poly(ctx, points, color) {
-    ctx.beginPath();
-    ctx.moveTo(...points[0]);
-    points.slice(1).forEach(point => ctx.lineTo(...point));
+    ctx.moveTo(...vertices[0]);
+    vertices.slice(1).forEach(v => ctx.lineTo(...v));
     ctx.closePath();
     ctx.fillStyle = color;
     ctx.fill();
   }
 
-  function reveal(ctx, amount, draw, distance = 12) {
-    if (amount <= 0) return;
-    ctx.save();
-    ctx.globalAlpha *= amount;
-    ctx.translate(0, (1 - amount) * distance);
-    draw();
-    ctx.restore();
-  }
-
-  function clip(ctx, x, y, w, h, draw, r = 8) {
-    ctx.save();
+  function rect(ctx, x, y, w, h, radius, color) {
+    if (w <= 0 || h <= 0) return;
     ctx.beginPath();
-    ctx.roundRect(x, y, w, h, r);
-    ctx.clip();
-    draw();
-    ctx.restore();
+    ctx.roundRect(x, y, w, h, radius);
+    ctx.fillStyle = color;
+    ctx.fill();
   }
 
-  function stage(ctx, name, accent = blue) {
-    box(ctx, 0, 0, 480, 270, ink, 0);
-    for (let y = 49; y < 265; y += 16) {
-      for (let x = 16; x < 480; x += 16) dot(ctx, x, y, 0.7, '#26364a');
-    }
-    box(ctx, 20, 20, 7, 7, accent, 2);
-    label(ctx, name, 35, 24, 11, accent, 750);
-    line(ctx, [[20, 40], [460, 40]], slate, 1);
-  }
-
-  function pill(ctx, text, x, y, color = blue, w = 100) {
-    box(ctx, x, y, w, 23, color, 11);
-    label(ctx, text, x + w / 2, y + 11.5, 10, ink, 760, 'center');
-  }
-
-  function windowPanel(ctx, x, y, w, h, title, light = false) {
-    box(ctx, x, y, w, h, light ? white : '#172439', 10, light ? '#c4cdda' : '#38516b');
-    line(ctx, [[x + 1, y + 24], [x + w - 1, y + 24]], light ? '#d8dfea' : '#344860', 1);
-    [coral, gold, green].forEach((color, i) => dot(ctx, x + 12 + i * 9, y + 12, 2.5, color));
-    label(ctx, title, x + 42, y + 12, 10, light ? '#233650' : mist, 700);
-  }
-
-  function prompt(ctx, text, x, y, w, p) {
-    box(ctx, x, y, w, 37, '#20314a', 9, '#4b668c');
-    label(ctx, '›', x + 12, y + 17, 22, green, 800);
-    label(ctx, text.slice(0, Math.ceil(text.length * p)), x + 30, y + 18, 13);
-  }
-
-  function arrow(ctx, x1, y1, x2, y2, p = 1, color = mist) {
-    if (!p) return;
-    const x = mix(x1, x2, p);
-    const y = mix(y1, y2, p);
-    const angle = Math.atan2(y2 - y1, x2 - x1);
-    line(ctx, [[x1, y1], [x, y]], color);
-    line(ctx, [[x - 7 * Math.cos(angle - 0.6), y - 7 * Math.sin(angle - 0.6)], [x, y],
-      [x - 7 * Math.cos(angle + 0.6), y - 7 * Math.sin(angle + 0.6)]], color);
-  }
-
-  function cursor(ctx, x, y, active = false) {
-    if (active) outline(ctx, x, y, 9, 9, green);
-    poly(ctx, [[x, y], [x + 12, y + 6], [x + 6, y + 7], [x + 5, y + 13]], white);
-    line(ctx, [[x, y], [x + 12, y + 6], [x + 6, y + 7], [x + 5, y + 13], [x, y]], ink, 1);
-  }
-
-  function lines(ctx, x, y, w, count = 3, color = '#536781', p = 1, gap = 10) {
-    for (let i = 0; i < count; i++) {
-      box(ctx, x, y + i * gap, w * (1 - (i % 3) * 0.16) * clamp(p * count - i), 3, color, 2);
-    }
-  }
-
-  function art(ctx, x, y, w, h, kind, pan = 0) {
-    const color = accents[kind % accents.length];
-    box(ctx, x, y, w, h, color, 6);
-    clip(ctx, x, y, w, h, () => {
-      dot(ctx, x + w * 0.72 + pan, y + h * 0.32, h * 0.16, '#ffefb7');
-      poly(ctx, [[x - 10, y + h], [x + w * 0.33 + pan, y + h * 0.3], [x + w * 0.82 + pan, y + h]], '#334b65');
-      poly(ctx, [[x + w * 0.27, y + h], [x + w * 0.73 + pan / 2, y + h * 0.46], [x + w + 10, y + h]], '#1c2e45');
-      line(ctx, [[x + w * 0.4, y + h], [x + w * 0.61, y + h * 0.72], [x + w * 0.67, y + h * 0.7]], '#e0e9f8', 1.5);
-    }, 6);
-  }
-
-  function avatar(ctx, x, y, r, person = 0, expression = 0, t = 0) {
-    const color = accents[person % accents.length];
-    const skin = ['#c88a5e', '#e5a987', '#ae795c', '#f0ba93', '#a26f54'][person % 5];
-    dot(ctx, x, y, r, '#344963');
-    ctx.save();
+  function dot(ctx, x, y, radius, color) {
+    if (radius <= 0) return;
     ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.clip();
-    dot(ctx, x, y + r * 0.82, r * 0.78, color);
-    dot(ctx, x, y - r * 0.2, r * 0.57, '#2d2734');
-    dot(ctx, x, y - r * 0.06, r * 0.47, skin);
-    dot(ctx, x - r * 0.17, y - r * 0.1, r * 0.045, ink);
-    dot(ctx, x + r * 0.17, y - r * 0.1, r * 0.045, ink);
-    if (expression > 0.25) outline(ctx, x, y + r * 0.13, r * 0.15, r * (0.09 + Math.abs(Math.sin(t * 28)) * 0.06), '#492b38', 1.5, 0, Math.PI);
-    else line(ctx, [[x - r * 0.12, y + r * 0.21], [x + r * 0.12, y + r * 0.21]], '#492b38', 1.5);
-    ctx.restore();
+    ctx.arc(x, y, radius, 0, tau);
+    ctx.fillStyle = color;
+    ctx.fill();
   }
 
-  function phone(ctx, x, y, w, h, draw) {
-    box(ctx, x, y, w, h, '#101625', 15, '#8ca1b7');
-    clip(ctx, x + 5, y + 7, w - 10, h - 14, () => draw(x + 5, y + 7, w - 10, h - 14), 10);
-    box(ctx, x + w * 0.34, y + 5, w * 0.32, 5, '#101625', 3);
+  function arc(ctx, x, y, rx, ry, a, b, color, width = 1) {
+    if (rx <= 0 || ry <= 0 || a === b) return;
+    ctx.beginPath();
+    ctx.ellipse(x, y, rx, ry, 0, a, b, b < a);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.lineCap = 'round';
+    ctx.stroke();
   }
 
-  function carousel(ctx, x, y, w, h, i, p = 1) {
-    const theme = i % accents.length;
-    box(ctx, x, y, w, h, i % 2 ? white : '#22354e', 8);
-    const color = i % 2 ? ink : white;
-    const headlines = ['Perto do céu', 'Entre vales', 'Trilha da lua', 'Luzes da serra', 'Mais lá fora'];
-    reveal(ctx, p, () => {
-      art(ctx, x + 5, y + 5, w - 10, h * 0.55, theme);
-      if (w > 53) {
-        label(ctx, headlines[theme], x + 7, y + h * 0.75, w > 100 ? 13 : 9, color, 800);
-        lines(ctx, x + 7, y + h * 0.85, w - 21, 1, i % 2 ? '#7c899c' : mist);
+  function trace(ctx, vertices, progress, color, width = 2) {
+    if (progress <= 0) return;
+    const index = Math.min(vertices.length - 2, Math.floor((vertices.length - 1) * progress));
+    const a = vertices[index];
+    const b = vertices[index + 1];
+    const u = (vertices.length - 1) * progress - index;
+    line(ctx, [...vertices.slice(0, index + 1), [mix(a[0], b[0], u), mix(a[1], b[1], u)]], color, width);
+  }
+
+  function gradient(ctx, x1, y1, x2, y2, a, b) {
+    const ramp = ctx.createLinearGradient(x1, y1, x2, y2);
+    ramp.addColorStop(0, a);
+    ramp.addColorStop(1, b);
+    return ramp;
+  }
+
+  function orb(ctx, x, y, radius, a, b) {
+    if (radius <= 0) return;
+    const light = ctx.createRadialGradient(x - radius * .35, y - radius * .38, 0, x, y, radius);
+    light.addColorStop(0, a);
+    light.addColorStop(.55, b);
+    light.addColorStop(1, ink);
+    dot(ctx, x, y, radius, light);
+  }
+
+  function type(ctx, value, x, y, size, color, weight = 800, family = 'system-ui') {
+    ctx.font = weight + ' ' + size + 'px ' + family;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = color;
+    ctx.fillText(value, x, y);
+  }
+
+  function burst(ctx, x, y, t, color, count = 12, radius = 74) {
+    if (t <= 0 || t >= 1) return;
+    alpha(ctx, (1 - t) ** 1.3, () => {
+      for (let i = 0; i < count; i++) {
+        const a = tau * (i + rand(i) * .6) / count;
+        const r = (radius * (.56 + .44 * rand(i + 23))) * out(t, 0, 1);
+        line(ctx, [at(x, y, r, a), at(x, y, r + 11 * (1 - t), a)], color, 1 + 2 * rand(i + 42));
       }
-    }, 6);
+    });
   }
 
-  function feed(ctx, x, y, w, h, items, p = 1) {
-    box(ctx, x, y, w, h, '#edf0f6', 0);
-    dot(ctx, x + 15, y + 20, 6, coral);
-    label(ctx, 'Caderno de trilhas', x + 25, y + 20, Math.min(12, w / 14), ink, 760);
-    const cell = (w - 20) / 3;
-    for (let i = 0; i < items; i++) {
-      reveal(ctx, ease(p, i * 0.08, i * 0.08 + 0.18), () => carousel(ctx,
-        x + 6 + (i % 3) * (cell + 3), y + 34 + Math.floor(i / 3) * (cell + 5), cell, cell, i));
-    }
-  }
-
-  function graph(ctx, x, y, w, h, values, p, color = green, bars = false) {
-    [0, 0.33, 0.66, 1].forEach(n => line(ctx, [[x, y + h * n], [x + w, y + h * n]], '#3b506a', 1));
-    if (bars) {
-      const stride = w / values.length;
-      values.forEach((value, i) => {
-        const amount = ease(p, i * 0.06, i * 0.06 + 0.43);
-        const height = h * value * amount;
-        box(ctx, x + i * stride + stride * 0.18, y + h - height, stride * 0.63, height, color, 3);
-      });
-      return;
-    }
-    const points = values.map((value, i) => [x + w * i / (values.length - 1), y + h * (1 - value)]);
-    clip(ctx, x - 3, y - 3, w * p + 6, h + 6, () => line(ctx, points, color, 3), 0);
-    const index = Math.min(points.length - 2, Math.floor(p * (points.length - 1)));
-    const amount = p * (points.length - 1) - index;
-    dot(ctx, mix(points[index][0], points[index + 1][0], amount), mix(points[index][1], points[index + 1][1], amount), 3.5, color);
-  }
-
-  function gauge(ctx, x, y, r, value, text, color) {
-    outline(ctx, x, y, r, r, slate, 7, Math.PI * 0.78, Math.PI * 2.22);
-    if (value) outline(ctx, x, y, r, r, color, 7, Math.PI * 0.78, Math.PI * (0.78 + 1.44 * value));
-    label(ctx, text, x, y + 2, r * 0.6, color, 780, 'center');
-  }
-
-  function party(ctx, x, y, t, from, spread = 65) {
-    const p = phase(t, from, from + 0.25);
-    if (p <= 0 || p >= 1) return;
-    for (let i = 0; i < 16; i++) {
-      const a = i * Math.PI / 8;
-      const r = p * spread * (0.48 + (i % 5) * 0.13);
-      box(ctx, x + Math.cos(a) * r, y + Math.sin(a) * r + p * p * 15, 4, 4, accents[i % 5], 1);
-    }
+  function check(ctx, x, y, size, t, color) {
+    trace(ctx, [[x - size * .4, y], [x - size * .12, y + size * .26], [x + size * .43, y - size * .33]], t, color, size * .09);
   }
 
   demos['01-G'] = (ctx, t) => {
-    stage(ctx, 'CARROSSÉIS / PUBLICAÇÃO', coral);
-    const move = ease(t, 0.48, 0.77);
-    reveal(ctx, 1 - ease(t, 0.52, 0.78), () => prompt(ctx, 'Crie três slides sobre trilhas', 42, 54, 275, phase(t, 0, 0.28)));
-    reveal(ctx, ease(t, 0.41, 0.63), () => phone(ctx, 326, 55, 109, 187,
-      (x, y, w, h) => feed(ctx, x, y, w, h, 6, ease(t, 0.73, 0.94))));
-    for (let i = 0; i < 3; i++) {
-      reveal(ctx, ease(t, 0.18 + i * 0.07, 0.36 + i * 0.07) * (1 - ease(t, 0.68, 0.8)), () => {
-        carousel(ctx, mix(43 + i * 87, 335 + i * 32, move), mix(111, 96, move), mix(76, 29, move), mix(108, 31, move), i);
-      });
-    }
-    reveal(ctx, ease(t, 0.79, 0.93), () => pill(ctx, '✓ Publicado', 194, 170, green, 110));
+    const close = ease(t, .67, .91);
+    [violet, coral, white].forEach((color, i) => {
+      const u = out(t, i * .07, .44 + i * .07) * (1 - close);
+      const end = 340 + 19 * i;
+      const y = 135 + (i - 1) * 52 * u;
+      const ramp = gradient(ctx, 97, 0, end, 0, color, color + '1d');
+      ctx.beginPath();
+      ctx.moveTo(93, 136);
+      ctx.bezierCurveTo(172, 136 - u * 24, 224, y + 14, end, y - 17 * u);
+      ctx.bezierCurveTo(331, y + 31 * u, 180, 154 + u * 19, 93, 138);
+      ctx.fillStyle = ramp;
+      ctx.fill();
+    });
+    alpha(ctx, close, () => line(ctx, [[93, 137], [371, 137]], white, 2.5));
   };
 
   demos['01-E1'] = (ctx, t) => {
-    stage(ctx, 'CARROSSÉIS / COMPOSIÇÃO', coral);
-    for (let i = 0; i < 3; i++) {
-      const x = 49 + i * 131;
-      const p = ease(t, 0.09 + i * 0.16, 0.37 + i * 0.16);
-      box(ctx, x, 69, 118, 147, '#22354e', 8, '#4b6384');
-      carousel(ctx, x, 69, 118, 147, i, p);
-      label(ctx, '0' + (i + 1) + ' / 03', x + 59, 235, 10, p > 0.9 ? green : mist, 720, 'center');
-    }
+    [124, 240, 356].forEach((x, i) => {
+      const u = ease(t, .08 + i * .14, .58 + i * .14);
+      dot(ctx, x, 135, 49, [coral, amber, orchid][i]);
+      scoped(ctx, () => {
+        ctx.beginPath();
+        ctx.arc(x, 135, 48.5, 0, tau);
+        ctx.clip();
+        ctx.beginPath();
+        ctx.rect(x - 50, 185 - 100 * u, 100, 100 * u);
+        ctx.clip();
+        for (let j = 0; j < 12; j++) {
+          line(ctx, points(40, k => [x - 51 + k * 2.7, 90 + j * 8 + sin(k / 6 + j * .55) * (8 + i * 1.7)]), ink, 1.2);
+        }
+        line(ctx, [[x - 51, 186 - 100 * u], [x + 51, 186 - 100 * u]], white, 2);
+      });
+    });
   };
 
   demos['01-E2'] = (ctx, t) => {
-    stage(ctx, 'CARROSSÉIS / VARIAÇÕES', purple);
-    reveal(ctx, 1 - ease(t, 0.16, 0.54), () => carousel(ctx, 183, 65, 114, 171, 0));
     for (let i = 0; i < 6; i++) {
-      const p = ease(t, 0.14 + i * 0.055, 0.45 + i * 0.055);
-      reveal(ctx, p, () => carousel(ctx, mix(184, 97 + i % 3 * 101, p), mix(102, 54 + Math.floor(i / 3) * 101, p), 88, 94, i));
+      const p = phase(t, .07 + i * .045, .62 + i * .045);
+      const u = out(p, 0, 1);
+      const radius = 10 + 52 * u + sin(p * PI) * 11;
+      const a = i * tau / 6 - PI / 2 + (1 - u) * .85;
+      pose(ctx, 240, 135, a, 1, 1, () => {
+        rect(ctx, 0, -21 * u, radius + 27 * u, 42 * u, 25, gradient(ctx, 0, 0, 95, 0, coral, amber));
+        alpha(ctx, u, () => line(ctx, [[24, 0], [radius + 11, 0]], white, .9));
+      });
     }
+    orb(ctx, 240, 135, mix(25, 17, out(t, .1, .68)), white, amber);
   };
 
   demos['01-E3'] = (ctx, t) => {
-    stage(ctx, 'CARROSSÉIS / FILA', coral);
-    label(ctx, 'Fila de publicação', 36, 69, 14);
-    const status = [0, 1, 2].filter(i => t > 0.4 + i * 0.19).length;
-    phone(ctx, 298, 55, 145, 190, (x, y, w, h) => feed(ctx, x, y, w, h, 3 + status));
-    for (let i = 0; i < 3; i++) {
-      const p = ease(t, 0.14 + i * 0.19, 0.4 + i * 0.19);
-      if (p < 1) carousel(ctx, mix(36 + i * 78, 309 + i * 44, p), mix(100, 139, p), mix(68, 39, p), mix(95, 39, p), i);
-    }
-    pill(ctx, status + ' de 3 publicados', 36, 211, status === 3 ? green : gold, 120);
+    const rail = points(60, i => [63 + i * 6, 161 - 75 * sin(i / 59 * PI)]);
+    line(ctx, rail, '#93e5ff49', 1.5);
+    [violet, teal, sky].forEach((color, i) => {
+      const u = ease(t, .08 + i * .15, .55 + i * .15);
+      const pos = mix(.12 - i * .055, .95 - i * .067, u);
+      const x = 63 + pos * 354;
+      const y = 161 - 75 * sin(pos * PI);
+      const spring = sin(phase(t, .51 + i * .15, .68 + i * .15) * PI);
+      pose(ctx, x, y, mix(.54, PI / 4, u), mix(1, .46, u) + .1 * spring, mix(1, .46, u) - .1 * spring, () => {
+        rect(ctx, -22, -22, 44, 44, 8, gradient(ctx, -22, -22, 22, 22, white, color));
+        rect(ctx, -13, -13, 26, 26, 4, color);
+      });
+    });
   };
 
-  function clock(ctx, x, y, r, p, color = gold) {
-    outline(ctx, x, y, r, r, color);
-    const angle = p * Math.PI * 2 - Math.PI / 2;
-    line(ctx, [[x, y - r * 0.48], [x, y], [x + Math.cos(angle) * r * 0.7, y + Math.sin(angle) * r * 0.7]], color, 2);
-  }
-
-  function person(ctx, x, y, scale, p, kind = 0, tilt = 0) {
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.scale(scale, scale);
-    ctx.rotate(tilt);
-    const wave = Math.sin(p * 30);
-    const color = accents[kind % 5];
-    line(ctx, [[-14, 37], [-14 + wave * 12, 61], [-22 + wave * 15, 75]], '#7592b0', 10);
-    line(ctx, [[14, 37], [14 - wave * 12, 61], [20 - wave * 15, 75]], '#7592b0', 10);
-    box(ctx, -21, -7, 42, 48, color, 12);
-    line(ctx, [[-16, 2], [-27, 18], [-19 + wave * 11, 27]], color, 8);
-    line(ctx, [[16, 2], [26, 17], [30 - wave * 11, 26]], color, 8);
-    avatar(ctx, 0, -22, 21, kind, 1, p);
-    ctx.restore();
-  }
-
   demos['RM26-02-01'] = (ctx, t) => {
-    stage(ctx, 'ENCENAÇÃO / CORTE NA AÇÃO', gold);
-    if (t < 0.28) {
-      box(ctx, 84, 158, 297, 61, '#283d55', 8);
-      person(ctx, 226, 117, 1.2, 0);
-      clock(ctx, 304, 112, 31, t * 2);
-      arrow(ctx, 264, 111, 272, 111, ease(t, 0.06, 0.23), white);
-    } else if (t < 0.68) {
-      const run = ease(t, 0.28, 0.68);
-      box(ctx, 344, 62, 72, 163, '#3a526d');
-      dot(ctx, 357, 148, 4, gold);
-      line(ctx, [[38, 226], [447, 226]], slate, 2);
-      person(ctx, mix(90, 316, run), 146, 0.96, run, 0, 0.18 + 0.85 * ease(t, 0.56, 0.68));
-      box(ctx, mix(119, 358, run), mix(150, 163, run), 33, 24, '#bccce3', 3);
-    } else {
-      const fall = phase(t, 0.68, 0.95);
-      line(ctx, [[32, 218], [447, 218]], mist, 2);
-      ctx.save();
-      ctx.translate(mix(197, 272, fall), mix(116, 204, fall * fall));
-      ctx.rotate(fall * Math.PI * 1.06);
-      box(ctx, -41, -11, 82, 22, '#bccce3', 4);
-      ctx.restore();
-      party(ctx, 278, 219, t, 0.91, 38);
-    }
+    const drop = phase(t, .13, .57);
+    const rebound = sin(PI * phase(t, .57, .77)) * 19;
+    const x = mix(136, 300, out(t, .13, .72));
+    const y = mix(67, 184, drop ** 2.4) - rebound;
+    const squash = sin(phase(t, .55, .62) * PI);
+    alpha(ctx, .5, () => line(ctx, [[106, 195], [376, 195]], amber, 1));
+    pose(ctx, x, y, tau * ease(t, .08, .57) + rebound * .009, 1 + squash * .13, 1 - squash * .32, () => {
+      rect(ctx, -57, -10, 114, 20, 10, gradient(ctx, -42, -10, 42, 10, white, amber));
+      line(ctx, [[-38, -4], [35, -4]], white, 1);
+    });
+    burst(ctx, x, 194, phase(t, .56, .86), amber, 17, 54);
   };
 
   demos['RM26-02-02'] = (ctx, t) => {
-    stage(ctx, 'ENCENAÇÃO / REAÇÃO AO FEED', coral);
-    if (t >= 0.3 && t < 0.69) {
-      phone(ctx, 171, 53, 138, 195, (x, y, w, h) => {
-        box(ctx, x, y, w, h, white, 0);
-        label(ctx, 'Caderno de trilhas', x + 10, y + 20, 12, ink);
-        const p = ease(t, 0.42, 0.58);
-        carousel(ctx, x + 10 - p * w, y + 35, w - 20, 119, 0);
-        carousel(ctx, x + 10 + (1 - p) * w, y + 35, w - 20, 119, 1);
-        pill(ctx, '✓ Salvo', x + 10, y + 160, green, w - 20);
+    const u = ease(t, .28, .76);
+    const beat = sin(phase(t, .1, .3) * 2 * PI) ** 2;
+    const width = mix(73, 230, u) + beat * 36;
+    for (let j = 0; j < 3; j++) {
+      const vertices = points(66, i => {
+        const s = i / 65;
+        return [240 + (s - .5) * (width + j * 22 * u), 128 + sin(s * PI) * (42 + j * 18) * u + beat * sin(s * tau * 2) * 6];
       });
-    } else {
-      const reaction = ease(t, 0.68, 0.87);
-      avatar(ctx, 240, 146, mix(83, 98, reaction), 1, reaction, t);
-      if (reaction) party(ctx, 241, 146, t, 0.74, 139);
+      alpha(ctx, j === 0 ? 1 : u * (.8 - .17 * j), () => line(ctx, vertices, [orchid, violet, white][j], j === 0 ? 8 : 2));
     }
   };
 
   demos['RM26-02-03'] = (ctx, t) => {
-    stage(ctx, 'CARROSSÉIS / ANTES E DEPOIS', coral);
-    phone(ctx, 59, 55, 137, 170, (x, y, w, h) => feed(ctx, x, y, w, h, 2));
-    phone(ctx, 285, 55, 137, 170, (x, y, w, h) => feed(ctx, x, y, w, h, 6, phase(t, 0.13, 0.88)));
-    arrow(ctx, 211, 135, 271, 135, ease(t, 0.05, 0.42), coral);
-    label(ctx, 'Antes · 2 capas', 127, 242, 12, mist, 720, 'center');
-    label(ctx, t > 0.73 ? 'Depois · 6 capas' : 'Depois', 353, 242, 12, green, 720, 'center');
+    const x = mix(101, 368, ease(t, .12, .84));
+    scoped(ctx, () => {
+      ctx.beginPath();
+      ctx.arc(240, 135, 91, 0, tau);
+      ctx.clip();
+      dot(ctx, 240, 135, 91, coral);
+      for (let i = 0; i < 28; i++) line(ctx, [[104 + i * 12, 32], [15 + i * 12, 237]], ink, 2.2);
+      ctx.beginPath();
+      ctx.moveTo(40, 30);
+      ctx.lineTo(x + 57, 30);
+      ctx.lineTo(x - 57, 240);
+      ctx.lineTo(40, 240);
+      ctx.closePath();
+      ctx.clip();
+      dot(ctx, 240, 135, 91, teal);
+      for (let i = 0; i < 28; i++) line(ctx, [[60 + i * 12, 31], [147 + i * 12, 238]], ink, 2.2);
+      line(ctx, [[x + 57, 30], [x - 57, 240]], white, 4);
+    });
   };
 
-  function website(ctx, x, y, w, h, p, scroll = 0, kind = 0) {
-    const themes = [
-      { name: 'Refúgio da Serra', headline: 'Acorde entre montanhas', color: '#264856', art: 0 },
-      { name: 'Casa do Vento', headline: 'Respire o tempo', color: '#5c3c53', art: 1 },
-      { name: 'Vale Claro', headline: 'Onde a trilha começa', color: '#305e57', art: 2 },
-    ];
-    const theme = themes[kind];
-    windowPanel(ctx, x, y, w, h, theme.name, true);
-    clip(ctx, x + 8, y + 30, w - 16, h - 37, () => {
-      const offset = scroll * 83;
-      reveal(ctx, p, () => {
-        art(ctx, x + 10, y + 31 - offset, w - 20, 102, theme.art, scroll * 24);
-        box(ctx, x + 18, y + 82 - offset, w - 36, 40, theme.color, 6);
-        label(ctx, theme.headline, x + w / 2, y + 102 - offset, w > 230 ? 22 : 13, white, 790, 'center');
-        const section = ease(p, 0.4, 0.9);
-        for (let i = 0; i < 3; i++) {
-          const tileWidth = (w - 40) / 3;
-          reveal(ctx, section, () => {
-            box(ctx, x + 13 + i * (tileWidth + 7), y + 142 - offset, tileWidth, 56, '#dce5ee', 4);
-            label(ctx, ['Trilhas', 'Estadias', 'Visitas'][i], x + 17 + i * (tileWidth + 7), y + 157 - offset, 10, theme.color);
-            lines(ctx, x + 17 + i * (tileWidth + 7), y + 172 - offset, tileWidth - 10, 2, '#889aae');
-          });
+  demos['02-G'] = (ctx, t) => {
+    const draw = (level, color) => {
+      const u = out(t, level * .13, .42 + level * .13);
+      const y = 189 - level * 49 * u;
+      const w = 110 - level * 22;
+      alpha(ctx, u, () => {
+        polygon(ctx, [[240 - w, y], [240, y - 37 * u], [240 + w, y], [240, y + 37 * u]], gradient(ctx, 150, y + 23, 330, y - 20, violet, color));
+        polygon(ctx, [[240 - w, y], [240, y + 37 * u], [240 + w, y], [240 + w, y + 11 * u], [240, y + 48 * u], [240 - w, y + 11 * u]], ink);
+        trace(ctx, [[240 - w, y], [240, y + 37 * u], [240 + w, y]], ease(t, .26 + level * .13, .64 + level * .12), white, 1.1);
+      });
+    };
+    draw(0, violet);
+    draw(1, sky);
+    draw(2, white);
+  };
+
+  demos['02-E1'] = (ctx, t) => {
+    const u = ease(t, .05, .92);
+    scoped(ctx, () => {
+      ctx.beginPath();
+      ctx.arc(240, 135, 93, 0, tau);
+      ctx.clip();
+      dot(ctx, 240, 135, 93, violet);
+      dot(ctx, 275 - 24 * u, 88, 24, amber);
+      [violet, coral, amber].forEach((color, j) => {
+        const wave = points(70, i => [137 + i * 3, 123 + j * 30 + sin(i * .13 + u * (1.6 + j * 1.9) + j) * (18 - j * 2)]);
+        polygon(ctx, [...wave, [345, 236], [137, 236]], gradient(ctx, 150, 155, 316, 229, color, color + '77'));
+        line(ctx, wave, color, 1.4);
+      });
+    });
+  };
+
+  demos['02-E2'] = (ctx, t) => {
+    const u = ease(t, .1, .87);
+    pose(ctx, 240, 136, mix(-.27, .28, u), 1, 1, () => {
+      const vertices = [[-104, 37], [-65, -70], [89, -53], [101, 53], [-24, 80]];
+      polygon(ctx, vertices, gradient(ctx, -100, -40, 80, 55, orchid, violet));
+      scoped(ctx, () => {
+        ctx.clip();
+        const y = 87 - 168 * u;
+        rect(ctx, -120, y, 240, 177, 0, gradient(ctx, -105, 0, 105, 20, teal, sky));
+        for (let i = -6; i < 11; i++) alpha(ctx, .45, () => line(ctx, [[i * 21, -81], [i * 21 - 70, 81]], ink, 1.4));
+        line(ctx, [[-125, y], [125, y]], white, 3);
+      });
+    });
+  };
+
+  demos['02-E3'] = (ctx, t) => {
+    const merge = ease(t, .37, .57);
+    for (let i = 0; i < 3; i++) {
+      const u = out(t, .04 + i * .10, .20 + i * .10);
+      alpha(ctx, 1 - merge, () => orb(ctx, mix(166 + i * 74, 240, merge), 135, (14 + sin(u * PI) * 8) * u, white, amber));
+    }
+    alpha(ctx, merge, () => dot(ctx, 240, 135, mix(12, 63, out(t, .38, .63)), teal));
+    check(ctx, 240, 135, 108, ease(t, .52, .77), ink);
+    burst(ctx, 240, 135, phase(t, .53, .87), white, 20, 102);
+  };
+
+  demos['RM26-03-01'] = (ctx, t) => {
+    for (let i = 3; i >= 0; i--) {
+      const p = ease(t - i * .045, .12, .68);
+      const x = mix(98, 348, p);
+      const y = 137 - 58 * sin(p * PI) - 8 * sin(PI * phase(t, .68, .86));
+      alpha(ctx, i ? .25 / i * sin(PI * p) : 1, () => {
+        orb(ctx, x, y, 38, white, amber);
+        arc(ctx, x, y, 28, 28, -PI / 2, PI * 1.5, white, .85);
+        polygon(ctx, [[x, y - 16], [x + 12, y], [x, y + 16], [x - 12, y]], amber);
+      });
+    }
+    for (let i = 0; i < 2; i++) {
+      const r = phase(t, .66 + i * .06, .96);
+      alpha(ctx, (1 - r) * r * 2, () => arc(ctx, 348, 137, 38 + r * 29, 38 + r * 29, 0, tau, amber));
+    }
+  };
+
+
+  demos['03-G'] = (ctx, t) => {
+    for (let j = 0; j < 7; j++) {
+      const a = j * tau / 7 - PI / 2;
+      const vertices = points(60, i => {
+        const u = i / 59;
+        return at(240, 135, 8 + 84 * sin(u * PI), a + (u - .5) * 1.18);
+      });
+      trace(ctx, vertices, out(t, j * .067, .42 + j * .067), gradient(ctx, 240, 45, 240, 225, white, violet), 2.2 + (j % 3) * .9);
+    }
+  };
+
+  demos['03-E1'] = (ctx, t) => {
+    const u = out(t, .03, .32);
+    rect(ctx, 119, 59, 180 * u, 16, 8, white);
+    const v = ease(t, .19, .61);
+    scoped(ctx, () => {
+      ctx.beginPath();
+      ctx.rect(119, 89, 243, 66 * v);
+      ctx.clip();
+      for (let j = 0; j < 8; j++) {
+        line(ctx, points(51, i => [121 + i * 4.75, 95 + j * 7.8 + 9 * sin(i * .17 + j * .4 + t * 1.5)]), violet, 2);
+      }
+    });
+    [204, 158, 225, 105].forEach((w, i) => rect(ctx, 119, 175 + 12 * i, w * out(t, .41 + i * .075, .66 + i * .075), 2, 1, white));
+  };
+
+  demos['03-E2'] = (ctx, t) => {
+    for (let i = 0; i < 3; i++) {
+      const start = .1 + i * .11;
+      const u = ease(t, start, start + .46);
+      const spring = sin(PI * phase(t, start + .31, start + .58));
+      const y = 87 + 27 * i;
+      rect(ctx, 112, y + u * 60 + spring * 8, 237 - i * 24, 5, 3, white);
+      alpha(ctx, u, () => rect(ctx, mix(65, 112, u), y - 5, mix(145, 210 + i * 23, u), 15, 8, gradient(ctx, 112, 0, 350, 0, coral, amber)));
+    }
+  };
+
+  demos['03-E3'] = (ctx, t) => {
+    const center = [240, 135];
+    for (let i = 0; i < 6; i++) {
+      const a = -PI / 2 + i * tau / 6;
+      const p = i < 2 ? 1 : out(t, .07 + (i - 2) * .13, .5 + (i - 2) * .13);
+      const edge = at(...center, 90, a);
+      const next = at(...center, 90, a + p * tau / 6);
+      polygon(ctx, [center, edge, next], [violet, '#7b5ad0', '#a785e8', '#57418f', '#8e74e1', '#d4bcff'][i]);
+      line(ctx, [edge, next, center], white + '8a', 1.1);
+    }
+  };
+
+  demos['RM26-04-01'] = (ctx, t) => {
+    const settle = ease(t, .7, .94);
+    for (let i = 0; i < 5; i++) {
+      const u = out(t, .16 + i * .055, .62 + i * .037);
+      const h = (i - 2) * 32 * (1 - settle);
+      const w = 78 + 168 * u - abs(i - 2) * 12;
+      alpha(ctx, u * (1 - (i === 2 ? 0 : settle)), () => line(ctx, [[121, 135], [121 + w * u, 135 + h * u]], gradient(ctx, 120, 135, 369, 135, white, amber), i === 2 ? 5 : 1.6));
+    }
+    orb(ctx, 121, 135, 10 + out(t, 0, .25) * 10, white, amber);
+    burst(ctx, 121, 135, phase(t, .12, .43), amber, 9, 28);
+  };
+
+  demos['RM26-04-02'] = (ctx, t) => {
+    const u = ease(t, .12, .7);
+    const x = mix(171, 338, u);
+    const y = 139 - 59 * sin(PI * u);
+    const scale = mix(1, .38, u);
+    arc(ctx, 338, 139, 43, 43, -.22 * PI, PI * (1.15 + ease(t, .55, .85) * .63), white, 1.4);
+    pose(ctx, x, y, u * 2.8, scale, scale, () => {
+      dot(ctx, 0, 0, 75, coral);
+      scoped(ctx, () => {
+        ctx.clip();
+        for (let j = -7; j <= 7; j++) line(ctx, [[-80, j * 11], [80, j * 11]], ink, j % 3 === 0 ? 3 : 1.2);
+      });
+    });
+  };
+
+  demos['04-G'] = (ctx, t) => {
+    [sky, violet, teal].forEach((color, i) => {
+      const u = ease(t, .02 + i * .07, .65);
+      const vertices = points(55, j => {
+        const p = j / 54;
+        return [mix(69, 297, p), 135 + (i - 1) * 92 * (1 - p) - sin(p * PI) * (26 - i * 11)];
+      });
+      alpha(ctx, 1 - ease(t, .62, .85), () => {
+        trace(ctx, vertices, u, gradient(ctx, 65, 0, 298, 0, color + '09', color), 5 - i * .7);
+        const [x, y] = vertices[Math.floor(u * 54)];
+        dot(ctx, x, y, 6, color);
+      });
+    });
+    const shot = out(t, .59, .88);
+    line(ctx, [[297, 135], [297 + shot * 117, 135]], white, 5 * (1 - .72 * ease(t, .7, 1)));
+    burst(ctx, 297, 135, phase(t, .61, .92), white, 17, 63);
+  };
+
+  demos['04-E1'] = (ctx, t) => {
+    const u = ease(t, .17, .6);
+    const contour = points(101, i => {
+      const a = i * tau / 100;
+      return at(240, 135, 76 + u * (sin(a * 3 - t * 7) * 13 + cos(a * 2 + t * 4) * 7), a);
+    });
+    alpha(ctx, u, () => polygon(ctx, contour, gradient(ctx, 177, 57, 297, 217, '#6b42cb', '#d4a8ff')));
+    scoped(ctx, () => {
+      ctx.clip();
+      for (let j = 0; j < 3; j++) {
+        const wave = points(70, i => [140 + i * 3, 111 + 23 * j + 28 * sin(i / 12 + t * 6 + j * .65)]);
+        alpha(ctx, u * (.9 - j * .19), () => line(ctx, wave, white, 2.6 - j * .5));
+      }
+    });
+    trace(ctx, contour, out(t, 0, .32), violet, 1.8);
+  };
+
+  demos['04-E2'] = (ctx, t) => {
+    [sky, violet, orchid].forEach((color, j) => {
+      const p = ease(t, .13 + .12 * j, .84);
+      const vertices = points(130, i => {
+        const s = i / 129;
+        return [81 + s * 318, 78 + j * 57 + sin(s * tau * mix(2.4 + .8 * j, 3, p) + (1 - p) * j * 1.8) * (12 + 12 * sin(s * PI))];
+      });
+      trace(ctx, vertices, out(t, .03 + j * .13, .53 + j * .13), color, 3.4);
+      alpha(ctx, p, () => dot(ctx, 240, vertices[65][1], 4, white));
+    });
+  };
+
+  demos['04-E3'] = (ctx, t) => {
+    const crop = ease(t, .48, .73);
+    scoped(ctx, () => {
+      ctx.beginPath();
+      ctx.roundRect(240 - mix(203, 47, crop), 33, 2 * mix(203, 47, crop), 204, mix(44, 14, crop));
+      ctx.clip();
+      [violet, coral, amber].forEach((color, i) => {
+        const u = ease(t, .04 + i * .09, .64);
+        const x = mix(113 + i * 126, 240, u);
+        const y = mix(135, 178 - i * 43 - 30 * ease(t, .72, .95), crop);
+        pose(ctx, x, y, mix((i - 1) * .31, -.48, crop), 1, 1, () => rect(ctx, -71, -21, 142, 42, 21, gradient(ctx, -71, 0, 71, 0, color + '8f', color)));
+      });
+    });
+  };
+
+  demos['RM26-05-01'] = (ctx, t) => {
+    const u = ease(t, .38, .66);
+    const p = phase(t, .51, .88);
+    const r = 42 - sin(p * PI) * 8;
+    const drift = sin(p * tau * 4) * (1 - p) * 6;
+    [136, 240, 344].forEach((x, i) => alpha(ctx, i === 1 ? 1 : 1 - u, () => orb(ctx, mix(x, 240, u) + drift, 135, i === 1 ? r : mix(29, 11, u), white, violet)));
+    arc(ctx, 240 + drift, 135, 58, 58, -PI / 2, -PI / 2 + tau * out(t, .13, .43), orchid, 2);
+    alpha(ctx, u * .38, () => arc(ctx, 240, 135, 67, 67, 0, tau, orchid, 1));
+  };
+
+  demos['RM26-05-02'] = (ctx, t) => {
+    const mode = Math.min(2, Math.floor(t * 3));
+    if (mode === 0) {
+      for (let i = 0; i < 5; i++) pose(ctx, 240, 135, t * 2 + i * PI / 5, 1, 1, () => arc(ctx, 0, 0, 111, 33, 0, tau, violet, 1.6));
+    } else if (mode === 1) {
+      for (let i = 0; i < 7; i++) line(ctx, points(60, j => [102 + j * 4.7, 72 + i * 20 + 14 * sin(j * .19 + t * 8 + i)]), coral, 1.8);
+    } else {
+      for (let i = 0; i < 28; i++) {
+        const a = i * tau / 28 + t * .6;
+        line(ctx, [at(240, 135, 52, a), at(240, 135, 84 + 20 * sin(i * 2.1 + t * 5), a)], teal, 2);
+      }
+    }
+    dot(ctx, 240, 135, 41, ink);
+    arc(ctx, 240, 135, 42, 42, 0, tau, white, 4);
+  };
+
+  demos['RM26-05-03'] = (ctx, t) => {
+    const u = ease(t, .3, .57);
+    const wave = points(120, i => {
+      const s = i / 119;
+      return [240 + (s - .5) * mix(275, 94, u), 135 + sin(s * tau * 6 - t * 14) * sin(s * PI) * mix(46, 0, u)];
+    });
+    alpha(ctx, 1 - u, () => trace(ctx, wave, out(t, .0, .28), violet, 3));
+    ['VAI', 'COM', 'TUDO'].forEach((word, i) => {
+      const p = out(t, .41 + i * .145, .56 + i * .145);
+      const active = phase(t, .55 + i * .145, .58 + i * .145);
+      alpha(ctx, p, () => type(ctx, word, [131, 230, 342][i], 135 + (1 - p) * 22, i === 2 ? 49 : 45, active < 1 || i === 2 ? teal : white, 900));
+    });
+    alpha(ctx, u, () => {
+      line(ctx, [[62, 135], [77, 135]], violet, 3);
+      line(ctx, [[406, 135], [421, 135]], violet, 3);
+    });
+  };
+
+  demos['RM26-05-04'] = (ctx, t) => {
+    const u = ease(t, .33, .81);
+    orb(ctx, 240, mix(95, 135, u), mix(33, 48, u), white, violet);
+    const vertices = points(100, i => {
+      const s = i / 99;
+      const a = -PI + s * tau * .93;
+      return [mix(81 + s * 318, 240 + 94 * cos(a), u), mix(185 + 18 * sin(s * tau * 8 + t * 9) * sin(s * PI), 135 + 42 * sin(a), u)];
+    });
+    trace(ctx, vertices, out(t, .02, .38), sky, 2.7);
+    const [x, y] = vertices[Math.min(99, Math.floor(100 * phase(t, .16, .91)))];
+    dot(ctx, x, y, 6, white);
+  };
+
+  demos['05-G'] = (ctx, t) => {
+    const u = ease(t, .07, .85);
+    const vertices = points(101, i => {
+      const s = i / 100;
+      return [79 + 321 * s, 194 - 31 * ease(s, .04, .28) - 35 * ease(s, .34, .65) - 62 * ease(s, .70, .98)];
+    });
+    const active = vertices.slice(0, 1 + Math.floor(100 * u));
+    const [x, y] = active[active.length - 1];
+    polygon(ctx, [[79, 206], ...active, [x, 206]], gradient(ctx, 0, 64, 0, 206, teal + 'ae', teal + '04'));
+    line(ctx, [[75, 206], [405, 206]], white + '49', 1);
+    trace(ctx, vertices, u, teal, 3.8);
+    dot(ctx, x, y, 6, white);
+  };
+
+  demos['05-E1'] = (ctx, t) => {
+    const u = out(t, .06, .64);
+    const r = 81;
+    arc(ctx, 240, 130, r, r, -PI * .97, -PI * .97 + PI * 1.94 * u, amber, 3);
+    type(ctx, '+' + Math.round(35 * u) + '%', 240, 127, 62, white, 850);
+    line(ctx, [[143, 213], [337, 213]], amber + '7a', 1.2);
+    [.44, .58, .68, .75].forEach((start, i) => {
+      const p = phase(t, start, start + .19);
+      if (p > 0 && p < 1) alpha(ctx, sin(p * PI), () => dot(ctx, 143 + p * 194, 213, 3 + i * .4, teal));
+    });
+  };
+
+  demos['05-E2'] = (ctx, t) => {
+    const end = points(90, i => [224 + i * 2, 180 - 126 * (i / 89) ** 1.74]);
+    [violet, sky, teal].forEach((color, j) => {
+      const u = ease(t, .06 + j * .11, .63 + j * .08);
+      const vertices = points(60, i => {
+        const p = i / 59;
+        return [74 + p * 150, mix(72 + j * 61, 180, p) + sin(p * PI) * (28 - j * 26)];
+      });
+      trace(ctx, vertices, u, gradient(ctx, 74, 0, 224, 0, color + '25', color), 4.5 - j * .7);
+    });
+    trace(ctx, end, out(t, .53, .92), white, 4);
+  };
+
+  demos['05-E3'] = (ctx, t) => {
+    const heights = [48, 86, 66, 116, 143];
+    heights.forEach((h, i) => {
+      const x = 123 + i * 58;
+      const u = ease(t, .29 + i * .045, .74 + i * .04);
+      for (let j = 0; j < 15; j++) {
+        const k = i * 23 + j;
+        const p = out(t, .02 + rand(k + 77) * .22, .48 + i * .038);
+        alpha(ctx, (1 - u) * (.4 + rand(k + 76) * .6), () => dot(ctx, mix(71 + rand(k) * 338, x + rand(k + 1) * 24, p), mix(53 + rand(k + 3) * 154, 206 - rand(k + 7) * h, p), 1.5 + rand(k + 8) * 2.6, amber));
+      }
+      rect(ctx, x, 206 - h * u, 26, h * u, 4, gradient(ctx, 0, 206 - h * u, 0, 206, amber, coral + '7f'));
+      alpha(ctx, u, () => line(ctx, [[x + 4, 207 - h * u], [x + 22, 207 - h * u]], white, 2));
+    });
+  };
+
+  demos['05-E4'] = (ctx, t) => {
+    const heights = [45, 65, 57, 88, 105, 95, 138];
+    const curve = points(121, i => {
+      const s = i / 120 * 6;
+      const j = Math.min(5, Math.floor(s));
+      return [90 + s * 50, 206 - mix(heights[j], heights[j + 1], ease(s, j, j + 1))];
+    });
+    const merge = ease(t, .44, .83);
+    heights.forEach((h, i) => {
+      const u = out(t, .04 + i * .047, .46 + i * .04);
+      const x = 90 + i * 50;
+      const y = 206 - h * u;
+      alpha(ctx, u, () => {
+        rect(ctx, x - 11 * (1 - merge), y, 22 * (1 - merge), h * u * (1 - merge), 4, gradient(ctx, x, y, x, 206, sky, violet + '55'));
+        dot(ctx, x, y, mix(2.2, 5, merge), teal);
+      });
+    });
+    trace(ctx, curve, ease(t, .52, .91), teal, 3.4);
+  };
+
+  demos['RM26-06-01'] = (ctx, t) => {
+    const u = ease(t, .24, .79);
+    for (let i = 0; i < 24; i++) {
+      const x = mix(95 + 290 * rand(i), 240, u);
+      const y = mix(64 + 141 * rand(i + 28), 105 + i % 3 * 29, u);
+      const angle = (rand(i + 56) - .5) * 2.6 * (1 - u);
+      const l = mix(18 + rand(i + 31) * 75, 63 - (i % 3) * 12, u);
+      const remaining = i > 2 ? 1 - u : 1;
+      alpha(ctx, remaining * (i > 2 ? .45 + rand(i + 38) * .45 : 1), () => line(ctx, [at(x, y, l, angle + PI), at(x, y, l, angle)], i % 2 ? coral : white, i > 2 ? 1.5 : 5));
+    }
+  };
+
+  demos['RM26-06-02'] = (ctx, t) => {
+    [sky, violet].forEach((color, i) => {
+      const vertices = points(56, j => {
+        const s = j / 55;
+        return [240 + (i === 0 ? -1 : 1) * 162 * (1 - s), 67 + 62 * s ** 1.9];
+      });
+      line(ctx, vertices, color + '66', 2);
+      for (let j = 0; j < 3; j++) {
+        const u = phase(t, .03 + i * .057 + j * .11, .44 + j * .13);
+        if (u > 0 && u < 1) dot(ctx, ...vertices[Math.floor(u * 55)], 5, color);
+      }
+    });
+    line(ctx, [[240, 135], [240, 222]], teal + '6b', 2);
+    const radius = 11 + 15 * out(t, .25, .56) + sin(phase(t, .44, .77) * tau * 3) ** 2 * 4;
+    orb(ctx, 240, 131, radius, white, teal);
+    for (let j = 0; j < 3; j++) {
+      const u = phase(t, .48 + j * .105, .73 + j * .105);
+      alpha(ctx, sin(PI * u), () => dot(ctx, 240, 143 + u * 78, 4, white));
+    }
+  };
+
+  demos['RM26-06-03'] = (ctx, t) => {
+    const u = ease(t, .31, .85);
+    const a = -PI * .83;
+    arc(ctx, 240, 151, 96, 96, a, a + PI * mix(1.54, .77, u), sky, mix(12, 3, u));
+    arc(ctx, 240, 151, 70, 70, a, a + PI * mix(.46, 1.62, u), teal, mix(3, 12, u));
+    for (let j = 0; j < 3; j++) {
+      const p = phase(t, .28 + j * .13, .53 + j * .13);
+      alpha(ctx, sin(p * PI), () => dot(ctx, ...at(240, 151, mix(96, 70, p), a + .54 + j * .44), 4.5, white));
+    }
+  };
+
+  demos['RM26-06-04'] = (ctx, t) => {
+    [coral, teal].forEach((color, i) => {
+      const x = 147 + i * 185;
+      const u = ease(t, .08, .87 - i * .14);
+      arc(ctx, x, 91, 39, 39, 0, tau, color, 1.6);
+      for (let j = 0; j < 12; j++) line(ctx, [at(x, 91, 33, j * tau / 12), at(x, 91, 37, j * tau / 12)], color, 1);
+      line(ctx, [[x, 91], at(x, 91, 29, -PI / 2 + (i ? 1 : 3) * PI / 3 * u)], white, 3.7);
+      const curve = points(75, j => {
+        const s = j / 74;
+        return [x - 69 + s * 138, 187 + (i ? -1 : 1) * (s - .5) * 52 + sin(s * tau) * 8];
+      });
+      trace(ctx, curve, u, color, 3.3);
+    });
+  };
+
+
+  demos['06-G'] = (ctx, t) => {
+    for (let i = 0; i < 12; i++) {
+      const index = Math.floor(i / 4);
+      const u = ease(t, .11 + index * .1, .65 + index * .085);
+      const a = mix(i * tau / 12 + .74 * t, -PI / 2 + index * tau / 3, u);
+      const r = mix(95 + (i % 2) * 14, 51, u);
+      const [x, y] = at(240, 136, r, a);
+      const s = mix(1, .62, u);
+      alpha(ctx, 1 - u, () => pose(ctx, x, y, a + PI / 4, s, s, () => rect(ctx, -10, -10, 20, 20, 3, i % 2 ? violet : sky)));
+    }
+    for (let i = 0; i < 3; i++) {
+      const a = -PI / 2 + i * tau / 3;
+      const v = out(t, .47 + i * .06, .81 + i * .035);
+      alpha(ctx, v, () => polygon(ctx, [[240, 136], at(240, 136, 62 * v, a), at(240, 136, 62 * v, a + tau / 3)], [violet, sky, '#6787ee'][i]));
+    }
+    trace(ctx, points(4, i => at(240, 136, 62, -PI / 2 + i * tau / 3)), ease(t, .76, .95), white, 1.6);
+  };
+
+  demos['06-E1'] = (ctx, t) => {
+    const u = ease(t, .09, .79);
+    const x = mix(112, 370, u);
+    const y = mix(175, 94, u);
+    const pivot = ease(t, .29, .68);
+    line(ctx, [[93, 181], [389, 88]], sky + '7c', 1.4);
+    dot(ctx, 370, 94, 5 + out(t, .64, .84) * 6, teal);
+    pose(ctx, x, y, u * tau * .65, 1 - .43 * sin(pivot * PI), 1, () => {
+      const vertices = points(24, i => {
+        const a = i * tau / 24 + PI / 4;
+        const r1 = 39 / Math.max(abs(cos(a)), abs(sin(a)));
+        const r2 = 42 / cos((a + PI / 6) % (PI / 3) - PI / 6);
+        return at(0, 0, mix(r1, r2, pivot), a);
+      });
+      polygon(ctx, vertices, gradient(ctx, -45, -35, 40, 45, white, pivot > .45 ? teal : sky));
+      line(ctx, [[-23, -16], [21, 17]], ink, 1.6);
+    });
+  };
+
+  demos['06-E2'] = (ctx, t) => {
+    for (let i = 0; i < 3; i++) {
+      const x = 144 + i * 96;
+      for (let j = 0; j < 4; j++) {
+        const u = ease(t, .07 + i * .08 + j * .043, .6 + i * .09 + j * .025);
+        const a = -1.13 + j * .74;
+        const xx = x + cos(a) * (j - 1.6) * 37 * (1 - u);
+        const yy = mix(69 + j * 36, 156 - j * 7, u) - 23 * sin(u * PI);
+        const ry = mix(8 + j * 2, 13, u) - 3 * sin(phase(u, .78, 1) * PI);
+        ctx.beginPath();
+        ctx.ellipse(xx, yy, mix(21, 34, u), ry, (1 - u) * a * .24, 0, tau);
+        ctx.fillStyle = gradient(ctx, xx, yy - 9, xx, yy + 11, amber, '#a95327');
+        ctx.fill();
+        arc(ctx, xx, yy - 1, mix(19, 30, u), ry * .83, PI, tau, white + 'a3', 1);
+      }
+    }
+  };
+
+  function impact(ctx, x, y, angle, t, color) {
+    if (t <= 0 || t >= 1) return;
+    pose(ctx, x, y, angle, 1, 1, () => {
+      alpha(ctx, 1 - t, () => {
+        const r = 5 + out(t, 0, 1) * 32;
+        arc(ctx, 0, 0, r * .49, r, -PI * .92, PI * .92, color, 2);
+        for (let i = 0; i < 7; i++) {
+          const a = -1.4 + i * .47;
+          line(ctx, [at(0, 0, r, a), at(0, 0, r + 9 * (1 - t), a)], color, 1.8);
         }
       });
     });
   }
 
-  demos['02-G'] = (ctx, t) => {
-    stage(ctx, 'SITES / CONSTRUÇÃO', blue);
-    reveal(ctx, 1 - ease(t, 0.19, 0.37), () => prompt(ctx, 'Monte um site para um refúgio', 73, 111, 334, phase(t, 0, 0.2)));
-    reveal(ctx, ease(t, 0.21, 0.42), () => website(ctx, 65, 52, 350, 191,
-      ease(t, 0.27, 0.65), ease(t, 0.65, 0.9)));
-    reveal(ctx, ease(t, 0.85, 0.98), () => pill(ctx, '✓ Site publicado', 311, 227, green, 128));
-  };
-
-  demos['02-E1'] = (ctx, t) => {
-    stage(ctx, 'SITES / ROLAGEM', blue);
-    const scroll = ease(t, 0.15, 0.85);
-    website(ctx, 65, 52, 350, 190, 1, scroll);
-    box(ctx, 426, 64, 4, 163, slate, 2);
-    box(ctx, 426, 64 + scroll * 105, 4, 58, blue, 2);
-  };
-
-  demos['02-E2'] = (ctx, t) => {
-    stage(ctx, 'SITES / REFERÊNCIA VISUAL', purple);
-    box(ctx, 28, 75, 156, 139, '#243850', 9);
-    art(ctx, 37, 85, 138, 89, 1);
-    [coral, gold, purple].forEach((color, i) => dot(ctx, 57 + i * 22, 194, 7, color));
-    const scan = phase(t, 0.1, 0.48);
-    if (scan < 1) line(ctx, [[40 + scan * 131, 85], [40 + scan * 131, 173]], white, 2);
-    arrow(ctx, 194, 139, 235, 139, ease(t, 0.33, 0.57), purple);
-    reveal(ctx, ease(t, 0.38, 0.6), () => website(ctx, 246, 58, 209, 180, ease(t, 0.44, 0.86), 0.35, 2));
-  };
-
-  demos['02-E3'] = (ctx, t) => {
-    stage(ctx, 'SITES / FORMULÁRIO', green);
-    windowPanel(ctx, 97, 54, 286, 188, 'Agendar visita', true);
-    ['Nome  •  Joana Lago', 'E-mail  •  joana@exemplo.test', 'Visitantes  •  2'].forEach((text, i) => {
-      box(ctx, 115, 90 + i * 32, 250, 26, '#dfe7f0', 5);
-      label(ctx, text.slice(0, Math.ceil(text.length * phase(t, i * 0.15, 0.23 + i * 0.15))), 127, 103 + i * 32, 12, ink);
-    });
-    pill(ctx, t > 0.73 ? '✓ Reserva confirmada' : 'Reservar', 164, 205, t > 0.73 ? green : blue, 153);
-    cursor(ctx, mix(351, 283, ease(t, 0.53, 0.73)), mix(238, 213, ease(t, 0.53, 0.73)), t > 0.72 && t < 0.82);
-    party(ctx, 240, 211, t, 0.73, 83);
-  };
-
-  demos['RM26-03-01'] = (ctx, t) => {
-    stage(ctx, 'ENCENAÇÃO / APROVAÇÃO DE SITE', gold);
-    website(ctx, 143, 55, 194, 144, ease(t, 0.04, 0.39), 0, 2);
-    person(ctx, 88, 163, 0.88, 0, 0);
-    person(ctx, 393, 163, 0.88, 0, 3);
-    reveal(ctx, ease(t, 0.36, 0.54), () => pill(ctx, '✓ Aprovado', 322, 58, green, 117));
-    const p = ease(t, 0.53, 0.92);
-    reveal(ctx, ease(t, 0.47, 0.59), () => {
-      const x = mix(324, 102, p);
-      box(ctx, x, 194 - 34 * Math.sin(p * Math.PI), 50, 23, '#519b83', 4);
-      box(ctx, x + 2, 191 - 34 * Math.sin(p * Math.PI), 50, 23, green, 4);
-      box(ctx, x + 24, 191 - 34 * Math.sin(p * Math.PI), 10, 23, white, 1);
-    });
-  };
-
-  function article(ctx, x, y, w, h, p, title = 'Roteiro de um dia', kind = 1) {
-    windowPanel(ctx, x, y, w, h, 'Diário de campo', true);
-    reveal(ctx, ease(p, 0.05, 0.28), () => label(ctx, title, x + 14, y + 40, w > 250 ? 23 : 14, ink, 790));
-    reveal(ctx, ease(p, 0.24, 0.58), () => art(ctx, x + 14, y + 55, w - 28, h * 0.36, kind));
-    lines(ctx, x + 14, y + 66 + h * 0.36, w - 35, 4, '#8997aa', ease(p, 0.47, 0.98), 8);
-  }
-
-  function blog(ctx, x, y, w, h, count, scroll = 0, first = 'Roteiro de um dia', kind = 1) {
-    windowPanel(ctx, x, y, w, h, 'Diário de campo', true);
-    clip(ctx, x + 7, y + 28, w - 14, h - 35, () => {
-      label(ctx, 'Caminhos e paisagens', x + 14, y + 43 - scroll, 17, ink, 800);
-      const topics = [first, 'Luzes do vale', 'Rios de pedra', 'Rotas noturnas', 'Antes do verão', 'Ar puro'];
-      for (let i = 0; i < 6; i++) {
-        const tileWidth = (w - 39) / 3;
-        const tileX = x + 12 + i % 3 * (tileWidth + 7);
-        const tileY = y + 55 + Math.floor(i / 3) * 62 - scroll;
-        reveal(ctx, ease(count, i, i + 0.98), () => {
-          art(ctx, tileX, tileY, tileWidth, 39, (kind + i) % 5);
-          label(ctx, topics[i], tileX + 1, tileY + 48, tileWidth > 95 ? 10 : 8.5, ink, 740);
-        });
-      }
-    });
-  }
-
-  demos['03-G'] = (ctx, t) => {
-    stage(ctx, 'BLOGS / PUBLICAÇÃO', green);
-    reveal(ctx, 1 - ease(t, 0.24, 0.4), () => prompt(ctx, 'Crie um blog sobre caminhadas', 77, 107, 327, phase(t, 0, 0.23)));
-    reveal(ctx, ease(t, 0.26, 0.49), () => blog(ctx, 69, 53, 342, 195, phase(t, 0.36, 0.87) * 6));
-    reveal(ctx, ease(t, 0.83, 0.96), () => pill(ctx, '✓ Blog publicado', 314, 224, green, 130));
-  };
-
-  demos['03-E1'] = (ctx, t) => {
-    stage(ctx, 'BLOGS / ARTIGO', green);
-    article(ctx, 103, 54, 274, 194, phase(t, 0.05, 0.83));
-  };
-
-  demos['03-E2'] = (ctx, t) => {
-    stage(ctx, 'BLOGS / NOVOS POSTS', green);
-    windowPanel(ctx, 60, 53, 360, 194, 'Diário de campo', true);
-    label(ctx, 'Novos no diário', 75, 96, 18, ink);
-    clip(ctx, 71, 107, 338, 130, () => {
-      for (let i = 0; i < 3; i++) {
-        const p = ease(t, 0.1 + i * 0.16, 0.48 + i * 0.16);
-        const x = 74 + 112 * i;
-        art(ctx, x, 112 + p * 65, 104, 47, i);
-        reveal(ctx, p, () => {
-          art(ctx, x, 112, 104, 47, 2 + i);
-          label(ctx, ['Rios de pedra', 'Rotas noturnas', 'Antes do verão'][i], x, 166, 9, ink);
-        });
-      }
-    });
-  };
-
-  demos['03-E3'] = (ctx, t) => {
-    stage(ctx, 'BLOGS / CRESCIMENTO DO ACERVO', green);
-    blog(ctx, 57, 53, 366, 195, 2 + ease(t, 0.15, 0.84) * 4);
-    pill(ctx, Math.floor(2 + ease(t, 0.15, 0.84) * 4) + ' artigos', 321, 231, green, 88);
-  };
-
-  demos['RM26-04-01'] = (ctx, t) => {
-    stage(ctx, 'BLOGS / PESQUISA E PUBLICAÇÃO', green);
-    if (t < 0.27) {
-      prompt(ctx, 'Trilhas ao amanhecer', 62, 90, 356, phase(t, 0, 0.23));
-      reveal(ctx, ease(t, 0.11, 0.25), () => pill(ctx, '↑ Tema em alta', 63, 139, gold, 130));
-    } else if (t < 0.72) {
-      article(ctx, 96, 54, 288, 194, phase(t, 0.27, 0.66), 'Trilhas ao amanhecer', 3);
-    } else {
-      blog(ctx, 62, 54, 356, 192, 6, 0, 'Trilhas ao amanhecer', 3);
-      pill(ctx, '✓ Publicado', 310, 223, green, 108);
-    }
-  };
-
-  demos['RM26-04-02'] = (ctx, t) => {
-    stage(ctx, 'BLOGS / CAPA DO ARTIGO', purple);
-    prompt(ctx, 'Ilustre um vale ao pôr do sol', 28, 53, 288, phase(t, 0, 0.24));
-    article(ctx, 248, 98, 203, 147, t > 0.79 ? 1 : 0.25, 'Luzes do vale', 1);
-    const p = ease(t, 0.48, 0.8);
-    reveal(ctx, ease(t, 0.22, 0.42) * (1 - ease(t, 0.78, 0.85)), () =>
-      art(ctx, mix(29, 262, p), mix(110, 153, p), mix(176, 175, p), mix(107, 53, p), 1));
-    reveal(ctx, ease(t, 0.81, 0.96), () => pill(ctx, '✓ Capa aplicada', 40, 183, green, 129));
-  };
-
-  function take(ctx, x, y, w, h, kind, motion, sketch = false) {
-    box(ctx, x, y, w, h, sketch ? '#d5dbea' : '#1b344b', 7);
-    clip(ctx, x, y, w, h, () => {
-      if (!sketch) art(ctx, x, y, w, h, kind, Math.sin(motion * 6) * 8);
-      const sway = sketch ? 0 : Math.sin(motion * 17) * w * 0.06;
-      person(ctx, x + w * 0.49 + sway, y + h * 0.59, Math.min(w / 92, h / 125), motion, 1);
-      if (sketch) {
-        for (let i = 0; i < 4; i++) line(ctx, [[x + 8, y + 12 + i * 18], [x + w - 8, y + 12 + i * 18]], '#bbc6db', 1);
-      }
-    }, 7);
-  }
-
-  function videoFrame(ctx, x, y, w, h, scene, motion, sketch = false) {
-    windowPanel(ctx, x, y, w, h, sketch ? 'Imagem original' : 'Prévia de vídeo');
-    take(ctx, x + 8, y + 30, w - 16, h - 45, scene, motion, sketch);
-    box(ctx, x + 8, y + h - 9, w - 16, 3, slate, 2);
-    box(ctx, x + 8, y + h - 9, (w - 16) * motion, 3, coral, 2);
-  }
-
-  function storyboard(ctx, t, mode) {
-    const gather = mode === 'gather' ? ease(t, 0.49, 0.78) : 0;
-    for (let i = 0; i < 3; i++) {
-      const p = ease(t, i * 0.09, 0.17 + i * 0.09);
-      const animateAt = 0.24 + i * 0.11;
-      reveal(ctx, p * (1 - ease(gather, 0.68, 1)), () => {
-        const x = mix(28 + i * 145, 186, gather);
-        const y = mix(92, 82 + i * 23, gather);
-        const w = mix(132, 104, gather);
-        take(ctx, x, y, w, 106, i, phase(t, animateAt, 1), mode === 'animate' && t < animateAt);
-        label(ctx, t < animateAt && mode === 'animate' ? 'Storyboard 0' + (i + 1) : 'Take 0' + (i + 1), x + 5, y + 121, 11);
-      });
-    }
-    reveal(ctx, ease(gather, 0.63, 0.98), () => phone(ctx, 180, 52, 120, 197,
-      (x, y, w, h) => take(ctx, x, y, w, h, Math.floor((t - 0.73) * 10 + 1) % 3, t)));
-  }
-
-  demos['04-G'] = (ctx, t) => {
-    stage(ctx, 'VÍDEOS / MONTAGEM', coral);
-    reveal(ctx, 1 - ease(t, 0.3, 0.53), () => prompt(ctx, 'Anime uma exploradora em viagem', 26, 48, 295, phase(t, 0, 0.23)));
-    if (t > 0.18) storyboard(ctx, phase(t, 0.18, 0.96), 'gather');
-    reveal(ctx, ease(t, 0.85, 0.98), () => pill(ctx, '✓ Vídeo montado', 310, 205, green, 130));
-  };
-
-  demos['04-E1'] = (ctx, t) => {
-    stage(ctx, 'VÍDEOS / IMAGEM EM MOVIMENTO', coral);
-    videoFrame(ctx, 79, 52, 322, 195, 1, phase(t, 0.27, 1), t < 0.27);
-    reveal(ctx, ease(t, 0.28, 0.42), () => pill(ctx, '▶ Em movimento', 311, 212, green, 127));
-  };
-
-  demos['04-E2'] = (ctx, t) => {
-    stage(ctx, 'VÍDEOS / STORYBOARD', coral);
-    storyboard(ctx, t, 'animate');
-  };
-
-  demos['04-E3'] = (ctx, t) => {
-    stage(ctx, 'VÍDEOS / CORTE VERTICAL', coral);
-    storyboard(ctx, t, 'gather');
-  };
-
-  demos['RM26-05-01'] = (ctx, t) => {
-    stage(ctx, 'ENCENAÇÃO / SELEÇÃO DE ELENCO', gold);
-    if (t > 0.25 && t < 0.76) {
-      windowPanel(ctx, 54, 61, 372, 164, 'Selecionar elenco');
-      for (let i = 0; i < 3; i++) {
-        const x = 81 + 114 * i;
-        box(ctx, x, 99, 89, 105, '#263b56', 8, i === 1 && t > 0.44 ? green : slate);
-        avatar(ctx, x + 44, 141, 28, i + 2);
-        label(ctx, 'Perfil 0' + (i + 1), x + 44, 186, 11, white, 700, 'center');
-      }
-      reveal(ctx, ease(t, 0.56, 0.69), () => pill(ctx, '✓ Pagamento enviado', 151, 222, green, 178));
-    } else {
-      const close = ease(t, 0.76, 0.95);
-      avatar(ctx, 240, 139, mix(64, 94, close), 1, 0, t);
-      box(ctx, 174, 193 + close * 45, 132, 49, '#607d9a', 6);
-      if (close) {
-        line(ctx, [[208, 123], [227, 115]], '#422d36', 3);
-        line(ctx, [[254, 115], [273, 123]], '#422d36', 3);
-      }
-    }
-  };
-
-  demos['RM26-05-02'] = (ctx, t) => {
-    const index = Math.min(2, Math.floor(t * 3));
-    stage(ctx, 'VÍDEOS / ' + ['ESTÚDIO', 'PRAIA', 'ESCRITÓRIO'][index], accents[index]);
-    const p = t * 3 - index;
-    clip(ctx, 46, 54, 388, 190, () => {
-      box(ctx, 46, 54, 388, 190, ['#645178', '#4aafbd', '#445f79'][index], 8);
-      if (index === 0) {
-        dot(ctx, 139, 119, 52, '#ab82a4');
-        dot(ctx, 354, 123, 44, '#7b658e');
-      }
-      if (index === 1) {
-        box(ctx, 46, 155, 388, 89, '#ebc99b', 0);
-        line(ctx, [[47, 155], [433, 155]], white, 3);
-        dot(ctx, 348, 98, 25, gold);
-      }
-      if (index === 2) {
-        box(ctx, 79, 75, 85, 105, '#b5d6e4', 5);
-        box(ctx, 319, 145, 73, 60, '#283c56', 5);
-      }
-      person(ctx, 240 + Math.sin(p * 6) * 5, 150, 1.34, p, 1);
-    });
-  };
-
-  demos['RM26-05-03'] = (ctx, t) => {
-    stage(ctx, 'VÍDEOS / MENSAGEM E FALA', coral);
-    const message = 'Vamos descobrir a trilha?';
-    if (t < 0.39) {
-      prompt(ctx, message, 69, 106, 342, phase(t, 0.03, 0.27));
-      reveal(ctx, ease(t, 0.29, 0.38), () => pill(ctx, '✓ Enviada', 309, 158, green));
-    } else {
-      take(ctx, 88, 53, 304, 194, 2, t);
-      box(ctx, 125, 201, 230, 32, '#0d1829', 5);
-      const words = message.split(' ').slice(0, 1 + Math.floor(phase(t, 0.41, 0.84) * 3));
-      label(ctx, words.join(' '), 240, 217, 16, white, 750, 'center');
-    }
-  };
-
-  function wave(ctx, x, y, w, height, p, color = purple) {
-    for (let i = 0; i < 28; i++) {
-      const r = height * (0.2 + Math.abs(Math.sin(i * 2.17)) * 0.8);
-      if (i / 28 <= p) line(ctx, [[x + i * w / 28, y - r / 2], [x + i * w / 28, y + r / 2]], color, 2);
-    }
-  }
-
-  demos['RM26-05-04'] = (ctx, t) => {
-    stage(ctx, 'VÍDEOS / IMAGEM, VOZ E TAKE', purple);
-    take(ctx, 30, 71, 128, 113, 0, 0, true);
-    label(ctx, 'Referência visual', 31, 199, 11, mist);
-    wave(ctx, 172, 126, 116, 48, phase(t, 0.16, 0.45));
-    label(ctx, 'Faixa de voz', 172, 199, 11, mist);
-    reveal(ctx, ease(t, 0.41, 0.62), () => videoFrame(ctx, 302, 64, 148, 123, 0, phase(t, 0.57, 1)));
-    box(ctx, 29, 221, 421, 11, slate, 4);
-    const p = ease(t, 0.5, 0.95);
-    box(ctx, 29, 221, 421 * p, 11, green, 4);
-    line(ctx, [[29 + 421 * p, 214], [29 + 421 * p, 239]], white);
-  };
-
-  const growth = [0.14, 0.2, 0.19, 0.38, 0.34, 0.62, 0.7, 0.94];
-  const flat = [0.22, 0.29, 0.27, 0.39, 0.36, 0.34, 0.42, 0.38];
-
-  function marketing(ctx, x, y, w, h, p, title, bars = false) {
-    windowPanel(ctx, x, y, w, h, title);
-    if (w >= 245) label(ctx, 'Resultado da semana', x + 14, y + 40, 12);
-    label(ctx, 'Pedidos  ' + Math.round(8 + p * 42), x + w - 14, y + 42, 11, green, 730, 'right');
-    graph(ctx, x + 15, y + 57, w - 30, h - 70, growth, p, green, bars);
-  }
-
-  function budget(ctx, x, y, w, p) {
-    label(ctx, 'Orçamento', x, y, 13);
-    box(ctx, x, y + 17, w, 7, '#526883', 4);
-    box(ctx, x, y + 17, w * (0.35 + 0.45 * p), 7, blue, 4);
-    dot(ctx, x + w * (0.35 + 0.45 * p), y + 20, 8, white);
-  }
-
-  function orders(ctx, x, y, t, from) {
-    for (let i = 0; i < 4; i++) {
-      const start = from + [0, 0.14, 0.23, 0.29][i];
-      reveal(ctx, ease(t, start, start + 0.1), () => pill(ctx, '✓ Pedido 0' + (i + 1), x, y + i * 27, green, 105));
-    }
-  }
-
-  demos['05-G'] = (ctx, t) => {
-    stage(ctx, 'TRÁFEGO / OTIMIZAÇÃO', green);
-    prompt(ctx, 'Otimize a campanha da semana', 27, 51, 320, phase(t, 0, 0.24));
-    marketing(ctx, 26, 99, 301, 141, ease(t, 0.27, 0.83), 'Painel de campanhas');
-    const p = ease(t, 0.28, 0.61);
-    budget(ctx, 344, 70, 106, p);
-    reveal(ctx, ease(t, 0.55, 0.67), () => label(ctx, '+35%', 398, 121, 24, gold, 790, 'center'));
-    orders(ctx, 344, 142, t, 0.55);
-  };
-
-  demos['05-E1'] = (ctx, t) => {
-    stage(ctx, 'TRÁFEGO / ORÇAMENTO', green);
-    windowPanel(ctx, 37, 65, 271, 161, 'Ajuste da campanha');
-    const p = ease(t, 0.14, 0.54);
-    budget(ctx, 56, 111, 233, p);
-    cursor(ctx, 56 + 233 * (0.35 + 0.45 * p), 133, t > 0.51 && t < 0.62);
-    reveal(ctx, ease(t, 0.48, 0.65), () => label(ctx, '+35%', 172, 182, 36, gold, 810, 'center'));
-    orders(ctx, 326, 88, t, 0.55);
-  };
-
-  demos['05-E2'] = (ctx, t) => {
-    stage(ctx, 'TRÁFEGO / CRIATIVOS', green);
-    marketing(ctx, 234, 64, 218, 173, ease(t, 0.34, 0.94), 'Distribuição de criativos');
-    for (let i = 0; i < 3; i++) {
-      const start = 0.21 + i * 0.15;
-      const p = ease(t, start, start + 0.3);
-      reveal(ctx, ease(t, i * 0.1, 0.16 + i * 0.1) * (1 - ease(p, 0.63, 1)), () =>
-        carousel(ctx, mix(33 + i * 52, 260, p), mix(91 + i * 26, 132, p), mix(75, 36, p), mix(97, 49, p), i));
-    }
-    arrow(ctx, 188, 139, 223, 139, ease(t, 0.18, 0.42), green);
-  };
-
-  demos['05-E3'] = (ctx, t) => {
-    stage(ctx, 'TRÁFEGO / RELATÓRIO', green);
-    const p = ease(t, 0.13, 0.5);
-    ['Impressões', 'Pedidos', 'Orçamento', 'Receita'].forEach((name, i) => {
-      reveal(ctx, 1 - ease(t, 0.38, 0.59), () => pill(ctx, name, mix(45 + i % 2 * 273, 191, p),
-        mix(64 + Math.floor(i / 2) * 122, 126, p), accents[i], 100));
-    });
-    reveal(ctx, ease(t, 0.35, 0.57), () => marketing(ctx, 62, 58, 356, 181, ease(t, 0.48, 0.94), 'Relatório consolidado', true));
-  };
-
-  function dataTable(ctx, x, y, w, h, title, headers, rows, p) {
-    windowPanel(ctx, x, y, w, h, title);
-    const step = (w - 18) / headers.length;
-    headers.forEach((name, i) => label(ctx, name, x + 11 + step * i, y + 39, 10, blue));
-    rows.forEach((row, i) => {
-      reveal(ctx, ease(p, i * 0.13, i * 0.13 + 0.25), () => {
-        box(ctx, x + 8, y + 49 + i * 22, w - 16, 19, i % 2 ? '#213550' : '#293f5b', 3);
-        row.forEach((value, col) => label(ctx, value, x + 11 + step * col, y + 58 + i * 22, 10));
-      }, 4);
-    });
-  }
-
-  demos['05-E4'] = (ctx, t) => {
-    stage(ctx, 'TRÁFEGO / TABELA PARA PAINEL', green);
-    reveal(ctx, 1 - ease(t, 0.22, 0.5), () => dataTable(ctx, 36, 61, 408, 172, 'Gerenciador de anúncios',
-      ['Campanha', 'Cliques', 'Pedidos', 'Custo'], [['Serra', '120', '8', '84'], ['Rio', '96', '4', '62'],
-        ['Vale', '184', '17', '112'], ['Cume', '117', '6', '75']], 1));
-    reveal(ctx, ease(t, 0.24, 0.53), () => {
-      const p = ease(t, 0.52, 0.91);
-      marketing(ctx, 38, 56, 404, 152, p, 'Desempenho das campanhas');
-      budget(ctx, 48, 221, 344, p);
-      cursor(ctx, 48 + 344 * (0.35 + 0.45 * p), 239, t > 0.88);
-    });
-  };
-
-  demos['RM26-06-01'] = (ctx, t) => {
-    stage(ctx, 'ENCENAÇÃO / DADOS DISPERSOS', gold);
-    avatar(ctx, 116 + Math.sin(t * 18) * 6, 144, 66, 2, 0);
-    if (t < 0.66) {
-      for (let i = 0; i < 3; i++) {
-        const p = ease(t, 0.06 + i * 0.16, 0.24 + i * 0.16);
-        reveal(ctx, p, () => dataTable(ctx, 207 + i * 26, 58 + i * 23, 190, 119, 'Planilha 0' + (i + 1),
-          ['Dia', 'Cliques', 'Pedidos'], [['Seg', '120', '8'], ['Ter', '96', '4']], 1));
-      }
-    } else marketing(ctx, 210, 65, 228, 159, ease(t, 0.66, 1) * 0.43, 'Painel em construção');
-    label(ctx, '?', 178, 77, 27, gold, 800);
-  };
-
-  demos['RM26-06-02'] = (ctx, t) => {
-    stage(ctx, 'TRÁFEGO / CONEXÃO DE CANAIS', green);
-    pill(ctx, 'Mídia social', 33, 61, coral, 108);
-    pill(ctx, 'Mídia de busca', 335, 61, blue, 112);
-    arrow(ctx, 143, 83, 216, 110, ease(t, 0.08, 0.35), coral);
-    arrow(ctx, 336, 83, 263, 110, ease(t, 0.15, 0.42), blue);
-    dot(ctx, 240, 107, 23, purple);
-    label(ctx, 'IA', 240, 107, 15, ink, 850, 'center');
-    for (let i = 0; i < 3; i++) {
-      const p = phase(t, 0.21 + i * 0.11, 0.52 + i * 0.11);
-      if (p > 0 && p < 1) {
-        dot(ctx, mix(143, 240, p), mix(83, 107, p), 3, coral);
-        dot(ctx, mix(336, 240, p), mix(83, 107, p), 3, blue);
-      }
-    }
-    arrow(ctx, 240, 132, 240, 153, ease(t, 0.37, 0.61), purple);
-    reveal(ctx, ease(t, 0.42, 0.66), () => marketing(ctx, 94, 154, 292, 97, ease(t, 0.55, 0.96), 'Painel integrado', true));
-  };
-
-  demos['RM26-06-03'] = (ctx, t) => {
-    stage(ctx, 'TRÁFEGO / AJUSTE RECOMENDADO', green);
-    prompt(ctx, 'Como melhorar esta campanha?', 32, 53, 416, phase(t, 0, 0.21));
-    reveal(ctx, ease(t, 0.2, 0.44), () => marketing(ctx, 31, 105, 252, 139, ease(t, 0.28, 0.73), 'Relatório da campanha'));
-    reveal(ctx, ease(t, 0.44, 0.65), () => {
-      box(ctx, 295, 106, 153, 137, '#253c55');
-      label(ctx, 'Ajuste sugerido', 309, 128, 12);
-      label(ctx, '+12% na busca', 309, 155, 15, gold);
-      pill(ctx, t > 0.82 ? '✓ Ajuste aplicado' : 'Aplicar', 305, 201, t > 0.82 ? green : blue, 131);
-      cursor(ctx, mix(432, 388, ease(t, 0.67, 0.82)), 216, t > 0.81 && t < 0.91);
-    });
-  };
-
-  demos['RM26-06-04'] = (ctx, t) => {
-    stage(ctx, 'TRÁFEGO / COMPARAÇÃO', green);
-    for (let i = 0; i < 2; i++) {
-      const x = 28 + i * 219;
-      const color = i ? green : coral;
-      const p = ease(t, 0.1 + i * 0.1, 0.84 - i * 0.12);
-      windowPanel(ctx, x, 58, 205, 185, i ? 'Gestão com IA' : 'Gestão tradicional');
-      clock(ctx, x + 29, 110, 13, p, color);
-      label(ctx, Math.round((i ? 2 : 6) * p) + ' h', x + 51, 111, 16, color);
-      graph(ctx, x + 16, 138, 172, 67, i ? growth : [...growth].reverse(), p, color);
-      label(ctx, i ? '+18 pedidos' : '−8 pedidos', x + 16, 224, 12, color, 760);
-    }
-  };
-
-  function dashboard(ctx, x, y, w, h, p, title = 'Gestão de projetos', filter = false) {
-    windowPanel(ctx, x, y, w, h, title);
-    box(ctx, x + 8, y + 32, w * 0.23, h - 40, '#243953', 5);
-    ['Visão geral', 'Projetos', 'Equipe'].forEach((item, i) => label(ctx, item, x + 15, y + 47 + i * 19, 8.5, i ? mist : green));
-    const contentX = x + w * 0.26;
-    const contentW = w * 0.7;
-    ['Ativos', 'Entregues', 'Equipe'].forEach((item, i) => {
-      const tileX = contentX + i * contentW / 3;
-      box(ctx, tileX, y + 35, contentW / 3 - 5, 33, '#293e58', 4);
-      label(ctx, item, tileX + 5, y + 43, 8, mist);
-      label(ctx, Math.round((filter ? [12, 8, 5][i] : [32, 19, 8][i]) * p), tileX + 5, y + 57, 13, green);
-    });
-    graph(ctx, contentX, y + 79, contentW - 8, Math.max(12, h - 94), filter ? flat : growth, p, filter ? purple : green, filter);
-  }
-
-  function credits(ctx, x, y, t, start = 0.32, end = 0.7) {
-    const p = ease(t, start, end);
-    for (let i = 0; i < 12; i++) {
-      const keep = i < 3;
-      reveal(ctx, keep ? 1 : clamp((1 - p) * 2), () => {
-        const targetX = x + (i % 3) * 23;
-        const targetY = y + 60;
-        const fromX = x + (i % 3) * 23;
-        const fromY = y + Math.floor(i / 3) * 22;
-        dot(ctx, mix(fromX, targetX, p), mix(fromY, targetY, p), 8, gold);
-        outline(ctx, mix(fromX, targetX, p), mix(fromY, targetY, p), 5, 5, '#8b6f34', 1);
-      }, 0);
-    }
-    label(ctx, Math.round(mix(12, 3, p)) + ' créditos', x + 23, y + 99, 12, gold, 760, 'center');
-  }
-
-  function shield(ctx, x, y, scale, fill = blue) {
-    const points = [[0, -31], [29, -20], [24, 9], [15, 25], [0, 36], [-15, 25], [-24, 9], [-29, -20]];
-    poly(ctx, points.map(([dx, dy]) => [x + dx * scale, y + dy * scale]), fill);
-    line(ctx, [[x - 10 * scale, y + 2 * scale], [x - 3 * scale, y + 9 * scale], [x + 12 * scale, y - 7 * scale]], ink, 3 * scale);
-  }
-
-  function kanban(ctx, x, y, w, h, t, from = 0.54) {
-    windowPanel(ctx, x, y, w, h, 'Funil de projetos');
-    const col = (w - 24) / 3;
-    ['Aberto', 'Em análise', 'Fechado'].forEach((name, i) => {
-      box(ctx, x + 7 + i * (col + 4), y + 34, col, h - 43, '#293e59', 4);
-      label(ctx, name, x + 12 + i * (col + 4), y + 46, 9, mist);
-    });
-    const p = ease(t, from, from + 0.29);
-    const cardX = mix(x + 11, x + 11 + 2 * (col + 4), p);
-    const cardY = y + 59 - Math.sin(p * Math.PI) * 10;
-    box(ctx, cardX, cardY, col - 8, 25, p === 1 ? green : blue, 4);
-    label(ctx, 'Projeto Sol', cardX + 4, cardY + 12, 8.5, ink, 750);
-    if (p > 0 && p < 1) cursor(ctx, cardX + 15, cardY + 17);
-  }
-
-  demos['06-G'] = (ctx, t) => {
-    stage(ctx, 'APLICATIVOS / GERAÇÃO', purple);
-    prompt(ctx, 'Monte um aplicativo de gestão', 29, 52, 309, phase(t, 0, 0.23));
-    reveal(ctx, ease(t, 0.21, 0.43), () => dashboard(ctx, 29, 99, 272, 144, ease(t, 0.24, 0.59)));
-    reveal(ctx, ease(t, 0.48, 0.61), () => kanban(ctx, 232, 124, 220, 117, t, 0.54));
-    reveal(ctx, ease(t, 0.38, 0.54), () => {
-      ctx.save();
-      ctx.translate(338, 45);
-      ctx.scale(0.66, 0.66);
-      credits(ctx, 0, 0, t, 0.49, 0.77);
-      ctx.restore();
-    });
-    reveal(ctx, ease(t, 0.77, 0.97), () => shield(ctx, 432, 84, 0.67));
-  };
-
-  demos['06-E1'] = (ctx, t) => {
-    stage(ctx, 'APLICATIVOS / INTERAÇÃO', purple);
-    prompt(ctx, 'Organize meus projetos', 27, 51, 289, phase(t, 0, 0.24));
-    const filter = t > 0.49;
-    reveal(ctx, ease(t, 0.2, 0.37), () => {
-      dashboard(ctx, 27, 95, 214, 144, ease(t, filter ? 0.49 : 0.27, filter ? 0.78 : 0.48), 'Projetos', filter);
-      pill(ctx, filter ? 'Este mês' : 'Todos', 144, 94, filter ? purple : blue, 86);
-      if (t > 0.36 && t < 0.55) cursor(ctx, mix(160, 188, ease(t, 0.36, 0.5)), 108, filter);
-      kanban(ctx, 252, 95, 202, 144, t, 0.64);
-    });
-  };
-
-  demos['06-E2'] = (ctx, t) => {
-    stage(ctx, 'APLICATIVOS / CRÉDITOS', purple);
-    dashboard(ctx, 41, 61, 286, 177, t > 0.57 ? ease(t, 0.57, 0.89) : 1, 'Painel de gestão', t > 0.57);
-    credits(ctx, 354, 97, t);
-    cursor(ctx, mix(308, 286, ease(t, 0.39, 0.58)), 111, t > 0.57 && t < 0.66);
-  };
-
   demos['07-G'] = (ctx, t) => {
-    stage(ctx, 'SEGURANÇA / CAMPO MAGNÉTICO', blue);
-    protectedScreen(ctx, t, 0);
+    const u = out(t, .01, .26);
+    orb(ctx, 240, 135, 38 * u, white, sky);
+    for (let j = 0; j < 3; j++) {
+      const angle = j * PI / 3 + t * .7;
+      pose(ctx, 240, 135, angle, 1, 1, () => arc(ctx, 0, 0, (98 + j * 6) * u, (57 + j * 5) * u, 0, tau, [sky, sky + '8f', sky + '64'][j], j === 0 ? 2.8 : 1.3));
+    }
+    arc(ctx, 240, 135, 107 * u, 107 * u, 0, tau, sky + '36', 1);
+    [-.16, 2.86, .43].forEach((a, i) => {
+      const p = phase(t, .16 + .17 * i, .61 + .17 * i);
+      const dist = 107 + 112 * abs(p * 2 - 1) ** 1.3;
+      const [x, y] = at(240, 135, dist, a);
+      alpha(ctx, sin(p * PI) ** .4, () => line(ctx, [[x, y], at(x, y, 25, a)], coral, 4.2));
+      impact(ctx, ...at(240, 135, 107, a), a, phase(p, .5, .96), white);
+    });
   };
 
-  function protectedScreen(ctx, t, mode) {
-    const p = mode === 1 ? 1 : ease(t, 0.04, 0.44);
-    const centerX = mode === 2 ? mix(205, 263, p) : 240;
-    const centerY = 145;
-    dashboard(ctx, centerX - 111, 81, 222, 118, mode === 1 ? 1 : ease(t, 0, 0.67));
-    box(ctx, centerX - 6, 200, 12, 15, '#516886', 2);
-    box(ctx, centerX - 38, 214, 76, 5, '#516886', 3);
-    outline(ctx, centerX, centerY, 129 + 11 * p, 92 + 6 * p, blue, 3, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * p);
-    if (mode === 2) {
-      const a = t * Math.PI * 2;
-      dot(ctx, centerX + Math.cos(a) * 140, centerY + Math.sin(a) * 98, 5, green);
-      pill(ctx, '✓ Dados preservados', 155, 237, green, 170);
-      return;
-    }
-    for (let i = 0; i < 3; i++) {
-      const q = phase(t, 0.22 + i * 0.12, 0.66 + i * 0.1);
-      if (q <= 0 || q >= 1) continue;
-      const side = i % 2 === 0 ? -1 : 1;
-      const y = 115 + 28 * i;
-      const x = centerX + side * mix(225, 137, Math.sin(q * Math.PI));
-      line(ctx, [[x + side * 18, y], [x, y]], coral, mode ? 5 : 3);
-      dot(ctx, x, y, mode ? 6 : 4, coral);
-      if (Math.abs(q - 0.5) < 0.11) outline(ctx, x, y, 16, 16, gold, 2);
-    }
-  }
 
   demos['RM26-07-01'] = (ctx, t) => {
-    stage(ctx, 'APLICATIVOS / DESCRIÇÃO PARA TELA', purple);
-    prompt(ctx, 'Controle prazos de uma equipe', 32, 53, 371, phase(t, 0, 0.25));
-    reveal(ctx, ease(t, 0.23, 0.49), () => {
-      dashboard(ctx, 33, 98, 276, 145, ease(t, 0.29, 0.62));
-      box(ctx, 321, 98, 127, 145, '#243953', 8);
-      label(ctx, 'Tarefa 01', 333, 120, 12);
-      label(ctx, 'Revisar pauta', 333, 143, 12, mist);
-      pill(ctx, t > 0.79 ? '✓ Concluída' : 'Concluir', 330, 181, t > 0.79 ? green : blue, 109);
-      cursor(ctx, mix(430, 385, ease(t, 0.62, 0.79)), mix(219, 193, ease(t, 0.62, 0.79)), t > 0.78 && t < 0.88);
-    });
+    for (let i = 0; i < 3; i++) {
+      const u = out(t, .02 + i * .10, .55 + i * .08);
+      const a = i * tau / 3 - PI / 2 + (1 - u) * (i % 2 ? -2.5 : 2.5);
+      const radius = mix(112, 73, u);
+      const vertices = [...points(34, j => at(240, 135, radius + 11, a + .045 + j * (tau / 3 - .09) / 33)), ...points(34, j => at(240, 135, radius - 10, a + tau / 3 - .045 - j * (tau / 3 - .09) / 33))];
+      alpha(ctx, u, () => polygon(ctx, vertices, gradient(ctx, 150, 59, 324, 214, violet, sky)));
+    }
+    check(ctx, 240, 135, 94, ease(t, .55, .81), teal);
   };
 
   demos['RM26-07-02'] = (ctx, t) => {
-    stage(ctx, 'APLICATIVOS / TRÊS PASSOS', purple);
-    const points = [[240, 76], [370, 213], [110, 213]];
-    const names = ['1  Planejar', '2  Desenhar', '3  Criar'];
+    const corners = [[240, 47], [353, 201], [127, 201]];
     for (let i = 0; i < 3; i++) {
-      arrow(ctx, ...points[i], ...points[(i + 1) % 3], ease(t, 0.15 + i * 0.2, 0.38 + i * 0.2), accents[i]);
+      const a = corners[i];
+      const b = corners[(i + 1) % 3];
+      const u = ease(t, .08 + i * .13, .42 + i * .13);
+      const start = [mix(a[0], b[0], .085), mix(a[1], b[1], .085)];
+      const end = [mix(a[0], b[0], .88), mix(a[1], b[1], .88)];
+      trace(ctx, [start, end], u, amber, 2.7);
+      const angle = Math.atan2(end[1] - start[1], end[0] - start[0]);
+      alpha(ctx, u, () => pose(ctx, mix(start[0], end[0], u), mix(start[1], end[1], u), angle, u, u, () => polygon(ctx, [[5, 0], [-9, -5], [-7, 0], [-9, 5]], amber)));
+      orb(ctx, ...a, 13 * out(t, i * .12, .27 + i * .12), white, amber);
     }
-    points.forEach(([x, y], i) => reveal(ctx, ease(t, i * 0.18, i * 0.18 + 0.19), () => pill(ctx, names[i], x - 60, y - 11, accents[i], 120)));
+    const u = phase(t, .61, .98) * 3;
+    const index = Math.floor(u) % 3;
+    const a = corners[index];
+    const b = corners[(index + 1) % 3];
+    alpha(ctx, sin(phase(t, .61, .98) * PI), () => dot(ctx, mix(a[0], b[0], u % 1), mix(a[1], b[1], u % 1), 5.5, white));
   };
 
   demos['07-E1'] = (ctx, t) => {
-    stage(ctx, 'SEGURANÇA / IMPACTO E REBOTE', coral);
-    protectedScreen(ctx, t, 1);
+    const starts = [.04, .28, .52];
+    const hits = starts.map(start => phase(t, start, start + .36));
+    const membrane = points(90, j => {
+      const y = 43 + j * 2.1;
+      const bend = hits.reduce((sum, p, i) => sum + (i === 1 ? -1 : 1) * 20 * Math.exp(-((p - .54) ** 2) / .009) * Math.exp(-((y - (91 + 42 * i)) ** 2) / 590), 0);
+      return [240 + bend, y];
+    });
+    for (let j = -3; j <= 3; j++) {
+      if (!j) continue;
+      const fringe = membrane.map(([x, y]) => [
+        x + j * (6 + 9 * sin(PI * (y - 43) / 187)),
+        y
+      ]);
+      alpha(ctx, .18 / abs(j), () => line(ctx, fringe, teal, 1.4));
+    }
+    line(ctx, membrane, gradient(ctx, 0, 43, 0, 230, teal + '36', teal), 4);
+    hits.forEach((p, i) => {
+      const side = i === 1 ? 1 : -1;
+      const x = 240 + side * (155 * abs(1 - p * 2) ** 1.35 + 5);
+      const y = 91 + i * 42;
+      alpha(ctx, sin(p * PI), () => line(ctx, [[x, y], [x + side * 38, y]], gradient(ctx, x, y, x + side * 38, y, white, coral + '13'), 6));
+      impact(ctx, 240, y, side === -1 ? PI : 0, phase(p, .48, .97), teal);
+    });
   };
 
   demos['07-E2'] = (ctx, t) => {
-    stage(ctx, 'SEGURANÇA / PERÍMETRO', blue);
-    protectedScreen(ctx, t, 2);
+    const u = ease(t, .06, .9);
+    const x = mix(176, 287, u);
+    const y = 137 + 15 * sin(u * PI);
+    const p = ease(t, .12, .93);
+    const vertices = points(100, i => {
+      const a = -PI * .85 + i * tau / 99;
+      return [x + 104 * cos(a) + 29 * sin(a), y + 49 * sin(a) - 29 * cos(a)];
+    });
+    const split = 45 / 99;
+    trace(ctx, vertices, Math.min(split, p), violet + '8a', 2.2);
+    orb(ctx, x, y, 48, white, violet);
+    if (p > split) trace(ctx, vertices.slice(45), phase(p, split, 1), sky, 2.8);
+    const head = vertices[Math.floor(p * 99)];
+    dot(ctx, ...head, 5, white);
   };
 
   demos['RM26-08-01'] = (ctx, t) => {
-    stage(ctx, 'ENCENAÇÃO / ALERTA DE FRAUDE', coral);
-    if (t < 0.32) {
-      avatar(ctx, 200, 133, 76, 2, 0);
-      box(ctx, 213, 141, 137, 74, '#38556d', 7);
-      lines(ctx, 226, 155, 110, 5, green, phase(t, 0.04, 0.29), 9);
-    } else if (t < 0.68) {
-      windowPanel(ctx, 72, 69, 336, 149, 'Alerta de transação');
-      label(ctx, 'Transferência desconhecida', 240, 126, 19, white, 730, 'center');
-      label(ctx, '− R$ 480,00', 240, 176, 32, coral, 810, 'center');
-    } else {
-      avatar(ctx, 240, 141, mix(64, 89, ease(t, 0.68, 0.93)), 0, 0);
-      label(ctx, '!', 335, 94, 39, coral, 850, 'center');
-    }
+    const u = out(t, .42, .82);
+    pose(ctx, 240, 135, -.49, 1, 1, () => {
+      const ramp = gradient(ctx, -84, -80, 78, 78, white, '#777296');
+      [-1, 1].forEach(side => scoped(ctx, () => {
+        ctx.translate(side * 27 * u, side * 9 * u);
+        ctx.rotate(side * u * .19);
+        ctx.beginPath();
+        ctx.rect(side === -1 ? -92 : 0, -92, 92, 184);
+        ctx.clip();
+        dot(ctx, 0, 0, 81, ramp);
+        for (let i = -7; i <= 7; i++) alpha(ctx, .34, () => line(ctx, [[-86, i * 12], [86, i * 12 + 23]], ink, 1));
+      }));
+      if (t >= .28) alpha(ctx, 1 - u * .45, () => line(ctx, [[0, -107], [0, 107]], coral, mix(4.8, 1.2, u)));
+      burst(ctx, 0, 0, phase(t, .42, .95), coral, 17, 121);
+    });
   };
 
-  function lock(ctx, x, y, size, color = gold) {
-    outline(ctx, x, y - size * 0.12, size * 0.27, size * 0.35, color, size * 0.09, Math.PI, 2 * Math.PI);
-    box(ctx, x - size / 2, y - size * 0.18, size, size * 0.6, color, size * 0.08);
-    dot(ctx, x, y + size * 0.11, size * 0.067, ink);
-  }
-
   demos['RM26-08-02'] = (ctx, t) => {
-    stage(ctx, 'SEGURANÇA / TRÊS PORTAS', green);
     for (let i = 0; i < 3; i++) {
-      const x = 66 + i * 128;
-      const p = ease(t, 0.08 + i * 0.16, 0.41 + i * 0.16);
-      box(ctx, x, 71, 90, 143, '#3c506a', 6);
-      poly(ctx, [[x + 6, 79], [x + 6 + mix(33, 78, p), 79 - (1 - p) * 13],
-        [x + 6 + mix(33, 78, p), 205 + (1 - p) * 12], [x + 6, 205]], p > 0.94 ? green : coral);
-      dot(ctx, x + mix(29, 75, p), 143, 3, ink);
+      const u = ease(t, .10 + i * .14, .56 + i * .14);
+      const x = 160 + 80 * i;
+      const sx = Math.max(.035, abs(cos(u * PI)));
+      pose(ctx, x, 154, (1 - u) * (i - 1) * .14, sx, 1, () => {
+        rect(ctx, -31, -52, 62, 104, 8, gradient(ctx, -31, -52, 31, 52, u < .5 ? coral : teal, u < .5 ? '#792b48' : '#086b75'));
+        line(ctx, [[-19, -38], [-19, 38]], white + '9c', 1.3);
+      });
     }
-    reveal(ctx, ease(t, 0.72, 0.93), () => lock(ctx, 240, 151, 53));
+    arc(ctx, 240, 104, 116, 64, PI, PI + PI * ease(t, .57, .93), amber, 2.8);
   };
 
   demos['RM26-08-03'] = (ctx, t) => {
-    stage(ctx, 'SEGURANÇA / CARTÕES PARA ESCUDO', blue);
-    const p = ease(t, 0.45, 0.82);
+    const u = ease(t, .13, .68);
     for (let i = 0; i < 21; i++) {
-      const x = mix(56 + i % 7 * 54, 221, p);
-      const y = mix(69 + Math.floor(i / 7) * 53, 129, p);
-      reveal(ctx, ease(t, i * 0.012, 0.17 + i * 0.012) * (1 - ease(p, 0.65, 1)), () => {
-        box(ctx, x, y, 42, 38, '#344c70', 5, blue);
-        label(ctx, String(i + 1).padStart(2, '0'), x + 21, y + 19, 13, white, 780, 'center');
-      });
+      const a = i * tau / 21 + .8 * u;
+      const r = mix(76 + 74 * rand(i + 8), 35, u);
+      const [x, y] = at(240, 132, r, a);
+      alpha(ctx, 1 - u, () => dot(ctx, x, mix(y, 132 + (y - 132) * .6, .45), 2.5 + 3 * rand(i), i % 2 ? sky : violet));
     }
-    reveal(ctx, ease(t, 0.67, 0.93), () => shield(ctx, 240, 138, 1.85));
+    const form = out(t, .35, .77);
+    alpha(ctx, form, () => pose(ctx, 240, 131, 0, form, form, () => {
+      polygon(ctx, [[0, -81], [67, -53], [58, 29], [0, 83], [-58, 29], [-67, -53]], gradient(ctx, -50, -65, 65, 63, sky, '#4c49a7'));
+      polygon(ctx, [[0, -81], [67, -53], [58, 29], [0, 83]], '#7581f5');
+      line(ctx, [[-67, -53], [0, -81], [67, -53]], white + '88', 2);
+    }));
+    check(ctx, 240, 128, 96, ease(t, .61, .89), white);
   };
 
-  function folder(ctx, x, y, w, h, title, p, color = gold) {
-    box(ctx, x + 3, y, w * 0.41, 17, color, 5);
-    box(ctx, x, y + 9, w, h - 9, color, 6);
-    if (p) poly(ctx, [[x + 2, y + h], [x + 9 * p, y + h * (0.36 + 0.15 * p)],
-      [x + w + 5 * p, y + h * (0.36 + 0.15 * p)], [x + w - 1, y + h]], '#e7b758');
-    label(ctx, title, x + w / 2, y + h * 0.66, w < 85 ? 8 : 11, ink, 760, 'center');
-  }
-
-  function page(ctx, x, y, w, h, title, p, kind = 0) {
-    box(ctx, x, y, w, h, white, 7, '#91a7c2');
-    box(ctx, x + 8, y + 9, 4, h - 18, accents[kind % 5], 2);
-    reveal(ctx, ease(p, 0.05, 0.38), () => label(ctx, title, x + 20, y + 21, w > 150 ? 15 : 12, ink, 800));
-    if (kind === 2) graph(ctx, x + 21, y + 45, w - 35, h - 64, growth, ease(p, 0.4, 0.9), '#24735e', true);
-    else {
-      reveal(ctx, ease(p, 0.27, 0.67), () => art(ctx, x + 19, y + 37, w - 31, h * 0.36, kind));
-      lines(ctx, x + 20, y + 49 + h * 0.36, w - 35, 3, '#8b9db3', ease(p, 0.55, 0.98), 8);
-    }
-  }
-
   demos['08-G'] = (ctx, t) => {
-    stage(ctx, 'DOCUMENTOS / PEDIDO E PASTAS', gold);
-    const out = 1 - ease(t, 0.38, 0.64);
-    reveal(ctx, out, () => prompt(ctx, 'Monte uma proposta comercial', 95, 122, 290, phase(t, 0, 0.21)));
-    ['Marketing', 'Comercial', 'Financeiro', 'RH'].forEach((name, i) => {
-      const p = ease(t, 0.11 + i * 0.055, 0.33 + i * 0.055);
-      reveal(ctx, p * out, () => folder(ctx, mix(189, 35 + i % 2 * 310, p), mix(106, 60 + Math.floor(i / 2) * 128, p), 100, 55, name, p));
-    });
-    reveal(ctx, ease(t, 0.46, 0.68), () => {
-      const p = phase(t, 0.47, 0.93);
-      page(ctx, 83, 56, 151, 187, 'Proposta comercial', p, 0);
-      page(ctx, 247, 56, 151, 187, 'Projeção', ease(p, 0.19, 1), 2);
-    });
+    const gather = ease(t, .09, .53);
+    const release = ease(t, .54, .86);
+    for (let i = 0; i < 4; i++) {
+      const side = i < 2 ? -1 : 1;
+      const half = i % 2 === 0 ? -1 : 1;
+      const x = 240 + side * (104 * (1 - gather) + 62 * release);
+      const y = 135 + half * 68 * (1 - gather);
+      const a = (1 - gather) * (side * half * .52) + sin(gather * PI) * half * .45;
+      pose(ctx, x, y, a, 1, mix(1, .29, gather) + .71 * release, () => {
+        polygon(ctx, [[-54, 0], [54, 0], [0, half * 66]], gradient(ctx, -54, 0, 54, half * 66, half < 0 ? coral : amber, '#9d3e69'));
+        for (let j = 1; j <= 4; j++) line(ctx, [[-54 + j * 9, 0], [0, half * (66 - j * 8)]], white + '75', .9);
+      });
+    }
   };
 
   demos['08-E1'] = (ctx, t) => {
-    stage(ctx, 'DOCUMENTOS / FOLHEAR PROPOSTA', gold);
-    box(ctx, 150, 58, 179, 188, '#95abc3', 7);
-    box(ctx, 146, 56, 179, 188, '#c2cedb', 7);
-    const index = t < 0.41 ? 0 : t < 0.7 ? 1 : 2;
-    const phaseStart = [0, 0.41, 0.7][index];
-    page(ctx, 142, 53, 179, 188, ['Proposta comercial', 'Escopo do projeto', 'Projeção'][index],
-      ease(t, phaseStart, phaseStart + (index === 0 ? 0.29 : 0.17)), index);
-    const turn = index < 2 ? ease(t, [0.31, 0.6][index], [0.41, 0.7][index]) : 0;
-    if (turn > 0) {
-      poly(ctx, [[142, 53], [142 + 177 * (1 - turn), 53 + turn * 23], [142 + 177 * (1 - turn), 241 - turn * 23], [142, 241]], '#e0e8f3');
-      line(ctx, [[142 + 177 * (1 - turn), 53 + turn * 23], [142 + 177 * (1 - turn), 241 - turn * 23]], gold, 2);
-    }
-    label(ctx, '0' + (index + 1) + ' / 03', 372, 144, 13, gold, 770);
+    const angle = PI * ease(t, .12, .82);
+    const x = 240;
+    const spread = 110 * cos(angle);
+    const curve = 38 * sin(angle);
+    rect(ctx, 136, 58, 104, 154, 6, '#554b92');
+    rect(ctx, 240, 58, 104, 154, 6, '#b3a0f2');
+    ctx.beginPath();
+    ctx.moveTo(x, 58);
+    ctx.bezierCurveTo(x + spread * .38, 55 - curve, x + spread * .7, 63 - curve, x + spread, 55);
+    ctx.lineTo(x + spread, 204);
+    ctx.bezierCurveTo(x + spread * .7, 217 - curve, x + spread * .38, 217 - curve, x, 212);
+    ctx.closePath();
+    ctx.fillStyle = gradient(ctx, x, 0, x + (abs(spread) < .001 ? .001 : spread), 0, angle < PI / 2 ? violet : '#a49ed3', white);
+    ctx.fill();
+    line(ctx, [[240, 58], [240, 212]], white + 'a4', 1.7);
+    alpha(ctx, sin(angle), () => line(ctx, [[x + spread, 57], [x + spread, 202]], white, 1.9));
   };
 
   demos['08-E2'] = (ctx, t) => {
-    stage(ctx, 'DOCUMENTOS / APRESENTAÇÃO', purple);
-    ['Projeto Sol', 'Plano de ação', 'Projeção'].forEach((name, i) => {
-      const p = ease(t, 0.08 + i * 0.12, 0.46 + i * 0.12);
-      reveal(ctx, p, () => {
-        const x = mix(168 + 20 * i, 29 + 145 * i, p);
-        const y = mix(i % 2 ? 160 : 50, 89, p);
-        page(ctx, x, y, 132, 101, name, ease(t, 0.13 + i * 0.12, 0.57 + i * 0.12), i);
-        label(ctx, '0' + (i + 1), x + 66, y + 121, 12, purple, 770, 'center');
+    [sky, violet, teal].forEach((color, i) => {
+      const u = out(t, .04 + i * .12, .59 + i * .1);
+      const x = 240 + (i - 1) * 101;
+      const y = mix([69, 201, 89][i], 136, u);
+      pose(ctx, x, y, (1 - u) * (i % 2 ? .9 : -.75), 1, 1, () => {
+        polygon(ctx, [[0, -49], [39, -27], [39, 27], [0, 49], [-39, 27], [-39, -27]], gradient(ctx, -39, -49, 39, 49, color, color + '2f'));
+        polygon(ctx, [[0, -49], [39, -27], [0, -7], [-39, -27]], color);
+        trace(ctx, [[-39, -27], [0, -7], [39, -27]], ease(t, .49 + i * .10, .72 + i * .10), white, 1.6);
       });
     });
   };
 
   demos['08-E3'] = (ctx, t) => {
-    stage(ctx, 'DOCUMENTOS / PLANILHA', green);
-    dataTable(ctx, 28, 58, 262, 171, 'Planilha de entregas', ['Mês', 'Projetos', 'Entregas'],
-      [['Jan', '16', '9'], ['Fev', '18', '13'], ['Mar', '23', '16'], ['Abr', '31', '25']], ease(t, 0.05, 0.62));
-    reveal(ctx, ease(t, 0.43, 0.72), () => {
-      windowPanel(ctx, 302, 58, 150, 171, 'Entregas');
-      graph(ctx, 320, 108, 114, 98, [0.3, 0.41, 0.54, 0.85], ease(t, 0.54, 0.91), green, true);
+    const values = [24, 48, 39, 57, 72];
+    line(ctx, [[77, 212], [403, 212]], white + '6e', 1.2);
+    values.forEach((n, i) => {
+      const x = 112 + i * 64;
+      const u = ease(t, .27 + i * .054, .71 + i * .04);
+      for (let j = 0; j < 3; j++) {
+        const p = out(t, .03 + j * .07 + i * .04, .23 + j * .06 + i * .04);
+        alpha(ctx, p * (1 - u), () => type(ctx, (n + j * 3) % 10, x, mix(79 + j * 44, 202, u), 27, amber, 650, 'monospace'));
+      }
+      const h = u * n * 1.75;
+      rect(ctx, x - 14, 212 - h, 28, h, 4, gradient(ctx, x, 212 - h, x, 212, teal, teal + '37'));
+      alpha(ctx, u, () => type(ctx, n, x, 194 - h, 17, white, 700, 'monospace'));
     });
   };
 
   demos['08-E4'] = (ctx, t) => {
-    stage(ctx, 'DOCUMENTOS / CAPA E PÁGINAS', gold);
-    ['Guia de visitas', 'Itinerário', 'Anotações'].forEach((name, i) => {
-      const p = ease(t, 0.08 + i * 0.13, 0.43 + i * 0.13);
-      reveal(ctx, p, () => {
-        ctx.save();
-        ctx.translate(mix(240, 108 + i * 132, p), 148);
-        ctx.rotate((i - 1) * 0.085 * p);
-        page(ctx, -59, -85, 118, 170, name, ease(t, 0.08 + i * 0.14, 0.61 + i * 0.14), i ? 3 + i : 0);
-        ctx.restore();
+    [violet, orchid, white].forEach((color, i) => {
+      const u = out(t, i * .08, .62 + i * .06);
+      pose(ctx, 240, 209, (i - 1) * 1.05 * u, 1, 1, () => {
+        polygon(ctx, [[-16, 0], [-35, -119], [-22, -152], [23, -158], [36, -133], [15, 0]], gradient(ctx, 0, 0, 0, -156, '#7557a8', color));
+        for (let j = -1; j < 2; j++) trace(ctx, [[j * 5, -19], [j * 15, -86], [j * 16, -131]], ease(t, .28 + i * .09 + (j + 1) * .055, .76 + i * .07), i === 2 ? ink + '70' : white + 'b3', 1.3);
       });
     });
+    dot(ctx, 240, 208, 6.5, amber);
   };
 
   demos['08-E5'] = (ctx, t) => {
-    stage(ctx, 'DOCUMENTOS / ANÁLISE DE DADOS', green);
-    const merge = ease(t, 0.12, 0.53);
-    for (let i = 0; i < 22; i++) {
-      reveal(ctx, 1 - ease(t, 0.38, 0.58), () => label(ctx, String(11 + (i * 67) % 218),
-        mix(39 + i % 7 * 61, 240, merge), mix(77 + Math.floor(i / 7) * 49 + i % 3 * 7, 136, merge), 12, accents[i % 5]));
-    }
-    reveal(ctx, ease(t, 0.45, 0.67), () => {
-      windowPanel(ctx, 28, 61, 205, 179, 'Entregas por mês');
-      graph(ctx, 44, 105, 172, 104, growth, ease(t, 0.5, 0.84), green, true);
-      windowPanel(ctx, 246, 61, 206, 179, 'Visitas por mês');
-      graph(ctx, 262, 105, 172, 104, flat, ease(t, 0.61, 0.94), purple);
+    const u = ease(t, .05, .45);
+    for (let i = 0; i < 60; i++) alpha(ctx, 1 - u, () => dot(ctx, mix(98 + 284 * rand(i), 240, u), mix(46 + 173 * rand(i + 60), 135, u), 1.4 + rand(i + 32) * 2.6, i % 2 ? coral : amber));
+    [46, 68, 89, 73, 108].forEach((h, i) => {
+      const p = out(t, .35 + i * .055, .68 + i * .06);
+      rect(ctx, 82 + i * 25, 197 - h * p, 13, h * p, 3, gradient(ctx, 0, 84, 0, 197, amber, coral + '8f'));
     });
+    const curve = points(65, i => [261 + i * 2.1, 187 - i * 1.62 + 12 * sin(i * .15)]);
+    const p = ease(t, .54, .91);
+    trace(ctx, curve, p, white, 3.5);
+    alpha(ctx, p, () => dot(ctx, ...curve[Math.floor(64 * p)], 4.6, amber));
   };
 
+
   demos['RM26-09-01'] = (ctx, t) => {
-    stage(ctx, 'ARQUIVOS / ÁRVORE DE SETORES', gold);
-    folder(ctx, 181, 52, 118, 56, 'Empresa', ease(t, 0.03, 0.32));
-    ['Marketing', 'Comercial', 'Financeiro', 'RH'].forEach((name, i) => {
-      const x = 30 + i * 108;
-      const p = ease(t, 0.22 + i * 0.09, 0.43 + i * 0.09);
-      arrow(ctx, 240, 111, x + 48, 146, p, gold);
-      reveal(ctx, p, () => folder(ctx, x, 150, 96, 48, name, 0.7));
-      reveal(ctx, ease(t, 0.42 + i * 0.09, 0.65 + i * 0.09), () => folder(ctx, x + 15, 205, 66, 36, ['Capas', 'Vendas', 'Recibos', 'Seleção'][i], 0, blue));
-    });
+    for (let i = 0; i < 4; i++) {
+      const x = 105 + i * 90;
+      const u = ease(t, .11 + i * .055, .57 + i * .05);
+      const vertices = points(66, j => {
+        const s = j / 65;
+        return [mix(240, x, ease(s, .10, .8)), 66 + s * 105];
+      });
+      trace(ctx, vertices, u, gradient(ctx, 240, 66, x, 171, teal, sky), 1.8);
+      const b = out(t, .46 + i * .072, .75 + i * .05);
+      pose(ctx, x, 177, PI / 4, b, b, () => rect(ctx, -14, -14, 28, 28, 4, sky));
+      const snap = out(t, .60 + i * .06, .83 + i * .045);
+      alpha(ctx, snap, () => pose(ctx, x, 177 + 29 * (1 - snap), PI / 4, 1, 1, () => rect(ctx, -6, -6, 12, 12, 2, white)));
+    }
+    orb(ctx, 240, 65, 24 * out(t, 0, .32), white, teal);
   };
 
   demos['RM26-09-02'] = (ctx, t) => {
-    stage(ctx, 'ARQUIVOS / BUSCA DE DEPOIMENTO', gold);
-    const p = ease(t, 0.55, 0.91);
-    avatar(ctx, 89, 144, 53, 3, p, t);
-    prompt(ctx, 'Encontre o depoimento da equipe', 159, 55, 292, phase(t, 0.06, 0.31));
-    reveal(ctx, ease(t, 0.34, 0.51) * (1 - ease(t, 0.57, 0.72)), () => pill(ctx, 'Buscando no acervo…', 203, 127, purple, 146));
-    reveal(ctx, ease(t, 0.48, 0.69), () => {
-      box(ctx, 191, 101, 220, 141, '#29405e', 7, blue);
-      avatar(ctx, 260, 167, mix(24, 42, p), 2, 1, t);
-      box(ctx, 317, 135, 68, 64, gold, 4);
-      label(ctx, 'EQUIPE', 351, 157, 11, ink, 800, 'center');
-      label(ctx, 'DO MÊS', 351, 177, 10, ink, 800, 'center');
+    const u = out(t, .08, .62);
+    const p = ease(t, .53, .88);
+    const radius = 7 + 67 * u;
+    pose(ctx, 240, 135, -.19 * (1 - u), 1, 1, () => {
+      const contour = points(10, i => at(0, 0, radius, i * tau / 10 - PI / 2));
+      polygon(ctx, contour, gradient(ctx, -51, -61, 48, 62, white, '#ae5329'));
+      scoped(ctx, () => {
+        ctx.clip();
+        for (let i = 0; i < 10; i++) polygon(ctx, [[0, 0], contour[i], contour[(i + 1) % 10]], i % 2 ? '#71422161' : amber + '42');
+        const x = mix(-112, 112, p);
+        polygon(ctx, [[x - 21, -90], [x + 12, -90], [x - 25, 90], [x - 52, 90]], '#ffffff9a');
+      });
+      arc(ctx, 0, 0, radius * 1.12, radius * 1.12, -.9, -.9 + 4.4 * ease(t, .28, .75), amber, 1.3);
+      arc(ctx, 0, 0, radius * 1.25, radius * 1.25, 1.2, 1.2 + 2.6 * ease(t, .44, .83), white, 1);
     });
   };
 
   demos['RM26-09-03'] = (ctx, t) => {
-    stage(ctx, 'ARQUIVOS / BUSCA NA GAVETA', gold);
-    box(ctx, 37, 85, 117, 147, '#263d5a', 6);
+    const u = ease(t, .24, .54);
+    const v = ease(t, .49, .87);
     for (let i = 0; i < 2; i++) {
-      const p = ease(t, 0.07 + i * 0.2, 0.23 + i * 0.2);
-      box(ctx, 45 + p * 16, 98 + i * 58, 101, 44, '#4e6985', 5);
-      box(ctx, 82 + p * 16, 115 + i * 58, 28, 4, mist, 2);
+      const p = out(t, .03 + i * .15, .37 + i * .17);
+      rect(ctx, 118, 121 + i * 37, 104 * p, 5 + 8 * sin(p * PI), 4, amber);
+      alpha(ctx, p * .5, () => line(ctx, [[118, 133 + i * 37], [118 + 104 * p, 133 + i * 37]], amber, 1));
     }
-    box(ctx, 204, 119, 58, 48, purple, 12);
-    dot(ctx, 221, 142, 4, ink);
-    dot(ctx, 245, 142, 4, ink);
-    label(ctx, 'Assistente', 233, 183, 11, purple, 740, 'center');
-    avatar(ctx, 387, 142, 54, 0, ease(t, 0.74, 0.9), t);
-    const p = ease(t, 0.4, 0.87);
-    reveal(ctx, ease(t, 0.31, 0.48), () => folder(ctx, mix(76, 349, p), 175 - Math.sin(p * Math.PI) * 72, 78, 49, 'Proposta', 0.7));
+    line(ctx, [[280, 174], [385, 174]], amber + '8c', 1.5);
+    alpha(ctx, u, () => pose(ctx, mix(172, 331, v), 153 - 53 * u + 64 * v, -.42 * sin(v * PI) - .14 * v, 1, mix(.12, 1, u), () => {
+      polygon(ctx, [[-40, -14], [48, -14], [35, 14], [-52, 14]], gradient(ctx, -45, -10, 42, 15, white, amber));
+      line(ctx, [[-32, -4], [26, -4]], ink, 1.3);
+    }));
   };
 
-  function cvCard(ctx, x, y, w, h, name, kind, selected = false) {
-    box(ctx, x, y, w, h, '#2a3f59', 7, selected ? green : '#4a6380');
-    avatar(ctx, x + w / 2, y + 26, 16, kind);
-    label(ctx, name, x + w / 2, y + 52, w < 65 ? 9 : 11, white, 760, 'center');
-    if (h > 80) lines(ctx, x + 8, y + 64, w - 16, 2, selected ? green : mist, 1, 8);
-  }
-
   demos['09-G'] = (ctx, t) => {
-    stage(ctx, 'GESTÃO / PAINEL INTEGRADO', blue);
-    prompt(ctx, 'Reúna as áreas em um painel', 29, 50, 288, phase(t, 0, 0.22));
-    const p = ease(t, 0.21, 0.53);
-    ['Vendas', 'Tráfego', 'RH'].forEach((name, i) => reveal(ctx, 1 - p, () => pill(ctx, name,
-      mix(35 + i * 152, 193, p), mix(133 + i % 2 * 29, 157, p), accents[i], 106)));
-    reveal(ctx, p, () => {
-      marketing(ctx, 29, 101, 141, 138, ease(t, 0.34, 0.84), 'Vendas', true);
-      windowPanel(ctx, 178, 101, 140, 138, 'Tráfego');
-      graph(ctx, 191, 151, 115, 69, growth, ease(t, 0.42, 0.9), blue);
-      windowPanel(ctx, 326, 101, 125, 138, 'RH');
-      reveal(ctx, ease(t, 0.52, 0.83), () => cvCard(ctx, 333, 144, 53, 70, 'Perfil 01', 2));
-      reveal(ctx, ease(t, 0.63, 0.93), () => cvCard(ctx, 391, 144, 53, 70, 'Perfil 02', 3, true));
+    const u = ease(t, .08, .51);
+    for (let i = 0; i < 21; i++) {
+      const x = 102 + i * 13;
+      const y = 83 + (i % 3) * 31 + sin(i * 2.1) * 17;
+      alpha(ctx, 1 - u, () => dot(ctx, x, mix(y, 197, u), 2 + i % 3, [violet, white, sky][i % 3]));
+    }
+    const heights = [52, 80, 71, 108];
+    heights.forEach((h, i) => {
+      const p = out(t, .38 + .065 * i, .77 + i * .035);
+      rect(ctx, 116 + i * 68, 197 - h * p, 34, h * p, 4, gradient(ctx, 0, 88, 0, 197, violet, violet + '33'));
     });
+    const curve = points(96, i => [99 + i * 2.95, 145 - i * .88 + 15 * sin(i * .091)]);
+    const p = out(t, .45, .92);
+    trace(ctx, curve, p, sky, 3);
+    alpha(ctx, p, () => dot(ctx, ...curve[Math.floor(p * 95)], 5.5, white));
   };
 
   demos['09-E1'] = (ctx, t) => {
-    stage(ctx, 'GESTÃO / VENDAS', green);
-    windowPanel(ctx, 48, 54, 384, 187, 'Vendas da semana');
-    ['Pedidos', 'Clientes', 'Envios'].forEach((name, i) => {
-      const x = 64 + i * 120;
-      const p = ease(t, 0.06 + i * 0.1, 0.48 + i * 0.1);
-      box(ctx, x, 87, 111, 48, '#263b54', 5);
-      label(ctx, name, x + 9, 100, 10, mist);
-      label(ctx, Math.floor(p * [48, 37, 41][i]), x + 9, 119, 17, green);
+    const values = [22, 36, 31, 47, 62];
+    line(ctx, [[84, 215], [396, 215]], white + '69', 1);
+    values.forEach((n, i) => {
+      const p = out(t, .06 + i * .12, .51 + i * .1);
+      const x = 119 + i * 60;
+      const h = n * p * 2.04;
+      rect(ctx, x - 13, 215 - h, 26, h, 3, gradient(ctx, 0, 215 - h, 0, 215, amber, amber + '32'));
+      alpha(ctx, p, () => type(ctx, Math.round(n * p), x, 199 - h, i === 4 ? 22 : 17, white, 700, 'monospace'));
     });
-    graph(ctx, 66, 150, 344, 73, growth, ease(t, 0.3, 0.91), green, true);
+    burst(ctx, 359, 57, phase(t, .8, .99), amber, 9, 26);
   };
 
   demos['09-E2'] = (ctx, t) => {
-    stage(ctx, 'GESTÃO / TRÁFEGO', green);
-    ['Serra', 'Rio', 'Vale'].forEach((name, i) => {
-      pill(ctx, name, 33, 82 + i * 45, accents[i], 83);
-      const p = phase(t, 0.07 + i * 0.15, 0.52 + i * 0.15);
-      arrow(ctx, 118, 93 + i * 45, 209, 142, ease(t, i * 0.08, 0.35 + i * 0.08), slate);
-      if (p > 0 && p < 1) dot(ctx, mix(118, 209, p), mix(93 + i * 45, 142, p), 4, green);
-    });
-    marketing(ctx, 211, 62, 235, 168, ease(t, 0.29, 0.92), 'Tráfego integrado');
+    const vertices = [[197, 184], [239, 184], [239, 153], [296, 153], [296, 116], [348, 116], [348, 71], [405, 71]];
+    line(ctx, [[73, 184], [197, 184]], teal + '65', 1.4);
+    let progress = 0;
+    for (let i = 0; i < 3; i++) {
+      const u = phase(t, .04 + i * .18, .35 + i * .18);
+      const x = 75 + 122 * u;
+      if (u > 0 && u < 1) {
+        line(ctx, [[Math.max(73, x - 25), 184], [x, 184]], gradient(ctx, Math.max(72, x - 26), 184, x, 184, teal + '09', teal), 3.7);
+        dot(ctx, x, 184, 5, teal);
+      }
+      progress += ease(t, .33 + .18 * i, .51 + .18 * i) / 3;
+    }
+    trace(ctx, vertices, clamp(progress), white, 3.8);
+    alpha(ctx, ease(t, .81, .96), () => dot(ctx, 405, 71, 6, teal));
   };
 
   demos['09-E3'] = (ctx, t) => {
-    stage(ctx, 'GESTÃO / SELEÇÃO DE CURRÍCULOS', blue);
-    windowPanel(ctx, 31, 58, 418, 174, 'Seleção de perfis');
     for (let i = 0; i < 4; i++) {
-      const p = ease(t, 0.07 + i * 0.1, 0.45 + i * 0.1);
-      reveal(ctx, p, () => cvCard(ctx, 49 + i * 99, mix(i % 2 ? 149 : 79, 105, p), 86, 97, 'Perfil 0' + (i + 1), i, t > 0.76 && i % 2 === 0));
+      const p = ease(t, .06 + i * .09, .67 + i * .047);
+      const x = mix(180 + i * 41, 105 + i * 90, p);
+      const y = mix([75, 199, 62, 196][i], 135, p) + sin(PI * p) * (i % 2 ? 29 : -23);
+      const active = i === 1 || i === 2;
+      alpha(ctx, active ? 1 : 1 - .67 * ease(t, .6, .88), () => {
+        orb(ctx, x, y, 32, white, violet);
+        arc(ctx, x, y, 22, 22, -.85, 2.85, white + 'a1', 1);
+      });
+      if (active) arc(ctx, x, y, 43, 43, -PI / 2, -PI / 2 + tau * out(t, .57 + (i - 1) * .1, .83 + (i - 1) * .1), teal, 2.3);
     }
-    reveal(ctx, ease(t, 0.75, 0.92), () => pill(ctx, '2 pré-selecionados', 294, 221, green, 135));
   };
 
-  function audit(ctx, t, scanOnly = false, keywords = false) {
-    const scan = phase(t, 0.13, 0.67);
-    const p = ease(t, 0.4, 0.9);
-    const x = scanOnly ? 62 : 31;
-    const w = scanOnly ? 356 : 267;
-    windowPanel(ctx, x, 66, w, 170, 'Auditoria da página');
-    const modules = keywords ? ['Trilhas ao amanhecer', 'Guia de caminhadas', 'Roteiro da serra'] : ['Título e navegação', 'Imagem e descrição', 'Links da página'];
-    for (let i = 0; i < 3; i++) {
-      const fix = ease(t, 0.24 + i * 0.13, 0.52 + i * 0.13);
-      const offset = [19, -4, 27][i] * (1 - fix);
-      const y = 105 + i * 37;
-      box(ctx, x + 14 + offset, y, w - 60 + 31 * fix, 29, fix > 0.9 ? '#295745' : '#473843', 5);
-      label(ctx, modules[i], x + 24 + offset, y + 14, 12);
-      if (fix > 0.9) label(ctx, keywords ? '★' : '✓', x + w - 35, y + 14, 15, keywords ? gold : green);
-    }
-    if (scan > 0 && scan < 1) {
-      box(ctx, x + 7, 99 + 112 * scan, w - 14, 12, '#83aaff33', 4);
-      line(ctx, [[x + 9, 104 + 112 * scan], [x + w - 9, 104 + 112 * scan]], blue, 2);
-    }
-    if (!scanOnly) {
-      if (keywords) {
-        const rank = 8 - Math.round(7 * p);
-        gauge(ctx, 376, 151, 50, p * 0.85 + 0.15, '№ ' + rank, rank < 3 ? green : coral);
-        label(ctx, 'Posição na busca', 376, 218, 12, mist, 700, 'center');
-      } else {
-        const score = Math.round(mix(47, 99, p));
-        gauge(ctx, 376, 151, 50, score / 100, score, score > 75 ? green : coral);
-        label(ctx, 'Nota da página', 376, 218, 12, mist, 700, 'center');
-      }
-    }
-  }
-
-  function searchResults(ctx, x, y, w, h, query, title, rank, p, domain = 'valedatrilha.test') {
-    windowPanel(ctx, x, y, w, h, 'Busca na web', true);
-    box(ctx, x + 11, y + 34, w - 22, 25, '#dfe8f3', 5);
-    label(ctx, '⌕  ' + query, x + 17, y + 47, 11, ink);
-    reveal(ctx, p, () => {
-      box(ctx, x + 11, y + 69, w - 22, 55, rank === 1 ? '#d8f0e6' : '#e7ebf2', 5);
-      label(ctx, domain, x + 18, y + 81, 10, '#324860');
-      label(ctx, title, x + 18, y + 99, 14, '#1d4d75', 790);
-      lines(ctx, x + 18, y + 113, w - 62, 1, '#778fa9');
-      label(ctx, 'Página ' + rank, x + w - 19, y + h - 15, 10, '#3f546a', 710, 'right');
-    });
-  }
-
   demos['10-G'] = (ctx, t) => {
-    stage(ctx, 'SEO / AUDITORIA E NOTA', blue);
-    reveal(ctx, 1 - ease(t, 0.21, 0.44), () => prompt(ctx, 'Audite a página de trilhas', 61, 103, 358, phase(t, 0, 0.24)));
-    reveal(ctx, ease(t, 0.24, 0.45), () => audit(ctx, phase(t, 0.25, 0.98)));
+    const u = ease(t, .06, .91);
+    const yScan = 45 + 183 * u;
+    const cloud = points(160, i => {
+      const x = 159 + i % 16 * 10.8;
+      const y = 59 + Math.floor(i / 16) * 16.5;
+      return { x, y, p: ease(yScan, y - 13, y + 13) };
+    }).filter(({ x, y }) => (x - 240) ** 2 + (y - 135) ** 2 < 81 ** 2);
+    cloud.forEach(({ x, y, p }, i) => {
+      const j = (rand(i) - .5) * 13 * (1 - p);
+      if (p > .1) alpha(ctx, p * .41, () => line(ctx, [[x - 4.4, y], [x + 4.4, y]], teal, .8));
+      dot(ctx, x + j, y + j * .6, mix(2.2, 2.9, p), p > .5 ? teal : coral);
+    });
+    alpha(ctx, sin(PI * u), () => {
+      rect(ctx, 131, yScan - 13, 218, 13, 0, gradient(ctx, 0, yScan - 13, 0, yScan, teal + '00', teal + '51'));
+      line(ctx, [[131, yScan], [349, yScan]], white, 1.9);
+    });
   };
 
   demos['10-E1'] = (ctx, t) => {
-    stage(ctx, 'SEO / VARREDURA DA PÁGINA', blue);
-    audit(ctx, t, true);
+    const scan = 53 + ease(t, .05, .92) * 166;
+    for (let i = 0; i < 4; i++) {
+      const y = 83 + i * 35;
+      const u = ease(scan, y - 7, y + 19);
+      const x = mix([151, 116, 176, 134][i], 117, u);
+      const w = mix([139, 185, 108, 167][i], 245, u);
+      line(ctx, [[x, y], [x + w, y + (i % 2 ? 10 : -13) * (1 - u)]], u > .6 ? white : orchid, 5.5);
+      alpha(ctx, u, () => dot(ctx, 364, y, 5.5, teal));
+    }
+    alpha(ctx, 1 - ease(t, .87, .97), () => line(ctx, [[97, scan], [383, scan]], teal + 'bd', 2));
   };
 
   demos['10-E2'] = (ctx, t) => {
-    stage(ctx, 'SEO / MEDIDOR DE NOTA', green);
-    website(ctx, 47, 58, 386, 179, 1, 0.16, 1);
-    box(ctx, 130, 68, 220, 157, '#18273bee', 13, '#4b6386');
-    const p = ease(t, 0.14, 0.82);
-    const score = Math.round(mix(47, 99, p));
-    gauge(ctx, 240, 145, 49, score / 100, score, score > 75 ? green : coral);
-    label(ctx, 'Nota da página', 240, 203, 12, mist, 720, 'center');
+    const u = ease(t, .11, .84);
+    const n = Math.round(mix(47, 99, u));
+    const start = PI * .73;
+    const span = PI * 1.54;
+    for (let i = 0; i <= 30; i++) {
+      const a = start + i * span / 30;
+      line(ctx, [at(240, 137, i % 5 ? 96 : 94, a), at(240, 137, 101, a)], white + '7b', 1);
+    }
+    arc(ctx, 240, 137, 81, 81, start, start + span, white + '30', 8);
+    const color = n < 62 ? coral : n < 79 ? amber : teal;
+    arc(ctx, 240, 137, 81, 81, start, start + span * n / 100, color, 8);
+    type(ctx, n, 240, 135, 74, white, 780, 'monospace');
+    dot(ctx, ...at(240, 137, 81, start + span * n / 100), 5.3, color);
   };
 
   demos['10-E3'] = (ctx, t) => {
-    stage(ctx, 'SEO / BUSCA CONVERSACIONAL', blue);
-    prompt(ctx, 'Quem vende tênis em Vila Clara?', 42, 53, 396, phase(t, 0, 0.34));
-    reveal(ctx, ease(t, 0.33, 0.66), () => {
-      box(ctx, 47, 107, 386, 127, '#29435e', 9, blue);
-      label(ctx, 'Ateliê Passo Leve', 67, 134, 19, white, 770);
-      label(ctx, 'Tênis para trilha · Vila Clara', 67, 160, 12, mist);
-      pill(ctx, 'Resultado em destaque', 67, 189, green, 155);
-      const x = 327;
-      const y = 163;
-      poly(ctx, [[x - 41, y + 4], [x - 16, y - 25], [x + 10, y - 13], [x + 18, y - 1],
-        [x + 42, y + 7], [x + 50, y + 21], [x - 44, y + 21]], coral);
-      line(ctx, [[x - 44, y + 21], [x + 50, y + 21]], white, 5);
-      for (let i = 0; i < 3; i++) line(ctx, [[x - 12 + i * 8, y - 15 + i * 4], [x + i * 8, y - 19 + i * 4]], white, 2);
-    });
+    const u = ease(t, .04, .63);
+    const scale = out(t, .27, .73);
+    for (const side of [-1, 1]) {
+      const x = 240 + side * (146 - 42 * u);
+      polygon(ctx, [[x, 93], [x, 162], [240, 135 + 6 * side]], gradient(ctx, x, 135, 240, 135, violet + '0a', violet + '95'));
+    }
+    alpha(ctx, scale, () => dot(ctx, 240, 135, 73 * scale, '#171428'));
+    const shape = points(10, i => at(240, 135, (i % 2 ? 25 : 66) * scale, i * tau / 10 - PI / 2 + (1 - scale) * .5));
+    polygon(ctx, shape, gradient(ctx, 200, 80, 260, 181, white, amber));
+    burst(ctx, 240, 70, phase(t, .54, .88), white, 12, 35);
   };
 
   demos['RM26-10-01'] = (ctx, t) => {
-    stage(ctx, 'SEO / FRASE PARA RESULTADO', blue);
-    const query = 'Trilhas em Vila Clara';
-    reveal(ctx, 1 - ease(t, 0.34, 0.57), () => prompt(ctx, query, 61, 105, 358, phase(t, 0.04, 0.31)));
-    reveal(ctx, ease(t, 0.36, 0.62), () => searchResults(ctx, 66, 57, 348, 178, query, query, 1, ease(t, 0.57, 0.91)));
+    const u = ease(t, .33, .78);
+    const word = 'NORTE';
+    const y = mix(186, 110, u);
+    for (let i = 0; i < word.length; i++) {
+      const p = out(t, .04 + i * .045, .25 + i * .045);
+      alpha(ctx, p, () => type(ctx, word[i], 125 + 57.5 * i, y + 12 * (1 - p), 65, white, 900, 'monospace'));
+    }
+    const p = out(t, .57, .94);
+    rect(ctx, 99, y + 38, 282 * p, 4, 2, teal);
+    alpha(ctx, u * .34, () => line(ctx, [[99, 197], [381, 197]], teal, 1.2));
   };
 
   demos['RM26-10-02'] = (ctx, t) => {
-    stage(ctx, 'SEO / VÍDEO E DESCOBERTA', coral);
-    if (t < 0.32) {
-      phone(ctx, 183, 52, 114, 195, (x, y, w, h) => {
-        art(ctx, x, y, w, h, 1);
-        person(ctx, 240, 148 + Math.sin(t * 38) * 9, 0.87, t, 3, Math.sin(t * 35) * 0.44);
-        label(ctx, 'Ops!', 240, 218, 15, white, 800, 'center');
+    const u = ease(t, .28, .68);
+    const draw = (x, mode) => {
+      if (mode === 0) {
+        dot(ctx, x, 135, 66, coral);
+        arc(ctx, x, 135, 49, 49, -.8, 2.65, white, 2);
+      } else {
+        polygon(ctx, [[x, 56], [x + 73, 121], [x, 214], [x - 73, 121]], gradient(ctx, x - 64, 85, x + 60, 200, violet, '#5c45ab'));
+        line(ctx, [[x, 57], [x, 211], [x + 72, 121]], white + '80', 1.4);
+      }
+    };
+    for (let i = 5; i > 0; i--) {
+      alpha(ctx, sin(PI * u) * .25 / i, () => {
+        draw(240 - u * 340 + i * 15, 0);
+        draw(240 + (1 - u) * 340 + i * 15, 1);
       });
-    } else if (t < 0.66) {
-      take(ctx, 83, 56, 314, 185, 2, t);
-      pill(ctx, 'Helena · guia de trilhas', 92, 209, green, 165);
-    } else {
-      searchResults(ctx, 66, 57, 348, 178, 'Guia de trilhas em Vila Clara', 'Helena · guia de trilhas', 1, ease(t, 0.66, 0.88));
     }
+    draw(240 - u * 340, 0);
+    draw(240 + (1 - u) * 340, 1);
   };
 
   demos['RM26-10-03'] = (ctx, t) => {
-    stage(ctx, 'SEO / PALAVRA E CLIQUES', blue);
-    if (t < 0.39) {
-      label(ctx, 'roteiro', 54, 135, 16, mist);
-      label(ctx, 'trilhas leves', 180, 135, 20, green, 800);
-      label(ctx, 'mapas', 359, 135, 16, mist);
-      const x = mix(87, 240, ease(t, 0.02, 0.33));
-      outline(ctx, x, 136, 62, 34, blue, 3);
-      line(ctx, [[x + 49, 157], [x + 75, 181]], blue, 5);
-    } else {
-      searchResults(ctx, 54, 56, 372, 180, 'Trilhas leves', 'Trilhas leves em Vila Clara', 1, 1);
-      const p = ease(t, 0.44, 0.69);
-      cursor(ctx, mix(393, 248, p), mix(230, 153, p), t > 0.67 && t < 0.78);
-      pill(ctx, Math.floor(ease(t, 0.68, 0.95) * 18) + ' novas visitas', 67, 219, green, 133);
-    }
+    const u = ease(t, .07, .66);
+    const x = mix(116, 318, u);
+    const visibility = 1 - ease(t, .75, .98);
+    type(ctx, 'NORTE', 240, 136, 79, white + '92', 850, 'monospace');
+    alpha(ctx, visibility, () => {
+      dot(ctx, x, 135, 60, '#20204b');
+      scoped(ctx, () => {
+        ctx.clip();
+        const textX = x + 1.35 * (240 - x);
+        type(ctx, 'NORTE', textX, 136, 107, sky, 850, 'monospace');
+      });
+      arc(ctx, x, 135, 61, 61, 0, tau, sky, 2.8);
+    });
+    const p = phase(t, .68, .96);
+    alpha(ctx, sin(PI * p), () => arc(ctx, x, 135, 62 + p * 28, 62 + p * 28, 0, tau, white, 1.4));
   };
 
   demos['RM26-10-04'] = (ctx, t) => {
-    stage(ctx, 'SEO / PALAVRAS E POSIÇÃO', gold);
-    audit(ctx, t, false, true);
+    const p = phase(t, .07, .81) * 7;
+    const n = 8 - Math.floor(p);
+    const jump = sin(PI * (p % 1));
+    type(ctx, n, 240, 133 - jump * 14, 127 - jump * 7, n === 1 ? teal : coral, 850, 'monospace');
+    [[158, 102], [323, 92], [315, 169]].forEach(([x, y], i) => {
+      const u = out(t, .26 + i * .15, .51 + i * .15);
+      const vertices = points(10, j => at(x, y, (j % 2 ? 5.5 : 14) * u, j * tau / 10 - PI / 2));
+      polygon(ctx, vertices, amber);
+    });
   };
 
   demos['RM26-10-05'] = (ctx, t) => {
-    stage(ctx, 'SEO / QUARTA PARA PRIMEIRA', green);
-    const query = 'Trilhas em Vila Clara';
-    const p = ease(t, 0.26, 0.78);
-    clip(ctx, 0, 44, 480, 214, () => {
-      searchResults(ctx, 65 - 480 * p, 58, 350, 181, query, 'Vale da trilha', 4, 1);
-      searchResults(ctx, 65 + 480 * (1 - p), 58, 350, 181, query, 'Vale da trilha', 1, 1);
-    }, 0);
+    const u = ease(t, .18, .77);
+    scoped(ctx, () => {
+      ctx.beginPath();
+      ctx.rect(71, 45, 338, 168);
+      ctx.clip();
+      alpha(ctx, 1 - ease(u, .52, .89), () => type(ctx, '4', 240 - u * 185, 138, 150, coral, 900, 'monospace'));
+      alpha(ctx, ease(u, .1, .47), () => type(ctx, '1', 240 + (1 - u) * 185, 138, 150, teal, 900, 'monospace'));
+      alpha(ctx, sin(u * PI) * .5, () => {
+        for (let j = 0; j < 4; j++) line(ctx, [[126 + j * 47, 194 - j * 15], [184 + j * 48, 194 - j * 15]], white, 1.3);
+      });
+    });
+    rect(ctx, 176, 212, 128 * out(t, .68, .91), 3, 2, teal);
   };
 
-  function timeline(ctx, x, y, w, h, t, mode = 'cut') {
-    windowPanel(ctx, x, y, w, h, 'Linha do tempo');
-    const left = x + 16;
-    const width = w - 32;
-    const gap = ease(t, 0.24, 0.59);
-    const track = y + 52;
-    for (let i = 0; i < 8; i++) {
-      const mark = left + i * width / 8;
-      line(ctx, [[mark, track - 11], [mark, track - 6]], mist, 1);
-    }
-    box(ctx, left, track, width, 27, '#283c55', 4);
-    for (let i = 0; i < 4; i++) {
-      const start = mix([0, 0.28, 0.54, 0.83][i], i * 0.185, gap);
-      box(ctx, left + width * start, track, width * 0.17, 27, accents[i], 3);
-      if (i < 3 && gap < 0.7) {
-        reveal(ctx, 1 - gap / 0.7, () => box(ctx, left + width * (start + 0.18), track, width * (0.09 - gap * 0.09), 27, coral, 3));
-      }
-    }
-    if (mode === 'full') {
-      reveal(ctx, ease(t, 0.38, 0.64), () => {
-        ['Legenda', 'Título', 'Legenda'].forEach((name, i) => {
-          box(ctx, left + i * width * 0.245, track + 32, width * 0.23, 17, '#374e6a', 3);
-          label(ctx, name, left + 6 + i * width * 0.245, track + 40, 8, white);
-        });
-      });
-      wave(ctx, left + 3, track + 63, width * 0.8, 18, phase(t, 0.58, 0.78), purple);
-    }
-    const head = left + width * phase(t, 0.05, 0.93);
-    line(ctx, [[head, track - 15], [head, y + h - 8]], white, 1);
-    poly(ctx, [[head - 4, track - 15], [head + 4, track - 15], [head, track - 8]], white);
-  }
 
   demos['11-G'] = (ctx, t) => {
-    stage(ctx, 'EDIÇÃO / BRUTO PARA VERTICAL', coral);
-    reveal(ctx, 1 - ease(t, 0.16, 0.37), () => pill(ctx, '↓ gravação_bruta.mp4', 42, 59, purple, 167));
-    timeline(ctx, 30, 104, 282, 131, phase(t, 0.11, 0.82), 'full');
-    reveal(ctx, ease(t, 0.56, 0.83), () => phone(ctx, 334, 56, 113, 188, (x, y, w, h) => {
-      take(ctx, x, y, w, h, 2, t);
-      pill(ctx, '✓ Vídeo pronto', x + 4, y + h - 32, green, w - 8);
-    }));
-    arrow(ctx, 278, 79, 330, 79, ease(t, 0.54, 0.76), coral);
+    const u = ease(t, .16, .58);
+    const v = ease(t, .45, .89);
+    [sky, violet, teal].forEach((color, i) => {
+      for (let j = 0; j < 4; j++) {
+        const x = 74 + j * 89;
+        const y = 90 + i * 45;
+        alpha(ctx, 1 - .77 * v, () => pose(ctx, mix(x + 28, 240, v), mix(y, 78 + j * 38, v), -PI / 2 * v, 1, 1, () => {
+          rect(ctx, -28 + u * j * 5 * (1 - v), -3, 56 - 26 * v, 6, 3, color);
+          alpha(ctx, 1 - u, () => rect(ctx, 32, -3, 17, 6, 3, coral));
+        }));
+      }
+    });
+    alpha(ctx, v, () => line(ctx, [[240, 56], [240, 207]], white, 5));
   };
 
   demos['11-E1'] = (ctx, t) => {
-    stage(ctx, 'EDIÇÃO / LIMPEZA DA TIMELINE', coral);
-    timeline(ctx, 43, 83, 394, 129, t);
-    pill(ctx, t < 0.52 ? 'Erros e pausas' : '✓ Lacunas fechadas', 53, 225, t < 0.52 ? coral : green, 153);
+    for (let i = 0; i < 4; i++) {
+      const u = ease(t, .1 + i * .085, .62 + i * .06);
+      const x = mix(61 + i * 99, 115 + i * 64, u);
+      const overshoot = sin(phase(t, .53 + i * .06, .81 + i * .04) * PI) * 8;
+      rect(ctx, x - overshoot, 119, 63, 32, 4, gradient(ctx, x, 119, x + 49, 151, white, '#b5a3cc'));
+      if (i < 3) alpha(ctx, 1 - u, () => rect(ctx, x + 70 + 10 * u, 124, 19 * (1 - u), 22, 4, coral));
+      if (i > 0) alpha(ctx, sin(phase(t, .58 + i * .053, .91 + i * .025) * PI), () => line(ctx, [[x, 104], [x, 165]], sky, 2.2));
+    }
   };
 
   demos['11-E2'] = (ctx, t) => {
-    stage(ctx, 'EDIÇÃO / REENQUADRAMENTO', coral);
-    reveal(ctx, 1 - ease(t, 0.31, 0.64), () => {
-      take(ctx, 64, 55, 352, 187, 0, t);
-      const p = ease(t, 0.06, 0.32);
-      ctx.beginPath();
-      ctx.roundRect(240 - mix(171, 51, p), 59, mix(342, 102, p), 178, 7);
-      ctx.strokeStyle = white;
-      ctx.lineWidth = 3;
-      ctx.stroke();
-    });
-    for (let i = 0; i < 3; i++) {
-      const p = ease(t, 0.29 + i * 0.13, 0.58 + i * 0.13);
-      reveal(ctx, p, () => phone(ctx, mix(184, 55 + 130 * i, p), 54, 112, 191,
-        (x, y, w, h) => {
-          take(ctx, x, y, w, h, i, t + i * 0.15);
-          label(ctx, 'Corte 0' + (i + 1), x + w / 2, y + h - 18, 12, white, 760, 'center');
-        }));
+    const u = ease(t, .14, .66);
+    for (let j = 0; j < 3; j++) {
+      const p = ease(t, .37 + j * .095, .84 + j * .04);
+      const w = mix(100, 52, u);
+      const x = 140 + j * 100 + (j - 1) * 9 * p;
+      const y = mix(135, 123 + (j - 1) * 28, p);
+      scoped(ctx, () => {
+        ctx.beginPath();
+        ctx.roundRect(x - w / 2, y - mix(55, 80, p), w, 2 * mix(55, 80, p), mix(0, 9, u));
+        ctx.clip();
+        rect(ctx, 78, 0, 328, 270, 0, gradient(ctx, 87, 48, 389, 225, violet, '#4d3ab4'));
+        for (let i = 0; i < 18; i++) line(ctx, points(105, k => [75 + k * 3.25, 32 + i * 13 + 36 * sin(k * .074 + i * .25 + t * 3.9)]), (i % 4 === 0 ? white : orchid) + 'a6', i % 4 === 0 ? 2 : 1);
+      });
     }
   };
 
-  function caption(ctx, t, x, y, w) {
-    const words = ['Cada', 'trilha', 'conta', 'uma história.'];
-    const index = Math.min(3, Math.floor(phase(t, 0.1, 0.9) * 4));
-    box(ctx, x, y, w, 30, '#101a2add', 6);
-    label(ctx, words[index], x + w / 2, y + 15, 16, index % 2 ? gold : white, 790, 'center');
-  }
-
   demos['11-E3'] = (ctx, t) => {
-    stage(ctx, 'EDIÇÃO / LEGENDAS E GRAFISMOS', coral);
-    take(ctx, 63, 53, 354, 194, 2, t);
-    reveal(ctx, ease(t, 0.11, 0.25), () => caption(ctx, t, 150, 199, 180));
-    const p = ease(t, 0.35, 0.55);
-    reveal(ctx, p, () => pill(ctx, 'Diário de trilha', mix(30, 77, p), 74, purple, 126));
+    const words = ['SINTA', 'O', 'RITMO'];
+    const xs = [128, 230, 339];
+    const active = Math.min(2, Math.floor(phase(t, .12, .83) * 3));
+    const pulse = sin(phase(t, .12 + active * .235, .32 + active * .235) * PI);
+    words.forEach((word, i) => {
+      const u = out(t, .05 + i * .1, .35 + i * .1);
+      alpha(ctx, u, () => type(ctx, word, xs[i], 136 + (1 - u) * 16 - (i === active ? pulse * 9 : 0), 47, i === active ? amber : white, 900));
+    });
+    const p = active === 0 ? 1 : ease(t, .12 + active * .235, .25 + active * .235);
+    const x = active === 0 ? xs[0] : mix(xs[active - 1], xs[active], p);
+    const w = active === 0 ? 56 : mix(active === 1 ? 56 : 24, active === 1 ? 24 : 65, p);
+    alpha(ctx, out(t, .15, .33), () => rect(ctx, x - w, 168, w * 2, 4, 2, amber));
   };
 
   demos['RM26-11-01'] = (ctx, t) => {
-    stage(ctx, 'EDIÇÃO / GRAVAÇÃO VERSUS EDIÇÃO', gold);
-    take(ctx, 28, 54, 202, 132, 1, t);
-    timeline(ctx, 247, 54, 205, 132, t);
-    clock(ctx, 52, 220, 13, phase(t, 0.05, 0.52), coral);
-    clock(ctx, 270, 220, 13, phase(t, 0.05, 0.92) * 2.3, gold);
-    label(ctx, 'Gravação  ·  ' + Math.round(ease(t, 0.05, 0.52) * 20) + ' min', 73, 221, 12, coral);
-    label(ctx, 'Edição  ·  ' + Math.round(ease(t, 0.05, 0.92) * 75) + ' min', 291, 221, 12, gold);
+    [amber, teal].forEach((color, i) => {
+      const x = 143 + i * 194;
+      const start = -PI / 2;
+      const speed = [.44, 1.36][i];
+      const u = ease(t, .05 + i * .08, .9);
+      for (let j = 0; j < 36; j++) line(ctx, [at(x, 135, j % 3 ? 60 : 56, j * tau / 36), at(x, 135, 65, j * tau / 36)], white + (j % 3 ? '49' : 'ad'), 1);
+      arc(ctx, x, 135, 72, 72, start, start + tau * Math.min(speed * u, 1), color, i ? 4 : 2.6);
+      line(ctx, [[x, 135], at(x, 135, 51, start + tau * speed * u)], color, 3.5);
+      dot(ctx, x, 135, 6, white);
+    });
   };
 
   demos['RM26-11-02'] = (ctx, t) => {
-    stage(ctx, 'EDIÇÃO / FLUXO COMPLETO', coral);
-    if (t < 0.22) {
-      windowPanel(ctx, 88, 73, 304, 126, 'Importar gravação');
-      label(ctx, 'gravação_bruta.mp4', 105, 123, 16);
-      box(ctx, 105, 151, 270, 7, slate, 4);
-      box(ctx, 105, 151, 270 * phase(t, 0, 0.22), 7, blue, 4);
-    } else if (t < 0.77) {
-      timeline(ctx, 41, 66, 398, 153, phase(t, 0.22, 0.73), 'full');
-      reveal(ctx, ease(t, 0.65, 0.75), () => pill(ctx, '✓ Exportação concluída', 262, 228, green, 169));
-    } else {
-      take(ctx, 86, 56, 308, 187, 2, t);
-      caption(ctx, phase(t, 0.77, 1), 150, 198, 180);
+    const u = ease(t, .1, .57);
+    const p = ease(t, .46, .86);
+    for (let i = 0; i < 18; i++) {
+      const x = 105 + (i % 6) * 54;
+      const y = 88 + Math.floor(i / 6) * 47;
+      const w = 20 + rand(i + 63) * 22;
+      alpha(ctx, 1 - (i % 4 === 0 ? ease(t, .1, .43) : p), () => rect(ctx, mix(x, 226, u) - w / 2, mix(y, 128, u), w, 8, 4, violet));
+    }
+    alpha(ctx, p, () => orb(ctx, 240, 135, 35 + 12 * p, white, violet));
+    arc(ctx, 240, 135, 70, 70, -PI / 2, -PI / 2 + p * tau, sky, 3.5);
+    const r = phase(t, .82, 1);
+    alpha(ctx, sin(PI * r), () => arc(ctx, 240, 135, 71 + 29 * r, 71 + 29 * r, 0, tau, sky, 1.7));
+  };
+
+  demos['12-G'] = (ctx, t) => {
+    const p = ease(t, .23, .68);
+    const u = phase(t, .09, .8);
+    const vertices = points(85, i => {
+      const s = i / 84;
+      return [127 + 225 * s, 135 + sin(s * tau * 2 - t * 9) * sin(PI * s) * 28];
+    });
+    alpha(ctx, sin(u * PI), () => trace(ctx, vertices, phase(t, .13, .67), gradient(ctx, 125, 0, 352, 0, sky, violet), 3.5));
+    alpha(ctx, 1 - .66 * p, () => orb(ctx, 126, 135, 37 + sin(PI * phase(t, .02, .37)) * 9, white, sky));
+    orb(ctx, 354, 135, mix(29, 43, p), white, violet);
+    for (let j = 0; j < 2; j++) {
+      const q = phase(t, .57 + j * .12, .88 + j * .105);
+      alpha(ctx, sin(q * PI), () => arc(ctx, 354, 135, 42 + q * 30, 42 + q * 30, 0, tau, violet, 1.8));
     }
   };
 
-  function call(ctx, t, first, second, suggestion, state = false) {
-    const dialogue = t > 0.69;
-    windowPanel(ctx, 28, 57, 258, 176, 'Chamada comercial');
-    [first, second].forEach((name, i) => {
-      const x = 38 + i * 121;
-      const active = i === (dialogue ? 1 : 0);
-      box(ctx, x, 93, 116, 108, '#263b53', 6, active ? green : slate);
-      avatar(ctx, x + 58, 139, 33, i + 1, active ? 1 : 0, t);
-      label(ctx, name, x + 58, 184, 11, active ? green : mist, 720, 'center');
-    });
-    wave(ctx, 101, 215, 108, 13, 1, t % 0.1 < 0.05 ? mist : green);
-    const entry = ease(t, 0.32, 0.58);
-    reveal(ctx, entry, () => {
-      ctx.translate(40 * (1 - entry), 0);
-      box(ctx, 298, 57, 154, 175, '#253c59', 8, blue);
-      label(ctx, 'Sugestão ao vivo', 309, 80, 12, blue, 760);
-      suggestion.forEach((part, i) => {
-        reveal(ctx, ease(t, 0.41 + i * 0.075, 0.55 + i * 0.075), () => label(ctx, part, 309, 117 + i * 18, 12));
-      });
-      pill(ctx, state ? '✓ Fechado' : dialogue ? 'Resposta em curso' : 'Próxima resposta', 305, 196, state ? green : purple, 139);
-    }, 0);
-  }
-
-  demos['12-G'] = (ctx, t) => {
-    stage(ctx, 'CHAMADAS / SUGESTÃO AO VIVO', purple);
-    call(ctx, t, 'Cliente', 'Consultor', ['Pergunte qual etapa', 'mais atrasa a rotina.']);
-  };
-
   demos['12-E1'] = (ctx, t) => {
-    stage(ctx, 'CHAMADAS / PERGUNTA DE PREÇO', gold);
-    call(ctx, t, 'Cliente', 'Consultora', ['Confirme o escopo', 'antes de citar valores.']);
-    reveal(ctx, ease(t, 0.08, 0.28), () => pill(ctx, 'Qual é o investimento?', 38, 228, gold, 171));
+    const u = ease(t, .12, .62);
+    const v = ease(t, .47, .85);
+    const vertices = points(100, i => {
+      const s = i / 99;
+      return [75 + 327 * s, 135 + 36 * sin(s * tau * 8 - t * 15) * sin(PI * s) * (1 - v * s)];
+    });
+    alpha(ctx, 1 - .75 * v, () => trace(ctx, vertices, mix(.25, 1, u), amber, 2.3));
+    for (let i = 0; i < 3; i++) {
+      const p = out(t, .47 + i * .09, .73 + i * .08);
+      alpha(ctx, p, () => line(ctx, [[228, 135 + i * 24 - 25 * p], [228 + (174 - i * 39) * p, 135 + i * 24 - 25 * p]], teal, 5 - i));
+    }
   };
 
   demos['12-E2'] = (ctx, t) => {
-    stage(ctx, 'CHAMADAS / OBJEÇÃO', coral);
-    call(ctx, t, 'Cliente', 'Consultor', ['Proponha um piloto', 'de duas semanas.']);
-    reveal(ctx, ease(t, 0.08, 0.28), () => pill(ctx, 'Não temos tempo', 38, 228, coral, 155));
+    const u = ease(t, .15, .71);
+    const vertices = points(125, i => {
+      const s = i / 124;
+      const unstable = 137 + sin(s * tau * 5 + t * 12) * (8 + 34 * sin(s * PI) ** 2) + sin(s * tau * 9) * 8;
+      const stable = 192 - 119 * ease(s, .06, .97);
+      return [81 + 319 * s, mix(unstable, stable, u)];
+    });
+    line(ctx, vertices, gradient(ctx, 81, 0, 400, 0, u < .55 ? coral : teal + '54', u < .32 ? coral : teal), mix(2.4, 4.1, u));
+    const p = phase(t, .55, .93);
+    alpha(ctx, out(t, .55, .68), () => dot(ctx, ...vertices[Math.floor(p * 124)], 5.6, white));
   };
 
   demos['RM26-12-01'] = (ctx, t) => {
-    stage(ctx, 'CHAMADAS / FECHAMENTO', green);
-    call(ctx, t, 'Cliente', 'Vendedor', ['Combine a data', 'da primeira entrega.'], t > 0.83);
-    reveal(ctx, 1 - ease(t, 0.29, 0.54), () => pill(ctx, 'Como avançar?', 161, 228, gold, 111));
-    party(ctx, 373, 206, t, 0.81, 69);
+    const u = ease(t, .07, .58);
+    [-1, 1].forEach(side => {
+      const vertices = points(70, i => {
+        const s = i / 69;
+        return [240 + side * 164 * (1 - s), 135 + side * 32 * sin(s * tau) * sin(s * PI)];
+      });
+      alpha(ctx, 1 - ease(t, .47, .75), () => trace(ctx, vertices, u, sky, 3.1));
+    });
+    arc(ctx, 240, 135, 67, 67, -PI / 2, -PI / 2 + tau * out(t, .43, .77), teal, 3.7);
+    check(ctx, 240, 135, 93, ease(t, .53, .82), white);
+    for (let i = 0; i < 2; i++) {
+      const p = phase(t, .58 + i * .09, .91 + i * .08);
+      alpha(ctx, sin(PI * p) * .63, () => arc(ctx, 240, 135, 68 + p * 38, 68 + p * 38, 0, tau, teal, 1.6));
+    }
   };
 
   demos['RM26-12-02'] = (ctx, t) => {
-    stage(ctx, 'GESTÃO / META DA EQUIPE', green);
-    const p = ease(t, 0.1, 0.7);
-    windowPanel(ctx, 29, 58, 241, 180, 'Meta comercial');
-    graph(ctx, 47, 109, 204, 90, [0.32, 0.46, 0.64, 0.82, 1], p, green, true);
-    label(ctx, Math.floor(p * 100) + '% da meta', 49, 217, 14, green, 780);
-    avatar(ctx, 317, 145, 38, 0, p, t);
-    avatar(ctx, 407, 145, 38, 2, p, t);
-    avatar(ctx, 363, 201, 37, 1, p, t);
-    party(ctx, 365, 158, t, 0.68, 99);
-    reveal(ctx, ease(t, 0.72, 0.88), () => pill(ctx, '✓ Meta atingida', 301, 58, green, 126));
+    line(ctx, [[104, 104], [376, 104]], amber + '9f', 1.3);
+    [92, 105, 118].forEach((h, i) => {
+      const p = out(t, .08 + i * .14, .56 + i * .105);
+      const x = 152 + i * 70;
+      rect(ctx, x, 210 - h * p, 36, h * p, 4, gradient(ctx, 0, 91, 0, 210, i === 2 ? orchid : violet, violet + '42'));
+      alpha(ctx, p, () => line(ctx, [[x + 3, 210 - h * p], [x + 33, 210 - h * p]], white, 1.7));
+    });
+    const u = out(t, .59, .78);
+    alpha(ctx, u, () => type(ctx, '100%', 240, mix(78, 55, u), 44, white, 900));
+    burst(ctx, 121, 95, phase(t, .58, .96), amber, 14, 56);
+    burst(ctx, 352, 100, phase(t, .65, 1), orchid, 17, 56);
   };
 })();
