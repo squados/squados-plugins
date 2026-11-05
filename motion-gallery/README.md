@@ -9,16 +9,15 @@ referência abrem suas prévias no site da Skillry.
 
 O [catálogo JSON](catalog.json) contém 122 efeitos de CreatorMotion 1.0.1,
 208 cenas de LaunchMotion 1.0.4 e o fluxo Paper Cutout Story Video 1.0.0.
-As versões vêm do benchmark em `ibeia-videoskills/benchmark/skillry/`.
 Os nomes, IDs, categorias e links identificam o material original da Skillry.
 Os pacotes e seus assets são distribuídos pela Skillry. [Termos de uso](https://skillry.dev/terms)
 
 ## Usar um efeito em vídeo
 
-A Tarantino e a ibeia-video-edit resolvem `title`, `aliases` ou `id` e leem
-`source.package`. Com o pacote original instalado ou acessível no benchmark,
-siga o `SKILL.md` do pacote para criar e renderizar a cena usando o ID.
-A página oficial em `source.url` é a referência de prévia e instalação.
+Busque o efeito por `title`, `aliases` ou `id`. Para uma composição própria,
+use as fontes e as entradas em `demo`. Para uma referência da Skillry,
+siga o `SKILL.md` do pacote `source.package` instalado e use o ID do efeito.
+A página oficial em `source.url` reúne a prévia e a instalação.
 
 Para **Gráfico em Contracampo**, prepare um JSON com `presenter` apontando
 para uma foto ou um take de 6,8 s ou mais. Caminhos relativos são resolvidos
@@ -29,9 +28,8 @@ composição também aceita duas séries de 2 a 6 números de 0 a 100 em
 Use `title`, `labelA`, `labelB` e `accent` para adaptar o gráfico. `note` é
 opcional na visualização com linhas.
 
-A direção visual das peças da ibe.IA está na seção **Direção dos previews**
-da skill `remotion`. As fontes do preview são locais. Sora e Geist Sans
-vêm da revisão `fbe81817505e8aeadc53cc7a38a2b76fb57c333e` do Google Fonts.
+O preview carrega Sora e Geist Sans dos arquivos que acompanham a composição.
+As fontes vêm da revisão `fbe81817505e8aeadc53cc7a38a2b76fb57c333e` do Google Fonts.
 As licenças OFL acompanham os arquivos. [Sora](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/sora)
 · [Geist](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/geist)
 

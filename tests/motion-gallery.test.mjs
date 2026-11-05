@@ -47,7 +47,7 @@ test('HTML offline inclui o catálogo e carrega apenas o script da interface', (
   assert.ok(!readdirSync(gallery).some(name => name.startsWith('demos-')))
 })
 
-test('Tarantino resolve a referência e usa os geradores Skillry', () => {
+test('Tarantino resolve efeitos sem depender do ambiente da ibe.IA', () => {
   const skill = readFileSync(new URL('../skills/tarantino/SKILL.md', import.meta.url), 'utf8')
   assert.match(skill, /https:\/\/raw\.githubusercontent\.com\/squados\/squados-plugins\/main\/motion-gallery\/catalog\.json/)
   assert.match(skill, /nome exato ou ID/)
@@ -55,5 +55,5 @@ test('Tarantino resolve a referência e usa os geradores Skillry', () => {
   assert.match(skill, /--skill/)
   assert.match(skill, /--effect/)
   assert.match(skill, /--storyboard/)
-  assert.doesNotMatch(skill, /window\.motionDemos/)
+  assert.doesNotMatch(skill, /\b[a-z]:[\\/]|nextcloud|ibeia-videoskills|direção dos previews|window\.motionDemos/i)
 })

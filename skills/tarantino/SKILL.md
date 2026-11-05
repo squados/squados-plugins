@@ -18,19 +18,23 @@ Quando o contexto confirmar que o apresentador fala com o editor, interprete “
 
 Escolha as ferramentas pelo trabalho. FFmpeg e ffprobe ajudam a inspecionar, cortar, montar, mixar e exportar. Para composições animadas, consulte o [guia oficial do HyperFrames](https://hyperframes.app/docs/1-startup/2-quickstart) ou siga a ferramenta do projeto, como Remotion.
 
-Quando a pessoa mencionar um efeito da galeria, consulte o [catálogo de motion do SquadOS](https://raw.githubusercontent.com/squados/squados-plugins/main/motion-gallery/catalog.json). Se o checkout do catálogo estiver disponível no workspace, use o arquivo local `squados-plugins/motion-gallery/catalog.json`. Resolva cada efeito pelo nome exato ou ID. Consulte `title`, `aliases` e `id`.
-Quando a entrada tiver `demo`, abra `demo.composition` para conferir as entradas
-da peça e prepare um JSON com os campos de `demo.inputs`. No checkout local,
-execute `node "<checkout>/scripts/render-motion.mjs" "<nome ou ID>" --inputs "<dados.json>" --out "<cena.mp4>"`.
-Em **Gráfico em Contracampo**, forneça o take ou retrato em `presenter`.
-Envie dois valores em `values` para barras ou duas séries em `series` para
-linhas. Com um take, use 6,8 s contínuos e preserve a sincronia da fala na
-montagem. Para criar ou revisar um motion da galeria, siga a seção
-**Direção dos previews** da skill `remotion` quando disponível no projeto.
+Quando a pessoa mencionar um efeito da galeria, consulte o
+[catálogo de motion do SquadOS](https://raw.githubusercontent.com/squados/squados-plugins/main/motion-gallery/catalog.json)
+ou o catálogo fornecido no projeto. Resolva pelo nome exato ou ID em
+`title`, `aliases` e `id`. Se o catálogo estiver indisponível, use a
+referência do efeito fornecida pela pessoa. Se ela ainda for necessária,
+peça o link ou uma descrição do movimento.
 
-Para uma entrada de referência da Skillry, use `source.package` para localizar a skill original da Skillry na instalação
-local ou em `ibeia-videoskills/benchmark/skillry/` no workspace. Abra o
-`SKILL.md` do pacote e use o gerador correspondente com o `id` do catálogo.
+Para uma entrada com `demo`, obtenha as fontes na mesma revisão do
+[repositório público SquadOS](https://github.com/squados/squados-plugins)
+ou use a cópia do projeto. Abra `demo.composition`, relativo ao catálogo,
+e prepare as entradas conforme `demo.inputs`. Execute
+`node "<pasta-do-repositorio>/scripts/render-motion.mjs" "<nome ou ID>" --inputs "<dados.json>" --out "<cena.mp4>"`.
+Use a mídia do projeto e preserve a sincronia da fala ao inserir a cena.
+
+Para uma referência da Skillry, localize o pacote `source.package` entre as
+skills instaladas. A página em `source.url` indica onde obter acesso ao
+pacote. Abra seu `SKILL.md` e use o gerador com o ID da referência.
 
 - CreatorMotion (`bs-creatormotion`): `node "<pasta-do-pacote>/scripts/create.mjs" --skill <id> --out <cena>`.
 - LaunchMotion (`bs-launchmotion`): `node "<pasta-do-pacote>/scripts/create.mjs" --effect <id> --out <cena>`.
@@ -43,8 +47,7 @@ local ou em `ibeia-videoskills/benchmark/skillry/` no workspace. Abra o
 
 Passe a mídia e os textos do projeto conforme as instruções do efeito,
 preserve a coreografia e renderize pelo fluxo do pacote. A prévia oficial
-está em `source.url`. Se o pacote estiver ausente, indique ao usuário essa
-página para obter acesso à skill original.
+está em `source.url`.
 
 Use os exemplos e a identidade indicados. Escolha como movimento, tipografia e som ajudam a contar a história. Em tela com câmera no canto, preserve a ação, o cursor e a leitura. Para um logo acompanhando a mão, use tracking disponível ou marque posições ao longo do take e confira as passagens rápidas. Para uma notícia, use a fonte ou o print real e destaque o trecho relevante. Componha uma simulação de interface para o momento da fala em que ela ajuda a explicar.
 
