@@ -2,59 +2,160 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<title>Parede em Perspectiva</title>
 <link rel="stylesheet" href="../motion-assets/base.css">
 <style>
-main { background: #e9dfcf; color: #332820; }
-main::before { content: ""; position: absolute; inset: 0 0 0 34%; background: linear-gradient(130deg, #e5d2ba, #c1a78a); }
-.layout { position: absolute; inset: 0; }
-.wall .photo { position: absolute; border-radius: 15px; box-shadow: 0 18px 44px #37221838; }
-.feature { position: absolute; width: 292px; height: 292px; border-radius: 15px; box-shadow: 0 22px 54px #37221844; transform-origin: 0 0; }
-.words { position: absolute; top: 259px; left: 134px; width: 715px; }
-.words h1, .detail h2 { font-size: 144px; }
-.filter { display: inline-flex; gap: 18px; align-items: center; margin-top: 45px; padding: 17px 26px; border: 2px solid #8f7969; border-radius: 44px; font-size: 34px; }
-.filter::before { content: ""; width: 15px; height: 15px; border-radius: 50%; background: #9e4c31; }
-.detail { position: absolute; left: 134px; top: 325px; width: 745px; }
-.detail p { margin-top: 34px; font-size: 44px; color: #665044; }
+main { background: radial-gradient(ellipse at 45% 82%, #303034 0%, #1d1d20 49%, #101012 100%); color: #f7f7f7; }
+main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .30; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='164'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0h164v164H0z' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.world { position: absolute; top: 540px; left: 960px; width: 0; height: 0; transform-origin: 0 0; }
+.tile { position: absolute; width: 320px; height: 180px; overflow: hidden; background-color: #323239; border-radius: 14px; box-shadow: 0 12px 22px #0505067d, inset 0 0 0 1px #ffffff29; }
+.tile::after { content: ""; position: absolute; inset: 0; border: 1px solid #ffffff2a; border-radius: inherit; pointer-events: none; }
+.art { position: absolute; inset: 0; background-position: var(--art-x, 50%) var(--art-y, 50%); background-size: var(--art-size, cover); background-repeat: no-repeat; }
+.focal { z-index: 2; }
+.focal .ring { position: absolute; inset: 0; border: 2px solid #b0dcff; border-radius: inherit; pointer-events: none; }
+.intro { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.intro h1 { font-size: 116px; text-align: center; width: 1450px; }
+.filter-panel { position: absolute; left: 564px; top: 737px; width: 792px; height: 130px; padding: 0 29px 0 37px; display: flex; justify-content: space-between; align-items: center; gap: 24px; border: 1px solid #62646b; border-radius: 26px; background: #17181bf2; box-shadow: 0 24px 90px #000a; }
+.filter-panel p { font-size: 50px; font-weight: 590; letter-spacing: -.035em; }
+.filter { position: relative; flex: none; padding: 13px 25px; border-radius: 100px; border: 1px solid #686c74; color: #e8e8ec; font-size: 36px; font-weight: 520; }
+.filter.checked { border-color: #bce1ff; background: #bee2ff; color: #111822; }
+.detail-panel { position: absolute; left: 99px; top: 141px; width: 1722px; height: 798px; border-radius: 37px; border: 1px solid #ffffff22; background: linear-gradient(145deg, #292a2d, #1b1b1e 76%); box-shadow: 0 30px 70px #0006; }
+.hero { position: absolute; overflow: hidden; background-color: #24262c; }
+.detail { position: absolute; left: 1200px; top: 300px; width: 535px; }
+.product { display: flex; align-items: center; gap: 10px; color: #dedee1; font-size: 32px; font-weight: 530; }
+.product img { width: 32px; height: 32px; object-fit: contain; }
+.detail h2 { margin-top: 25px; font-size: 92px; }
+.detail .support { margin-top: 23px; color: #d1d1d5; font-size: 37px; line-height: 1.2; max-width: 485px; }
+.action { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 13px; min-width: 350px; min-height: 72px; margin-top: 42px; padding: 10px 25px; border-radius: 16px; overflow: hidden; background: #3e4857; color: white; font-size: 32px; font-weight: 560; }
+.action-fill { position: absolute; inset: auto 0 0; height: 5px; background: #bce0ff; transform-origin: left; }
+.action.added { color: #111720; background: #bce0ff; }
+.action span { position: relative; }
 </style>
 </head>
 <body>
-<main data-composition-id="parede-em-perspectiva" data-start="0" data-duration="7.4" data-width="1920" data-height="1080">
-<div class="layout"><div class="wall"></div><div class="photo feature" style="--px:50%; --py:0%"></div></div>
-<div class="words"><h1 class="display"></h1><p class="filter"></p></div>
-<div class="detail"><h2 class="display"></h2><p></p></div>
+<main data-composition-id="parede-em-perspectiva" data-start="0" data-duration="10.5" data-width="1920" data-height="1080">
+  <div class="world" aria-hidden="true"></div>
+  <div class="intro"><h1 class="display"></h1></div>
+  <div class="filter-panel"><p>Roteiro com IA</p><span class="filter"></span></div>
+  <div class="detail-panel"></div>
+  <div class="hero" aria-hidden="true"><div class="art"></div></div>
+  <div class="detail">
+    <p class="product"><img src="art/squados.svg" alt="">Agente de viagem · SquadOS</p>
+    <h2 class="display"></h2>
+    <p class="support"></p>
+    <div class="action"><i class="action-fill"></i><span class="action-icon"></span><span class="action-label"></span></div>
+  </div>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
-copy(".words h1", "title", "Arquivo de formas");
-copy(".filter", "filter", "Em espiral");
-copy(".detail h2", "feature", "Câmaras em espiral");
-copy(".detail p", "detail", "Concha marinha");
-photos(".wall", 6);
-const tiles = all(".wall .photo");
-const origins = [[883, 169], [1184, 125], [1485, 81], [929, 470], [1230, 426], [1531, 382]];
-const feature = one(".feature");
+copy(".intro h1", "title", "Onde ver o pôr do sol?");
+copy(".filter", "filter", "Litoral");
+copy(".detail h2", "feature", "Cabo da Roca");
+copy(".support", "detail", "Parada para o pôr do sol em Sintra.");
+
+const WIDTH = 320;
+const HEIGHT = 180;
+const SLIDE = 1.08;
+const FILTER = 3.12;
+const PUSH = 4.37;
+const FULL = 5.5;
+const PULL = 5.84;
+const FINISH = 6.95;
 const selected = Number.isInteger(inputs.selected) ? Math.max(0, Math.min(5, inputs.selected)) : 1;
-const [startX, startY] = origins[selected];
-feature.style.setProperty("--px", (selected % 3) * 50 + "%");
-feature.style.setProperty("--py", Math.floor(selected / 3) * 100 + "%");
-tiles[selected].style.display = "none";
+const artFiles = ["marinha", "cabo-da-roca", "sintra", "porto", "piedade", "douro", "lagos", "algarve", "pena"];
+const coast = new Set([0, 1, 4, 6, 7]);
+const alternate = inputs.sheet ? new URL(inputs.sheet, document.baseURI).href : "";
+const world = one(".world");
+const focal = document.createElement("div");
+const hero = one(".hero");
+const intro = one(".intro");
+const filter = one(".filter");
+const panel = one(".filter-panel");
+const detailPanel = one(".detail-panel");
+const detail = one(".detail");
+const action = one(".action");
+const fill = one(".action-fill");
+const actionIcon = one(".action-icon");
+const actionLabel = one(".action-label");
+
+function artwork(el, index) {
+  if (alternate) {
+    el.style.backgroundImage = 'url("' + alternate + '")';
+    // A grade traz células quadradas. Recorte o centro de cada uma para 16:9.
+    el.style.setProperty("--art-size", "300% auto");
+    el.style.setProperty("--art-x", (index % 3) * 50 + "%");
+    el.style.setProperty("--art-y", index < 3 ? "15.21739%" : "84.78261%");
+    return;
+  }
+  el.style.backgroundImage = "url(art/" + artFiles[index] + ".webp)";
+}
+
+const tiles = [];
+for (let row = -4; row <= 4; row++) {
+  for (let col = -5; col <= 5; col++) {
+    const center = row === 0 && col === 0;
+    const el = center ? focal : document.createElement("div");
+    const count = alternate ? 6 : artFiles.length;
+    const seed = (row + 4) * 13 + (col + 5) * 7 + (row + 4) * (col + 5) * 3;
+    const index = center ? selected : seed % count;
+    el.className = center ? "tile focal" : "tile";
+    el.style.left = col * 335 - WIDTH / 2 + "px";
+    el.style.top = row * 195 - HEIGHT / 2 + "px";
+    const image = document.createElement("div");
+    image.className = "art";
+    artwork(image, index);
+    el.append(image);
+    world.append(el);
+    const match = alternate ? index === selected : coast.has(index);
+    if (!center) tiles.push({ el, match });
+  }
+}
+const ring = document.createElement("div");
+ring.className = "ring";
+focal.append(ring);
+artwork(one(".hero .art"), selected);
+
 window.renderMotion = time => {
-  const focus = beat(time, 2.15, .5);
-  const zoom = flow(phase(time, 3.12, 1.34));
-  tiles.forEach((tile, index) => {
-    const enter = beat(time, .12 + .08 * index, .78);
-    const [x, y] = origins[index];
-    set(tile, { width: "292px", height: "292px", opacity: enter * (1 - .73 * focus) * (1 - zoom), transform: "translate(" + (x + 156 * zoom) + "px," + (y + 290 * (1 - enter)) + "px) rotate(-8.3deg)" });
-  });
-  const enter = beat(time, .12 + .08 * selected, .78);
-  set(feature, { opacity: enter, borderRadius: mix(15, 7, zoom) + "px", transform: "translate(" + mix(startX, 1010, zoom) + "px," + (mix(startY, 151, zoom) + 290 * (1 - enter) - 12 * focus * (1 - zoom)) + "px) rotate(" + mix(-8.3, 0, zoom) + "deg) scale(" + mix(1 + .04 * focus, 2.43, zoom) + ")" });
-  const head = beat(time, .16, .64);
-  const leave = beat(time, 3.07, .6);
-  set(one(".words"), { opacity: head * (1 - leave), transform: "translateY(" + (1 - head) * 36 + "px) translateX(" + -80 * leave + "px)" });
-  const filter = beat(time, 1.67, .49);
-  set(one(".filter"), { opacity: filter, transform: "translateX(" + (1 - filter) * -34 + "px)", backgroundColor: focus > .5 ? "#f1e3c7" : "transparent" });
-  const show = beat(time, 3.76, .91);
-  set(one(".detail"), { opacity: show, transform: "translateY(" + (1 - show) * 54 + "px)" });
+  const rise = flow(phase(time, SLIDE, 1.14));
+  const drift = phase(time, 2.1, 2.25);
+  const push = flow(phase(time, PUSH, FULL - PUSH));
+  const pull = flow(phase(time, PULL, FINISH - PULL));
+  const switchFrame = time >= FULL;
+  const scale = mix(1.02 + .10 * drift, 6, push);
+  const x = mix(235 - 95 * drift, 0, push);
+  const y = mix(1690 * (1 - rise) - 24 * drift, 0, push);
+  const tilt = (1 - push);
+  world.style.visibility = time < SLIDE || switchFrame ? "hidden" : "visible";
+  world.style.transform = "translate(" + x + "px," + y + "px) scale(" + scale + ") perspective(1850px) rotateY(" + -12 * tilt + "deg) rotateX(" + 15 * tilt + "deg) rotateZ(" + -13 * tilt + "deg)";
+  const lit = flow(phase(time, FILTER, .48));
+  const discard = flow(phase(time, PUSH + .28, .84));
+  for (const tile of tiles) {
+    tile.el.style.opacity = (tile.match ? 1 : 1 - .74 * lit) * (1 - discard);
+  }
+  focal.style.borderRadius = mix(14, 0, push) + "px";
+  focal.style.boxShadow = push > .82 ? "none" : "";
+  ring.style.opacity = lit * (1 - push);
+  const appear = beat(time, .04, .55);
+  const leave = flow(phase(time, SLIDE, .44));
+  set(intro, { opacity: appear * (1 - leave), transform: "translateY(" + ((1 - appear) * 48 - 79 * leave) + "px)" });
+  const panelIn = beat(time, 2.22, .58);
+  const panelOut = flow(phase(time, 3.88, .42));
+  set(panel, { opacity: panelIn * (1 - panelOut), transform: "translateY(" + ((1 - panelIn) * 50 + panelOut * 46) + "px) scale(" + mix(.96, 1, panelIn) + ")" });
+  filter.classList.toggle("checked", time >= FILTER);
+  filter.style.transform = "scale(" + (1 - .09 * Math.sin(Math.PI * phase(time, FILTER - .10, .29))) + ")";
+  const heroWidth = mix(1920, 998, pull);
+  set(hero, { visibility: switchFrame ? "visible" : "hidden", left: mix(0, 157, pull) + "px", top: mix(0, 259.3, pull) + "px", width: heroWidth + "px", height: (heroWidth * 9 / 16) + "px", borderRadius: mix(0, 19, pull) + "px" });
+  detailPanel.style.opacity = beat(time, PULL + .14, .62);
+  const read = beat(time, 6.83, .55);
+  set(detail, { opacity: read, transform: "translateY(" + (1 - read) * 34 + "px)" });
+  const press = Math.sin(Math.PI * phase(time, 8.03, .27));
+  const filled = flow(phase(time, 8.19, .70));
+  const added = filled >= .99;
+  action.style.transform = "scale(" + (1 - .035 * press) + ")";
+  fill.style.transform = "scaleX(" + filled + ")";
+  action.classList.toggle("added", added);
+  actionIcon.textContent = added ? "✓" : "+";
+  actionLabel.textContent = added ? "Salvo no roteiro" : "Salvar no roteiro";
 };
 window.renderMotion(0);
 </script>

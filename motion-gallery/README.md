@@ -44,16 +44,13 @@ imagem 3:2 com seis fotos em uma grade de três colunas por duas linhas,
 sem margens. Conte os índices por linha, da esquerda para a direita.
 Os caminhos de imagem e vídeo são relativos ao arquivo de entradas.
 
-Gráfico em Contracampo usa Sora e Geist Sans. As seis composições seguintes
-usam Fraunces e Geist Sans. Os arquivos locais acompanham as composições.
-As fontes vêm da revisão `fbe81817505e8aeadc53cc7a38a2b76fb57c333e` do Google Fonts.
-As licenças OFL acompanham os arquivos. [Sora](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/sora)
-· [Geist](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/geist)
-· [Fraunces](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/fraunces)
+As composições próprias usam Outfit em títulos, corpo e interface. A fonte
+local e sua licença OFL acompanham as composições. [Outfit](https://github.com/google/fonts/tree/fbe81817505e8aeadc53cc7a38a2b76fb57c333e/ofl/outfit)
 
-O [atlas fotográfico](scenes/motion-assets/field-atlas.webp) das duas peças
-foi gerado com o ImageGen do Codex como uma grade de fotos editoriais sobre
-biomimética, com folha, concha, rio glacial, cogumelo, samambaia e basalto.
+A **Parede em Perspectiva** demonstra uma busca de viagem com IA e usa
+[fotografias licenciadas de Portugal](scenes/parede-em-perspectiva/art/CREDITOS.md).
+O [atlas](scenes/motion-assets/field-atlas.webp) da **Colagem em Torno da Câmera**
+foi gerado com o ImageGen do Codex para essa demonstração.
 
 ```powershell
 node scripts/render-motion.mjs "Gráfico em Contracampo" --inputs dados.json --out cena.mp4

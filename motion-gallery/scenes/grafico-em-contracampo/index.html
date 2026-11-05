@@ -3,18 +3,17 @@
 <head>
 <meta charset="utf-8">
 <title>Gráfico em Contracampo</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
 <style>
-  @font-face { font-family:Sora; src:url("fonts/sora.ttf") format("truetype"); font-weight:100 800; }
-  @font-face { font-family:Geist; src:url("fonts/geist.ttf") format("truetype"); font-weight:100 900; }
   * { box-sizing:border-box }
   html,body { margin:0; width:1920px; height:1080px; overflow:hidden }
   #stage {
     --paper:#f6f5f9; --ink:#171423; --muted:#514b60; --rule:#d7d3e0; --accent:#6543cf;
     position:relative; width:1920px; height:1080px; overflow:hidden;
-    background:var(--paper); color:var(--ink); font:500 52px/1.15 Geist,sans-serif;
+    background:var(--paper); color:var(--ink); font:500 52px/1.15 Outfit,sans-serif;
   }
   #chart { position:absolute; inset:0 0 0 828px; padding:0 88px; display:flex; flex-direction:column; justify-content:center; background:var(--paper); }
-  h1 { margin:0 0 91px; font:700 78px/1.05 Sora,sans-serif; letter-spacing:-.045em; }
+  h1 { margin:0 0 91px; font:700 78px/1.05 Outfit,sans-serif; letter-spacing:-.045em; }
   #bars { display:grid; gap:72px; }
   .bar-row { display:grid; gap:21px; }
   .bar-label { display:flex; justify-content:space-between; align-items:baseline; gap:24px; min-height:64px; }
@@ -28,7 +27,7 @@
   #legend { display:flex; gap:32px; font-size:29px; margin:0 0 20px; }
   #legend span:last-child { color:var(--accent); }
   #plot { display:block; width:100%; overflow:visible; }
-  #plot text { fill:var(--muted); font:25px Geist,sans-serif; }
+  #plot text { fill:var(--muted); font:25px Outfit,sans-serif; }
   #plot .grid { stroke:var(--rule); stroke-width:1.5; }
   #plot .curve { fill:none; stroke:var(--ink); stroke-width:6; stroke-linejoin:round; stroke-linecap:round; }
   #plot .curve.second { stroke:var(--accent); }

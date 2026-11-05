@@ -2843,8 +2843,8 @@
         "bs-launchmotion-ui-tilted-wall-lifestyle",
         "lm-ui-tilted-wall-lifestyle"
       ],
-      "seconds": 7.4,
-      "prompt": "Use Parede em Perspectiva neste trecho. Faça subir um painel inclinado de fotografias. Selecione uma imagem pelo tema e aproxime a câmera até ela ocupar o quadro de detalhe.",
+      "seconds": 10.5,
+      "prompt": "Use Parede em Perspectiva neste trecho. Abra uma parede inclinada de fotografias em uma busca com IA, filtre pelo tema, avance até uma foto preencher o quadro e recue com a mesma imagem no detalhe. Mostre a confirmação da ação final.",
       "source": {
         "package": "bs-launchmotion",
         "url": "https://skillry.dev/skills/bs-launchmotion-ui-tilted-wall-lifestyle",
