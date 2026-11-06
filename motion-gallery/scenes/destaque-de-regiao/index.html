@@ -23,7 +23,8 @@ h1{font-size:64px;font-weight:645;line-height:1.03;letter-spacing:-.043em}
 .callout{position:absolute;left:1242px;top:256px;width:377px}
 .callout small{display:block;color:#b5d8f4;font-size:26px;margin-bottom:13px}
 .callout p{background:#303d4b;border:1px solid #91b5d5;border-left:4px solid #b2d9ff;border-radius:8px;padding:18px 20px;font-size:36px;line-height:1.11;box-shadow:0 16px 44px #11151ec5;letter-spacing:-.021em}
-</style></head><body>
+</style><link rel="stylesheet" href="guided.css">
+</head><body>
 <main data-composition-id="destaque-de-regiao" data-start="0" data-duration="9" data-width="1920" data-height="1080">
 <svg class="grain" width="1920" height="1080" aria-hidden="true"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" seed="41"/></filter><rect width="100%" height="100%" filter="url(#noise)"/></svg>
 <div class="camera"><section class="document">
@@ -34,6 +35,7 @@ h1{font-size:64px;font-weight:645;line-height:1.03;letter-spacing:-.043em}
 </section>
 <svg class="leader" viewBox="0 0 1642 740" fill="none" aria-hidden="true"><path d="M1085 361h73l32-40h52" stroke="#acd7fe" stroke-width="2" pathLength="1"/><circle cx="1085" cy="361" r="5" fill="#acd7fe"/></svg>
 <aside class="callout"><small></small><p></p></aside></div>
+<!-- motion-media:screen:0:9:0 -->
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
@@ -76,5 +78,79 @@ window.renderMotion = time => {
   set(one(".callout p"),{opacity:note*(1-restore),clipPath:"inset(0 "+(100-100*note)+"% 0 0)",transform:"translateX("+(-14*(1-seat))+"px)"});
 };
 window.renderMotion(0);
+
+
+if (inputs.screen || Array.isArray(inputs.cues) && inputs.cues.length) {
+  const media = one("#motion-media-screen");
+  stage.classList.add("guided");
+  stage.innerHTML = `
+    <div class="guided-layout">
+      <section class="viewport">
+        <div class="app">
+          <aside class="nav"><b><i></i> Workspace</b><p>Visão geral</p><p class="selected">Memória</p><p>Ferramentas</p><p>Histórico</p></aside>
+          <div class="content">
+            <header><h2>Memória do agente</h2><small>Exemplo ilustrativo</small></header>
+            <div class="settings">
+              <article><h3>Contexto atual</h3><p>Informações usadas durante a tarefa em andamento.</p><span class="chip">Disponível nesta sessão</span></article>
+              <article><h3>Preferências da equipe</h3><p>Instruções que o agente mantém entre execuções.</p><span class="chip">Compartilhado com o time</span></article>
+              <article><h3>Histórico de decisões</h3><p>O que foi validado e o motivo de cada escolha.</p><span class="chip">3 decisões revisadas</span></article>
+            </div>
+          </div>
+        </div>
+        <div class="target" aria-hidden="true"></div>
+      </section>
+      <aside class="note"><small></small><span class="mark"></span><p></p></aside>
+    </div>`;
+  const viewport = one(".viewport");
+  const focusBox = one(".target");
+  const note = one(".note");
+  if (media) {
+    viewport.insertBefore(media, focusBox);
+    one(".app").hidden = true;
+  }
+  if (CSS.supports("color", inputs.accent ?? "")) focusBox.style.setProperty("--accent", inputs.accent);
+  const fallback = media
+    ? [{ at: .7, x: 8, y: 10, width: 84, height: 80, label: "Área em destaque" }]
+    : [
+        { at: .72, x: 21.8, y: 14.2, width: 74.8, height: 21.2, label: "Contexto da tarefa" },
+        { at: 3.08, x: 21.8, y: 37.1, width: 74.8, height: 21.2, label: "Preferências da equipe" },
+        { at: 5.44, x: 21.8, y: 60.1, width: 74.8, height: 21.2, label: "Histórico de decisões" }
+      ];
+  const supplied = (Array.isArray(inputs.cues) ? inputs.cues : []).filter(cue =>
+    cue && [cue.at, cue.x, cue.y, cue.width, cue.height].every(Number.isFinite) &&
+    cue.at >= 0 && cue.at < 9 && cue.x >= 0 && cue.y >= 0 && cue.width > 0 && cue.height > 0 &&
+    cue.x + cue.width <= 100 && cue.y + cue.height <= 100
+  );
+  const cues = (supplied.length ? supplied : fallback).slice().sort((a, b) => a.at - b.at);
+  const dim = Number.isFinite(inputs.dimOutside) ? clamp(inputs.dimOutside) : .38;
+  focusBox.style.boxShadow = "0 0 0 1600px rgb(9 7 12 / " + dim + "), 0 0 25px #fa8a4b4d, inset 0 0 20px #fa8a4b21";
+  window.renderMotion = time => {
+    const enter = beat(time, .04, .55);
+    set(viewport, { opacity: enter, transform: "translateY(" + (1 - enter) * 23 + "px)" });
+    const active = Math.max(0, cues.findLastIndex(cue => time >= cue.at));
+    const cue = cues[active];
+    const prior = cues[Math.max(0, active - 1)];
+    const transition = flow(phase(time, cue.at, .28));
+    const outside = 1 - flow(phase(time, 8.55, .43));
+    const width = 1360;
+    const height = 825;
+    const naturalWidth = media?.videoWidth || media?.naturalWidth || width;
+    const naturalHeight = media?.videoHeight || media?.naturalHeight || height;
+    const scale = Math.min(width / naturalWidth, height / naturalHeight);
+    const mediaWidth = naturalWidth * scale;
+    const mediaHeight = naturalHeight * scale;
+    set(focusBox, {
+      left: ((width - mediaWidth) / 2 + mediaWidth * mix(prior.x, cue.x, transition) / 100) + "px",
+      top: ((height - mediaHeight) / 2 + mediaHeight * mix(prior.y, cue.y, transition) / 100) + "px",
+      width: mediaWidth * mix(prior.width, cue.width, transition) / 100 + "px",
+      height: mediaHeight * mix(prior.height, cue.height, transition) / 100 + "px",
+      opacity: snap(time, cues[0].at, .24) * outside
+    });
+    note.firstElementChild.textContent = "Destaque " + String(active + 1).padStart(2, "0") + " / " + String(cues.length).padStart(2, "0");
+    note.lastElementChild.textContent = cue.label ?? "Área em destaque";
+    set(note, { opacity: transition * outside, transform: "translateX(" + (1 - transition) * 13 + "px)" });
+  };
+  window.renderMotion(0);
+}
 </script>
 </body></html>

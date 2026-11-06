@@ -729,7 +729,7 @@
         "bs-comparison-feature-matrix"
       ],
       "seconds": 10,
-      "prompt": "Use Matriz de Comparação neste trecho. Fixe os dois cabeçalhos, mostre cada dimensão e revele as duas células correspondentes antes de passar para a próxima linha.",
+      "prompt": "Use Matriz de Comparação neste trecho. Fixe os dois cabeçalhos, mostre cada dimensão e revele as duas células correspondentes antes de passar para a próxima linha. Para comparar ferramentas com capturas e preços em linhas, use tools e screens.",
       "source": {
         "package": "bs-creatormotion",
         "url": "https://skillry.dev/skills/bs-creatormotion-comparison-feature-matrix",
@@ -740,7 +740,11 @@
         "preview": "previews/matriz-de-comparacao.mp4",
         "inputs": {
           "options": "array",
-          "rows": "array"
+          "rows": "array",
+          "tools": "array",
+          "screens": "images",
+          "heading": "text",
+          "priceHeading": "text"
         }
       }
     },
@@ -1646,7 +1650,7 @@
         "bs-split-progressive-list"
       ],
       "seconds": 6.8,
-      "prompt": "Use Apresentador e Lista neste trecho. Reenquadre o take contínuo à direita e sobreponha cinco itens à esquerda. Escreva uma linha por vez e destaque o número do item atual.",
+      "prompt": "Use Apresentador e Lista neste trecho. Reenquadre o take contínuo à direita e sobreponha cinco itens à esquerda. Escreva uma linha por vez e destaque o número do item atual. Para fichas com foto e subtítulo, use itens com title e detail e forneça os retratos em portraits.",
       "source": {
         "package": "bs-creatormotion",
         "id": "bs-creatormotion-split-progressive-list",
@@ -1658,7 +1662,9 @@
         "inputs": {
           "presenter": "media",
           "heading": "text",
-          "items": "array"
+          "items": "array",
+          "portraits": "images",
+          "accent": "text"
         },
         "required": [
           "presenter"
@@ -1831,7 +1837,7 @@
         "bs-spotlight-region-callout"
       ],
       "seconds": 9,
-      "prompt": "Use Destaque de Região para chamar a atenção para uma seção do documento. Escureça o entorno, ligue a região a uma nota curta, aproxime os dois elementos juntos e retorne ao quadro completo.",
+      "prompt": "Use Destaque de Região para chamar a atenção para uma seção do documento. Escureça o entorno, ligue a região a uma nota curta, aproxime os dois elementos juntos e retorne ao quadro completo. Para seguir regiões de um screencast em sequência, use screen e cues.",
       "source": {
         "package": "bs-creatormotion",
         "url": "https://skillry.dev/skills/bs-creatormotion-spotlight-region-callout",
@@ -1848,7 +1854,11 @@
           "step": "text",
           "callout": "text",
           "documentImage": "image",
-          "region": "object"
+          "region": "object",
+          "screen": "media",
+          "cues": "array",
+          "accent": "text",
+          "dimOutside": "number"
         }
       }
     },
@@ -5920,6 +5930,107 @@
           "image": "image",
           "destinations": "array",
           "transparent": "boolean"
+        }
+      }
+    },
+    {
+      "id": "prompt-e-resultado",
+      "title": "Prompt e Resultado",
+      "category": "Interfaces de produto",
+      "seconds": 8.6,
+      "aliases": [
+        "Prompt → Resultado",
+        "Comando e execução",
+        "M22"
+      ],
+      "prompt": "Use Prompt e Resultado para manter o comando visível enquanto a captura mostra a execução. Passe a captura em screen e alinhe a revelação com a fala.",
+      "demo": {
+        "composition": "scenes/prompt-e-resultado/index.html",
+        "preview": "previews/prompt-e-resultado.mp4",
+        "inputs": {
+          "prompt": "text",
+          "screen": "media",
+          "outputTitle": "text",
+          "steps": "array",
+          "revealAt": "number"
+        }
+      }
+    },
+    {
+      "id": "oferta-em-camadas",
+      "title": "Oferta em Camadas",
+      "category": "Cartões e listas",
+      "seconds": 10,
+      "aliases": [
+        "Cartões e Contador de Oferta",
+        "Pilha de oferta",
+        "M47",
+        "M48"
+      ],
+      "prompt": "Use Oferta em Camadas para revelar os entregáveis, somar os valores e trocar o total pelo preço final.",
+      "demo": {
+        "composition": "scenes/oferta-em-camadas/index.html",
+        "preview": "previews/oferta-em-camadas.mp4",
+        "inputs": {
+          "title": "text",
+          "eyebrow": "text",
+          "subtitle": "text",
+          "cover": "image",
+          "items": "array",
+          "currency": "text",
+          "referencePrice": "number",
+          "finalPrice": "number",
+          "finalLabel": "text"
+        }
+      }
+    },
+    {
+      "id": "cta-expansivel",
+      "title": "CTA Expansível",
+      "category": "Chamadas para ação",
+      "seconds": 8,
+      "aliases": [
+        "Seta que vira botão",
+        "Botão de compra animado",
+        "M50"
+      ],
+      "prompt": "Use CTA Expansível para abrir a seta em botão na deixa da fala. Exporte com transparência para aplicar sobre o take.",
+      "demo": {
+        "composition": "scenes/cta-expansivel/index.html",
+        "preview": "previews/cta-expansivel.mp4",
+        "inputs": {
+          "label": "text",
+          "presenter": "media",
+          "accent": "text",
+          "position": "object",
+          "expandAt": "number",
+          "hold": "number",
+          "transparent": "boolean"
+        }
+      }
+    },
+    {
+      "id": "baralho-de-bonus",
+      "title": "Baralho de Bônus",
+      "category": "Cartões e listas",
+      "seconds": 9,
+      "aliases": [
+        "Bônus bloqueados",
+        "Revelação de bônus",
+        "M53",
+        "M56"
+      ],
+      "prompt": "Use Baralho de Bônus para avançar a carta anunciada e sincronizar o desbloqueio com a fala.",
+      "demo": {
+        "composition": "scenes/baralho-de-bonus/index.html",
+        "preview": "previews/baralho-de-bonus.mp4",
+        "inputs": {
+          "title": "text",
+          "eyebrow": "text",
+          "cards": "array",
+          "activeCard": "number",
+          "unlockAt": "number",
+          "status": "text"
         }
       }
     }

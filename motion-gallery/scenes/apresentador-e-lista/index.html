@@ -18,6 +18,7 @@ main { color: #f2f5fb; background: #111318; }
 .row.active .index { color: #14243a; border-color: #d2e6ff; background: #b8d7ff; }
 .row.active .item { color: #f9fbff; }
 </style>
+<link rel="stylesheet" href="cards.css">
 </head>
 <body>
 <main data-composition-id="apresentador-e-lista" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
@@ -67,6 +68,70 @@ window.renderMotion = time => {
   });
 };
 window.renderMotion(0);
+
+
+const editorialItems = Array.isArray(inputs.items) ? inputs.items.map((item, i) => ({
+  item: typeof item === "string" ? { title: item } : item,
+  portrait: inputs.portraits?.[i]
+})).filter(({ item }) => typeof item?.title === "string" && item.title.trim()).slice(0, 6) : [];
+if (editorialItems.length && (editorialItems.length !== 5 || inputs.items.some(item => typeof item !== "string") || inputs.portraits?.length || inputs.accent)) {
+  stage.classList.add("profile-list");
+  if (CSS.supports("color", inputs.accent ?? "")) stage.style.setProperty("--card-accent", inputs.accent);
+  const profileKicker = document.createElement("p");
+  profileKicker.className = "profile-kicker";
+  profileKicker.textContent = "Em destaque";
+  headline.before(profileKicker);
+  headline.textContent = inputs.heading ?? "Conheça a equipe";
+  const compact = editorialItems.length > 4;
+  stage.style.setProperty("--card-height", (compact ? 88 : 111) + "px");
+  items.replaceChildren();
+  const profileRows = editorialItems.map(({ item, portrait }, i) => {
+    const row = document.createElement("div");
+    row.className = "row";
+    row.innerHTML = '<span class="badge"></span><div class="identity"><span class="item"></span><span class="subline"></span></div><small class="ordinal"></small>';
+    const badge = row.querySelector(".badge");
+    if (portrait) {
+      const photo = document.createElement("img");
+      photo.src = portrait;
+      photo.alt = "";
+      badge.append(photo);
+    } else {
+      badge.innerHTML = iconFor(item.icon, i);
+    }
+    row.querySelector(".item").textContent = item.title;
+    row.querySelector(".subline").textContent = item.detail ?? "";
+    row.querySelector(".ordinal").textContent = String(i + 1).padStart(2, "0");
+    items.append(row);
+    return row;
+  });
+  window.renderMotion = time => {
+    const reframe = flow(phase(time, 0, .62));
+    if (camera) camera.style.transform = "translateX(" + (382 * reframe) + "px) scale(" + mix(1, 1.19, reframe) + ")";
+    one(".shade").style.opacity = reframe;
+    const head = beat(time, .28, .4);
+    set(headline, { opacity: head, transform: "translateY(" + (1 - head) * 21 + "px)" });
+    profileKicker.style.opacity = head;
+    profileRows.forEach((row, i) => {
+      const start = .75 + i * Math.min(.71, 3.5 / profileRows.length);
+      const p = spring(time, start, .48);
+      const active = time >= start && time < start + .7;
+      set(row, { opacity: clamp(p), transform: "translateX(" + (1 - p) * -31 + "px)" });
+      row.classList.toggle("active", active);
+    });
+  };
+  window.renderMotion(0);
+}
+function iconFor(name, index) {
+  const icons = [
+    ["spark", "M12 2v20M2 12h20M5 5l14 14m0-14L5 19"],
+    ["layers", "m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5m-18 4 9 5 9-5"],
+    ["code", "m8 6-6 6 6 6m8-12 6 6-6 6M14 4l-4 16"],
+    ["grid", "M3 3h7v7H3zm11 0h7v7h-7zM3 14h7v7H3zm11 0h7v7h-7z"],
+    ["people", "M4 21v-2a6 6 0 0 1 12 0v2m2-8a4 4 0 0 1 4 4v4M14 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM17 4a3 3 0 1 1 0 6"]
+  ];
+  const path = (icons.find(icon => icon[0] === name) ?? icons[index % icons.length])[1];
+  return '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="' + path + '" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+}
 </script>
 </body>
 </html>

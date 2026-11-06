@@ -1,0 +1,30 @@
+
+main.guided { color: #f7eeeb; background: radial-gradient(ellipse at 56% 75%,#462921,#1c171c 54%,#111015 85%); }
+.guided .guided-layout { position: absolute; inset: 98px 100px 104px; display: grid; grid-template-columns: 1360px 1fr; align-items: center; gap: 44px; }
+.guided .viewport {
+  width: 1360px; height: 825px; border-radius: 23px; background: #19171d;
+  border: 1px solid #be958068; box-shadow: 0 24px 75px #070509b0;
+  overflow: hidden; position: relative; isolation: isolate;
+}
+.guided .viewport > :is(img,video) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.guided .app { position: absolute; inset: 0; background: #1b1920; display: grid; grid-template-columns: 250px 1fr; color: #f5eded; }
+.guided .app[hidden] { display: none; }
+.guided .nav { background: #241e25; border-right: 1px solid #c4a19529; padding: 35px 23px; }
+.guided .nav b { display: flex; align-items: center; gap: 11px; margin: 0 0 45px 9px; font-size: 28px; font-weight: 660; }
+.guided .nav b i { display: block; width: 25px; height: 25px; border-radius: 7px; background: linear-gradient(150deg,#ffb187,#a04437); transform: rotate(-12deg); }
+.guided .nav p { color: #c9b9bf; padding: 13px 12px; font-size: 23px; margin: 8px 0; }
+.guided .nav .selected { background: #614034; color: #ffdfc5; border-radius: 10px; }
+.guided .content { padding: 39px 49px; }
+.guided .content header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; }
+.guided .content header h2 { font-size: 45px; letter-spacing: -.035em; font-weight: 630; }
+.guided .content header small { color: #efc1a7; font-size: 19px; border: 1px solid #d29c726a; padding: 8px 13px; border-radius: 9px; background: #5b372b; }
+.guided .settings { display: grid; gap: 15px; }
+.guided .settings article { height: 175px; padding: 22px 25px; border: 1px solid #c0a2b434; background: linear-gradient(142deg,#312a31,#28242c); border-radius: 13px; }
+.guided .settings h3 { font-size: 29px; margin: 0 0 8px; font-weight: 620; }
+.guided .settings p { font-size: 22px; color: #c7b6c1; margin-bottom: 15px; }
+.guided .chip { display: inline-block; font-size: 17px; color: #e5bba8; padding: 5px 13px; border-radius: 7px; border: 1px solid #c289774b; background: #372733; }
+.guided .target { position: absolute; border-radius: 13px; pointer-events: none; border: 3px solid var(--accent, #ffa568); }
+.guided .note { display: flex; flex-direction: column; align-items: flex-start; min-height: 211px; }
+.guided .note small { font-size: 19px; text-transform: uppercase; letter-spacing: .13em; color: #fcb694; }
+.guided .note .mark { width: 35px; height: 3px; background: #fca879; margin-top: 14px; margin-bottom: 18px; }
+.guided .note p { color: #fff1e8; font-size: 36px; font-weight: 630; line-height: 1.1; letter-spacing: -.023em; overflow-wrap: anywhere; }

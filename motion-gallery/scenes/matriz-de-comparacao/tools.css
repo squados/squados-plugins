@@ -1,0 +1,29 @@
+
+main.tools { background: radial-gradient(ellipse at 67% 83%,#42261f,#1a151c 53%,#100e13 85%); color: #fff1eb; }
+.tools .ledger { position: absolute; inset: 98px 144px 96px; }
+.tools .ledger-head { display: flex; align-items: flex-end; justify-content: space-between; margin: 0 10px 34px; }
+.tools .ledger-head small { display: block; font-size: 19px; color: #ffbc98; text-transform: uppercase; letter-spacing: .16em; margin-bottom: 8px; }
+.tools .ledger-head h1 { font-size: 76px; }
+.tools .price-head { padding-bottom: 5px; color: #e6bbae; font-size: 25px; }
+.tools .ledger-rows { display: grid; gap: 13px; }
+.tools .tool {
+  position: relative; min-height: var(--row-height, 180px);
+  display: grid; grid-template-columns: 288px minmax(0,1fr) auto; align-items: center; gap: 26px;
+  border: 1px solid #edaf8c66; border-radius: 19px; background: linear-gradient(138deg,#37292e,#211b23 65%,#24171e);
+  box-shadow: 0 16px 45px #0a060b84,inset 0 1px #ffd5bf29; overflow: hidden;
+  padding: 12px 26px 12px 12px; isolation: isolate;
+}
+.tools .tool::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(93deg,#a8512c4d,#ff895f12 57%,#d5773b56); opacity: var(--heat,0); }
+.tools .tool .screenart {
+  height: calc(var(--row-height, 180px) - 26px); min-height: 93px; width: 100%;
+  position: relative; background: #171420; border: 1px solid #b699ac4a; border-radius: 11px; overflow: hidden;
+}
+.tools .tool img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tools .screenart svg { display: block; width: 100%; height: 100%; }
+.tools .tool small { display: block; color: #e5af99; font-size: 17px; letter-spacing: .11em; text-transform: uppercase; }
+.tools .tool h2 { font-size: 43px; line-height: 1.03; margin-top: 4px; font-weight: 630; letter-spacing: -.04em; }
+.tools .tool p { color: #d3bfc7; font-size: 24px; margin-top: 8px; line-height: 1.06; }
+.tools .tool .price { color: #ffddc7; font-size: 42px; font-weight: 690; letter-spacing: -.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tools .tool .price.replaced { color: #b4eed0; }
+.tools .tool .price del { font-size: 24px; color: #e1b0a0; margin-right: 14px; }
+.tools .tool h2,.tools .tool p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }

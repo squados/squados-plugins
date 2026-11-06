@@ -1,0 +1,131 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Baralho de Bônus</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/amber.css">
+<style>
+main.amber { background: radial-gradient(ellipse at 66% 68%, #421711, #170e12 48%, #0c0a0e 82%); }
+.header { position: absolute; left: 0; right: 0; top: 104px; text-align: center; }
+.header .kicker { justify-content: center; }
+.header h1 { font-size: 82px; margin-top: 15px; }
+.deck { position: absolute; left: 960px; top: 535px; width: 1px; height: 1px; perspective: 1200px; }
+.card {
+  position: absolute; top: -160px; left: -144px; width: 288px; height: 320px; border-radius: 25px;
+  overflow: hidden; isolation: isolate; border: 1px solid #f1a98277;
+  background: radial-gradient(ellipse at 4% 3%,#884733,#362021 47%,#180f17 90%);
+  box-shadow: 0 18px 52px #08040c9e,inset 0 2px 1px #f9b78d45;
+}
+.card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  opacity: var(--light,0);
+  background: radial-gradient(ellipse at 10% -8%, #ffae70, #9e3e22 44%, #3b171a 86%);
+}
+.card::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .29;
+  background: repeating-linear-gradient(125deg,transparent 0 11px,#ffb98c28 12px 13px,transparent 14px 23px);
+  mask-image: radial-gradient(ellipse at 98% 91%,#000,transparent 67%);
+}
+.badge { position: absolute; left: 22px; top: 23px; display: grid; place-items: center; width: 57px; height: 57px; border-radius: 13px; background: #1f1018dd; border: 1px solid #ffbd8f65; color: #ffe0c5; box-shadow: 0 0 25px #ff80564f; }
+.badge svg { position: absolute; width: 29px; height: 29px; }
+.card small { position: absolute; right: 22px; top: 31px; color: #f1b397; font-size: 14px; letter-spacing: .15em; text-transform: uppercase; }
+.card .diagram { position: absolute; inset: 87px 23px 76px; width: 240px; height: 140px; opacity: .56; }
+.card .number { position: absolute; right: 26px; bottom: 61px; color: #ffeadd; font-size: 79px; font-weight: 300; letter-spacing: -.08em; line-height: .9; font-variant-numeric: tabular-nums; }
+.card .caption { position: absolute; left: 20px; right: 20px; bottom: 17px; border-top: 1px solid #ffd4b65c; padding-top: 9px; font-size: 17px; color: #ffebdc; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.detail { position: absolute; left: 1088px; top: 390px; width: 570px; }
+.detail h2 { font-size: 76px; margin: 16px 0; max-width: 8em; }
+.detail p { color: #e6c7b5; font-size: 31px; line-height: 1.24; max-width: 480px; }
+.live { display: inline-flex; align-items: center; gap: 10px; margin-top: 27px; padding: 8px 14px; border: 1px solid #ffb38080; border-radius: 20px; color: #ffe2cb; background: #4e1e20; font-size: 19px; }
+.live i { width: 9px; height: 9px; border-radius: 50%; background: #ffb181; box-shadow: 0 0 12px #ff874c; }
+.flash { position: absolute; left: 704px; top: 533px; width: 720px; height: 720px; transform: translate(-50%,-50%); pointer-events: none; }
+.flash i { position: absolute; inset: 0; border-radius: 50%; border: 2px solid #ffcb9b; box-shadow: 0 0 24px #ff8a45,inset 0 0 24px #ff8a45; }
+</style>
+</head>
+<body>
+<main class="amber" data-composition-id="baralho-de-bonus" data-start="0" data-duration="9" data-width="1920" data-height="1080">
+  <div class="aurora" aria-hidden="true"></div>
+  <header class="header"><div class="kicker"></div><h1 class="display"></h1></header>
+  <div class="deck"></div>
+  <div class="flash" aria-hidden="true"><i></i><i></i></div>
+  <section class="detail"><div class="kicker">Bônus revelado</div><h2 class="display"></h2><p></p><span class="live"><i></i><span>Disponível</span></span></section>
+  <template id="card">
+    <article class="card">
+      <span class="badge" aria-hidden="true">
+        <svg class="lock" viewBox="0 0 32 32"><path d="M10 14v-4a6 6 0 0 1 12 0v4m-6 6v4M8 14h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="check" viewBox="0 0 32 32"><path d="m7 16 6 6L25 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <small>Bônus</small>
+      <svg class="diagram" viewBox="0 0 240 140" fill="none" aria-hidden="true">
+        <path d="M4 106h225M4 73h225M4 40h225M49 14v111m42-111v111m43-111v111m43-111v111m42-111v111" stroke="#ffd0aa" opacity=".22"/>
+        <path d="M10 104c48 3 47-65 83-56 38 10 26 53 62 38 26-10 36-54 72-66" stroke="#ffd8b7" stroke-width="1.5"/>
+        <circle cx="93" cy="48" r="4" fill="#ffbc91"/><circle cx="155" cy="86" r="4" fill="#ffbc91"/>
+      </svg>
+      <b class="number"></b><p class="caption"></p>
+    </article>
+  </template>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".header h1", "title", "Bônus da formação");
+copy(".header .kicker", "eyebrow", "Benefícios extras");
+copy(".live span", "status", "Disponível");
+const defaults = [
+  { name: "Kit de automações", detail: "Fluxos editáveis para começar a automatizar o trabalho da sua equipe." },
+  { name: "Clínica de projetos", detail: "Sessões para desenvolver um projeto real." },
+  { name: "Modelos de agentes", detail: "Agentes editáveis para tarefas recorrentes." },
+  { name: "Biblioteca de prompts", detail: "Comandos organizados por tarefa." }
+];
+const supplied = Array.isArray(inputs.cards) ? inputs.cards.filter(card => typeof card?.name === "string" && card.name.trim()).slice(0, 5) : [];
+const data = supplied.length ? supplied : defaults;
+const active = Number.isInteger(inputs.activeCard) ? Math.max(0, Math.min(data.length - 1, inputs.activeCard)) : 0;
+const unlockAt = Number.isFinite(inputs.unlockAt) ? Math.min(6.7, Math.max(3.4, inputs.unlockAt)) : 4.53;
+one(".detail h2").textContent = data[active].name;
+one(".detail p").textContent = data[active].detail ?? "";
+const cards = data.map((card, i) => {
+  const node = one("#card").content.firstElementChild.cloneNode(true);
+  node.querySelector(".number").textContent = String(i + 1).padStart(2, "0");
+  node.querySelector(".caption").textContent = card.name;
+  one(".deck").append(node);
+  return { node, lock: node.querySelector(".lock"), check: node.querySelector(".check") };
+});
+window.renderMotion = time => {
+  const header = beat(time, .05, .52);
+  const gather = flow(phase(time, unlockAt - .85, .72));
+  const fanLight = .18 * Math.sin(Math.PI * phase(time, .96, 2.3));
+  const open = spring(time, unlockAt, .63);
+  const showDetail = beat(time, unlockAt + .35, .56);
+  set(one(".header"), { opacity: header, transform: "translateY(" + (1 - header) * 22 + "px)" });
+  one(".aurora").style.setProperty("--drift", 21 * time + "px");
+  cards.forEach(({ node, lock, check }, i) => {
+    const p = spring(time, .58 + i * .27, .61);
+    const spreadX = (i - (data.length - 1) / 2) * Math.min(248, 920 / data.length);
+    const spreadY = (i - (data.length - 1) / 2) * -54 + 85;
+    const picked = i === active;
+    const x = mix(spreadX, -256 + (i - active) * 34, gather) + (1 - p) * 92;
+    const y = mix(spreadY, picked ? 0 : 21, gather) + (1 - p) * 82;
+    const scale = mix(.72, 1.16, p) * mix(1, picked ? 1 + .23 * open : .78, gather);
+    const rotation = mix((i - (data.length - 1) / 2) * 7, picked ? -3 * (1 - open) : 8, gather);
+    set(node, {
+      opacity: clamp(p) * (picked ? 1 : 1 - .62 * gather),
+      transform: "translate(" + x + "px," + y + "px) rotateY(" + mix(-13, 0, gather) + "deg) rotate(" + rotation + "deg) scale(" + scale + ")",
+      zIndex: picked && time >= unlockAt - .78 ? "20" : String(data.length - i)
+    });
+    const glow = picked ? clamp(open) : 0;
+    node.style.setProperty("--light", glow || fanLight * clamp(p));
+    node.style.borderColor = picked && glow > 0 ? "rgb(255 191 138 / " + mix(.45, .94, glow) + ")" : "";
+    node.style.boxShadow = picked && glow > 0 ? "0 20px 61px #08040baa, 0 0 " + mix(0, 41, glow) + "px #ff74496d,inset 0 2px #ffddac65" : "";
+    set(lock, { opacity: 1 - glow, transform: "scale(" + mix(1, .5, glow) + ")" });
+    set(check, { opacity: glow, transform: "scale(" + mix(.6, 1, open) + ")" });
+  });
+  set(one(".detail"), { opacity: showDetail, transform: "translateX(" + (1 - showDetail) * 26 + "px)" });
+  all(".flash i").forEach((ring, i) => {
+    const p = phase(time, unlockAt + i * .13, .74);
+    set(ring, { opacity: .6 * Math.sin(Math.PI * p) * (1 - p), transform: "scale(" + mix(.23, .89, ease(p)) + ")" });
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

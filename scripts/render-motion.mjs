@@ -59,26 +59,39 @@ function render(entry) {
     const project = join(temp, 'scene')
     cpSync(dirname(join(gallery, entry.demo.composition)), project, { recursive: true })
     const inputs = { ...entry.demo.previewInputs, ...rawInputs }
-    for (const [name, type] of Object.entries(entry.demo.inputs)) {
-      if (!['media', 'image'].includes(type) || !Object.hasOwn(inputs, name)) continue
-      if (typeof inputs[name] !== 'string' || !inputs[name].trim()) throw Error('Informe um arquivo para ' + name + '.')
-      const file = resolve(dirname(resolve(values.inputs)), inputs[name])
+    const inputDirectory = values.inputs ? dirname(resolve(values.inputs)) : dirname(join(gallery, entry.demo.composition))
+    const stageMedia = (value, name, videoAllowed) => {
+      if (typeof value !== 'string' || !value.trim()) throw Error('Informe um arquivo para ' + name + '.')
+      const file = resolve(inputDirectory, value)
       const extension = extname(file).toLowerCase()
       const images = ['.png', '.jpg', '.jpeg', '.webp', '.svg', '.avif']
       const videos = ['.mp4', '.mov', '.m4v', '.webm']
-      if (!(images.includes(extension) || (type === 'media' && videos.includes(extension))) || !statSync(file).isFile()) {
+      if (!(images.includes(extension) || (videoAllowed && videos.includes(extension))) || !statSync(file).isFile()) {
         throw Error('Formato de mídia inválido para ' + name + '.')
       }
       const staged = 'input-' + name + extension
       cpSync(file, join(project, staged))
-      inputs[name] = staged
+      return staged
+    }
+    for (const [name, type] of Object.entries(entry.demo.inputs)) {
+      if (!Object.hasOwn(inputs, name)) continue
+      if (type === 'images') {
+        if (!Array.isArray(inputs[name])) throw Error('Informe uma lista de imagens para ' + name + '.')
+        inputs[name] = inputs[name].map((value, index) => value == null ? null : stageMedia(value, name + '-' + index, false))
+      } else if (type === 'media' || type === 'image') {
+        inputs[name] = stageMedia(inputs[name], name, type === 'media')
+      }
     }
 
     const entryPath = join(project, 'index.html')
     let source = readFileSync(entryPath, 'utf8').replace(
-      /<!-- motion-media:([a-z]+):([\d.]+):([\d.]+):([\d]+) -->/g,
-      (_marker, name, start, duration, track) => {
+      /<!-- motion-media:([a-z]+):([\d.]+):([\d.]+):([\d]+)(?::([a-zA-Z]+))? -->/g,
+      (_marker, name, defaultStart, defaultDuration, track, startInput) => {
         if (!inputs[name]) return ''
+        const end = Number(defaultStart) + Number(defaultDuration)
+        const requested = inputs[startInput]
+        const start = Number.isFinite(requested) ? Math.max(0, Math.min(end - .1, requested)) : Number(defaultStart)
+        const duration = end - start
         const attrs = `id="motion-media-${name}" src="${inputs[name]}"`
         return /\.(mp4|mov|m4v|webm)$/i.test(inputs[name])
           ? `<video ${attrs} class="clip" data-start="${start}" data-duration="${duration}" data-track-index="${track}" data-volume="0" muted playsinline></video>`

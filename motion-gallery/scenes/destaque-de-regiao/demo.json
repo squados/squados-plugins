@@ -1,0 +1,28 @@
+{
+  "cues": [
+    {
+      "at": 0.72,
+      "x": 21.8,
+      "y": 14.2,
+      "width": 74.8,
+      "height": 21.2,
+      "label": "Contexto da tarefa"
+    },
+    {
+      "at": 3.08,
+      "x": 21.8,
+      "y": 37.1,
+      "width": 74.8,
+      "height": 21.2,
+      "label": "Preferências da equipe"
+    },
+    {
+      "at": 5.44,
+      "x": 21.8,
+      "y": 60.1,
+      "width": 74.8,
+      "height": 21.2,
+      "label": "Histórico de decisões"
+    }
+  ]
+}

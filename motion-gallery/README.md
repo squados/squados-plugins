@@ -4,7 +4,7 @@ Abra [index.html](index.html) no navegador. Busque pelo nome, alias, coleção o
 ID do efeito. **Ver prévia na Skillry** abre a página do efeito no catálogo
 oficial. **Ver prompt** mostra um pedido que você pode usar numa edição.
 A galeria funciona por arquivo local e abre em **Seleção principal**, com
-50 efeitos próprios em seis categorias. Use o filtro para consultar os 30
+50 efeitos próprios em seis categorias. Use o filtro para consultar os 34
 vídeos do **Acervo complementar** e as 271 entradas em **Referências da Skillry**.
 A busca respeita o filtro ativo. Os vídeos próprios são lidos de `previews/`. A categoria **Edição comparada**
 reúne as sete cenas do [comparativo de edições](comparativo-de-edicoes.md).
@@ -88,6 +88,26 @@ ficam em `previews/` no checkout local.
 Ao editar o catálogo, atualize o HTML com `node scripts/build-motion-gallery.mjs`
 a partir da raiz. Valide com `node scripts/build-motion-gallery.mjs --check` e
 `node --test tests/motion-gallery.test.mjs`.
+
+## Demonstrações e oferta
+
+As composições abaixo usam as mecânicas de apresentação e oferta observadas na
+Anti-Black Friday da Adapta, com dados e imagens de exemplo próprios. As amostras
+de conteúdo e os preços são ilustrativos. Troque o conteúdo pelo da sua edição.
+
+| Motion | Entradas e uso |
+| --- | --- |
+| [Prompt e Resultado](index.html#prompt-e-resultado) | Informe `prompt`, `screen` com a captura real, `outputTitle` e até cinco `steps`. `revealAt` marca em segundos quando o screencast começa. A cena dura 8,6 s e começa o vídeo da captura no seu primeiro quadro. |
+| [Oferta em Camadas](index.html#oferta-em-camadas) | Informe `title`, `subtitle`, `cover` opcional e até seis `items` com `name`, `detail`, `value` numérico e `icon` opcional. `referencePrice` usa a soma dos itens por padrão. Informe `finalPrice`, `finalLabel` e `currency` como BRL. |
+| [CTA Expansível](index.html#cta-expansivel) | Edite `label`, `expandAt`, `hold` e `position` com `x` e `y` em porcentagem. A cena dura 8 s. Para usar sobre seu take, exporte em MOV com `transparent: true` e omita `presenter`. [Amostra](scenes/cta-expansivel/demo.json) |
+| [Baralho de Bônus](index.html#baralho-de-bonus) | Informe até cinco `cards` com `name` e `detail`. Escolha a carta pelo índice `activeCard`, a partir de zero, e alinhe `unlockAt` à fala. |
+| [Destaque de Região](index.html#destaque-de-regiao) | Passe `screen` e `cues` com `at` em segundos, `x`, `y`, `width`, `height` em porcentagem da captura e `label`. A opção `dimOutside` vai de 0 a 1. O destaque estático usa `documentImage` e `region`. [Amostra](scenes/destaque-de-regiao/demo.json) |
+| [Matriz de Comparação](index.html#matriz-de-comparacao) | A variante de ferramentas recebe até cinco `tools` com `name`, `category`, `detail`, `price` e `replacement` opcional. Passe capturas em `screens`, na ordem das linhas, com `null` para pular um slot. A matriz em colunas aceita `options` e `rows`. [Amostra](scenes/matriz-de-comparacao/demo.json) |
+| [Apresentador e Lista](index.html#apresentador-e-lista) | Use `presenter`, `heading` e de um a seis `items` com `title`, `detail` e `icon` opcional. Para retratos, passe `portraits` na mesma ordem e use `null` nos slots sem foto. A lista de cinco textos continua disponível. [Amostra](scenes/apresentador-e-lista/demo.json) |
+
+Os exemplos de comparação e demonstração se apoiam nas referências
+[One Query Multiple Screens](https://skillry.dev/skills/bs-creatormotion-comparison-query-screens)
+e [Row Focus Cards](https://skillry.dev/skills/bs-creatormotion-comparison-row-focus-cards).
 
 ## Hospedagem no GitHub
 

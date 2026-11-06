@@ -1,0 +1,25 @@
+{
+  "heading": "Uma ferramenta por etapa",
+  "priceHeading": "Valores ilustrativos",
+  "tools": [
+    {
+      "name": "Gestão de projetos",
+      "detail": "Organiza tarefas, responsáveis e prazos",
+      "category": "Planejamento",
+      "price": 149
+    },
+    {
+      "name": "Revisão de conteúdo",
+      "detail": "Consolida comentários e aprovações",
+      "category": "Produção",
+      "price": 219
+    },
+    {
+      "name": "Relatório de desempenho",
+      "detail": "Reúne métricas num único painel",
+      "category": "Análise",
+      "price": 179,
+      "replacement": "Incluso"
+    }
+  ]
+}

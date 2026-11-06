@@ -1,0 +1,26 @@
+{
+  "presenter": "../motion-assets/duelo-apresentador.webp",
+  "heading": "Da ideia à execução",
+  "items": [
+    {
+      "title": "Estratégia",
+      "detail": "Define a direção do projeto",
+      "icon": "spark"
+    },
+    {
+      "title": "Pesquisa",
+      "detail": "Organiza fontes e exemplos",
+      "icon": "layers"
+    },
+    {
+      "title": "Implementação",
+      "detail": "Transforma o plano em fluxo",
+      "icon": "code"
+    },
+    {
+      "title": "Revisão",
+      "detail": "Confere o resultado em uso",
+      "icon": "people"
+    }
+  ]
+}

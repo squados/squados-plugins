@@ -21,6 +21,7 @@ main::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: 
 .value { padding-right: 15px; font-size: 49px; font-weight: 475; line-height: 1.08; }
 .row span, .option { will-change: opacity, transform; }
 </style>
+<link rel="stylesheet" href="tools.css">
 </head>
 <body>
 <main data-composition-id="matriz-de-comparacao" data-start="0" data-duration="10" data-width="1920" data-height="1080">
@@ -76,6 +77,83 @@ window.renderMotion = time => {
   });
 };
 window.renderMotion(0);
+
+
+if (Array.isArray(inputs.tools) && inputs.tools.length) {
+  const supplied = inputs.tools.map((item, i) => ({ item, screen: inputs.screens?.[i] })).filter(({ item }) =>
+    typeof item?.name === "string" && item.name.trim()
+  ).slice(0, 5);
+  if (supplied.length) showTools(supplied);
+}
+function showTools(tools) {
+  stage.classList.add("tools");
+  stage.innerHTML = `
+    <section class="ledger">
+      <header class="ledger-head"><div><small>Comparação de ferramentas</small><h1 class="display"></h1></div><p class="price-head"></p></header>
+      <div class="ledger-rows"></div>
+    </section>`;
+  copy(".ledger-head h1", "heading", "Uma ferramenta por etapa");
+  copy(".price-head", "priceHeading", "Investimento mensal");
+  one(".ledger").style.setProperty("--row-height", (tools.length > 3 ? 129 : 174) + "px");
+  const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+  const wholeMoney = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+  const priceText = value => Number.isFinite(value) ? (Number.isInteger(value) ? wholeMoney : money).format(value) : value ?? "—";
+  const rows = tools.map(({ item, screen }, i) => {
+    const row = document.createElement("article");
+    row.className = "tool";
+    row.innerHTML = '<div class="screenart"></div><div><small></small><h2></h2><p></p></div><div class="price"><del></del><span></span></div>';
+    const art = row.querySelector(".screenart");
+    if (screen) {
+      const image = document.createElement("img");
+      image.src = screen;
+      image.alt = "";
+      art.append(image);
+    } else {
+      art.innerHTML = toolDiagram(i);
+    }
+    row.querySelector("small").textContent = String(i + 1).padStart(2, "0") + " / " + (item.category ?? "Ferramenta");
+    row.querySelector("h2").textContent = item.name;
+    row.querySelector("p").textContent = item.detail ?? "";
+    one(".ledger-rows").append(row);
+    return { row, current: row.querySelector(".price span"), prior: row.querySelector(".price del") };
+  });
+  window.renderMotion = time => {
+    const heading = beat(time, .07, .49);
+    set(one(".ledger-head"), { opacity: heading, transform: "translateY(" + (1 - heading) * 28 + "px)" });
+    rows.forEach(({ row, current, prior }, i) => {
+      const start = .76 + i * .57;
+      const activeAt = 3.33 + i * Math.min(.82, 3 / rows.length);
+      const show = spring(time, start, .52);
+      const focus = beat(time, activeAt, .25) * (1 - flow(phase(time, activeAt + .58, .45)));
+      const reveal = beat(time, activeAt + .11, .39);
+      const change = beat(time, 7.63 + i * .18, .38);
+      const { item } = tools[i];
+      const replaced = item.replacement != null && change > .42;
+      prior.textContent = replaced ? priceText(item.price) : "";
+      current.textContent = priceText(replaced ? item.replacement : item.price);
+      current.parentElement.classList.toggle("replaced", replaced);
+      row.style.setProperty("--heat", .14 + .86 * focus);
+      set(row, { opacity: clamp(show), transform: "translateY(" + (1 - show) * 35 + "px) translateX(" + -9 * focus + "px)" });
+      set(current.parentElement, { opacity: reveal, transform: "translateX(" + (1 - reveal) * 14 + "px)" });
+    });
+  };
+  window.renderMotion(0);
+}
+function toolDiagram(index) {
+  const colors = ["#ba9af1", "#efa27c", "#91d3bc"];
+  const color = colors[index % colors.length];
+  const bars = [18, 38, 29, 56, 47, 68, 61, 78].map((height, i) =>
+    '<rect x="' + (94 + i * 19) + '" y="' + (106 - height) + '" width="11" height="' + height + '" rx="2" fill="' + color + '" opacity="' + (.36 + i * .07) + '"/>'
+  ).join("");
+  const blocks = [29, 50, 39, 61, 46].map((width, i) =>
+    '<rect x="15" y="' + (33 + i * 13) + '" width="' + width + '" height="5" rx="2" fill="#d4c1d1" opacity="' + (.63 - i * .06) + '"/>'
+  ).join("");
+  return '<svg viewBox="0 0 284 132" role="img" aria-label="Interface ilustrativa">' +
+    '<rect width="284" height="132" rx="10" fill="#1d1824"/><path d="M0 23h284M81 23v109" stroke="#716070" opacity=".65"/>' +
+    '<circle cx="13" cy="12" r="3" fill="' + color + '"/><path d="M24 12h36M225 12h44" stroke="#ad9bae" stroke-width="3" stroke-linecap="round"/>' +
+    '<path d="M92 106h165M92 80h165M92 54h165" stroke="#b998b233"/>' +
+    blocks + bars + '<path d="M99 72l21 9 21-17 19 4 22-20 22 5 17-21 20 2" fill="none" stroke="#ffccaf" stroke-width="1.6" opacity=".85"/></svg>';
+}
 </script>
 </body>
 </html>

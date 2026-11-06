@@ -1,0 +1,173 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Oferta em Camadas</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/amber.css">
+<style>
+.layout {
+  position: absolute; inset: 112px 128px 121px;
+  display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: center;
+}
+.hero { min-width: 0; }
+.hero h1 { font-size: 91px; max-width: 9em; margin: 22px 0 20px; text-wrap: balance; }
+.hero p { color: #dcc4b9; font-size: 31px; max-width: 470px; line-height: 1.23; }
+.visual { position: relative; width: 100%; height: 304px; margin-top: 48px; perspective: 1400px; }
+.visual img {
+  position: absolute; width: 93%; height: 100%; inset: 0; object-fit: contain; object-position: left center;
+  filter: drop-shadow(0 20px 32px #050305b0);
+}
+.visual:has(img) .slab { display: none; }
+.slab {
+  position: absolute; width: 418px; height: 230px; left: 54px; top: 28px; border-radius: 23px;
+  padding: 27px; border: 1px solid #ffbb8880; isolation: isolate;
+  background: linear-gradient(140deg,#653223,#281618 65%,#160d13);
+  box-shadow: 0 23px 54px #080305bf, inset 0 2px #ffbf8b32; overflow: hidden;
+}
+.slab:nth-child(1) { transform: translate(105px,-22px) rotate(14deg) scale(.91); opacity: .52; }
+.slab:nth-child(2) { transform: translate(55px,1px) rotate(6deg) scale(.97); opacity: .83; }
+.slab:nth-child(3) { transform: translate(0,21px) rotate(-7deg); }
+.slab::after {
+  content: ""; position: absolute; z-index: -1; inset: 0;
+  background: repeating-radial-gradient(ellipse at 90% 105%,#ffb07585 0 1px,transparent 2px 12px);
+  mask-image: linear-gradient(125deg,transparent 28%,#000);
+}
+.slab small { color: #ffb890; font-size: 17px; letter-spacing: .16em; text-transform: uppercase; }
+.slab strong { display: block; width: 5em; margin-top: 43px; font-size: 44px; letter-spacing: -.04em; line-height: .93; }
+.receipt {
+  padding: 25px 26px 24px; border-radius: 29px;
+  border: 1px solid #ffbe895b; background: linear-gradient(150deg,#291719ed,#100d12ec);
+  box-shadow: 0 30px 85px #070408a6, inset 0 1px #ffd1a635; overflow: hidden;
+}
+.receipt-head { display: flex; justify-content: space-between; margin: 0 7px 17px; align-items: baseline; }
+.receipt-head span { color: #ffe9db; font-size: 27px; font-weight: 600; }
+.receipt-head small { color: #c7a69b; font-size: 20px; letter-spacing: .10em; text-transform: uppercase; }
+.items { display: grid; gap: 9px; }
+.item {
+  min-height: 84px; display: grid; grid-template-columns: 56px minmax(0,1fr) auto; gap: 15px; align-items: center;
+  padding: 10px 18px 10px 11px; border-radius: 15px; border: 1px solid #fff4e7;
+  background: linear-gradient(147deg,#fff6ed,#eee1d8); color: #261920;
+  box-shadow: 0 6px 18px #0b050875, inset 0 1px 2px #fff;
+}
+.item-icon {
+  display: grid; place-items: center; width: 53px; height: 53px; border-radius: 10px;
+  background: radial-gradient(ellipse at 100% 110%, #ef7950, #5d231f 50%, #1b1014);
+  color: #fff2de; font-size: 21px; font-variant-numeric: tabular-nums; border: 1px solid #9e5c43;
+}
+.item-name { font-size: 28px; font-weight: 660; line-height: 1.06; overflow-wrap: anywhere; }
+.item-detail { font-size: 18px; color: #6b4d49; line-height: 1.08; margin-top: 4px; }
+.item-value { color: #913b2d; font-size: 25px; font-weight: 690; font-variant-numeric: tabular-nums; }
+.total {
+  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 22px;
+  min-height: 100px; margin-top: 16px; padding: 14px 20px; border-radius: 17px; isolation: isolate; overflow: hidden;
+  border: 1px solid #e0a18b63; background: linear-gradient(152deg,#443032,#1f171b);
+}
+.total::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(108deg,transparent 37%,#ffd6b673 50%,transparent 59%); transform: translateX(var(--glint, -130%)); }
+.total::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: var(--final, 0);
+  background: linear-gradient(115deg,#82312c,#b8492e 62%,#ab532d 84%,#e79b60);
+}
+.total-label { color: #fff0e7; font-size: 26px; font-weight: 600; }
+.total-amount { position: relative; text-align: right; min-width: 7.6em; font-weight: 740; font-size: 56px; letter-spacing: -.045em; font-variant-numeric: tabular-nums; color: #fff9ef; }
+.strike { position: absolute; top: 51%; right: -3px; width: 82%; height: 4px; background: #ff997c; box-shadow: 0 0 9px #ff654c; transform-origin: left; }
+</style>
+</head>
+<body>
+<main class="amber" data-composition-id="oferta-em-camadas" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="layout">
+    <section class="hero">
+      <div class="kicker"></div>
+      <h1 class="display"></h1>
+      <p></p>
+      <div class="visual" aria-hidden="true">
+        <div class="slab"><small>Biblioteca</small><strong>Projetos e guias</strong></div>
+        <div class="slab"><small>Ferramentas</small><strong>Modelos prontos</strong></div>
+        <div class="slab"><small>Formação</small><strong>IA aplicada</strong></div>
+      </div>
+    </section>
+    <section class="receipt">
+      <header class="receipt-head"><span>O que você recebe</span><small>Itens do plano</small></header>
+      <div class="items"></div>
+      <div class="total"><span class="total-label">Valor total</span><div class="total-amount"><span class="amount"></span><span class="strike"></span></div></div>
+    </section>
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".hero h1", "title", "Formação em IA aplicada");
+copy(".hero .kicker", "eyebrow", "Plano completo");
+copy(".hero p", "subtitle", "Da primeira automação aos projetos que sua equipe usa todo dia.");
+if (inputs.cover) {
+  const art = document.createElement("img");
+  art.src = inputs.cover;
+  art.alt = "";
+  one(".visual").append(art);
+}
+const defaults = [
+  { name: "Formação prática", detail: "Aulas, exercícios e projetos guiados", value: 2400 },
+  { name: "Laboratório de agentes", detail: "Fluxos com memória e ferramentas", value: 1700 },
+  { name: "Biblioteca de modelos", detail: "Prompts e automações editáveis", value: 950 },
+  { name: "Clínica de projetos", detail: "Encontros de implementação", value: 1400 },
+  { name: "Comunidade de alunos", detail: "Discussão e troca de soluções", value: 750 }
+];
+const inputItems = Array.isArray(inputs.items) ? inputs.items.filter(item =>
+  typeof item?.name === "string" && item.name.trim() && Number.isFinite(item.value) && item.value >= 0
+).slice(0, 6) : [];
+const items = inputItems.length ? inputItems : defaults;
+const currency = /^[A-Z]{3}$/.test(inputs.currency ?? "") ? inputs.currency : "BRL";
+const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency });
+const wholeMoney = new Intl.NumberFormat("pt-BR", { style: "currency", currency, maximumFractionDigits: 0 });
+const format = amount => (Number.isInteger(amount) ? wholeMoney : money).format(amount);
+const itemsTotal = items.reduce((sum, item) => sum + item.value, 0);
+const reference = Number.isFinite(inputs.referencePrice) && inputs.referencePrice >= 0 ? inputs.referencePrice : itemsTotal;
+const finalPrice = Number.isFinite(inputs.finalPrice) && inputs.finalPrice >= 0 ? inputs.finalPrice : 1290;
+const total = one(".total");
+const label = one(".total-label");
+const amount = one(".amount");
+const strike = one(".strike");
+const rows = items.map((item, i) => {
+  const row = document.createElement("div");
+  row.className = "item";
+  row.innerHTML = '<span class="item-icon"></span><div><p class="item-name"></p><p class="item-detail"></p></div><span class="item-value"></span>';
+  row.querySelector(".item-icon").textContent = item.icon ?? String(i + 1).padStart(2, "0");
+  row.querySelector(".item-name").textContent = item.name;
+  row.querySelector(".item-detail").textContent = item.detail ?? "";
+  row.querySelector(".item-value").textContent = format(item.value);
+  one(".items").append(row);
+  return row;
+});
+window.renderMotion = time => {
+  const enter = beat(time, .06, .64);
+  const cover = spring(time, .39, .79);
+  const panel = beat(time, .31, .58);
+  set(one(".hero"), { opacity: enter, transform: "translateY(" + (1 - enter) * 29 + "px)" });
+  set(one(".visual"), { opacity: clamp(cover), transform: "translateY(" + (1 - cover) * 45 + "px) scale(" + mix(.89, 1, cover) + ")" });
+  set(one(".receipt"), { opacity: panel, transform: "translateX(" + (1 - panel) * 43 + "px)" });
+  one(".aurora").style.setProperty("--drift", 14 * time + "px");
+  let running = 0;
+  rows.forEach((row, i) => {
+    const start = 1.05 + i * .56;
+    const reveal = spring(time, start, .50);
+    set(row, { opacity: clamp(reveal), transform: "translateY(" + (1 - reveal) * 28 + "px)" });
+    running += items[i].value * beat(time, start, .43);
+  });
+  const rest = 1.05 + (rows.length - 1) * .56 + .48;
+  const reanchor = beat(time, rest + .23, .55);
+  const line = snap(time, 5.74, .38);
+  const turn = beat(time, 6.42, .58);
+  const pulse = Math.sin(Math.PI * phase(time, 6.42, .50));
+  const value = mix(mix(running, reference, reanchor), finalPrice, turn);
+  amount.textContent = format((turn > 0 && turn < 1) || (reanchor < 1 && time < rest) ? Math.round(value) : value);
+  total.style.setProperty("--glint", mix(-130, 130, flow(phase(time, 6.65, .85))) + "%");
+  label.textContent = time < 6.42 ? "Valor total" : inputs.finalLabel ?? "Preço do plano";
+  total.style.setProperty("--final", turn);
+  set(total, { opacity: beat(time, 1.05, .34), transform: "scale(" + (1 + .019 * pulse) + ")" });
+  set(strike, { opacity: 1 - turn, transform: "scaleX(" + line + ")" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>
