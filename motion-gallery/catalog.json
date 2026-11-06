@@ -5728,6 +5728,143 @@
           "cues": "array"
         }
       }
+    },
+    {
+      "id": "camera-vidro-leitoso",
+      "title": "Câmera com Moldura de Vidro Leitoso",
+      "category": "Apresentador",
+      "seconds": 4.2,
+      "prompt": "Use Câmera com Moldura de Vidro Leitoso neste trecho. Use a moldura do 0382. Aplique o crop quadrado, cantos de raio amplo, aro prateado translúcido e sombra. Coloque a câmera no canto que deixa a tela livre.",
+      "demo": {
+        "composition": "scenes/camera-vidro-leitoso/index.html",
+        "preview": "previews/camera-vidro-leitoso.mp4",
+        "inputs": {
+          "presenter": "media",
+          "screen": "media",
+          "side": "text"
+        }
+      }
+    },
+    {
+      "id": "clarao-curto",
+      "title": "Clarão Curto de Câmera",
+      "category": "Transições",
+      "seconds": 3.2,
+      "prompt": "Use Clarão Curto de Câmera neste trecho. Faça um pulso luminoso de poucos quadros sobre a troca de planos. Preserve a leitura do rosto ou do assunto durante a transição.",
+      "demo": {
+        "composition": "scenes/clarao-curto/index.html",
+        "preview": "previews/clarao-curto.mp4",
+        "inputs": {
+          "first": "media",
+          "second": "media",
+          "before": "text",
+          "after": "text",
+          "intensity": "number"
+        }
+      }
+    },
+    {
+      "id": "painel-de-vidro-revelado",
+      "title": "Painel de Vidro com Revelações",
+      "category": "Interfaces de produto",
+      "seconds": 5,
+      "prompt": "Use Painel de Vidro com Revelações neste trecho. Ancore um painel glass ao lado da câmera. Revele um cartão por vez no tempo da fala, mantendo os outros borrados até a deixa.",
+      "demo": {
+        "composition": "scenes/painel-de-vidro-revelado/index.html",
+        "preview": "previews/painel-de-vidro-revelado.mp4",
+        "inputs": {
+          "presenter": "media",
+          "title": "text",
+          "items": "array",
+          "reveals": "array"
+        }
+      }
+    },
+    {
+      "id": "tablet-em-perspectiva",
+      "title": "Tablet em Perspectiva",
+      "category": "Interfaces de produto",
+      "seconds": 4,
+      "prompt": "Use Tablet em Perspectiva neste trecho. Encaixe um vídeo 9:16 na tela de um tablet com profundidade. Anime a entrada e estabilize o ângulo para leitura.",
+      "demo": {
+        "composition": "scenes/tablet-em-perspectiva/index.html",
+        "preview": "previews/tablet-em-perspectiva.mp4",
+        "inputs": {
+          "media": "media",
+          "side": "text"
+        }
+      }
+    },
+    {
+      "id": "squados-em-volume",
+      "title": "Símbolo SquadOS em Volume",
+      "category": "Marcas e logotipos",
+      "seconds": 4,
+      "prompt": "Use Símbolo SquadOS em Volume neste trecho. Faça uma volta com a placa roxa e o símbolo oficial do SquadOS. Mantenha a face e a lateral reconhecíveis em perspectiva.",
+      "demo": {
+        "composition": "scenes/squados-em-volume/index.html",
+        "preview": "previews/squados-em-volume.mp4",
+        "inputs": {
+          "logo": "image"
+        }
+      }
+    },
+    {
+      "id": "claude-em-volume",
+      "title": "Símbolo Claude em Volume",
+      "category": "Marcas e logotipos",
+      "seconds": 4,
+      "prompt": "Use Símbolo Claude em Volume neste trecho. Gire o símbolo oficial do Claude em 3D, com espessura, face preservada e retorno frontal.",
+      "demo": {
+        "composition": "scenes/claude-em-volume/index.html",
+        "preview": "previews/claude-em-volume.mp4",
+        "inputs": {
+          "logo": "image"
+        }
+      }
+    },
+    {
+      "id": "clique-de-logo-3d",
+      "title": "Clique em Logotipo 3D",
+      "category": "Interações",
+      "seconds": 3.4,
+      "prompt": "Use Clique em Logotipo 3D neste trecho. Posicione o botão perto do gesto do apresentador. Comprima a placa e faça o halo se abrir na batida do clique.",
+      "demo": {
+        "composition": "scenes/clique-de-logo-3d/index.html",
+        "preview": "previews/clique-de-logo-3d.mp4",
+        "inputs": {
+          "logo": "image"
+        }
+      }
+    },
+    {
+      "id": "tres-cortes-em-sequencia",
+      "title": "Três Cortes em Sequência",
+      "category": "Interfaces de produto",
+      "seconds": 4.5,
+      "prompt": "Use Três Cortes em Sequência neste trecho. Isole três lacunas e feche uma por vez com aceleração curta. Troque a forma de onda ilustrativa pela medição do bruto se apresentar um corte como prova.",
+      "demo": {
+        "composition": "scenes/tres-cortes-em-sequencia/index.html",
+        "preview": "previews/tres-cortes-em-sequencia.mp4",
+        "inputs": {
+          "beats": "array"
+        }
+      }
+    },
+    {
+      "id": "escritorio-troca-de-equipe",
+      "title": "Escritório com Troca de Equipe",
+      "category": "Motion 3D",
+      "seconds": 7.5,
+      "prompt": "Use Escritório com Troca de Equipe neste trecho. Comece com a sala vazia. Faça cair as seis estações, sente as pessoas e troque cada personagem por um robô em uma batida separada.",
+      "demo": {
+        "composition": "scenes/escritorio-troca-de-equipe/index.html",
+        "preview": "previews/escritorio-troca-de-equipe.mp4",
+        "inputs": {
+          "atlas": "image",
+          "story": "object"
+        }
+      }
     }
   ],
   "core": [

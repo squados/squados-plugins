@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>Painel de Vidro com Revelações</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/edicao-reutilizavel.css">
+</head><body>
+<main data-variant="glass" data-composition-id="painel-de-vidro-revelado" data-start="0" data-duration="5" data-width="1920" data-height="1080"><div class="demo-screen"><!-- motion-media:presenter:0:5:0 --></div><div class="glass"><h1></h1></div></main>
+<script src="../motion-assets/edicao-reutilizavel.js"></script><script>
+for (const node of document.querySelectorAll('img,video')) {
+  node.style.position='absolute';node.style.inset='0';
+  if (node.parentElement.matches('.lens,.display,.demo-screen')) {
+    for (const child of node.parentElement.children) if(child!==node && !child.matches('video,img')) child.hidden=true;
+  }
+}
+</script>
+</body></html>

@@ -4,11 +4,14 @@ Abra [index.html](index.html) no navegador. Busque pelo nome, alias, coleção o
 ID do efeito. **Ver prévia na Skillry** abre a página do efeito no catálogo
 oficial. **Ver prompt** mostra um pedido que você pode usar numa edição.
 A galeria funciona por arquivo local e abre em **Seleção principal**, com
-50 efeitos próprios em seis categorias. Use o filtro para consultar os 18
+50 efeitos próprios em seis categorias. Use o filtro para consultar os 27
 vídeos do **Acervo complementar** e as 271 entradas em **Referências da Skillry**.
 A busca respeita o filtro ativo. Os vídeos próprios são lidos de `previews/`. A categoria **Edição comparada**
 reúne as sete cenas do [comparativo de edições](comparativo-de-edicoes.md).
 Abra pelo atalho no topo para ver os previews e os links de reutilização.
+O Acervo complementar inclui moldura de vidro leitoso, clarão de câmera,
+tablet em perspectiva, painel com três revelações, três cortes em sequência,
+escritório com troca de equipe, marcas em volume e clique de logo 3D.
 **Legenda de Palavra Ativa** e **Cena em Vidros** usam o take de boas-vindas
 de Renato que já faz parte dos previews locais da galeria.
 
