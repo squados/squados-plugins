@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Prova Social em Mural</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#251d2a; color:#fff4ed; }
+main::before { position:absolute; content:""; inset:0; z-index:-1; background:radial-gradient(ellipse at 68% 59%,#52354b,transparent 62%),radial-gradient(#e8a9d126 1px,transparent 1px) 0 0 / 22px 22px; }
+header { position:absolute; inset:85px 116px auto; border-top:1px solid #ffc9de5c; padding-top:22px; }
+.kicker { color:#fac1d5; font-size:22px; font-weight:650; letter-spacing:.16em; text-transform:uppercase; }
+h1 { margin-top:11px; font-size:81px; }
+.wall { position:absolute; inset:0; }
+.card { position:absolute; width:498px; height:280px; padding:25px 30px 23px; transform-origin:center; overflow:hidden; background:#f8e3df; border:1px solid #ffece9; color:#33213d; box-shadow:0 15px 45px #1a101b59; }
+.card:nth-child(even) { background:#ebdcef; border-color:#f8e9f9; }
+.card:nth-child(3n) { background:#f3dec9; border-color:#fff0e3; }
+.card::before { position:absolute; content:""; left:0; right:0; top:0; height:4px; background:#84537d; }
+.card .ref { display:block; font-size:18px; font-weight:650; color:#55334d; letter-spacing:.12em; }
+.card .text { margin-top:17px; font-size:31px; line-height:1.16; font-weight:600; letter-spacing:-.025em; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+.byline { position:absolute; left:30px; right:30px; bottom:23px; border-top:1px solid #573a6042; padding-top:8px; color:#553550; font-size:18px; display:flex; gap:10px; align-items:baseline; }
+.byline :is(strong,span) { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.byline strong { font-size:20px; font-weight:700; }
+.byline span { color:#55334d; }
+.card img { position:absolute; top:52px; right:23px; width:126px; height:129px; object-fit:cover; border:1px solid #623e604f; }
+.card:has(img) .text { max-width:300px; }
+.outline { position:absolute; left:1041px; top:337px; width:728px; height:421px; border:1px solid #ffd1df9c; }
+.outline::before { position:absolute; content:""; inset:-12px; border:1px dashed #ffd1df65; }
+.context { position:absolute; left:124px; top:285px; color:#f6d8e5; font-size:21px; letter-spacing:.13em; text-transform:uppercase; }
+.conclusion:empty { display:none; }
+.conclusion { position:absolute; left:1044px; right:153px; top:795px; padding-top:20px; border-top:1px solid #ffd1df65; color:#fce6ef; font-size:33px; line-height:1.18; }
+</style>
+</head>
+<body>
+<main data-composition-id="prova-social-em-mural" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <header><p class="kicker"></p><h1 class="display"></h1></header>
+  <p class="context">Outras evidências</p>
+  <div class="outline" aria-hidden="true"></div>
+  <div class="wall"></div>
+  <p class="conclusion"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const defaults = [
+  { author:"Lia Mendonça", role:"Edição", text:"Agora já chego na primeira revisão com todas as fontes organizadas." },
+  { author:"Caio Brito", role:"Roteiro", text:"O briefing passou a explicar o que a pessoa precisa entender em cada trecho." },
+  { author:"Dani Torres", role:"Produção", text:"Encontramos o take aprovado no mesmo lugar onde deixamos o contexto." },
+  { author:"Nina Reis", role:"Direção", text:"Dá para abrir um projeto antigo e entender como cada decisão foi tomada." },
+  { author:"Téo Paiva", role:"Design", text:"A revisão chega com um motivo e o trecho preciso a ajustar." },
+  { author:"Bia Costa", role:"Pesquisa", text:"Os exemplos ficaram ao lado do dado que cada um ajuda a explicar." },
+];
+const supplied = Array.isArray(inputs.cards) ? inputs.cards.map((card,i) => ({ card,i })).filter(({card}) =>
+  typeof card?.text === "string" && card.text.trim()).slice(0,6) : [];
+const items = supplied.length ? supplied : defaults.map((card,i) => ({card,i}));
+const selected = Number.isInteger(inputs.selected) ? Math.min(items.length-1,Math.max(0,inputs.selected)) : Math.min(2,items.length-1);
+const images = Array.isArray(inputs.images) ? inputs.images : [];
+copy("h1","title","O que mudou na prática");
+one(".kicker").textContent = supplied.length ? "Relatos e evidências" : "Depoimentos ilustrativos";
+copy(".conclusion","conclusion",supplied.length ? "" : "A equipe recupera a decisão junto com o material.");
+one(".context").textContent = items.length > 1 ? "Outras evidências" : "Evidência";
+const articles = items.map(({card,i:mediaIndex},i) => {
+  const element = document.createElement("article");
+  element.className = "card";
+  const ref = document.createElement("span");
+  ref.className = "ref";
+  ref.textContent = String(i+1).padStart(2,"0");
+  const text = document.createElement("p");
+  text.className = "text";
+  text.textContent = card.text;
+  const byline = document.createElement("p");
+  byline.className = "byline";
+  const name = document.createElement("strong");
+  name.textContent = typeof card.author === "string" ? card.author : "";
+  const role = document.createElement("span");
+  role.textContent = typeof card.role === "string" ? card.role : "";
+  byline.append(name,role);
+  element.append(ref,text,byline);
+  if (typeof images[mediaIndex] === "string" && images[mediaIndex]) {
+    const image = document.createElement("img");
+    image.src = images[mediaIndex];
+    image.alt = "";
+    element.append(image);
+  }
+  one(".wall").append(element);
+  return element;
+});
+const columns = Math.min(3,items.length);
+const singleRow = items.length <= columns;
+window.renderMotion = time => {
+  const intro = beat(time,.07,.49);
+  set(one("header"),{ opacity:intro, transform:"translateY(" + 24*(1-intro) + "px)" });
+  const focus = flow(phase(time,3.20,1.34));
+  const highlight = beat(time,4.34,.42);
+  one(".outline").style.opacity = highlight;
+  one(".context").style.opacity = items.length > 1 ? highlight : 0;
+  set(one(".conclusion"),{ opacity:beat(time,4.97,.64), transform:"translateY(" + 21*(1-highlight) + "px)" });
+  articles.forEach((article,i) => {
+    const start = .74+i*.23;
+    const enter = beat(time,start,.62);
+    const isSelected = i === selected;
+    const slot = i < selected ? i : i - 1;
+    const row = Math.floor(i/columns);
+    const rowSize = Math.min(columns,items.length-row*columns);
+    const fromX = 960 + (i%columns-(rowSize-1)/2)*530;
+    const fromY = singleRow ? 550 : 405+row*321;
+    const endX = isSelected ? 1405 : 258+(slot%2)*330;
+    const endY = isSelected ? 547 : 408+Math.floor(slot/2)*180;
+    const x = mix(fromX,endX,focus);
+    const y = mix(fromY+48*(1-enter),endY,focus);
+    const scale = mix(mix(.89,1,enter),isSelected ? 1.38 : .54,focus);
+    const turn = [1.7,-1,1.4,-1.2,1.3,-1.4][i] * (1-focus);
+    set(article,{
+      left:x+"px",top:y+"px",visibility:time < start ? "hidden" : "visible",
+      zIndex:isSelected?12:i+1,transform:"translate(-50%, -50%) rotate(" + turn + "deg) scale(" + scale + ")",
+    });
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

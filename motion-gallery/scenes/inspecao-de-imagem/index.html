@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Inspeção de Imagem</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#182329; color:#f7eacc; }
+.heading { position:absolute; top:90px; left:101px; width:469px; }
+.heading h1 { font-size:83px; line-height:.97; }
+.heading p { color:#b4c4c5; margin-top:24px; font-size:31px; max-width:440px; }
+.notes { position:absolute; top:680px; left:106px; width:419px; }
+.notes span { display:block; width:fit-content; border:1px solid #b68f5b; border-radius:7px; padding:8px 13px; color:#f6ce8c; font-size:25px; }
+.notes p { margin-top:17px; font-size:40px; line-height:1.12; min-height:90px; }
+.scope { position:absolute; left:595px; top:157px; width:1200px; height:766px; border:1px solid #a79979; box-shadow:0 20px 80px #0e1519a8; }
+.frame { position:absolute; inset:0; overflow:hidden; background:#304945; }
+.photo-source,.lens-image { display:block; position:absolute; top:0; left:0; }
+.photo-source { width:100%; height:100%; object-fit:cover; }
+.lens-image { background:url(placa.svg) center / cover no-repeat; }
+.scope .corner { position:absolute; z-index:3; width:28px; height:28px; border:2px solid #f6ce8c; }
+.scope .corner:nth-of-type(1) { top:-5px; left:-5px; border-right:0; border-bottom:0; }
+.scope .corner:nth-of-type(2) { top:-5px; right:-5px; border-left:0; border-bottom:0; }
+.scope .corner:nth-of-type(3) { bottom:-5px; right:-5px; border-left:0; border-top:0; }
+.scope .corner:nth-of-type(4) { bottom:-5px; left:-5px; border-right:0; border-top:0; }
+.lens { position:absolute; z-index:2; top:0; left:0; width:314px; height:314px; border-radius:50%; overflow:hidden; background:#31413d; outline:4px solid #ffdb99; box-shadow:0 0 0 8px #382e24a8,0 18px 42px #0a141a91; }
+.lens::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(#fbe3a740,#fbe3a740) center/27px 2px no-repeat,linear-gradient(#fbe3a740,#fbe3a740) center/2px 27px no-repeat; }
+.scan { position:absolute; inset:0; z-index:1; pointer-events:none; }
+.wash { position:absolute; top:0; bottom:0; left:0; background:repeating-linear-gradient(0deg,#f8ce821d 0 2px,transparent 2px 8px),#f8ce8215; }
+.beam { position:absolute; top:0; bottom:0; width:3px; background:#ffda93; box-shadow:0 0 19px 4px #f6bd6d88; }
+.marker { position:absolute; width:122px; height:80px; transform:translate(-50%, -50%); border:2px solid #ffdb99; border-radius:4px; box-shadow:0 0 0 1px #563a26; }
+.marker i { position:absolute; left:-2px; top:-29px; padding:3px 6px; background:#ffdb99; color:#2e302d; font-style:normal; font-size:20px; line-height:1; }
+.marker small { position:absolute; left:-2px; top:100%; margin-top:6px; width:max-content; max-width:220px; padding:6px 9px; background:#222a29; color:#fff2d8; border-left:2px solid #ffdb99; font-size:21px; line-height:1.13; }
+.marker.right-edge small { left:auto; right:-2px; }
+.marker.bottom-edge small { top:auto; bottom:100%; margin:0 0 7px; }
+.marker.bottom-edge i { top:100%; }
+.coordinates { position:absolute; top:950px; left:595px; right:125px; color:#a9bfbf; font-size:23px; display:flex; justify-content:space-between; font-variant-numeric:tabular-nums; }
+</style>
+</head>
+<body>
+<main data-composition-id="inspecao-de-imagem" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <header class="heading"><h1 class="display"></h1><p></p></header>
+  <div class="notes"><span></span><p></p></div>
+  <div class="scope">
+    <div class="frame">
+      <img class="photo-source" src="placa.svg" alt="">
+      <div class="lens"><div class="lens-image"></div></div>
+      <div class="scan"><div class="wash"></div><div class="beam"></div></div>
+    </div>
+    <i class="corner"></i><i class="corner"></i><i class="corner"></i><i class="corner"></i>
+  </div>
+  <div class="coordinates"><span>Área em análise</span><span></span></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy("h1", "title", "Leitura de detalhes");
+copy(".heading p", "caption", "Localize os pontos de interesse na imagem e confira a área ao redor.");
+const zoom = Number.isFinite(inputs.zoom) ? Math.max(1.3, Math.min(4, inputs.zoom)) : 2.2;
+const width = 1198;
+const height = 764;
+const radius = 157;
+const defaults = [{x:31,y:48,label:"Junção do conector"}, {x:63,y:52,label:"Gravação no módulo"}];
+const submitted = Array.isArray(inputs.points) ? inputs.points.filter(point => Number.isFinite(point?.x) && Number.isFinite(point?.y)).slice(0, 5) : [];
+const points = (submitted.length ? submitted : defaults).map(point => ({...point, x:clamp(point.x/100), y:clamp(point.y/100)}));
+const lens = one(".lens");
+const lensImage = one(".lens-image");
+const scan = one(".scan");
+const annotationsOnly = inputs.mode === "marcacoes";
+const scanOnly = inputs.mode === "varredura";
+const loupeOnly = inputs.mode === "lupa";
+const lensDuration = loupeOnly ? 5.2 : 2.42;
+const scanStart = scanOnly ? .65 : 4.54;
+const scanDuration = scanOnly ? 5.25 : 2.2;
+const tags = points.map((point, index) => {
+  const element = document.createElement("span");
+  element.className = "marker";
+  const number = document.createElement("i");
+  number.textContent = String(index + 1).padStart(2, "0");
+  element.append(number);
+  if (point.label) {
+    const label = document.createElement("small");
+    label.textContent = point.label;
+    element.append(label);
+  }
+  element.classList.toggle("right-edge", point.x > .76);
+  element.classList.toggle("bottom-edge", point.y > .84);
+  set(element, {left:`clamp(63px, ${point.x * 100}%, calc(100% - 63px))`, top:`clamp(72px, ${point.y * 100}%, calc(100% - 57px))`});
+  scan.append(element);
+  return element;
+});
+if (inputs.image) {
+  one(".photo-source").src = inputs.image;
+  lensImage.style.backgroundImage = `url("${new URL(inputs.image, document.baseURI).href}")`;
+}
+set(lensImage, {width:width * zoom + "px", height:height * zoom + "px"});
+const last = points.length - 1;
+const tag = one(".notes span");
+const note = one(".notes p");
+const status = one(".coordinates span:last-child");
+const zoomLabel = new Intl.NumberFormat("pt-BR", {maximumFractionDigits:1}).format(zoom) + "×";
+window.renderMotion = time => {
+  const arrive = flow(phase(time, .51, .45));
+  const depart = loupeOnly ? 0 : flow(phase(time, 3.65, .42));
+  const index = phase(time, 1.1, lensDuration) * last;
+  const from = points[Math.floor(index)];
+  const to = points[Math.min(last, Math.ceil(index))];
+  const fraction = flow(index % 1);
+  const x = Math.max(radius, Math.min(width - radius, mix(from.x, to.x, fraction) * width));
+  const y = Math.max(radius, Math.min(height - radius, mix(from.y, to.y, fraction) * height));
+  set(lens, {opacity:scanOnly || annotationsOnly ? 0 : arrive * (1 - depart), transform:`translate(${x-radius}px, ${y-radius}px) scale(${.78 + .22 * arrive})`});
+  lensImage.style.transform = `translate(${radius - x * zoom}px, ${radius - y * zoom}px)`;
+  const scanning = flow(phase(time, scanStart, scanDuration));
+  scan.style.opacity = annotationsOnly ? 1 : loupeOnly ? 0 : flow(phase(time, scanStart, .21));
+  one(".wash").style.width = (annotationsOnly ? 0 : scanning * 100) + "%";
+  set(one(".beam"), {left:scanning * 100 + "%", opacity:annotationsOnly ? 0 : 1 - flow(phase(time, scanStart + scanDuration, .43))});
+  tags.forEach((element, tagIndex) => {
+    element.style.opacity = annotationsOnly ? flow(phase(time, .65 + tagIndex * .82, .3)) : clamp((scanning - points[tagIndex].x) * 12 + (scanning === 1 ? 1 : 0));
+  });
+  const scanningNow = !loupeOnly && (scanOnly || time >= scanStart);
+  const countLabel = `${points.length} ${points.length === 1 ? "ponto marcado" : "pontos marcados"}`;
+  tag.textContent = annotationsOnly ? "Marcações" : scanningNow ? "Varredura" : "Lupa de detalhe";
+  note.textContent = annotationsOnly ? countLabel : scanningNow ? (scanning === 1 ? countLabel : "Marcação em andamento") : (points[Math.round(index)].label ?? "Detalhe selecionado");
+  status.textContent = annotationsOnly ? "Detalhes destacados" : scanningNow ? Math.round(scanning * 100) + "% da área" : "Ampliação " + zoomLabel;
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Troca de Visual</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#181d22; color:#f3f0e5; }
+header { position:absolute; top:75px; left:136px; }
+h1 { font-size:75px; }
+.canvas { position:absolute; top:185px; left:136px; width:1648px; height:721px; background:#2b353d; border:1px solid #515c64; }
+.surface { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; }
+.original { filter:brightness(.68) saturate(.73) hue-rotate(12deg); }
+.result { position:absolute; inset:0; overflow:hidden; }
+.altered { background:url(estacao.svg) center / cover no-repeat; }
+.handle { position:absolute; top:0; height:100%; width:3px; background:#ffee9f; box-shadow:0 0 0 1px #433b21, 0 0 26px #ffee9f66; transform:translateX(-50%); }
+.handle svg { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+.legend { position:absolute; top:928px; left:136px; right:136px; display:flex; justify-content:space-between; align-items:center; color:#e5e0cf; font-size:29px; }
+.legend p { display:flex; align-items:center; gap:15px; }
+.legend p::before { content:""; display:block; width:16px; height:16px; border:2px solid #ffee9f; border-radius:50%; }
+.legend p:last-child::before { border-color:#a7b4c2; background:#a7b4c2; }
+.ruler { position:absolute; top:989px; left:136px; right:136px; height:14px; border-top:1px solid #677580; background:repeating-linear-gradient(90deg,#677580 0 1px,transparent 1px 2%); }
+.ruler i { display:block; height:21px; width:3px; position:absolute; top:-5px; background:#ffee9f; }
+</style>
+</head>
+<body>
+<main data-composition-id="troca-de-visual" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <header><h1 class="display"></h1></header>
+  <div class="canvas">
+    <img class="surface original" src="estacao.svg" alt="">
+    <div class="result"><div class="surface altered"></div></div>
+    <div class="handle" aria-hidden="true">
+      <svg viewBox="0 0 86 86" width="86" height="86">
+        <circle cx="43" cy="43" r="37" fill="#1f2224" stroke="#ffee9f" stroke-width="3"/>
+        <path d="M34 34l-9 9 9 9m18-18 9 9-9 9" fill="none" stroke="#ffee9f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="legend"><p class="after-label"></p><p class="before-label"></p></div>
+  <div class="ruler" aria-hidden="true"><i></i></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy("h1", "title", "A luz muda a cena");
+copy(".after-label", "afterLabel", "Depois");
+copy(".before-label", "beforeLabel", "Antes");
+const original = one(".original");
+const altered = one(".altered");
+const filters = new Map([
+  ["luz", "brightness(1.44) contrast(1.08) saturate(1.24)"],
+  ["cor", "saturate(1.45) hue-rotate(-27deg) contrast(1.09)"],
+  ["contraste", "contrast(1.32) saturate(.89)"],
+  ["nenhum", "none"],
+]);
+if (inputs.before) {
+  original.src = inputs.before;
+  original.style.filter = "none";
+}
+const resultImage = inputs.after ?? inputs.before;
+if (resultImage) altered.style.backgroundImage = `url("${new URL(resultImage, document.baseURI).href}")`;
+const preset = inputs.preset ?? (inputs.before && !inputs.after ? "luz" : "nenhum");
+altered.style.filter = filters.get(preset) ?? "none";
+const result = one(".result");
+const handle = one(".handle");
+const tick = one(".ruler i");
+window.renderMotion = time => {
+  const sweep = flow(phase(time, 1.02, 2.68));
+  const returnToSplit = flow(phase(time, 5.15, 1.26));
+  const divider = 3.1 + 93.8 * sweep - 46.9 * returnToSplit;
+  result.style.clipPath = `inset(0 ${100-divider}% 0 0)`;
+  handle.style.left = divider + "%";
+  tick.style.left = divider + "%";
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

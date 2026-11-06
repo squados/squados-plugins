@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="766" viewBox="0 0 1200 766">
+  <defs>
+    <linearGradient id="board" x2="0" y2="1"><stop stop-color="#345e56"/><stop offset="1" stop-color="#233c40"/></linearGradient>
+    <linearGradient id="metal" x2="0" y2="1"><stop stop-color="#c7b887"/><stop offset="1" stop-color="#6f766b"/></linearGradient>
+    <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".7" fill="#a0bfab" opacity=".51"/></pattern>
+    <pattern id="pins" width="20" height="33" patternUnits="userSpaceOnUse"><rect x="4" width="8" height="32" rx="1.5" fill="url(#metal)"/></pattern>
+    <pattern id="sidepins" width="28" height="20" patternUnits="userSpaceOnUse"><rect y="4" width="28" height="8" rx="1.5" fill="url(#metal)"/></pattern>
+  </defs>
+  <path d="M0 0h1200v766H0z" fill="url(#board)"/>
+  <path d="M0 0h1200v766H0z" fill="url(#grid)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-30 670h238l126-126h124l174-174h187l84-85h307M-30 647h227l125-125h122l173-174h188l84-84h321M-30 625h216l124-124h119l175-175h186l86-85h334M-30 600h201l122-123h119l176-177h187l85-85h350M28 560h126l120-121h119l176-176h186l86-85h375M28 539h115l119-119h119l176-176h187l86-86h378M28 511h98l120-119h119l176-176h186l87-87h391M28 486h84l119-120h120l176-177h184l87-86h416" stroke="#b48d61" stroke-width="3" opacity=".64"/>
+    <path d="M0 266h214l111-112h231l96-94h336l63-63M0 239h202L313 128h231l95-94h335l41-38M0 214h191l111-111h230l94-92h332l11-13M0 285h235l111-112h230l95-93h336l83-81M596 790V601l38-37h136l43-43h131l120-120h136M622 790V616l39-38h119l43-43h129l121-120h127M648 790V630l39-38h101l44-44h127l123-122h130M676 790V644l39-38h80l45-45h127l124-124h116" stroke="#7fa689" stroke-width="2.5"/>
+  </g>
+  <g fill="#c3aa77" stroke="#263b3b" stroke-width="3">
+    <circle cx="31" cy="487" r="7"/><circle cx="31" cy="512" r="7"/><circle cx="31" cy="540" r="7"/><circle cx="31" cy="560" r="7"/>
+    <circle cx="206" cy="53" r="13"/><circle cx="238" cy="53" r="13"/><circle cx="270" cy="53" r="13"/>
+    <circle cx="1009" cy="679" r="14"/><circle cx="1053" cy="679" r="14"/><circle cx="1097" cy="679" r="14"/>
+    <circle cx="456" cy="658" r="11"/><circle cx="505" cy="630" r="10"/><circle cx="560" cy="577" r="10"/>
+  </g>
+  <path d="M255 298h202v128H255z" fill="#263b37" stroke="#bac5a1" stroke-width="2"/>
+  <path d="M273 304h166v116H273z" fill="#7f9381"/>
+  <path d="M276 321h164v21H276z" fill="#bac4a2"/><path d="M275 385h166v30H275z" fill="#52645d"/>
+  <g fill="#d3bb87"><rect x="287" y="339" width="12" height="48" rx="4"/><rect x="310" y="339" width="12" height="48" rx="4"/><rect x="333" y="339" width="12" height="48" rx="4"/><rect x="356" y="339" width="12" height="48" rx="4"/><rect x="379" y="339" width="12" height="48" rx="4"/><rect x="402" y="339" width="12" height="48" rx="4"/></g>
+  <path d="M237 283h54m-54 0v32m238-32h-54m54 0v32m-238 122h54m-54 0v-32m238 32h-54m54 0v-32" stroke="#d3d0b0" fill="none" stroke-width="3" opacity=".74"/>
+  <g transform="translate(600 277)">
+    <rect x="37" y="0" width="216" height="33" fill="url(#pins)"/><rect x="37" y="217" width="216" height="33" fill="url(#pins)"/>
+    <rect x="0" y="33" width="28" height="184" fill="url(#sidepins)"/><rect x="261" y="33" width="28" height="184" fill="url(#sidepins)"/>
+    <rect x="24" y="22" width="242" height="206" rx="11" fill="#15252a" stroke="#58685e" stroke-width="3"/>
+    <rect x="37" y="35" width="216" height="181" rx="8" fill="#263437" stroke="#41534c"/>
+    <circle cx="54" cy="52" r="6" fill="#ac9d80"/>
+    <path d="M75 147h140m-140 11h103m-103 11h118" stroke="#728583" stroke-width="3" opacity=".45"/>
+    <text x="76" y="116" fill="#a9b0a1" font-family="sans-serif" font-size="27" font-weight="700">TÁLUS</text>
+    <text x="76" y="137" fill="#83978f" font-family="monospace" font-size="11"> MÓDULO T17 • R04 </text>
+  </g>
+  <g fill="#a3bc9f" font-family="monospace" font-size="17" opacity=".83"><text x="241" y="269">J4</text><text x="693" y="568">U17</text><text x="1024" y="657">TP06</text><text x="31" y="726">PLACA DE CONTROLE</text></g>
+  <g fill="#668171" stroke="#213738" stroke-width="2"><circle cx="51" cy="52" r="29"/><circle cx="1149" cy="52" r="29"/><circle cx="51" cy="714" r="29"/><circle cx="1149" cy="714" r="29"/></g>
+  <g fill="#1d3033"><circle cx="51" cy="52" r="16"/><circle cx="1149" cy="52" r="16"/><circle cx="51" cy="714" r="16"/><circle cx="1149" cy="714" r="16"/></g>
+</svg>

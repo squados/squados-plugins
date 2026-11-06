@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Título Cinético</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color:#f6f0de; background:radial-gradient(ellipse at 65% 35%,#252942,#111220 64%); --accent:#f9b485; }
+.grid { position:absolute; inset:76px; border:1px solid #969bb34a; background:repeating-linear-gradient(90deg,transparent 0 146px,#73788e2a 146px 147px),repeating-linear-gradient(0deg,transparent 0 115px,#73788e28 115px 116px); mask-image:radial-gradient(ellipse,#0007,#000); }
+.tape { position:absolute; left:108px; right:108px; display:flex; justify-content:space-between; font:25px/1.1 ui-monospace,monospace; letter-spacing:.22em; text-transform:uppercase; }
+.top { top:108px; }.bottom { bottom:106px; }
+.signal { color:var(--accent); }
+.sweep { position:absolute; height:5px; top:83px; left:110px; right:110px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:.65; transform-origin:left; }
+.hero { position:absolute; inset:190px 126px 186px; display:grid; align-content:center; text-align:center; }
+.field { position:relative; min-height:392px; display:grid; place-items:center; font-size:204px; }
+.layer,.word { grid-area:1/1; display:block; font-weight:730; letter-spacing:-.071em; line-height:.9; text-wrap:balance; max-width:1580px; transform-origin:center; }
+.layer { color:transparent; -webkit-text-stroke:2px var(--accent); }
+.word { color:#fff4dd; }
+.words { grid-area:1/1; display:grid; place-items:center; overflow:hidden; padding:30px; mask-image:linear-gradient(transparent,#000 19% 81%,transparent); }
+.caption { margin-top:22px; font-size:31px; color:#d3d0de; letter-spacing:.03em; }
+.mark { position:absolute; top:50%; transform:translateY(-50%); color:var(--accent); font:39px ui-monospace,monospace; }
+.left { left:0; }.right { right:0; }
+</style></head><body>
+<main data-composition-id="titulo-cinetico" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+<div class="grid"></div><i class="sweep"></i>
+<div class="tape top"><span class="signal">● ABERTURA</span><span class="code">01 / IMPACTO</span></div>
+<div class="hero"><span class="mark left">[</span><span class="mark right">]</span><div class="field"><div class="words"></div></div><p class="caption"></p></div>
+<div class="tape bottom"><span>TIPOGRAFIA EM MOVIMENTO</span><span class="time"></span></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const mode = ['roll','glitch','stamp'].includes(inputs.mode) ? inputs.mode : 'echo';
+const words = Array.isArray(inputs.words) ? inputs.words.slice(0,5).map(String).filter(Boolean) : [];
+const title = String(inputs.title ?? (mode === 'roll' ? words.at(-1) ?? 'Em movimento.' : 'Mude o ritmo.'));
+const sequence = words.length > 1 ? words : ['Imagine.','Construa.',title];
+const titles = mode === 'roll' ? sequence : [title];
+const field = one('.field');
+const size = Math.min(200,Math.max(94,200 - Math.max(0,...titles.map(s => s.length-16))*5.6));
+field.style.fontSize = size+'px';
+stage.style.setProperty('--accent', /^#[a-f0-9]{6}$/i.test(inputs.accent) ? inputs.accent : '#f9b485');
+copy('.caption','caption','Uma nova maneira de contar a mesma história.');
+const make = (text, name) => {
+  const el = document.createElement('span');
+  el.className=name; el.textContent=text; one('.words').append(el); return el;
+};
+const layers = Array.from({length:mode === 'echo' ? 7 : mode === 'glitch' ? 3 : 0},()=>make(title,'layer'));
+const foreground = titles.map(text=>make(text,'word'));
+one('.code').textContent = ({echo:'01 / ECO',roll:'02 / ROTAÇÃO',glitch:'03 / SINAL',stamp:'04 / IMPACTO'})[mode];
+window.renderMotion = t => {
+  const arrival = snap(t,.42,.8), hold = beat(t,2.4,.76);
+  one('.sweep').style.transform = 'scaleX('+phase(t,0,6)+')';
+  one('.time').textContent = 'T+'+t.toFixed(2).padStart(5,'0');
+  set(one('.caption'),{ opacity:beat(t,2.5,.7),transform:'translateY('+mix(23,0,hold)+'px)' });
+  layers.forEach((node,i) => {
+    const a = beat(t,.32+i*.065,.6);
+    const b = flow(phase(t,1.02+i*.08,1.4));
+    const f = 1-b;
+    const offset = i - (layers.length-1)/2;
+    const jitter = mode === 'glitch' ? Math.sin(Math.floor(t*28)*6+i*2) : 1;
+    set(node,{opacity:a*f*(.26+i*.07),transform:'translate('+offset*34*f*jitter+'px,'+offset*49*f+'px) scale('+(1+f*.04*offset)+')',
+      clipPath:mode === 'glitch' ? 'inset('+(i*30)+'% 0 '+(68-i*30)+'% 0)' : 'none'});
+  });
+  foreground.forEach((node,i) => {
+    if (mode === 'roll') {
+      const distance = i - (titles.length-1)*flow(phase(t,.42,2.38));
+      set(node,{ opacity:arrival*Math.max(0,1-Math.abs(distance)*.79),transform:'translateY('+distance*size*1.04+'px) scale('+(1-Math.min(.14,Math.abs(distance)*.06))+')' });
+      return;
+    }
+    const settle = mode === 'stamp' ? spring(t,.48,1.12) : arrival;
+    set(node,{opacity:arrival,transform:'translateY('+mix(68,0,settle)+'px) scale('+mix(mode === 'stamp' ? 1.48 : .89,1,settle)+') rotate('+mix(mode === 'stamp' ? -9 : 0,0,settle)+'deg)'});
+  });
+};
+window.renderMotion(0);
+</script></body></html>

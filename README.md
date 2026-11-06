@@ -24,10 +24,7 @@ one only pastes its text into the message bar; the person still submits it.
 
 ## Galeria de motion
 
-A [galeria de motion](motion-gallery/README.md) reúne composições próprias e
-referências da Skillry. Abra [motion-gallery/index.html](motion-gallery/index.html)
-para assistir aos vídeos locais, buscar por nome e consultar o prompt. A
-Tarantino resolve a entrada no [catálogo JSON](motion-gallery/catalog.json).
+A [galeria de motion](motion-gallery/README.md) reúne composições editáveis do SquadOS. Abra [motion-gallery/index.html](motion-gallery/index.html) para assistir às prévias locais e buscar por nome ou descrição. Combine filtros de seleção, categoria, uso, tipo e duração. A Tarantino usa o [catálogo JSON](motion-gallery/catalog.json) para selecionar e renderizar a composição.
 
 ## Biblioteca de especialistas
 

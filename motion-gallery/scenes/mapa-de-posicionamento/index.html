@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Mapa de Posicionamento</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#ececf5; color:#242143; }
+main::before { content:""; position:absolute; z-index:-1; inset:0; background:radial-gradient(ellipse at 21% 84%,#cbd2ee,transparent 59%); }
+header { position:absolute; inset:93px 112px auto; border-top:1px solid #24214354; padding-top:22px; }
+.kicker, .index { font-size:22px; font-weight:680; letter-spacing:.14em; text-transform:uppercase; color:#524b78; }
+h1 { margin-top:13px; font-size:79px; }
+.chart { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+.chart text { fill:#49466f; font-size:27px; }
+.chart .point-label { fill:#252147; font-size:27px; font-weight:650; }
+.chart .axis { fill:none; stroke:#514c78; stroke-width:2; }
+.chart .guide { fill:none; stroke:#7a74a459; stroke-width:2; }
+.chart .tick { fill:#453f67; font-size:21px; }
+.chart .wire { fill:none; stroke:#574ba2; stroke-width:3; stroke-dasharray:4 9; }
+.chart .dot { fill:#faf8ff; stroke:#5846a8; stroke-width:5; }
+.chart .focus { fill:none; stroke:#6b51d4; stroke-width:3; }
+.chart .silhouette { fill:#8069e86b; stroke:#6149bf; stroke-width:5; }
+.summary { position:absolute; left:1274px; top:348px; width:510px; padding:22px 0 0 29px; border-left:2px solid #6152a6; }
+.summary strong { display:block; margin-top:13px; color:#211941; font-size:57px; line-height:1; letter-spacing:-.045em; }
+.conclusion { margin-top:25px; color:#494268; font-size:33px; line-height:1.18; }
+.reading { position:absolute; left:1274px; top:635px; width:505px; }
+.reading p { display:flex; justify-content:space-between; gap:16px; border-bottom:1px solid #31296134; color:#312961; font-size:25px; padding:10px 0; }
+.reading b { color:#4f3b9c; font-variant-numeric:tabular-nums; }
+</style>
+</head>
+<body>
+<main data-composition-id="mapa-de-posicionamento" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <header><p class="kicker"></p><h1 class="display"></h1></header>
+  <svg class="chart" viewBox="0 0 1920 1080" aria-label="Mapa com escalas e destaque de uma posição">
+    <g class="scales"></g><g class="data"></g><g class="focus-layer"></g>
+  </svg>
+  <aside class="summary"><p class="index"></p><strong></strong><p class="conclusion"></p></aside>
+  <div class="reading"></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const radar = inputs.mode === "radar";
+const provided = Array.isArray(radar ? inputs.dimensions : inputs.points) ? (radar ? inputs.dimensions : inputs.points) : [];
+const valid = provided.filter(item => typeof item?.label === "string" && item.label.trim() &&
+  (radar ? Number.isFinite(item.value) : Number.isFinite(item.x) && Number.isFinite(item.y))).slice(0,radar ? 6 : 8);
+const defaults = radar ? [
+  {label:"Velocidade",value:82},{label:"Precisão",value:94},{label:"Cobertura",value:73},
+  {label:"Custo",value:51},{label:"Consistência",value:75},
+] : [
+  {label:"Ajuste de texto",x:18,y:33},{label:"Suporte humano",x:46,y:71},
+  {label:"Busca na base",x:73,y:82},{label:"Triagem manual",x:64,y:19},
+];
+const useCustom = valid.length >= (radar ? 3 : 1);
+const items = useCustom ? valid : defaults;
+const index = Number.isInteger(inputs.selected) ? Math.max(0,Math.min(items.length-1,inputs.selected)) : radar ? 1 : Math.min(2,items.length-1);
+const value = raw => 100 * clamp(raw / 100);
+const scales = one(".scales");
+const plotted = one(".data");
+const foreground = one(".focus-layer");
+const svgns = "http://www.w3.org/2000/svg";
+function svg(parent, tag, attributes, label) {
+  const node = document.createElementNS(svgns,tag);
+  Object.entries(attributes).forEach(([key, attr]) => node.setAttribute(key,attr));
+  if (label !== undefined) node.textContent = label;
+  parent.append(node);
+  return node;
+}
+const fmt = new Intl.NumberFormat("pt-BR",{ maximumFractionDigits:1 });
+one(".kicker").textContent = radar ? "Perfil de desempenho" : "Análise de prioridades";
+one(".index").textContent = radar ? "Dimensão em destaque" : "Ponto em destaque";
+one(".summary strong").textContent = items[index].label;
+copy("h1","title",radar ? "Cinco lados do desempenho" : "Onde vale começar?");
+copy(".conclusion","conclusion",useCustom ? "" : radar ?
+  "O maior resultado aparece em precisão." : "A busca entrega alto impacto com menos esforço.");
+const marks = [];
+let silhouette;
+let highlight;
+if (radar) {
+  const cx = 670, cy = 619, radius = 271;
+  function vertex(i, size) {
+    const angle = -Math.PI/2 + i * Math.PI*2/items.length;
+    return [cx + Math.cos(angle)*radius*size, cy + Math.sin(angle)*radius*size];
+  }
+  for (const level of [.25,.5,.75,1]) {
+    svg(scales,"polygon",{ class:"guide", points:items.map((_,i) => vertex(i,level).join(",")).join(" ") });
+  }
+  silhouette = svg(plotted,"polygon",{ class:"silhouette" });
+  items.forEach(({label,value:raw},i) => {
+    const [ax,ay] = vertex(i,1), [lx,ly] = vertex(i,1.13);
+    const textAnchor = lx < cx-20 ? "end" : lx > cx+20 ? "start" : "middle";
+    svg(scales,"line",{ x1:cx,y1:cy,x2:ax,y2:ay,class:"guide" });
+    svg(scales,"text",{ x:lx,y:ly+8,"text-anchor":textAnchor },label);
+    const [x,y] = vertex(i,value(raw)/100);
+    const dot = svg(plotted,"circle",{ class:"dot", cx:x, cy:y, r:8 });
+    marks.push({ element:dot, x,y });
+    const row = document.createElement("p");
+    const name = document.createElement("span");
+    const score = document.createElement("b");
+    name.textContent = label;
+    score.textContent = fmt.format(value(raw)) + "%";
+    row.append(name,score);
+    one(".reading").append(row);
+  });
+} else {
+  const left = 166, top = 320, width = 1030, height = 579;
+  const axis = Array.isArray(inputs.axisLabels) ? inputs.axisLabels : [];
+  const middleX = left + width/2, middleY = top + height/2;
+  const tiles = ["#dce0f0","#dbd5f3","#e6e7ef","#dee1ed"];
+  tiles.forEach((fill,i) => svg(scales,"rect",{ x:left+i%2*width/2, y:top+Math.floor(i/2)*height/2, width:width/2,height:height/2,fill }));
+  svg(scales,"rect",{ x:left,y:top,width,height,class:"guide" });
+  svg(scales,"path",{ class:"axis",d:"M"+left+" "+middleY+"h"+width+" M"+middleX+" "+top+"v"+height });
+  svg(scales,"text",{ x:left,y:291 },axis[1] ?? "Impacto ↑");
+  svg(scales,"text",{ x:left+width,y:945,"text-anchor":"end" },axis[0] ?? "Facilidade →");
+  for (const i of [0,50,100]) {
+    svg(scales,"text",{ x:left+width*i/100,y:934,class:"tick","text-anchor":"middle" },i === 100 ? "" : i);
+    svg(scales,"text",{ x:left-15,y:top+height*(1-i/100)+7,class:"tick","text-anchor":"end" },i);
+  }
+  items.forEach(({label,x:rawX,y:rawY}) => {
+    const x = left+width*value(rawX)/100;
+    const y = top+height*(1-value(rawY)/100);
+    const element = svg(plotted,"g",{});
+    svg(element,"circle",{ class:"dot", cx:x, cy:y, r:10 });
+    const right = x < left + width*.72;
+    svg(element,"text",{ class:"point-label",x:x+(right?18:-18),y:y-17,"text-anchor":right?"start":"end" },label);
+    marks.push({ element,x,y });
+  });
+  const selected = items[index];
+  const row = document.createElement("p");
+  row.textContent = fmt.format(value(selected.x)) + " no eixo X · " + fmt.format(value(selected.y)) + " no eixo Y";
+  one(".reading").append(row);
+}
+{
+  const {x,y} = marks[index];
+  highlight = svg(foreground,"circle",{ class:"focus",cx:x,cy:y,r:27 });
+}
+window.renderMotion = time => {
+  const head = beat(time,.05,.52);
+  const board = beat(time,.47,.59);
+  const focus = flow(phase(time,4.05,.72));
+  set(one("header"),{ opacity:head, transform:"translateY(" + 24*(1-head) + "px)" });
+  scales.style.opacity = board;
+  if (silhouette) {
+    const spread = flow(phase(time,1.04,1.67));
+    silhouette.setAttribute("points",marks.map(({x,y}) => [mix(670,x,spread),mix(619,y,spread)].join(",")).join(" "));
+    silhouette.style.opacity = board;
+  }
+  marks.forEach(({element,x,y},i) => {
+    const arrival = beat(time,radar ? 2.51+i*.12 : 1.08+i*.30,.43);
+    const contrast = i === index ? 1 : 1-.48*focus;
+    set(element,{ opacity:arrival*contrast, transform:"translate(" + (x-670)*.06*(arrival-1) + "px," + (y-619)*.06*(arrival-1) + "px)" });
+  });
+  highlight.style.opacity = focus;
+  highlight.setAttribute("r",mix(48,27,focus));
+  set(one(".summary"),{ opacity:focus,transform:"translateX(" + 28*(1-focus) + "px)" });
+  all(".reading p").forEach((node,i) => node.style.opacity = beat(time,4.51+i*.13,.47));
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

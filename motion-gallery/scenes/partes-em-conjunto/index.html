@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Partes em Conjunto</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#231f24; color:#fff1e8; }
+main::before { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(ellipse at 71% 58%,#53382f,transparent 62%); }
+header { position:absolute; left:115px; top:115px; width:575px; padding-top:22px; border-top:1px solid #ecd5c874; }
+.kicker { font-size:22px; font-weight:680; letter-spacing:.14em; text-transform:uppercase; color:#f6b88e; }
+h1 { margin-top:15px; font-size:83px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.items { position:absolute; left:116px; top:384px; width:523px; }
+.items p { position:relative; padding:8px 0 12px 39px; border-bottom:1px solid #e8bea540; font-size:23px; color:#e6cdbf; }
+.items b { display:block; font-size:29px; color:#fff1e8; }
+.items span { position:absolute; left:0; top:14px; color:#f6b88e; font-size:21px; font-variant-numeric:tabular-nums; }
+svg { position:absolute; inset:0; width:100%; height:100%; }
+.board { fill:none; stroke:#e7af8e45; stroke-width:1; }
+.guide { fill:none; stroke:#ebbe9a5c; stroke-width:1; stroke-dasharray:4 10; }
+.tile { stroke:#1d1519; stroke-width:2; stroke-linejoin:round; }
+.tile-index { fill:#261a1d; font-size:34px; font-weight:680; }
+.scope { fill:#472f2cd1; stroke-width:3; }
+.scope-index { fill:#fff1e8; font-size:24px; font-weight:630; }
+.result:empty { display:none; }
+.result { position:absolute; left:751px; right:114px; bottom:106px; color:#ffddc8; font-size:32px; padding:16px 0 0; border-top:1px solid #ecd5c874; }
+</style>
+</head>
+<body>
+<main data-composition-id="partes-em-conjunto" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <header><p class="kicker"></p><h1 class="display"></h1></header>
+  <div class="items"></div>
+  <svg viewBox="0 0 1920 1080" aria-label="Partes de uma estrutura e suas relações">
+    <rect x="750" y="115" width="1054" height="754" rx="22" class="board"/>
+    <g class="guides"></g><g class="shapes"></g>
+  </svg>
+  <p class="result"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const mode = ["nesting","tiers"].includes(inputs.mode) ? inputs.mode : "assembly";
+const examples = {
+  assembly: { title:"O que forma um briefing?", kicker:"Do todo às partes", result:"Um briefing conecta contexto, público, mensagem e entrega.",
+    parts:[["Contexto","O que motivou a peça"],["Público","Para quem ela será feita"],["Mensagem","A ideia que deve ficar"],["Entrega","Formato, canal e prazo"]] },
+  nesting: { title:"Onde entra o rascunho?", kicker:"Níveis de organização", result:"O rascunho fica no projeto, dentro da pasta da equipe.",
+    parts:[["Equipe","Acesso compartilhado"],["Projeto","Arquivos de uma campanha"],["Rascunho","Versão em revisão"]] },
+  tiers: { title:"O que sustenta a entrega?", kicker:"Hierarquia de trabalho", result:"O resultado depende das camadas que o sustentam.",
+    parts:[["Insumos","Informação pronta para usar"],["Método","Passos de trabalho claros"],["Revisão","Critérios aplicados ao resultado"],["Entrega","Peça pronta para seguir"]] },
+};
+const example = examples[mode];
+const provided = Array.isArray(inputs.parts) ? inputs.parts.filter(item =>
+  typeof item?.label === "string" && item.label.trim()).slice(0,5) : [];
+const parts = provided.length >= 2 ? provided : example.parts.map(([label,detail]) => ({label,detail}));
+copy("h1","title",example.title);
+copy(".result","result",parts === provided ? "" : example.result);
+one(".kicker").textContent = example.kicker;
+const colors = ["#d9a383","#eead8a","#f5bf9c","#f4cdb2","#ffdeca"];
+const number = i => String(i+1).padStart(2,"0");
+const labels = parts.map(({label,detail},i) => {
+  const row = document.createElement("p");
+  const index = document.createElement("span");
+  const title = document.createElement("b");
+  index.textContent = number(i);
+  title.textContent = label;
+  row.append(index,title,typeof detail === "string" ? detail : "");
+  one(".items").append(row);
+  return row;
+});
+const ns = "http://www.w3.org/2000/svg";
+function draw(parent,name,attrs,content) {
+  const node = document.createElementNS(ns,name);
+  Object.entries(attrs).forEach(([key,value]) => node.setAttribute(key,value));
+  if (content !== undefined) node.textContent = content;
+  parent.append(node);
+  return node;
+}
+const cx = 1277, cy = 494;
+const guides = one(".guides");
+const layer = one(".shapes");
+const count = parts.length;
+const shapes = parts.map((_,i) => {
+  const group = draw(layer,"g",{});
+  if (mode === "assembly") {
+    const height = 360 / count;
+    const y = -180 + height*i;
+    const top = i ? "H-45l27 14h36l27-14H258" : "H258";
+    const bottom = i === count-1 ? "H-258" : "H45l-27 14h-36l-27-14H-258";
+    const d = "M-258 "+y+top+"V"+(y+height)+bottom+"Z";
+    draw(group,"path",{ class:"tile",d,fill:colors[i] });
+    draw(group,"text",{ class:"tile-index",x:0,y:y+height*.68,"text-anchor":"middle" },number(i));
+    return { group };
+  }
+  if (mode === "nesting") {
+    const width = 790 - 125*i, height = 575-92*i;
+    const x = cx-width/2, y = cy-height/2+13*i;
+    draw(group,"rect",{ class:"scope",x,y,width,height,rx:21,stroke:colors[i] });
+    draw(group,"text",{ class:"scope-index",x:x+19,y:y+31 },number(i));
+    return { group };
+  }
+  const height = 540 / count;
+  const lower = 421 - 330*i/count;
+  const upper = 421 - 330*(i+1)/count;
+  const y = 762-height*i;
+  const points = [[cx-lower,y],[cx+lower,y],[cx+upper,y-height],[cx-upper,y-height]];
+  draw(group,"polygon",{ class:"tile",points:points.map(point => point.join(",")).join(" "),fill:colors[i] });
+  draw(group,"text",{ class:"tile-index",x:cx,y:y-height*.42,"text-anchor":"middle" },number(i));
+  return { group };
+});
+draw(guides,"path",{ class:"guide",d:"M"+cx+" 151V832 M787 "+cy+"H1767" });
+const revealAt = i => mode === "assembly" ? 1.36+i*.41 : 1.14+i*.68;
+window.renderMotion = time => {
+  const title = beat(time,.04,.51);
+  set(one("header"),{ opacity:title,transform:"translateY(" + 24*(1-title) + "px)" });
+  guides.style.opacity = beat(time,.52,.48);
+  const merge = flow(phase(time,4.42,1.03));
+  shapes.forEach(({group},i) => {
+    const enter = beat(time,revealAt(i),.53);
+    const lane = i - (count-1)/2;
+    let x = 0, y = 0, zoom = 1, angle = 0;
+    if (mode === "assembly") {
+      const open = flow(phase(time,1.14,1.08)) * (1-merge);
+      x = cx + (i%2 ? 128 : -128) * open;
+      y = cy + lane*43*open + 45*(1-enter);
+      angle = (i%2 ? 7 : -7)*open;
+      zoom = mix(.86,1,enter);
+    } else if (mode === "nesting") {
+      zoom = mix(1.19,1,enter);
+    } else {
+      y = 53*(1-enter);
+    }
+    group.style.opacity = enter;
+    group.setAttribute("transform",mode === "assembly"
+      ? "translate("+x+" "+y+") rotate("+angle+") scale("+zoom+")"
+      : "translate("+cx+" "+(cy+y)+") scale("+zoom+") translate("+(-cx)+" "+(-cy)+")");
+    const label = beat(time,revealAt(i)+.17,.48);
+    set(labels[i],{ opacity:label,transform:"translateX(" + 14*(1-label) + "px)" });
+  });
+  const result = beat(time,5.45,.49);
+  one(".result").style.opacity = result;
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

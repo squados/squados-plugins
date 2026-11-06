@@ -1,35 +1,20 @@
 # Galeria de motion
 
-Abra [index.html](index.html) no navegador. Busque pelo nome, alias, coleção ou
-ID do efeito. **Ver prévia na Skillry** abre a página do efeito no catálogo
-oficial. **Ver prompt** mostra um pedido que você pode usar numa edição.
-A galeria funciona por arquivo local e abre em **Seleção principal**, com
-50 efeitos próprios em seis categorias. Use o filtro para consultar os 34
-vídeos do **Acervo complementar** e as 271 entradas em **Referências da Skillry**.
-A busca respeita o filtro ativo. Os vídeos próprios são lidos de `previews/`. A categoria **Edição comparada**
-reúne as sete cenas do [comparativo de edições](comparativo-de-edicoes.md).
-Abra pelo atalho no topo para ver os previews e os links de reutilização.
-O Acervo complementar inclui moldura de vidro leitoso, clarão de câmera,
-tablet em perspectiva, painel com três revelações, três cortes em sequência,
-escritório com troca de equipe, marcas em volume, clique de logo 3D e
-[Do Vídeo aos Formatos](scenes/do-video-aos-formatos/LEIA-ME.md).
-[Fotograma em Sequência](scenes/fotograma-em-sequencia/LEIA-ME.md) abre o take em sete quadros e pode revelar a onda do áudio.
-**Legenda de Palavra Ativa** e **Cena em Vidros** usam o take de boas-vindas
-de Renato que já faz parte dos previews locais da galeria.
-
-O [catálogo JSON](catalog.json) cobre 122 efeitos de CreatorMotion 1.0.1,
-208 cenas de LaunchMotion 1.0.4 e o fluxo Paper Cutout Story Video 1.0.0.
-Quando uma composição própria deriva de uma referência, ela ocupa a mesma
-entrada e preserva o nome e os IDs anteriores como aliases. O campo `source`
-identifica a referência. Identificação do Apresentador e as cenas de Edição comparada têm entradas próprias.
-Os pacotes e seus assets são distribuídos pela Skillry. [Termos de uso](https://skillry.dev/terms)
+Abra [index.html](index.html) no navegador. A galeria abre na **Seleção principal**.
+Em **Seleção**, escolha **Catálogo completo** para pesquisar todos os motions.
+Escolha **Novidades** para ver as composições desta rodada.
+Combine **Categoria**, **Uso**, **Tipo** e **Duração** para chegar ao efeito
+do trecho. A busca inclui nome, descrição, apelidos e ID. Cada cartão tem
+uma frase de uso, a duração, a prévia local e um prompt de exemplo.
+A seção [Edição comparada](comparativo-de-edicoes.md) reúne sete cenas com
+guias de reutilização.
 
 ## Usar um efeito em vídeo
 
-Busque o efeito por `title`, `aliases` ou `id`. Para uma composição própria,
-use as fontes e as entradas em `demo`. Para uma referência da Skillry,
-siga o `SKILL.md` do pacote `source.package` instalado e use o ID do efeito.
-A página oficial em `source.url` reúne a prévia e a instalação.
+Consulte `description` e `uses` no [catálogo JSON](catalog.json) para escolher
+pelo objetivo da cena. Resolva o nome pelo `title`, `id`, `aliases` ou `previousIds`, abra
+`demo.composition` e prepare um JSON com as entradas em `demo.inputs`.
+Um efeito pode ter opções de movimento ou de mídia dentro da mesma composição.
 
 Para **Gráfico em Contracampo**, informe uma foto ou um take de pelo menos
 6,8 s em `presenter` para ver o painel de vidro sobre a câmera. Para exportar
@@ -89,6 +74,28 @@ Ao editar o catálogo, atualize o HTML com `node scripts/build-motion-gallery.mj
 a partir da raiz. Valide com `node scripts/build-motion-gallery.mjs --check` e
 `node --test tests/motion-gallery.test.mjs`.
 
+## Novas composições e opções
+
+| Motion | Entradas principais |
+| --- | --- |
+| [Título Cinético](index.html#titulo-cinetico) | `mode` aceita `echo`, `roll`, `glitch` e `stamp`. Informe `title`, `caption` e, no modo `roll`, até cinco termos em `words`. |
+| [Transição por Máscara](index.html#transicao-por-mascara) | Passe dois planos em `first` e `second`. Escolha `mode` entre `ink`, `brush`, `pixel` e `iris`. Use `at` para marcar a passagem em segundos. |
+| [Revelação de Marca](index.html#revelacao-de-marca) | Use `name`, `tagline` e `logo` para a revelação em pixels. Para desenhar o símbolo, use `mode: "trace"` e um `path` SVG no espaço 0 a 100. |
+| [Pulso de Áudio](index.html#pulso-de-audio) | Use `mode: "ring"` ou `"bars"` e `amplitudes` com níveis de 0 a 1 amostrados em intervalos iguais ao longo de 6 s. |
+| [Dispositivos em Cena](index.html#dispositivos-em-cena) | Use `phone`, `tablet` e `desktop` para as capturas de cada tamanho. Os três aceitam foto ou vídeo. |
+| [Troca de Visual](index.html#troca-de-visual) | Passe imagens em `before` e `after`, ou aplique a uma imagem o `preset` `luz`, `cor`, `contraste` ou `nenhum`. |
+| [Inspeção de Imagem](index.html#inspecao-de-imagem) | Passe `image` e até cinco `points` com `x`, `y` em porcentagem do quadro exibido e `label`. Escolha `lupa`, `varredura`, `marcacoes` ou `ambos` em `mode`. |
+| [Painel em Operação](index.html#painel-em-operacao) | Passe até três `metrics` com `label`, `value` e `unit`, de 2 a 10 valores em `series`, rótulos em `labels` e até três `statuses` com `label`, `detail` e `state`. |
+| [Decisão em Fluxo](index.html#decisao-em-fluxo) | Informe até quatro `items` com `title`, `source`, `detail` e `description`. Escolha o pedido por `selected`, a partir de zero. |
+| [Dados em Unidades](index.html#dados-em-unidades) | Escolha `donut`, `units` ou `range` em `mode`. Informe até cinco `items` com `label` e `value`, ou `low` e `high` para intervalos. |
+| [Funil em Etapas](index.html#funil-em-etapas) | Passe `stages` com `label` e `value` em ordem de execução e use `unit` para nomear o que está sendo contado. |
+| [Mapa de Posicionamento](index.html#mapa-de-posicionamento) | Para quadrantes, use `points` com `label`, `x` e `y`, mais dois `axisLabels`. Para `mode: "radar"`, use `dimensions` com `label` e `value`. As escalas vão de 0 a 100. |
+| [Partes em Conjunto](index.html#partes-em-conjunto) | Use `parts` com `label` e `detail` e escolha `assembly`, `nesting` ou `tiers` em `mode`. |
+| [Prova Social em Mural](index.html#prova-social-em-mural) | Informe `cards` com `author`, `role` e `text`, e opcionalmente `images` na mesma ordem. Use `selected` para escolher o destaque, a partir de zero. |
+| [Montagem em Órbita](index.html#montagem-em-orbita) | Passe até seis `images`, com rótulos em `captions`, e use `selected` para definir a imagem principal, a partir de zero. |
+| [Barras Comparativas](index.html#barras-em-sequencia) | Use `categories` e `values` para colunas. Para comparar duas barras horizontais, use `mode: "ratio"`, `labels`, `values` e `ratioPrecision`. |
+| [Logotipo em Volume](index.html#squados-em-volume) | Use `brand` como `squados`, `claude` ou `chatgpt`, ou passe seu arquivo em `logo`. |
+
 ## Demonstrações e oferta
 
 As composições abaixo usam as mecânicas de apresentação e oferta observadas na
@@ -97,17 +104,13 @@ de conteúdo e os preços são ilustrativos. Troque o conteúdo pelo da sua edi�
 
 | Motion | Entradas e uso |
 | --- | --- |
-| [Prompt e Resultado](index.html#prompt-e-resultado) | Informe `prompt`, `screen` com a captura real, `outputTitle` e até cinco `steps`. `revealAt` marca em segundos quando o screencast começa. A cena dura 8,6 s e começa o vídeo da captura no seu primeiro quadro. |
+| [Prompt e Resultado](index.html#prompt-e-resultado) | Informe `prompt`, `screen` com a captura real, `outputTitle` e até cinco `steps`. Para comparar resultados, passe também `screenTwo`, `screenThree` ou `screenFour`, com rótulos em `screenLabels`. `revealAt` marca em segundos quando as capturas começam. |
 | [Oferta em Camadas](index.html#oferta-em-camadas) | Informe `title`, `subtitle`, `cover` opcional e até seis `items` com `name`, `detail`, `value` numérico e `icon` opcional. `referencePrice` usa a soma dos itens por padrão. Informe `finalPrice`, `finalLabel` e `currency` como BRL. |
 | [CTA Expansível](index.html#cta-expansivel) | Edite `label`, `expandAt`, `hold` e `position` com `x` e `y` em porcentagem. A cena dura 8 s. Para usar sobre seu take, exporte em MOV com `transparent: true` e omita `presenter`. [Amostra](scenes/cta-expansivel/demo.json) |
 | [Baralho de Bônus](index.html#baralho-de-bonus) | Informe até cinco `cards` com `name` e `detail`. Escolha a carta pelo índice `activeCard`, a partir de zero, e alinhe `unlockAt` à fala. |
 | [Destaque de Região](index.html#destaque-de-regiao) | Passe `screen` e `cues` com `at` em segundos, `x`, `y`, `width`, `height` em porcentagem da captura e `label`. A opção `dimOutside` vai de 0 a 1. O destaque estático usa `documentImage` e `region`. [Amostra](scenes/destaque-de-regiao/demo.json) |
 | [Matriz de Comparação](index.html#matriz-de-comparacao) | A variante de ferramentas recebe até cinco `tools` com `name`, `category`, `detail`, `price` e `replacement` opcional. Passe capturas em `screens`, na ordem das linhas, com `null` para pular um slot. A matriz em colunas aceita `options` e `rows`. [Amostra](scenes/matriz-de-comparacao/demo.json) |
 | [Apresentador e Lista](index.html#apresentador-e-lista) | Use `presenter`, `heading` e de um a seis `items` com `title`, `detail` e `icon` opcional. Para retratos, passe `portraits` na mesma ordem e use `null` nos slots sem foto. A lista de cinco textos continua disponível. [Amostra](scenes/apresentador-e-lista/demo.json) |
-
-Os exemplos de comparação e demonstração se apoiam nas referências
-[One Query Multiple Screens](https://skillry.dev/skills/bs-creatormotion-comparison-query-screens)
-e [Row Focus Cards](https://skillry.dev/skills/bs-creatormotion-comparison-row-focus-cards).
 
 ## Hospedagem no GitHub
 

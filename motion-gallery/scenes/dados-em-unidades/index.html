@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Dados em Unidades</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:radial-gradient(ellipse at 30% 110%,#193937,#0d201e 58%,#101a19); color:#e9f5ec; }
+.sheet { position:absolute; inset:83px 110px; display:grid; grid-template-rows:191px 1fr 86px; border:1px solid #608379; border-radius:26px; background:#152923; padding:40px 51px 24px; box-shadow:0 34px 120px #041510; }
+.header { display:grid; grid-template-columns:1fr auto; align-items:start; gap:30px; }
+.overline,.badge,.guide,.footer { font:22px/1.14 ui-monospace,monospace; letter-spacing:.11em; text-transform:uppercase; }
+.overline,.guide { color:#9dcbaf; }
+.badge { border:1px solid #779f90; color:#cff3e1; border-radius:100px; padding:12px 22px; background:#284338; }
+h1 { font-size:83px; line-height:.98; letter-spacing:-.05em; margin-top:14px; max-width:1270px; font-weight:650; overflow-wrap:anywhere; }
+h1.long { font-size:65px; }
+.columns { display:grid; grid-template-columns: minmax(0,1.48fr) minmax(0,1fr); min-height:0; gap:28px; }
+.chart { position:relative; background:linear-gradient(160deg,#1e3630,#172c25); border:1px solid #517167; border-radius:17px; min-height:0; overflow:hidden; }
+.chart::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.46; background:repeating-linear-gradient(0deg,transparent 0 53px,#a8dcc91d 53px 54px),repeating-linear-gradient(90deg,transparent 0 53px,#a8dcc91d 53px 54px); }
+.guide { position:absolute; left:25px; top:22px; }
+.chart svg { position:absolute; width:100%; height:100%; }
+.chart text { font-family:Outfit,sans-serif; font-weight:600; }
+.legend { background:#20362d; border:1px solid #527166; border-radius:17px; padding:26px 30px; display:grid; grid-template-rows:40px repeat(var(--rows),1fr); overflow:hidden; }
+.legend h2 { color:#a6c6b5; font-size:23px; font-weight:540; letter-spacing:.11em; text-transform:uppercase; }
+.entry { display:grid; grid-template-columns:20px minmax(0,1fr) auto; align-items:center; gap:16px; border-top:1px solid #53736a; min-height:0; }
+.swatch { width:14px; height:14px; border-radius:50%; }
+.entry span { font-size:29px; font-weight:500; overflow-wrap:anywhere; line-height:1.04; }
+.entry strong { font-size:36px; font-weight:630; letter-spacing:-.04em; }
+.footer { display:flex; align-items:center; justify-content:space-between; gap:22px; color:#a8ccb5; padding:13px 2px 0; border-bottom:2px solid #6f9c86; }
+.footer span { color:#e0f7e8; font-family:Outfit,sans-serif; font-size:27px; letter-spacing:0; text-transform:none; text-align:right; }
+</style></head><body>
+<main data-composition-id="dados-em-unidades" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+<div class="sheet">
+  <header class="header"><div><p class="overline">Estúdio de dados / 01</p><h1></h1></div><span class="badge"></span></header>
+  <div class="columns"><div class="chart"><p class="guide"></p><svg viewBox="0 0 910 590" aria-hidden="true"></svg></div><section class="legend"><h2>Categorias</h2></section></div>
+  <div class="footer">Visão geral <span></span></div>
+</div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const mode = ['units','range'].includes(inputs.mode) ? inputs.mode : 'donut';
+const defaults = [
+  {label:'Busca orgânica',value:54,low:39,high:67},
+  {label:'Indicação',value:25,low:19,high:44},
+  {label:'Tráfego pago',value:14,low:11,high:32},
+  {label:'Acesso direto',value:7,low:4,high:22}
+];
+const raw = Array.isArray(inputs.items) && inputs.items.length ? inputs.items.slice(0,5) : defaults;
+const number = value => Number.isFinite(value) ? Math.max(0,value) : 0;
+const colors = ['#95e4b6','#f6bf79','#a8baf6','#e9a6c1','#e3df98'];
+const rows = raw.map((item,i) => {
+  const ends = [number(item?.low), number(item?.high)].sort((a,b)=>a-b);
+  return {label:item?.label ?? 'Categoria '+(i+1), value:number(item?.value), low:ends[0], high:ends[1], color:colors[i]};
+});
+const total = rows.reduce((sum,row)=>sum+row.value,0);
+const unit = inputs.unit ?? '';
+const label = number => new Intl.NumberFormat('pt-BR',{maximumFractionDigits:1}).format(number);
+const copyNumber = number => label(number)+(unit ? ' '+unit : '');
+const chart = one('.chart svg');
+const make = (tag, attrs, text) => {
+  const el = document.createElementNS('http://www.w3.org/2000/svg',tag);
+  for (const [key,value] of Object.entries(attrs)) el.setAttribute(key,value);
+  if (text != null) el.textContent = text;
+  chart.append(el);
+  return el;
+};
+copy('h1','title',mode === 'range' ? 'Faixas por canal' : 'De onde vieram os acessos?');
+one('h1').classList.toggle('long',one('h1').textContent.length > 32);
+copy('.footer span','conclusion',mode === 'range' ? 'Uma mesma escala para comparar os intervalos.' : 'O canal orgânico responde pela maior parte do total.');
+one('.badge').textContent = ({donut:'Composição',units:'Unidades',range:'Intervalos'})[mode];
+one('.guide').textContent = ({donut:'Participação no total',units:'Distribuição por unidades',range:'Faixa observada'})[mode];
+one('.legend').style.setProperty('--rows',rows.length);
+rows.forEach(row=>{
+  const node=document.createElement('div'), swatch=document.createElement('i'), title=document.createElement('span'), value=document.createElement('strong');
+  node.className='entry'; swatch.className='swatch'; swatch.style.background=row.color;
+  title.textContent=row.label; node.append(swatch,title,value); one('.legend').append(node);
+  row.node=node; row.readout=value;
+});
+let draw;
+if(mode === 'donut'){
+  const length=2*Math.PI*173, common={cx:455,cy:325,r:173,fill:'none','stroke-width':59};
+  make('circle',{...common,stroke:'#3f6054'});
+  let start=0;
+  rows.forEach(row=>{
+    row.arcStart=start;
+    row.arcLength=total ? row.value/total*length : 0;
+    row.arc=make('circle',{...common,stroke:row.color,transform:'rotate(-90 455 325)'});
+    start+=row.arcLength;
+  });
+  const big=make('text',{x:455,y:333,fill:'#effbf3','font-size':76,'text-anchor':'middle'});
+  make('text',{x:455,y:383,fill:'#afd3bd','font-size':24,'text-anchor':'middle'},unit || 'TOTAL');
+  draw=t=>{
+    let sum=0;
+    rows.forEach((row,i)=>{
+      const p=beat(t,.7+i*.51,1.08);
+      row.arc.setAttribute('stroke-dasharray',Math.max(0,row.arcLength*p-5)+' '+length);
+      row.arc.setAttribute('stroke-dashoffset',-row.arcStart);
+      sum+=p*row.value;
+    });
+    big.textContent=label(sum);
+  };
+} else if(mode === 'units'){
+  const dots=[];
+  let end=0;
+  rows.forEach(row=>{row.start=end; end+=row.value; row.end=end;});
+  const count=Math.max(1,Math.min(120,Math.ceil(total)));
+  for(let i=0;i<count;i++){
+    const row=rows.find(row=>(i+.5)*total/count < row.end) ?? rows.at(-1);
+    const columns=Math.min(15,Math.max(6,Math.ceil(count/6)));
+    const lines=Math.ceil(count/columns);
+    const x=455+(i%columns-(columns-1)/2)*51, y=326+(Math.floor(i/columns)-(lines-1)/2)*51;
+    make('rect',{x:x-19,y:y-19,width:38,height:38,rx:8,fill:'#35534a'});
+    const block=make('rect',{x:x-19,y:y-19,width:38,height:38,rx:8,fill:row.color});
+    dots.push({block,row});
+  }
+  draw=t=>dots.forEach(({block},i)=>{
+    const p=beat(t,.8+i/Math.max(1,count-1)*3.15,.36);
+    block.setAttribute('opacity',total ? p : 0);
+    block.setAttribute('transform','translate(0 '+mix(14,0,p)+')');
+  });
+} else {
+  const highest=Math.max(1,...rows.map(row=>row.high));
+  const x=value=>92+value/highest*726;
+  for(let i=0;i<=4;i++){
+    const position=x(highest*i/4);
+    make('line',{x1:position,x2:position,y1:106,y2:490,stroke:'#77a78a','stroke-opacity':.52,'stroke-dasharray':'3 6'});
+    make('text',{x:position,y:532,fill:'#c4e2d0','font-size':23,'text-anchor':'middle'},label(highest*i/4));
+  }
+  rows.forEach((row,i)=>{
+    const y=150+((rows.length===1? .5:i/(rows.length-1))*303);
+    row.bar=make('line',{x1:x(row.low),x2:x(row.low),y1:y,y2:y,stroke:row.color,'stroke-width':20,'stroke-linecap':'round'});
+    row.tip=make('circle',{cx:x(row.low),cy:y,r:6,fill:'#152923'});
+  });
+  draw=t=>rows.forEach((row,i)=>{
+    const p=beat(t,.8+i*.43,1.22), end=x(mix(row.low,row.high,p));
+    row.bar.setAttribute('x2',end);row.tip.setAttribute('cx',end);row.bar.setAttribute('opacity',p);
+  });
+}
+window.renderMotion=t=>{
+  const start=beat(t,.06,.67);
+  set(one('.sheet'),{opacity:start,transform:'translateY('+mix(39,0,start)+'px)'});
+  rows.forEach((row,i)=>{
+    const p=beat(t,.7+i*.51,1.08);
+    set(row.node,{opacity:p,transform:'translateX('+mix(18,0,p)+'px)'});
+    row.readout.textContent=mode==='range' ? label(row.low)+'–'+copyNumber(mix(row.low,row.high,p))
+      : mode==='donut' ? label(total ? 100*p*row.value/total : 0)+'%' : copyNumber(p*row.value);
+  });
+  one('.footer').style.opacity=beat(t,3.15,.8);
+  draw(t);
+};
+window.renderMotion(0);
+</script></body></html>

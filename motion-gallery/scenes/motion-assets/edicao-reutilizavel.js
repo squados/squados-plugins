@@ -58,7 +58,8 @@
     };
   } else if (['squados', 'claude', 'chatgpt', 'click'].includes(mode)) {
     if (inputs.transparent) root.style.background = 'transparent';
-    const logo = inputs.logo || 'logo.svg';
+    const brands = { claude: 'claude.svg', chatgpt: 'chatgpt.svg' };
+    const logo = inputs.logo || (mode === 'squados' && Object.hasOwn(brands, inputs.brand) ? brands[inputs.brand] : 'logo.svg');
     const isClick = mode === 'click';
     const badge = q('.badge');
     for (let i = 0; i <= 20; i++) {

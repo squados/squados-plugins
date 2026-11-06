@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Montagem em Órbita</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#10262b; color:#edf7ef; }
+main::before { position:absolute; content:""; inset:0; z-index:-1; background:radial-gradient(ellipse at 50% 55%,#284b49,transparent 66%); }
+header { position:absolute; top:88px; left:116px; right:116px; border-top:1px solid #c3dfd16c; padding-top:21px; }
+.kicker { font-size:22px; color:#abcfbc; letter-spacing:.15em; text-transform:uppercase; }
+h1 { margin-top:8px; font-size:77px; }
+.track, .cards { position:absolute; inset:0; width:100%; height:100%; }
+.track ellipse { fill:none; stroke:#d0eadb58; stroke-width:1.5; }
+.track .dashed { stroke-dasharray:2 9; }
+.track path { fill:none; stroke:#a3cdb85c; stroke-width:2; }
+.track text { fill:#c2dcd0; font-size:20px; letter-spacing:.10em; }
+.cards { perspective:1700px; }
+.tile { position:absolute; width:512px; height:344px; padding:10px; background:#dce8df; border:1px solid #fcfdf2; box-shadow:0 18px 47px #0712138f; color:#183932; transform-origin:center; }
+.photo { width:100%; height:278px; background-size:300% 300%; background-color:#44736c; }
+.photo img { width:100%; height:100%; object-fit:cover; display:block; }
+.tile p { padding:8px 5px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:23px; font-weight:670; }
+.tile p span { margin-right:14px; color:#294b40; font-size:19px; }
+.counter { position:absolute; right:118px; top:128px; color:#c6e6d6; font-size:30px; letter-spacing:.06em; font-variant-numeric:tabular-nums; }
+.conclusion:empty { display:none; }
+.conclusion { position:absolute; left:118px; right:118px; top:956px; padding-top:14px; border-top:1px solid #c3dfd16c; color:#d1e8dc; font-size:30px; }
+</style>
+</head>
+<body>
+<main data-composition-id="montagem-em-orbita" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <header><p class="kicker">Sequência de imagens</p><h1 class="display"></h1></header>
+  <p class="counter"></p>
+  <svg class="track" viewBox="0 0 1920 1080" aria-hidden="true">
+    <ellipse cx="960" cy="590" rx="676" ry="251"/><ellipse cx="960" cy="590" rx="693" ry="275" class="dashed"/>
+    <path d="M922 590h76 M960 552v76"/><text x="960" y="662" text-anchor="middle">SELEÇÃO</text>
+  </svg>
+  <div class="cards"></div>
+  <p class="conclusion"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const images = Array.isArray(inputs.images) ? inputs.images : [];
+const captions = Array.isArray(inputs.captions) ? inputs.captions : [];
+const custom = Math.max(images.length,captions.length);
+const count = custom ? Math.min(custom,6) : 5;
+const names = ["Praia da Marinha","Cabo da Roca","Palácio da Pena","Porto","Ponta da Piedade","Douro"];
+const atlasCells = [0,3,8,5,4,6];
+const selected = Number.isInteger(inputs.selected) ? Math.max(0,Math.min(count-1,inputs.selected)) : 0;
+copy("h1","title","Um percurso, vários olhares");
+copy(".conclusion","conclusion",custom ? "" : "Uma foto abre o percurso. As demais mostram o entorno.");
+const atlas = new URL("../motion-assets/portugal-thumbnails.webp", document.baseURI);
+stage.style.setProperty("--atlas", 'url("' + atlas.href + '")');
+const ordered = Array.from({length:count},(_,i) => i).filter(i => i !== selected);
+const cards = Array.from({length:count},(_,i) => {
+  const node = document.createElement("div");
+  node.className = "tile";
+  const photo = document.createElement("div");
+  photo.className = "photo";
+  photo.style.setProperty("--px",(atlasCells[i]%3)*50+"%");
+  photo.style.setProperty("--py",Math.floor(atlasCells[i]/3)*50+"%");
+  if (typeof images[i] === "string" && images[i]) {
+    const image = document.createElement("img");
+    image.src = images[i];
+    image.alt = "";
+    photo.append(image);
+  }
+  const caption = document.createElement("p");
+  const ordinal = document.createElement("span");
+  ordinal.textContent = String(i+1).padStart(2,"0");
+  caption.append(ordinal,typeof captions[i] === "string" ? captions[i] : custom ? "Imagem " + (i+1) : names[i]);
+  node.append(photo,caption);
+  one(".cards").append(node);
+  return { node, order:ordered.indexOf(i) };
+});
+window.renderMotion = time => {
+  const intro = beat(time,.04,.55);
+  set(one("header"),{ opacity:intro,transform:"translateY(" + 25*(1-intro) + "px)" });
+  const spread = flow(phase(time,1.10,1.30));
+  const spin = flow(phase(time,1.35,3.02));
+  const arrange = flow(phase(time,4.36,1.23));
+  one(".track").style.opacity = spread*(1-arrange);
+  const current = arrange > .5 ? selected : Math.floor(spin*count) % count;
+  one(".counter").textContent = String(current+1).padStart(2,"0")+" / "+String(count).padStart(2,"0");
+  one(".counter").style.opacity = beat(time,.65,.40);
+  const secondaryColumns = count >= 4 ? 2 : 1;
+  cards.forEach(({node,order},i) => {
+    const hero = i === selected;
+    const entry = beat(time,hero ? .32 : 1.02+i*.095,.57);
+    const angle = (i-selected)/count*2*Math.PI + 1.57 + spin*Math.PI*1.86;
+    const depth = (Math.sin(angle)+1)/2;
+    const fromX = 960 + Math.cos(angle)*660*spread;
+    const fromY = 582 + Math.sin(angle)*231*spread;
+    const fromScale = mix(hero ? 1.34 : .65,mix(.45,.84,depth),spread);
+    const endX = hero ? count === 1 ? 960 : 611 : secondaryColumns === 1 ? 1362 : 1208+(order%2)*373;
+    const rows = Math.ceil(ordered.length/secondaryColumns);
+    const endY = hero ? 580 : 579+(Math.floor(order/secondaryColumns)-(rows-1)/2)*239;
+    const x = mix(fromX,endX,arrange);
+    const y = mix(fromY+28*(1-entry),endY,arrange);
+    const yaw = 19*Math.cos(angle)*spread*(1-arrange);
+    const roll = 6*Math.cos(angle)*spread*(1-arrange);
+    const scale = mix(fromScale,hero ? 1.66 : .66,arrange);
+    set(node,{
+      left:x+"px",top:y+"px",opacity:entry,
+      zIndex:Math.round(mix(2+depth*12,hero ? 15 : 2+order,arrange)),
+      transform:"translate(-50%, -50%) rotateY(" + yaw + "deg) rotate(" + roll + "deg) scale(" + scale + ")",
+    });
+  });
+  one(".conclusion").style.opacity = beat(time,5.55,.45);
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

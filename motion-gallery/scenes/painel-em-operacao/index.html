@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Painel em Operação</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#d8e5dc; color:#173a30; }
+.panel { position:absolute; inset:73px 100px; background:#f9fdf7; border:1px solid #77988a; border-radius:25px; box-shadow:0 18px 56px #143a252b; overflow:hidden; }
+.brand { position:absolute; top:0; bottom:0; left:0; width:96px; background:#214b3f; color:#d2efbb; display:flex; align-items:center; flex-direction:column; padding-top:40px; gap:32px; }
+.brand svg { width:43px; height:43px; }
+.brand i { width:15px; height:15px; border:2px solid #83b195; border-radius:4px; }
+.brand i:first-of-type { background:#d2efbb; border-color:#d2efbb; }
+.content { position:absolute; inset:56px 54px 45px 148px; }
+header { display:flex; align-items:center; justify-content:space-between; margin-bottom:30px; }
+h1 { font-size:70px; }
+.live { border:1px solid #9dbfa4; border-radius:25px; padding:7px 15px; font-size:24px; display:flex; align-items:center; gap:10px; }
+.live i,.events b i { width:11px; height:11px; border-radius:50%; background:#609e55; display:inline-block; }
+.metrics { display:grid; grid-auto-flow:column; grid-auto-columns:1fr; border-block:1px solid #9dbca6; }
+.metrics article { min-width:0; padding:23px 22px 24px 32px; border-left:1px solid #b4ccba; }
+.metrics article:first-child { border:0; padding-left:0; }
+.metrics label { display:block; color:#3e6255; font-size:26px; }
+.metrics strong { font-size:72px; line-height:1; letter-spacing:-.057em; font-variant-numeric:tabular-nums; }
+.metrics small { font-size:29px; color:#3e6255; margin-left:7px; }
+.metrics .value { display:flex; align-items:baseline; white-space:nowrap; }
+.lower { display:grid; grid-template-columns:minmax(0, 1fr) 340px; column-gap:40px; margin-top:35px; }
+.lower h2 { font-size:33px; font-weight:640; letter-spacing:-.033em; }
+.trend { min-width:0; }
+.chart { width:100%; height:390px; overflow:visible; margin-top:15px; }
+.chart text { font:500 20px Outfit, sans-serif; fill:#446c5b; }
+.events { border-left:1px solid #abc4b1; padding-left:31px; }
+.events article { padding:19px 0 17px; border-bottom:1px solid #bfcebf; }
+.events article p { font-size:25px; font-weight:600; line-height:1.07; }
+.events article small { font-size:22px; color:#4b6b5e; }
+.events article b { display:flex; gap:8px; align-items:center; font-size:20px; font-weight:650; margin-top:7px; }
+.events article b i { width:8px; height:8px; }
+</style>
+</head>
+<body>
+<main data-composition-id="painel-em-operacao" data-start="0" data-duration="8.4" data-width="1920" data-height="1080">
+  <div class="panel">
+    <aside class="brand" aria-hidden="true">
+      <svg viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 31h10l6-19 7 27 6-14h11"/></svg>
+      <i></i><i></i><i></i>
+    </aside>
+    <div class="content">
+      <header><h1 class="display"></h1><span class="live"><i></i>Em atualização</span></header>
+      <div class="metrics"></div>
+      <div class="lower">
+        <section class="trend">
+          <h2>Dados no período</h2>
+          <svg class="chart" viewBox="0 0 1100 390" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <clipPath id="trend-reveal"><rect x="52" width="0" height="350"/></clipPath>
+              <linearGradient id="trend-fill" x2="0" y2="1"><stop stop-color="#87bf89" stop-opacity=".7"/><stop offset="1" stop-color="#e1efdc" stop-opacity=".28"/></linearGradient>
+            </defs>
+            <g class="guides"></g>
+            <g clip-path="url(#trend-reveal)">
+              <path class="area" fill="url(#trend-fill)"/>
+              <path class="line" fill="none" stroke="#387458" stroke-width="5" stroke-linejoin="round"/>
+            </g>
+            <circle class="current" r="9" fill="#dbef8e" stroke="#356450" stroke-width="4"/>
+            <g class="labels"></g>
+          </svg>
+        </section>
+        <section class="events"><h2>Atividade</h2><div></div></section>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy("h1", "title", "Operação da manhã");
+const integer = new Intl.NumberFormat("pt-BR", {maximumFractionDigits:0});
+const decimal = new Intl.NumberFormat("pt-BR", {maximumFractionDigits:1});
+const defaults = [{label:"Pedidos", value:1284}, {label:"Dentro do prazo", value:98.4, unit:"%"}, {label:"Tempo médio", value:13, unit:"min"}];
+const metricInputs = Array.isArray(inputs.metrics) && inputs.metrics.length ? inputs.metrics.slice(0, 3) : defaults;
+const metrics = metricInputs.map(metric => {
+  const node = document.createElement("article");
+  node.innerHTML = '<label></label><div class="value"><strong></strong><small></small></div>';
+  node.querySelector("label").textContent = metric.label ?? "Indicador";
+  node.querySelector("small").textContent = metric.unit ?? "";
+  one(".metrics").append(node);
+  return {element:node.querySelector("strong"), value:Number.isFinite(metric.value) ? metric.value : 0};
+});
+const defaultSeries = [18, 42, 35, 53, 59, 51, 74, 91];
+const submitted = Array.isArray(inputs.series) ? inputs.series.filter(Number.isFinite).slice(0, 10) : [];
+const series = submitted.length > 1 ? submitted : defaultSeries;
+const labels = Array.isArray(inputs.labels) ? inputs.labels : ["07h", "08h", "09h", "10h", "11h", "12h", "13h", "14h"];
+const low = Math.min(0, ...series);
+const high = Math.max(low + 1, ...series);
+const points = series.map((value, index) => [52 + index * 1028 / (series.length - 1), 329 - (value - low) / (high - low) * 291]);
+const path = points.map(point => point.join(" ")).join(" L");
+one(".line").setAttribute("d", "M" + path);
+one(".area").setAttribute("d", "M" + path + " V329 H52 Z");
+const svg = (tag, attributes, value = "") => {
+  const element = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [name, attribute] of Object.entries(attributes)) element.setAttribute(name, attribute);
+  element.textContent = value;
+  return element;
+};
+const guides = one(".guides");
+for (let index = 0; index < 5; index++) {
+  const ratio = index / 4;
+  const y = 329 - ratio * 291;
+  guides.append(svg("path", {d:`M52 ${y}H1080`, stroke:"#bfcebf", "stroke-width":"1"}),
+    svg("text", {x:43, y:y+7, "text-anchor":"end"}, integer.format(mix(low, high, ratio))));
+}
+points.forEach(([x], index) => one(".labels").append(svg("text", {x, y:371, "text-anchor":"middle"}, labels[index] ?? String(index + 1))));
+const defaultsStatus = [
+  {label:"Fila de expedição", detail:"Carga da manhã", state:"Em dia"},
+  {label:"Pedidos conferidos", detail:"Lote 03 liberado", state:"Concluído"},
+  {label:"Rota norte", detail:"Transportadora avisada", state:"Despachada"},
+];
+const statusInputs = Array.isArray(inputs.statuses) && inputs.statuses.length ? inputs.statuses.slice(0, 3) : defaultsStatus;
+const events = statusInputs.map(status => {
+  const node = document.createElement("article");
+  node.innerHTML = "<p></p><small></small><b><i></i><span></span></b>";
+  node.querySelector("p").textContent = status.label ?? "Atividade";
+  node.querySelector("small").textContent = status.detail ?? "";
+  node.querySelector("span").textContent = status.state ?? "Atualizado";
+  one(".events div").append(node);
+  return node;
+});
+const current = one(".current");
+const reveal = one("#trend-reveal rect");
+window.renderMotion = time => {
+  const progress = flow(phase(time, .92, 4.87));
+  const pointIndex = progress * (points.length - 1);
+  const index = Math.min(points.length - 2, Math.floor(pointIndex));
+  const [leftX, leftY] = points[index];
+  const [rightX, rightY] = points[index + 1];
+  const x = mix(leftX, rightX, pointIndex - index);
+  const y = mix(leftY, rightY, pointIndex - index);
+  reveal.setAttribute("width", x - 51);
+  current.setAttribute("cx", x);
+  current.setAttribute("cy", y);
+  current.style.opacity = flow(phase(time, .85, .33));
+  metrics.forEach(({element, value}, metricIndex) => {
+    const amount = beat(time, .35 + metricIndex * .42, 4.9) * value;
+    element.textContent = (Number.isInteger(value) ? integer : decimal).format(amount);
+  });
+  events.forEach((event, eventIndex) => {
+    const entered = flow(phase(time, 1.7 + eventIndex * 1.42, .49));
+    set(event, {opacity:entered, transform:`translateY(${14 * (1 - entered)}px)`});
+  });
+  one(".live i").style.opacity = .67 + .33 * Math.cos(time * 3.9);
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Pulso de Áudio</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { --accent:#82ffe2; color:#e6fff8; background:radial-gradient(ellipse at 75% 47%,#183f3b 0,#102627 36%,#0a1519 78%); }
+.texture { position:absolute; inset:0; background:repeating-linear-gradient(0deg,transparent 0 3px,#b6f6e30d 3px 4px); mask-image:radial-gradient(ellipse,#000,transparent 84%); }
+.field { position:absolute; inset:78px; border:1px solid #93d2c34f; }
+.field::before,.field::after { content:''; position:absolute; width:24px; height:24px; border:2px solid #a4d6ce; }
+.field::before { top:-1px; left:-1px; border-right:0; border-bottom:0; }
+.field::after { bottom:-1px; right:-1px; border-left:0; border-top:0; }
+header { position:absolute; top:115px; left:126px; right:124px; }
+.eyebrow,.label,.counter { color:#a2c7c0; font:600 25px/1 Outfit,sans-serif; letter-spacing:.15em; text-transform:uppercase; }
+.eyebrow { display:flex; align-items:center; gap:13px; color:var(--accent); }
+.eyebrow::before { content:''; width:10px; height:10px; border-radius:50%; background:currentColor; box-shadow:0 0 18px currentColor; }
+h1 { margin-top:21px; max-width:1510px; color:#e8fff9; font-weight:660; line-height:.96; letter-spacing:-.045em; overflow-wrap:anywhere; }
+header p { margin-top:16px; color:#acd4cb; font-size:31px; overflow-wrap:anywhere; }
+.track,.orbit-panel { position:absolute; top:383px; height:486px; border:1px solid #93d2c35e; background:#0b2428b8; }
+.track { left:126px; width:1120px; }
+.orbit-panel { right:126px; width:516px; }
+.panel-head { position:absolute; top:32px; left:33px; right:33px; display:flex; justify-content:space-between; align-items:center; }
+.counter { color:var(--accent); font-variant-numeric:tabular-nums; }
+.wave { position:absolute; left:36px; top:84px; width:1046px; height:282px; overflow:visible; color:var(--accent); }
+.wave-grid { fill:none; stroke:#95d0c244; stroke-width:1; }
+.wave-idle { opacity:.31; }.wave-active { opacity:.96; }
+.cursor { stroke:#effff7; stroke-width:2; opacity:.86; }
+.cursor-point { fill:var(--accent); }
+.time-axis { position:absolute; bottom:39px; left:36px; right:36px; display:flex; justify-content:space-between; color:#a2c7c0; font:500 23px/1 Outfit,sans-serif; font-variant-numeric:tabular-nums; }
+.orbit { position:absolute; width:340px; height:340px; top:74px; left:88px; color:var(--accent); overflow:visible; }
+.orbit-outer,.orbit-inner { fill:none; stroke:#a1d3c26b; stroke-width:1.2; }
+.orbit-outer { stroke-dasharray:2.5 7.5; }
+.level-ring { fill:none; stroke:currentColor; stroke-width:4; stroke-linecap:round; stroke-dasharray:100; stroke-dashoffset:100; transform:rotate(-90deg); transform-origin:170px 170px; }
+.pulse-ring { fill:none; stroke:currentColor; stroke-width:2; transform-origin:170px 170px; }
+.point { fill:currentColor; filter:drop-shadow(0 0 5px currentColor); }
+.level-copy { position:absolute; inset:185px 0 auto; text-align:center; font-size:76px; font-weight:610; letter-spacing:-.06em; line-height:1; }
+.level-copy b { display:inline-block; min-width:2ch; font-weight:610; font-variant-numeric:tabular-nums; }
+.level-copy small { color:#a2c7c0; font-size:32px; font-weight:520; margin-left:5px; }
+.level-note { margin-top:12px; }
+.bars { display:none; position:absolute; inset:auto 52px 51px; height:188px; align-items:end; gap:11px; border-bottom:1px solid #a1d3c26b; padding:0 2px 7px; }
+.bars span { flex:1; min-width:0; border-radius:3px 3px 0 0; background:linear-gradient(0deg,#2a5954,var(--accent)); }
+.is-bars .orbit { display:none; }
+.is-bars .bars { display:flex; }
+.is-bars .level-copy { inset:94px 0 auto; }
+footer { position:absolute; left:126px; right:126px; bottom:127px; display:flex; align-items:center; justify-content:space-between; }
+.footer-line { height:1px; flex:1; margin:0 23px; background:#82ffe245; }
+</style>
+</head>
+<body>
+<main data-composition-id="pulso-de-audio" data-start="0" data-duration="7.2" data-width="1920" data-height="1080">
+  <div class="texture"></div><div class="field"></div>
+  <header><div class="eyebrow">Trecho de voz</div><h1></h1><p></p></header>
+  <section class="track">
+    <div class="panel-head"><span class="label">Forma de onda</span><span class="counter elapsed"></span></div>
+    <svg class="wave" viewBox="0 0 1046 282" aria-hidden="true">
+      <defs>
+        <g id="wave-bars"></g>
+        <clipPath id="played"><rect class="played" x="0" y="0" width="0" height="282"/></clipPath>
+      </defs>
+      <path class="wave-grid" d="M0 30H1046M0 86H1046M0 141H1046M0 196H1046M0 252H1046M0 30V252M174 30V252M349 30V252M523 30V252M697 30V252M872 30V252M1046 30V252"/>
+      <use class="wave-idle" href="#wave-bars" fill="currentColor"/>
+      <use class="wave-active" href="#wave-bars" fill="currentColor" clip-path="url(#played)"/>
+      <g class="playhead"><path class="cursor" d="M0 27V255"/><circle class="cursor-point" cy="27" r="5"/></g>
+    </svg>
+    <div class="time-axis"><span>0 s</span><span>2 s</span><span>4 s</span><span>6 s</span></div>
+  </section>
+  <section class="orbit-panel">
+    <div class="panel-head"><span class="label">Intensidade da voz</span></div>
+    <svg class="orbit" viewBox="0 0 340 340" aria-hidden="true">
+      <circle class="orbit-outer" cx="170" cy="170" r="145"/><circle class="orbit-inner" cx="170" cy="170" r="113"/>
+      <circle class="pulse-ring" cx="170" cy="170" r="107"/><circle class="level-ring" cx="170" cy="170" r="130" pathLength="100"/>
+      <circle class="point" cx="170" cy="40" r="5"/>
+    </svg>
+    <div class="level-copy"><div><b></b><small>%</small></div><p class="label level-note">Nível atual</p></div>
+    <div class="bars" aria-hidden="true"></div>
+  </section>
+  <footer class="label"><span>Monitor de voz</span><div class="footer-line"></div><span>Canal 01</span></footer>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const demoAmplitudes = [0,.03,.15,.56,.38,.73,.47,.25,.12,.03,.09,.32,.78,.61,.83,.42,.2,.05,.03,.26,.53,.78,.92,.6,.29,.05,.04,.21,.49,.6,.4,.18,.05,0];
+const source = Array.isArray(inputs.amplitudes) ? inputs.amplitudes.slice(0, 12000) : [];
+const amplitudes = source.length > 1 && source.every(Number.isFinite) ? source.map(clamp) : demoAmplitudes;
+const mode = inputs.mode === 'bars' ? 'bars' : 'ring';
+one('.orbit-panel').classList.toggle('is-bars', mode === 'bars');
+const title = String(inputs.title ?? 'Em frequência');
+one('h1').textContent = title;
+one('h1').style.fontSize = Math.max(59, Math.min(106, 106 - Math.max(0, title.length - 18) * 1.8)) + 'px';
+copy('header p', 'subtitle', 'Conversas sobre criação e som · Episódio 07');
+stage.style.setProperty('--accent', /^#[a-f0-9]{6}$/i.test(inputs.accent) ? inputs.accent : '#82ffe2');
+const played = one('.played');
+const playhead = one('.playhead');
+const orbit = one('.level-ring');
+const pulse = one('.pulse-ring');
+const marker = one('.point');
+const levelCopy = one('.level-copy b');
+const elapsed = one('.elapsed');
+const levelBars = mode === 'bars' ? Array.from({ length: 12 }, (_, i) => {
+  const bar = document.createElement('span');
+  bar.style.opacity = .32 + .68 * i / 11;
+  one('.bars').append(bar);
+  return bar;
+}) : [];
+
+function sample(progress) {
+  const position = clamp(progress) * (amplitudes.length - 1);
+  const left = Math.floor(position);
+  return mix(amplitudes[left], amplitudes[Math.min(amplitudes.length - 1, left + 1)], position - left);
+}
+
+for (let i = 0; i < 131; i++) {
+  const bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  const strength = sample(i / 130);
+  const texture = .63 + .37 * Math.abs(Math.sin(i * 1.77) * Math.cos(i * .41));
+  const height = Math.max(2.8, strength * 220 * texture);
+  bar.setAttribute('x', i * 8);
+  bar.setAttribute('y', 141 - height / 2);
+  bar.setAttribute('width', 5.5);
+  bar.setAttribute('height', height);
+  bar.setAttribute('rx', 2.75);
+  one('#wave-bars').append(bar);
+}
+
+window.renderMotion = t => {
+  const progress = phase(t, .36, 6.0);
+  const level = sample(progress);
+  const point = progress * 1046;
+  const degrees = level * 360;
+  played.setAttribute('width', point);
+  playhead.setAttribute('transform', 'translate(' + point + ' 0)');
+  if (mode === 'ring') {
+    orbit.style.strokeDashoffset = 100 * (1 - level);
+    marker.setAttribute('transform', 'rotate(' + degrees + ' 170 170)');
+    pulse.style.transform = 'scale(' + (1 + level * .24) + ')';
+    pulse.style.opacity = .08 + level * .62;
+  } else {
+    levelBars.forEach((bar, i) => {
+      const strength = sample(progress - (levelBars.length - 1 - i) * .013);
+      bar.style.height = 3 + strength * 164 + 'px';
+    });
+  }
+  levelCopy.textContent = String(Math.round(level * 100)).padStart(2, '0');
+  elapsed.textContent = '00:' + (progress * 6).toFixed(2).padStart(5, '0').replace('.', ',');
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

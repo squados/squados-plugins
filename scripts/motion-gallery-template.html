@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Motions próprios do SquadOS e referências de edição, com vídeos e prompts de uso.">
+  <meta name="description" content="Motions do SquadOS para usar na edição de vídeo, com prévias, descrições e prompts.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='9' width='40' height='30' rx='5' fill='%23b9a9fa'/%3E%3Cpath d='m20 16 12 8-12 8Z' fill='%23262234'/%3E%3C/svg%3E">
   <title>Galeria de motion | SquadOS</title>
   <link rel="stylesheet" href="gallery.css">
@@ -14,7 +14,7 @@
       <span class="wordmark">SquadOS</span>
       <nav aria-label="Galeria">
         <a href="#catalogo">Catálogo</a>
-        <a href="#edicao-comparada">Edição comparada</a>
+        <a href="#edicao-comparada" id="comparison-link" hidden>Edição comparada</a>
       </nav>
     </div>
   </header>
@@ -22,26 +22,49 @@
     <div class="intro">
       <div>
         <h1>Galeria de motion</h1>
-        <p>Escolha entre 50 efeitos para cortes, aulas, demonstrações e explicações. Assista ao vídeo e cite o nome do efeito na edição.</p>
+        <p>Encontre motions para cortes, aulas, demonstrações e ofertas. Assista à prévia e cite o nome do efeito no seu pedido de edição.</p>
       </div>
       <div class="intro-frames" aria-hidden="true">
         <span></span><span></span><span></span><span></span>
       </div>
     </div>
-    <div class="toolbar" aria-label="Filtros do catálogo">
+    <div class="toolbar" role="search" aria-label="Filtros do catálogo">
       <label class="field field-search">
         <span>Buscar efeito</span>
-        <input type="search" id="query" placeholder="Nome, coleção ou ID" autocomplete="off">
+        <input type="search" id="query" placeholder="Nome, descrição ou ID" autocomplete="off">
+      </label>
+      <label class="field" hidden>
+        <span>Seleção</span>
+        <select id="scope"><option value="">Catálogo completo</option></select>
       </label>
       <label class="field">
-        <span>Coleção ou categoria</span>
-        <select id="category"><option value="">Catálogo completo</option></select>
+        <span>Categoria</span>
+        <select id="category"><option value="">Todas</option></select>
       </label>
-      <output id="total" aria-live="polite"></output>
+      <label class="field">
+        <span>Uso</span>
+        <select id="use"><option value="">Todos os usos</option></select>
+      </label>
+      <label class="field">
+        <span>Tipo</span>
+        <select id="kind"><option value="">Todos os tipos</option></select>
+      </label>
+      <label class="field field-duration">
+        <span>Duração</span>
+        <select id="duration"><option value="">Qualquer duração</option></select>
+      </label>
+      <div class="toolbar-actions">
+        <output id="total" aria-live="polite"></output>
+        <button type="button" class="clear-filters" id="clear-filters" disabled>Limpar filtros</button>
+      </div>
     </div>
     <noscript>Ative o JavaScript do navegador para consultar o catálogo.</noscript>
     <div id="groups"></div>
-    <p class="empty" id="empty" hidden>Nenhum efeito encontrado. Tente outro nome ou categoria.</p>
+    <section class="empty" id="empty" aria-labelledby="empty-title" hidden>
+      <h2 id="empty-title">Nenhum motion encontrado</h2>
+      <p>Tente outra busca ou limpe os filtros para ver todo o catálogo.</p>
+      <button type="button" class="clear-filters" id="empty-clear-filters">Limpar filtros</button>
+    </section>
     <footer>Galeria de motion do SquadOS <a href="catalog.json">Catálogo JSON</a></footer>
   </main>
   <script id="catalog" type="application/json"><!-- CATALOG --></script>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Dispositivos em Cena</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#dce3f4; color:#172251; }
+.guide { position:absolute; inset:72px; border:1px solid #26386e32; }
+.guide::before,.guide::after { content:""; position:absolute; inset:0; pointer-events:none; }
+.guide::before { background:linear-gradient(90deg, transparent 33%, #26386e23 33%, #26386e23 calc(33% + 1px), transparent calc(33% + 1px)); }
+.guide::after { background:linear-gradient(180deg, transparent 84%, #26386e23 84%, #26386e23 calc(84% + 1px), transparent calc(84% + 1px)); }
+.copy { position:absolute; left:126px; top:304px; width:462px; }
+.copy h1 { font-size:101px; line-height:.92; }
+.copy p { margin-top:32px; width:420px; font-size:32px; line-height:1.22; color:#485681; }
+.scale { position:absolute; left:129px; top:895px; width:452px; height:67px; display:flex; align-items:end; justify-content:space-between; border-top:2px solid #6779a4; font-size:25px; }
+.scale span { opacity:.52; }
+.scale i { position:absolute; top:-7px; left:0; display:block; height:12px; width:36px; background:#2e45af; border-radius:7px; }
+.device { position:absolute; left:1250px; top:526px; transform:translate(-50%,-50%); padding:17px; border:2px solid #5f70a3; background:#162247; box-shadow:0 18px 0 -7px #aab6d6,0 42px 105px #293a6555; }
+.screen { position:relative; overflow:hidden; height:100%; border-radius:inherit; background:#edf1ff; }
+.screen > img,.screen > video,.mock { position:absolute; inset:0; width:100%; height:100%; }
+.screen > img,.screen > video { object-fit:contain; background:#162247; }
+.mock { overflow:hidden; padding:clamp(12px,4cqw,34px); container-type:inline-size; }
+.mock-head { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:17px; border-bottom:1px solid #8495c0; padding:0 0 15px; }
+.mock-head b { font-size:clamp(20px,6cqw,45px); line-height:1; letter-spacing:-.065em; }
+.mock-head span { color:#374976; font-size:clamp(13px,3cqw,24px); white-space:nowrap; }
+.mock-body { position:relative; height:83%; }
+.mock-label { position:absolute; z-index:1; top:5%; left:5%; color:white; font-size:clamp(18px,5cqw,42px); line-height:1; font-weight:650; text-shadow:0 2px 12px #162247; }
+.mock-body svg { width:100%; height:100%; display:block; border-radius:9px; background:#263c8d; }
+.hinge { position:absolute; left:50%; bottom:-28px; width:91%; height:29px; transform:translateX(-50%); background:linear-gradient(#b7c5e0,#7b8db5); border-radius:5px 5px 26px 26px; box-shadow:0 6px 8px #18234838; }
+.hinge::before { content:""; position:absolute; inset:3px 42% auto; height:8px; border-radius:0 0 8px 8px; background:#697da9; }
+.size { position:absolute; top:906px; left:1050px; width:400px; text-align:center; font-size:25px; color:#34477b; font-variant-numeric:tabular-nums; }
+</style>
+</head>
+<body>
+<main data-composition-id="dispositivos-em-cena" data-start="0" data-duration="8.4" data-width="1920" data-height="1080">
+  <div class="guide"></div>
+  <header class="copy"><h1 class="display"></h1><p></p></header>
+  <div class="scale" aria-hidden="true"><span>Celular</span><span>Tablet</span><span>Desktop</span><i></i></div>
+  <div class="device">
+    <div class="screen">
+      <div class="mock">
+        <div class="mock-head"><b>Horizonte</b><span>Rotas salvas</span></div>
+        <div class="mock-body">
+          <span class="mock-label">Costa norte</span>
+          <svg viewBox="0 0 800 490" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="800" height="490" fill="#263c8d"/>
+            <path d="M-60 395C85 318 135 399 231 290S305 251 385 196 406 107 532 84 579 33 662-30H860V540H-60Z" fill="#8aa8f0"/>
+            <path d="M-10 431C116 368 205 424 265 329S356 316 413 247 459 175 546 144 620 136 715 15L814-32M-30 466c116-60 218-16 300-88s133-74 180-131 91-42 163-95 114-62 188-158M-40 504c147-68 223-10 328-79s140-68 204-130 96-47 173-107 88-46 155-122M28 511c142-11 224-19 311-65s136-70 207-126 101-47 182-110l93-80M224 506c125-17 147-43 210-72s147-60 208-111 121-69 179-111" fill="none" stroke="#536fba" stroke-width="2"/>
+            <path d="M257 398c51-54 108-48 141-86s21-65 63-82 109-22 130-84" fill="none" stroke="#d8ffab" stroke-width="7" stroke-linecap="round" stroke-dasharray="1 12"/>
+            <circle cx="257" cy="398" r="10" fill="#e4f4d7" stroke="#263c8d" stroke-width="4"/><circle cx="591" cy="146" r="15" fill="#d8ffab" stroke="#263c8d" stroke-width="5"/>
+          </svg>
+        </div>
+      </div>
+      <!-- motion-media:phone:0:8.4:0 -->
+      <!-- motion-media:tablet:2.2:6.2:1 -->
+      <!-- motion-media:desktop:4.5:3.9:2 -->
+    </div>
+    <div class="hinge"></div>
+  </div>
+  <p class="size" aria-hidden="true"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy(".copy h1", "title", "Uma rota, três telas");
+copy(".copy p", "subtitle", "Do mapa no bolso ao planejamento na mesa.");
+const device = one(".device");
+const hinge = one(".hinge");
+const scale = one(".scale i");
+const modes = all(".scale span");
+const size = one(".size");
+const screens = ["phone", "tablet", "desktop"].map(name => one("#motion-media-" + name));
+window.renderMotion = time => {
+  const tablet = flow(phase(time, 1.7, 1.12));
+  const desktop = flow(phase(time, 4.08, 1.16));
+  const stageProgress = tablet + desktop;
+  const width = 324 + tablet * 365 + desktop * 419;
+  const height = 638 - tablet * 61 + desktop * 59;
+  const depth = Math.sin(tablet * Math.PI) * 14 + Math.sin(desktop * Math.PI) * 10;
+  const arrival = flow(phase(time, 0, .7));
+  set(device, {width:width + "px", height:height + "px", borderRadius:51 - tablet * 19 - desktop * 10 + "px", opacity:arrival,
+    transform:`translate(-50%, ${-50 + (1-arrival) * 6}%) perspective(1800px) rotateY(${-depth}deg)`});
+  set(hinge, {opacity:desktop, transform:`translateX(-50%) scaleY(${desktop})`});
+  scale.style.transform = `translateX(${stageProgress * 208}px)`;
+  modes.forEach((label, index) => label.style.opacity = 1 - .48 * Math.min(1, Math.abs(index - stageProgress)));
+  size.textContent = ["Enquadramento vertical", "Enquadramento intermediário", "Enquadramento amplo"][Math.round(stageProgress)];
+  const tabletMedia = flow(phase(time, 2.2, .38));
+  const desktopMedia = flow(phase(time, 4.5, .42));
+  const visibility = [1 - tabletMedia, tabletMedia * (1 - desktopMedia), desktopMedia];
+  screens.forEach((screen, index) => { if (screen) screen.style.opacity = visibility[index]; });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

@@ -41,6 +41,10 @@ main.amber { background: radial-gradient(ellipse at 52% 94%,#41231c,#171318 55%,
 .sidebar li.active { background: #ddc7be; color: #422b2e; font-weight: 600; }
 .screen { position: relative; overflow: hidden; min-height: 0; min-width: 0; background: #fcf7f0; }
 .screen > :is(video,img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #17151c; }
+.screen.multi { display:grid; grid-template-columns:repeat(var(--count),minmax(0,1fr)); gap:12px; padding:23px; background:#e8ded8; }
+.screen.multi figure { margin:0; display:grid; min-width:0; min-height:0; grid-template-rows:45px minmax(0,1fr); background:#17151c; border:1px solid #b9a6a0; border-radius:12px; overflow:hidden; box-shadow:0 14px 25px #412d3028; }
+.screen.multi figcaption { display:flex; align-items:center; padding:0 15px; background:#fbf2eb; color:#51352e; font-size:21px; line-height:1.05; overflow:hidden; }
+.screen.multi :is(video,img) { width:100%; height:100%; min-height:0; object-fit:contain; background:#17151c; }
 .board { position: absolute; inset: 35px 38px; display: grid; grid-template-rows: auto auto 1fr; gap: 18px; }
 .board h2 { font-size: 39px; font-weight: 650; letter-spacing: -.03em; }
 .board h2 small { font-size: 20px; color: #785d58; display: block; font-weight: 480; letter-spacing: 0; }
@@ -75,6 +79,9 @@ main.amber { background: radial-gradient(ellipse at 52% 94%,#41231c,#171318 55%,
         <aside class="sidebar"><small>Etapas</small><ol></ol></aside>
         <div class="screen">
           <!-- motion-media:screen:2.12:6.48:0:revealAt -->
+          <!-- motion-media:screenTwo:2.12:6.48:1:revealAt -->
+          <!-- motion-media:screenThree:2.12:6.48:2:revealAt -->
+          <!-- motion-media:screenFour:2.12:6.48:3:revealAt -->
           <section class="board">
             <h2 class="result-title">Triagem de solicitações<small>Exemplo ilustrativo</small></h2>
             <div class="stats"><div class="stat"><b>3</b><span>Chamados</span></div><div class="stat"><b>3</b><span>Equipes</span></div><div class="stat"><b>1</b><span>Prioridade alta</span></div></div>
@@ -116,9 +123,20 @@ const rows = result.map((values, row) => {
   one(".table").append(line);
   return line;
 });
-const suppliedMedia = one(".screen > :is(img, video)");
-one(".board").hidden = Boolean(suppliedMedia);
-if (suppliedMedia) one(".board").style.display = "none";
+const suppliedMedia = all(".screen > :is(img, video)");
+if (suppliedMedia.length) one(".board").style.display = "none";
+const mediaCards = suppliedMedia.length > 1 ? suppliedMedia.map((media, i) => {
+  const figure = document.createElement("figure");
+  const label = document.createElement("figcaption");
+  label.textContent = inputs.screenLabels?.[i] ?? "Resultado " + (i + 1);
+  figure.append(label, media);
+  one(".screen").append(figure);
+  return figure;
+}) : suppliedMedia;
+if (mediaCards.length > 1) {
+  one(".screen").classList.add("multi");
+  one(".screen").style.setProperty("--count", mediaCards.length);
+}
 const written = one(".written");
 const status = one(".status");
 window.renderMotion = time => {
@@ -129,9 +147,10 @@ window.renderMotion = time => {
   set(one(".prompt"), { opacity: promptIn, transform: "translateY(" + (1 - promptIn) * 28 + "px)" });
   one(".send").style.transform = "scale(" + (1 - .15 * Math.sin(Math.PI * phase(time, reveal - .22, .35))) + ")";
   const panel = flow(phase(time, reveal - .10, .65));
-  const screenDuration = suppliedMedia?.duration;
-  const done = suppliedMedia instanceof HTMLVideoElement
-    ? Math.min(8.24, reveal + (Number.isFinite(screenDuration) ? screenDuration : 8.6) - .26)
+  const videos = suppliedMedia.filter(media => media instanceof HTMLVideoElement);
+  const screenDuration = Math.max(...videos.map(media => Number.isFinite(media.duration) ? media.duration : 8.6));
+  const done = videos.length
+    ? Math.min(8.24, reveal + screenDuration - .26)
     : reveal + 2.74;
   const work = flow(phase(time, reveal + .28, Math.max(.1, done - reveal - .28)));
   set(one(".output"), { opacity: panel, clipPath: "inset(0 0 " + (1 - panel) * 100 + "% 0 round 26px)", transform: "translateY(" + (1 - panel) * -18 + "px)" });
@@ -149,7 +168,10 @@ window.renderMotion = time => {
     const p = beat(time, reveal + .81 + .56 * i, .43);
     set(row, { opacity: p, transform: "translateY(" + (1 - p) * 15 + "px)" });
   });
-  if (suppliedMedia) suppliedMedia.style.opacity = beat(time, reveal, .34);
+  mediaCards.forEach((card, i) => {
+    const arrive = beat(time, reveal + .14 * i, .34);
+    set(card, { opacity: arrive, transform: "translateY(" + (1 - arrive) * 11 + "px)" });
+  });
 };
 window.renderMotion(0);
 </script>

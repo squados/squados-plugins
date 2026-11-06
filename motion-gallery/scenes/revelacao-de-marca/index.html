@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Revelação de Marca</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color:#fff2df; background:#151310; --accent:#ff9c69; }
+.light, .grain, .guides, .mark { position:absolute; pointer-events:none; }
+.light { inset:0; background:radial-gradient(ellipse at 50% 50%,#482d21,#221a16 48%,#151310 83%); }
+.grain { inset:0; opacity:.28; background:repeating-linear-gradient(0deg,#fff2df15 0 1px,transparent 1px 5px); mask-image:radial-gradient(ellipse,#000,transparent 78%); }
+.frame { position:absolute; inset:76px; border:1px solid #e9a87f4a; }
+.edge { position:absolute; left:106px; right:106px; display:flex; justify-content:space-between; align-items:center; font:600 26px/1 Outfit,sans-serif; letter-spacing:.18em; text-transform:uppercase; color:#e9c8ad; }
+.top { top:112px; }.bottom { bottom:112px; }
+.tag { display:flex; align-items:center; gap:14px; }.tag::before { content:''; width:9px; height:9px; background:var(--accent); transform:rotate(45deg); }
+.readout { color:var(--accent); font-variant-numeric:tabular-nums; }
+.guides { inset:0; width:1920px; height:1080px; color:#edba9370; }
+.guide-orbit { fill:none; stroke:currentColor; stroke-width:1.5; stroke-dasharray:5 10; }
+.guide-axis { fill:none; stroke:currentColor; stroke-width:1.3; }
+.mark { left:720px; top:300px; width:480px; height:480px; overflow:visible; color:var(--accent); }
+.vector, .logo { position:absolute; inset:0; width:100%; height:100%; }
+.vector { overflow:visible; }
+.logo { object-fit:contain; }
+.trace, .ghost { fill:none; stroke:currentColor; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+.ghost { opacity:.14; }
+.trace { stroke-dasharray:100 100; stroke-dashoffset:100; }
+.spark { fill:#fff4df; filter:drop-shadow(0 0 4px var(--accent)); }
+.lockup { position:absolute; left:594px; right:190px; top:50%; transform:translateY(-50%); border-left:1px solid #f9d1af6b; padding-left:52px; }
+h1 { color:#fff2df; font-weight:660; letter-spacing:-.055em; line-height:.98; overflow-wrap:anywhere; }
+.lockup p { margin-top:24px; max-width:920px; color:#e4bd9e; font-size:31px; letter-spacing:.075em; text-wrap:balance; overflow-wrap:anywhere; }
+.underline { width:96px; height:3px; margin-top:30px; background:var(--accent); transform-origin:left; }
+</style>
+</head>
+<body>
+<main data-composition-id="revelacao-de-marca" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+  <div class="light"></div><div class="grain"></div>
+  <div class="frame"></div>
+  <div class="edge top"><span class="tag">Identidade visual</span><span class="readout">00%</span></div>
+  <svg class="guides" viewBox="0 0 1920 1080" aria-hidden="true">
+    <circle class="guide-orbit" cx="960" cy="540" r="224"/><circle class="guide-orbit" cx="960" cy="540" r="287"/>
+    <path class="guide-axis" d="M624 540H1296M960 204V876M756 336H1164V744H756ZM623 527v26m674-26v26M947 203h26m-26 674h26"/>
+    <path class="guide-axis" d="M742 336h27m-13-13v27m395-14h27m-14-13v27M742 744h27m-13-13v27m395-14h27m-14-13v27"/>
+  </svg>
+  <div class="mark" aria-hidden="true">
+    <svg class="vector" viewBox="0 0 100 100">
+      <path class="ghost"/><path class="trace" pathLength="100"/><circle class="spark" r="2.4"/>
+    </svg>
+  </div>
+  <div class="lockup"><h1></h1><p></p><div class="underline"></div></div>
+  <div class="edge bottom"><span class="step">01 / Traço</span><span>Estudo de marca</span></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const defaultPath = 'M14 70 C25 60 23 31 45 22 C64 14 80 29 76 45 C72 63 54 71 45 59 C36 46 53 31 69 34 C85 38 92 53 85 66 C77 81 61 84 45 80 C30 76 24 71 14 70Z';
+const trace = one('.trace');
+const ghost = one('.ghost');
+const spark = one('.spark');
+const mark = one('.mark');
+const vector = one('.vector');
+const lockup = one('.lockup');
+const name = String(inputs.name ?? 'Forma Nascente');
+const tagline = String(inputs.tagline ?? 'Estúdio de identidade e direção de arte');
+const accent = /^#[a-f0-9]{6}$/i.test(inputs.accent) ? inputs.accent : '#ff9c69';
+const logo = typeof inputs.logo === 'string' && inputs.logo ? new Image() : null;
+const mode = ['trace','pixel'].includes(inputs.mode) ? inputs.mode : logo ? 'pixel' : 'trace';
+if (logo) {
+  logo.className = 'logo';
+  logo.alt = '';
+  logo.src = inputs.logo;
+  mark.append(logo);
+}
+stage.style.setProperty('--accent', accent);
+const path = typeof inputs.path === 'string' && /^[mM]\s*[-+.\d]/.test(inputs.path) ? inputs.path : defaultPath;
+trace.setAttribute('d', path);
+if (!trace.getTotalLength()) trace.setAttribute('d', defaultPath);
+ghost.setAttribute('d', trace.getAttribute('d'));
+const length = trace.getTotalLength();
+one('h1').textContent = name;
+one('h1').style.fontSize = Math.max(55, Math.min(124, 124 - Math.max(0, name.length - 14) * 4.1)) + 'px';
+one('.lockup p').textContent = tagline;
+one('.lockup p').hidden = !tagline.trim();
+
+function pixelMask(progress) {
+  if (progress <= 0) return 'inset(0 100% 0 0)';
+  if (progress >= 1) return 'none';
+  const edge = [];
+  for (let row = 0; row < 10; row++) {
+    const jitter = (row * 19 % 17) - 8;
+    const x = Math.max(0, Math.min(100, 5 * Math.floor((progress * 120 - 9 + jitter) / 5)));
+    edge.push(x + '% ' + row * 10 + '%', x + '% ' + (row + 1) * 10 + '%');
+  }
+  return 'polygon(0 0,' + edge.join(',') + ',0 100%)';
+}
+
+window.renderMotion = t => {
+  const draw = flow(phase(t, .27, 2.55));
+  const settle = flow(phase(t, 3.0, 1.05));
+  const reveal = beat(t, 3.42, .8);
+  const highlight = beat(t, .27, .26) * (1 - beat(t, 2.68, .35));
+  if (mode === 'pixel') {
+    trace.style.strokeDashoffset = '0';
+    spark.style.opacity = 0;
+    if (logo) vector.style.opacity = 0;
+    (logo ?? vector).style.clipPath = pixelMask(draw);
+  } else {
+    trace.style.strokeDashoffset = 100 * (1 - draw);
+    const point = trace.getPointAtLength(draw * length);
+    spark.setAttribute('cx', point.x);
+    spark.setAttribute('cy', point.y);
+    spark.style.opacity = highlight;
+    if (logo) {
+      const replace = beat(t, 2.82, .55);
+      logo.style.opacity = replace;
+      vector.style.opacity = 1 - replace;
+    }
+  }
+  mark.style.transform = 'translateX(' + mix(0, -532, settle) + 'px) scale(' + mix(1, .54, settle) + ')';
+  one('.guides').style.opacity = 1 - settle;
+  one('.light').style.transform = 'translateX(' + (-190 * settle) + 'px) scale(' + (1 + .24 * settle) + ')';
+  lockup.style.opacity = reveal;
+  lockup.style.transform = 'translate(' + (40 * (1 - reveal)) + 'px,-50%)';
+  one('.underline').style.transform = 'scaleX(' + beat(t, 3.84, .65) + ')';
+  one('.readout').textContent = draw < 1 ? String(Math.round(draw * 100)).padStart(2, '0') + '%' : 'SÍMBOLO COMPLETO';
+  one('.step').textContent = reveal < .15 ? (mode === 'pixel' ? '01 / Revelação' : '01 / Traço') : '02 / Assinatura';
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

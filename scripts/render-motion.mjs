@@ -17,7 +17,6 @@ const { positionals, values } = parseArgs({
 })
 const normalize = value => value.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().trim()
 const { entries } = JSON.parse(readFileSync(join(gallery, 'catalog.json'), 'utf8'))
-const originals = entries.filter(entry => entry.demo)
 
 if (values.help) {
   console.log('node scripts/render-motion.mjs "<nome ou ID>" [--inputs dados.json] [--out vídeo.mp4|.mov|.webm]')
@@ -27,17 +26,19 @@ if (values.help) {
 
 try {
   if (positionals.length !== 1) throw Error('Informe um nome ou ID. Veja --help.')
-  const selected = originals.filter(entry =>
-    [entry.id, entry.title, ...(entry.aliases ?? [])].some(name => normalize(name) === normalize(positionals[0])),
+  const requested = normalize(positionals[0])
+  const selected = entries.find(entry =>
+    [entry.id, entry.title, ...(entry.aliases ?? []), ...(entry.previousIds ?? [])].some(name => normalize(name) === requested),
   )
-  if (!selected.length) throw Error('Efeito próprio não encontrado. Consulte motion-gallery/catalog.json.')
-  for (const entry of selected) render(entry)
+  if (!selected) throw Error('Efeito próprio não encontrado. Consulte motion-gallery/catalog.json.')
+  const preset = Object.entries(selected.demo.presets ?? {}).find(([name]) => normalize(name) === requested)?.[1]
+  render(selected, preset)
 } catch (error) {
   console.error(error.message)
   process.exitCode = 1
 }
 
-function render(entry) {
+function render(entry, preset) {
   const preview = !values.out
   const output = values.out ? resolve(values.out) : join(gallery, entry.demo.preview)
   const format = extname(output).slice(1).toLowerCase()
@@ -58,7 +59,7 @@ function render(entry) {
   try {
     const project = join(temp, 'scene')
     cpSync(dirname(join(gallery, entry.demo.composition)), project, { recursive: true })
-    const inputs = { ...entry.demo.previewInputs, ...rawInputs }
+    const inputs = { ...entry.demo.previewInputs, ...preset, ...rawInputs }
     const inputDirectory = values.inputs ? dirname(resolve(values.inputs)) : dirname(join(gallery, entry.demo.composition))
     const stageMedia = (value, name, videoAllowed) => {
       if (typeof value !== 'string' || !value.trim()) throw Error('Informe um arquivo para ' + name + '.')
@@ -85,7 +86,7 @@ function render(entry) {
 
     const entryPath = join(project, 'index.html')
     let source = readFileSync(entryPath, 'utf8').replace(
-      /<!-- motion-media:([a-z]+):([\d.]+):([\d.]+):([\d]+)(?::([a-zA-Z]+))? -->/g,
+      /<!-- motion-media:([a-zA-Z]+):([\d.]+):([\d.]+):([\d]+)(?::([a-zA-Z]+))? -->/g,
       (_marker, name, defaultStart, defaultDuration, track, startInput) => {
         if (!inputs[name]) return ''
         const end = Number(defaultStart) + Number(defaultDuration)

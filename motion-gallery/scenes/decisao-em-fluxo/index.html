@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Decisão em Fluxo</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:#e5dfed; color:#2e2346; }
+.system { position:absolute; inset:113px 140px; display:grid; grid-template-columns:584px minmax(0,1fr); overflow:hidden; background:#f8f5fa; border:1px solid #a08cae; border-radius:20px; box-shadow:0 30px 75px #4e34664d; }
+.inbox { border-right:1px solid #c9bdd2; background:#f1eaf6; padding:41px 35px; }
+.inbox h1 { font-size:59px; }
+.count { margin-top:12px; color:#5e4c72; font-size:28px; }
+.rows { margin-top:42px; }
+.row { position:relative; display:flex; align-items:center; gap:17px; height:117px; padding:0 17px; border:1px solid transparent; border-bottom-color:#cbbcd4; }
+.row.chosen { background:#e0d4ef; border:1px solid #9f86c2; border-radius:10px; }
+.row b { display:block; font-size:28px; font-weight:650; line-height:1.1; }
+.row small { display:block; margin-top:5px; color:#614d75; font-size:24px; }
+.row-icon { display:grid; place-items:center; width:48px; height:48px; border:1px solid #a28bb4; border-radius:12px; color:#573a79; flex:none; }
+.row-icon svg { width:24px; }
+.row-state { margin-left:auto; width:21px; height:21px; flex:none; display:grid; place-items:center; color:#286544; font-size:20px; }
+.row-state::after { content:""; width:9px; height:9px; border-radius:50%; background:#8c65b8; }
+.row-state.complete::after { display:none; }
+.detail-area { position:relative; overflow:hidden; }
+.empty,.detail { position:absolute; inset:0; }
+.empty { display:grid; align-content:center; justify-items:center; gap:15px; color:#695777; font-size:29px; }
+.empty svg { width:68px; height:68px; color:#8263a7; }
+.detail { padding:73px 75px; background:#f8f5fa; }
+.detail .origin { color:#655074; font-size:24px; }
+.detail h2 { font-size:67px; max-width:830px; line-height:1.03; margin-top:13px; }
+.detail .description { margin-top:23px; max-width:690px; font-size:35px; line-height:1.23; color:#4d3a62; }
+.document { margin-top:37px; width:100%; max-width:660px; border:1px solid #c9bdd2; border-radius:12px; padding:22px 25px 26px; background:#f0ebf5; }
+.document p { color:#523d67; font-size:27px; }
+.document b { display:block; margin-top:9px; font-size:34px; font-weight:650; }
+.confirm { position:absolute; top:641px; left:75px; display:inline-flex; padding:17px 25px; align-items:center; gap:12px; border-radius:13px; color:#fff; background:#633d91; font-size:29px; line-height:1.15; transform-origin:center; }
+.confirm.complete { background:#d7eadc; color:#214d36; }
+.confirm svg { width:22px; height:22px; }
+.notice { position:absolute; top:240px; right:283px; min-width:545px; max-width:670px; display:grid; grid-template-columns:auto 1fr; align-items:center; gap:17px; background:#37234c; color:#fff; border-radius:15px; padding:22px 30px; box-shadow:0 18px 37px #37234c54; }
+.notice svg { width:38px; height:38px; color:#e4d1fa; }
+.notice b,.notice small { display:block; }
+.notice b { font-size:31px; font-weight:650; line-height:1.1; }
+.notice small { font-size:23px; color:#e7d8f5; margin-top:6px; }
+.pointer { position:absolute; z-index:2; top:0; left:0; width:42px; height:50px; overflow:visible; filter:drop-shadow(0 3px 3px #37234c48); }
+.pointer circle { fill:none; stroke:#865fc3; stroke-width:3; }
+</style>
+</head>
+<body>
+<main data-composition-id="decisao-em-fluxo" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <symbol id="file" viewBox="0 0 24 24"><path d="M6 2.5h8l4 4v15H6zm8 0v4h4M9 11h6m-6 4h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+      <symbol id="bell" viewBox="0 0 24 24"><path d="M5 16h14l-2-4.5V9a5 5 0 0 0-10 0v2.5zm5 3.5a2.5 2.5 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+      <symbol id="tick" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+  <div class="system">
+    <section class="inbox"><h1 class="display"></h1><p class="count"></p><div class="rows"></div></section>
+    <div class="detail-area">
+      <div class="empty"><svg aria-hidden="true"><use href="#file"/></svg><p>Selecione um pedido para revisar.</p></div>
+      <section class="detail">
+        <p class="origin"></p><h2 class="display"></h2><p class="description"></p>
+        <div class="document"><p>Resumo do pedido</p><b></b></div>
+        <div class="confirm"><svg aria-hidden="true"><use href="#tick"/></svg><span></span></div>
+      </section>
+    </div>
+  </div>
+  <aside class="notice"><svg aria-hidden="true"><use href="#bell"/></svg><div><b></b><small>Enviado para sua revisão</small></div></aside>
+  <svg class="pointer" viewBox="0 0 42 50" aria-hidden="true">
+    <circle cx="8" cy="7" r="23"/>
+    <path d="M5 4l31 25-14 2 5 11-6 3-5-11-9 9z" fill="#fff" stroke="#34214a" stroke-width="2.7" stroke-linejoin="round"/>
+  </svg>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+copy("h1", "title", "Central de revisão");
+const defaultItems = [
+  {title:"Programar anúncio", source:"Comunicação", detail:"Canais internos e externos", description:"Revise os canais de envio antes de agendar o anúncio."},
+  {title:"Enviar o novo roteiro", source:"Produção", detail:"Roteiro e três materiais de apoio", description:"A primeira versão foi revisada pela produção. Confirme a entrega ao cliente."},
+  {title:"Abrir novo orçamento", source:"Financeiro", detail:"Plano de março", description:"Confira a proposta antes de compartilhar com o financeiro."},
+];
+const items = Array.isArray(inputs.items) && inputs.items.length ? inputs.items.slice(0, 4) : defaultItems;
+const requestedIndex = Number.isInteger(inputs.selected) ? inputs.selected : 1;
+const selected = Math.max(0, Math.min(items.length - 1, requestedIndex));
+const request = items[selected];
+const rows = items.map(item => {
+  const row = document.createElement("article");
+  row.className = "row";
+  row.innerHTML = '<span class="row-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#file"/></svg></span><span><b></b><small></small></span><span class="row-state"></span>';
+  row.querySelector("b").textContent = item.title ?? "Pedido de revisão";
+  row.querySelector("small").textContent = item.source ?? "Sua equipe";
+  one(".rows").append(row);
+  return row;
+});
+one(".notice b").textContent = request.title ?? "Pedido de revisão";
+one(".detail h2").textContent = request.title ?? "Pedido de revisão";
+one(".detail .origin").textContent = request.source ?? "Sua equipe";
+one(".detail .description").textContent = request.description ?? "Confirme quando o pedido estiver pronto.";
+one(".document b").textContent = request.detail ?? "Pendente de confirmação";
+const action = inputs.action ?? "Aprovar envio";
+const approved = inputs.approved ?? "Envio aprovado";
+const row = rows[selected];
+const state = row.querySelector(".row-state");
+const detail = one(".detail");
+const notice = one(".notice");
+const confirm = one(".confirm");
+const pointer = one(".pointer");
+const ring = one(".pointer circle");
+window.renderMotion = time => {
+  const enter = flow(phase(time, .25, .43));
+  const dismiss = flow(phase(time, 1.63, .45));
+  set(notice, {opacity:enter * (1 - dismiss), transform:`translateY(${(1 - enter) * -26 - dismiss * 28}px)`});
+  const open = flow(phase(time, 2.59, .54));
+  set(detail, {opacity:open, transform:`translateX(${52 * (1 - open)}px)`});
+  one(".empty").style.opacity = 1 - open;
+  row.classList.toggle("chosen", time >= 2.59);
+  const didApprove = time >= 5.77;
+  confirm.classList.toggle("complete", didApprove);
+  confirm.querySelector("span").textContent = didApprove ? approved : action;
+  confirm.style.transform = `scale(${1 - .078 * Math.sin(Math.PI * phase(time, 5.58, .39))})`;
+  state.classList.toggle("complete", didApprove);
+  state.textContent = didApprove ? "✓" : "";
+  const remaining = items.length - Number(didApprove);
+  one(".count").textContent = remaining === 1 ? "1 pendente" : remaining + " pendentes";
+  const toRow = flow(phase(time, 1.86, .68));
+  const toConfirm = flow(phase(time, 4.66, .91));
+  const rowY = 416 + selected * 117;
+  const x = mix(mix(1040, 594, toRow), 856, toConfirm);
+  const y = mix(mix(537, rowY, toRow), 785, toConfirm);
+  const pulse = Math.max(phase(time, 2.57, .44) * (time < 3.01), phase(time, 5.71, .44) * (time < 6.15));
+  ring.style.opacity = Math.sin(Math.PI * pulse);
+  ring.setAttribute("r", 12 + pulse * 28);
+  set(pointer, {opacity:flow(phase(time, 1.82, .24)) * (1 - flow(phase(time, 6.25, .37))), transform:`translate(${x}px, ${y}px)`});
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>
