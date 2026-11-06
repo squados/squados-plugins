@@ -5884,6 +5884,28 @@
       }
     },
     {
+      "id": "fotograma-em-sequencia",
+      "title": "Fotograma em Sequência",
+      "category": "Destaques e evidências",
+      "seconds": 6.4,
+      "aliases": [
+        "Vídeo em imagens",
+        "Filmstrip Unfold"
+      ],
+      "prompt": "Use Fotograma em Sequência neste trecho. Abra um quadro em sete fotogramas do take, percorra a faixa com o playhead e reúna os quadros ou revele a onda do áudio. Componha na área livre ao lado do apresentador.",
+      "demo": {
+        "composition": "scenes/fotograma-em-sequencia/index.html",
+        "preview": "previews/fotograma-em-sequencia.mp4",
+        "inputs": {
+          "title": "text",
+          "sheet": "image",
+          "waveform": "array",
+          "ending": "text",
+          "transparent": "boolean"
+        }
+      }
+    },
+    {
       "id": "do-video-aos-formatos",
       "title": "Do Vídeo aos Formatos",
       "category": "Interfaces de produto",

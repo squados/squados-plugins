@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Fotograma em Sequência</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main {
+  --ink: #161822;
+  --silver: #ece6f7;
+  --accent: #cfb7ff;
+  color: #faf7ff;
+  background: radial-gradient(ellipse at 48% 61%, #363143, #20202b 48%, #151720 85%);
+}
+main.transparent { background: transparent; }
+.grid {
+  position: absolute; inset: 42px;
+  border: 1px solid #d6caf22c;
+  background: linear-gradient(#e2d2ff09 1px, transparent 1px), linear-gradient(90deg, #e2d2ff09 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse, #000 48%, transparent 91%);
+}
+.transparent .grid { display: none; }
+h1 { position: absolute; inset: 104px 120px auto; text-align: center; font-size: 92px; }
+.stage { position: absolute; inset: 0; perspective: 1500px; }
+.film {
+  position: absolute; width: 686px; height: 398px;
+  padding: 11px; transform-origin: center;
+  border: 1px solid #d1c6e6; border-radius: 21px;
+  background: linear-gradient(140deg, #756b83, #3e394c 33%, #292631 72%);
+  box-shadow: 0 28px 62px #0908108c, inset 0 1px 0 #fffbff;
+}
+.film::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  opacity: var(--glint, 0);
+  background: linear-gradient(114deg, transparent 35%, #f7ebff17 47%, #f7ebffb4 50%, #f7ebff17 54%, transparent 66%);
+}
+.film .photo { height: 100%; border-radius: 12px; border: 1px solid #090a11; background-size: 300% 300%; }
+.rail { position: absolute; inset: 732px 146px auto; height: 1px; background: #bcb2d35f; }
+.mark { position: absolute; top: 731px; width: 150px; height: 36px; transform: translateX(-50%); text-align: center; color: #d5cce4; font-size: 23px; letter-spacing: .12em; }
+.mark::before { content: ""; display: block; width: 1px; height: 13px; margin: auto auto 9px; background: #b5a8cb; }
+.playhead { position: absolute; z-index: 8; top: 403px; width: 2px; height: 333px; background: linear-gradient(transparent, #fff3df 38%, #f9c79e 95%); box-shadow: 0 0 26px #f4b686a4; }
+.playhead::before { content: ""; position: absolute; top: 30px; left: -7px; border: 8px solid transparent; border-top-color: #fff3df; }
+.scan { position: absolute; inset: 441px 146px auto; height: 238px; pointer-events: none; background: linear-gradient(90deg, transparent 42%, #fff5e838 49%, #fff5e81c 52%, transparent 60%); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mix-blend-mode: screen; }
+.wave { position: absolute; inset: 331px 166px auto; width: 1588px; height: 436px; }
+.wave line { stroke-linecap: round; }
+.mode { position: absolute; top: 808px; inset-inline: 120px; text-align: center; color: #d5cce4; font-size: 32px; }
+</style>
+</head>
+<body>
+<main data-composition-id="fotograma-em-sequencia" data-start="0" data-duration="6.4" data-width="1920" data-height="1080" data-atlas="../motion-assets/portugal-thumbnails.webp">
+  <div class="grid"></div>
+  <h1 class="display"></h1>
+  <div class="stage"></div>
+  <div class="rail"></div>
+  <div class="scan"></div>
+  <div class="playhead"></div>
+  <svg class="wave" viewBox="0 0 1588 436" width="1588" height="436" aria-hidden="true"></svg>
+  <p class="mode"></p>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const timeAt = [1.30, 1.14, 1.00, .86, 1.05, 1.19, 1.34];
+const values = Array.isArray(inputs.waveform) ? inputs.waveform.filter(Number.isFinite).map(clamp) : [];
+const withWave = inputs.ending === "onda" && values.length >= 8;
+const frames = [];
+const axis = 960;
+copy("h1", "title", "Do vídeo aos fotogramas");
+one(".mode").textContent = withWave ? "Áudio do take" : "7 fotogramas";
+stage.classList.toggle("transparent", inputs.transparent === true);
+{
+  const atlas = new URL(inputs.sheet ?? stage.dataset.atlas, document.baseURI);
+  stage.style.setProperty("--atlas", "url(" + JSON.stringify(atlas.href) + ")");
+}
+
+for (let i = 0; i < 7; i++) {
+  const film = document.createElement("div");
+  film.className = "film";
+  const photo = document.createElement("div");
+  photo.className = "photo";
+  photo.style.setProperty("--px", (i % 3) * 50 + "%");
+  photo.style.setProperty("--py", Math.floor(i / 3) * 50 + "%");
+  film.append(photo);
+  one(".stage").append(film);
+  const mark = document.createElement("p");
+  mark.className = "mark";
+  const x = axis + (i - 3) * 239;
+  mark.style.left = x + "px";
+  mark.textContent = String(i + 1).padStart(2, "0");
+  stage.append(mark);
+  frames.push({ film, mark, x, i });
+}
+
+const waveform = [];
+const lineCount = withWave ? Math.min(144, values.length) : 0;
+for (let i = 0; i < lineCount; i++) {
+  const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  const x = 9 + i * 1570 / (lineCount - 1);
+  const sample = values[Math.round(i * (values.length - 1) / (lineCount - 1))];
+  line.setAttribute("x1", x);
+  line.setAttribute("x2", x);
+  line.setAttribute("stroke-width", Math.min(6, 850 / lineCount));
+  line.setAttribute("stroke", i % 5 === 0 ? "#ffceb3" : "#cfb7ff");
+  one(".wave").append(line);
+  waveform.push({ line, sample });
+}
+
+window.renderMotion = time => {
+  const intro = spring(time, .12, .78);
+  const sweep = flow(phase(time, 2.40, 1.61));
+  const reveal = flow(phase(time, 4.16, .84));
+  const mask = flow(phase(time, 4.02, .74));
+  const scanX = mix(136, 1784, sweep);
+  const scanVisible = beat(time, 2.38, .28) * (1 - beat(time, 4.04, .24));
+  const title = beat(time, .08, .54);
+  set(one("h1"), { opacity: title, transform: "translateY(" + 19 * (1 - title) + "px)" });
+  set(one(".rail"), { opacity: beat(time, 1.79, .51) * (1 - mask) });
+  set(one(".playhead"), { left: scanX + "px", opacity: scanVisible });
+  set(one(".scan"), { transform: "translateX(" + (scanX - axis) + "px)", opacity: scanVisible });
+  for (const { film, mark, x, i } of frames) {
+    const out = spring(time, timeAt[i], .99);
+    const tuck = withWave ? mask : spring(time, 4.09 + Math.abs(i - 3) * .035, 1.02);
+    const lane = i - 3;
+    const origin = i === 3 ? 1 : beat(time, timeAt[i], .35);
+    const targetX = withWave ? axis : axis + lane * 21;
+    const targetY = withWave ? 558 : 566 + lane * 16;
+    const left = mix(mix(axis, x, out), targetX, tuck);
+    const top = mix(mix(529 + 34 * (1 - intro), 574, out), targetY, tuck);
+    const size = mix(mix(.82 + intro * .18, .322, out), withWave ? .02 : .55, tuck);
+    const roll = lane * (1 - clamp(out)) * 9 + tuck * (withWave ? lane * 4 : lane * 1.8);
+    const yaw = lane * (1 - clamp(out)) * 10 + tuck * (withWave ? lane * 8 : -9);
+    const focus = Math.max(0, 1 - Math.abs(left - scanX) / 158) * scanVisible;
+    set(film, {
+      left: left + "px", top: top + "px",
+      opacity: clamp(intro) * origin * (withWave ? 1 - clamp(tuck) : 1),
+      filter: "brightness(" + (1 + focus * .19) + ")",
+      zIndex: withWave ? 4 - Math.abs(lane) : Math.round(mix(4 - Math.abs(lane), 1 + i, tuck)),
+      transform: "translate(-50%, -50%) rotateY(" + yaw + "deg) rotateZ(" + roll + "deg) scale(" + size + ")",
+    });
+    film.style.setProperty("--glint", focus * .65);
+    mark.style.opacity = beat(time, 1.9 + i * .04, .32) * (1 - mask);
+  }
+
+  waveform.forEach(({ line, sample }, i) => {
+    const spread = 1 - Math.abs(i / (lineCount - 1) - .5) * 2;
+    const growth = flow(phase(time, 4.30 + .52 * (1 - spread), .54));
+    const height = (5 + sample * 190) * growth;
+    line.setAttribute("y1", 218 - height);
+    line.setAttribute("y2", 218 + height);
+    line.style.opacity = growth;
+  });
+  set(one(".mode"), { opacity: reveal, transform: "translateY(" + (1 - reveal) * 16 + "px)" });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>
