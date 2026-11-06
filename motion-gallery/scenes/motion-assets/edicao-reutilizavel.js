@@ -56,7 +56,8 @@
       const p = out(t / .6);
       set(node, {opacity:p, transform:'perspective(1500px) translateY('+(1-p)*92+'px) rotateY('+(-39 + 31*p)+'deg) rotateZ('+(-7 + 4*p)+'deg)'});
     };
-  } else if (['squados', 'claude', 'click'].includes(mode)) {
+  } else if (['squados', 'claude', 'chatgpt', 'click'].includes(mode)) {
+    if (inputs.transparent) root.style.background = 'transparent';
     const logo = inputs.logo || 'logo.svg';
     const isClick = mode === 'click';
     const badge = q('.badge');
@@ -65,13 +66,11 @@
       const outer = i === 0 || i === 20;
       slice.className = 'slice' + (outer ? ' outer' : '');
       slice.style.transform = 'translateZ(' + (i-10)*2.2 + 'px)';
-      if (outer || mode === 'claude') {
-        const image = new Image();
-        image.src = logo;
-        image.alt = '';
-        if (i === 0) image.style.transform = 'scaleX(-1)';
-        slice.append(image);
-      }
+      const image = new Image();
+      image.src = logo;
+      image.alt = '';
+      if (i === 0) image.style.transform = 'scaleX(-1)';
+      slice.append(image);
       badge.append(slice);
     }
     window.renderMotion = t => {

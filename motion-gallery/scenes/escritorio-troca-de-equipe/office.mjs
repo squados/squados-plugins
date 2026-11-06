@@ -268,9 +268,9 @@ function makeRobot(desk, color, headset) {
   return { actor, body, head, arms, legs };
 }
 
-function hammock(room, sleeper, f) {
+function hammock(room, sleeper, f, solo) {
   const stand = new T.Group();
-  stand.position.set(2.66, 0, 2.27);
+  stand.position.set(solo ? 1.40 : 2.66, 0, solo ? 1.75 : 2.27);
   stand.rotation.y = -.19;
   room.add(stand);
   const sling = new T.Group();
@@ -336,6 +336,12 @@ const shots = {
     [4.18, [2.21, 3.49, 7.09], [.86, 1.44, .11]],
     [5, [2.32, 3.53, 7.21], [.91, 1.39, .14]],
   ],
+  introSquare: [
+    [0, [.36, 2.18, 3.46], [-1.46, 1.30, .16]],
+    [1.40, [.50, 2.33, 3.84], [-1.43, 1.29, .22]],
+    [4.06, [1.20, 3.27, 6.50], [.02, 1.12, .76]],
+    [5, [1.42, 3.43, 6.78], [.15, 1.11, .80]],
+  ],
   team: [
     [0, [3.70, 4.29, 7.25], [.15, 1.29, -.78]],
     [2.9, [2.46, 3.89, 7.28], [.05, 1.29, -.83]],
@@ -349,6 +355,45 @@ const shots = {
     [5, [-2.78, 1.58, .70], [-2.78, 1.49, -.15]],
   ],
 };
+
+function orbitPosition(progress) {
+  const angle = blend(.37, -.21, progress);
+  return new T.Vector3(Math.sin(angle) * 8.9, blend(4.75, 4.15, progress), Math.cos(angle) * 8.9);
+}
+
+function officeCamera(story) {
+  const orbitEnd = story.pushAt ?? story.duration;
+  const orbitTarget = new T.Vector3(0, 1.26, -.65);
+  const start = orbitPosition(1);
+  const path = new T.CatmullRomCurve3([
+    start,
+    new T.Vector3(-1.83, 3.54, 6.62),
+    new T.Vector3(-1.45, 2.42, 3.65),
+    new T.Vector3(-1.95, 1.92, 1.91),
+    new T.Vector3(-2.23, 1.77, .93),
+    new T.Vector3(-2.78, 1.58, .70),
+  ]);
+  const target = new T.CatmullRomCurve3([
+    orbitTarget, new T.Vector3(-1.20, 1.38, -.22),
+    new T.Vector3(-2.47, 1.47, -.08), new T.Vector3(-2.78, 1.49, -.15),
+  ]);
+  return (camera, t) => {
+    if (story.pushAt === undefined || t < story.pushAt) {
+      camera.position.copy(orbitPosition(clamp(t / orbitEnd)));
+      camera.lookAt(orbitTarget);
+      if (camera.fov !== 43) {
+        camera.fov = 43;
+        camera.updateProjectionMatrix();
+      }
+      return;
+    }
+    const p = sweep(t, story.pushAt, story.duration - story.pushAt);
+    camera.position.copy(path.getPoint(p));
+    camera.lookAt(target.getPoint(p));
+    camera.fov = blend(43, 58, sweep(p, .48, .52));
+    camera.updateProjectionMatrix();
+  };
+}
 
 export async function createRoom(canvas, options) {
   const loader = new GLTFLoader();
@@ -365,7 +410,7 @@ export async function createRoom(canvas, options) {
   const logo = surface(256, 256, ctx => ctx.drawImage(mark, 0, 0, 256, 256));
   const room = new T.Scene();
   room.background = new T.Color('#293c57');
-  const camera = new T.PerspectiveCamera(43, 16 / 9, .055, 105);
+  const camera = new T.PerspectiveCamera(43, (options.width || 1920) / (options.height || 1080), .055, 105);
   const renderer = new T.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
   renderer.setSize(options.width || 1920, options.height || 1080, false);
   renderer.toneMapping = T.ACESFilmicToneMapping;
@@ -407,7 +452,8 @@ export async function createRoom(canvas, options) {
   const texture = new T.CanvasTexture(screen);
   texture.colorSpace = T.SRGBColorSpace;
   const colors = ['#ddbda4', '#8bb9c9', '#c8a9de', '#e2ad6b', '#8aa99a', '#e3b3a8'];
-  const centers = [[-2.78, 0], [0, 0], [2.78, 0], [-1.78, -2.65], [.98, -2.65], [3.79, -2.65]];
+  const solo = options.solo && options.mode === 'intro';
+  const centers = solo ? [[-1.42, 0]] : [[-2.78, 0], [0, 0], [2.78, 0], [-1.78, -2.65], [.98, -2.65], [3.79, -2.65]];
   const characters = centers.map(([x, z], i) => {
     const display = i === 0 ? texture : stationTexture(i);
     const station = makeDesk(room, x, z, display, i === 0 ? logo : null, f, i === 0);
@@ -418,9 +464,10 @@ export async function createRoom(canvas, options) {
     if (story) station.add(people[i].actor);
     return { ...bot, station, shadow, pop: story ? seatPop(room, x, z) : null };
   });
-  const sling = sleeper ? hammock(room, sleeper, f) : null;
+  const sling = sleeper ? hammock(room, sleeper, f, solo) : null;
   const focus = options.mode === 'editor' ? centers[options.station || 0] : centers[0];
   const offset = [focus[0] - centers[0][0], 0, focus[1]];
+  const moveOffice = story ? officeCamera(story) : null;
 
   return (t) => {
     paintedScreen(ctx, atlas, t, true);
@@ -463,13 +510,10 @@ export async function createRoom(canvas, options) {
       camera.fov = blend(43, 59, sweep(t, 2.35, 1.70));
       camera.updateProjectionMatrix();
     }
-    if (story) {
-      const phase = clamp(t / story.duration);
-      const angle = blend(.37, -.21, phase);
-      camera.position.set(Math.sin(angle) * 8.9, blend(4.75, 4.15, phase), Math.cos(angle) * 8.9);
-      camera.lookAt(0, 1.26, -.65);
+    if (moveOffice) {
+      moveOffice(camera, t);
     } else {
-      shot(camera, t, shots[options.mode], offset);
+      shot(camera, t, shots[solo ? 'introSquare' : options.mode], offset);
     }
     renderer.render(room, camera);
   };

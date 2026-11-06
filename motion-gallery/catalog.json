@@ -5785,7 +5785,7 @@
       "title": "Tablet em Perspectiva",
       "category": "Interfaces de produto",
       "seconds": 4,
-      "prompt": "Use Tablet em Perspectiva neste trecho. Encaixe um vídeo 9:16 na tela de um tablet com profundidade. Anime a entrada e estabilize o ângulo para leitura.",
+      "prompt": "Use Tablet em Perspectiva neste trecho. Preencha a tela com vídeo 9:16 e mantenha uma borda única fina. Anime a entrada e estabilize o ângulo para leitura.",
       "demo": {
         "composition": "scenes/tablet-em-perspectiva/index.html",
         "preview": "previews/tablet-em-perspectiva.mp4",
@@ -5800,12 +5800,13 @@
       "title": "Símbolo SquadOS em Volume",
       "category": "Marcas e logotipos",
       "seconds": 4,
-      "prompt": "Use Símbolo SquadOS em Volume neste trecho. Faça uma volta com a placa roxa e o símbolo oficial do SquadOS. Mantenha a face e a lateral reconhecíveis em perspectiva.",
+      "prompt": "Use Símbolo SquadOS em Volume neste trecho. Gire a cabeça do mascote em 3D, com contorno livre. Exporte com transparência para sobrepor ao take.",
       "demo": {
         "composition": "scenes/squados-em-volume/index.html",
         "preview": "previews/squados-em-volume.mp4",
         "inputs": {
-          "logo": "image"
+          "logo": "image",
+          "transparent": "boolean"
         }
       }
     },
@@ -5824,11 +5825,26 @@
       }
     },
     {
+      "id": "chatgpt-em-volume",
+      "title": "Símbolo ChatGPT em Volume",
+      "category": "Marcas e logotipos",
+      "seconds": 4,
+      "prompt": "Use Símbolo ChatGPT em Volume neste trecho. Gire o símbolo com profundidade e preserve seu contorno. Exporte com transparência para sobrepor ao take.",
+      "demo": {
+        "composition": "scenes/chatgpt-em-volume/index.html",
+        "preview": "previews/chatgpt-em-volume.mp4",
+        "inputs": {
+          "logo": "image",
+          "transparent": "boolean"
+        }
+      }
+    },
+    {
       "id": "clique-de-logo-3d",
       "title": "Clique em Logotipo 3D",
       "category": "Interações",
       "seconds": 3.4,
-      "prompt": "Use Clique em Logotipo 3D neste trecho. Posicione o botão perto do gesto do apresentador. Comprima a placa e faça o halo se abrir na batida do clique.",
+      "prompt": "Use Clique em Logotipo 3D neste trecho. Posicione o mascote perto do gesto do apresentador, comprima o símbolo e faça o halo abrir na batida do clique.",
       "demo": {
         "composition": "scenes/clique-de-logo-3d/index.html",
         "preview": "previews/clique-de-logo-3d.mp4",
@@ -5855,14 +5871,15 @@
       "id": "escritorio-troca-de-equipe",
       "title": "Escritório com Troca de Equipe",
       "category": "Motion 3D",
-      "seconds": 7.5,
-      "prompt": "Use Escritório com Troca de Equipe neste trecho. Comece com a sala vazia. Faça cair as seis estações, sente as pessoas e troque cada personagem por um robô em uma batida separada.",
+      "seconds": 9,
+      "prompt": "Use Escritório com Troca de Equipe neste trecho. Monte as seis estações, substitua os personagens pelos robôs e avance continuamente até a bancada do editor. Use a entrada layout igual a solo para o escritório compacto com uma bancada.",
       "demo": {
         "composition": "scenes/escritorio-troca-de-equipe/index.html",
         "preview": "previews/escritorio-troca-de-equipe.mp4",
         "inputs": {
           "atlas": "image",
-          "story": "object"
+          "story": "object",
+          "layout": "text"
         }
       }
     }

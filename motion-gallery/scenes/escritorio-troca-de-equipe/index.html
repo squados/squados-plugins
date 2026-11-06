@@ -4,15 +4,17 @@
 <link rel="stylesheet" href="../motion-assets/base.css">
 <link rel="stylesheet" href="../motion-assets/edicao-reutilizavel.css">
 </head><body>
-<main data-variant="office" data-composition-id="escritorio-troca-de-equipe" data-start="0" data-duration="7.5" data-width="1920" data-height="1080"><canvas width="1920" height="1080" style="display:block;width:100%;height:100%"></canvas></main>
+<main data-variant="office" data-composition-id="escritorio-troca-de-equipe" data-start="0" data-duration="9" data-width="1920" data-height="1080"><canvas style="display:block;margin:auto;height:100%"></canvas></main>
 <script type="module">
 import {createRoom} from './office.bundle.js';
 const inputs = window.motionInputs || {};
-const duration = 7.5;
-const story = {desks:.55,people:3.08,swap:5.64,duration,...inputs.story};
+const duration = 9;
+const solo = inputs.layout === 'solo';
+const story = {desks:.55,people:3.08,swap:5.64,pushAt:6.70,duration,...inputs.story};
+const settings = solo ? {mode:'intro',solo,width:1080,height:1080} : {mode:'team',width:1920,height:1080,story};
 window.renderMotion = () => {};
-window.motionReady = createRoom(document.querySelector('canvas'), {mode:'team', width:1920,height:1080,story,atlas:inputs.atlas})
-  .then(draw => {window.renderMotion=draw;draw(0);});
+window.motionReady = createRoom(document.querySelector('canvas'), {...settings,atlas:inputs.atlas})
+  .then(draw => {window.renderMotion=solo ? time => draw(time * 5 / duration) : draw;draw(0);});
 await window.motionReady;
 </script>
 </body></html>

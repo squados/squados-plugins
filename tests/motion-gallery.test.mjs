@@ -27,7 +27,7 @@ test('curvas rápidas chegam ao estado final e a mola assenta após o rebote', (
 test('catálogo indexa o benchmark Skillry com slugs e páginas oficiais', () => {
   const { version, entries } = catalog
   assert.equal(version, 2)
-  assert.equal(entries.length, 348)
+  assert.equal(entries.length, 349)
   assert.equal(new Set(entries.map(entry => entry.id)).size, entries.length)
   const sourced = entries.filter(entry => entry.source)
   assert.equal(sourced.length, 331)
@@ -70,7 +70,7 @@ test('seleção principal contém 50 composições próprias em seis categorias'
   assert.deepEqual(core.map(group => group.ids.length), [9, 8, 10, 8, 9, 6])
   assert.equal(new Set(ids).size, 50)
   for (const id of ids) assert.ok(originals.has(id), id)
-  assert.equal(originals.size - ids.length, 27)
+  assert.equal(originals.size - ids.length, 28)
 })
 
 test('edição comparada tem um guia de reutilização e uma composição por efeito', () => {
