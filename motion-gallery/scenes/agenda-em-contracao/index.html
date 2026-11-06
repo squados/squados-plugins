@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Agenda em Contração</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:radial-gradient(ellipse at 48% 74%,#2a474d,#101e27 70%); color:#14292a; }
+main[data-transparent="true"] { background:transparent; }
+.agenda {position:absolute; inset:120px 320px 116px; padding:52px 64px; border-radius:28px;
+ background:linear-gradient(150deg,#fffaf0,#deedeb); border:1px solid #ffffffa3; box-shadow:0 32px 85px #0414197d;}
+h1 {font-size:60px; letter-spacing:-.043em; font-weight:680;}
+.week {margin-top:41px; display:grid; grid-template-columns:repeat(5,1fr); font:25px ui-monospace,monospace; color:#49666c; text-align:center;}
+.schedule {position:relative; margin-top:16px; height:394px; border-radius:12px; border:1px solid #7392977a; overflow:hidden;
+ background:repeating-linear-gradient(0deg,transparent 0 65px,#6c8a8f6c 66px 67px),repeating-linear-gradient(90deg,transparent 0 calc(20% - 1px),#75969a8c calc(20% - 1px) 20%);}
+.reserved {position:absolute; left:10px; top:10px; overflow:hidden; border-radius:13px; width:38%; height:94%;
+ background:linear-gradient(140deg,#2b776b,#204747); color:#e7fff2; border:1px solid #f1ffef70; box-shadow:0 10px 25px #1b4e4840;}
+.reserved p {padding:14px 22px; font-size:36px; font-weight:650; white-space:nowrap;}
+.summary {display:flex; align-items:baseline; justify-content:space-between; gap:32px; padding-top:21px; color:#244a49;}
+.amount {font-size:77px; letter-spacing:-.055em; font-weight:735;}
+.detail {font-size:32px;}
+[data-placement="right"] .agenda {inset:185px 83px auto auto; width:820px; padding:38px 43px 32px;}
+[data-placement="right"] .schedule {height:307px;}
+[data-placement="right"] h1 {font-size:49px;}
+[data-placement="right"] .week {margin-top:31px;}
+[data-placement="right"] .amount {font-size:61px;}
+[data-placement="right"] .detail {font-size:28px;}
+</style></head><body>
+<main data-composition-id="agenda-em-contracao" data-start="0" data-duration="30" data-width="1920" data-height="1080">
+<section class="agenda"><h1></h1>
+<div class="week"><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span></div>
+<div class="schedule"><div class="reserved"><p></p></div></div>
+<div class="summary"><div class="amount"></div><p class="detail"></p></div>
+</section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const events = inputs.beats ?? [0,2.2,4.1,6.2];
+const lengths = [2,1,1,0], rows = [1,1,1/6,0];
+const labels = inputs.labels ?? ["2 dias","1 dia","2 horas","Livre"];
+stage.dataset.transparent = String(inputs.transparent === true);
+stage.dataset.placement = inputs.placement === "right" ? "right" : "center";
+copy("h1","heading","Agenda de edição");
+copy(".reserved p","task","Edição");
+window.renderMotion = time => {
+  let i = 0;
+  events.forEach((at,index) => { if (time>=at && index<4) i=index; });
+  const s = spring(time, events[i], .64);
+  const last = Math.max(0,i-1), p = spring(time,0,.52);
+  set(one(".agenda"), {opacity:clamp(p),transform:`translateY(${(1-p)*42}px) scale(${.96+.04*p})`});
+  set(one(".reserved"), {
+    width:Math.max(0,20*mix(lengths[last],lengths[i],s)-1.8)+"%",
+    height:Math.max(0,94*mix(rows[last],rows[i],s))+"%",
+    opacity:i===3 ? 1-clamp(s) : 1
+  });
+  one(".amount").textContent = labels[i] ?? "";
+  one(".detail").textContent = i===3 ? (inputs.final ?? "Tarefa concluída") : "";
+  set(one(".amount"),{ transform:`translateY(${15*(1-clamp(s))}px)`,opacity:.55+.45*clamp(s) });
+};
+window.renderMotion(0);
+</script></body></html>

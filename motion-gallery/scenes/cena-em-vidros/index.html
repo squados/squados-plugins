@@ -4,59 +4,86 @@
 <meta charset="utf-8">
 <title>Cena em Vidros</title>
 <link rel="stylesheet" href="../motion-assets/base.css">
-<link rel="stylesheet" href="../motion-assets/duelo.css">
 <style>
-h1 { position:absolute; z-index:5; top:86px; left:108px; font-size:51px; }
-.rig { position:absolute; inset:0; perspective:2300px; }
+main { background: radial-gradient(ellipse at 48% 75%, #244356 0%, #101e2d 48%, #090d15 90%); }
+main::before {
+  position:absolute; inset:0; content:""; opacity:.23;
+  background-image:linear-gradient(#ccedff19 1px,transparent 1px),linear-gradient(90deg,#ccedff19 1px,transparent 1px);
+  background-size:72px 72px; mask-image:radial-gradient(ellipse at center, #000, transparent 90%);
+}
+.rig { position:absolute; inset:0; perspective:2000px; perspective-origin:53% 51%; }
 .stack { position:absolute; inset:0; transform-style:preserve-3d; }
-.pane { position:absolute; inset:0; transform-origin:50% 50%; border:2px solid #b3e9e381; border-radius:20px; background:#a5cde30c; box-shadow:0 0 40px #78b9db28,inset 0 0 90px #79add925; }
-.pane .badge { position:absolute; top:28px; left:32px; background:#11121ae8; color:var(--mint); padding:10px 19px; font-size:58px; border-radius:10px; }
-.pane:nth-child(-n+2) .badge { left:auto; right:38px; }
-[data-layout="aninhado"] .pane:nth-child(2) .badge { top:129px; }
-.scenery { background:repeating-linear-gradient(90deg,#292e3c 0px,#292e3c 168px,#252635 169px,#252635 173px); }
-.scenery::before { content:""; position:absolute; inset:0; background:linear-gradient(110deg,#805e872a,transparent 65%),repeating-linear-gradient(0deg,transparent 0px,transparent 179px,#8f9ba355 180px,#8f9ba355 183px); }
-.matte { position:absolute; inset:0; }
-.symbols { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:500px; color:var(--mint); font-size:180px; text-shadow:0 0 60px currentColor; }
-.symbols span:last-child { color:var(--peach); }
+.pane {
+  position:absolute; border-radius:22px; overflow:hidden; isolation:isolate;
+  background:#b9e6f510; border:1.5px solid #d1f1ff95;
+  box-shadow:0 24px 76px #03101c88, inset 0 0 36px #80b5d834;
+  transform-origin:center center;
+}
+.pane::after {
+  content:""; pointer-events:none; position:absolute; inset:0;
+  border-radius:inherit; box-shadow:inset 0 2px 0 #f2faff83,inset 0 -2px 0 #4f92c365;
+  background:linear-gradient(123deg,transparent 26%, #c2edff21 41%, #ecfbff34 46%, transparent 63%);
+  mix-blend-mode:screen;
+}
+.back { left:106px; top:148px; width:1100px; height:619px; }
+.middle { left:966px; top:147px; width:332px; height:697px; }
+.front { left:1037px; top:353px; width:690px; height:480px; }
+.media { position:absolute; inset:0; display:grid; place-items:center; }
+.media > :is(img,video) { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.front .media > :is(img,video) { transform:scale(1.19); }
+.back .media:empty { background:url(../motion-assets/field-atlas.webp) 0 0/300% 300%; }
+.middle .media:empty::before {
+  content:""; width:55%; height:75%; border-radius:28px; border:8px solid #203749;
+  background:repeating-linear-gradient(180deg,#152e2c 0 16px,#234a42 16px 57px,#102325 57px 77px);
+  box-shadow:3px 5px #73bdb2, 0 15px 32px #06151d;
+}
+.front .media:empty::before {
+  content:""; width:80%; height:53%; background:linear-gradient(152deg,#e7f6ff 4%,#5891ae 61%,#1d3549);
+  clip-path:polygon(0 65%, 12% 29%, 32% 24%, 51% 3%, 70% 12%, 83% 34%, 100% 49%, 95% 74%, 85% 76%, 80% 96%, 68% 96%, 63% 77%, 33% 77%, 28% 96%, 16% 96%, 11% 77%, 2% 77%);
+}
+.badge {
+  position:absolute; left:17px; bottom:17px; padding:9px 14px; border:1px solid #d3edff6c;
+  border-radius:9px; background:#081926dd; color:#eff8fb; font-size:21px;
+  font-weight:550; letter-spacing:.018em;
+}
+.badge:empty { display:none; }
 </style>
 </head>
 <body>
 <main data-composition-id="cena-em-vidros" data-start="0" data-duration="8" data-width="1920" data-height="1080">
-<h1></h1>
 <div class="rig"><div class="stack">
-  <div class="pane scenery"><p class="badge"></p></div>
-  <div class="pane"><div class="symbols" aria-hidden="true"><span>◈</span><span>✳</span></div><p class="badge"></p></div>
-  <div class="pane"><div class="matte"><!-- motion-media:matte:0:8:0 --></div><p class="badge"></p></div>
+  <section class="pane back"><div class="media"><!-- motion-media:presenter:0:8:0 --></div><p class="badge"></p></section>
+  <section class="pane middle"><div class="media"><!-- motion-media:middle:0:8:1 --></div><p class="badge"></p></section>
+  <section class="pane front"><div class="media"><!-- motion-media:front:0:8:2 --></div><p class="badge"></p></section>
 </div></div>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
 const nested = inputs.layout === "aninhado";
-stage.dataset.layout = nested ? "aninhado" : "aberto";
-const labels = inputs.labels ?? ["Fundo", "Ícones", "Apresentador"];
+const timing = inputs.timing === "rapido";
+const labels = inputs.labels ?? ["Câmera", "Detalhe", "Primeiro plano"];
 const panes = all(".pane");
 all(".badge").forEach((badge, index) => { badge.textContent = labels[index] ?? ""; });
-copy("h1", "title", "Uma cena em três planos");
+const positions = [
+  { close: [183, 32, -174, -.9], open: [0, 0, -157, -8] },
+  { close: [-38, -1, -5, -1], open: [0, -30, 26, -5] },
+  { close: [-172, 12, 9, 3], open: [42, 13, 153, -2] },
+];
 window.renderMotion = time => {
-  const opening = flow(phase(time,.48,1.6));
-  const turning = flow(phase(time,5.0,1.3));
-  const closing = flow(phase(time,6.25,1.35));
-  const separated = opening * (1 - closing);
-  const angle = mix(-29,29,turning) * separated;
-  set(one(".stack"),{ transform:"scale(" + mix(1,nested ? .68 : .51,separated) + ") rotateY(" + angle + "deg)" });
+  const opening = spring(time, .04, timing ? .66 : 1.18);
+  const closing = flow(phase(time, timing ? 2.46 : 6.48, timing ? .62 : 1.27));
+  const amount = opening * (1 - closing);
+  const glide = flow(phase(time, .38, timing ? 1.95 : 5.92));
+  set(one(".stack"), { transform:`rotateY(${mix(-9,6,glide) * amount}deg) rotateX(${-3 * amount}deg) scale(${1 - .024 * amount})` });
   panes.forEach((pane,index) => {
-    const offset = index - 1;
-    const x = offset * (nested ? -178 : -468) * separated;
-    const z = offset * (nested ? 175 : 285) * separated;
-    const y = offset * (nested ? 19 : -65) * separated;
-    const depth = index * 3 + z;
+    const { close, open } = positions[index];
+    const depth = nested ? .64 : 1;
+    const [x,y,z,turn] = close.map((value, axis) => mix(value, open[axis], amount));
     set(pane, {
-      transform:"translate3d(" + x + "px," + y + "px," + depth + "px)",
-      borderColor:"rgba(179,233,227," + .63 * separated + ")"
+      transform:`translate3d(${x * depth}px,${y}px,${z * depth}px) rotateY(${turn}deg)`,
+      borderColor:`rgba(197,235,252,${.27 + .35 * clamp(amount)})`,
     });
-    set(pane.querySelector(".badge"), { opacity:beat(time,2.02 + index * .47,.3) * (1 - beat(time,5.98,.34)) });
   });
-  set(one("h1"), { opacity:beat(time,1.15,.4) * (1-beat(time,6.1,.48)) });
 };
 window.renderMotion(0);
 </script>

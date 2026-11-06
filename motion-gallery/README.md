@@ -82,6 +82,11 @@ a partir da raiz. Valide com `node scripts/build-motion-gallery.mjs --check` e
 | [Transição por Máscara](index.html#transicao-por-mascara) | Passe dois planos em `first` e `second`. Escolha `mode` entre `ink`, `brush`, `pixel` e `iris`. Use `at` para marcar a passagem em segundos. |
 | [Revelação de Marca](index.html#revelacao-de-marca) | Use `name`, `tagline` e `logo` para a revelação em pixels. Para desenhar o símbolo, use `mode: "trace"` e um `path` SVG no espaço 0 a 100. |
 | [Pulso de Áudio](index.html#pulso-de-audio) | Use `mode: "ring"` ou `"bars"` e `amplitudes` com níveis de 0 a 1 amostrados em intervalos iguais ao longo de 6 s. |
+| [Cena em Vidros](index.html#cena-em-vidros) | Passe o quadro inteiro em `presenter`, o elemento vertical em `middle` e o elemento dianteiro em `front`. Use `timing: "rapido"` para concentrar a abertura em três segundos. |
+| [Tesla em Vista Explodida](index.html#tesla-em-vista-explodida) | Marque a desmontagem com `explodeAt` e use `transparent: true` para compor sobre vídeo. A estrutura interna é ilustrativa. |
+| [Do Feed à Galeria](index.html#feed-para-galeria) | Passe quatro previews em `reelSheets` e três em `effectSheets`. A mídia do terceiro post acompanha o cursor e aciona a entrada dos novos cartões. |
+| [Agenda em Contração](index.html#agenda-em-contracao) | Informe as quatro deixas em `beats`, as durações em `labels` e use `placement: "right"` em uma sobreposição. |
+| [Controles de Vidro](index.html#controles-de-vidro) | Use `mode: "download"` para as plataformas, `"value"` para um valor com duas marcas ou `"cta"` para uma ação com seta. |
 | [Dispositivos em Cena](index.html#dispositivos-em-cena) | Use `phone`, `tablet` e `desktop` para as capturas de cada tamanho. Os três aceitam foto ou vídeo. |
 | [Troca de Visual](index.html#troca-de-visual) | Passe imagens em `before` e `after`, ou aplique a uma imagem o `preset` `luz`, `cor`, `contraste` ou `nenhum`. |
 | [Inspeção de Imagem](index.html#inspecao-de-imagem) | Passe `image` e até cinco `points` com `x`, `y` em porcentagem do quadro exibido e `label`. Escolha `lupa`, `varredura`, `marcacoes` ou `ambos` em `mode`. |

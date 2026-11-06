@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Controles de Vidro</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main {background:radial-gradient(ellipse at 60% 43%,#1b4358,#182237 54%,#101321 94%);color:#f0fbff;}
+main[data-transparent="true"] {background:transparent;}
+.controls {position:absolute; inset:0; display:grid; align-content:center; justify-content:center; gap:18px;}
+.controls[data-side="right"] {justify-content:end; padding-right:128px;}
+.controls[data-side="left"] {justify-content:start; padding-left:128px;}
+.glass {min-width:510px; border:1.5px solid #d4edfbb0; border-radius:26px; background:
+ linear-gradient(162deg,#a9e4fe2d,#17304d99 51%,#0d1729dd),radial-gradient(ellipse at 94% 4%,#79b9ed48,transparent 62%);
+ box-shadow:0 23px 54px #0b122985,inset 0 2px 0 #f5feff84,inset 0 -4px 19px #07152670;
+ backdrop-filter:blur(16px); position:relative; overflow:hidden;}
+.glass::after {content:""; position:absolute; inset:0; pointer-events:none; background:
+ linear-gradient(113deg,transparent 20%,#d4f6ff25 43%,#f3fdff41 49%,transparent 64%); transform:translateX(var(--sweep,-110%));}
+.button {display:grid; grid-template-columns:54px minmax(0,1fr) 36px; align-items:center;
+ padding:24px 36px; column-gap:24px; width:551px;}
+.button .icon {width:52px; height:52px; display:grid; place-items:center; color:#ccecff; font:44px/1 Arial,sans-serif;}
+.button strong {display:block; font-size:34px; font-weight:665; line-height:1.16;}
+.button small {display:block; font-size:24px; color:#bbd7e9; margin-top:3px;}
+.arrow {width:32px; height:32px; color:#d6faff;}
+.single {display:grid; align-items:center; grid-template-columns:1fr 39px; gap:24px; padding:28px 35px; font-size:37px;}
+.metric {padding:40px 58px; min-width:725px;}
+.value {display:block; text-align:center; font-size:118px; font-weight:720; letter-spacing:-.045em; color:#c5ffe8;}
+.legend {border-top:1px solid #b9e9e861; display:flex; gap:42px; justify-content:space-between; padding-top:18px; font-size:31px;}
+.legend > span {display:flex; align-items:center; gap:12px;}
+.logo {width:52px;height:52px; display:grid;place-items:center;border-radius:12px;background:#d5f3ff19;color:#c5f1e4;}
+.logo img {max-width:43px; max-height:43px;}
+[hidden] {display:none!important;}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><symbol id="download" viewBox="0 0 30 30"><path d="M15 4v20M7 16l8 8 8-8" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+<main data-composition-id="controles-de-vidro" data-start="0" data-duration="9" data-width="1920" data-height="1080">
+<section class="controls">
+ <div class="glass button"><div class="icon">⊞</div><div><strong class="action"></strong><small class="left"></small></div><svg class="arrow"><use href="#download"/></svg></div>
+ <div class="glass button"><div class="icon">⌘</div><div><strong class="action"></strong><small class="right"></small></div><svg class="arrow"><use href="#download"/></svg></div>
+ <div class="glass metric"><strong class="value"></strong><div class="legend"><span><span class="logo"><!-- motion-media:leftLogo:0:9:0 --></span><span class="left"></span></span>
+ <span><span class="logo"><!-- motion-media:rightLogo:0:9:1 --></span><span class="right"></span></span></div></div>
+ <div class="glass single"><strong></strong><svg class="arrow"><use href="#download"/></svg></div>
+</section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const mode = ["download","value","cta"].includes(inputs.mode) ? inputs.mode : "download";
+const panels = {download:all(".button"),value:all(".metric"),cta:all(".single")};
+for (const [key,list] of Object.entries(panels)) for (const panel of list) panel.hidden = key !== mode;
+stage.dataset.transparent = String(inputs.transparent === true);
+one(".controls").dataset.side = inputs.side ?? "center";
+all(".action").forEach(node => node.textContent = inputs.label ?? "Download gratuito");
+all(".left").forEach(node => node.textContent = inputs.left ?? "Windows");
+all(".right").forEach(node => node.textContent = inputs.right ?? "macOS");
+copy(".value","value","US$ 6,74");
+copy(".single strong","label","Materiais disponíveis");
+for (const mark of all(".logo")) if (!mark.children.length) mark.textContent = "◈";
+window.renderMotion = time => {
+  panels[mode].forEach((panel,index) => {
+    const at = .12+index*.13;
+    const p = spring(time,at,.70);
+    const exit = flow(phase(time,8.35,.5));
+    const sweep = phase(time,at+.37,1.02);
+    set(panel,{opacity:clamp(p)*(1-exit),
+      transform:`translateY(${(1-p)*67-31*exit}px) scale(${.94+.06*p-.025*exit})`});
+    panel.style.setProperty("--sweep", (-115+235*sweep)+"%");
+  });
+  if (mode==="cta") one(".single .arrow").style.transform = `translateY(${3*Math.sin(time*6)}px)`;
+};
+window.renderMotion(0);
+</script></body></html>

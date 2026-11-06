@@ -1741,7 +1741,7 @@
       "id": "cena-em-vidros",
       "title": "Cena em Vidros",
       "category": "Edição comparada",
-      "description": "Use para separar apresentador, fundo e ícones em planos de vidro que giram e se recompõem.",
+      "description": "Use para girar três planos de vidro com a câmera e seu fundo real atrás de duas mídias independentes.",
       "uses": [
         "Montar imagens",
         "Editar apresentador"
@@ -1756,16 +1756,18 @@
         "vista explodida de vídeo"
       ],
       "seconds": 8,
-      "prompt": "Use Cena em Vidros neste trecho. Separe o fundo, os ícones e o apresentador em três planos de vidro, gire o conjunto e reúna as camadas.",
+      "prompt": "Use Cena em Vidros com o quadro inteiro em presenter, uma mídia vertical em middle e o objeto de destaque em front. Sincronize a abertura dos planos à deixa da fala.",
       "demo": {
         "composition": "scenes/cena-em-vidros/index.html",
         "preview": "previews/cena-em-vidros.mp4",
         "skill": "scenes/cena-em-vidros/SKILL.md",
         "inputs": {
-          "matte": "media",
-          "title": "text",
+          "presenter": "media",
+          "middle": "media",
+          "front": "media",
           "labels": "array",
-          "layout": "text"
+          "layout": "text",
+          "timing": "text"
         }
       }
     },
@@ -2845,6 +2847,131 @@
           "amplitudes": "array",
           "accent": "text",
           "mode": "text"
+        }
+      }
+    },
+    {
+      "id": "tesla-em-vista-explodida",
+      "title": "Tesla em Vista Explodida",
+      "category": "Motion 3D",
+      "description": "Use para abrir um Model 3 em painéis, rodas e centenas de componentes enquanto a câmera orbita.",
+      "uses": [
+        "Explicar processo",
+        "Montar imagens"
+      ],
+      "kind": "Cena completa",
+      "formats": [
+        "16:9"
+      ],
+      "aliases": [
+        "tesla breakdown",
+        "carro desmontando",
+        "tesla exploded view"
+      ],
+      "seconds": 3.6,
+      "prompt": "Use Tesla em Vista Explodida na deixa de um gesto. Ajuste explodeAt para sincronizar a desmontagem e ative transparent para usar o carro sobre a câmera ou outra composição.",
+      "demo": {
+        "composition": "scenes/tesla-em-vista-explodida/index.html",
+        "preview": "previews/tesla-em-vista-explodida.mp4",
+        "skill": "scenes/tesla-em-vista-explodida/SKILL.md",
+        "inputs": {
+          "transparent": "boolean",
+          "explodeAt": "number"
+        }
+      }
+    },
+    {
+      "id": "agenda-em-contracao",
+      "title": "Agenda em Contração",
+      "category": "Interfaces de produto",
+      "description": "Use para comparar o tempo de revisão reduzindo uma reserva de dias para horas e liberando a agenda.",
+      "uses": [
+        "Explicar processo",
+        "Mostrar dados"
+      ],
+      "kind": "Sobreposição",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 30,
+      "prompt": "Use Agenda em Contração para encolher o mesmo compromisso nas deixas da fala. Passe os quatro tempos em beats e mantenha a câmera se usar a saída transparente.",
+      "demo": {
+        "composition": "scenes/agenda-em-contracao/index.html",
+        "preview": "previews/agenda-em-contracao.mp4",
+        "skill": "scenes/agenda-em-contracao/SKILL.md",
+        "inputs": {
+          "heading": "text",
+          "task": "text",
+          "beats": "array",
+          "labels": "array",
+          "final": "text",
+          "transparent": "boolean",
+          "placement": "text"
+        }
+      }
+    },
+    {
+      "id": "feed-para-galeria",
+      "title": "Do Feed à Galeria",
+      "category": "Interfaces de produto",
+      "description": "Use para mostrar uma referência rolando em um feed, sendo arrastada e originando três efeitos na galeria.",
+      "uses": [
+        "Demonstrar produto",
+        "Explicar processo"
+      ],
+      "kind": "Cena completa",
+      "formats": [
+        "16:9"
+      ],
+      "aliases": [
+        "Instagram para a galeria",
+        "Arraste de referência"
+      ],
+      "seconds": 6.8,
+      "prompt": "Use Do Feed à Galeria. Role vídeos distintos no feed, selecione o terceiro, arraste o mesmo quadro até a biblioteca e revele três cartões após soltar.",
+      "demo": {
+        "composition": "scenes/feed-para-galeria/index.html",
+        "preview": "previews/feed-para-galeria.mp4",
+        "skill": "scenes/feed-para-galeria/SKILL.md",
+        "inputs": {
+          "reelTitles": "array",
+          "effectTitles": "array",
+          "reelSheets": "images",
+          "effectSheets": "images",
+          "gallery": "image"
+        }
+      }
+    },
+    {
+      "id": "controles-de-vidro",
+      "title": "Controles de Vidro",
+      "category": "Interfaces de produto",
+      "description": "Use para destacar uma ação ou um valor com vidro, borda fina e uma entrada de mola.",
+      "uses": [
+        "Demonstrar produto",
+        "Vender ou converter",
+        "Mostrar dados"
+      ],
+      "kind": "Sobreposição",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 9,
+      "prompt": "Use Controles de Vidro com mode download, value ou cta. Mantenha a seta, o texto e a marca em colunas distintas, sobre o take se a saída for transparente.",
+      "demo": {
+        "composition": "scenes/controles-de-vidro/index.html",
+        "preview": "previews/controles-de-vidro.mp4",
+        "skill": "scenes/controles-de-vidro/SKILL.md",
+        "inputs": {
+          "mode": "text",
+          "label": "text",
+          "value": "text",
+          "left": "text",
+          "right": "text",
+          "leftLogo": "image",
+          "rightLogo": "image",
+          "transparent": "boolean",
+          "side": "text"
         }
       }
     }

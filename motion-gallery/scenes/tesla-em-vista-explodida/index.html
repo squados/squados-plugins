@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Tesla em Vista Explodida</title>
+  <style>
+    html,body{margin:0;overflow:hidden;background:transparent}
+    main{position:relative;width:1920px;height:1080px;overflow:hidden;background:radial-gradient(ellipse at 52% 44%,#3a3a56 0%,#202436 39%,#0b0e19 82%)}
+    canvas{display:block}
+    .alpha{background:transparent}
+  </style>
+</head>
+<body>
+  <main data-composition-id="tesla-em-vista-explodida" data-width="1920" data-height="1080" data-duration="3.6" data-start="0">
+    <canvas></canvas>
+  </main>
+  <script src="bundle.js"></script>
+  <script>
+    const target=document.querySelector('main');
+    const input=window.motionInputs||{};
+    if(input.transparent) target.classList.add('alpha');
+    let position=0, render;
+    window.renderMotion=t=>{position=t;if(render)render(t);};
+    window.motionReady=VSL10.createTesla(target.querySelector('canvas'),{
+      width:1920,height:1080,explodeAt:Number(input.explodeAt??.25),
+    }).then(draw=>{render=draw;render(position);});
+    window.__timelines={
+      "tesla-em-vista-explodida":{
+        duration:()=>3.6,totalDuration:()=>3.6,seek:window.renderMotion,
+        time(t){if(t===undefined)return position;window.renderMotion(t);return this;},
+        paused:()=>true,pause(){return this;},getChildren:()=>[],
+      },
+    };
+  </script>
+</body>
+</html>

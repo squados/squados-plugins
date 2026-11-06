@@ -1,21 +1,29 @@
 ---
 name: cena-em-vidros
-description: Separe o fundo, os ícones e o apresentador em três planos de vidro, gire o conjunto e reúna as camadas.
+description: Mostra o quadro inteiro do apresentador atrás de duas mídias independentes em vidro com profundidade e paralaxe.
 license: MIT
 ---
 
 # Cena em Vidros
 
-Passe o take com alpha em `matte` por 8 s. Use `labels` na ordem fundo, ícones e apresentador. `layout` aceita `aberto` para distâncias laterais maiores ou `aninhado` para planos mais próximos em profundidade. A composição desenha o fundo e os ícones da demonstração em camadas separadas.
+Passe o take retangular completo em `presenter`. Preserve o fundo real e o
+enquadramento da câmera. Passe mídia independente em `middle` e `front`.
+Use o plano intermediário para objetos verticais e o dianteiro para uma
+composição mais larga. Esses dois arquivos podem ter fundo transparente.
+
+`labels` aceita até três rótulos opcionais na ordem câmera, meio e frente.
+Use `layout: "aninhado"` para reduzir a distância entre os planos.
+`timing: "rapido"` concentra a ação nos primeiros três segundos.
+Confira a leitura do rosto e das mídias enquanto a câmera virtual muda de
+ângulo. O gesto funciona com imagens ou vídeos de cada elemento.
 
 ## Renderização
 
-Abra a raiz do checkout `squados-plugins`, crie um JSON com as entradas da cena e execute:
+Com os caminhos relativos ao JSON de entradas, execute na raiz da galeria:
 
 ```powershell
 node scripts/render-motion.mjs "cena-em-vidros" --inputs dados.json --out cena.mp4
 ```
 
-O JSON aceita `matte`, `title`, `labels`, `layout`. Caminhos de mídia são relativos ao JSON. A [composição](index.html) dura 8 s. Sem `--inputs`, a composição usa a amostra genérica. O preview do cartão usa um take em movimento.
-
-Verifique a ordem física antes, durante e depois da volta. Mantenha a face legível no giro e faça os planos voltar ao mesmo enquadramento do início.
+A [composição](index.html) dura oito segundos. A amostra sem entradas usa
+conteúdo genérico para demonstrar a ordem e a distância entre os planos.
