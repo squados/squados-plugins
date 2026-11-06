@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Arquivo Markdown em Edição</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background:radial-gradient(ellipse at 67% 39%,#27344f,#161d2e 53%,#10131c 92%); color:#edf3ff; }
+main[data-transparent="true"] { background:transparent; }
+.placement { position:absolute; inset:0; display:grid; align-content:center; justify-content:end; padding-inline:100px; }
+.placement[data-side="left"] { justify-content:start; }
+.placement[data-side="center"] { justify-content:center; }
+.editor {
+  width:884px; height:532px; display:grid; grid-template-rows:55px 51px 1fr 37px;
+  overflow:hidden; border:1px solid #91aed25c; border-radius:21px;
+  background:#161d2c; box-shadow:0 28px 80px #080d1a70,inset 0 1px #e6f3ff17;
+  transform-origin:50% 55%; opacity:0;
+}
+.toolbar, .tabs, .status { display:flex; align-items:center; }
+.toolbar { gap:18px; padding-inline:21px; border-bottom:1px solid #a7bfdf22; background:#293348; }
+.dots { display:flex; gap:9px; flex:none; }
+.dots i { width:9px; height:9px; border-radius:50%; background:#de8590; }
+.dots i:nth-child(2) { background:#dfb579; }
+.dots i:nth-child(3) { background:#91bfae; }
+.breadcrumb { display:flex; align-items:center; min-width:0; gap:10px; color:#afbed4; font-size:21px; }
+.folder { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.separator { color:#8298b7; }
+.filename { color:#eff4fb; font-weight:590; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.tabs { align-items:stretch; background:#141a27; border-bottom:1px solid #9cb0d029; }
+.tab { display:flex; align-items:center; gap:10px; max-width:55%; padding-inline:21px; border-right:1px solid #96aacc26;
+  border-top:2px solid #a995e4; background:#20293a; font-size:21px; }
+.tab .filename { color:#dbe8f8; }
+.mark { color:#cdbdff; flex:none; }
+.code {
+  list-style:none; margin:0; padding:20px 20px 18px 0; display:grid; align-content:start; grid-auto-rows:56px;
+  background:linear-gradient(90deg,#1b2435 0 67px,#3b4c67 67px 68px,#161d2c 68px);
+  font-family:Consolas, "SFMono-Regular", Menlo, monospace;
+}
+.line { display:grid; grid-template-columns:67px minmax(0,1fr); align-items:center; }
+.line[data-state="waiting"] { visibility:hidden; }
+.number { color:#869bb8; font-size:21px; text-align:right; padding-right:17px; font-variant-numeric:tabular-nums; }
+.line[data-state="active"] .number { color:#c4d4e8; }
+.source {
+  min-height:39px; padding:5px 13px; margin-left:10px; border-radius:6px;
+  color:#edf3ff; font-size:var(--font-size,27px); line-height:1.14; white-space:pre-wrap; overflow-wrap:anywhere;
+}
+.line[data-state="active"] .source { background:#263650; }
+.line[data-kind="heading"] .source, .line[data-kind="heading"] .token { color:#d0bcff; }
+.token { color:#aabfda; }
+.line[data-kind="checked"] .token { color:#9df5d1; }
+.line[data-kind="unchecked"] .token { color:#e8c693; }
+.caret { display:inline-block; margin-left:2px; width:2px; height:1em; vertical-align:-.14em;
+  background:#b9f6e8; box-shadow:0 0 9px #9dffe68c; }
+.caret[hidden], .separator[hidden], .folder[hidden] { display:none; }
+.status { justify-content:space-between; padding-inline:21px; border-top:1px solid #9cb0d02e;
+  background:#202a3d; color:#b4c2d9; font-size:18px; }
+.status span + span { margin-left:16px; }
+</style>
+</head>
+<body>
+<main data-composition-id="arquivo-markdown-em-edicao" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <div class="placement">
+    <section class="editor" aria-label="Editor Markdown">
+      <header class="toolbar">
+        <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="breadcrumb"><span class="folder"></span><span class="separator" aria-hidden="true">/</span><span class="filename"></span></div>
+      </header>
+      <div class="tabs"><div class="tab"><span class="mark" aria-hidden="true">◇</span><span class="filename"></span></div></div>
+      <ol class="code"></ol>
+      <footer class="status"><div><span>Markdown</span><span>UTF-8</span></div><span class="position"></span></footer>
+    </section>
+  </div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const fallbackLines = [
+  "# Direção de arte",
+  "- [x] Faça o corte na retomada.",
+  "- [x] Use a moldura aprovada.",
+  "- [ ] Preserve o fim de cada palavra.",
+  "- [ ] Confira a legenda no take final.",
+];
+const filename = typeof inputs.filename === "string" ? inputs.filename.trim() : "";
+const fileParts = (filename || "edicao-de-video/SKILL.md").split(/[\\/]/).filter(Boolean);
+const folder = fileParts.slice(0, -1).join(" / ");
+one(".folder").textContent = folder;
+one(".folder").hidden = one(".separator").hidden = !folder;
+all(".filename").forEach(element => { element.textContent = fileParts.at(-1) || "SKILL.md"; });
+
+stage.dataset.transparent = String(inputs.transparent === true);
+one(".placement").dataset.side = ["left", "center", "right"].includes(inputs.side) ? inputs.side : "right";
+
+const suppliedLines = Array.isArray(inputs.lines)
+  ? inputs.lines.filter(line => typeof line === "string" && line.trim()).slice(0, 6)
+  : [];
+const lines = suppliedLines.length ? suppliedLines : fallbackLines;
+const cues = Array.isArray(inputs.cues) && inputs.cues.length === lines.length &&
+  inputs.cues.every((time, index, list) => typeof time === "number" && Number.isFinite(time) &&
+    time >= .35 && time <= 6.55 && (!index || time - list[index - 1] >= .25))
+  ? inputs.cues
+  : lines.map((_, index) => .58 + .96 * index);
+
+const rows = lines.map((line, index) => {
+  const chars = Array.from(line.normalize("NFC"));
+  const text = chars.join("");
+  const heading = text.match(/^#{1,6}(?:\s+|$)/);
+  const task = text.match(/^[-*+]\s+\[([ xX])\]\s*/);
+  const at = cues[index];
+  const next = cues[index + 1] ?? 7.27;
+  const seconds = Math.min(.71, Math.max(.22, chars.length / 56), next - at - .06);
+  const row = document.createElement("li");
+  row.className = "line";
+  row.dataset.kind = heading ? "heading" : task ? task[1] === " " ? "unchecked" : "checked" : "plain";
+  const number = document.createElement("span");
+  number.className = "number";
+  number.setAttribute("aria-hidden", "true");
+  number.textContent = String(index + 1).padStart(2, "0");
+  const source = document.createElement("span");
+  source.className = "source";
+  source.style.setProperty("--font-size", Math.max(19, Math.min(27, 1240 / Math.max(1, chars.length))) + "px");
+  const token = document.createElement("span");
+  token.className = "token";
+  const content = document.createElement("span");
+  const caret = document.createElement("i");
+  caret.className = "caret";
+  caret.setAttribute("aria-hidden", "true");
+  source.append(token, content, caret);
+  row.append(number, source);
+  one(".code").append(row);
+  return {row, token, content, caret, chars, prefix:(heading?.[0] ?? task?.[0] ?? "").length, at, next, seconds};
+});
+
+const editor = one(".editor");
+const position = one(".position");
+window.renderMotion = time => {
+  const enter = spring(time, .07, .61);
+  const exit = flow(phase(time, 7.50, .46));
+  set(editor, {opacity:clamp(enter) * (1 - exit),
+    transform:`translateY(${(1-enter)*56-29*exit}px) scale(${.96+.04*enter-.016*exit})`});
+  position.textContent = "Ln 1, Col 1";
+  rows.forEach(({row, token, content, caret, chars, prefix, at, next, seconds}, index) => {
+    const active = time >= at && time < next;
+    const count = Math.floor(chars.length * phase(time, at, seconds));
+    row.dataset.state = time < at ? "waiting" : active ? "active" : "done";
+    token.textContent = chars.slice(0, Math.min(prefix, count)).join("");
+    content.textContent = chars.slice(prefix, count).join("");
+    caret.hidden = !active || (count === chars.length && Math.floor((time - at - seconds) * 3) % 2 === 1);
+    if (time >= at) position.textContent = `Ln ${index + 1}, Col ${count + 1}`;
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

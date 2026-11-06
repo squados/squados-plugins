@@ -2946,7 +2946,7 @@
       "id": "controles-de-vidro",
       "title": "Controles de Vidro",
       "category": "Interfaces de produto",
-      "description": "Use para destacar uma ação ou um valor com vidro, borda fina e uma entrada de mola.",
+      "description": "Use para destacar um download, valor ou chamada em vidro, ou demonstrar um botão de play com clique, arraste e entrada.",
       "uses": [
         "Demonstrar produto",
         "Vender ou converter",
@@ -2956,12 +2956,20 @@
       "formats": [
         "16:9"
       ],
+      "aliases": [
+        "Botão de Play em Ação"
+      ],
       "seconds": 9,
-      "prompt": "Use Controles de Vidro com mode download, value ou cta. Mantenha a seta, o texto e a marca em colunas distintas, sobre o take se a saída for transparente.",
+      "prompt": "Use Controles de Vidro com mode download, value, cta ou play. Em play, sincronize clique, arraste e encaixe com as deixas de som.",
       "demo": {
         "composition": "scenes/controles-de-vidro/index.html",
         "preview": "previews/controles-de-vidro.mp4",
         "skill": "scenes/controles-de-vidro/SKILL.md",
+        "presets": {
+          "Botão de Play em Ação": {
+            "mode": "play"
+          }
+        },
         "inputs": {
           "mode": "text",
           "label": "text",
@@ -2971,7 +2979,42 @@
           "leftLogo": "image",
           "rightLogo": "image",
           "transparent": "boolean",
-          "side": "text"
+          "side": "text",
+          "clickAt": "number",
+          "dragAt": "number",
+          "enterAt": "number"
+        }
+      }
+    },
+    {
+      "id": "arquivo-markdown-em-edicao",
+      "title": "Arquivo Markdown em Edição",
+      "category": "Interfaces de produto",
+      "description": "Use para mostrar regras ou checklists sendo escritos num arquivo Markdown com números de linha e cursor de texto.",
+      "uses": [
+        "Demonstrar produto",
+        "Explicar processo"
+      ],
+      "kind": "Sobreposição",
+      "formats": [
+        "16:9"
+      ],
+      "aliases": [
+        "Editor de SKILL.md",
+        "Digitação Markdown"
+      ],
+      "seconds": 8,
+      "prompt": "Use Arquivo Markdown em Edição. Passe até seis linhas em lines e alinhe a digitação às regras mencionadas. Posicione o editor no lado livre do take.",
+      "demo": {
+        "composition": "scenes/arquivo-markdown-em-edicao/index.html",
+        "preview": "previews/arquivo-markdown-em-edicao.mp4",
+        "skill": "scenes/arquivo-markdown-em-edicao/SKILL.md",
+        "inputs": {
+          "filename": "text",
+          "lines": "array",
+          "cues": "array",
+          "side": "text",
+          "transparent": "boolean"
         }
       }
     }

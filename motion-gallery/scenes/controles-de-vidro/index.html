@@ -27,6 +27,16 @@ main[data-transparent="true"] {background:transparent;}
 .legend > span {display:flex; align-items:center; gap:12px;}
 .logo {width:52px;height:52px; display:grid;place-items:center;border-radius:12px;background:#d5f3ff19;color:#c5f1e4;}
 .logo img {max-width:43px; max-height:43px;}
+.play-action {position:relative; width:348px; height:112px; margin-top:100px; pointer-events:none;}
+.play-glass {display:grid; place-items:center; width:100%; height:100%; min-width:0;
+ border-color:#b9f6e68c; background:linear-gradient(164deg,#91e4cd52,#143f45dd 48%,#092327ee),
+ radial-gradient(ellipse at 54% 0%,#b7fff24c,transparent 72%); color:#e4fff7;
+ box-shadow:0 21px 46px #071b299e,inset 0 2px 0 #eefff478,inset 0 -4px 18px #061a2180;}
+.play-icon {width:43px; height:43px; filter:drop-shadow(0 3px 7px #062827);}
+.play-halo {position:absolute; width:54px; height:54px; left:calc(50% - 27px); top:calc(50% - 27px);
+ border:1.5px solid #b8fff1; border-radius:50%; box-shadow:0 0 18px #a0ffe39c;}
+.play-pointer {position:absolute; top:0; left:0; width:31px; height:38px;
+ filter:drop-shadow(0 3px 5px #021319cc);}
 [hidden] {display:none!important;}
 </style>
 </head>
@@ -39,22 +49,75 @@ main[data-transparent="true"] {background:transparent;}
  <div class="glass metric"><strong class="value"></strong><div class="legend"><span><span class="logo"><!-- motion-media:leftLogo:0:9:0 --></span><span class="left"></span></span>
  <span><span class="logo"><!-- motion-media:rightLogo:0:9:1 --></span><span class="right"></span></span></div></div>
  <div class="glass single"><strong></strong><svg class="arrow"><use href="#download"/></svg></div>
+ <div class="play-action">
+  <div class="glass play-glass" role="img" aria-label="Reproduzir">
+   <svg class="play-icon" viewBox="0 0 44 44" aria-hidden="true"><path d="M13 8.5a2.2 2.2 0 0 1 3.3-1.9l21 13.5a2.2 2.2 0 0 1 0 3.8l-21 13.5a2.2 2.2 0 0 1-3.3-1.9z" fill="currentColor"/></svg>
+  </div>
+  <div class="play-halo" aria-hidden="true"></div>
+  <svg class="play-pointer" viewBox="0 0 31 38" aria-hidden="true"><path d="M2 2l24 19-11 1 5.2 11-5 2.4-5.2-11L2 31z" fill="#f8fffd" stroke="#10252a" stroke-width="1.7" stroke-linejoin="round"/></svg>
+ </div>
 </section>
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
-const mode = ["download","value","cta"].includes(inputs.mode) ? inputs.mode : "download";
-const panels = {download:all(".button"),value:all(".metric"),cta:all(".single")};
+const mode = ["download","value","cta","play"].includes(inputs.mode) ? inputs.mode : "download";
+const panels = {download:all(".button"),value:all(".metric"),cta:all(".single"),play:all(".play-action")};
 for (const [key,list] of Object.entries(panels)) for (const panel of list) panel.hidden = key !== mode;
 stage.dataset.transparent = String(inputs.transparent === true);
-one(".controls").dataset.side = inputs.side ?? "center";
+const side = inputs.side ?? (mode === "play" ? "left" : "center");
+one(".controls").dataset.side = side;
 all(".action").forEach(node => node.textContent = inputs.label ?? "Download gratuito");
 all(".left").forEach(node => node.textContent = inputs.left ?? "Windows");
 all(".right").forEach(node => node.textContent = inputs.right ?? "macOS");
 copy(".value","value","US$ 6,74");
 copy(".single strong","label","Materiais disponíveis");
 for (const mark of all(".logo")) if (!mark.children.length) mark.textContent = "◈";
+
+const playGlass = one(".play-glass");
+const playHalo = one(".play-halo");
+const playPointer = one(".play-pointer");
+function cue(name, fallback, first, last) {
+  const value = Number.isFinite(inputs[name]) ? inputs[name] : fallback;
+  return Math.min(last, Math.max(first, value));
+}
+const clickAt = cue("clickAt", 2.91, .75, 6.25);
+const dragAt = cue("dragAt", 4.32, clickAt + .42, 6.95);
+const enterAt = cue("enterAt", 5.46, dragAt + .60, 7.65);
+
+function renderPlay(time) {
+  const reveal = spring(time, .12, .66);
+  const exit = flow(phase(time, 8.38, .50));
+  const click = flow(phase(time, clickAt - .08, .08)) * (1 - flow(phase(time, clickAt, .20)));
+  const travel = flow(phase(time, dragAt, enterAt - dragAt));
+  const landing = phase(time, enterAt, .62);
+  const rebound = Math.sin(landing * Math.PI * 2.25) * (1 - landing) ** 2;
+  const arc = Math.sin(travel * Math.PI);
+  const x = (side === "right" ? -1120 : side === "left" ? 1120 : 475) * travel;
+  const y = 58 * (1 - reveal) + 83 * arc - 62 * rebound - 22 * exit;
+  const angle = (side === "right" ? -4 : 4) * arc;
+  const scale = .92 + .08 * reveal - .09 * click + .035 * arc + .13 * rebound;
+  set(playGlass, {opacity:clamp(reveal) * (1 - exit),
+    transform:`translate(${x}px,${y}px) rotate(${angle}deg) scale(${scale})`});
+  const sweep = phase(time, enterAt, .58);
+  playGlass.style.setProperty("--sweep", `${-115 + 235 * sweep}%`);
+
+  const ring = phase(time, clickAt, .46);
+  set(playHalo, {opacity:time < clickAt ? 0 : .90 * (1 - ring) ** 2,
+    transform:`translate(${x}px,${y}px) scale(${.68 + 1.18 * ring})`});
+
+  const approach = flow(phase(time, clickAt - .59, .59));
+  const leave = flow(phase(time, enterAt + .16, .39));
+  const cursorX = x + 172 + 126 * (1 - approach) + 74 * leave;
+  const cursorY = y + 54 + 90 * (1 - approach) + 81 * leave;
+  set(playPointer, {opacity:phase(time, clickAt - .62, .22) * (1 - leave),
+    transform:`translate(${cursorX}px,${cursorY}px)`});
+}
+
 window.renderMotion = time => {
+  if (mode === "play") {
+    renderPlay(time);
+    return;
+  }
   panels[mode].forEach((panel,index) => {
     const at = .12+index*.13;
     const p = spring(time,at,.70);

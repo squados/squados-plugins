@@ -86,7 +86,8 @@ a partir da raiz. Valide com `node scripts/build-motion-gallery.mjs --check` e
 | [Tesla em Vista Explodida](index.html#tesla-em-vista-explodida) | Marque a desmontagem com `explodeAt` e use `transparent: true` para compor sobre vídeo. A estrutura interna é ilustrativa. |
 | [Do Feed à Galeria](index.html#feed-para-galeria) | Passe quatro previews em `reelSheets` e três em `effectSheets`. A mídia do terceiro post acompanha o cursor e aciona a entrada dos novos cartões. |
 | [Agenda em Contração](index.html#agenda-em-contracao) | Informe as quatro deixas em `beats`, as durações em `labels` e use `placement: "right"` em uma sobreposição. |
-| [Controles de Vidro](index.html#controles-de-vidro) | Use `mode: "download"` para as plataformas, `"value"` para um valor com duas marcas ou `"cta"` para uma ação com seta. |
+| [Controles de Vidro](index.html#controles-de-vidro) | Use `mode: "download"` para as plataformas, `"value"` para um valor, `"cta"` para a seta ou `"play"` para clique, arraste e encaixe. Em `"play"`, sincronize `clickAt`, `dragAt` e `enterAt` com o som. [Prévia do botão](previews/controles-de-vidro-play.mp4) |
+| [Arquivo Markdown em Edição](index.html#arquivo-markdown-em-edicao) | Informe `filename` e até seis textos Markdown em `lines`. Use `cues` para indicar a entrada de cada linha, `side` para posicionar o editor e `transparent: true` para compor sobre o take. |
 | [Dispositivos em Cena](index.html#dispositivos-em-cena) | Use `phone`, `tablet` e `desktop` para as capturas de cada tamanho. Os três aceitam foto ou vídeo. |
 | [Troca de Visual](index.html#troca-de-visual) | Passe imagens em `before` e `after`, ou aplique a uma imagem o `preset` `luz`, `cor`, `contraste` ou `nenhum`. |
 | [Inspeção de Imagem](index.html#inspecao-de-imagem) | Passe `image` e até cinco `points` com `x`, `y` em porcentagem do quadro exibido e `label`. Escolha `lupa`, `varredura`, `marcacoes` ou `ambos` em `mode`. |
