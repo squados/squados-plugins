@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Do Vídeo aos Formatos</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { color: #faf8ff; background: #12141a radial-gradient(ellipse at 51% 76%, #313044, #1c1d27 51%, #12141a 83%); }
+main.transparent { background: transparent; }
+.stage-grid { position: absolute; inset: 0; opacity: .42; background: linear-gradient(#e6d8ff15 1px, transparent 1px), linear-gradient(90deg, #e6d8ff15 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse at 50% 66%, #000 0%, transparent 71%); }
+.transparent .stage-grid { display: none; }
+h1 { position: absolute; z-index: 2; inset: 118px 150px auto; text-align: center; font-size: 96px; line-height: 1.06; text-wrap: balance; }
+.stage-rule { position: absolute; inset: 250px 17% auto; height: 1px; background: linear-gradient(90deg, transparent, #ded3ff5e 50%, transparent); }
+.routes { position: absolute; inset: 0; overflow: visible; }
+.wire { fill: none; stroke-width: 2; }
+.wire-light { fill: none; stroke-width: 3; stroke-linecap: round; }
+.media { position: relative; overflow: hidden; background: #262c3b; }
+.media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.media.sample { container-type: size; }
+.media.sample::before { content: ""; position: absolute; top: 50%; left: 50%; width: max(100cqw, 100cqh); aspect-ratio: 1; transform: translate(-50%, -50%); background: url(../motion-assets/field-atlas.webp) right top / 300% 200%; }
+.film, .destination, .packet { position: absolute; transform-origin: center; }
+.film { left: 960px; top: 486px; width: 480px; height: 292px; z-index: 5; transform: translate(-50%, -50%); border: 1px solid #bbb4d9; border-radius: 19px; padding: 28px 17px; background: linear-gradient(146deg, #3b3c52, #191923 62%); box-shadow: 0 20px 76px #05040b9e, inset 0 1px #ffffff88; }
+.film::before, .film::after { content: ""; position: absolute; left: 16px; right: 16px; height: 9px; background: repeating-linear-gradient(90deg, #d7cded9c 0 15px, transparent 15px 28px); }
+.film::before { top: 9px; }
+.film::after { bottom: 9px; }
+.film .media { height: 100%; border-radius: 8px; }
+.destinations { position: absolute; inset: 0; perspective: 1400px; }
+.destination { top: 521px; width: var(--card-w); height: var(--card-h); transform: translate(-50%, -50%); border-radius: var(--corner); padding: var(--padding); border: 1px solid color-mix(in srgb, var(--accent) 64%, white); background: linear-gradient(150deg, #494858, #21212a 45%, #15151e 82%); box-shadow: 0 24px 85px #06060bad, inset 0 0 0 1px #08080f, inset 0 2px 0 #fff4; display: grid; grid-template-rows: var(--chrome-h) 1fr var(--foot-h); overflow: hidden; }
+.destination::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(126deg, transparent 22%, #fff0 43%, #fff4 49%, #fff0 58%, transparent 76%); transform: translateX(var(--glint, -120%)); opacity: var(--glint-alpha, 0); }
+.chrome { display: flex; align-items: center; gap: 6px; padding: 0 9px; }
+.chrome span { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); opacity: .65; }
+.chrome b { height: 6px; width: 35%; margin-left: auto; border-radius: 6px; background: #d4d1e345; }
+.destination .media { border-radius: 8px; }
+.phone { --card-w: 236px; --card-h: 401px; --corner: 30px; --padding: 9px; --chrome-h: 22px; --foot-h: 34px; }
+.phone .chrome { justify-content: center; }
+.phone .chrome span { display: none; }
+.phone .chrome b { margin: 0; width: 54px; background: #08090b; }
+.site { --card-w: 470px; --card-h: 310px; --corner: 15px; --padding: 9px; --chrome-h: 27px; --foot-h: 36px; }
+.paper { --card-w: 332px; --card-h: 397px; --corner: 9px; --padding: 16px; --chrome-h: 32px; --foot-h: 81px; background: linear-gradient(145deg, #fff7eb, #dbd0c7); }
+.paper .chrome span { width: 23px; height: 3px; border-radius: 0; background: #26212c; opacity: .70; }
+.paper .chrome b { background: #39232c39; }
+.paper .media { border-radius: 3px; }
+.foot { display: grid; gap: 8px; align-content: center; padding: 0 8px; }
+.foot i { height: 5px; width: 55%; border-radius: 10px; background: #d4d1e343; }
+.foot i + i { width: 37%; }
+.paper .foot i { background: #39232c43; }
+.paper .foot i:first-child { height: 10px; width: 78%; background: #332c37a1; }
+.destination-label { position: absolute; top: 761px; width: 435px; text-align: center; transform: translateX(-50%); color: #f7f2ff; font-size: 46px; font-weight: 630; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.destination-label span { display: inline-block; vertical-align: .16em; margin-right: 15px; width: .18em; height: .18em; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+.packet { z-index: 4; width: 68px; height: 43px; padding: 4px; border: 1px solid var(--accent); border-radius: 5px; background: #22232b; box-shadow: 0 0 22px var(--accent); }
+.packet .media { height: 100%; border-radius: 2px; }
+</style>
+</head>
+<body>
+<main data-composition-id="do-video-aos-formatos" data-start="0" data-duration="6.4" data-width="1920" data-height="1080">
+  <div class="stage-grid"></div>
+  <h1 class="display"></h1>
+  <div class="stage-rule"></div>
+  <svg class="routes" viewBox="0 0 1920 1080" width="1920" height="1080" aria-hidden="true"></svg>
+  <div class="destinations"></div>
+  <div class="film"><div class="media"></div></div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const accents = ["#c4abff", "#a1e1d0", "#ffbe99"];
+const destinations = [
+  { x: 415, y: 702, kind: "phone", name: "Postagem", curve: "M960 891 C785 891 415 858 415 702" },
+  { x: 960, y: 670, kind: "site", name: "Página", curve: "M960 891 C960 832 960 737 960 670" },
+  { x: 1505, y: 700, kind: "paper", name: "Artigo", curve: "M960 891 C1135 891 1505 858 1505 700" },
+];
+
+copy("h1", "title", "Um vídeo, três destinos");
+stage.classList.toggle("transparent", inputs.transparent === true);
+
+function insertMedia(element) {
+  if (inputs.image) {
+    const image = document.createElement("img");
+    image.alt = "";
+    image.src = new URL(inputs.image, document.baseURI).href;
+    element.append(image);
+  } else {
+    element.classList.add("sample");
+  }
+}
+
+function makeWire(curve, className, accent) {
+  const wire = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  wire.setAttribute("d", curve);
+  wire.setAttribute("class", className);
+  wire.setAttribute("stroke", accent);
+  one(".routes").append(wire);
+  return wire;
+}
+
+insertMedia(one(".film .media"));
+const outputs = destinations.map(({ x, y, kind, name, curve }, index) => {
+  const accent = accents[index];
+  const card = document.createElement("div");
+  card.className = "destination " + kind;
+  card.style.setProperty("--accent", accent);
+  card.style.left = x + "px";
+  card.innerHTML = '<div class="chrome"><span></span><span></span><span></span><b></b></div><div class="media"></div><div class="foot"><i></i><i></i></div>';
+  insertMedia(card.querySelector(".media"));
+
+  const label = document.createElement("p");
+  label.className = "destination-label";
+  label.style.setProperty("--accent", accent);
+  label.style.left = x + "px";
+  label.append(document.createElement("span"), String(inputs.destinations?.[index] ?? name).slice(0, 18));
+
+  const packet = document.createElement("div");
+  packet.className = "packet";
+  packet.style.setProperty("--accent", accent);
+  packet.innerHTML = '<div class="media"></div>';
+  insertMedia(packet.querySelector(".media"));
+
+  one(".destinations").append(card, label);
+  stage.append(packet);
+
+  const wire = makeWire(curve, "wire", accent);
+  const trace = makeWire(curve, "wire-light", accent);
+  const length = wire.getTotalLength();
+  wire.style.strokeDasharray = length + " " + length;
+  trace.style.strokeDasharray = "30 " + length;
+
+  return { x, y, card, label, wire, trace, packet, length, start: 2.11 + index * .37, tilt: [27, 8, -25][index] };
+});
+
+window.renderMotion = time => {
+  const titleIn = beat(time, .08, .70);
+  set(one("h1"), { opacity: titleIn, transform: "translateY(" + (1 - titleIn) * 23 + "px)" });
+  one(".stage-rule").style.opacity = titleIn * .65;
+
+  const filmIn = spring(time, .23, .90);
+  const down = flow(phase(time, 1.33, .84));
+  const filmY = mix(486 + 65 * (1 - filmIn), 897, down);
+  set(one(".film"), {
+    top: filmY + "px",
+    opacity: clamp(filmIn),
+    transform: "translate(-50%, -50%) perspective(1150px) rotateX(" + mix(17 * (1 - filmIn), 5, down) + "deg) scale(" + mix(.82 + .18 * filmIn, .54, down) + ")",
+  });
+
+  for (const { x, y, card, label, wire, trace, packet, length, start, tilt } of outputs) {
+    const travel = flow(phase(time, start, .87));
+    const light = 1 - flow(phase(time, start + .84, .52));
+    const point = wire.getPointAtLength(travel * length);
+    const tangent = wire.getPointAtLength(Math.min(length, travel * length + 5));
+    const angle = Math.atan2(tangent.y - point.y, tangent.x - point.x) * 180 / Math.PI + 90;
+    set(wire, { strokeDashoffset: (1 - travel) * length, opacity: .26 * travel + .36 * light * travel });
+    set(trace, { strokeDashoffset: 30 - travel * length, opacity: light * phase(time, start, .14) });
+    set(packet, {
+      left: point.x + "px",
+      top: point.y + "px",
+      opacity: phase(time, start + .07, .16) * (1 - phase(time, start + .67, .22)),
+      transform: "translate(-50%, -50%) rotate(" + angle + "deg) scale(" + mix(.69, 1, travel) + ")",
+    });
+
+    const arrival = start + .69;
+    const land = spring(time, arrival, .94);
+    const rise = clamp(land);
+    const shine = phase(time, arrival + .04, .75);
+    card.style.setProperty("--glint", mix(-104, 104, shine) + "%");
+    card.style.setProperty("--glint-alpha", Math.sin(Math.PI * shine) * .79);
+    set(card, {
+      opacity: rise,
+      transform: "translate(-50%, -50%) translate(" + (960 - x) * .12 * (1 - land) + "px," + (y - 495) * (1 - land) + "px) rotateX(" + (1 - land) * 23 + "deg) rotateY(" + (1 - land) * tilt + "deg) scale(" + mix(.46, 1, land) + ")",
+    });
+    const labelIn = beat(time, arrival + .35, .43);
+    set(label, { opacity: labelIn, transform: "translate(-50%," + (1 - labelIn) * 20 + "px)" });
+  }
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

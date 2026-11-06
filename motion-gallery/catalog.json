@@ -5882,6 +5882,24 @@
           "layout": "text"
         }
       }
+    },
+    {
+      "id": "do-video-aos-formatos",
+      "title": "Do Vídeo aos Formatos",
+      "category": "Interfaces de produto",
+      "seconds": 6.4,
+      "aliases": ["Um vídeo, três destinos", "Repurpose a video"],
+      "prompt": "Use Do Vídeo aos Formatos neste trecho. Anime um fotograma percorrendo três trajetórias de luz até se tornar uma postagem, uma página e um artigo. Encaixe os formatos na fala e deixe o apresentador visível.",
+      "demo": {
+        "composition": "scenes/do-video-aos-formatos/index.html",
+        "preview": "previews/do-video-aos-formatos.mp4",
+        "inputs": {
+          "title": "text",
+          "image": "image",
+          "destinations": "array",
+          "transparent": "boolean"
+        }
+      }
     }
   ],
   "core": [
