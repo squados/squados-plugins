@@ -83,13 +83,15 @@ window.renderMotion = time => {
     const depth = nested ? 1-.36*clamp(amount) : 1;
     const [x,y,z,turn,scale] = close.map((value, axis) => mix(value, open[axis], amount));
     const glass = clamp(amount);
+    const crossingDistance = (time - (timing ? .133 : .22)) / .043;
+    const crossing = index === 1 ? Math.exp(-(crossingDistance ** 2)) : 0;
     set(pane, {
       transform:`translate3d(${x}px,${y}px,${z * depth}px) rotateY(${turn}deg) scale(${scale})`,
       borderColor:`rgba(197,235,252,${.62 * glass})`,
       borderRadius: 22*glass + "px",
       background:`rgba(185,230,245,${.062 * glass})`,
       boxShadow:`0 24px 76px rgba(3,16,28,${.54 * glass}), inset 0 0 36px rgba(128,181,216,${.20 * glass})`,
-      opacity:index ? 1 - peel : 1,
+      opacity:index ? (1 - peel) * (1 - .94 * crossing) : 1,
     });
     pane.style.setProperty("--glass", glass);
   });
