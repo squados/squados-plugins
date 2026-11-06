@@ -24,6 +24,7 @@ main::before {
   border-radius:inherit; box-shadow:inset 0 2px 0 #f2faff83,inset 0 -2px 0 #4f92c365;
   background:linear-gradient(123deg,transparent 26%, #c2edff21 41%, #ecfbff34 46%, transparent 63%);
   mix-blend-mode:screen;
+  opacity:var(--glass,1);
 }
 .back { left:106px; top:148px; width:1100px; height:619px; }
 .middle { left:966px; top:147px; width:332px; height:697px; }
@@ -65,24 +66,32 @@ const labels = inputs.labels ?? ["Câmera", "Detalhe", "Primeiro plano"];
 const panes = all(".pane");
 all(".badge").forEach((badge, index) => { badge.textContent = labels[index] ?? ""; });
 const positions = [
-  { close: [183, 32, -174, -.9], open: [0, 0, -157, -8] },
-  { close: [-38, -1, -5, -1], open: [0, -30, 26, -5] },
-  { close: [-172, 12, 9, 3], open: [42, 13, 153, -2] },
+  { close: [304, 82.5, -3, 0, 1.753], open: [0, 0, -157, -8, 1] },
+  { close: [-800, 17.5, 1, 0, 1.176], open: [0, -30, 26, -5, 1] },
+  { close: [111, -118, 3, 0, .98], open: [42, 13, 153, -2, 1] },
 ];
 window.renderMotion = time => {
   const opening = spring(time, .04, timing ? .66 : 1.18);
-  const closing = flow(phase(time, timing ? 2.46 : 6.48, timing ? .62 : 1.27));
+  const closeAt = timing ? 2.34 : 6.48;
+  const closing = flow(phase(time, closeAt, timing ? .63 : 1.27));
+  const peel = flow(phase(time, closeAt - .09, timing ? .25 : .49));
   const amount = opening * (1 - closing);
   const glide = flow(phase(time, .38, timing ? 1.95 : 5.92));
   set(one(".stack"), { transform:`rotateY(${mix(-9,6,glide) * amount}deg) rotateX(${-3 * amount}deg) scale(${1 - .024 * amount})` });
   panes.forEach((pane,index) => {
     const { close, open } = positions[index];
-    const depth = nested ? .64 : 1;
-    const [x,y,z,turn] = close.map((value, axis) => mix(value, open[axis], amount));
+    const depth = nested ? 1-.36*clamp(amount) : 1;
+    const [x,y,z,turn,scale] = close.map((value, axis) => mix(value, open[axis], amount));
+    const glass = clamp(amount);
     set(pane, {
-      transform:`translate3d(${x * depth}px,${y}px,${z * depth}px) rotateY(${turn}deg)`,
-      borderColor:`rgba(197,235,252,${.27 + .35 * clamp(amount)})`,
+      transform:`translate3d(${x}px,${y}px,${z * depth}px) rotateY(${turn}deg) scale(${scale})`,
+      borderColor:`rgba(197,235,252,${.62 * glass})`,
+      borderRadius: 22*glass + "px",
+      background:`rgba(185,230,245,${.062 * glass})`,
+      boxShadow:`0 24px 76px rgba(3,16,28,${.54 * glass}), inset 0 0 36px rgba(128,181,216,${.20 * glass})`,
+      opacity:index ? 1 - peel : 1,
     });
+    pane.style.setProperty("--glass", glass);
   });
 };
 window.renderMotion(0);
