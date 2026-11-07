@@ -60,6 +60,10 @@ function render(entry, preset) {
     const project = join(temp, 'scene')
     cpSync(dirname(join(gallery, entry.demo.composition)), project, { recursive: true })
     const inputs = { ...entry.demo.previewInputs, ...preset, ...rawInputs }
+    const modeFrames = entry.demo.framesByMode ?? {}
+    const duration = Object.hasOwn(modeFrames, inputs.mode)
+      ? Number((modeFrames[inputs.mode] / 30).toFixed(6))
+      : entry.seconds
     const inputDirectory = values.inputs ? dirname(resolve(values.inputs)) : dirname(join(gallery, entry.demo.composition))
     const stageMedia = (value, name, videoAllowed) => {
       if (typeof value !== 'string' || !value.trim()) throw Error('Informe um arquivo para ' + name + '.')
@@ -104,13 +108,17 @@ function render(entry, preset) {
       cpSync(join(gallery, 'scenes', 'motion-assets'), join(project, 'motion-assets'), { recursive: true })
       source = source.replaceAll('../motion-assets/', 'motion-assets/')
     }
+    if (duration !== entry.seconds) {
+      // O compilador resolve a duração estática antes de abrir o navegador.
+      source = source.replace(`data-duration="${entry.seconds}"`, `data-duration="${duration}"`)
+    }
     const payload = JSON.stringify(inputs).replaceAll('<', '\\u003c')
     const bridge = `<script>
       // HyperFrames 0.8.33 seeks registered timelines for every captured frame.
       let motionTime = 0;
       const motionTimeline = {
-        duration: () => ${entry.seconds},
-        totalDuration: () => ${entry.seconds},
+        duration: () => ${duration},
+        totalDuration: () => ${duration},
         paused: () => true,
         pause() { return this; },
         play() { return this; },

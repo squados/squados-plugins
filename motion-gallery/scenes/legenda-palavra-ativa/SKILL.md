@@ -6,7 +6,14 @@ license: MIT
 
 # Legenda de Palavra Ativa
 
-Passe `cues` como objetos `{start, end, words, times}`. Cada item de `words` tem um início correspondente em `times`, dentro de `[start, end)`, em segundos do take. Em `tarja`, use a caixa escura com menta. Em `quente`, use texto sem caixa e destaque quente. Escreva blocos de até duas linhas. Quando o take já tiver legenda gravada na imagem, reenquadre a câmera para deixá-la fora do quadro e preserve o rosto.
+Passe `cues` como objetos `{start, end, words, times}`. Cada item de `words`
+tem um início correspondente em `times`, dentro de `[start, end)`, em segundos
+do take. Em `tarja`, use a caixa escura com menta. Em `quente`, use texto sem
+caixa e destaque quente. Em `roxo`, a palavra ativa cresce sobre a mesma
+linha de base com violeta `#BC85FF`, contorno escuro e espaço de fonte entre
+as palavras. Escreva blocos de até duas linhas. Quando o take já tiver legenda
+gravada na imagem, reenquadre a câmera para deixá-la fora do quadro e preserve
+o rosto.
 
 ## Renderização
 

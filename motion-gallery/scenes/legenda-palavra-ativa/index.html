@@ -12,6 +12,9 @@
 .caption [aria-current="true"] { color:var(--mint); }
 [data-layout="quente"] .caption { background:none; text-shadow:0 3px 4px #08080d,0 0 17px #08080d; }
 [data-layout="quente"] .caption [aria-current="true"] { color:var(--peach); }
+[data-layout="roxo"] .caption { background:none; color:#f8f6ff; word-spacing:.055em; }
+[data-layout="roxo"] .caption span { margin:0; paint-order:stroke fill; -webkit-text-stroke:6px #10091b; }
+[data-layout="roxo"] .caption [aria-current="true"] { color:#bc85ff; }
 </style>
 </head>
 <body>
@@ -21,7 +24,8 @@
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
-stage.dataset.layout=inputs.layout==="quente"?"quente":"tarja";
+const layout=["quente","roxo"].includes(inputs.layout) ? inputs.layout : "tarja";
+stage.dataset.layout=layout;
 const cues=inputs.cues ?? [
   {start:.12,end:2.03,words:["A","IA","monta","o","corte."],times:[.12,.34,.65,1.1,1.32]},
   {start:2.13,end:4.22,words:["Você","escolhe","o","ritmo."],times:[2.13,2.51,3.12,3.4]}
@@ -38,15 +42,19 @@ window.renderMotion=time => {
   caption.hidden=index<0;
   if (index<0) return;
   if (index!==previousCue) {
-    caption.replaceChildren(...lines[index]);
+    const words=lines[index];
+    caption.replaceChildren(...(layout==="roxo" ? words.flatMap((word,i)=>i ? [" ",word] : [word]) : words));
     previousCue=index;
   }
   const times=cues[index].times;
   const active=times.findLastIndex(start=>time>=start);
   lines[index].forEach((span,word) => {
-    span.setAttribute("aria-current",String(word===active));
-    const pop=word===active ? Math.sin(Math.PI*phase(time,times[word],.23)) : 0;
-    span.style.transform="scale(" + (1+pop*.085) + ")";
+    const current=word===active;
+    span.setAttribute("aria-current",String(current));
+    const pop=current ? Math.sin(Math.PI*phase(time,times[word],.23)) : 0;
+    span.style.transform=current && layout==="roxo"
+      ? `scale(${1.04 + pop * .015},${1.14 + pop * .025})`
+      : `scale(${1 + pop * .085})`;
   });
 };
 window.renderMotion(0);

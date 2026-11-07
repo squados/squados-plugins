@@ -1958,7 +1958,8 @@
       "aliases": [
         "legenda karaoke",
         "karaokê por palavra",
-        "tarja de legenda"
+        "tarja de legenda",
+        "Legenda roxa de palavra ativa"
       ],
       "seconds": 4.4,
       "prompt": "Use Legenda de Palavra Ativa neste trecho. Mantenha o bloco de legenda na mesma posição e destaque uma palavra por vez, seguindo os tempos do take.",
@@ -1966,6 +1967,11 @@
         "composition": "scenes/legenda-palavra-ativa/index.html",
         "preview": "previews/legenda-palavra-ativa.mp4",
         "skill": "scenes/legenda-palavra-ativa/SKILL.md",
+        "presets": {
+          "Legenda roxa de palavra ativa": {
+            "layout": "roxo"
+          }
+        },
         "inputs": {
           "presenter": "media",
           "layout": "text",
@@ -3043,6 +3049,7 @@
           "clickAt": "number",
           "dragAt": "number",
           "enterAt": "number",
+          "exitAt": "number",
           "execution": "text",
           "rounds": "text"
         }
@@ -3153,7 +3160,7 @@
       "id": "fabrica-de-edicao-3d",
       "title": "Fábrica de Edição 3D",
       "category": "Cenas narrativas",
-      "description": "Use para contrastar a fila manual de vídeos com uma esteira de robôs ou mostrar a troca de referências entre editores.",
+      "description": "Use para contrastar a fila manual com uma linha de mascotes sentados em estações de edição, ou mostrar a biblioteca de referências da equipe.",
       "uses": [
         "Explicar processo",
         "Ilustrar conceito"
@@ -3163,11 +3170,18 @@
         "16:9"
       ],
       "seconds": 15.533333,
-      "prompt": "Use Fábrica de Edição 3D. Escolha a cena em mode e envie as nove referências em atlas se quiser trocar as miniaturas do mural.",
+      "prompt": "Use Fábrica de Edição 3D. Escolha fila, bancada de referências, mural ou colaboração pelo mode. Passe nove imagens 16:9 em atlas para trocar as miniaturas.",
       "demo": {
         "composition": "scenes/fabrica-de-edicao-3d/index.html",
         "preview": "previews/fabrica-de-edicao-3d.mp4",
         "skill": "scenes/fabrica-de-edicao-3d/SKILL.md",
+        "framesByMode": {
+          "queue": 466,
+          "knowledge": 325,
+          "mural": 292,
+          "epilogue": 363,
+          "farewell": 363
+        },
         "inputs": {
           "mode": "text",
           "atlas": "image"
@@ -3176,6 +3190,7 @@
           "Fila de edição 3D": {"mode": "queue"},
           "Referências em 3D": {"mode": "knowledge"},
           "Mural de efeitos 3D": {"mode": "mural"},
+          "Editor e IA na esteira": {"mode": "epilogue"},
           "Saída do editor em 3D": {"mode": "farewell"}
         }
       },
@@ -3183,6 +3198,7 @@
         "Fila de edição 3D",
         "Referências em 3D",
         "Mural de efeitos 3D",
+        "Editor e IA na esteira",
         "Saída do editor em 3D"
       ]
     }

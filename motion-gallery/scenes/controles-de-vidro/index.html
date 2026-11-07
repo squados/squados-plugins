@@ -98,6 +98,18 @@ function cue(name, fallback, first, last) {
 const clickAt = cue("clickAt", 2.91, .75, 6.25);
 const dragAt = cue("dragAt", 4.32, clickAt + .42, 6.95);
 const enterAt = cue("enterAt", 5.46, dragAt + .60, 7.65);
+const exitAt = cue("exitAt", 8.20, 1.15, 8.20);
+
+function collapseDownload(panel, index, time, enter) {
+  const start = exitAt + (1 - index) * .07;
+  const travel = flow(phase(time, start, .53));
+  const vanish = flow(phase(time, start + .33, .20));
+  const targetX = side === "left" ? -134 : side === "right" ? 134 : 0;
+  const centerY = panel.offsetTop + panel.offsetHeight / 2;
+  const targetY = stage.offsetHeight / 2 - centerY;
+  set(panel, {opacity:clamp(enter) * (1 - vanish),
+    transform:`translate(${targetX * travel}px,${(1-enter) * 67 + targetY * travel}px) scale(${.94 + .06 * enter - .98 * travel})`});
+}
 
 function renderPlay(time) {
   const reveal = spring(time, .12, .66);
@@ -138,7 +150,8 @@ window.renderMotion = time => {
     const p = spring(time,at,.70);
     const exit = flow(phase(time,8.35,.5));
     const sweep = phase(time,at+.37,1.02);
-    set(panel,{opacity:clamp(p)*(1-exit),
+    if (mode === "download") collapseDownload(panel, index, time, p);
+    else set(panel,{opacity:clamp(p)*(1-exit),
       transform:`translateY(${(1-p)*67-31*exit}px) scale(${.94+.06*p-.025*exit})`});
     panel.style.setProperty("--sweep", (-115+235*sweep)+"%");
   });

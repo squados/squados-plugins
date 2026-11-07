@@ -11,6 +11,9 @@ valor com duas marcas ou `"cta"` para uma chamada com seta. Use `label`,
 `value`, `left`, `right`, `leftLogo` e `rightLogo` conforme o modo.
 `side` aceita `left`, `center` ou `right`. Exporte com
 `transparent: true` em MOV para compor por cima do take.
+Em `download`, marque a saída dos cartões em `exitAt` (1,15 a 8,20 s).
+Os cartões convergem com uma defasagem curta e o take fica exposto.
+Mantenha a câmera em movimento contínuo até chegar ao próximo enquadramento.
 
 Use `mode: "play"` para um botão de reprodução com ícone vetorial, sem texto.
 O ponteiro chega ao centro, pressiona o botão com um anel de contato, arrasta
