@@ -2,10 +2,10 @@
 <html lang="en"><head><meta charset="utf-8">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:960px;height:540px;overflow:hidden;background:#0b0c0e}
-#root{position:relative;width:960px;height:540px;overflow:hidden;font-family:'Inter',sans-serif;
-  background:radial-gradient(ellipse 80% 55% at 42% 48%,#2a2d33 0%,#16181b 55%,#0a0b0d 100%)}
-#c{position:absolute;left:0;top:0;width:960px;height:540px;display:block}
+html,body,#root{width:var(--render-width,1920px);height:var(--render-height,1080px);overflow:hidden}
+#root{position:relative;font-family:'Inter',sans-serif}
+#root canvas,#leads{position:absolute;inset:0;width:100%;height:100%;display:block}
+body:not(.alpha){background:radial-gradient(ellipse at 49% 47%,#29323f 0%,#1b212b 50%,#10141b 85%)}
 #hd{position:absolute;left:110px;top:250px;font:500 26px 'JB';letter-spacing:.16em;color:#7d828a}
 #hd b{color:#e9e6e1;font-weight:500}
 svg{position:absolute;left:0;top:0}
@@ -14,19 +14,14 @@ svg{position:absolute;left:0;top:0}
 .lb .t{margin-top:6px;font:600 31px/1.05 'Inter';color:#f3f1ed;letter-spacing:-.01em}
 .lb .s{margin-top:8px;font:500 20px 'JB';color:#8b9098}
 </style>
-<style>
-      html,body,#root{background:transparent!important} #hd{display:none}
-      </style><script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
-<style>
-html,body,#root{width:1920px;height:1080px}
-#c{width:1920px;height:1080px}
-body:not(.alpha){background:radial-gradient(ellipse at 49% 47%,#364352 0%,#242b39 44%,#11151d 82%)!important}
-</style></head>
+<style>#hd{display:none}</style>
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+</head>
 <body>
 <div id="root" data-composition-id="celular-em-vista-explodida" data-start="0" data-duration="5.466667" data-fps="30" data-width="1920" data-height="1080">
-<canvas id="c" width="960" height="540"></canvas>
+<canvas id="c" width="1920" height="1080"></canvas>
 <div id="hd"><b id="hdt"></b> / <span id="hds"></span></div>
-<svg width="960" height="540" viewBox="0 0 960 540" id="leads"></svg>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" id="leads"></svg>
 <div id="labels"></div>
 <script type="module">
 import * as THREE from "three";
@@ -102,7 +97,7 @@ function drawChat(ctx, w, h, time) {
     const width = copy.length > 25 ? 560 : 480;
     const x = mine ? w-37-width : 35;
     color(mine ? '#005b4d' : '#202c33',x,y,width,103,22);
-    text(copy,x+23,y+47,35,'#f2f6f4',550);
+    text(copy,x+23,y+47,37,'#f2f6f4',600);
     text('09:41',x+width-(mine?134:105),y+82,24,'#a0b9b4',500);
     if (mine) {path([[x+width-55,y+76],[x+width-48,y+82],[x+width-36,y+69]],'#5bd4ff',3);
       path([[x+width-45,y+79],[x+width-40,y+82],[x+width-28,y+69]],'#5bd4ff',3);}
@@ -122,24 +117,30 @@ function drawChat(ctx, w, h, time) {
 
 let built; window.__hf.buildReady.breakdown = new Promise((r) => { built = r; });
 await Promise.all([document.fonts.load('700 230px Inter'), document.fonts.load('500 30px JB'), document.fonts.load('600 46px Inter'), document.fonts.load('500 40px Inter')]);
-const W = 960, H = 540;
+const W = 1920, H = 1080;
+const renderScale = options.renderScale === 1.5 ? 1.5 : 1;
+document.documentElement.style.setProperty('--render-width', `${W * renderScale}px`);
+document.documentElement.style.setProperty('--render-height', `${H * renderScale}px`);
 const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
 const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
-const inOut3 = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
-const out3 = (x) => 1 - Math.pow(1 - x, 3);
+const eased = (a, b, x) => {
+  const t = clamp((x - a) / (b - a), 0, 1);
+  return t * t * t * (10 + t * (-15 + 6 * t));
+};
 
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true, alpha: true });
-renderer.setSize(W, H, false); renderer.setPixelRatio(1); renderer.setClearColor(0x000000, 0);
-renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+renderer.setPixelRatio(renderScale); renderer.setSize(W, H, false); renderer.setClearColor(0x000000, 0);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.02;
 const scene = new THREE.Scene();
 const pm = new THREE.PMREMGenerator(renderer);
-scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
-scene.environmentIntensity = .75;
-const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(-6, 12, 8); scene.add(key);
-const rim = new THREE.DirectionalLight(0xffd9c2, 1.2); rim.position.set(8, 4, -6); scene.add(rim);
-scene.add(new THREE.HemisphereLight(0xdfe6ff, 0x1a1b1e, .45));
+const studio = new RoomEnvironment();
+scene.environment = pm.fromScene(studio, 0.035).texture;
+studio.dispose(); pm.dispose();
+scene.environmentIntensity = .9;
+const key = new THREE.DirectionalLight(0xf0f6ff, 1.8); key.position.set(-5, 12, 6); scene.add(key);
+const rim = new THREE.DirectionalLight(0xffdcc0, 1.25); rim.position.set(7, 4, -6); scene.add(rim);
+scene.add(new THREE.HemisphereLight(0xdfe6ff, 0x272019, .29));
 const camera = new THREE.PerspectiveCamera(26, W / H, .5, 200);
-camera.setViewOffset(W, H, 150, 0, W, H);
 
 // ------------------------------------------------------------ geometry helpers
 const PW = 3.6, PL = 7.5, PR = .62;          // phone width, length, corner radius
@@ -171,22 +172,37 @@ function faceUV(mesh, w, l) {          // planar uv on top face so a texture spa
   for (let i = 0; i < p.count; i++) { uv[i * 2] = p.getX(i) / w + .5; uv[i * 2 + 1] = -p.getZ(i) / l + .5; }
   g.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
 }
-const tex = (cw, ch, draw) => { const c = document.createElement('canvas'); c.width = cw; c.height = ch; draw(c.getContext('2d'), cw, ch); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; };
+const anisotropy = Math.min(16, renderer.capabilities.getMaxAnisotropy());
+const tex = (cw, ch, draw) => {
+  const canvas = document.createElement('canvas');
+  canvas.width = cw; canvas.height = ch;
+  draw(canvas.getContext('2d'), cw, ch);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = anisotropy;
+  return texture;
+};
 
 // ------------------------------------------------------------ parts (each a group, exploded along y)
 const parts = [];
 function part(y1) { const g = new THREE.Group(); g.userData.y1 = y1; scene.add(g); parts.push(g); return g; }
 
-// 0 back glass + camera plateau
+// 0 vidro traseiro e bobina de carga
 const back = part(0);
 {
-  const m = new THREE.MeshPhysicalMaterial({ color: 0x3b4250, roughness: .42, metalness: .15, clearcoat: .6, clearcoatRoughness: .5 });
-  back.add(slab(PW, PL, PR, .07, m));
-  const ringM = new THREE.MeshStandardMaterial({ color: 0xc4c8ce, metalness: 1, roughness: .35 });
-  const mag = new THREE.Mesh(new THREE.TorusGeometry(1.05, .07, 16, 96), ringM); mag.rotation.x = Math.PI / 2; mag.scale.z = .5; mag.position.set(0, .11, .35); back.add(mag);
-  const coil = new THREE.Mesh(new THREE.CylinderGeometry(.78, .78, .05, 64), new THREE.MeshStandardMaterial({ color: 0xb87f4e, metalness: .9, roughness: .4 })); coil.position.set(0, .1, .35); back.add(coil);
-  const coilC = new THREE.Mesh(new THREE.CylinderGeometry(.3, .3, .06, 48), new THREE.MeshStandardMaterial({ color: 0x23262b, roughness: .6 })); coilC.position.set(0, .105, .35); back.add(coilC);
-  const strip = new THREE.Mesh(new THREE.BoxGeometry(.16, .04, .8), ringM); strip.position.set(0, .1, 1.75); back.add(strip);
+  const enamel = new THREE.MeshPhysicalMaterial({ color: 0x303944, roughness: .35, metalness: .24, clearcoat: .48, clearcoatRoughness: .24 });
+  back.add(slab(PW - .025, PL - .025, PR, .065, enamel, .022));
+  const graphite = new THREE.MeshStandardMaterial({ color: 0x25282e, metalness: .35, roughness: .44 });
+  const hub = new THREE.Mesh(new THREE.CylinderGeometry(1.03, 1.06, .032, 80), graphite);
+  hub.position.set(0, .081, .35); back.add(hub);
+  const copper = new THREE.MeshPhysicalMaterial({ color: 0xb96e3d, metalness: .88, roughness: .3, clearcoat: .3 });
+  for (let turn = 0; turn < 12; turn++) {
+    const winding = new THREE.Mesh(new THREE.TorusGeometry(.39 + turn * .047, .016, 8, 96), copper);
+    winding.rotation.x = Math.PI / 2;
+    winding.position.set(0, .105, .35); back.add(winding);
+  }
+  const tape = slab(.27, .86, .045, .022, graphite, .008);
+  tape.position.set(.03, .079, 1.55); back.add(tape);
 }
 // 1 internals: battery + logic board + taptic
 const inner = part(1.6);
@@ -208,7 +224,7 @@ const inner = part(1.6);
   });
   const pcb = slab(3.05, 2.55, .3, .06, new THREE.MeshStandardMaterial({ color: 0xffffff, map: pcbT, roughness: .6, metalness: .3 }), .015);
   faceUV(pcb, 3.05, 2.55); pcb.position.set(.05, 0, -2.25); inner.add(pcb);
-  const shield = new THREE.MeshStandardMaterial({ color: 0xb8bcc2, metalness: 1, roughness: .32 });
+  const shield = new THREE.MeshStandardMaterial({ color: 0x949fa6, metalness: .92, roughness: .34 });
   const chipM = new THREE.MeshStandardMaterial({ color: 0x16181b, metalness: .4, roughness: .35 });
   const box = (w, h, d, m, x, y, z) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); b.position.set(x, y, z); inner.add(b); return b; };
   box(1.05, .08, .95, shield, .55, .11, -2.35);
@@ -216,6 +232,14 @@ const inner = part(1.6);
   box(.55, .07, .4, shield, -.6, .1, -1.55);
   box(.38, .06, .5, chipM, .0, .1, -3.0);
   box(.7, .06, .3, shield, .6, .1, -1.35);
+  const connector = new THREE.MeshStandardMaterial({ color: 0xbd975c, metalness: .76, roughness: .42 });
+  for (let contact = 0; contact < 7; contact++) box(.038, .035, .16, connector, -.75 + contact * .062, .074, -1.16);
+  const screw = new THREE.CylinderGeometry(.055, .063, .03, 16);
+  for (const [x, z] of [[-1.15,-3.25],[1.15,-3.25],[-1.25,-1.28],[1.15,-1.28]]) {
+    const head = new THREE.Mesh(screw, shield);
+    head.position.set(x, .08, z); inner.add(head);
+    box(.053, .004, .012, chipM, x, .097, z);
+  }
   [[-1.0, -2.25], [-1.0, -1.95], [-1.3, -1.95]].forEach(([x, z]) => {
     const cam = new THREE.Mesh(new THREE.CylinderGeometry(.25, .25, .18, 40), new THREE.MeshStandardMaterial({ color: 0x6d7178, metalness: .9, roughness: .3 }));
     cam.position.set(x - .1, .13, z - .6); inner.add(cam);
@@ -227,34 +251,47 @@ const inner = part(1.6);
 // 2 frame (titanium band)
 const frame = part(3.05);
 {
-  const fm = new THREE.MeshStandardMaterial({ color: 0xa9adb3, metalness: 1, roughness: .3 });
-  frame.add(slab(PW + .06, PL + .06, PR + .03, .4, fm, .04, rrPath(PW - .22, PL - .22, PR - .1)));
-  const btn = (z, len) => { const b = new THREE.Mesh(new THREE.BoxGeometry(.08, .12, len), fm); b.position.set(-PW / 2 - .07, .18, z); frame.add(b); };
-  btn(-1.9, .45); btn(-1.25, .7); btn(-.45, .7);
-  const pb = new THREE.Mesh(new THREE.BoxGeometry(.08, .12, 1.0), fm); pb.position.set(PW / 2 + .07, .18, -1.3); frame.add(pb);
+  const titanium = new THREE.MeshPhysicalMaterial({ color: 0x666f79, metalness: .94, roughness: .29, clearcoat: .25, clearcoatRoughness: .18 });
+  const lip = new THREE.MeshStandardMaterial({ color: 0x232931, metalness: .73, roughness: .28 });
+  frame.add(slab(PW + .012, PL + .012, PR, .34, titanium, .034, rrPath(PW - .23, PL - .23, PR - .11)));
+  const seat = slab(PW - .032, PL - .032, PR - .023, .014, lip, .007,
+    rrPath(PW - .20, PL - .20, PR - .10));
+  seat.position.y = .364; frame.add(seat);
+  const button = (side, z, length) => {
+    const part = slab(.075, length, .032, .085, titanium, .012);
+    part.position.set(side * (PW / 2 + .045), .137, z); frame.add(part);
+  };
+  button(-1, -1.93, .33); button(-1, -1.39, .52); button(-1, -.68, .52);
+  button(1, -1.3, .84);
 }
 // 3 OLED display
 let phoneDisplay;
+function paintDisplay(ctx, width, height, time) {
+  ctx.setTransform(width / 720, 0, 0, height / 1500, 0, 0);
+  drawChat(ctx, 720, 1500, time);
+}
 const disp = part(4.4);
 {
-  const scrT = tex(720, 1500, (x, w, h) => drawChat(x,w,h,0));
+  const scrT = tex(1080, 2250, (x, w, h) => paintDisplay(x, w, h, 0));
   phoneDisplay = scrT;
-  const pm2 = new THREE.MeshStandardMaterial({ color: 0x050506, roughness: .25, metalness: .2 });
-  disp.add(slab(PW - .12, PL - .12, PR - .06, .05, pm2, .01));
-  const scr = slab(PW - .3, PL - .3, PR - .15, .01, new THREE.MeshBasicMaterial({ color: 0xffffff, map: scrT, toneMapped: false }), 0);
-  faceUV(scr, PW - .3, PL - .3); scr.position.y = .055; disp.add(scr);
+  const displayBezel = new THREE.MeshPhysicalMaterial({ color: 0x080b0f, roughness: .26, metalness: .3, clearcoat: .5 });
+  disp.add(slab(PW - .108, PL - .108, PR - .058, .045, displayBezel, .012));
+  const displayW = PW - .225, displayL = PL - .225;
+  const scr = slab(displayW, displayL, PR - .12, .008, new THREE.MeshBasicMaterial({ color: 0xffffff, map: scrT, toneMapped: false }), 0);
+  faceUV(scr, displayW, displayL); scr.position.y = .048; disp.add(scr);
 }
 // 4 cover glass
 const glass = part(5.65);
-{
-  const gm = new THREE.MeshPhysicalMaterial({ color: 0xdfe9f5, transparent: true, opacity: .07, roughness: .04, metalness: 0, clearcoat: 1, clearcoatRoughness: .03, depthWrite: false });
-  glass.add(slab(PW - .04, PL - .04, PR - .02, .05, gm, .03));
-  const edge = new THREE.LineSegments(new THREE.EdgesGeometry(glass.children[0].geometry, 30), new THREE.LineBasicMaterial({ color: 0xcfd6de, transparent: true, opacity: .55 }));
-  glass.add(edge);
-}
+const glassMaterial = new THREE.MeshPhysicalMaterial({ color: 0xbecddd, transparent: true, opacity: .025,
+  roughness: .065, metalness: .18, clearcoat: 1, clearcoatRoughness: .045, depthWrite: false });
+const glassBevel = new THREE.MeshPhysicalMaterial({ color: 0x96a7ba, transparent: true, opacity: .25,
+  roughness: .16, metalness: .45, clearcoat: .62, depthWrite: false });
+glass.add(slab(PW - .066, PL - .066, PR - .032, .036, glassMaterial, .014));
+glass.add(slab(PW - .060, PL - .060, PR - .030, .035, glassBevel, .009,
+  rrPath(PW - .124, PL - .124, PR - .064)));
 
 // assembled heights (stacked) -> exploded heights
-const Y0 = [0, .07, 0, .38, .44];
+const Y0 = [0, .07, 0, .375, .435];
 const ORDER = [4, 3, 2, 1, 0];                 // top layer leaves first
 const phone = new THREE.Group();
 parts.forEach(p => { scene.remove(p); phone.add(p); });
@@ -286,35 +323,80 @@ const v = new THREE.Vector3();
 const proj = (obj, p) => { v.set(p[0], p[1], p[2]); obj.localToWorld(v); v.project(camera); return [(v.x + 1) / 2 * W, (1 - v.y) / 2 * H]; };
 
 // ------------------------------------------------------------ time
+const TRAVEL_IN = 2.03, TRAVEL_OUT = 2.72;
 const T_EX = 2.75, T_EXD = 1.14, T_LB = 3.5;
-function renderAt(t) {
+const lastMessage = Math.max(...messages.map(([frame]) => frame));
+const chatContext = phoneDisplay.image.getContext('2d');
+let displayTime = -1;
+const look = new THREE.Vector3();
+
+function drawPhone(t) {
   parts.forEach((p, i) => {
     const k = ORDER.indexOf(i);
-    const e = inOut3(clamp((t - T_EX - k * .07) / T_EXD, 0, 1));
+    const start = T_EX + k * .07;
+    const e = eased(start, start + T_EXD, t);
     p.position.y = Y0[i] + (p.userData.y1 - Y0[i]) * e;
   });
-  const settle = smooth(0,.44,t);
-  const pass = smooth(2.03,2.72,t);
-  const arch = Math.sin(Math.PI*pass);
-  const ex = smooth(T_EX, T_EX + T_EXD + .3, t);
-  const exit = smooth(5.16,5.46,t);
-  const cx = 163 + 590*pass + 150*exit;
-  const cy = 268 + 94*arch + 60*(1-settle);
+  const settle = eased(0, .47, t);
+  const pass = eased(TRAVEL_IN, TRAVEL_OUT, t);
+  const arch = 4 * pass * (1 - pass);
+  const portraitOrbit = eased(.42, 1.95, t) * (1 - pass);
+  const ex = eased(T_EX, T_EX + T_EXD + .28, t);
+  const hold = eased(3.82, 5.16, t);
+  const exit = eased(5.16, 5.43, t);
+  const cx = W * (.169 + .626 * pass + .13 * exit);
+  const cy = H * (.513 + .215 * arch + .065 * (1 - settle) + .025 * ex);
   camera.setViewOffset(W,H,W/2-cx,H/2-cy,W,H);
-  phone.rotation.y = THREE.MathUtils.degToRad(-9 + 5*settle - 23*ex + 11*arch);
-  phone.rotation.x = THREE.MathUtils.degToRad(-4 + 4*settle + 3*arch);
-  phone.rotation.z = THREE.MathUtils.degToRad(-7 + 7*settle + 16*arch + 9*ex);
-  phone.position.y = .045*Math.sin(t*1.7);
-  const look = new THREE.Vector3(0, .23 + 2.55*ex, 0);
-  const dist = 30 + 7*arch + 9*ex + 8*(1-settle) + 7*exit;
-  const el = THREE.MathUtils.degToRad(74 - 42*ex);
-  camera.position.set(look.x + dist*Math.cos(el)*.21, look.y + dist*Math.sin(el), look.z + dist*Math.cos(el));
-  const sc = phoneDisplay.image.getContext('2d');
-  drawChat(sc,720,1500,t); phoneDisplay.needsUpdate = true;
-  renderer.domElement.style.opacity = (smooth(0,.22,t) * (1-exit)).toFixed(5);
+  phone.rotation.y = THREE.MathUtils.degToRad(-13 + 9 * settle - 24 * ex + 11 * arch - 4 * hold - 4 * portraitOrbit);
+  phone.rotation.x = THREE.MathUtils.degToRad(-5 + 4 * settle + 5 * arch);
+  phone.rotation.z = THREE.MathUtils.degToRad(-8 + 5 * settle + 13 * arch + 10 * ex + 2 * hold);
+  phone.position.y = .037 * Math.sin(t * 1.6);
+  look.set(0, .22 + 2.5 * ex, 0);
+  const dist = 30.1 + 6.5 * arch + 8.5 * ex + 7 * (1 - settle) + 5 * exit - 1.1 * hold;
+  const el = THREE.MathUtils.degToRad(76 - 40 * ex - 2 * hold - 4 * portraitOrbit);
+  const az = THREE.MathUtils.degToRad(13 + 5 * hold + 5 * portraitOrbit);
+  const horizontal = dist * Math.cos(el);
+  camera.position.set(look.x + horizontal * Math.sin(az), look.y + dist * Math.sin(el), look.z + horizontal * Math.cos(az));
+  glassMaterial.opacity = .023 + .10 * ex;
+  glassBevel.opacity = .17 + .18 * ex;
+  const chatTime = Math.min(t, (lastMessage + 4) / 30);
+  if (chatTime !== displayTime) {
+    paintDisplay(chatContext, phoneDisplay.image.width, phoneDisplay.image.height, chatTime);
+    phoneDisplay.needsUpdate = true;
+    displayTime = chatTime;
+  }
+  renderer.domElement.style.opacity = (eased(0, .20, t) * (1 - exit)).toFixed(5);
   camera.lookAt(look.x, look.y, look.z);
   camera.updateMatrixWorld(); phone.updateMatrixWorld(true);
   renderer.render(scene, camera);
+}
+
+// Integra um obturador de 120° durante a travessia rápida.
+const SHUTTER_SAMPLES = 10;
+let exposure;
+function renderAt(t) {
+  if (t > TRAVEL_IN && t < TRAVEL_OUT) {
+    if (!exposure) {
+      const layer = document.createElement('canvas');
+      layer.width = renderer.domElement.width; layer.height = renderer.domElement.height;
+      renderer.domElement.after(layer);
+      exposure = layer.getContext('2d');
+      exposure.globalCompositeOperation = 'lighter';
+      exposure.globalAlpha = 1 / SHUTTER_SAMPLES;
+    }
+    renderer.domElement.style.visibility = 'hidden';
+    exposure.canvas.style.visibility = 'visible';
+    exposure.clearRect(0, 0, exposure.canvas.width, exposure.canvas.height);
+    for (let sample = 0; sample < SHUTTER_SAMPLES; sample++) {
+      const offset = ((sample + .5) / SHUTTER_SAMPLES - .5) / 3;
+      drawPhone(t + offset / 30);
+      exposure.drawImage(renderer.domElement, 0, 0);
+    }
+  } else {
+    renderer.domElement.style.visibility = 'visible';
+    if (exposure) exposure.canvas.style.visibility = 'hidden';
+    drawPhone(t);
+  }
   // leaders: dot on the part -> elbow -> label
   L.forEach(([n, tt, s, pi, anchor], i) => {
     const a = smooth(T_LB + i * .13, T_LB + i * .13 + .3, t);
