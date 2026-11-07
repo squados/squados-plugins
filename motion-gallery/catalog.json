@@ -564,6 +564,46 @@
       }
     },
     {
+      "id": "detalhe-lateral",
+      "title": "Detalhe Lateral",
+      "category": "Apresentador e tela dividida",
+      "description": "Use para abrir espaço para uma captura lateral enquanto o apresentador se desloca no mesmo take.",
+      "uses": [
+        "Demonstrar produto",
+        "Editar apresentador"
+      ],
+      "kind": "Cena completa",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 5,
+      "featured": true,
+      "aliases": [
+        "Deslizar a tela pro lado pra mostrar um detalhe",
+        "Revelar captura ao lado da câmera"
+      ],
+      "prompt": "Use Detalhe Lateral com o take sincronizado e uma captura real. Desloque a câmera, revele a captura na área livre e confira que o rosto fica visível durante todo o movimento. Para um artigo, role até a passagem e destaque-a.",
+      "demo": {
+        "composition": "scenes/detalhe-lateral/index.html",
+        "preview": "previews/detalhe-lateral.mp4",
+        "skill": "scenes/detalhe-lateral/SKILL.md",
+        "inputs": {
+          "presenter": "media",
+          "screen": "media",
+          "label": "text",
+          "location": "text",
+          "side": "text",
+          "travel": "number",
+          "timing": "object",
+          "scroll": "object"
+        },
+        "required": [
+          "presenter",
+          "screen"
+        ]
+      }
+    },
+    {
       "id": "apresentador-e-celular",
       "title": "Apresentador e Celular",
       "category": "Apresentador e tela dividida",
@@ -3108,6 +3148,43 @@
         "Mural de IA",
         "Saída do editor"
       ]
+    },
+    {
+      "id": "fabrica-de-edicao-3d",
+      "title": "Fábrica de Edição 3D",
+      "category": "Cenas narrativas",
+      "description": "Use para contrastar a fila manual de vídeos com uma esteira de robôs ou mostrar a troca de referências entre editores.",
+      "uses": [
+        "Explicar processo",
+        "Ilustrar conceito"
+      ],
+      "kind": "Cena completa",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 15.533333,
+      "prompt": "Use Fábrica de Edição 3D. Escolha a cena em mode e envie as nove referências em atlas se quiser trocar as miniaturas do mural.",
+      "demo": {
+        "composition": "scenes/fabrica-de-edicao-3d/index.html",
+        "preview": "previews/fabrica-de-edicao-3d.mp4",
+        "skill": "scenes/fabrica-de-edicao-3d/SKILL.md",
+        "inputs": {
+          "mode": "text",
+          "atlas": "image"
+        },
+        "presets": {
+          "Fila de edição 3D": {"mode": "queue"},
+          "Referências em 3D": {"mode": "knowledge"},
+          "Mural de efeitos 3D": {"mode": "mural"},
+          "Saída do editor em 3D": {"mode": "farewell"}
+        }
+      },
+      "aliases": [
+        "Fila de edição 3D",
+        "Referências em 3D",
+        "Mural de efeitos 3D",
+        "Saída do editor em 3D"
+      ]
     }
   ],
   "core": [
@@ -3132,6 +3209,7 @@
       "title": "Apresentador e demonstração",
       "ids": [
         "grafico-em-contracampo",
+        "detalhe-lateral",
         "colagem-em-torno-da-camera",
         "checklist-em-acao",
         "apresentador-e-navegador",

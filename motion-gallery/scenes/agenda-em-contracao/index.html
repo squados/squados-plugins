@@ -10,9 +10,10 @@ h1 {font-size:60px; letter-spacing:-.043em; font-weight:680;}
 .week {margin-top:41px; display:grid; grid-template-columns:repeat(5,1fr); font:25px ui-monospace,monospace; color:#49666c; text-align:center;}
 .schedule {position:relative; margin-top:16px; height:394px; border-radius:12px; border:1px solid #7392977a; overflow:hidden;
  background:repeating-linear-gradient(0deg,transparent 0 65px,#6c8a8f6c 66px 67px),repeating-linear-gradient(90deg,transparent 0 calc(20% - 1px),#75969a8c calc(20% - 1px) 20%);}
-.reserved {position:absolute; left:10px; top:10px; overflow:hidden; border-radius:13px; width:38%; height:94%;
+.reserved {position:absolute; left:10px; top:10px; overflow:hidden; border-radius:13px; width:38%; height:94%; container-type:size;
  background:linear-gradient(140deg,#2b776b,#204747); color:#e7fff2; border:1px solid #f1ffef70; box-shadow:0 10px 25px #1b4e4840;}
-.reserved p {padding:14px 22px; font-size:36px; font-weight:650; white-space:nowrap;}
+.reserved p {margin:min(14px,14cqh) min(22px,8cqw); font-size:min(36px,24cqw,58cqh);
+ line-height:1.1; font-weight:650; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .summary {display:flex; align-items:baseline; justify-content:space-between; gap:32px; padding-top:21px; color:#244a49;}
 .amount {font-size:77px; letter-spacing:-.055em; font-weight:735;}
 .detail {font-size:32px;}
