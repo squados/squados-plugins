@@ -2925,10 +2925,12 @@
       ],
       "aliases": [
         "Instagram para a galeria",
-        "Arraste de referência"
+        "Arraste de referência",
+        "Feed móvel",
+        "Feed no navegador"
       ],
       "seconds": 6.8,
-      "prompt": "Use Do Feed à Galeria. Role vídeos distintos no feed, selecione o terceiro, arraste o mesmo quadro até a biblioteca e revele três cartões após soltar.",
+      "prompt": "Use Do Feed à Galeria com mobile: true para mostrar o Instagram no aparelho. Arraste o terceiro vídeo e revele três cartões após soltar.",
       "demo": {
         "composition": "scenes/feed-para-galeria/index.html",
         "preview": "previews/feed-para-galeria.mp4",
@@ -2938,7 +2940,19 @@
           "effectTitles": "array",
           "reelSheets": "images",
           "effectSheets": "images",
-          "gallery": "image"
+          "gallery": "image",
+          "mobile": "boolean"
+        },
+        "previewInputs": {
+          "mobile": true
+        },
+        "presets": {
+          "Feed móvel": {
+            "mobile": true
+          },
+          "Feed no navegador": {
+            "mobile": false
+          }
         }
       }
     },
@@ -2957,10 +2971,11 @@
         "16:9"
       ],
       "aliases": [
-        "Botão de Play em Ação"
+        "Botão de Play em Ação",
+        "Métrica em vidro fumê"
       ],
       "seconds": 9,
-      "prompt": "Use Controles de Vidro com mode download, value, cta ou play. Em play, sincronize clique, arraste e encaixe com as deixas de som.",
+      "prompt": "Use Controles de Vidro com mode download, value, details, cta ou play. Em details, coloque a métrica e as linhas do contexto sobre a câmera fixa.",
       "demo": {
         "composition": "scenes/controles-de-vidro/index.html",
         "preview": "previews/controles-de-vidro.mp4",
@@ -2968,6 +2983,11 @@
         "presets": {
           "Botão de Play em Ação": {
             "mode": "play"
+          },
+          "Métrica em vidro fumê": {
+            "mode": "details",
+            "left": "MiMo v2.6 Pro",
+            "right": "SquadOS Studio"
           }
         },
         "inputs": {
@@ -2982,7 +3002,9 @@
           "side": "text",
           "clickAt": "number",
           "dragAt": "number",
-          "enterAt": "number"
+          "enterAt": "number",
+          "execution": "text",
+          "rounds": "text"
         }
       }
     },
@@ -3017,6 +3039,75 @@
           "transparent": "boolean"
         }
       }
+    },
+    {
+      "id": "celular-em-vista-explodida",
+      "title": "Celular em Vista Explodida",
+      "category": "Objetos 3D",
+      "description": "Use para animar mensagens e desmontar o mesmo telefone em camadas depois de atravessar o quadro.",
+      "uses": [
+        "Explicar processo",
+        "Ilustrar conceito"
+      ],
+      "kind": "Sobreposição",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 5.466667,
+      "prompt": "Use Celular em Vista Explodida. Preserve a tela da conversa no aparelho e confira o encaixe antes de separar as peças.",
+      "demo": {
+        "composition": "scenes/celular-em-vista-explodida/index.html",
+        "preview": "previews/celular-em-vista-explodida.mp4",
+        "skill": "scenes/celular-em-vista-explodida/SKILL.md",
+        "inputs": {
+          "messages": "array",
+          "transparent": "boolean"
+        }
+      }
+    },
+    {
+      "id": "oficina-pixel-topdown",
+      "title": "Oficina em Pixel Art",
+      "category": "Cenas narrativas",
+      "description": "Use para contrastar filas, transferir referências ou mostrar a saída de um editor em um escritório visto de cima.",
+      "uses": [
+        "Explicar processo",
+        "Ilustrar conceito"
+      ],
+      "kind": "Cena completa",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 15.533333,
+      "prompt": "Use Oficina em Pixel Art. Escolha a cena em mode e mantenha o escritório, as estações e o batente no mesmo mapa visual.",
+      "demo": {
+        "composition": "scenes/oficina-pixel-topdown/index.html",
+        "preview": "previews/oficina-pixel-topdown.mp4",
+        "skill": "scenes/oficina-pixel-topdown/SKILL.md",
+        "inputs": {
+          "mode": "text"
+        },
+        "presets": {
+          "Fila e fluxo": {
+            "mode": "queue"
+          },
+          "Mural humano": {
+            "mode": "knowledge"
+          },
+          "Mural de IA": {
+            "mode": "mural"
+          },
+          "Saída do editor": {
+            "mode": "farewell"
+          }
+        }
+      },
+      "aliases": [
+        "Fila e fluxo",
+        "Mural humano",
+        "Mural de IA",
+        "Saída do editor"
+      ]
     }
   ],
   "core": [

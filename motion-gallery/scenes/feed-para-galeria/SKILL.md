@@ -30,3 +30,5 @@ começam a entrar em 4,33 s, 4,46 s e 4,59 s. A cena tem 6,8 s. Rode o comando s
 
 Preserve os créditos dos atlas substituídos. Em edição falada, combine
 a cena com a câmera sincronizada conforme o briefing.
+
+Use `mobile: true` para a versão em telefone, com barra de status, navegação inferior e gesto de toque.

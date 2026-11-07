@@ -31,3 +31,5 @@ o encaixe acontece pelo menos 0,60 s depois do arrasto e até 7,65 s.
 Use a [amostra](demo-play.json) como ponto de partida para uma sobreposição.
 A cena é silenciosa. Na montagem, alinhe o pico do clique a `clickAt`, o
 ataque do swipe a `dragAt` e o pop ao encaixe em `enterAt`.
+
+Use `mode: details` para uma métrica em vidro fumê. Passe `value`, `left`, `right`, `execution` e `rounds`, com as marcas em `leftLogo` e `rightLogo`.

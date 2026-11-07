@@ -37,6 +37,14 @@ main[data-transparent="true"] {background:transparent;}
  border:1.5px solid #b8fff1; border-radius:50%; box-shadow:0 0 18px #a0ffe39c;}
 .play-pointer {position:absolute; top:0; left:0; width:31px; height:38px;
  filter:drop-shadow(0 3px 5px #021319cc);}
+.metric-details {width:788px;min-height:508px;padding:41px 50px;border-radius:47px;
+ color:#f6f8fb;border:1.5px solid #dce4ef8f;background:linear-gradient(176deg,#d9e3ef29,#33383e66 40%,#171b209b),#2023286b;
+ box-shadow:0 24px 62px #07080ca0,inset 0 1px #ffffff37;backdrop-filter:blur(16px);}
+.metric-details .detail-heading {display:block;font-size:27px;color:#d4deeb}
+.metric-details .value {text-align:left;color:#f5f8fa;font-size:102px;line-height:1.13;margin-bottom:16px}
+.detail-row {display:flex;align-items:center;gap:17px;border-top:1px solid #cfdce459;padding:14px 0}
+.detail-row small {display:block;color:#c1cedb;font-size:21px}.detail-row b {font-size:30px;font-weight:680}
+.detail-row .logo {background:transparent}.detail-row em {font-style:normal;color:#d7e2ec;font-size:24px}
 [hidden] {display:none!important;}
 </style>
 </head>
@@ -48,6 +56,12 @@ main[data-transparent="true"] {background:transparent;}
  <div class="glass button"><div class="icon">⌘</div><div><strong class="action"></strong><small class="right"></small></div><svg class="arrow"><use href="#download"/></svg></div>
  <div class="glass metric"><strong class="value"></strong><div class="legend"><span><span class="logo"><!-- motion-media:leftLogo:0:9:0 --></span><span class="left"></span></span>
  <span><span class="logo"><!-- motion-media:rightLogo:0:9:1 --></span><span class="right"></span></span></div></div>
+ <div class="glass metric-details">
+  <span class="detail-heading">Custo</span><strong class="value"></strong>
+  <div class="detail-row"><span class="logo"><!-- motion-media:leftLogo:0:9:2 --></span><span><small>Modelo usado</small><b class="left"></b></span></div>
+  <div class="detail-row"><span class="logo"><!-- motion-media:rightLogo:0:9:3 --></span><span><small>Ferramenta</small><b class="right"></b></span></div>
+  <div class="detail-row"><span><small>Tempo de execução</small><b class="execution"></b></span><em class="rounds"></em></div>
+ </div>
  <div class="glass single"><strong></strong><svg class="arrow"><use href="#download"/></svg></div>
  <div class="play-action">
   <div class="glass play-glass" role="img" aria-label="Reproduzir">
@@ -60,8 +74,8 @@ main[data-transparent="true"] {background:transparent;}
 </main>
 <script src="../motion-assets/time.js"></script>
 <script>
-const mode = ["download","value","cta","play"].includes(inputs.mode) ? inputs.mode : "download";
-const panels = {download:all(".button"),value:all(".metric"),cta:all(".single"),play:all(".play-action")};
+const mode = ["download","value","details","cta","play"].includes(inputs.mode) ? inputs.mode : "download";
+const panels = {download:all(".button"),value:all(".metric"),details:all(".metric-details"),cta:all(".single"),play:all(".play-action")};
 for (const [key,list] of Object.entries(panels)) for (const panel of list) panel.hidden = key !== mode;
 stage.dataset.transparent = String(inputs.transparent === true);
 const side = inputs.side ?? (mode === "play" ? "left" : "center");
@@ -69,7 +83,8 @@ one(".controls").dataset.side = side;
 all(".action").forEach(node => node.textContent = inputs.label ?? "Download gratuito");
 all(".left").forEach(node => node.textContent = inputs.left ?? "Windows");
 all(".right").forEach(node => node.textContent = inputs.right ?? "macOS");
-copy(".value","value","US$ 6,74");
+all('.value').forEach(node=>node.textContent=inputs.value??(mode==='details'?'US$ 12,74':'US$ 6,74'));
+copy('.execution','execution','3h11m');copy('.rounds','rounds','3 rodadas de melhorias');
 copy(".single strong","label","Materiais disponíveis");
 for (const mark of all(".logo")) if (!mark.children.length) mark.textContent = "◈";
 
