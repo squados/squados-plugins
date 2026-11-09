@@ -1,6 +1,8 @@
 # Galeria de motion
 
-Abra [index.html](index.html) no navegador. A galeria abre na **Seleção principal**.
+Abra [index.html](index.html) no navegador. A galeria abre na **Seleção principal**:
+22 efeitos e componentes de edição genéricos, que servem a qualquer marca, com
+câmera, transições, legendas, chamadas, cartões e uma cena 3D.
 Em **Seleção**, escolha **Catálogo completo** para pesquisar todos os motions.
 Escolha **Novidades** para ver as composições desta rodada.
 Combine **Categoria**, **Uso**, **Tipo** e **Duração** para chegar ao efeito
@@ -78,6 +80,12 @@ a partir da raiz. Valide com `node scripts/build-motion-gallery.mjs --check` e
 
 | Motion | Entradas principais |
 | --- | --- |
+| [Câmera na Moldura](index.html#camera-vidro-leitoso) | Passe `presenter` e `screen`. Escolha `shape` entre `squircle`, `quadrada`, `redonda` e `oval`, `finish` entre `vidro`, `prata`, `ouro` e `cor` (com `accent`), `size` em px e `side: "left"` para o canto esquerdo. |
+| [Zoom no Rosto](index.html#zoom-no-rosto) | Passe o take em `presenter`. Em `mode: "corte"`, o enquadramento alterna entre aberto e fechado em cada segundo de `cuts`; `suave` aproxima durante a cena e `pulso` fecha e volta na deixa. Ajuste `zoom` (1,02 a 1,35) e o ponto fixo em `focus` com `x` e `y` em porcentagem. |
+| [Card de Vidro](index.html#card-de-vidro) | Informe `value`, `title`, `text` e `icon` (`grafico`, `venda`, `agenda`, `mensagem`, `estrela`, `pagamento`, `contrato`, `check`, `usuario`, `raio`, `relogio`, `alvo` ou um emoji). Use `theme: "claro"`, `side` e `accent`. |
+| [Contador](index.html#contador) | Informe `value`, `from`, `decimals`, `prefix`, `suffix` e `label`. `at` e `duration` marcam a contagem; o quadro tem a largura do valor final. |
+| [Confete](index.html#confete) | Alinhe `at` à fala, passe as cores da marca em `colors` e a quantidade por canhão em `amount`. Use `transparent: true` e MOV para sobrepor. |
+| [Lista de Notificações](index.html#lista-de-notificacoes) | Passe até oito `items` com `icon`, `title`, `detail`, `time` e `color`. `start` e `interval` marcam a chegada de cada aviso. Composição própria, inspirada no [Animated List do Magic UI](https://magicui.design/docs/components/animated-list) (MIT). |
 | [Título Cinético](index.html#titulo-cinetico) | `mode` aceita `echo`, `roll`, `glitch` e `stamp`. Informe `title`, `caption` e, no modo `roll`, até cinco termos em `words`. |
 | [Transição por Máscara](index.html#transicao-por-mascara) | Passe dois planos em `first` e `second`. Escolha `mode` entre `ink`, `brush`, `pixel` e `iris`. Use `at` para marcar a passagem em segundos. |
 | [Revelação de Marca](index.html#revelacao-de-marca) | Use `name`, `tagline` e `logo` para a revelação em pixels. Para desenhar o símbolo, use `mode: "trace"` e um `path` SVG no espaço 0 a 100. |

@@ -3,9 +3,9 @@ main[data-variant] {position:relative;isolation:isolate;width:1920px;height:1080
 [data-variant] .demo-screen > img,[data-variant] .demo-screen > video,[data-variant] .lens > img,[data-variant] .lens > video,[data-variant] .display > img,[data-variant] .display > video {width:100%;height:100%;object-fit:cover}
 [data-variant] .demo-screen h1 {position:absolute;top:34%;left:9%;font-size:112px;line-height:1;max-width:850px}
 [data-variant] .demo-screen p {position:absolute;left:9%;top:28%;font-size:31px;color:#c9bae4;letter-spacing:.15em}
-[data-variant] .lens {position:absolute;width:358px;height:358px;right:65px;bottom:66px;border-radius:82px;overflow:hidden;background:radial-gradient(ellipse at 48% 32%,#7b659c,#2e253f 71%);box-shadow:0 15px 39px #0008;z-index:2}
+[data-variant] .lens {position:absolute;width:var(--lens-w,358px);height:var(--lens-h,358px);right:65px;bottom:66px;border-radius:var(--lens-r,82px);overflow:hidden;background:radial-gradient(ellipse at 48% 32%,#7b659c,#2e253f 71%);box-shadow:0 15px 39px #0008;z-index:2}
 [data-variant] .lens.left {left:65px;right:auto}
-[data-variant] .lens::after {content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;border:8px solid transparent;background:linear-gradient(135deg,#ffffffd9,#d4d7e975 45%,#ffffff66) border-box;mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);mask-composite:exclude}
+[data-variant] .lens::after {content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;border:var(--rim-w,8px) solid transparent;background:var(--rim,linear-gradient(135deg,#ffffffd9,#d4d7e975 45%,#ffffff66)) border-box;mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);mask-composite:exclude}
 [data-variant] .lens svg {position:absolute;inset:15%;width:70%;height:70%}
 [data-variant] .flare {position:absolute;inset:0;background:radial-gradient(ellipse at 27% 35%,#fff0d5 0,transparent 71%);pointer-events:none;z-index:3}
 [data-variant] .glass {position:absolute;left:907px;top:201px;width:828px;border:1px solid #c5b5e06b;border-radius:41px;padding:54px;background:linear-gradient(139deg,#353244d9,#1b1929e8 70%);box-shadow:0 40px 80px #0807129e}

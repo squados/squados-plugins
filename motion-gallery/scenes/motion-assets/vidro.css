@@ -1,0 +1,25 @@
+/* Vidro das cenas de cartão, contador e notificações. O tema claro troca só a tinta. */
+main { --accent: #a98bff; --ink: #f7f5fc; --muted: #c9c2dc; --pane: linear-gradient(150deg, #2d2a40b8, #14131fcc 72%); --edge: #ffffff26; }
+main.claro { --ink: #17161f; --muted: #4b4760; --pane: linear-gradient(150deg, #fbfaffd1, #e9e6f3c4 72%); --edge: #ffffffb3; }
+main:not(.transparent) { background: radial-gradient(ellipse at 30% 25%, #3d3248, #161725 63%, #101019); }
+main.transparent { background: transparent; }
+.camera, .camera > :is(img, video) { position: absolute; inset: 0; width: 100%; height: 100%; }
+.camera > :is(img, video) { object-fit: cover; }
+.pane {
+  position: absolute; color: var(--ink); border-radius: 40px; isolation: isolate;
+  background: var(--pane); border: 1px solid var(--edge);
+  backdrop-filter: blur(26px) saturate(1.35);
+  box-shadow: 0 40px 90px #05040e8c, inset 0 1px 0 #ffffff2e;
+}
+main.claro .pane { box-shadow: 0 40px 90px #05040e59, inset 0 1px 0 #ffffffd9; }
+/* Luz que percorre a borda: um gradiente cônico recortado no anel de 2 px. */
+.rim, .rim-glow {
+  position: absolute; inset: -1px; border-radius: inherit; padding: 2px; pointer-events: none;
+  background: conic-gradient(from var(--angle, 0deg), transparent 0deg, transparent 250deg, var(--accent) 300deg, #ffffff 326deg, var(--accent) 344deg, transparent 360deg);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+.rim-glow { filter: blur(10px); opacity: .7; }
+.icon { display: grid; place-items: center; color: #fff; }
+.icon svg { width: 58%; height: 58%; }
+.icon.glyph { font-size: 38px; line-height: 1; }

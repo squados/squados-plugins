@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Zoom no Rosto</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<style>
+main { background: #101019; }
+.camera { position: absolute; inset: 0; will-change: transform; }
+.camera > :is(img, video) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.placeholder { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, #4a3d63, #1a1828 62%, #101019); }
+.placeholder svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.camera:has(video, img) .placeholder { display: none; }
+</style>
+</head>
+<body>
+<main data-composition-id="zoom-no-rosto" data-start="0" data-duration="5" data-width="1920" data-height="1080">
+<div class="camera">
+  <div class="placeholder" aria-hidden="true"><svg viewBox="0 0 1920 1080"><circle cx="960" cy="372" r="150" fill="#d8c4ed" opacity=".86"/><path d="M630 1080V996a330 270 0 0 1 660 0v84Z" fill="#d8c4ed" opacity=".86"/></svg></div>
+  <!-- motion-media:presenter:0:5:0 -->
+</div>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+// Corte: alterna o enquadramento aberto e o fechado em cada deixa, como nos cortes secos de fala.
+// Suave: aproxima devagar durante a cena inteira. Pulso: fecha na deixa e volta logo depois.
+const mode = ["corte", "suave", "pulso"].includes(inputs.mode) ? inputs.mode : "corte";
+const zoom = Number.isFinite(inputs.zoom) ? Math.min(1.35, Math.max(1.02, inputs.zoom)) : 1.12;
+const cuts = (Array.isArray(inputs.cuts) ? inputs.cuts : [1.5, 3.2])
+  .filter(value => Number.isFinite(value) && value > 0 && value < 5)
+  .sort((a, b) => a - b);
+const focus = inputs.focus ?? {};
+const within = (value, fallback) => Number.isFinite(value) ? Math.min(100, Math.max(0, value)) : fallback;
+const camera = one(".camera");
+camera.style.transformOrigin = within(focus.x, 50) + "% " + within(focus.y, 33) + "%";
+
+window.renderMotion = time => {
+  let scale = 1;
+  if (mode === "suave") {
+    scale = mix(1, zoom, flow(phase(time, 0, 5)));
+  } else {
+    const passed = cuts.filter(cut => time >= cut);
+    const last = passed.at(-1);
+    if (mode === "corte") {
+      // O impulso curto assenta em cerca de 0,4 s e tira a cara de corte seco.
+      const level = passed.length % 2 ? zoom : 1;
+      scale = level + (last === undefined ? 0 : .022 * Math.exp(-(time - last) / .16));
+    } else if (last !== undefined) {
+      scale = 1 + (zoom - 1) * (spring(time, last, .45) - flow(phase(time, last + .9, .55)));
+    }
+  }
+  camera.style.transform = "scale(" + Math.max(1, scale) + ")";
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>

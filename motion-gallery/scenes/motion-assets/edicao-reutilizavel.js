@@ -12,6 +12,23 @@
   if (mode === 'frame') {
     const lens = q('.lens');
     if (inputs.side === 'left') lens.classList.add('left');
+    // Forma, acabamento e tamanho da moldura; sem entradas, fica o quadrado de cantos amplos com aro de vidro.
+    const size = Number.isFinite(inputs.size) ? Math.min(560, Math.max(220, inputs.size)) : 358;
+    const shapes = { quadrada: [1, 1, .09], redonda: [1, 1, .5], oval: [.82, 1.08, .5] };
+    const [w, h, r] = shapes[inputs.shape] ?? [1, 1, .23];
+    lens.style.setProperty('--lens-w', size * w + 'px');
+    lens.style.setProperty('--lens-h', size * h + 'px');
+    lens.style.setProperty('--lens-r', r === .5 ? '50%' : size * r + 'px');
+    const accent = inputs.accent || '#8b6cf0';
+    const finishes = {
+      prata: 'linear-gradient(135deg,#f6f8fb,#9aa1ad 28%,#eceff4 50%,#7b8290 73%,#e1e5ec)',
+      ouro: 'linear-gradient(135deg,#fff3c9,#c79634 28%,#ffe6a0 50%,#a5752a 73%,#f2d487)',
+      cor: 'linear-gradient(135deg,color-mix(in srgb,' + accent + ' 55%,#fff),' + accent + ' 45%,color-mix(in srgb,' + accent + ' 70%,#000))',
+    };
+    if (Object.hasOwn(finishes, inputs.finish)) {
+      lens.style.setProperty('--rim', finishes[inputs.finish]);
+      lens.style.setProperty('--rim-w', '10px');
+    }
     window.renderMotion = t => {
       const p = out(t / .42);
       set(lens, { opacity: p, transform: 'translateY(' + (1-p)*42 + 'px)' });

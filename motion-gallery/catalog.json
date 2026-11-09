@@ -577,7 +577,6 @@
         "16:9"
       ],
       "seconds": 5,
-      "featured": true,
       "aliases": [
         "Deslizar a tela pro lado pra mostrar um detalhe",
         "Revelar captura ao lado da câmera"
@@ -1981,9 +1980,9 @@
     },
     {
       "id": "camera-vidro-leitoso",
-      "title": "Câmera com Moldura de Vidro Leitoso",
+      "title": "Câmera na Moldura",
       "category": "Apresentador",
-      "description": "Use para sobrepor a câmera em uma moldura quadrada translúcida e preservar a área útil da demonstração.",
+      "description": "Use para sobrepor a câmera numa moldura no canto, em forma quadrada, redonda ou oval, com aro de vidro, prata, ouro ou na cor da marca.",
       "uses": [
         "Editar apresentador",
         "Demonstrar produto"
@@ -1993,14 +1992,38 @@
         "16:9"
       ],
       "seconds": 4.2,
-      "prompt": "Use Câmera com Moldura de Vidro Leitoso neste trecho. Use a moldura do 0382. Aplique o crop quadrado, cantos de raio amplo, aro prateado translúcido e sombra. Coloque a câmera no canto que deixa a tela livre.",
+      "featured": true,
+      "aliases": [
+        "Câmera com Moldura de Vidro Leitoso",
+        "Moldura da câmera",
+        "Moldura prateada",
+        "Moldura dourada redonda",
+        "Moldura oval"
+      ],
+      "prompt": "Use Câmera na Moldura neste trecho. Escolha shape entre squircle, quadrada, redonda e oval e finish entre vidro, prata, ouro e cor. Coloque a câmera no canto que deixa a tela livre.",
       "demo": {
         "composition": "scenes/camera-vidro-leitoso/index.html",
         "preview": "previews/camera-vidro-leitoso.mp4",
+        "presets": {
+          "Moldura prateada": {
+            "finish": "prata"
+          },
+          "Moldura dourada redonda": {
+            "shape": "redonda",
+            "finish": "ouro"
+          },
+          "Moldura oval": {
+            "shape": "oval"
+          }
+        },
         "inputs": {
           "presenter": "media",
           "screen": "media",
-          "side": "text"
+          "side": "text",
+          "shape": "text",
+          "finish": "text",
+          "size": "number",
+          "accent": "color"
         }
       }
     },
@@ -2417,7 +2440,6 @@
         "transição de íris",
         "pincel de transição"
       ],
-      "featured": true,
       "seconds": 4.8,
       "prompt": "Use Transição por Máscara entre os dois planos. Passe os arquivos em first e second e coloque at sobre a batida que motiva o corte. Escolha a borda em mode.",
       "demo": {
@@ -2452,7 +2474,6 @@
         "glitch de texto",
         "rotação de palavras"
       ],
-      "featured": true,
       "seconds": 6,
       "prompt": "Use Título Cinético para abrir este trecho. Coloque a frase central em title, escolha o movimento em mode e mantenha a frase final em repouso para leitura.",
       "demo": {
@@ -2485,7 +2506,6 @@
         "gráfico de pictogramas",
         "gráfico de intervalo"
       ],
-      "featured": true,
       "seconds": 8,
       "prompt": "Use Dados em Unidades para explicar a distribuição. Informe os dados reais em items, escolha anel, unidades ou intervalos em mode e reserve a frase final para a leitura mais importante.",
       "demo": {
@@ -2518,7 +2538,6 @@
         "morph de dispositivo",
         "celular para desktop"
       ],
-      "featured": true,
       "seconds": 8.4,
       "prompt": "Use Dispositivos em Cena para mostrar a mesma ação em celular, tablet e desktop. Passe capturas reais em phone, tablet e desktop e preserve a continuidade do conteúdo entre os três formatos.",
       "demo": {
@@ -2552,7 +2571,6 @@
         "reluminação",
         "mudança de estilo"
       ],
-      "featured": true,
       "seconds": 8,
       "prompt": "Use Troca de Visual para comparar as duas versões. Mantenha o mesmo enquadramento em before e after e deixe a divisória terminar em posição que mostre a diferença.",
       "demo": {
@@ -2585,7 +2603,6 @@
         "dashboard ao vivo",
         "painel de métricas"
       ],
-      "featured": true,
       "seconds": 8.4,
       "prompt": "Use Painel em Operação para mostrar o desempenho do processo. Informe indicadores em metrics, histórico em series e os eventos em statuses.",
       "demo": {
@@ -2618,7 +2635,6 @@
         "pedido aprovado",
         "bandeja de decisões"
       ],
-      "featured": true,
       "seconds": 8,
       "prompt": "Use Decisão em Fluxo neste trecho. Mostre o pedido entrando na fila, abra o detalhe escolhido por selected e sincronize a mudança de estado com a confirmação na fala.",
       "demo": {
@@ -2651,7 +2667,6 @@
         "varredura de imagem",
         "inspeção técnica"
       ],
-      "featured": true,
       "seconds": 8,
       "prompt": "Use Inspeção de Imagem para dirigir o olhar sem perder a referência do quadro. Passe image e informe as coordenadas e os rótulos dos detalhes em points.",
       "demo": {
@@ -2685,7 +2700,6 @@
         "funil de conversão",
         "perdas por etapa"
       ],
-      "featured": true,
       "seconds": 8,
       "prompt": "Use Funil em Etapas para explicar a conversão. Preencha stages com volumes reais na ordem do processo e use conclusion para nomear a principal perda.",
       "demo": {
@@ -2717,7 +2731,6 @@
         "gráfico radar",
         "quadrante de posicionamento"
       ],
-      "featured": true,
       "seconds": 8,
       "prompt": "Use Mapa de Posicionamento para comparar prioridades. Informe points e axisLabels para quadrantes, ou dimensions no modo radar para explicar um perfil.",
       "demo": {
@@ -2751,7 +2764,6 @@
         "camadas aninhadas",
         "pirâmide de níveis"
       ],
-      "featured": true,
       "seconds": 8,
       "prompt": "Use Partes em Conjunto para revelar como os elementos se organizam. Liste as partes e seus detalhes em parts e escolha montagem, encaixe ou hierarquia em mode.",
       "demo": {
@@ -2782,7 +2794,6 @@
         "mural de depoimentos",
         "painel de evidências"
       ],
-      "featured": true,
       "seconds": 8,
       "prompt": "Use Prova Social em Mural neste trecho. Passe depoimentos autorizados ou evidências em cards e destaque com selected a peça que sustenta a afirmação da fala.",
       "demo": {
@@ -2814,7 +2825,6 @@
         "fotos em órbita",
         "órbita de imagens"
       ],
-      "featured": true,
       "seconds": 8,
       "prompt": "Use Montagem em Órbita para apresentar a coleção. Passe imagens em images, use captions para situá-las e deixe o item escolhido em selected ocupar o quadro principal.",
       "demo": {
@@ -2847,7 +2857,6 @@
         "revelação de símbolo",
         "assinatura vetorial"
       ],
-      "featured": true,
       "seconds": 6.8,
       "prompt": "Use Revelação de Marca para fechar a cena. Informe name e tagline e passe logo para revelar o arquivo em pixels, ou path para desenhar o símbolo.",
       "demo": {
@@ -2881,7 +2890,6 @@
         "forma de onda animada",
         "pulso sonoro"
       ],
-      "featured": true,
       "seconds": 7.2,
       "prompt": "Use Pulso de Áudio sobre o trecho de voz. Passe amplitudes extraídas do áudio em intervalos iguais, escolha anel ou barras em mode e alinhe o começo do trecho na montagem.",
       "demo": {
@@ -3201,102 +3209,248 @@
         "Editor e IA na esteira",
         "Saída do editor em 3D"
       ]
+    },
+    {
+      "id": "zoom-no-rosto",
+      "title": "Zoom no Rosto",
+      "category": "Apresentador",
+      "description": "Use para fechar o enquadramento no rosto em um corte seco, aproximar devagar ou dar um pulso de ênfase numa palavra, sem trocar de câmera.",
+      "uses": [
+        "Editar apresentador"
+      ],
+      "kind": "Cena completa",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 5,
+      "featured": true,
+      "aliases": [
+        "Punch-in",
+        "Zoom no corte",
+        "Aproximação suave",
+        "Pulso de ênfase"
+      ],
+      "prompt": "Use Zoom no Rosto neste trecho. Em mode corte, alterne o enquadramento aberto e o fechado em cada segundo de cuts para esconder os cortes de fala. Use suave para aproximar devagar e pulso para enfatizar uma palavra.",
+      "demo": {
+        "composition": "scenes/zoom-no-rosto/index.html",
+        "preview": "previews/zoom-no-rosto.mp4",
+        "presets": {
+          "Aproximação suave": {
+            "mode": "suave"
+          },
+          "Pulso de ênfase": {
+            "mode": "pulso",
+            "cuts": [
+              1.6
+            ]
+          }
+        },
+        "inputs": {
+          "presenter": "media",
+          "mode": "text",
+          "zoom": "number",
+          "cuts": "array",
+          "focus": "object"
+        }
+      }
+    },
+    {
+      "id": "card-de-vidro",
+      "title": "Card de Vidro",
+      "category": "Cartões e listas",
+      "description": "Use para mostrar um número, um ícone ou uma informação curta num cartão de vidro ao lado da câmera, com uma luz que percorre a borda.",
+      "uses": [
+        "Mostrar dados",
+        "Apresentar evidências"
+      ],
+      "kind": "Sobreposição",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 6,
+      "featured": true,
+      "aliases": [
+        "Cartão de vidro",
+        "Card de informação",
+        "Card de vidro claro"
+      ],
+      "prompt": "Use Card de Vidro neste trecho. Coloque value, title e text no cartão do lado livre do enquadramento. Use theme claro sobre fundos claros.",
+      "demo": {
+        "composition": "scenes/card-de-vidro/index.html",
+        "preview": "previews/card-de-vidro.mp4",
+        "presets": {
+          "Card de vidro claro": {
+            "theme": "claro"
+          }
+        },
+        "inputs": {
+          "presenter": "media",
+          "theme": "text",
+          "icon": "text",
+          "value": "text",
+          "title": "text",
+          "text": "text",
+          "side": "text",
+          "accent": "color",
+          "exitAt": "number",
+          "transparent": "boolean"
+        }
+      }
+    },
+    {
+      "id": "contador",
+      "title": "Contador",
+      "category": "Números e dados",
+      "description": "Use para revelar um número importante com algarismos que giram como um odômetro até o valor final, com prefixo, sufixo e legenda.",
+      "uses": [
+        "Mostrar dados",
+        "Vender ou converter"
+      ],
+      "kind": "Sobreposição",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 5,
+      "featured": true,
+      "aliases": [
+        "Contador de números",
+        "Odômetro",
+        "Número animado"
+      ],
+      "prompt": "Use Contador neste trecho. Informe value, prefix, suffix e label e alinhe at à fala que anuncia o número. O valor final fica parado até o fim da cena.",
+      "demo": {
+        "composition": "scenes/contador/index.html",
+        "preview": "previews/contador.mp4",
+        "inputs": {
+          "presenter": "media",
+          "value": "number",
+          "from": "number",
+          "decimals": "number",
+          "prefix": "text",
+          "suffix": "text",
+          "label": "text",
+          "at": "number",
+          "duration": "number",
+          "side": "text",
+          "theme": "text",
+          "accent": "color",
+          "transparent": "boolean"
+        }
+      }
+    },
+    {
+      "id": "confete",
+      "title": "Confete",
+      "category": "Destaques e evidências",
+      "description": "Use para comemorar uma conquista com dois canhões de confete que disparam dos cantos de baixo e caem em volta do apresentador.",
+      "uses": [
+        "Apresentar evidências",
+        "Abrir ou encerrar"
+      ],
+      "kind": "Sobreposição",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 4,
+      "featured": true,
+      "aliases": [
+        "Canhão de confete",
+        "Comemoração"
+      ],
+      "prompt": "Use Confete na deixa da conquista. Alinhe at ao instante da fala e use colors com as cores da marca. Exporte com transparência para sobrepor ao take.",
+      "demo": {
+        "composition": "scenes/confete/index.html",
+        "preview": "previews/confete.mp4",
+        "inputs": {
+          "presenter": "media",
+          "at": "number",
+          "amount": "number",
+          "colors": "array",
+          "transparent": "boolean"
+        }
+      }
+    },
+    {
+      "id": "lista-de-notificacoes",
+      "title": "Lista de Notificações",
+      "category": "Cartões e listas",
+      "description": "Use para mostrar resultados chegando sozinhos, com avisos de venda, agenda e mensagem que entram no topo e empurram os anteriores.",
+      "uses": [
+        "Demonstrar produto",
+        "Apresentar evidências"
+      ],
+      "kind": "Sobreposição",
+      "formats": [
+        "16:9"
+      ],
+      "seconds": 6,
+      "featured": true,
+      "aliases": [
+        "Notificações em sequência",
+        "Avisos chegando"
+      ],
+      "prompt": "Use Lista de Notificações neste trecho. Passe até oito items com icon, title, detail, time e color e ajuste interval para cada aviso chegar na deixa da fala.",
+      "demo": {
+        "composition": "scenes/lista-de-notificacoes/index.html",
+        "preview": "previews/lista-de-notificacoes.mp4",
+        "inputs": {
+          "presenter": "media",
+          "items": "array",
+          "start": "number",
+          "interval": "number",
+          "side": "text",
+          "theme": "text",
+          "transparent": "boolean"
+        }
+      }
     }
   ],
   "core": [
     {
-      "title": "Corte, abertura e tipografia",
+      "title": "Câmera e enquadramento",
       "ids": [
-        "capitulo-em-movimento",
-        "titulo-cinetico",
-        "transicao-por-mascara",
-        "revelacao-de-marca",
-        "virada-angular",
-        "revisao-carimbada",
-        "verbo-em-virada",
-        "definicao-em-perspectiva",
-        "legenda-com-enfase",
-        "titulo-atras-do-apresentador",
-        "transicao-em-mosaico",
-        "identificacao-do-apresentador"
-      ]
-    },
-    {
-      "title": "Apresentador e demonstração",
-      "ids": [
-        "grafico-em-contracampo",
-        "detalhe-lateral",
-        "colagem-em-torno-da-camera",
-        "checklist-em-acao",
+        "camera-vidro-leitoso",
+        "zoom-no-rosto",
         "apresentador-e-navegador",
-        "apresentador-e-slides",
-        "apresentador-e-lista",
-        "apresentador-e-celular",
-        "dispositivos-em-cena",
-        "pulso-de-audio",
-        "apresentador-e-citacao"
+        "detalhe-lateral",
+        "apresentador-e-celular"
       ]
     },
     {
-      "title": "Produto, chat e interação",
+      "title": "Transições",
       "ids": [
-        "radar-de-sinais",
-        "resposta-revelada",
-        "conversa-em-camadas",
-        "fontes-no-prompt",
-        "do-icone-ao-produto",
-        "fluxo-em-cinco-etapas",
-        "edicao-em-andamento",
-        "decisao-em-fluxo",
-        "painel-em-operacao",
-        "edicao-em-conjunto",
-        "capsula-de-integracao",
-        "atalho-e-resultado"
+        "clarao-curto",
+        "transicao-por-mascara"
       ]
     },
     {
-      "title": "Dados e comparações",
+      "title": "Texto e legenda",
       "ids": [
-        "barras-em-sequencia",
-        "faixa-de-composicao",
-        "meta-superada",
-        "prazo-em-colapso",
-        "cartoes-e-contador",
-        "linha-de-tendencia",
-        "dados-em-unidades",
-        "mapa-de-posicionamento",
-        "funil-em-etapas",
-        "matriz-de-comparacao"
+        "legenda-palavra-ativa",
+        "identificacao-do-apresentador",
+        "titulo-atras-do-apresentador",
+        "titulo-cinetico"
       ]
     },
     {
-      "title": "Processos e evidências",
+      "title": "Chamadas e componentes",
       "ids": [
-        "roteamento-por-agente",
-        "ciclo-em-duas-voltas",
-        "contexto-em-conflito",
-        "documentos-em-sintese",
-        "voz-em-texto",
-        "citacao-com-fonte",
+        "cta-expansivel",
+        "controles-de-vidro",
+        "card-de-vidro",
+        "contador",
+        "lista-de-notificacoes",
+        "confete",
         "destaque-de-regiao",
-        "linha-do-tempo",
-        "partes-em-conjunto",
-        "inspecao-de-imagem",
-        "troca-de-visual",
-        "prova-social-em-mural",
-        "mensagens-entre-sistemas"
+        "barras-em-sequencia",
+        "agenda-em-contracao",
+        "cena-em-vidros"
       ]
     },
     {
-      "title": "Imagens, revelações e encerramento",
+      "title": "Cena 3D",
       "ids": [
-        "parede-em-perspectiva",
-        "montagem-em-orbita",
-        "roteiro-em-pastas",
-        "ideia-em-espectro",
-        "esfera-em-assinatura",
-        "orbita-de-agentes",
-        "montagem-de-b-roll-em-cortes"
+        "escritorio-troca-de-equipe"
       ]
     }
   ]

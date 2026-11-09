@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Contador</title>
+<link rel="stylesheet" href="../motion-assets/base.css">
+<link rel="stylesheet" href="../motion-assets/vidro.css">
+<style>
+.board { top: 50%; right: 100px; padding: 44px 52px 50px; text-align: center; }
+main.left .board { right: auto; left: 100px; }
+main.center .board { right: auto; left: 50%; }
+.number { display: flex; justify-content: center; align-items: baseline; font-size: 150px; font-weight: 700; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.affix { font-weight: 620; color: var(--accent); white-space: nowrap; }
+.prefix { font-size: .7em; align-self: center; margin-right: .04em; }
+.suffix { font-size: .5em; margin-left: .12em; }
+.digit { display: inline-block; height: 1em; overflow: hidden; width: .6em; }
+.strip { display: block; }
+.strip span { display: block; height: 1em; text-align: center; }
+.mark { display: inline-block; overflow: hidden; width: .26em; text-align: center; }
+.label { margin-top: 16px; font-size: 40px; font-weight: 480; color: var(--muted); letter-spacing: -.01em; }
+.label:empty { display: none; }
+.flash { position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(ellipse at 50% 42%, color-mix(in srgb, var(--accent) 55%, transparent), transparent 70%); opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<main data-composition-id="contador" data-start="0" data-duration="5" data-width="1920" data-height="1080">
+<div class="camera"><!-- motion-media:presenter:0:5:0 --></div>
+<section class="pane board">
+  <div class="rim-glow" aria-hidden="true"></div><div class="rim" aria-hidden="true"></div>
+  <div class="flash" aria-hidden="true"></div>
+  <div class="number"><span class="affix prefix"></span><span class="digits"></span><span class="affix suffix"></span></div>
+  <p class="label"></p>
+</section>
+</main>
+<script src="../motion-assets/time.js"></script>
+<script>
+const text = (name, fallback) => typeof inputs[name] === "string" ? inputs[name] : fallback;
+stage.classList.toggle("transparent", inputs.transparent === true && !one(".camera > *"));
+stage.classList.toggle("claro", inputs.theme === "claro");
+if (["left", "center"].includes(inputs.side)) stage.classList.add(inputs.side);
+if (inputs.accent) stage.style.setProperty("--accent", inputs.accent);
+
+const decimals = Number.isInteger(inputs.decimals) ? Math.min(3, Math.max(0, inputs.decimals)) : 0;
+const target = Number.isFinite(inputs.value) ? Math.abs(inputs.value) : 12500;
+const from = Number.isFinite(inputs.from) ? Math.min(Math.abs(inputs.from), target) : 0;
+const at = Number.isFinite(inputs.at) ? Math.min(3.5, Math.max(0, inputs.at)) : .55;
+const span = Number.isFinite(inputs.duration) ? Math.min(4.2 - at, Math.max(.6, inputs.duration)) : 2.3;
+one(".prefix").textContent = text("prefix", "+");
+one(".suffix").textContent = text("suffix", "");
+one(".label").textContent = text("label", "clientes atendidos");
+
+// Uma coluna por algarismo do valor final, com separadores do pt-BR. Cada coluna gira como um odômetro.
+const scaleUp = 10 ** decimals;
+const integerDigits = Math.max(1, String(Math.floor(target)).length);
+const holder = one(".digits");
+const columns = [];
+const marks = [];
+for (let place = integerDigits - 1 + decimals; place >= 0; place--) {
+  const column = document.createElement("span");
+  column.className = "digit";
+  const strip = document.createElement("span");
+  strip.className = "strip";
+  for (let n = 0; n <= 10; n++) {
+    const glyph = document.createElement("span");
+    glyph.textContent = n % 10;
+    strip.append(glyph);
+  }
+  column.append(strip);
+  holder.append(column);
+  columns.push({ place, column, strip });
+  const integerPlace = place - decimals;
+  if (integerPlace > 0 && integerPlace % 3 === 0) {
+    const mark = document.createElement("span");
+    mark.className = "mark";
+    mark.textContent = ".";
+    holder.append(mark);
+    marks.push({ place, mark });
+  }
+  if (decimals && place === decimals) {
+    const comma = document.createElement("span");
+    comma.className = "mark";
+    comma.textContent = ",";
+    holder.append(comma);
+  }
+}
+
+const board = one(".board");
+const rims = all(".rim, .rim-glow");
+const shift = stage.classList.contains("center") ? "translate(-50%, -50%)" : "translateY(-50%)";
+const count = time => (from + (target - from) * (1 - (1 - phase(time, at, span)) ** 4)) * scaleUp;
+// A largura sai do valor final: o quadro não cresce durante a contagem e cabe ao lado do rosto (até 620 px).
+const numberNode = one(".number");
+const natural = numberNode.getBoundingClientRect().width;
+const room = 620 - 104;
+if (natural > room) numberNode.style.fontSize = Math.max(90, 150 * room / natural) + "px";
+board.style.width = Math.max(440, Math.min(620, numberNode.getBoundingClientRect().width + 104)) + "px";
+// Um algarismo à esquerda só aparece quando o vai-um chega nele.
+const reach = (n, place, position) => place <= decimals || n >= 10 ** place ? 1 : clamp(position);
+const shownByPlace = new Map();
+
+window.renderMotion = time => {
+  const enter = snap(time, .1, .5);
+  set(board, { opacity: enter, transform: shift + " translateY(" + (1 - enter) * 36 + "px) scale(" + mix(.96, 1, enter) + ")" });
+  const n = count(time);
+  const speed = Math.abs(count(time + 1 / 30) - n) * 30;
+  // Como num odômetro mecânico, a coluna só gira enquanto a da direita passa do 9 para o 0.
+  let below = 0;
+  for (const { place, column, strip } of [...columns].reverse()) {
+    const position = place === 0 ? n % 10 : Math.floor(n / 10 ** place) % 10 + clamp(below - 9);
+    below = position;
+    const shown = reach(n, place, position);
+    shownByPlace.set(place, shown);
+    strip.style.transform = "translateY(" + -position + "em)";
+    column.style.width = .6 * shown + "em";
+    column.style.opacity = shown;
+    column.style.filter = "blur(" + Math.min(5, speed / 10 ** place / 18) + "px)";
+  }
+  for (const { place, mark } of marks) {
+    const shown = shownByPlace.get(place);
+    mark.style.width = .26 * shown + "em";
+    mark.style.opacity = shown;
+  }
+  const settle = spring(time, at + span - .05, .5);
+  const done = time >= at + span - .05;
+  one(".number").style.transform = "scale(" + (done ? 1 + .05 * (1 - settle) : 1) + ")";
+  one(".flash").style.opacity = done ? .9 * Math.exp(-(time - at - span) / .35) : 0;
+  const label = snap(time, .45, .45);
+  set(one(".label"), { opacity: label, transform: "translateY(" + (1 - label) * 14 + "px)" });
+  set(one(".prefix"), { opacity: snap(time, .35, .4) });
+  set(one(".suffix"), { opacity: snap(time, at + span - .2, .4) });
+  const angle = 200 + 360 * Math.max(0, time - .3) / 2.6;
+  rims.forEach(rim => {
+    rim.style.setProperty("--angle", angle + "deg");
+    rim.style.opacity = flow(phase(time, .3, .5)) * (rim.classList.contains("rim") ? 1 : .7);
+  });
+};
+window.renderMotion(0);
+</script>
+</body>
+</html>
