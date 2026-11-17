@@ -18,7 +18,7 @@
       "prompt": "Use Checklist em Ação neste trecho. Mantenha a lista ao lado do celular e desenhe cada marca no instante em que a etapa correspondente terminar. Deixe o estado concluído visível no final.",
       "demo": {
         "composition": "scenes/checklist-em-acao/index.html",
-        "preview": "previews/checklist-em-acao.mp4",
+        "preview": "videos/checklist-em-acao.mp4",
         "inputs": {
           "title": "text",
           "screenTitle": "text",
@@ -47,7 +47,7 @@
       "prompt": "Use Cartões e Contador neste trecho. Acumule os itens na grade, sincronize a contagem e o valor somado com cada chegada e revele a conclusão abaixo dos cartões.",
       "demo": {
         "composition": "scenes/cartoes-e-contador/index.html",
-        "preview": "previews/cartoes-e-contador.mp4",
+        "preview": "videos/cartoes-e-contador.mp4",
         "inputs": {
           "items": "array",
           "valuePerItem": "number",
@@ -79,7 +79,7 @@
       "prompt": "Use Conversa em Camadas neste trecho. Faça três mensagens de IA entrarem com spring rápido e deixe o texto em repouso para leitura. Reserve o maior peso visual para a última mensagem.",
       "demo": {
         "composition": "scenes/conversa-em-camadas/index.html",
-        "preview": "previews/conversa-em-camadas.mp4",
+        "preview": "videos/conversa-em-camadas.mp4",
         "inputs": {
           "topic": "text",
           "question": "text",
@@ -104,7 +104,7 @@
       "prompt": "Use Contexto em Conflito neste trecho. Conecte três fontes a um documento compartilhado, revele os itens em sequência e marque o conflito na própria linha que contém o dado privado.",
       "demo": {
         "composition": "scenes/contexto-em-conflito/index.html",
-        "preview": "previews/contexto-em-conflito.mp4",
+        "preview": "videos/contexto-em-conflito.mp4",
         "inputs": {
           "roles": "array",
           "contextTitle": "text",
@@ -130,7 +130,7 @@
       "prompt": "Use Palavras em Síntese neste trecho. Suba a ideia principal, espalhe as palavras, apresente a conclusão e faça a folha de evidência subir depois que a nuvem desaparecer.",
       "demo": {
         "composition": "scenes/palavras-em-sintese/index.html",
-        "preview": "previews/palavras-em-sintese.mp4",
+        "preview": "videos/palavras-em-sintese.mp4",
         "inputs": {
           "main": "text",
           "keywords": "array",
@@ -157,7 +157,7 @@
       "prompt": "Use Capítulo em Movimento para abrir a próxima seção. Mova o enquadramento em dois eixos sobre uma grade contínua e deixe o título ficar nítido ao lado do ícone selecionado.",
       "demo": {
         "composition": "scenes/capitulo-em-movimento/index.html",
-        "preview": "previews/capitulo-em-movimento.mp4",
+        "preview": "videos/capitulo-em-movimento.mp4",
         "inputs": {
           "chapters": "array",
           "activeIndex": "number",
@@ -182,7 +182,7 @@
       "prompt": "Use Colagem em Torno da Câmera neste trecho. Abra com uma foto em tela cheia, espalhe as imagens em perspectiva no fundo preto com grão e organize-as nas laterais para revelar o apresentador.",
       "demo": {
         "composition": "scenes/colagem-em-torno-da-camera/index.html",
-        "preview": "previews/colagem-em-torno-da-camera.mp4",
+        "preview": "videos/colagem-em-torno-da-camera.mp4",
         "inputs": {
           "presenter": "media",
           "sheet": "image"
@@ -208,7 +208,7 @@
       "prompt": "Use Faixa de Composição neste trecho. Construa uma faixa de 100% com segmentos proporcionais aos pesos informados e apresente cada categoria e percentual abaixo, na ordem em que o segmento aparece.",
       "demo": {
         "composition": "scenes/faixa-de-composicao/index.html",
-        "preview": "previews/faixa-de-composicao.mp4",
+        "preview": "videos/faixa-de-composicao.mp4",
         "inputs": {
           "title": "text",
           "segments": "array"
@@ -232,7 +232,7 @@
       "prompt": "Use Documentos em Síntese neste trecho. Mostre os dois documentos em destaque, comprima o conjunto para um lado e revele ao lado um resultado curto e estruturado.",
       "demo": {
         "composition": "scenes/documentos-em-sintese/index.html",
-        "preview": "previews/documentos-em-sintese.mp4",
+        "preview": "videos/documentos-em-sintese.mp4",
         "inputs": {
           "labels": "array",
           "steps": "array",
@@ -260,7 +260,7 @@
       "prompt": "Use Matriz de Comparação neste trecho. Fixe os dois cabeçalhos, mostre cada dimensão e revele as duas células correspondentes antes de passar para a próxima linha. Para comparar ferramentas com capturas e preços em linhas, use tools e screens.",
       "demo": {
         "composition": "scenes/matriz-de-comparacao/index.html",
-        "preview": "previews/matriz-de-comparacao.mp4",
+        "preview": "videos/matriz-de-comparacao.mp4",
         "inputs": {
           "options": "array",
           "rows": "array",
@@ -287,7 +287,7 @@
       "prompt": "Use Linha de Tendência neste trecho. Aproxime do gráfico, desenhe os pontos observados e depois a tendência tracejada, mantendo os dados legíveis no final.",
       "demo": {
         "composition": "scenes/linha-de-tendencia/index.html",
-        "preview": "previews/linha-de-tendencia.mp4",
+        "preview": "videos/linha-de-tendencia.mp4",
         "inputs": {
           "title": "text",
           "points": "array",
@@ -314,7 +314,7 @@
       "prompt": "Use Barras Comparativas para mostrar os valores na mesma escala. Revele as categorias em sequência ou use o modo ratio para exibir duas barras horizontais e a razão entre elas.",
       "demo": {
         "composition": "scenes/barras-em-sequencia/index.html",
-        "preview": "previews/barras-em-sequencia.mp4",
+        "preview": "videos/barras-em-sequencia.mp4",
         "inputs": {
           "title": "text",
           "categories": "array",
@@ -362,7 +362,7 @@
       "prompt": "Use Meta Superada neste trecho. Faça o preenchimento avançar junto com o percentual até a marca de 100%, diferencie o trecho que ultrapassa a meta e mantenha o valor final visível.",
       "demo": {
         "composition": "scenes/meta-superada/index.html",
-        "preview": "previews/meta-superada.mp4",
+        "preview": "videos/meta-superada.mp4",
         "inputs": {
           "label": "text",
           "value": "number",
@@ -387,7 +387,7 @@
       "prompt": "Use Ciclo em Duas Voltas neste trecho. Percorra quatro etapas em um anel, iluminando uma etapa por vez. Reinicie o traço e troque o título quando começar a segunda volta.",
       "demo": {
         "composition": "scenes/ciclo-em-duas-voltas/index.html",
-        "preview": "previews/ciclo-em-duas-voltas.mp4",
+        "preview": "videos/ciclo-em-duas-voltas.mp4",
         "inputs": {
           "topic": "text",
           "roundone": "text",
@@ -413,7 +413,7 @@
       "prompt": "Use Roteamento por Agente neste trecho. Mostre as entradas chegando ao agente central e desenhe depois a bifurcação para as saídas. Preserve o quadro final com todas as conexões.",
       "demo": {
         "composition": "scenes/roteamento-por-agente/index.html",
-        "preview": "previews/roteamento-por-agente.mp4",
+        "preview": "videos/roteamento-por-agente.mp4",
         "inputs": {
           "sources": "array",
           "hub": "text",
@@ -442,7 +442,7 @@
       "prompt": "Use Mensagens entre Sistemas neste trecho. Fixe as três raias, mostre a solicitação e a busca, dê tempo para a espera e desenhe as respostas no sentido inverso.",
       "demo": {
         "composition": "scenes/mensagens-entre-sistemas/index.html",
-        "preview": "previews/mensagens-entre-sistemas.mp4",
+        "preview": "videos/mensagens-entre-sistemas.mp4",
         "inputs": {
           "participants": "array",
           "messages": "array",
@@ -466,7 +466,7 @@
       "prompt": "Use Linha do Tempo neste trecho. Trace uma linha horizontal e apresente, em ordem, cada ponto, data e legenda. Mantenha a cronologia completa visível no final.",
       "demo": {
         "composition": "scenes/linha-do-tempo/index.html",
-        "preview": "previews/linha-do-tempo.mp4",
+        "preview": "videos/linha-do-tempo.mp4",
         "inputs": {
           "milestones": "array"
         }
@@ -489,7 +489,7 @@
       "prompt": "Use Apresentador e Navegador neste trecho. Mostre o navegador com a nota à esquerda e o chat à direita. Faça a pergunta chegar, anime a espera e revele a resposta. Mantenha o apresentador no canto superior direito.",
       "demo": {
         "composition": "scenes/apresentador-e-navegador/index.html",
-        "preview": "previews/apresentador-e-navegador.mp4",
+        "preview": "videos/apresentador-e-navegador.mp4",
         "inputs": {
           "presenter": "media",
           "heading": "text",
@@ -521,7 +521,7 @@
       "prompt": "Use Apresentador e Slides neste trecho. Passe pelos três slides em foco e recue no terceiro até enquadrar as miniaturas à esquerda. Mantenha o apresentador no canto superior direito durante toda a demonstração.",
       "demo": {
         "composition": "scenes/apresentador-e-slides/index.html",
-        "preview": "previews/apresentador-e-slides.mp4",
+        "preview": "videos/apresentador-e-slides.mp4",
         "inputs": {
           "presenter": "media",
           "deck": "text",
@@ -549,7 +549,7 @@
       "prompt": "Use Gráfico em Contracampo para comparar os tokens de um histórico completo e resumido. Reenquadre o apresentador no take contínuo enquanto o painel de vidro troca de lado. Para exportar apenas o gráfico, omita presenter e use MOV.",
       "demo": {
         "composition": "scenes/grafico-em-contracampo/index.html",
-        "preview": "previews/grafico-em-contracampo.mp4",
+        "preview": "videos/grafico-em-contracampo.mp4",
         "inputs": {
           "presenter": "media",
           "title": "text",
@@ -584,7 +584,7 @@
       "prompt": "Use Detalhe Lateral com o take sincronizado e uma captura real. Desloque a câmera, revele a captura na área livre e confira que o rosto fica visível durante todo o movimento. Para um artigo, role até a passagem e destaque-a.",
       "demo": {
         "composition": "scenes/detalhe-lateral/index.html",
-        "preview": "previews/detalhe-lateral.mp4",
+        "preview": "videos/detalhe-lateral.mp4",
         "skill": "scenes/detalhe-lateral/SKILL.md",
         "inputs": {
           "presenter": "media",
@@ -619,7 +619,7 @@
       "prompt": "Use Apresentador e Celular neste trecho. Reenquadre o take contínuo à esquerda e sobreponha o celular à direita. Escreva a captura sobre a imagem e revele duas chamadas em sequência.",
       "demo": {
         "composition": "scenes/apresentador-e-celular/index.html",
-        "preview": "previews/apresentador-e-celular.mp4",
+        "preview": "videos/apresentador-e-celular.mp4",
         "inputs": {
           "presenter": "media",
           "title": "text",
@@ -649,7 +649,7 @@
       "prompt": "Use Apresentador e Lista neste trecho. Reenquadre o take contínuo à direita e sobreponha cinco itens à esquerda. Escreva uma linha por vez e destaque o número do item atual. Para fichas com foto e subtítulo, use itens com title e detail e forneça os retratos em portraits.",
       "demo": {
         "composition": "scenes/apresentador-e-lista/index.html",
-        "preview": "previews/apresentador-e-lista.mp4",
+        "preview": "videos/apresentador-e-lista.mp4",
         "inputs": {
           "presenter": "media",
           "heading": "text",
@@ -679,7 +679,7 @@
       "prompt": "Use Apresentador e Citação neste trecho. Mantenha o take completo em preto e branco. Sobreponha a citação colorida em uma área livre do quadro e sublinhe o trecho decisivo.",
       "demo": {
         "composition": "scenes/apresentador-e-citacao/index.html",
-        "preview": "previews/apresentador-e-citacao.mp4",
+        "preview": "videos/apresentador-e-citacao.mp4",
         "inputs": {
           "portrait": "media",
           "quote": "text",
@@ -707,7 +707,7 @@
       "prompt": "Use Citação com Fonte para identificar um documento e exibir um trecho dele. Mantenha a fonte no quadro, dê destaque ao excerto e marque até três frases em sequência.",
       "demo": {
         "composition": "scenes/citacao-com-fonte/index.html",
-        "preview": "previews/citacao-com-fonte.mp4",
+        "preview": "videos/citacao-com-fonte.mp4",
         "inputs": {
           "sourceLabel": "text",
           "sourceTitle": "text",
@@ -734,7 +734,7 @@
       "prompt": "Use Destaque de Região para chamar a atenção para uma seção do documento. Escureça o entorno, ligue a região a uma nota curta, aproxime os dois elementos juntos e retorne ao quadro completo. Para seguir regiões de um screencast em sequência, use screen e cues.",
       "demo": {
         "composition": "scenes/destaque-de-regiao/index.html",
-        "preview": "previews/destaque-de-regiao.mp4",
+        "preview": "videos/destaque-de-regiao.mp4",
         "inputs": {
           "documentTitle": "text",
           "intro": "text",
@@ -768,7 +768,7 @@
       "prompt": "Use Atalho e Resultado para ensinar uma combinação de teclas. Enquadre o comando, escureça o entorno, pressione as teclas e revele o resultado na mesma área.",
       "demo": {
         "composition": "scenes/atalho-e-resultado/index.html",
-        "preview": "previews/atalho-e-resultado.mp4",
+        "preview": "videos/atalho-e-resultado.mp4",
         "inputs": {
           "title": "text",
           "instruction": "text",
@@ -800,7 +800,7 @@
       "prompt": "Use Voz em Texto neste trecho. Diminua a luz do espaço de trabalho, mostre as palavras nos tempos da fala e mova o texto confirmado para o campo de destino.",
       "demo": {
         "composition": "scenes/voz-em-texto/index.html",
-        "preview": "previews/voz-em-texto.mp4",
+        "preview": "videos/voz-em-texto.mp4",
         "inputs": {
           "workspaceTitle": "text",
           "transcript": "text",
@@ -826,7 +826,7 @@
       "prompt": "Use Virada Angular neste trecho. Cruze o quadro com dois planos diagonais, revele a chamada intermediária e repita a passagem para abrir a cena seguinte. Faça cada corte sob a cobertura completa.",
       "demo": {
         "composition": "scenes/virada-angular/index.html",
-        "preview": "previews/virada-angular.mp4",
+        "preview": "videos/virada-angular.mp4",
         "inputs": {
           "beforeTitle": "text",
           "beforeLabel": "text",
@@ -856,7 +856,7 @@
       "prompt": "Use Transição em Mosaico na pausa entre duas falas. Feche a câmera com uma grade que avança do centro para as bordas, revele uma frase e abra de volta ao mesmo take.",
       "demo": {
         "composition": "scenes/transicao-em-mosaico/index.html",
-        "preview": "previews/transicao-em-mosaico.mp4",
+        "preview": "videos/transicao-em-mosaico.mp4",
         "inputs": {
           "presenter": "media",
           "statement": "text",
@@ -884,7 +884,7 @@
       "prompt": "Use Título Atrás do Apresentador neste trecho. Faça a frase branca e grande entrar como uma linha contínua. Use a silhueta do apresentador para ocluir parte das letras e preserve o enquadramento do take.",
       "demo": {
         "composition": "scenes/titulo-atras-do-apresentador/index.html",
-        "preview": "previews/titulo-atras-do-apresentador.mp4",
+        "preview": "videos/titulo-atras-do-apresentador.mp4",
         "inputs": {
           "presenter": "media",
           "matte": "media",
@@ -912,7 +912,7 @@
       "prompt": "Use Revisão Carimbada neste trecho. Risque o primeiro texto, retire a tira com uma queda inclinada e encaixe a revisão no mesmo lugar. Finalize com a marca de aprovação.",
       "demo": {
         "composition": "scenes/revisao-carimbada/index.html",
-        "preview": "previews/revisao-carimbada.mp4",
+        "preview": "videos/revisao-carimbada.mp4",
         "inputs": {
           "before": "text",
           "after": "text"
@@ -935,7 +935,7 @@
       "prompt": "Use Definição em Perspectiva neste trecho. Risque a definição anterior, abra espaço para a fotografia e revele a nova definição com termos ao redor.",
       "demo": {
         "composition": "scenes/definicao-em-perspectiva/index.html",
-        "preview": "previews/definicao-em-perspectiva.mp4",
+        "preview": "videos/definicao-em-perspectiva.mp4",
         "inputs": {
           "headline": "text",
           "oldDefinition": "text",
@@ -961,7 +961,7 @@
       "prompt": "Use Legenda com Ênfase neste trecho. Mostre a legenda no ritmo da fala. No máximo uma vez a cada duas frases, substitua a legenda por uma única palavra maior e isolada no quadro.",
       "demo": {
         "composition": "scenes/legenda-com-enfase/index.html",
-        "preview": "previews/legenda-com-enfase.mp4",
+        "preview": "videos/legenda-com-enfase.mp4",
         "inputs": {
           "presenter": "media",
           "lines": "array",
@@ -990,7 +990,7 @@
       "prompt": "Use Edição em Andamento neste trecho. Mostre quatro etapas sendo concluídas no cartão do agente, encaixe o cartão no editor, revele a prévia vertical e faça a linha do tempo correr até a confirmação da edição.",
       "demo": {
         "composition": "scenes/edicao-em-andamento/index.html",
-        "preview": "previews/edicao-em-andamento.mp4",
+        "preview": "videos/edicao-em-andamento.mp4",
         "inputs": {
           "headline": "text",
           "project": "text",
@@ -1021,7 +1021,7 @@
       "prompt": "Use Revisão Agendada neste trecho. Aproxime a câmera do campo enquanto o tamanho do lote é digitado. Recue, deslize a seleção da fila, atualize os totais e termine com a confirmação de agendamento.",
       "demo": {
         "composition": "scenes/revisao-agendada/index.html",
-        "preview": "previews/revisao-agendada.mp4",
+        "preview": "videos/revisao-agendada.mp4",
         "inputs": {
           "headline": "text",
           "title": "text",
@@ -1048,7 +1048,7 @@
       "prompt": "Use Roteiro em Pastas neste trecho. Monte uma pilha de fotos, abra três pastas e distribua as imagens em ondas. Atualize o contador no instante em que cada foto chegar.",
       "demo": {
         "composition": "scenes/roteiro-em-pastas/index.html",
-        "preview": "previews/roteiro-em-pastas.mp4",
+        "preview": "videos/roteiro-em-pastas.mp4",
         "inputs": {
           "title": "text",
           "summary": "text",
@@ -1074,7 +1074,7 @@
       "prompt": "Use Memória em Foco para apresentar um agente de roteiro. Faça seis fotos se reunirem em um ícone, revele uma pergunta ao lado dele e passe uma faixa de luz para trocar a pergunta pelo nome.",
       "demo": {
         "composition": "scenes/memoria-em-foco/index.html",
-        "preview": "previews/memoria-em-foco.mp4",
+        "preview": "videos/memoria-em-foco.mp4",
         "inputs": {
           "places": "array",
           "intro": "text",
@@ -1108,7 +1108,7 @@
       "prompt": "Use Pergunta em Disparo neste trecho. Digite uma pergunta ao agente, aproxime a câmera do botão de envio, confirme o clique e faça o campo sair com um rastro. Mostre três passos na resposta e marque um de cada vez.",
       "demo": {
         "composition": "scenes/pergunta-em-disparo/index.html",
-        "preview": "previews/pergunta-em-disparo.mp4",
+        "preview": "videos/pergunta-em-disparo.mp4",
         "inputs": {
           "headline": "text",
           "lead": "text",
@@ -1135,7 +1135,7 @@
       "prompt": "Use Prazo em Colapso neste trecho. Compare dois prazos, mantenha a extensão anterior visível quando a barra maior encolher e mostre os dias economizados no espaço que se abriu.",
       "demo": {
         "composition": "scenes/prazo-em-colapso/index.html",
-        "preview": "previews/prazo-em-colapso.mp4",
+        "preview": "videos/prazo-em-colapso.mp4",
         "inputs": {
           "setupMinutes": "number",
           "previousDays": "number",
@@ -1163,7 +1163,7 @@
       "prompt": "Use Edição em Conjunto neste trecho. Faça três cursores abrirem o painel, mudarem a ordem de um indicador, destacarem as barras do gráfico e reescreverem o título. Termine com a confirmação de que o trabalho foi salvo.",
       "demo": {
         "composition": "scenes/edicao-em-conjunto/index.html",
-        "preview": "previews/edicao-em-conjunto.mp4",
+        "preview": "videos/edicao-em-conjunto.mp4",
         "inputs": {
           "headline": "text",
           "names": "array",
@@ -1194,7 +1194,7 @@
       "prompt": "Use Fontes no Prompt neste trecho. Selecione três fontes de uma fileira, transforme os cartões marcados em chips dentro do campo e digite um pedido. Aproxime a câmera do botão ao enviar e recue para mostrar o agente processando.",
       "demo": {
         "composition": "scenes/fontes-no-prompt/index.html",
-        "preview": "previews/fontes-no-prompt.mp4",
+        "preview": "videos/fontes-no-prompt.mp4",
         "inputs": {
           "opening": "text",
           "compose": "text",
@@ -1223,7 +1223,7 @@
       "prompt": "Use Do Ícone ao Produto neste trecho. Mergulhe no ícone até a cor tomar o quadro, transforme a cor no botão de envio, digite e envie o pedido. Mostre o agente montando a interface e revele o resultado pronto.",
       "demo": {
         "composition": "scenes/do-icone-ao-produto/index.html",
-        "preview": "previews/do-icone-ao-produto.mp4",
+        "preview": "videos/do-icone-ao-produto.mp4",
         "inputs": {
           "brand": "text",
           "tagline": "text",
@@ -1257,7 +1257,7 @@
       "prompt": "Use Túnel de Tarefas neste trecho. Abra um portal, acelere por três túneis com um verbo por vez e feche em uma esfera acima do nome e das funções do agente.",
       "demo": {
         "composition": "scenes/tunel-de-tarefas/index.html",
-        "preview": "previews/tunel-de-tarefas.mp4",
+        "preview": "videos/tunel-de-tarefas.mp4",
         "inputs": {
           "intro": "text",
           "verbs": "array",
@@ -1284,7 +1284,7 @@
       "prompt": "Use Resposta Revelada neste trecho. Digite e envie a pergunta, mantenha a mensagem acima e encaixe o campo abaixo. Use as barras de carregamento para revelar a resposta com um wipe horizontal e termine com ações sugeridas.",
       "demo": {
         "composition": "scenes/resposta-revelada/index.html",
-        "preview": "previews/resposta-revelada.mp4",
+        "preview": "videos/resposta-revelada.mp4",
         "inputs": {
           "question": "text",
           "answer": "text",
@@ -1310,7 +1310,7 @@
       "prompt": "Use Cápsula de Integração neste trecho. Desenhe o contorno da primeira etapa, faça as linhas avançarem na cápsula, transforme a segunda etapa em um formulário e confirme a conexão. Volte à lista com o mapa pontilhado, conclua a terceira etapa e comprima a cápsula num selo de confirmação.",
       "demo": {
         "composition": "scenes/capsula-de-integracao/index.html",
-        "preview": "previews/capsula-de-integracao.mp4",
+        "preview": "videos/capsula-de-integracao.mp4",
         "inputs": {
           "headline": "text",
           "steps": "array",
@@ -1339,7 +1339,7 @@
       "prompt": "Use Do Esboço à Cidade neste trecho. Faça o personagem entrar caminhando na janela de animação, piscar e sorrir, aproxime a câmera até a pupila preencher o quadro e abra a fotografia em um círculo. Encaixe a foto em uma janela com a frase final.",
       "demo": {
         "composition": "scenes/do-esboco-a-cidade/index.html",
-        "preview": "previews/do-esboco-a-cidade.mp4",
+        "preview": "videos/do-esboco-a-cidade.mp4",
         "inputs": {
           "headline": "text",
           "character": "text",
@@ -1367,7 +1367,7 @@
       "prompt": "Use Parede em Perspectiva neste trecho. Abra uma parede inclinada de fotografias em uma busca com IA, filtre pelo tema, avance até uma foto preencher o quadro e recue com a mesma imagem no detalhe. Mostre a confirmação da ação final.",
       "demo": {
         "composition": "scenes/parede-em-perspectiva/index.html",
-        "preview": "previews/parede-em-perspectiva.mp4",
+        "preview": "videos/parede-em-perspectiva.mp4",
         "inputs": {
           "title": "text",
           "filter": "text",
@@ -1395,7 +1395,7 @@
       "prompt": "Use Fluxo em Cinco Etapas neste trecho. Apresente o fluxo, avance pelos cinco passos numa janela fixa, mostre o detalhe de cada passo e confirme sua conclusão. Use o painel final para revelar o resultado.",
       "demo": {
         "composition": "scenes/fluxo-em-cinco-etapas/index.html",
-        "preview": "previews/fluxo-em-cinco-etapas.mp4",
+        "preview": "videos/fluxo-em-cinco-etapas.mp4",
         "inputs": {
           "intro": "text",
           "steps": "array",
@@ -1421,7 +1421,7 @@
       "prompt": "Use Cortando Ruído para apresentar três tarefas manuais que se acumulam e são riscadas. Em seguida, digite um único pedido e mostre a confirmação do agente.",
       "demo": {
         "composition": "scenes/cortando-ruido/index.html",
-        "preview": "previews/cortando-ruido.mp4",
+        "preview": "videos/cortando-ruido.mp4",
         "inputs": {
           "lead": "text",
           "terms": "array",
@@ -1449,7 +1449,7 @@
       "prompt": "Use Tempo de Foco neste trecho. Ative o botão, faça a esfera sair do interruptor e virar o seletor de tempo. Depois, leve a esfera pelas notificações que saem da tela e encaixe-a no selo de foco.",
       "demo": {
         "composition": "scenes/tempo-de-foco/index.html",
-        "preview": "previews/tempo-de-foco.mp4",
+        "preview": "videos/tempo-de-foco.mp4",
         "inputs": {
           "toggle": "text",
           "question": "text",
@@ -1477,7 +1477,7 @@
       "prompt": "Use Montagem de B-roll em Cortes para abrir com uma pergunta e cortar entre quinze imagens no mesmo quadro. Atualize o contador a cada corte e marque dois elementos da última imagem.",
       "demo": {
         "composition": "scenes/montagem-de-b-roll-em-cortes/index.html",
-        "preview": "previews/montagem-de-b-roll-em-cortes.mp4",
+        "preview": "videos/montagem-de-b-roll-em-cortes.mp4",
         "inputs": {
           "title": "text",
           "labels": "array",
@@ -1517,7 +1517,7 @@
       "prompt": "Use Radar de Sinais neste trecho. Abra com uma pergunta no chat, mostre o agente varrendo os posts lado a lado e etiquetando cada um. Troque a fileira pelo ranking de temas com barras animadas e termine com a ação sugerida.",
       "demo": {
         "composition": "scenes/radar-de-sinais/index.html",
-        "preview": "previews/radar-de-sinais.mp4",
+        "preview": "videos/radar-de-sinais.mp4",
         "inputs": {
           "question": "text",
           "result": "text",
@@ -1544,7 +1544,7 @@
       "prompt": "Use Verbo em Virada neste trecho. Revele a frase por partes e troque o verbo duas vezes no mesmo espaço. Preserve a largura da frase e a posição dos termos que ficam.",
       "demo": {
         "composition": "scenes/verbo-em-virada/index.html",
-        "preview": "previews/verbo-em-virada.mp4",
+        "preview": "videos/verbo-em-virada.mp4",
         "inputs": {
           "lead": "text",
           "verbs": "array",
@@ -1571,7 +1571,7 @@
       "prompt": "Use Órbita de Agentes para apresentar um fluxo de IA. Faça sete ícones orbitarem o título, junte-os em um núcleo e termine com três etapas ligadas que recebem confirmação em sequência.",
       "demo": {
         "composition": "scenes/orbita-de-agentes/index.html",
-        "preview": "previews/orbita-de-agentes.mp4",
+        "preview": "videos/orbita-de-agentes.mp4",
         "inputs": {
           "agents": "array",
           "steps": "array",
@@ -1602,7 +1602,7 @@
       "prompt": "Use Conexões em Série para mostrar seis fontes se conectando. Revele o progresso, reúna os cartões no centro e mostre o agente iniciar com as seis fontes ligadas.",
       "demo": {
         "composition": "scenes/conexoes-em-serie/index.html",
-        "preview": "previews/conexoes-em-serie.mp4",
+        "preview": "videos/conexoes-em-serie.mp4",
         "inputs": {
           "sources": "array",
           "firstLead": "text",
@@ -1632,7 +1632,7 @@
       "prompt": "Use Núcleo em Camadas para explicar quatro proteções de um sistema de IA. Revele a pilha em perspectiva, identifique as camadas, feche o núcleo e recue para mostrar os quatro módulos assentarem na placa.",
       "demo": {
         "composition": "scenes/nucleo-em-camadas/index.html",
-        "preview": "previews/nucleo-em-camadas.mp4",
+        "preview": "videos/nucleo-em-camadas.mp4",
         "inputs": {
           "headlines": "array",
           "layers": "array",
@@ -1658,7 +1658,7 @@
       "prompt": "Use Esfera em Assinatura neste trecho. Forme um círculo de pontos, faça a esfera cruzar o quadro e encolher até completar o símbolo da marca. Revele o nome, a frase e o botão em sequência.",
       "demo": {
         "composition": "scenes/esfera-em-assinatura/index.html",
-        "preview": "previews/esfera-em-assinatura.mp4",
+        "preview": "videos/esfera-em-assinatura.mp4",
         "inputs": {
           "brand": "text",
           "tagline": "text",
@@ -1683,7 +1683,7 @@
       "prompt": "Use Ideia em Espectro neste trecho. Faça um clarão abrir a passagem da foto para a rede e o relâmpago. Divida um feixe no prisma e transforme as sete faixas nos formatos de saída.",
       "demo": {
         "composition": "scenes/ideia-em-espectro/index.html",
-        "preview": "previews/ideia-em-espectro.mp4",
+        "preview": "videos/ideia-em-espectro.mp4",
         "inputs": {
           "caption": "text",
           "headline": "text",
@@ -1708,7 +1708,7 @@
       "prompt": "Use Roteiro em Papel para contar uma história em oito cenas de papel recortado. Alterne títulos em tiras, paisagens em camadas, objetos que entram em sequência e um selo de fechamento.",
       "demo": {
         "composition": "scenes/roteiro-em-papel/index.html",
-        "preview": "previews/roteiro-em-papel.mp4",
+        "preview": "videos/roteiro-em-papel.mp4",
         "inputs": {
           "titles": "array",
           "details": "array"
@@ -1735,7 +1735,7 @@
       "prompt": "Use Identificação do Apresentador neste trecho. Anime nome e função com tipografia editorial diretamente no terço inferior. Use o take da cena ou exporte o lettering com transparência para sobrepor.",
       "demo": {
         "composition": "scenes/identificacao-do-apresentador/index.html",
-        "preview": "previews/identificacao-do-apresentador.mp4",
+        "preview": "videos/identificacao-do-apresentador.mp4",
         "inputs": {
           "presenter": "media",
           "name": "text",
@@ -1765,7 +1765,7 @@
       "prompt": "Use Ícones da Mão ao Fundo neste trecho. Aproxime o quadro de cada palma, prenda um ícone ao gesto, depois solte os dois em arco atrás do apresentador.",
       "demo": {
         "composition": "scenes/icones-da-mao-ao-fundo/index.html",
-        "preview": "previews/icones-da-mao-ao-fundo.mp4",
+        "preview": "videos/icones-da-mao-ao-fundo.mp4",
         "skill": "scenes/icones-da-mao-ao-fundo/SKILL.md",
         "inputs": {
           "matte": "media",
@@ -1798,7 +1798,7 @@
       "prompt": "Use Cena em Vidros com o quadro inteiro em presenter, uma mídia vertical em middle e o objeto de destaque em front. Sincronize a abertura dos planos à deixa da fala.",
       "demo": {
         "composition": "scenes/cena-em-vidros/index.html",
-        "preview": "previews/cena-em-vidros.mp4",
+        "preview": "videos/cena-em-vidros.mp4",
         "skill": "scenes/cena-em-vidros/SKILL.md",
         "inputs": {
           "presenter": "media",
@@ -1832,7 +1832,7 @@
       "prompt": "Use Reels Atrás da Câmera neste trecho. Faça três telas verticais percorrerem uma pista em perspectiva atrás do recorte da câmera. Mantenha a passagem pelo meio ocluída pela silhueta.",
       "demo": {
         "composition": "scenes/reels-atras-da-camera/index.html",
-        "preview": "previews/reels-atras-da-camera.mp4",
+        "preview": "videos/reels-atras-da-camera.mp4",
         "skill": "scenes/reels-atras-da-camera/SKILL.md",
         "inputs": {
           "matte": "media",
@@ -1866,7 +1866,7 @@
       "prompt": "Use Casa em Vista Explodida neste trecho. Mostre a maquete montada, tire o telhado, abra paredes e andares, deixe as partes flutuarem e encaixe tudo de novo.",
       "demo": {
         "composition": "scenes/casa-em-vista-explodida/index.html",
-        "preview": "previews/casa-em-vista-explodida.mp4",
+        "preview": "videos/casa-em-vista-explodida.mp4",
         "skill": "scenes/casa-em-vista-explodida/SKILL.md",
         "inputs": {
           "presenter": "media",
@@ -1898,7 +1898,7 @@
       "prompt": "Use Assinatura com Chamada neste trecho. Revele a assinatura ao lado da câmera e atrase a entrada da chamada até a deixa da fala.",
       "demo": {
         "composition": "scenes/assinatura-com-chamada/index.html",
-        "preview": "previews/assinatura-com-chamada.mp4",
+        "preview": "videos/assinatura-com-chamada.mp4",
         "skill": "scenes/assinatura-com-chamada/SKILL.md",
         "inputs": {
           "presenter": "media",
@@ -1932,7 +1932,7 @@
       "prompt": "Use Do Comentário ao Direct neste trecho. Abra a interface de comentários, digite a palavra, confirme o envio e revele a entrega pelo direct.",
       "demo": {
         "composition": "scenes/do-comentario-ao-direct/index.html",
-        "preview": "previews/do-comentario-ao-direct.mp4",
+        "preview": "videos/do-comentario-ao-direct.mp4",
         "skill": "scenes/do-comentario-ao-direct/SKILL.md",
         "inputs": {
           "presenter": "media",
@@ -1964,7 +1964,7 @@
       "prompt": "Use Legenda de Palavra Ativa neste trecho. Mantenha o bloco de legenda na mesma posição e destaque uma palavra por vez, seguindo os tempos do take.",
       "demo": {
         "composition": "scenes/legenda-palavra-ativa/index.html",
-        "preview": "previews/legenda-palavra-ativa.mp4",
+        "preview": "videos/legenda-palavra-ativa.mp4",
         "skill": "scenes/legenda-palavra-ativa/SKILL.md",
         "presets": {
           "Legenda roxa de palavra ativa": {
@@ -2003,7 +2003,7 @@
       "prompt": "Use Câmera na Moldura neste trecho. Escolha shape entre squircle, quadrada, redonda e oval e finish entre vidro, prata, ouro e cor. Coloque a câmera no canto que deixa a tela livre.",
       "demo": {
         "composition": "scenes/camera-vidro-leitoso/index.html",
-        "preview": "previews/camera-vidro-leitoso.mp4",
+        "preview": "videos/camera-vidro-leitoso.mp4",
         "presets": {
           "Moldura prateada": {
             "finish": "prata"
@@ -2043,7 +2043,7 @@
       "prompt": "Use Clarão Curto de Câmera neste trecho. Faça um pulso luminoso de poucos quadros sobre a troca de planos. Preserve a leitura do rosto ou do assunto durante a transição.",
       "demo": {
         "composition": "scenes/clarao-curto/index.html",
-        "preview": "previews/clarao-curto.mp4",
+        "preview": "videos/clarao-curto.mp4",
         "inputs": {
           "first": "media",
           "second": "media",
@@ -2070,7 +2070,7 @@
       "prompt": "Use Painel de Vidro com Revelações neste trecho. Ancore um painel glass ao lado da câmera. Revele um cartão por vez no tempo da fala, mantendo os outros borrados até a deixa.",
       "demo": {
         "composition": "scenes/painel-de-vidro-revelado/index.html",
-        "preview": "previews/painel-de-vidro-revelado.mp4",
+        "preview": "videos/painel-de-vidro-revelado.mp4",
         "inputs": {
           "presenter": "media",
           "title": "text",
@@ -2096,7 +2096,7 @@
       "prompt": "Use Tablet em Perspectiva neste trecho. Preencha a tela com vídeo 9:16 e mantenha uma borda única fina. Anime a entrada e estabilize o ângulo para leitura.",
       "demo": {
         "composition": "scenes/tablet-em-perspectiva/index.html",
-        "preview": "previews/tablet-em-perspectiva.mp4",
+        "preview": "videos/tablet-em-perspectiva.mp4",
         "inputs": {
           "media": "media",
           "side": "text"
@@ -2129,7 +2129,7 @@
       "prompt": "Use Logotipo em Volume para girar o símbolo da marca com espessura e retorno frontal. Informe brand ou passe o seu próprio arquivo em logo.",
       "demo": {
         "composition": "scenes/squados-em-volume/index.html",
-        "preview": "previews/squados-em-volume.mp4",
+        "preview": "videos/squados-em-volume.mp4",
         "inputs": {
           "logo": "image",
           "transparent": "boolean",
@@ -2168,7 +2168,7 @@
       "prompt": "Use Clique em Logotipo 3D neste trecho. Posicione o mascote perto do gesto do apresentador, comprima o símbolo e faça o halo abrir na batida do clique.",
       "demo": {
         "composition": "scenes/clique-de-logo-3d/index.html",
-        "preview": "previews/clique-de-logo-3d.mp4",
+        "preview": "videos/clique-de-logo-3d.mp4",
         "inputs": {
           "logo": "image"
         }
@@ -2191,7 +2191,7 @@
       "prompt": "Use Três Cortes em Sequência neste trecho. Isole três lacunas e feche uma por vez com aceleração curta. Troque a forma de onda ilustrativa pela medição do bruto se apresentar um corte como prova.",
       "demo": {
         "composition": "scenes/tres-cortes-em-sequencia/index.html",
-        "preview": "previews/tres-cortes-em-sequencia.mp4",
+        "preview": "videos/tres-cortes-em-sequencia.mp4",
         "inputs": {
           "beats": "array"
         }
@@ -2214,7 +2214,7 @@
       "prompt": "Use Escritório com Troca de Equipe neste trecho. Monte as seis estações, substitua os personagens pelos robôs e avance continuamente até a bancada do editor. Use a entrada layout igual a solo para o escritório compacto com uma bancada.",
       "demo": {
         "composition": "scenes/escritorio-troca-de-equipe/index.html",
-        "preview": "previews/escritorio-troca-de-equipe.mp4",
+        "preview": "videos/escritorio-troca-de-equipe.mp4",
         "inputs": {
           "atlas": "image",
           "story": "object",
@@ -2243,7 +2243,7 @@
       "prompt": "Use Fotograma em Sequência neste trecho. Abra um quadro em sete fotogramas do take, percorra a faixa com o playhead e reúna os quadros ou revele a onda do áudio. Componha na área livre ao lado do apresentador.",
       "demo": {
         "composition": "scenes/fotograma-em-sequencia/index.html",
-        "preview": "previews/fotograma-em-sequencia.mp4",
+        "preview": "videos/fotograma-em-sequencia.mp4",
         "inputs": {
           "title": "text",
           "sheet": "image",
@@ -2274,7 +2274,7 @@
       "prompt": "Use Do Vídeo aos Formatos neste trecho. Anime um fotograma percorrendo três trajetórias de luz até se tornar uma postagem, uma página e um artigo. Encaixe os formatos na fala e deixe o apresentador visível.",
       "demo": {
         "composition": "scenes/do-video-aos-formatos/index.html",
-        "preview": "previews/do-video-aos-formatos.mp4",
+        "preview": "videos/do-video-aos-formatos.mp4",
         "inputs": {
           "title": "text",
           "image": "image",
@@ -2305,7 +2305,7 @@
       "prompt": "Use Prompt e Resultado para manter o comando visível enquanto a captura mostra a execução. Passe a captura em screen e alinhe a revelação com a fala.",
       "demo": {
         "composition": "scenes/prompt-e-resultado/index.html",
-        "preview": "previews/prompt-e-resultado.mp4",
+        "preview": "videos/prompt-e-resultado.mp4",
         "inputs": {
           "prompt": "text",
           "screen": "media",
@@ -2342,7 +2342,7 @@
       "prompt": "Use Oferta em Camadas para revelar os entregáveis, somar os valores e trocar o total pelo preço final.",
       "demo": {
         "composition": "scenes/oferta-em-camadas/index.html",
-        "preview": "previews/oferta-em-camadas.mp4",
+        "preview": "videos/oferta-em-camadas.mp4",
         "inputs": {
           "title": "text",
           "eyebrow": "text",
@@ -2377,7 +2377,7 @@
       "prompt": "Use CTA Expansível para abrir a seta em botão na deixa da fala. Exporte com transparência para aplicar sobre o take.",
       "demo": {
         "composition": "scenes/cta-expansivel/index.html",
-        "preview": "previews/cta-expansivel.mp4",
+        "preview": "videos/cta-expansivel.mp4",
         "inputs": {
           "label": "text",
           "presenter": "media",
@@ -2411,7 +2411,7 @@
       "prompt": "Use Baralho de Bônus para avançar a carta anunciada e sincronizar o desbloqueio com a fala.",
       "demo": {
         "composition": "scenes/baralho-de-bonus/index.html",
-        "preview": "previews/baralho-de-bonus.mp4",
+        "preview": "videos/baralho-de-bonus.mp4",
         "inputs": {
           "title": "text",
           "eyebrow": "text",
@@ -2444,7 +2444,7 @@
       "prompt": "Use Transição por Máscara entre os dois planos. Passe os arquivos em first e second e coloque at sobre a batida que motiva o corte. Escolha a borda em mode.",
       "demo": {
         "composition": "scenes/transicao-por-mascara/index.html",
-        "preview": "previews/transicao-por-mascara.mp4",
+        "preview": "videos/transicao-por-mascara.mp4",
         "inputs": {
           "mode": "text",
           "first": "media",
@@ -2478,7 +2478,7 @@
       "prompt": "Use Título Cinético para abrir este trecho. Coloque a frase central em title, escolha o movimento em mode e mantenha a frase final em repouso para leitura.",
       "demo": {
         "composition": "scenes/titulo-cinetico/index.html",
-        "preview": "previews/titulo-cinetico.mp4",
+        "preview": "videos/titulo-cinetico.mp4",
         "inputs": {
           "title": "text",
           "words": "array",
@@ -2510,7 +2510,7 @@
       "prompt": "Use Dados em Unidades para explicar a distribuição. Informe os dados reais em items, escolha anel, unidades ou intervalos em mode e reserve a frase final para a leitura mais importante.",
       "demo": {
         "composition": "scenes/dados-em-unidades/index.html",
-        "preview": "previews/dados-em-unidades.mp4",
+        "preview": "videos/dados-em-unidades.mp4",
         "inputs": {
           "mode": "text",
           "title": "text",
@@ -2542,7 +2542,7 @@
       "prompt": "Use Dispositivos em Cena para mostrar a mesma ação em celular, tablet e desktop. Passe capturas reais em phone, tablet e desktop e preserve a continuidade do conteúdo entre os três formatos.",
       "demo": {
         "composition": "scenes/dispositivos-em-cena/index.html",
-        "preview": "previews/dispositivos-em-cena.mp4",
+        "preview": "videos/dispositivos-em-cena.mp4",
         "inputs": {
           "title": "text",
           "subtitle": "text",
@@ -2575,7 +2575,7 @@
       "prompt": "Use Troca de Visual para comparar as duas versões. Mantenha o mesmo enquadramento em before e after e deixe a divisória terminar em posição que mostre a diferença.",
       "demo": {
         "composition": "scenes/troca-de-visual/index.html",
-        "preview": "previews/troca-de-visual.mp4",
+        "preview": "videos/troca-de-visual.mp4",
         "inputs": {
           "title": "text",
           "beforeLabel": "text",
@@ -2607,7 +2607,7 @@
       "prompt": "Use Painel em Operação para mostrar o desempenho do processo. Informe indicadores em metrics, histórico em series e os eventos em statuses.",
       "demo": {
         "composition": "scenes/painel-em-operacao/index.html",
-        "preview": "previews/painel-em-operacao.mp4",
+        "preview": "videos/painel-em-operacao.mp4",
         "inputs": {
           "title": "text",
           "metrics": "array",
@@ -2639,7 +2639,7 @@
       "prompt": "Use Decisão em Fluxo neste trecho. Mostre o pedido entrando na fila, abra o detalhe escolhido por selected e sincronize a mudança de estado com a confirmação na fala.",
       "demo": {
         "composition": "scenes/decisao-em-fluxo/index.html",
-        "preview": "previews/decisao-em-fluxo.mp4",
+        "preview": "videos/decisao-em-fluxo.mp4",
         "inputs": {
           "title": "text",
           "items": "array",
@@ -2671,7 +2671,7 @@
       "prompt": "Use Inspeção de Imagem para dirigir o olhar sem perder a referência do quadro. Passe image e informe as coordenadas e os rótulos dos detalhes em points.",
       "demo": {
         "composition": "scenes/inspecao-de-imagem/index.html",
-        "preview": "previews/inspecao-de-imagem.mp4",
+        "preview": "videos/inspecao-de-imagem.mp4",
         "inputs": {
           "title": "text",
           "caption": "text",
@@ -2704,7 +2704,7 @@
       "prompt": "Use Funil em Etapas para explicar a conversão. Preencha stages com volumes reais na ordem do processo e use conclusion para nomear a principal perda.",
       "demo": {
         "composition": "scenes/funil-em-etapas/index.html",
-        "preview": "previews/funil-em-etapas.mp4",
+        "preview": "videos/funil-em-etapas.mp4",
         "inputs": {
           "title": "text",
           "stages": "array",
@@ -2735,7 +2735,7 @@
       "prompt": "Use Mapa de Posicionamento para comparar prioridades. Informe points e axisLabels para quadrantes, ou dimensions no modo radar para explicar um perfil.",
       "demo": {
         "composition": "scenes/mapa-de-posicionamento/index.html",
-        "preview": "previews/mapa-de-posicionamento.mp4",
+        "preview": "videos/mapa-de-posicionamento.mp4",
         "inputs": {
           "mode": "text",
           "title": "text",
@@ -2768,7 +2768,7 @@
       "prompt": "Use Partes em Conjunto para revelar como os elementos se organizam. Liste as partes e seus detalhes em parts e escolha montagem, encaixe ou hierarquia em mode.",
       "demo": {
         "composition": "scenes/partes-em-conjunto/index.html",
-        "preview": "previews/partes-em-conjunto.mp4",
+        "preview": "videos/partes-em-conjunto.mp4",
         "inputs": {
           "mode": "text",
           "title": "text",
@@ -2798,7 +2798,7 @@
       "prompt": "Use Prova Social em Mural neste trecho. Passe depoimentos autorizados ou evidências em cards e destaque com selected a peça que sustenta a afirmação da fala.",
       "demo": {
         "composition": "scenes/prova-social-em-mural/index.html",
-        "preview": "previews/prova-social-em-mural.mp4",
+        "preview": "videos/prova-social-em-mural.mp4",
         "inputs": {
           "title": "text",
           "cards": "array",
@@ -2829,7 +2829,7 @@
       "prompt": "Use Montagem em Órbita para apresentar a coleção. Passe imagens em images, use captions para situá-las e deixe o item escolhido em selected ocupar o quadro principal.",
       "demo": {
         "composition": "scenes/montagem-em-orbita/index.html",
-        "preview": "previews/montagem-em-orbita.mp4",
+        "preview": "videos/montagem-em-orbita.mp4",
         "inputs": {
           "title": "text",
           "captions": "array",
@@ -2861,7 +2861,7 @@
       "prompt": "Use Revelação de Marca para fechar a cena. Informe name e tagline e passe logo para revelar o arquivo em pixels, ou path para desenhar o símbolo.",
       "demo": {
         "composition": "scenes/revelacao-de-marca/index.html",
-        "preview": "previews/revelacao-de-marca.mp4",
+        "preview": "videos/revelacao-de-marca.mp4",
         "inputs": {
           "name": "text",
           "tagline": "text",
@@ -2894,7 +2894,7 @@
       "prompt": "Use Pulso de Áudio sobre o trecho de voz. Passe amplitudes extraídas do áudio em intervalos iguais, escolha anel ou barras em mode e alinhe o começo do trecho na montagem.",
       "demo": {
         "composition": "scenes/pulso-de-audio/index.html",
-        "preview": "previews/pulso-de-audio.mp4",
+        "preview": "videos/pulso-de-audio.mp4",
         "inputs": {
           "title": "text",
           "subtitle": "text",
@@ -2926,7 +2926,7 @@
       "prompt": "Use Tesla em Vista Explodida na deixa de um gesto. Ajuste explodeAt para sincronizar a desmontagem e ative transparent para usar o carro sobre a câmera ou outra composição.",
       "demo": {
         "composition": "scenes/tesla-em-vista-explodida/index.html",
-        "preview": "previews/tesla-em-vista-explodida.mp4",
+        "preview": "videos/tesla-em-vista-explodida.mp4",
         "skill": "scenes/tesla-em-vista-explodida/SKILL.md",
         "inputs": {
           "transparent": "boolean",
@@ -2951,7 +2951,7 @@
       "prompt": "Use Agenda em Contração para encolher o mesmo compromisso nas deixas da fala. Passe os quatro tempos em beats e mantenha a câmera se usar a saída transparente.",
       "demo": {
         "composition": "scenes/agenda-em-contracao/index.html",
-        "preview": "previews/agenda-em-contracao.mp4",
+        "preview": "videos/agenda-em-contracao.mp4",
         "skill": "scenes/agenda-em-contracao/SKILL.md",
         "inputs": {
           "heading": "text",
@@ -2987,7 +2987,7 @@
       "prompt": "Use Do Feed à Galeria com mobile: true para mostrar o Instagram no aparelho. Arraste o terceiro vídeo e revele três cartões após soltar.",
       "demo": {
         "composition": "scenes/feed-para-galeria/index.html",
-        "preview": "previews/feed-para-galeria.mp4",
+        "preview": "videos/feed-para-galeria.mp4",
         "skill": "scenes/feed-para-galeria/SKILL.md",
         "inputs": {
           "reelTitles": "array",
@@ -3032,7 +3032,7 @@
       "prompt": "Use Controles de Vidro com mode download, value, details, cta ou play. Em details, coloque a métrica e as linhas do contexto sobre a câmera fixa.",
       "demo": {
         "composition": "scenes/controles-de-vidro/index.html",
-        "preview": "previews/controles-de-vidro.mp4",
+        "preview": "videos/controles-de-vidro.mp4",
         "skill": "scenes/controles-de-vidro/SKILL.md",
         "presets": {
           "Botão de Play em Ação": {
@@ -3084,7 +3084,7 @@
       "prompt": "Use Arquivo Markdown em Edição. Passe até seis linhas em lines e alinhe a digitação às regras mencionadas. Posicione o editor no lado livre do take.",
       "demo": {
         "composition": "scenes/arquivo-markdown-em-edicao/index.html",
-        "preview": "previews/arquivo-markdown-em-edicao.mp4",
+        "preview": "videos/arquivo-markdown-em-edicao.mp4",
         "skill": "scenes/arquivo-markdown-em-edicao/SKILL.md",
         "inputs": {
           "filename": "text",
@@ -3112,7 +3112,7 @@
       "prompt": "Use Celular em Vista Explodida. Preserve a tela da conversa no aparelho e confira o encaixe antes de separar as peças.",
       "demo": {
         "composition": "scenes/celular-em-vista-explodida/index.html",
-        "preview": "previews/celular-em-vista-explodida.mp4",
+        "preview": "videos/celular-em-vista-explodida.mp4",
         "skill": "scenes/celular-em-vista-explodida/SKILL.md",
         "inputs": {
           "messages": "array",
@@ -3137,7 +3137,7 @@
       "prompt": "Use Oficina em Pixel Art. Escolha a cena em mode e mantenha o escritório, as estações e o batente no mesmo mapa visual.",
       "demo": {
         "composition": "scenes/oficina-pixel-topdown/index.html",
-        "preview": "previews/oficina-pixel-topdown.mp4",
+        "preview": "videos/oficina-pixel-topdown.mp4",
         "skill": "scenes/oficina-pixel-topdown/SKILL.md",
         "inputs": {
           "mode": "text"
@@ -3181,7 +3181,7 @@
       "prompt": "Use Fábrica de Edição 3D. Escolha fila, bancada de referências, mural ou colaboração pelo mode. Passe nove imagens 16:9 em atlas para trocar as miniaturas.",
       "demo": {
         "composition": "scenes/fabrica-de-edicao-3d/index.html",
-        "preview": "previews/fabrica-de-edicao-3d.mp4",
+        "preview": "videos/fabrica-de-edicao-3d.mp4",
         "skill": "scenes/fabrica-de-edicao-3d/SKILL.md",
         "framesByMode": {
           "queue": 466,
@@ -3233,7 +3233,7 @@
       "prompt": "Use Zoom no Rosto neste trecho. Em mode corte, alterne o enquadramento aberto e o fechado em cada segundo de cuts para esconder os cortes de fala. Use suave para aproximar devagar e pulso para enfatizar uma palavra.",
       "demo": {
         "composition": "scenes/zoom-no-rosto/index.html",
-        "preview": "previews/zoom-no-rosto.mp4",
+        "preview": "videos/zoom-no-rosto.mp4",
         "presets": {
           "Aproximação suave": {
             "mode": "suave"
@@ -3277,7 +3277,7 @@
       "prompt": "Use Card de Vidro neste trecho. Coloque value, title e text no cartão do lado livre do enquadramento. Use theme claro sobre fundos claros.",
       "demo": {
         "composition": "scenes/card-de-vidro/index.html",
-        "preview": "previews/card-de-vidro.mp4",
+        "preview": "videos/card-de-vidro.mp4",
         "presets": {
           "Card de vidro claro": {
             "theme": "claro"
@@ -3320,7 +3320,7 @@
       "prompt": "Use Contador neste trecho. Informe value, prefix, suffix e label e alinhe at à fala que anuncia o número. O valor final fica parado até o fim da cena.",
       "demo": {
         "composition": "scenes/contador/index.html",
-        "preview": "previews/contador.mp4",
+        "preview": "videos/contador.mp4",
         "inputs": {
           "presenter": "media",
           "value": "number",
@@ -3360,7 +3360,7 @@
       "prompt": "Use Confete na deixa da conquista. Alinhe at ao instante da fala e use colors com as cores da marca. Exporte com transparência para sobrepor ao take.",
       "demo": {
         "composition": "scenes/confete/index.html",
-        "preview": "previews/confete.mp4",
+        "preview": "videos/confete.mp4",
         "inputs": {
           "presenter": "media",
           "at": "number",
@@ -3392,7 +3392,7 @@
       "prompt": "Use Lista de Notificações neste trecho. Passe até oito items com icon, title, detail, time e color e ajuste interval para cada aviso chegar na deixa da fala.",
       "demo": {
         "composition": "scenes/lista-de-notificacoes/index.html",
-        "preview": "previews/lista-de-notificacoes.mp4",
+        "preview": "videos/lista-de-notificacoes.mp4",
         "inputs": {
           "presenter": "media",
           "items": "array",

@@ -69,8 +69,9 @@ node scripts/render-motion.mjs "Resposta Revelada" --out resposta.mp4
 ```
 
 O comando gera 1920 × 1080 a 30 fps com HyperFrames 0.8.33. Sem `--out`,
-atualiza o vídeo do cartão. Os vídeos, fotos e entradas da demonstração
-ficam em `previews/` no checkout local.
+atualiza o vídeo do cartão em `videos/`, versionado com o repositório em
+960 px. Os takes, fotos e entradas privadas da demonstração ficam em
+`previews/`, somente no checkout local.
 
 Ao editar o catálogo, atualize o HTML com `node scripts/build-motion-gallery.mjs`
 a partir da raiz. Valide com `node scripts/build-motion-gallery.mjs --check` e
@@ -93,10 +94,10 @@ a partir da raiz. Valide com `node scripts/build-motion-gallery.mjs --check` e
 | [Cena em Vidros](index.html#cena-em-vidros) | Passe o quadro inteiro em `presenter`, o elemento vertical em `middle` e o elemento dianteiro em `front`. Use `timing: "rapido"` para concentrar a abertura em três segundos. |
 | [Tesla em Vista Explodida](index.html#tesla-em-vista-explodida) | Marque a desmontagem com `explodeAt` e use `transparent: true` para compor sobre vídeo. A estrutura interna é ilustrativa. |
 | [Celular em Vista Explodida](index.html#celular-em-vista-explodida) | Passe até cinco mensagens em `messages`, com quadro, direção e texto. Use `transparent: true` e MOV para sobrepor ao take. [Créditos](scenes/celular-em-vista-explodida/SKILL.md) |
-| [Oficina em Pixel Art](index.html#oficina-pixel-topdown) | Escolha `mode` entre `queue`, `knowledge`, `mural` e `farewell`. [Mural humano](previews/oficina-pixel-mural-humano.mp4) · [Mural de IA](previews/oficina-pixel-mural-ia.mp4) · [Saída](previews/oficina-pixel-saida.mp4) |
+| [Oficina em Pixel Art](index.html#oficina-pixel-topdown) | Escolha `mode` entre `queue`, `knowledge`, `mural` e `farewell`. [Mural humano](videos/oficina-pixel-mural-humano.mp4) · [Mural de IA](videos/oficina-pixel-mural-ia.mp4) · [Saída](videos/oficina-pixel-saida.mp4) |
 | [Do Feed à Galeria](index.html#feed-para-galeria) | Use `mobile: true` para o aparelho com toque. Passe quatro previews em `reelSheets` e três em `effectSheets`. O terceiro post segue até a biblioteca e origina os três cartões. |
 | [Agenda em Contração](index.html#agenda-em-contracao) | Informe as quatro deixas em `beats`, as durações em `labels` e use `placement: "right"` em uma sobreposição. |
-| [Controles de Vidro](index.html#controles-de-vidro) | Use `mode: "download"` para as plataformas e `exitAt` para recolher os cartões. Os modos `"value"`, `"details"`, `"cta"` e `"play"` cobrem os demais controles. Em `"play"`, sincronize `clickAt`, `dragAt` e `enterAt` com o som. [Prévia do botão](previews/controles-de-vidro-play.mp4) |
+| [Controles de Vidro](index.html#controles-de-vidro) | Use `mode: "download"` para as plataformas e `exitAt` para recolher os cartões. Os modos `"value"`, `"details"`, `"cta"` e `"play"` cobrem os demais controles. Em `"play"`, sincronize `clickAt`, `dragAt` e `enterAt` com o som. [Prévia do botão](videos/controles-de-vidro-play.mp4) |
 | [Legenda de Palavra Ativa](index.html#legenda-palavra-ativa) | Informe `cues` e use `layout: "roxo"` para destaque violeta e espaço natural entre palavras. |
 | [Fábrica de Edição 3D](index.html#fabrica-de-edicao-3d) | Use `mode` igual a `queue`, `knowledge`, `mural` ou `epilogue`. Passe nove referências 16:9 em `atlas` para trocar as miniaturas. |
 | [Arquivo Markdown em Edição](index.html#arquivo-markdown-em-edicao) | Informe `filename` e até seis textos Markdown em `lines`. Use `cues` para indicar a entrada de cada linha, `side` para posicionar o editor e `transparent: true` para compor sobre o take. |
@@ -137,9 +138,9 @@ Pages, inclua um `.nojekyll` na raiz e, em **Settings → Pages**, selecione
 **Deploy from a branch**, a branch **main** e a pasta **/(root)**. Essa
 configuração publica a raiz do repositório. Antes de publicar o acervo,
 separe a seleção gratuita e confira o histórico do branch público.
-Mídia privada e peças pagas ficam em uma fonte separada. Os MP4s de
-`previews/` são locais. Uma publicação dos vídeos exige incluir as versões
-autorizadas no artefato publicado.
+Mídia privada e peças pagas ficam em uma fonte separada. Os vídeos dos
+cartões em `videos/` são publicados com o repositório; os insumos de
+`previews/` continuam locais.
 [Configuração do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
 O endereço esperado é [squados.github.io/squados-plugins/motion-gallery/](https://squados.github.io/squados-plugins/motion-gallery/).

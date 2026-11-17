@@ -154,7 +154,8 @@ function render(entry, preset) {
     pendingOutput = output + '.' + process.pid + '.tmp'
     if (preview) {
       execFileSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-i', raw, '-vf', 'scale=960:540',
-        '-c:v', 'libx264', '-crf', '20', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-f', 'mp4', pendingOutput], options)
+        '-c:v', 'libx264', '-preset', 'slow', '-crf', '28', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '64k',
+        '-movflags', '+faststart', '-f', 'mp4', pendingOutput], options)
     } else {
       cpSync(raw, pendingOutput)
     }

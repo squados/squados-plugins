@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFileSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import test from 'node:test'
 import { runInNewContext } from 'node:vm'
 
@@ -39,7 +39,8 @@ test('cada motion tem uma indicação de uso, classificação e composição loc
     assert.deepEqual(entry.formats, ['16:9'], entry.id)
     assert.ok(['Cena completa', 'Sobreposição', 'Transição'].includes(entry.kind), entry.id)
     assert.equal(entry.source, undefined, entry.id)
-    assert.equal(entry.demo.preview, 'previews/' + entry.id + '.mp4', entry.id)
+    assert.equal(entry.demo.preview, 'videos/' + entry.id + '.mp4', entry.id)
+    assert.ok(existsSync(new URL(entry.demo.preview, gallery)), entry.id)
     const composition = read(entry.demo.composition)
     assert.ok(composition.includes(`data-composition-id="${entry.id}"`), entry.id)
     assert.ok(composition.includes(`data-duration="${entry.seconds}"`), entry.id)
